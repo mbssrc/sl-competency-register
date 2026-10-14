@@ -1,0 +1,105 @@
+{
+  "id": "SWSEC-RE-DECOMPILE",
+  "name": "Decompilation & High-Level Analysis",
+  "domain": "software-security",
+  "category": "Reverse Engineering",
+  "status": "active",
+  "description": "Use of decompilers to recover high-level code representations from binaries and bytecode. Covers Hex-Rays, Ghidra decompiler, and bytecode decompilers (jadx, ILSpy or dnSpyEx, JEB). Includes type recovery, variable renaming, signature matching, and validation of decompiler output accuracy.",
+
+  "requires": [
+    "SWSEC-RE-DISASM"
+  ],
+  "recommended": [
+    "SWSEC-REVIEW-MANUAL",
+    "SWSEC-DAST-INSTRUMENT"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to decompilation"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands decompilation concepts and tool capabilities",
+      "evidence": [
+        "Can explain how decompilers recover high-level code from binaries",
+        "Familiar with decompiler output limitations and inaccuracies",
+        "Understands the difference between native and bytecode decompilation"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Uses decompilers to analyze simple programs under supervision",
+      "evidence": [
+        "Used Ghidra or Hex-Rays decompiler to analyze native binaries",
+        "Decompiled Java (jadx) or .NET (ILSpy or dnSpyEx) applications",
+        "Applied type information and renamed variables to improve readability",
+        "Work reviewed by authorized analyst"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently uses decompilers for security analysis and vulnerability identification",
+      "evidence": [
+        "Independently used decompilation on 5+ engagements",
+        "Validates decompiler output by cross-referencing with disassembly",
+        "Applies FLIRT signatures and type libraries to improve decompiler accuracy",
+        "Identifies security vulnerabilities from decompiled code",
+        "Passed proficiency assessment on decompilation"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex decompilation challenges; corrects decompiler errors",
+      "evidence": [
+        "Manually corrects decompiler output for complex constructs (C++ vtables, inlined functions)",
+        "Applies custom type definitions and struct layouts to improve analysis",
+        "Decompiles obfuscated and optimized binaries effectively",
+        "Mentors junior analysts on decompiler usage and interpretation"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Authority on decompilation; extends decompiler capabilities",
+      "evidence": [
+        "Published research on decompilation techniques or improvements",
+        "Develops decompiler plugins or processor modules",
+        "Contributes to decompiler tooling (Ghidra plugins, Hex-Rays extensions)",
+        "Trains teams on advanced decompilation techniques"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Decompile a binary application, recover its key algorithms, and identify security vulnerabilities from decompiled output"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review of annotated decompiler output and analysis notes from recent engagements"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0842", "K0813", "S0738", "S0621"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development", "DD-WRL-005 Software Security Assessment"]
+    }
+  },
+
+  "tags": [
+    "reverse-engineering",
+    "decompilation",
+    "hex-rays",
+    "ghidra",
+    "bytecode",
+    "disassembly",
+    "binary-analysis",
+    "static-analysis"
+  ]
+}

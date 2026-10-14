@@ -1,0 +1,34 @@
+{
+  "id": "SVC-HWSEC-EVAL",
+  "name": "Hardware Security Evaluation",
+  "description": "Evaluation of hardware security through embedded systems analysis, side-channel attacks, fault injection, PCB reverse engineering, and cryptographic implementation assessment to identify vulnerabilities in physical devices and secure elements.",
+  "scope_reference": "Hardware security evaluation of embedded devices and secure elements",
+  "required_competencies": [
+    { "skill": "HWSEC-EMBED-FW", "minimum_level": 3 },
+    { "skill": "HWSEC-EMBED-DBG", "minimum_level": 3 },
+    { "skill": "HWSEC-EMBED-BOOT", "minimum_level": 3 },
+    { "skill": "HWSEC-EMBED-RTOS", "minimum_level": 2 },
+    { "skill": "HWSEC-SCA-SPA", "minimum_level": 3 },
+    { "skill": "HWSEC-SCA-DPA", "minimum_level": 3 },
+    { "skill": "HWSEC-SCA-TIMING", "minimum_level": 3 },
+    { "skill": "HWSEC-SCA-EMA", "minimum_level": 2 },
+    { "skill": "HWSEC-FI-VG", "minimum_level": 3 },
+    { "skill": "HWSEC-FI-CG", "minimum_level": 3 },
+    { "skill": "HWSEC-FI-EMFI", "minimum_level": 2 },
+    { "skill": "HWSEC-FI-LFI", "minimum_level": 2 },
+    { "skill": "HWSEC-PCB-RE", "minimum_level": 3 },
+    { "skill": "HWSEC-PCB-MOD", "minimum_level": 2 },
+    { "skill": "HWSEC-PCB-BUS", "minimum_level": 3 },
+    { "skill": "HWSEC-SPREP-MECH", "minimum_level": 3 },
+    { "skill": "HWSEC-SPREP-CHEM", "minimum_level": 3 },
+    { "skill": "HWSEC-SPREP-ACTIVE", "minimum_level": 2 },
+    { "skill": "FOUND-REPORT", "minimum_level": 3 },
+    { "skill": "FOUND-EVIDENCE", "minimum_level": 3 }
+  ],
+  "standards": [
+    "ISO/IEC 15408:2022 (Common Criteria CC:2022)",
+    "JIL Application of Attack Potential to Smartcards and Similar Devices",
+    "FIPS 140-3",
+    "EMVCo Security Evaluation"
+  ]
+}

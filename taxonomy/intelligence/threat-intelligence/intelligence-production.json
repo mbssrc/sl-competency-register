@@ -1,0 +1,101 @@
+{
+  "id": "INTEL-TI-PRODUCTION",
+  "name": "Intelligence Production & Dissemination",
+  "domain": "intelligence",
+  "category": "Threat Intelligence",
+  "status": "active",
+  "description": "Producing finished intelligence products and disseminating them to appropriate audiences. Covers the intelligence cycle (requirements, collection, processing, analysis, dissemination), structured analytical techniques, confidence assessment, writing intelligence reports at tactical, operational, and strategic levels, and tailoring products to stakeholder needs.",
+  "requires": [
+    "FOUND-REPORT",
+    "FOUND-COMM"
+  ],
+  "recommended": [
+    "INTEL-TI-ADVERSARY",
+    "INTEL-TI-TTP",
+    "INTEL-TI-IOC"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to intelligence production or the intelligence cycle"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the intelligence cycle and the types of intelligence products",
+      "evidence": [
+        "Can describe the phases of the intelligence cycle",
+        "Understands the difference between tactical, operational, and strategic intelligence",
+        "Aware of structured analytical techniques and their purpose"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Contributes to intelligence products under supervision",
+      "evidence": [
+        "Drafts tactical intelligence summaries (e.g., flash alerts, IOC bulletins) under guidance",
+        "Applies basic confidence language and source assessment to analytical judgments",
+        "Tailors communication to specified audience under mentor guidance",
+        "Drafts reviewed and edited by authorized analyst before dissemination"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently produces intelligence products across multiple report types",
+      "evidence": [
+        "Authors tactical and operational intelligence reports across 3+ engagements",
+        "Applies structured analytical techniques to reduce bias",
+        "Uses proper confidence language (ODNI ICD 203 or equivalent)",
+        "Intelligence products pass editorial and analytical review"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Produces strategic intelligence; defines requirements; mentors junior analysts",
+      "evidence": [
+        "Authors strategic intelligence assessments for executive audiences",
+        "Defines and manages intelligence requirements based on organizational priorities",
+        "Applies advanced analytical techniques (ACH, red team analysis, scenario planning)",
+        "Reviews and mentors junior analysts on intelligence writing and analytical rigor"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines intelligence production methodology; establishes analytical standards; trains teams",
+      "evidence": [
+        "Designed or maintains the lab's intelligence production methodology and templates",
+        "Establishes analytical standards and quality control processes",
+        "Publishes intelligence research recognized outside the organization",
+        "Trains teams on intelligence analysis, writing, and structured analytical techniques"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "work_product_review",
+      "description": "Review intelligence reports for analytical rigor, proper confidence language, source assessment, and audience appropriateness"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given a collection of raw intelligence data, produce a finished intelligence product with key judgments, confidence levels, and recommendations"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["S0739", "K0767", "S0443", "S0728", "S0579"],
+      "work_roles": ["PD-WRL-006 Threat Analysis"]
+    },
+    "mitre_attack": {
+      "note": "Covers production of intelligence across all ATT&CK techniques and tactics"
+    }
+  },
+  "tags": [
+    "threat-intelligence",
+    "intelligence-cycle",
+    "analytical-techniques",
+    "report-writing",
+    "dissemination"
+  ]
+}

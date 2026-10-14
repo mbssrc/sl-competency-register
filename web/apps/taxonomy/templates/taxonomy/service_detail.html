@@ -1,0 +1,145 @@
+{% extends "core/base.html" %}
+
+{% block title %}{{ service.name }} - Services - {{ product_name }}{% endblock %}
+
+{% block page_crumbs %}
+<a href="{% url 'taxonomy:service-list' %}" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Services</a>
+  <svg class="w-4 h-4 mx-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+  <span class="text-gray-900 dark:text-white font-medium">{{ service.name }}</span>
+{% endblock %}
+
+{% block page_title %}{{ service.name }}{% endblock %}
+{% block page_description %}{{ service.description }}{% endblock %}
+
+{% block content %}
+<div class="flex flex-col lg:flex-row gap-8">
+  <!-- Main content -->
+  <div class="flex-1 min-w-0">
+    <!-- Service header -->
+    <div class="mb-8">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="inline-flex items-center font-mono text-xs bg-gray-100 dark:bg-white/5 text-gray-600 dark:text-gray-400 px-2.5 py-1 rounded">{{ service.id }}</span>
+      </div>
+{% if request.user.is_manager %}
+      <button onclick="loadModal('{% url 'taxonomy:service-edit' service.id %}')"
+              class="mt-4 inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-500/15 border border-indigo-200 dark:border-indigo-800 rounded-md hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+        Edit
+      </button>
+      {% endif %}
+
+      {% if service.scope_reference %}
+      <p class="mt-2 text-sm text-gray-500 dark:text-gray-500">
+        <span class="font-medium">Scope:</span> {{ service.scope_reference }}
+      </p>
+      {% endif %}
+    </div>
+
+    <!-- Required Competencies table -->
+    {% if competencies %}
+    <div class="mb-8">
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+        Required Competencies
+        <span class="ml-2 text-sm font-normal text-gray-500 dark:text-gray-500">{{ competencies|length }}</span>
+      </h3>
+      <div class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg overflow-hidden">
+        <table class="w-full text-sm table-fixed">
+          <colgroup>
+            <col style="width: 28%">
+            <col style="width: {% if has_personnel %}42{% else %}57{% endif %}%">
+            <col style="width: 15%">
+            {% if has_personnel %}<col style="width: 15%">{% endif %}
+          </colgroup>
+          <thead>
+            <tr class="border-b border-gray-200 dark:border-white/10">
+              <th class="text-left px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Skill ID</th>
+              <th class="text-left px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Skill Name</th>
+              <th class="text-center px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Min Level</th>
+              {% if has_personnel %}
+              <th class="text-center px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Qualified</th>
+              {% endif %}
+            </tr>
+          </thead>
+          <tbody>
+            {% for comp in competencies %}
+            <tr class="border-b border-gray-100 dark:border-white/5 last:border-b-0 {% if forloop.counter|divisibleby:2 %}bg-gray-50/50 dark:bg-white/[0.03]{% endif %}">
+              <td class="px-4 py-2.5 font-mono text-xs text-gray-600 dark:text-gray-400">
+                {% if comp.skill_exists %}
+                <a href="{% url 'taxonomy:skill-detail' comp.skill_id %}" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">{{ comp.skill_id }}</a>
+                {% else %}
+                {{ comp.skill_id }}
+                {% endif %}
+              </td>
+              <td class="px-4 py-2.5 text-gray-900 dark:text-gray-200">
+                {% if comp.skill_exists %}
+                <a href="{% url 'taxonomy:skill-detail' comp.skill_id %}" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">{{ comp.skill_name }}</a>
+                {% else %}
+                {{ comp.skill_name }}
+                {% endif %}
+              </td>
+              <td class="px-4 py-2.5 text-center">
+                <span class="inline-flex items-center justify-center w-7 h-7 rounded-full text-xs font-bold
+                  {% if comp.minimum_level == 1 %}bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300
+                  {% elif comp.minimum_level == 2 %}bg-cyan-100 dark:bg-cyan-900/40 text-cyan-700 dark:text-cyan-300
+                  {% elif comp.minimum_level == 3 %}bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300
+                  {% elif comp.minimum_level == 4 %}bg-violet-100 dark:bg-violet-900/40 text-violet-700 dark:text-violet-300
+                  {% elif comp.minimum_level == 5 %}bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300
+                  {% else %}bg-gray-100 dark:bg-white/5 text-gray-500 dark:text-gray-400
+                  {% endif %}">
+                  {{ comp.minimum_level }}
+                </span>
+              </td>
+              {% if has_personnel %}
+              <td class="px-4 py-2.5 text-center">
+                <span class="text-sm font-medium {% if comp.qualified_count %}text-gray-900 dark:text-gray-200{% else %}text-red-600 dark:text-red-400{% endif %}">
+                  {{ comp.qualified_count }}
+                </span>
+              </td>
+              {% endif %}
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+
+  <!-- Sidebar -->
+  <div class="lg:w-72 flex-shrink-0">
+    <div class="space-y-5 sticky top-8">
+      <!-- Standards -->
+      {% if service.standards %}
+      <div class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg p-5">
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3">Standards</h3>
+        <ul class="space-y-2">
+          {% for standard in service.standards %}
+          <li class="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
+            <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-gray-400 dark:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            {{ standard }}
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
+      <!-- Qualified Personnel -->
+      {% if has_personnel %}
+      <div class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg p-5">
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3">Qualified Personnel</h3>
+        <div class="space-y-2">
+          {% for comp in competencies %}
+          <div class="flex items-center justify-between text-sm">
+            <span class="font-mono text-xs text-gray-500 dark:text-gray-500 truncate mr-2">{{ comp.skill_id }}</span>
+            <span class="font-medium {% if comp.qualified_count %}text-gray-900 dark:text-gray-200{% else %}text-red-600 dark:text-red-400{% endif %}">
+              {{ comp.qualified_count }}
+            </span>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

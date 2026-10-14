@@ -1,0 +1,111 @@
+{
+  "id": "ICSIOT-IOT-CLOUD",
+  "name": "IoT Cloud, Backend & OTA Update Security",
+  "domain": "ics-iot-security",
+  "category": "IoT Security",
+  "status": "active",
+  "description": "Covers the security of the backend ecosystem behind IoT devices: device provisioning, identity and certificate lifecycle, MQTT and CoAP broker configuration and topic/resource authorisation, companion mobile apps and cloud APIs, and fleet management. Includes over-the-air (OTA) update security: signing and verification, update server and delivery channel integrity, and anti-rollback protection. On-device firmware and interface testing belongs to ICSIOT-IOT-DEVICE; generic web API testing belongs to SWSEC-WEB-API.",
+  "requires": [
+    "ICSIOT-IOT-DEVICE"
+  ],
+  "recommended": [
+    "SWSEC-WEB-API",
+    "INFRA-AWS-IAM",
+    "SWSEC-MOB-ANDROID",
+    "HWSEC-EMBED-BOOT"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to IoT backend or OTA update security"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the IoT backend attack surface and why fleet-wide compromise is the key risk",
+      "evidence": [
+        "Can describe the device-to-cloud architecture: provisioning service, broker, APIs, companion app, OTA service",
+        "Can explain how MQTT topics and CoAP resources are authorised and why wildcard subscriptions are dangerous",
+        "Understands code signing, anti-rollback and why an unsigned OTA channel enables fleet-wide compromise"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Tests IoT backend components under supervision",
+      "evidence": [
+        "Tests an MQTT broker for anonymous access, weak credentials and cross-tenant topic access in a lab",
+        "Intercepts companion app and device traffic to map the cloud API with guidance",
+        "Checks OTA packages for signatures, transport protection and version metadata",
+        "Documents findings with the affected device population and ecosystem component"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses IoT backend, provisioning and OTA security end to end",
+      "evidence": [
+        "Assesses device identity and provisioning: per-device credentials, certificate issuance and revocation, claim/ownership flows",
+        "Tests broker and API authorisation for device-to-device and tenant isolation (e.g. IDOR via device identifiers)",
+        "Evaluates OTA update signing, verification on device, rollback protection and update server security",
+        "Produces reports that tie backend findings to fleet-wide impact and mitigations"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Assesses complex IoT platforms; develops tooling; mentors others",
+      "evidence": [
+        "Assesses cloud IoT platform configurations (device policies, rules engines, shadow/twin services) for privilege escalation",
+        "Develops tooling for device impersonation, broker fuzzing or OTA manipulation testing",
+        "Reviews OTA and key management architecture designs, including signing key protection in HSMs",
+        "Mentors staff and calibrates IoT ecosystem assessments across the team"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines the lab's IoT ecosystem assessment practice; publishes research",
+      "evidence": [
+        "Established the lab's methodology for IoT backend, provisioning and OTA assessment",
+        "Published research on IoT cloud, broker or update-mechanism vulnerabilities",
+        "Contributes to industry guidance or standards on IoT update and device identity security",
+        "Trains teams on IoT ecosystem security assessment"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Given a lab IoT device with a broker, cloud API and companion app, impersonate a device, demonstrate a cross-device authorisation flaw, and evaluate whether a downgraded or tampered OTA image is accepted"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review an IoT ecosystem assessment report for coverage of provisioning, broker authorisation, API and OTA findings and a clear statement of fleet-wide impact"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1081", "K0948", "K0863"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-007 Systems Testing and Evaluation"]
+    },
+    "owasp_iot_top10": ["I3", "I4", "I7", "I8"],
+    "cwe": ["CWE-494", "CWE-295", "CWE-306", "CWE-639"]
+  },
+  "tags": [
+    "iot",
+    "cloud-api",
+    "mqtt",
+    "coap",
+    "ota-updates",
+    "companion-app",
+    "firmware-signing",
+    "update-integrity",
+    "api",
+    "code-signing",
+    "key-management",
+    "mobile",
+    "privilege-escalation",
+    "authentication",
+    "fuzzing",
+    "pki"
+  ]
+}

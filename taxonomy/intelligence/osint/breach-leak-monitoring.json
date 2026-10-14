@@ -1,0 +1,105 @@
+{
+  "id": "INTEL-OSINT-BREACH",
+  "name": "Data Breach & Leak Monitoring",
+  "domain": "intelligence",
+  "category": "Open-Source Intelligence (OSINT)",
+  "status": "active",
+  "description": "Monitoring, collecting, and analyzing data from breaches, credential leaks, paste sites, dark web marketplaces, and code repositories. Covers credential exposure assessment, sensitive data discovery, leaked source code analysis, and informing organizations of their exposure to support defensive operations.",
+  "requires": [
+    "FOUND-ETHICS",
+    "FOUND-EVIDENCE"
+  ],
+  "recommended": [
+    "INTEL-OSINT-INFRA",
+    "INTEL-TI-IOC",
+    "FOUND-TOOLS"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to breach data analysis or leak monitoring"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the landscape of data breaches and credential leaks and the ethical and legal constraints on handling breach data",
+      "evidence": [
+        "Can describe common breach data sources and aggregators",
+        "Understands legal and ethical boundaries around breach data handling",
+        "Aware of the intelligence value of credential leaks and code repository exposure"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs basic breach data searches and code repository monitoring under supervision",
+      "evidence": [
+        "Queries breach notification services and credential databases under guidance",
+        "Searches code repositories (GitHub, GitLab) for exposed secrets and credentials",
+        "Monitors paste sites for target-relevant disclosures",
+        "Handles breach data in accordance with lab policies; results reviewed by authorized personnel"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently conducts comprehensive breach exposure assessments",
+      "evidence": [
+        "Performs end-to-end credential exposure assessments across 3+ engagements",
+        "Correlates breach data with organizational infrastructure to assess real impact",
+        "Monitors dark web forums and marketplaces for threat-relevant data",
+        "Produces breach exposure reports with remediation priorities that pass QA review"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Develops monitoring capabilities; analyzes complex breach datasets; mentors analysts",
+      "evidence": [
+        "Develops automated breach monitoring and alerting pipelines",
+        "Analyzes large-scale breach datasets to extract intelligence beyond simple credential lists",
+        "Assesses breach data authenticity and provenance",
+        "Mentors junior analysts on breach data handling, ethics, and analysis techniques"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines breach monitoring methodology; maintains dark web intelligence capability; trains teams",
+      "evidence": [
+        "Designed or maintains the lab's breach monitoring and dark web intelligence program",
+        "Develops novel techniques for breach data correlation and impact assessment",
+        "Maintains relationships with intelligence sharing communities for breach awareness",
+        "Trains teams on breach monitoring tradecraft and develops handling procedures"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Given a target organization, conduct a comprehensive credential and data exposure assessment using breach databases and code repositories"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review breach exposure reports for completeness, accuracy of impact assessment, and proper data handling"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["S0469", "S0695", "K1009", "S0600"],
+      "work_roles": ["PD-WRL-006 Threat Analysis", "PD-WRL-005 Insider Threat Analysis"]
+    },
+    "mitre_attack": {
+      "techniques": [
+        "T1589.001",
+        "T1589.002"
+      ]
+    }
+  },
+  "tags": [
+    "osint",
+    "breach-data",
+    "credential-exposure",
+    "dark-web",
+    "monitoring",
+    "secret-scanning"
+  ]
+}

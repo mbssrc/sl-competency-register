@@ -1,0 +1,131 @@
+{
+  "id": "WSEC-CELL-SIM",
+  "name": "SIM & UICC Security",
+  "domain": "wireless-signal-security",
+  "category": "Cellular & Telecom Security",
+  "status": "active",
+  "description": "Ability to assess the security of SIM cards, USIMs, and UICC platforms. Covers SIM application analysis, STK (SIM Toolkit) security, OTA (Over-The-Air) update mechanism assessment, SIM jacking and swap attack vectors, eSIM/eUICC provisioning security, and extraction of SIM-stored credentials and subscriber data for forensic analysis.",
+  "requires": [
+    "WSEC-CELL-GSM"
+  ],
+  "recommended": [
+    "WSEC-CELL-LTE5G",
+    "FOUND-EVIDENCE",
+    "HWSEC-EMBED-FW",
+    "FOUND-TOOLS"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to SIM or UICC security analysis"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands SIM card architecture and known security concerns",
+      "evidence": [
+        "Can describe the SIM/USIM/UICC architecture and file system structure",
+        "Understands the role of Ki, OPc, and authentication key material",
+        "Completed training on SIM security and known attack vectors (SIM jacking, OTA attacks)"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Reads SIM card contents and performs basic analysis under supervision",
+      "evidence": [
+        "Read SIM file system contents (ICCID, IMSI, MSISDN, LOCI) using PC/SC readers under guidance",
+        "Analyzed SIM Toolkit applications and their permission profiles under supervision",
+        "Examined OTA SMS update mechanisms and security configurations with assistance"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently performs SIM security assessments and forensic data extraction",
+      "evidence": [
+        "Independently assessed SIM/USIM security for 3+ engagements",
+        "Performed forensic extraction of subscriber data, location history, and stored SMS from SIM cards",
+        "Evaluated SIM OTA update security including SMS-PP and BIP channels",
+        "Produced reports documenting SIM security findings with evidence and remediation"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Assesses advanced SIM platforms including eSIM; develops SIM analysis tools",
+      "evidence": [
+        "Assessed eSIM/eUICC remote provisioning security and profile management",
+        "Analyzed Java Card applets running on UICC platforms for vulnerabilities",
+        "Developed custom SIM analysis scripts and automated extraction tools",
+        "Reviews SIM assessment reports and mentors junior analysts"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on SIM/UICC security; discovers vulnerabilities in SIM platforms",
+      "evidence": [
+        "Published research on SIM/UICC security vulnerabilities or analysis techniques",
+        "Discovered novel vulnerabilities in SIM platforms, OTA mechanisms, or eSIM provisioning",
+        "Authored the lab's SIM security assessment methodology",
+        "Trains teams on SIM security and advises operators on SIM platform hardening"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Perform a SIM security assessment: extract file system contents, analyze STK applications, evaluate OTA security, and produce a findings report"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review SIM security assessment reports for extraction completeness and finding accuracy"
+    }
+  ],
+  "equipment": [
+    "PC/SC smart card reader",
+    "Programmable SIM cards (sysmoISIM)",
+    "SIM card adapter set (nano/micro/standard)"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0773", "K0840", "K0752", "S0504"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-008 Technology Research and Development"]
+    },
+    "sfia": {
+      "skill": "PENT",
+      "levels": [
+        3,
+        4,
+        5
+      ]
+    },
+    "mitre_attack": {
+      "techniques": [
+        "T1552"
+      ]
+    },
+    "gsma": {
+      "documents": [
+        "SGP.22"
+      ]
+    },
+    "etsi": {
+      "specs": [
+        "TS 102 225",
+        "TS 102 226"
+      ]
+    }
+  },
+  "tags": [
+    "sim",
+    "usim",
+    "uicc",
+    "esim",
+    "ota",
+    "smart-card",
+    "cellular",
+    "authentication",
+    "key-management",
+    "forensics"
+  ]
+}

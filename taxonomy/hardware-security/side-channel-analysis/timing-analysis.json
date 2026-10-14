@@ -1,0 +1,114 @@
+{
+  "id": "HWSEC-SCA-TIMING",
+  "name": "Timing Analysis",
+  "domain": "hardware-security",
+  "category": "Side-Channel Analysis",
+  "status": "active",
+  "description": "Exploitation of data-dependent timing variations in hardware and firmware implementations. Covers measurement of execution time for cryptographic operations, identification of timing leakage in conditional branches, cache-timing attacks on embedded processors, and statistical analysis of timing measurements to extract secrets.",
+  "requires": [],
+  "recommended": [
+    "HWSEC-SCA-SPA",
+    "HWSEC-EMBED-FW",
+    "FOUND-TOOLS",
+    "CRYPTO-IMPL-CONSTTIME"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to timing-based side-channel attacks"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands how timing variations leak information about secret data",
+      "evidence": [
+        "Can explain timing attacks against modular exponentiation and table lookups",
+        "Understands the concept of constant-time programming and why it matters",
+        "Aware of cache-timing attack classes (Flush+Reload, Prime+Probe) at a conceptual level"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Measures and analyzes timing variations on training targets under supervision",
+      "evidence": [
+        "Configures precise timing measurement using GPIO triggers and oscilloscope capture",
+        "Measures execution time variation for cryptographic operations with different inputs",
+        "Identifies data-dependent timing differences in a reference vulnerable implementation",
+        "Applies basic statistical analysis (t-test, histogram analysis) to timing measurements"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently identifies and exploits timing leakage in real targets",
+      "evidence": [
+        "Identifies timing leakage in firmware implementations through measurement and code analysis",
+        "Exploits timing side channels to extract key material from vulnerable implementations",
+        "Assesses constant-time properties of cryptographic implementations on specific hardware",
+        "Produced timing analysis reports on 3+ engagements meeting lab quality standards"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex timing analysis scenarios; develops measurement methodology; mentors team",
+      "evidence": [
+        "Exploits subtle microarchitectural timing leakage (cache, branch predictor) on embedded targets",
+        "Develops automated timing leakage detection tools and test harnesses",
+        "Assesses the effectiveness of timing countermeasures (constant-time code, blinding) on specific hardware",
+        "Mentors junior analysts on timing measurement precision and statistical analysis"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on timing attacks; publishes research; defines timing analysis methodology",
+      "evidence": [
+        "Published research on novel timing attack techniques or microarchitectural leakage",
+        "Defines the lab's timing analysis methodology and constant-time verification procedures",
+        "Provides expert consultation on timing-safe implementation to development teams",
+        "Develops novel timing leakage detection frameworks"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Identify and exploit timing leakage in a prepared cryptographic implementation, documenting the measurement setup, statistical analysis, and extracted information"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review timing analysis reports for measurement rigor, statistical validity, and completeness"
+    }
+  ],
+  "equipment": [
+    "ChipWhisperer or equivalent platform with precise timing measurement capability"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1362", "K0018", "K0942", "S0504"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development", "PD-WRL-007 Vulnerability Analysis"]
+    },
+    "common_criteria": [
+      "AVA_VAN.3",
+      "AVA_VAN.4"
+    ],
+    "jil_attack_methods": [
+      "5.5 Side-channel attacks"
+    ],
+    "fips_140_3": [
+      "AS08"
+    ]
+  },
+  "tags": [
+    "timing",
+    "side-channel",
+    "constant-time",
+    "cache-timing",
+    "microarchitectural",
+    "non-invasive",
+    "cryptographic",
+    "embedded",
+    "firmware",
+    "timing-attack"
+  ]
+}

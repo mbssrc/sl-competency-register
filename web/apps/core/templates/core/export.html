@@ -1,0 +1,62 @@
+{% extends "core/base.html" %}
+
+{% block title %}Export - {{ product_name }}{% endblock %}
+
+{% block page_crumbs %}
+  {% include "core/partials/crumb.html" with label="Reports" first=True %}
+  {% include "core/partials/crumb.html" with label="Export" current=True %}
+{% endblock %}
+
+{% block page_title %}Excel Export{% endblock %}
+{% block page_description %}Download taxonomy, personnel, and report data as Excel workbooks.{% endblock %}
+
+{% block content %}
+<div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+  <div class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg p-6">
+    <div class="flex items-center mb-4">
+      <svg class="w-8 h-8 text-indigo-500 dark:text-indigo-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+      </svg>
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Taxonomy Export</h3>
+    </div>
+    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">All skills organised by domain, with IDs, categories, prerequisites, and tags.</p>
+    <a href="{% url 'export-taxonomy' %}"
+       class="inline-flex items-center px-4 py-2 text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 transition-colors">
+      <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+      Download .xlsx
+    </a>
+  </div>
+
+  <div class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg p-6">
+    <div class="flex items-center mb-4">
+      <svg class="w-8 h-8 text-indigo-500 dark:text-indigo-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+      </svg>
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Personnel Export</h3>
+    </div>
+    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Skill details, development plans, and profile assignments for all personnel.</p>
+    <a href="{% url 'export-personnel' %}"
+       class="inline-flex items-center px-4 py-2 text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 transition-colors">
+      <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+      Download .xlsx
+    </a>
+  </div>
+
+  <div class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg p-6">
+    <div class="flex items-center mb-4">
+      <svg class="w-8 h-8 text-indigo-500 dark:text-indigo-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+      </svg>
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Reports Export</h3>
+    </div>
+    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Gap analysis and service readiness reports with colour-coded criticality.</p>
+    <a href="{% url 'export-reports' %}"
+       class="inline-flex items-center px-4 py-2 text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 transition-colors">
+      <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+      Download .xlsx
+    </a>
+  </div>
+
+</div>
+{% endblock %}

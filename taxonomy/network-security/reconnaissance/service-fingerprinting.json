@@ -1,0 +1,109 @@
+{
+  "id": "NETSEC-RECON-FINGERPRINTING",
+  "name": "Service & OS Fingerprinting",
+  "domain": "network-security",
+  "category": "Reconnaissance",
+  "status": "active",
+  "description": "Ability to identify operating systems, service versions, and application frameworks running on target hosts. Covers banner grabbing, protocol-specific fingerprinting, OS detection techniques, and the use of version detection to inform vulnerability analysis.",
+
+  "requires": [
+    "NETSEC-RECON-PORTSCANNING"
+  ],
+  "recommended": [
+    "FOUND-TOOLS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to service or OS fingerprinting techniques"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands why identifying service versions and operating systems is important for vulnerability assessment",
+      "evidence": [
+        "Can explain the concept of banner grabbing and version detection",
+        "Understands how OS fingerprinting works at a high level (TCP/IP stack differences)",
+        "Knows that service versions map to known vulnerabilities"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs basic fingerprinting using standard tools under supervision",
+      "evidence": [
+        "Uses Nmap version detection (-sV) and OS detection (-O) flags",
+        "Performs manual banner grabbing with Netcat or Telnet",
+        "Correctly interprets version detection output to identify services",
+        "Documents fingerprinting results in engagement notes under review"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently performs thorough fingerprinting and uses results to guide vulnerability analysis",
+      "evidence": [
+        "Combines multiple fingerprinting techniques for accurate identification",
+        "Uses NSE scripts and protocol-specific probes for detailed enumeration",
+        "Correlates identified versions with vulnerability databases (CVE, exploit-db)",
+        "Identifies services running on non-standard ports through protocol analysis"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles difficult fingerprinting scenarios; develops custom probes; mentors others",
+      "evidence": [
+        "Fingerprints hardened or obfuscated services that evade standard detection",
+        "Develops custom Nmap probes or fingerprint signatures",
+        "Identifies technologies behind load balancers and WAFs",
+        "Mentors junior staff on fingerprinting methodology and interpretation"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines fingerprinting methodology; contributes to tool fingerprint databases; trains teams",
+      "evidence": [
+        "Contributes fingerprint signatures to upstream tools (Nmap, Shodan)",
+        "Develops novel fingerprinting techniques for emerging protocols",
+        "Authored the lab's service identification methodology",
+        "Trains teams on advanced fingerprinting and technology identification"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Identify all services, versions, and operating systems on a lab network segment containing both standard and non-standard configurations"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given a host with obfuscated banners and non-standard ports, accurately identify the running services and OS"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0744", "K0861", "K0956", "S0504"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis"]
+    },
+    "mitre_attack": {
+      "techniques": ["T1046", "T1592.002"]
+    },
+    "crest": {
+      "areas": ["network-mapping", "service-identification"]
+    }
+  },
+
+  "tags": [
+    "fingerprinting",
+    "banner-grabbing",
+    "version-detection",
+    "os-detection",
+    "reconnaissance",
+    "protocol-analysis",
+    "scanning",
+    "network-discovery"
+  ]
+}

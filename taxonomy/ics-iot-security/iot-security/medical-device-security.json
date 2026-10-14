@@ -1,0 +1,100 @@
+{
+  "id": "ICSIOT-IOT-MEDICAL",
+  "name": "Medical Device Security Assessment",
+  "domain": "ics-iot-security",
+  "category": "IoT Security",
+  "status": "active",
+  "description": "Covers security assessment of connected medical devices and their ecosystems with patient safety as the governing constraint. Includes IEC 81001-5-1 health software security lifecycle activities, AAMI TIR57 security risk management alongside ISO 14971 safety risk management, FDA premarket cybersecurity expectations (threat modelling, SBOM, security testing evidence), and patient-safety-aware penetration testing of devices, gateways and clinical interfaces. Generic IoT device testing technique belongs to ICSIOT-IOT-DEVICE.",
+  "requires": [
+    "ICSIOT-IOT-DEVICE"
+  ],
+  "recommended": [
+    "ICSIOT-OT-SIS",
+    "FOUND-THREATMODEL",
+    "WSEC-PROTO-BLE"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to medical device security assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the medical device threat landscape and regulatory context",
+      "evidence": [
+        "Can explain why security flaws in medical devices are patient safety issues",
+        "Can name IEC 81001-5-1, AAMI TIR57, ISO 14971 and the FDA premarket cybersecurity guidance and their purpose",
+        "Aware of common device classes (infusion pumps, patient monitors, implantables, imaging) and their interfaces"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs medical device security testing tasks under supervision",
+      "evidence": [
+        "Tests a lab medical device's network, wireless and physical interfaces using agreed safe procedures",
+        "Reviews a device SBOM against known vulnerabilities with guidance",
+        "Contributes to a security risk assessment by identifying threats per TIR57",
+        "Documents findings with their potential impact on clinical function"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses medical devices with patient-safety-aware methodology",
+      "evidence": [
+        "Plans and executes a penetration test of a medical device and its ecosystem with safety stop conditions agreed with the manufacturer",
+        "Links security findings to hazardous situations and harms in the ISO 14971 risk file",
+        "Evaluates manufacturer evidence against IEC 81001-5-1 and FDA premarket cybersecurity expectations",
+        "Produces security test reports suitable for inclusion in a regulatory submission"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Leads complex medical device assessments; mentors others",
+      "evidence": [
+        "Leads assessments of device families and connected systems (hubs, cloud, clinical integration)",
+        "Assesses wireless and proprietary telemetry of body-worn or implantable devices in shielded lab conditions",
+        "Reviews threat models and security architecture documentation for regulatory submissions",
+        "Mentors staff on safe medical device testing and regulatory reporting"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines the lab's medical device security practice; recognised authority",
+      "evidence": [
+        "Established the lab's medical device security assessment methodology",
+        "Published research on medical device vulnerabilities or coordinated disclosure",
+        "Contributes to medical device security standards or regulatory guidance",
+        "Trains teams and manufacturers on medical device security"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess a lab medical device (e.g. infusion pump simulator or patient monitor) end to end under documented safety stop conditions, and map each finding to a hazardous situation"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review a medical device security test report for testing depth, traceability to the security and safety risk files, and suitability as premarket submission evidence"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0730", "K1340", "K0948", "S0504"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-007 Systems Testing and Evaluation"]
+    },
+    "owasp_iot_top10": ["I2", "I4", "I5", "I7"]
+  },
+  "tags": [
+    "iot",
+    "embedded",
+    "safety",
+    "regulatory",
+    "sbom",
+    "risk-assessment",
+    "medical-devices"
+  ]
+}

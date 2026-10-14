@@ -1,0 +1,119 @@
+{
+  "id": "HWSEC-CRYPTO-ACCEL",
+  "name": "Crypto Accelerator Analysis",
+  "domain": "hardware-security",
+  "category": "Cryptographic Implementation Assessment",
+  "status": "active",
+  "description": "Security assessment of hardware cryptographic accelerator engines embedded in SoCs and secure ICs. Covers AES, SHA, RSA/ECC hardware engines, DMA-based crypto interfaces, accelerator configuration and key input validation, side-channel leakage of hardware crypto cores, and assessment of countermeasure implementations (masking, shuffling, dual-rail logic) in hardware crypto blocks.",
+  "requires": [
+    "HWSEC-SCA-SPA",
+    "HWSEC-EMBED-FW"
+  ],
+  "recommended": [
+    "HWSEC-SCA-DPA",
+    "HWSEC-CRYPTO-KEY",
+    "HWSEC-FI-VG"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to hardware crypto accelerator analysis"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands hardware crypto accelerator architectures and common security concerns",
+      "evidence": [
+        "Can explain common crypto accelerator types (AES engine, PKC coprocessor, hash unit) and their integration",
+        "Understands DMA-based crypto interfaces and key input mechanisms",
+        "Aware of hardware countermeasures against SCA (masking, shuffling, hiding) at a conceptual level"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Analyzes crypto accelerator interfaces and performs basic leakage assessment under supervision",
+      "evidence": [
+        "Identifies crypto accelerator peripherals and their register interfaces in SoC documentation",
+        "Assesses key input validation and access control on crypto engine interfaces with guidance",
+        "Performs basic TVLA (Test Vector Leakage Assessment) on a crypto accelerator under supervision",
+        "Documents crypto accelerator configuration and identified interface weaknesses"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently evaluates crypto accelerator security including leakage and countermeasures",
+      "evidence": [
+        "Performs TVLA or equivalent leakage assessment on crypto accelerators to identify SCA vulnerability",
+        "Assesses crypto accelerator countermeasure effectiveness through practical testing",
+        "Evaluates DMA and key handling paths for key extraction opportunities via software or firmware",
+        "Completed crypto accelerator assessments on 3+ distinct hardware targets independently"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Performs deep assessment of hardened crypto cores; combines SCA with FI; mentors team",
+      "evidence": [
+        "Assesses advanced countermeasure implementations (threshold implementations, dual-rail logic)",
+        "Combines side-channel and fault injection techniques to defeat protected crypto accelerators",
+        "Evaluates the security of proprietary or undocumented crypto accelerator designs",
+        "Mentors team on crypto accelerator assessment methodology and leakage evaluation"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on crypto hardware security; publishes research; defines evaluation methodology",
+      "evidence": [
+        "Published research on hardware crypto implementation attacks or countermeasure evaluation",
+        "Defines the lab's crypto accelerator evaluation methodology aligned with Common Criteria and EMVCo",
+        "Provides expert consultation on crypto accelerator design and countermeasure selection to IC designers",
+        "Contributes to TVLA or leakage assessment methodology development"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess a hardware crypto accelerator: evaluate the key handling interface, perform leakage assessment (TVLA), and assess countermeasure effectiveness"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review crypto accelerator assessment reports for leakage evaluation rigor and countermeasure analysis quality"
+    }
+  ],
+  "equipment": [
+    "ChipWhisperer-Pro or equivalent SCA acquisition platform",
+    "EM probe station with near-field probes for localized crypto core analysis"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0018", "K0697", "K1362", "K0948", "S0531"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-008 Technology Research and Development"]
+    },
+    "common_criteria": [
+      "AVA_VAN.4",
+      "AVA_VAN.5"
+    ],
+    "jil_attack_methods": [
+      "5.3 Perturbation attacks",
+      "5.5 Side-channel attacks"
+    ],
+    "fips_140_3": [
+      "AS08"
+    ]
+  },
+  "tags": [
+    "crypto-accelerator",
+    "aes-engine",
+    "tvla",
+    "countermeasures",
+    "masking",
+    "leakage-assessment",
+    "cryptographic",
+    "embedded",
+    "side-channel",
+    "non-invasive",
+    "fault-injection"
+  ]
+}

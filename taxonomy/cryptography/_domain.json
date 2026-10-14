@@ -1,0 +1,43 @@
+{
+  "id": "CRYPTO",
+  "name": "Cryptography",
+  "description": "Skills related to applied cryptography, cryptographic protocol analysis, and cryptographic system assessment. Covers both theoretical understanding and practical evaluation of cryptographic implementations. Distinct from HWSEC-CRYPTO which focuses on hardware-level cryptographic implementation assessment.",
+
+  "categories": [
+    {
+      "id": "CRYPTO-SYM",
+      "name": "Symmetric Cryptography",
+      "description": "Assessment of symmetric cryptographic algorithms and modes. Covers block ciphers, stream ciphers, modes of operation, key derivation, and authenticated encryption."
+    },
+    {
+      "id": "CRYPTO-ASYM",
+      "name": "Asymmetric Cryptography",
+      "description": "Assessment of asymmetric/public-key cryptographic algorithms. Covers RSA, elliptic curve cryptography, Diffie-Hellman, digital signatures, and key exchange protocols."
+    },
+    {
+      "id": "CRYPTO-HASH",
+      "name": "Hash Functions",
+      "description": "Assessment of cryptographic hash functions and their applications. Covers collision resistance, preimage resistance, HMAC, password hashing, and Merkle tree constructions."
+    },
+    {
+      "id": "CRYPTO-PKI",
+      "name": "PKI & Infrastructure",
+      "description": "Public key infrastructure assessment. Covers certificate management, CA security, certificate validation, TLS/SSL assessment, and PKI architecture review."
+    },
+    {
+      "id": "CRYPTO-PQ",
+      "name": "Post-Quantum Cryptography",
+      "description": "Assessment of post-quantum cryptographic algorithms and migration readiness. Covers lattice-based, hash-based, and code-based schemes, quantum threat assessment, and crypto-agility evaluation."
+    },
+    {
+      "id": "CRYPTO-IMPL",
+      "name": "Implementation & Validation",
+      "description": "Validation and review of cryptographic implementations. Covers algorithm validation testing (CAVP/ACVP), entropy source and DRBG assessment, and constant-time and software side-channel review."
+    },
+    {
+      "id": "CRYPTO-PROTO",
+      "name": "Cryptographic Protocols",
+      "description": "Analysis of cryptographic protocol designs for their security properties. Covers established and custom protocols, formal protocol verification and end-to-end encrypted secure messaging. TLS assessment is covered under PKI & Infrastructure."
+    }
+  ]
+}

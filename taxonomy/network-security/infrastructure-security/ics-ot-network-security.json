@@ -1,0 +1,119 @@
+{
+  "id": "NETSEC-INFRA-ICSOT",
+  "name": "ICS/OT Network Security",
+  "domain": "network-security",
+  "category": "Network Infrastructure",
+  "status": "deprecated",
+  "superseded_by": "ICSIOT-ICS-NETWORK",
+  "description": "Deprecated: superseded by ICSIOT-ICS-NETWORK. Ability to assess the security of industrial control system (ICS) and operational technology (OT) networks. Covers understanding of ICS/SCADA protocols (Modbus, DNP3, OPC, EtherNet/IP), Purdue model assessment, IT/OT boundary security, and safe assessment techniques that avoid disrupting operational processes.",
+
+  "requires": [
+    "NETSEC-RECON-NETMAPPING",
+    "NETSEC-INFRA-SEGMENTATION"
+  ],
+  "recommended": [
+    "NETSEC-ENUM-SNMP",
+    "NETSEC-INFRA-ROUTERSWITCH",
+    "FOUND-RISK",
+    "FOUND-ETHICS",
+    "WSEC-PROTO-SUBGHZ",
+    "HWSEC-EMBED-FW"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to ICS/OT network security assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands ICS/OT concepts, the Purdue model, and why OT environments require specialized assessment approaches",
+      "evidence": [
+        "Can explain the Purdue model and ICS network architecture layers",
+        "Understands common ICS protocols (Modbus, DNP3, OPC UA, EtherNet/IP)",
+        "Knows why ICS/OT environments require extreme caution during assessment"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs basic ICS/OT network assessment tasks under strict supervision",
+      "evidence": [
+        "Identifies ICS/OT devices and protocols on the network using passive techniques",
+        "Reviews IT/OT boundary configurations and firewall rules under guidance",
+        "Uses ICS-safe scanning techniques in controlled lab environments",
+        "Documents findings with awareness of OT operational constraints under review"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses ICS/OT network security with appropriate safety controls",
+      "evidence": [
+        "Performs comprehensive IT/OT boundary security assessment",
+        "Identifies protocol-level vulnerabilities in ICS communications",
+        "Assesses Purdue model compliance and zone segregation effectiveness",
+        "Produces ICS/OT-specific assessment reports with safety-aware recommendations"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Assesses complex ICS/OT environments; develops safe assessment tools; mentors others",
+      "evidence": [
+        "Assesses diverse ICS environments across different industries and protocols",
+        "Develops ICS-safe scanning and enumeration tools and procedures",
+        "Evaluates ICS protocol security at the packet level using Wireshark and custom parsers",
+        "Mentors junior staff on safe ICS/OT assessment methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines ICS/OT assessment methodology; publishes research; trains teams",
+      "evidence": [
+        "Authored the lab's ICS/OT network security assessment methodology",
+        "Published research on ICS protocol vulnerabilities or assessment techniques",
+        "Deep expertise across multiple ICS/SCADA platforms and protocols",
+        "Trains teams on ICS/OT network security assessment and safe testing practices"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess IT/OT boundary security and ICS protocol security in a lab ICS environment without disrupting simulated operational processes"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review ICS/OT assessment reports from recent engagements for safety compliance and technical accuracy"
+    }
+  ],
+
+  "framework_mappings": {
+    "mitre_attack": {
+      "matrices": ["ICS"]
+    },
+    "nice": {
+      "tks": ["K1309", "K1300", "K1289", "S0941", "S0946"],
+      "work_roles": ["DD-WRL-009 Operational Technology (OT) Cybersecurity Engineering", "PD-WRL-007 Vulnerability Analysis"]
+    },
+    "crest": {
+      "areas": ["ics-scada-assessment"]
+    }
+  },
+
+  "equipment": [
+    "ICS/SCADA lab environment with representative PLCs and HMIs"
+  ],
+
+  "tags": [
+    "ics",
+    "scada",
+    "ot",
+    "modbus",
+    "dnp3",
+    "purdue-model",
+    "industrial"
+  ]
+}

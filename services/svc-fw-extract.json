@@ -1,0 +1,28 @@
+{
+  "id": "SVC-FW-EXTRACT",
+  "name": "Firmware Extraction",
+  "description": "End-to-end firmware extraction from embedded devices, covering the full range from non-invasive debug interface access through advanced invasive techniques. The service template includes all potential SOP phases — PCB investigation, debug interface exploitation, chip-off dumping, firmware reverse engineering, and readout protection bypass via fault injection or FIB circuit editing. Projects should remove competencies not required for the specific target.",
+  "scope_reference": "Firmware extraction and readout protection bypass for embedded devices",
+  "required_competencies": [
+    { "skill": "HWSEC-PCB-RE", "minimum_level": 3 },
+    { "skill": "HWSEC-EMBED-DBG", "minimum_level": 3 },
+    { "skill": "HWSEC-EMBED-BOOT", "minimum_level": 2 },
+    { "skill": "HWSEC-EMBED-FW", "minimum_level": 3 },
+    { "skill": "HWSEC-INV-DECAP", "minimum_level": 2 },
+    { "skill": "HWSEC-SPREP-MECH", "minimum_level": 2 },
+    { "skill": "SWSEC-RE-DISASM", "minimum_level": 2 },
+    { "skill": "SWSEC-RE-DECOMPILE", "minimum_level": 2 },
+    { "skill": "HWSEC-FI-VG", "minimum_level": 2 },
+    { "skill": "HWSEC-FI-CG", "minimum_level": 2 },
+    { "skill": "HWSEC-FI-LFI", "minimum_level": 2 },
+    { "skill": "HWSEC-FI-EMFI", "minimum_level": 2 },
+    { "skill": "HWSEC-SPREP-CHEM", "minimum_level": 2 },
+    { "skill": "HWSEC-INV-FIB", "minimum_level": 2 },
+    { "skill": "HWSEC-PCB-BUS", "minimum_level": 2 },
+    { "skill": "HWSEC-PCB-MOD", "minimum_level": 2 },
+    { "skill": "FOUND-REPORT", "minimum_level": 3 },
+    { "skill": "FOUND-EVIDENCE", "minimum_level": 3 },
+    { "skill": "FOUND-ETHICS", "minimum_level": 2 }
+  ],
+  "standards": []
+}

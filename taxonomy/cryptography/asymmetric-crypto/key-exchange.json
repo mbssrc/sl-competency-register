@@ -1,0 +1,113 @@
+{
+  "id": "CRYPTO-ASYM-KEYEXCHANGE",
+  "name": "Key Exchange Protocol Assessment",
+  "domain": "cryptography",
+  "category": "Asymmetric Cryptography",
+  "status": "active",
+  "description": "Assessment of key exchange protocols including Diffie-Hellman (DH), Elliptic Curve Diffie-Hellman (ECDH), and their ephemeral variants (DHE, ECDHE). Covers parameter validation, group selection, forward secrecy verification, and small-subgroup attack identification.",
+
+  "requires": [],
+  "recommended": [
+    "CRYPTO-ASYM-RSA",
+    "CRYPTO-ASYM-ECC",
+    "CRYPTO-PKI-TLS",
+    "FOUND-TOOLS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to key exchange protocol assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands key exchange concepts and the importance of forward secrecy",
+      "evidence": [
+        "Can explain the Diffie-Hellman key exchange at a conceptual level",
+        "Understands the difference between static and ephemeral key exchange",
+        "Can describe what forward secrecy provides and why it matters"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Identifies key exchange configurations and basic weaknesses under supervision",
+      "evidence": [
+        "Extracts DH/ECDH parameters from TLS and protocol configurations",
+        "Identifies use of small DH groups or non-ephemeral key exchange under guidance",
+        "Documents key exchange findings following lab templates",
+        "Uses tools (testssl.sh, OpenSSL s_client) to enumerate key exchange parameters"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses key exchange implementations for security and correctness",
+      "evidence": [
+        "Evaluates DH group sizes and validates custom DH parameters for safe prime usage",
+        "Verifies forward secrecy is enforced in protocol configurations",
+        "Identifies small-subgroup attacks in DH implementations lacking parameter validation",
+        "Assesses ECDH named group selection against current NIST and IETF recommendations"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Assesses complex key exchange scenarios; identifies subtle protocol-level flaws",
+      "evidence": [
+        "Evaluates key exchange in custom or proprietary protocol implementations",
+        "Demonstrates Logjam-style downgrade attacks in lab environments",
+        "Assesses hybrid key exchange mechanisms (e.g., classical + post-quantum)",
+        "Reviews and mentors junior staff on key exchange assessment methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines key exchange assessment methodology; recognised authority on key agreement security",
+      "evidence": [
+        "Authored or maintains the lab's key exchange assessment methodology",
+        "Published research on key exchange vulnerabilities or novel downgrade attacks",
+        "Provides expert guidance on key exchange protocol design and parameter selection",
+        "Trains teams on key exchange internals and emerging threats"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess key exchange configurations across a set of TLS-enabled services: verify forward secrecy, group sizes, and parameter safety"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given a custom protocol using static DH, identify the forward secrecy gap and propose a migration to ephemeral key exchange"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1359", "K0942", "S0969", "S0971"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-001 Cybersecurity Architecture"]
+    },
+    "nist_sp": ["800-56A", "800-56C"],
+    "ietf": {
+      "rfcs": ["RFC 7919"]
+    }
+  },
+
+  "tags": [
+    "diffie-hellman",
+    "dhe",
+    "ecdh",
+    "ecdhe",
+    "key-exchange",
+    "forward-secrecy",
+    "logjam",
+    "asymmetric",
+    "protocol",
+    "tls",
+    "transport-security",
+    "key-management",
+    "post-quantum"
+  ]
+}

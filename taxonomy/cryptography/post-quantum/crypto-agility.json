@@ -1,0 +1,113 @@
+{
+  "id": "CRYPTO-PQ-AGILITY",
+  "name": "Crypto-Agility Assessment",
+  "domain": "cryptography",
+  "category": "Post-Quantum Cryptography",
+  "status": "active",
+  "description": "Assessment of an organisation's ability to transition between cryptographic algorithms, with emphasis on post-quantum migration readiness. Covers cryptographic inventory, algorithm negotiation flexibility, migration planning, hybrid deployment evaluation, and harvest-now-decrypt-later risk assessment.",
+
+  "requires": [
+    "CRYPTO-SYM-BLOCKCIPHER",
+    "CRYPTO-ASYM-RSA"
+  ],
+  "recommended": [
+    "CRYPTO-PQ-LATTICE",
+    "CRYPTO-PKI-KEYMANAGEMENT",
+    "FOUND-RISK",
+    "FOUND-STANDARDS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to crypto-agility assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the quantum threat timeline and why crypto-agility matters",
+      "evidence": [
+        "Can explain the harvest-now-decrypt-later threat model",
+        "Understands what crypto-agility means and why organisations need it",
+        "Can describe the NIST post-quantum standardisation timeline and key milestones"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Assists with cryptographic inventory and migration readiness assessment under supervision",
+      "evidence": [
+        "Inventories cryptographic algorithms in use across systems using scanning tools",
+        "Identifies quantum-vulnerable key exchange algorithms (RSA key transport, ECDH) and signature algorithms (RSA, ECDSA), and understands the different urgency profiles for each, under guidance",
+        "Documents crypto-agility findings following lab templates",
+        "Assists in mapping cryptographic dependencies across the technology stack"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses crypto-agility and post-quantum migration readiness",
+      "evidence": [
+        "Produces comprehensive cryptographic inventories across enterprise environments",
+        "Evaluates algorithm negotiation mechanisms for upgrade flexibility",
+        "Assesses harvest-now-decrypt-later exposure for data-at-rest and data-in-transit",
+        "Produces migration readiness reports referencing CNSA 2.0 timelines, NIST IR 8547 (draft) transition dates (quantum-vulnerable algorithms deprecated after 2030, disallowed after 2035), and NIST SP 1800-38 (draft) guidance"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex crypto-agility assessments; develops migration strategies",
+      "evidence": [
+        "Develops phased post-quantum migration roadmaps for enterprise environments",
+        "Evaluates hybrid classical/post-quantum deployment strategies for transition period",
+        "Assesses crypto-agility in legacy systems with hard-coded or non-negotiable algorithms",
+        "Reviews and mentors junior staff on crypto-agility assessment methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines crypto-agility assessment methodology; recognised authority on cryptographic migration",
+      "evidence": [
+        "Authored or maintains the lab's crypto-agility assessment methodology",
+        "Published research on post-quantum migration strategies or crypto-agility frameworks",
+        "Provides expert guidance to organisations on quantum readiness and transition planning",
+        "Trains teams on crypto-agility assessment, migration planning, and emerging standards"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Perform a crypto-agility assessment of an enterprise environment: inventory cryptographic usage, identify quantum-vulnerable systems, and produce a prioritised migration readiness report"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given an organisation with mixed cryptographic deployments, develop a phased migration plan addressing harvest-now-decrypt-later risk for high-value data"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1360", "K1365", "K1378", "S0970", "S0971"],
+      "work_roles": ["DD-WRL-001 Cybersecurity Architecture", "DD-WRL-008 Technology Research and Development"]
+    },
+    "nist_sp": ["1800-38 (draft)"],
+    "nist_ir": ["8547 (draft)"],
+    "cnsa": ["CNSA 2.0"]
+  },
+
+  "tags": [
+    "crypto-agility",
+    "post-quantum",
+    "migration",
+    "quantum-readiness",
+    "cryptographic-inventory",
+    "harvest-now-decrypt-later",
+    "cnsa-2",
+    "pqc",
+    "cryptographic",
+    "risk-assessment",
+    "scanning"
+  ]
+}

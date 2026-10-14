@@ -1,0 +1,104 @@
+{
+  "id": "INFRA-IDENTITY-M365",
+  "name": "Microsoft 365 & SaaS Tenant Security",
+  "domain": "infrastructure-security",
+  "category": "Identity & SaaS Security",
+  "status": "active",
+  "description": "Security assessment of Microsoft 365 and other SaaS tenants. Covers Exchange Online, SharePoint Online and OneDrive, Microsoft Teams, tenant and workload configuration, application registration and OAuth consent (including illicit consent grants), external sharing and guest access, unified audit logging and retention, and SaaS security posture management across the tenant. Entra ID directory and conditional access assessment is covered by INFRA-AZURE-ENTRAID.",
+  "requires": [
+    "INFRA-AZURE-ENTRAID"
+  ],
+  "recommended": [
+    "INFRA-IDENTITY-FEDERATION",
+    "FOUND-REPORT",
+    "FOUND-STANDARDS",
+    "FOUND-RISK"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to Microsoft 365 or SaaS tenant security assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands Microsoft 365 workloads and SaaS tenant security concepts",
+      "evidence": [
+        "Can describe the main M365 workloads (Exchange Online, SharePoint/OneDrive, Teams) and their data stores",
+        "Understands app registration, OAuth consent, and the illicit consent grant risk",
+        "Familiar with unified audit logging and external sharing concepts"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Reviews M365 and SaaS tenant configurations under supervision",
+      "evidence": [
+        "Ran M365 posture tooling (e.g. ScubaGear, Monkey365, Microsoft Secure Score) under guidance",
+        "Reviewed mailbox, SharePoint sharing, and Teams settings against a checklist",
+        "Documented tenant configuration findings with supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses M365 and SaaS tenant security posture",
+      "evidence": [
+        "Independently assessed Exchange Online, SharePoint/OneDrive, and Teams configurations across a tenant",
+        "Identified risky app consent grants, over-privileged service principals, and excessive external sharing",
+        "Evaluated unified audit log coverage, retention, and alerting for investigative readiness",
+        "Produced tenant assessment reports with prioritised remediation"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex multi-tenant SaaS assessments and mentors others",
+      "evidence": [
+        "Assessed multi-tenant or multi-SaaS estates with posture management (SSPM) tooling",
+        "Traced attack paths through app consent, mail flow rules, and delegated access",
+        "Developed custom tooling or baselines for M365/SaaS configuration review",
+        "Reviews M365 assessment work of junior analysts"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines the lab's SaaS assessment methodology and is a recognised authority",
+      "evidence": [
+        "Designed or maintains the lab's M365 and SaaS tenant assessment framework",
+        "Published research on M365/SaaS attack techniques or hardening baselines",
+        "Advises organisations on SaaS posture management and tenant hardening strategy",
+        "Trains teams on advanced M365 and SaaS security assessment"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess a lab M365 tenant, identifying risky app consents, external sharing exposure, and audit logging gaps, and produce a prioritised remediation report"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review M365 and SaaS tenant assessment findings from recent engagements for completeness and accuracy"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0742", "K1368", "K0686", "K0863"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "IO-WRL-006 Systems Security Analysis"]
+    },
+    "cis": ["CIS Microsoft 365 Foundations Benchmark"],
+    "mitre_attack": {
+      "techniques": ["T1098.002", "T1114.002", "T1550.001"]
+    },
+    "csa_ccm": ["IAM-01", "IAM-02", "IAM-04"]
+  },
+  "tags": [
+    "microsoft-365",
+    "saas",
+    "exchange-online",
+    "sharepoint",
+    "oauth-consent",
+    "audit-logging",
+    "cloud-security"
+  ]
+}

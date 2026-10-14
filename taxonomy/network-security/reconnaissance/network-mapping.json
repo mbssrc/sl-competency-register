@@ -1,0 +1,110 @@
+{
+  "id": "NETSEC-RECON-NETMAPPING",
+  "name": "Network Mapping & Topology Discovery",
+  "domain": "network-security",
+  "category": "Reconnaissance",
+  "status": "active",
+  "description": "Ability to discover and map network topology, including subnets, routing paths, VLAN structures, and trust relationships. Covers traceroute analysis, ARP discovery, network diagramming, and the synthesis of scanning and enumeration data into coherent network maps.",
+
+  "requires": [
+    "NETSEC-RECON-PORTSCANNING"
+  ],
+  "recommended": [
+    "FOUND-DOC",
+    "NETSEC-RECON-PASSIVERECON"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to network mapping or topology discovery"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands basic network topology concepts and the purpose of network mapping during engagements",
+      "evidence": [
+        "Can explain subnets, VLANs, and routing at a conceptual level",
+        "Understands why network maps are valuable in penetration testing",
+        "Knows basic tools such as traceroute and ARP discovery"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs basic network discovery and creates simple topology diagrams under supervision",
+      "evidence": [
+        "Uses ARP scans and ping sweeps to discover live hosts",
+        "Runs traceroute to identify routing paths and hop counts",
+        "Creates basic network diagrams from discovery results",
+        "Documents discovered subnets and host relationships under review"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently maps complex network environments and identifies segmentation boundaries",
+      "evidence": [
+        "Synthesizes data from multiple sources into comprehensive network maps",
+        "Identifies VLAN boundaries, trust relationships, and dual-homed hosts",
+        "Detects network segmentation gaps and potential pivot points",
+        "Produces professional network diagrams suitable for client reports"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Maps large and complex enterprise environments; automates topology discovery; mentors others",
+      "evidence": [
+        "Automates network mapping workflows for large-scale engagements",
+        "Maps multi-site environments with complex routing and segmentation",
+        "Identifies non-obvious trust relationships and implicit access paths",
+        "Mentors junior staff on systematic network discovery methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines network mapping methodology; develops custom discovery tools; trains teams",
+      "evidence": [
+        "Designed or maintains the lab's network mapping standard methodology",
+        "Develops custom tools for automated topology discovery and visualization",
+        "Published research on network discovery or topology analysis techniques",
+        "Trains teams on network mapping strategy for complex environments"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Map a multi-subnet lab environment and produce an accurate topology diagram identifying all segmentation boundaries"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review network maps from recent engagements for accuracy and completeness"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0938", "K1015", "S0845", "S0490", "S0703"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "IO-WRL-004 Network Operations"]
+    },
+    "mitre_attack": {
+      "techniques": ["T1018", "T1016"]
+    },
+    "crest": {
+      "areas": ["network-mapping"]
+    }
+  },
+
+  "tags": [
+    "topology",
+    "network-mapping",
+    "vlans",
+    "subnets",
+    "reconnaissance",
+    "network-discovery",
+    "scanning",
+    "segmentation"
+  ]
+}

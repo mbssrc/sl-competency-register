@@ -1,0 +1,110 @@
+{
+  "id": "DFIR-IR-COORD",
+  "name": "Incident Handling & Coordination",
+  "domain": "digital-forensics",
+  "category": "Incident Response",
+  "status": "active",
+  "description": "Ability to lead and coordinate the handling of security incidents across their full lifecycle, following the CSF 2.0-aligned model of NIST SP 800-61r3 and the phases of ISO/IEC 27035. Covers incident declaration and classification, severity and priority assignment, incident command roles, evidence-aware decision making, stakeholder, customer, and regulator notification (including statutory deadlines such as GDPR, NIS2, and DORA), communication cadence and status reporting, and post-incident lessons-learned reviews. Hands-on collection belongs to DFIR-IR-LIVE and containment actions to DFIR-IR-CONTAIN.",
+
+  "requires": [
+    "FOUND-EVIDENCE",
+    "FOUND-COMM"
+  ],
+  "recommended": [
+    "FOUND-REPORT",
+    "FOUND-RISK",
+    "FOUND-DOC",
+    "DFIR-IR-LIVE",
+    "DFIR-DISK-TIMELINE",
+    "INTEL-TI-TTP"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to incident handling or coordination"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the incident response lifecycle and the roles involved in handling an incident",
+      "evidence": [
+        "Can describe the CSF 2.0-aligned incident response model of NIST SP 800-61r3 and the ISO/IEC 27035 incident management phases",
+        "Can distinguish a security event from a declared incident and explain why declaration matters",
+        "Can name the typical incident roles (incident commander, scribe, technical lead, communications lead, legal)"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Supports incident handling under the direction of an incident lead",
+      "evidence": [
+        "Maintained an incident log and decision record during a live incident or tabletop under supervision",
+        "Drafted internal status updates and stakeholder briefings reviewed by the incident lead",
+        "Applied the lab severity matrix to classify incidents with supervisor confirmation",
+        "Tracked evidence, actions, and owners in the incident tracking system"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently leads incidents of moderate scope from declaration to closure",
+      "evidence": [
+        "Led 5+ incidents as incident commander through declaration, response, and closure",
+        "Determined notification obligations (contractual, GDPR Art. 33, NIS2, DORA or sectoral) and met the applicable deadlines",
+        "Ran a defined communications cadence with technical teams, management, and external parties",
+        "Facilitated post-incident reviews producing tracked corrective actions"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Coordinates complex, multi-party or high-severity incidents and mentors incident leads",
+      "evidence": [
+        "Coordinated incidents involving multiple organisations, third-party providers, law enforcement, or insurers",
+        "Balanced business continuity, evidence preservation, and legal privilege in escalation decisions",
+        "Designed and ran tabletop exercises that exposed and closed gaps in the response plan",
+        "Reviews incident records and lessons-learned reports of other incident leads"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines the lab's incident management capability and is a recognised authority on incident handling",
+      "evidence": [
+        "Authored or maintains the lab's incident response plan, playbooks, and severity model",
+        "Aligned the incident management process with ISO/IEC 27035 and regulatory reporting regimes",
+        "Advises executive leadership and boards during crisis-level incidents",
+        "Published or presented on incident management practice"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Lead a facilitated tabletop exercise for a ransomware or data-breach scenario, including declaration, severity assignment, notification decisions with deadlines, and a stakeholder briefing"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review incident logs, decision records, notifications, and lessons-learned reports from recent incidents for completeness, timeliness, and traceability"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0724", "K0823", "K0824", "K1181", "S0805"],
+      "work_roles": ["PD-WRL-003 Incident Response"]
+    },
+    "nist_sp": ["800-61r3"],
+    "iso_iec": ["27035-1", "27035-2"],
+    "giac": ["GCIH"]
+  },
+
+  "tags": [
+    "incident-response",
+    "incident-management",
+    "notification",
+    "crisis-communication",
+    "lessons-learned",
+    "iso-27035"
+  ]
+}

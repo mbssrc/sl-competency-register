@@ -1,0 +1,114 @@
+{
+  "id": "HWSEC-PCB-BUS",
+  "name": "Bus Analysis & Protocol Sniffing",
+  "domain": "hardware-security",
+  "category": "PCB Reverse Engineering",
+  "status": "active",
+  "description": "Interception, decoding, and analysis of communication protocols on PCB-level buses. Covers SPI, I2C, UART, SDIO, eMMC, parallel buses, and proprietary protocols. Includes physical tap installation, protocol decoding, traffic analysis, replay attacks, and man-in-the-middle interception for data extraction and command injection.",
+  "requires": [
+    "HWSEC-PCB-RE"
+  ],
+  "recommended": [
+    "HWSEC-EMBED-FW",
+    "HWSEC-EMBED-DBG",
+    "SWSEC-RE-PROTOCOL",
+    "FOUND-TOOLS"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to hardware bus analysis or protocol sniffing"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands common embedded bus protocols and their security properties",
+      "evidence": [
+        "Can describe common embedded protocols (SPI, I2C, UART, SDIO) and their signal characteristics",
+        "Understands the security implications of unencrypted bus communication",
+        "Aware of bus sniffing tools (Saleae, Bus Pirate, Glasgow Interface Explorer)"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Captures and decodes standard bus protocols under supervision",
+      "evidence": [
+        "Attaches probes to identified bus signals on a target PCB",
+        "Captures and decodes SPI, I2C, and UART traffic using a logic analyzer",
+        "Identifies command/response patterns in captured bus traffic with guidance",
+        "Performs basic replay of captured commands using a bus interface tool"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently analyzes bus protocols and performs active interception on real targets",
+      "evidence": [
+        "Identifies and taps bus signals on unfamiliar PCBs without documentation",
+        "Decodes complex and multi-wire protocols (eMMC, parallel flash) independently",
+        "Performs man-in-the-middle interception to modify bus traffic in real-time",
+        "Extracts sensitive data (keys, credentials, firmware) from bus communications",
+        "Completed bus analysis on 3+ engagements with documented protocol findings"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Analyzes proprietary protocols; develops custom interception hardware; mentors team",
+      "evidence": [
+        "Reverse engineers undocumented or proprietary bus protocols from signal analysis",
+        "Develops custom FPGA-based bus interception and injection hardware",
+        "Analyzes high-speed buses (PCIe, USB 3.x at PHY level) with appropriate tooling",
+        "Mentors team on protocol identification, tap installation, and traffic analysis techniques"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on hardware bus security; publishes research; defines methodology",
+      "evidence": [
+        "Published research on bus-level attacks or protocol vulnerabilities",
+        "Defines the lab's bus analysis methodology and tool standards",
+        "Designs custom bus interception platforms used by the lab",
+        "Provides expert consultation on bus-level security to hardware designers"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Identify, tap, and decode bus communications on a prepared target device, then demonstrate data extraction or command injection"
+    },
+    {
+      "type": "direct_observation",
+      "description": "Observe probe attachment technique, protocol identification, and traffic analysis during a live bus sniffing session"
+    }
+  ],
+  "equipment": [
+    "Glasgow Interface Explorer or equivalent FPGA-based protocol analyzer",
+    "Bus Pirate or Tigard multi-protocol interface"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1089", "K1119", "S0899", "K0840"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-008 Technology Research and Development"]
+    },
+    "common_criteria": [
+      "AVA_VAN.3",
+      "AVA_VAN.4"
+    ]
+  },
+  "tags": [
+    "bus-analysis",
+    "protocol-sniffing",
+    "spi",
+    "i2c",
+    "uart",
+    "mitm",
+    "non-invasive",
+    "embedded",
+    "reverse-engineering",
+    "traffic-analysis",
+    "protocol-analysis",
+    "replay-attack"
+  ]
+}

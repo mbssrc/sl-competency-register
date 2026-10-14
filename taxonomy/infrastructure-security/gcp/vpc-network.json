@@ -1,0 +1,107 @@
+{
+  "id": "INFRA-GCP-VPC",
+  "name": "GCP VPC and Network Security Assessment",
+  "domain": "infrastructure-security",
+  "category": "GCP Security",
+  "status": "active",
+  "description": "Security assessment of GCP networking configurations. Covers VPC networks, firewall rules, Shared VPC, VPC Service Controls, Cloud NAT, Cloud Armor, Private Google Access, and network segmentation within GCP environments.",
+  "requires": [],
+  "recommended": [
+    "INFRA-GCP-IAM",
+    "FOUND-RISK",
+    "NETSEC-RECON-NETMAPPING"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to GCP VPC and network security assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands GCP VPC architecture and network security primitives",
+      "evidence": [
+        "Can explain VPC networks, subnets, firewall rules, and routes",
+        "Understands the difference between VPC firewall rules and Cloud Armor policies",
+        "Familiar with VPC flow logs and their use in security monitoring"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Reviews GCP network configurations under supervision using established tooling",
+      "evidence": [
+        "Enumerates VPC configurations and firewall rules with guidance",
+        "Identifies overly permissive firewall rules using lab checklists",
+        "Documents network security findings with supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses GCP network architecture and segmentation",
+      "evidence": [
+        "Independently reviews network segmentation across Shared VPC and peered networks",
+        "Identifies lateral movement risks through firewall rule gaps and network misconfigurations",
+        "Evaluates VPC Service Controls for data exfiltration prevention effectiveness",
+        "Produces compliant network assessment reports"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex multi-project network assessments; develops automated network analysis tooling",
+      "evidence": [
+        "Assesses complex Shared VPC and multi-project network architectures",
+        "Develops tooling for automated firewall rule and network path analysis",
+        "Reviews network assessment work of junior analysts",
+        "Evaluates hybrid connectivity (Cloud Interconnect, Cloud VPN) security"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines lab GCP network assessment methodology; publishes network security research",
+      "evidence": [
+        "Designed or maintains the lab's GCP network security assessment framework",
+        "Published research on GCP network security bypass or VPC Service Controls evasion",
+        "Trains teams on advanced GCP network security assessment",
+        "Recognized as authority on GCP network architecture security"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess a multi-project GCP environment and identify all network segmentation weaknesses and lateral movement paths"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review network security findings and architecture diagrams from recent GCP assessments"
+    }
+  ],
+  "framework_mappings": {
+    "cis": [
+      "CIS Google Cloud Platform Foundation Benchmark v4.0.0 - Section 3 Networking"
+    ],
+    "csa_ccm": [
+      "IVS-01",
+      "IVS-03",
+      "IVS-09"
+    ],
+    "nice": {
+      "tks": ["K0863", "K1014", "K0878", "S0950", "S0920"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-001 Cybersecurity Architecture"]
+    }
+  },
+  "tags": [
+    "gcp",
+    "vpc",
+    "networking",
+    "firewall-rules",
+    "segmentation",
+    "cloud-security",
+    "evasion",
+    "exfiltration",
+    "lateral-movement",
+    "vpn"
+  ]
+}

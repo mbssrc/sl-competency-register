@@ -1,0 +1,106 @@
+{
+  "id": "INTEL-TI-ADVERSARY",
+  "name": "Adversary Tracking & Profiling",
+  "domain": "intelligence",
+  "category": "Threat Intelligence",
+  "status": "active",
+  "description": "Tracking, profiling, and attributing threat actor groups and campaigns. Covers adversary identification, campaign clustering, infrastructure tracking, attribution analysis, and maintaining threat actor profiles. Enables the lab to contextualize findings from engagements within the broader threat landscape.",
+  "requires": [],
+  "recommended": [
+    "INTEL-TI-TTP",
+    "INTEL-TI-IOC",
+    "INTEL-OSINT-INFRA",
+    "ADVSIM-RED-PLANNING",
+    "FOUND-ETHICS",
+    "FOUND-TOOLS"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to threat actor tracking or adversary profiling"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the concept of threat actors, naming conventions, and the purpose of adversary tracking",
+      "evidence": [
+        "Can describe major threat actor categories (APT, cybercrime, hacktivist)",
+        "Understands common naming taxonomies (MITRE groups, CrowdStrike, Microsoft)",
+        "Aware of the distinction between tracking, clustering, and attribution"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Researches known threat actors and contributes to adversary profiles under supervision",
+      "evidence": [
+        "Compiles threat actor profiles from public reporting and vendor intelligence under guidance",
+        "Identifies overlaps between engagement findings and known threat actor behavior",
+        "Documents adversary infrastructure and tooling observations",
+        "Work reviewed by authorized analyst for accuracy"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently tracks adversary groups and produces actionable adversary profiles",
+      "evidence": [
+        "Maintains and updates threat actor profiles based on ongoing collection across 3+ groups",
+        "Clusters campaigns based on infrastructure, tooling, and behavioral overlaps",
+        "Produces adversary intelligence reports that inform engagement planning",
+        "Assessments of adversary capability and intent pass analytical review"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Conducts complex attribution analysis; tracks emerging groups; mentors junior analysts",
+      "evidence": [
+        "Performs multi-source attribution analysis with documented confidence levels",
+        "Identifies and tracks previously unreported threat actor clusters",
+        "Develops and maintains adversary tracking databases and workflows",
+        "Mentors junior analysts on adversary analysis tradecraft and analytical rigor"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on adversary intelligence; defines methodology; publishes research",
+      "evidence": [
+        "Designed or maintains the lab's adversary tracking methodology and knowledge base",
+        "Publishes original threat actor research or named threat group reports",
+        "Contributes to cross-organizational threat actor tracking initiatives",
+        "Trains teams on adversary intelligence methodology and analytical standards"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "problem_solving",
+      "description": "Given a set of engagement artifacts (IOCs, malware samples, infrastructure), cluster activity and produce an adversary assessment with confidence levels"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review adversary profiles and campaign reports for analytical rigor, evidence quality, and proper confidence language"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["S0518", "K1066", "K0788", "S0194", "K1009"],
+      "work_roles": ["PD-WRL-006 Threat Analysis"]
+    },
+    "mitre_attack": {
+      "techniques": [
+        "T1583",
+        "T1587",
+        "T1588"
+      ],
+      "groups": true
+    }
+  },
+  "tags": [
+    "threat-intelligence",
+    "adversary-tracking",
+    "attribution",
+    "campaign-analysis",
+    "apt"
+  ]
+}

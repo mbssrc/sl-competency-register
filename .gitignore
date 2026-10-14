@@ -1,0 +1,32 @@
+# Generated exports
+*.xlsx
+
+# Python
+__pycache__/
+*.pyc
+
+# Nix/direnv
+.direnv/
+
+# Django
+web/static/dist/output.css
+web/static/dist/background.png
+*.sqlite3
+*.sqlite3-wal
+*.sqlite3-shm
+
+# Node
+node_modules/
+
+# Nix build
+result
+
+# Test and tooling caches
+.pytest_cache/
+.superpowers/
+
+# Local scratch
+todo.txt
+
+# Demo mode scratch database
+.demo-run/

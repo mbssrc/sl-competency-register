@@ -1,0 +1,114 @@
+{
+  "id": "ADVSIM-PHYS-COVERT",
+  "name": "Covert Entry Operations",
+  "domain": "adversarial-simulation",
+  "category": "Physical Security",
+  "status": "active",
+  "description": "Ability to plan and execute covert physical entry operations as part of authorised security assessments. Covers entry planning, route selection, timing, alarm system awareness, evidence of entry minimisation, objective execution (device placement, document photography), and safe exfiltration. Integrates lock picking, access control bypass, and social engineering skills into cohesive physical operations.",
+
+  "requires": [
+    "FOUND-ETHICS",
+    "ADVSIM-PHYS-ACCESS",
+    "ADVSIM-PHYS-LOCKPICK"
+  ],
+  "recommended": [
+    "ADVSIM-PHYS-SURVEIL",
+    "ADVSIM-SE-PRETEXT",
+    "FOUND-EVIDENCE"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to covert entry operations"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the concept of covert entry and key operational considerations",
+      "evidence": [
+        "Completed covert entry operations awareness training",
+        "Can describe the phases of a covert entry operation (recon, planning, entry, objective, exfil)",
+        "Understands the importance of minimising evidence of entry and alarm awareness"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Participates in covert entry operations under close supervision",
+      "evidence": [
+        "Participated in supervised covert entry exercises in lab or training environments",
+        "Assisted with specific tasks (lookout, lock defeat, device placement) under team lead direction",
+        "Understands alarm system types and their implications for entry operations"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Plans and executes covert entry operations for standard commercial targets",
+      "evidence": [
+        "Planned and executed covert entry on 3+ authorised physical penetration tests",
+        "Selected entry routes and timing based on surveillance and site reconnaissance",
+        "Completed objectives (device placement, evidence collection) without detection",
+        "Briefed the team on abort criteria, emergency contacts and the challenge procedure before each entry attempt",
+        "Maintained detailed operational logs and evidence for engagement reports"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Executes complex covert entry against secured facilities; leads multi-person operations",
+      "evidence": [
+        "Led covert entry operations against targets with security guards, CCTV, and alarm systems",
+        "Coordinated multi-person entry teams with clear roles and communications",
+        "Adapted entry plans in real-time when encountering unexpected security controls",
+        "Mentors team on covert entry planning and execution"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines covert entry methodology; handles the most sensitive operations; trains teams",
+      "evidence": [
+        "Authored the lab's covert entry operations methodology and safety protocols",
+        "Executed high-sensitivity covert entry operations for regulated engagements",
+        "Develops training scenarios and exercises for covert entry skill development",
+        "Recognised as the lab's authority on physical covert entry operations"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Plan and execute a covert entry operation against a lab-prepared facility with defined objectives, security controls, and time constraints"
+    },
+    {
+      "type": "direct_observation",
+      "description": "Shadow the operator during a live physical penetration test, assessing planning, execution, adaptability, and evidence collection"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1248", "K1019", "K1054"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis"]
+    },
+    "mitre_attack": {
+      "tactics": ["TA0001"],
+      "techniques": ["T1200"]
+    },
+    "cbest": {
+      "phase": "Penetration Testing - Physical"
+    }
+  },
+
+  "tags": [
+    "covert-entry",
+    "physical-penetration",
+    "operations",
+    "stealth",
+    "device-placement",
+    "reconnaissance",
+    "social-engineering",
+    "physical-security"
+  ]
+}

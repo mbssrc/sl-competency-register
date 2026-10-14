@@ -1,0 +1,102 @@
+{
+  "id": "ICSIOT-OT-62443",
+  "name": "IEC 62443 Component & System Assessment",
+  "domain": "ics-iot-security",
+  "category": "OT Risk & Safety",
+  "status": "active",
+  "description": "Covers assessment of industrial automation and control systems and their components against the IEC 62443 series: 62443-3-2 risk assessment and zone/conduit partitioning, 62443-3-3 system security requirements, 62443-4-1 secure development lifecycle and 62443-4-2 component requirements, and the security level (SL-T, SL-C, SL-A) concept. Includes gap analysis, evidence collection and test reporting suitable for certification schemes. Broader OT risk and cyber-physical consequence analysis belongs to ICSIOT-OT-RISK.",
+  "requires": [
+    "FOUND-STANDARDS"
+  ],
+  "recommended": [
+    "ICSIOT-OT-RISK",
+    "ICSIOT-ICS-NETWORK",
+    "ICSIOT-ICS-CTRL",
+    "FOUND-THREATMODEL"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to IEC 62443 assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the structure of the IEC 62443 series and the security level concept",
+      "evidence": [
+        "Can describe the four IEC 62443 groups (general, policies and procedures, system, component) and the roles of asset owner, integrator and product supplier",
+        "Can explain SL-T, SL-C and SL-A and the foundational requirements (FR 1-7)",
+        "Knows the difference between a 62443-4-1 process assessment and a 62443-4-2 component assessment"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Contributes to IEC 62443 assessments under supervision",
+      "evidence": [
+        "Maps a component's documented security capabilities to 62443-4-2 requirements and requirement enhancements with guidance",
+        "Collects and organises evidence for 62443-4-1 practices (e.g. security requirements, secure design, defect management)",
+        "Executes assigned test cases for 62443-3-3 system requirements in a lab environment",
+        "Records non-conformities with clear references to the requirement clause"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently performs IEC 62443 system and component assessments",
+      "evidence": [
+        "Performs a 62443-3-2 zone and conduit risk assessment and derives SL-T per zone",
+        "Assesses a system against 62443-3-3 or a component against 62443-4-2 and determines achieved SL-C with supporting test evidence",
+        "Assesses a supplier's development process against the 62443-4-1 practices and maturity levels",
+        "Produces gap analysis and assessment reports that a certification body can rely on"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Leads complex IEC 62443 assessments; calibrates interpretation; mentors others",
+      "evidence": [
+        "Leads assessments spanning product supplier, integrator and asset owner scope",
+        "Resolves ambiguous requirement interpretations and documents lab-wide interpretation decisions",
+        "Designs reusable test procedures for 62443-4-2 component requirements across device classes (embedded, host, network, software application)",
+        "Reviews and calibrates colleagues' 62443 assessment reports"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines the lab's IEC 62443 assessment practice; recognised authority on the standard",
+      "evidence": [
+        "Established the lab's IEC 62443 assessment methodology and its alignment with ISO/IEC 17025 accreditation",
+        "Contributes to IEC 62443 standards development, certification scheme rules or published interpretations",
+        "Recognised authority consulted on security level determination and conformity disputes",
+        "Trains assessors on IEC 62443 system, component and process assessment"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "work_product_review",
+      "description": "Review an IEC 62443-4-2 or 3-3 assessment report for correct requirement mapping, sufficiency of test evidence for each SL-C claim, and traceable non-conformities"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given a system architecture and component datasheets, partition it into zones and conduits, derive SL-T, and identify the 62443-3-3 requirement gaps for one zone"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1288", "K1295", "K1292", "S0945"],
+      "work_roles": ["DD-WRL-009 Operational Technology (OT) Cybersecurity Engineering", "OG-WRL-012 Security Control Assessment"]
+    },
+    "iec_62443": ["2-1", "3-2", "3-3", "4-1", "4-2"]
+  },
+  "tags": [
+    "iec-62443",
+    "ot",
+    "ics",
+    "compliance",
+    "evaluation",
+    "risk-assessment",
+    "industrial",
+    "segmentation"
+  ]
+}

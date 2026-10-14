@@ -1,0 +1,112 @@
+{
+  "id": "SWSEC-SUPPLY-OS",
+  "name": "OS Supply Chain Security",
+  "domain": "software-security",
+  "category": "Supply Chain Security",
+  "status": "active",
+  "description": "Assessment of operating system supply chain integrity and trust mechanisms. Covers driver signing infrastructure evaluation, kernel module signing and verification, OS update channel security (Windows Update, apt/yum repositories, macOS Software Update), boot chain code signing, package repository integrity, and OS-level software provenance verification.",
+
+  "requires": [
+    "FOUND-RISK"
+  ],
+  "recommended": [
+    "SWSEC-PLATFORM-UEFI",
+    "SWSEC-OS-DRIVER",
+    "SWSEC-SUPPLY-SBOM",
+    "FOUND-TOOLS",
+    "SWSEC-SUPPLY-DEP"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to OS supply chain security assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands OS supply chain trust mechanisms and common attack vectors",
+      "evidence": [
+        "Can explain driver signing, code signing, and package signing across major OSes",
+        "Understands OS update mechanisms and their trust models",
+        "Familiar with historical software supply chain attacks bearing on OS trust (XZ Utils, and the SolarWinds and CCleaner application update-channel compromises)",
+        "Completed introductory training on software supply chain security"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Evaluates OS signing configurations and update mechanisms under supervision",
+      "evidence": [
+        "Verified driver signing enforcement and certificate chain validation",
+        "Assessed apt/yum repository configuration and GPG key management",
+        "Reviewed Windows Update and WSUS configuration for integrity controls",
+        "Work reviewed by authorized assessor"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses OS supply chain integrity across platforms",
+      "evidence": [
+        "Independently assessed OS update infrastructure for 3+ organizations",
+        "Evaluates driver and kernel module signing policy enforcement",
+        "Identifies weaknesses in package repository trust chains and mirroring",
+        "Passed proficiency assessment on OS supply chain security"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Evaluates complex supply chain trust architectures; simulates supply chain attacks",
+      "evidence": [
+        "Simulates OS supply chain attack scenarios in controlled environments",
+        "Assesses third-party driver certificate trust chains and attestation signing, treating legacy cross-signed certificates as historical",
+        "Evaluates reproducible build systems and binary transparency for OS components",
+        "Mentors team on OS supply chain assessment methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Authority on OS supply chain integrity; published supply chain research",
+      "evidence": [
+        "Published research on OS supply chain vulnerabilities or defense mechanisms",
+        "Developed lab methodology for OS supply chain security assessment",
+        "Contributes to industry supply chain security standards and guidance",
+        "Trains teams and presents at conferences on OS supply chain threats"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess the OS update and driver signing infrastructure of a prepared environment, identifying supply chain integrity weaknesses"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review of OS supply chain assessment findings from recent engagements"
+    }
+  ],
+
+  "framework_mappings": {
+    "mitre_attack": {"techniques": ["T1195.002", "T1553.002", "T1195.001"]},
+    "nice": {
+      "tks": ["K0820", "K1080", "K1081", "S0974"],
+      "work_roles": ["OG-WRL-017 Cybersecurity Supply Chain Risk Management", "DD-WRL-004 Secure Systems Development"]
+    }
+  },
+
+  "tags": [
+    "supply-chain",
+    "code-signing",
+    "driver-signing",
+    "package-management",
+    "update-integrity",
+    "os-trust",
+    "key-management",
+    "macos",
+    "windows",
+    "linux",
+    "pki"
+  ]
+}

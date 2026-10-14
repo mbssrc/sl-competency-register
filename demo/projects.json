@@ -1,0 +1,387 @@
+[
+  {
+    "id": "PRJ-HUMANOID-WIFI",
+    "name": "Humanoid Robot — Wireless Interface Assessment",
+    "description": "Assessment of the wireless attack surface of a humanoid service robot: Wi-Fi station and provisioning behaviour, Bluetooth and BLE pairing and profiles, the vendor's proprietary teleoperation link, and the device's cloud enrolment path. Black-box, against production firmware.",
+    "status": "archived",
+    "created_date": "2025-08-18",
+    "completed_date": "2025-11-21",
+    "source_service_id": "SVC-WIRELESS-ASSESS",
+    "requirements": {
+      "from_service": "SVC-WIRELESS-ASSESS",
+      "drop": [
+        "WSEC-PROTO-SUBGHZ"
+      ],
+      "add": [
+        {
+          "skill": "ICSIOT-IOT-DEVICE",
+          "minimum_level": 3
+        },
+        {
+          "skill": "ICSIOT-IOT-CLOUD",
+          "minimum_level": 2
+        }
+      ]
+    }
+  },
+  {
+    "id": "PRJ-SAT-PCB",
+    "name": "SATCOM Handset — PCB-Level Hardware Blackbox Assessment",
+    "description": "Board-level hardware assessment of a satellite handset with no vendor documentation: component identification, schematic reconstruction, test point and debug interface discovery, bus sniffing, and firmware extraction. Scope is explicitly board-level — chip-invasive analysis and sample preparation are excluded and are covered separately.",
+    "status": "done",
+    "created_date": "2025-11-10",
+    "completed_date": "2026-02-13",
+    "source_service_id": "SVC-HWSEC-EVAL",
+    "requirements": {
+      "from_service": "SVC-HWSEC-EVAL",
+      "drop_categories": [
+        "HWSEC-INV",
+        "HWSEC-SPREP",
+        "HWSEC-SCA",
+        "HWSEC-FI"
+      ]
+    }
+  },
+  {
+    "id": "PRJ-SAT-DSP",
+    "name": "SATCOM Handset — DSP Greybox Assessment (Package Level)",
+    "description": "Greybox assessment of the handset's baseband DSP at package level, with partial vendor documentation. Covers depackaging and optical inspection, debug and boot path analysis, DSP firmware extraction and reverse engineering, and non-invasive side-channel characterisation. Chip-invasive analysis is out of scope.",
+    "status": "done",
+    "created_date": "2026-01-19",
+    "completed_date": "2026-04-10",
+    "source_service_id": "SVC-HWSEC-EVAL",
+    "requirements": {
+      "from_service": "SVC-HWSEC-EVAL",
+      "drop_categories": [
+        "HWSEC-INV",
+        "HWSEC-FI"
+      ],
+      "drop": [
+        "HWSEC-SPREP-ACTIVE"
+      ],
+      "add": [
+        {
+          "skill": "SWSEC-RE-DISASM",
+          "minimum_level": 3
+        },
+        {
+          "skill": "SWSEC-RE-DECOMPILE",
+          "minimum_level": 3
+        }
+      ]
+    }
+  },
+  {
+    "id": "PRJ-SAT-CP-BLACK",
+    "name": "SATCOM Handset — Crypto-Processor Blackbox Assessment",
+    "description": "Blackbox assessment of the handset's cryptographic co-processor, combining hardware analysis, software reverse engineering and vulnerability analysis: key management and RNG review, accelerator characterisation, non-invasive side-channel and fault-injection testing, and reverse engineering of the driver and firmware interface.",
+    "status": "done",
+    "created_date": "2026-03-02",
+    "completed_date": "2026-06-05",
+    "source_service_id": "",
+    "requirements": {
+      "add": [
+        {
+          "skill": "HWSEC-CRYPTO-ACCEL",
+          "minimum_level": 3
+        },
+        {
+          "skill": "HWSEC-CRYPTO-KEY",
+          "minimum_level": 3
+        },
+        {
+          "skill": "HWSEC-CRYPTO-RNG",
+          "minimum_level": 3
+        },
+        {
+          "skill": "HWSEC-SCA-SPA",
+          "minimum_level": 3
+        },
+        {
+          "skill": "HWSEC-SCA-DPA",
+          "minimum_level": 3
+        },
+        {
+          "skill": "HWSEC-SCA-TVLA",
+          "minimum_level": 3
+        },
+        {
+          "skill": "HWSEC-FI-VG",
+          "minimum_level": 3
+        },
+        {
+          "skill": "HWSEC-FI-CG",
+          "minimum_level": 3
+        },
+        {
+          "skill": "SWSEC-RE-DISASM",
+          "minimum_level": 3
+        },
+        {
+          "skill": "SWSEC-RE-DECOMPILE",
+          "minimum_level": 3
+        },
+        {
+          "skill": "CRYPTO-SYM-BLOCKCIPHER",
+          "minimum_level": 3
+        },
+        {
+          "skill": "CRYPTO-IMPL-CONSTTIME",
+          "minimum_level": 3
+        },
+        {
+          "skill": "FOUND-REPORT",
+          "minimum_level": 3
+        },
+        {
+          "skill": "FOUND-EVIDENCE",
+          "minimum_level": 3
+        }
+      ]
+    }
+  },
+  {
+    "id": "PRJ-SAT-BACKEND",
+    "name": "SATCOM Handset — Backend Communication Assessment",
+    "description": "Wireless assessment of the handset's communication with its service backend: satellite uplink characterisation and capture, modulation and protocol reverse engineering, SIM and subscriber identity handling, transport security of the backend API, and the end-to-end messaging protocol.",
+    "status": "done",
+    "created_date": "2026-04-27",
+    "completed_date": "2026-07-17",
+    "source_service_id": "SVC-WIRELESS-ASSESS",
+    "requirements": {
+      "from_service": "SVC-WIRELESS-ASSESS",
+      "drop": [
+        "WSEC-WIFI-ENT",
+        "WSEC-WIFI-CLIENT"
+      ],
+      "add": [
+        {
+          "skill": "WSEC-SAT-COMM",
+          "minimum_level": 3
+        },
+        {
+          "skill": "WSEC-SAT-JAM",
+          "minimum_level": 2
+        },
+        {
+          "skill": "WSEC-CELL-SIM",
+          "minimum_level": 2
+        },
+        {
+          "skill": "SWSEC-WEB-API",
+          "minimum_level": 3
+        },
+        {
+          "skill": "CRYPTO-PKI-TLS",
+          "minimum_level": 3
+        },
+        {
+          "skill": "CRYPTO-PROTO-E2EE",
+          "minimum_level": 3
+        }
+      ]
+    }
+  },
+  {
+    "id": "PRJ-SAT-APP-MSG",
+    "name": "SATCOM Handset — Secure Messaging App Assessment (Android)",
+    "description": "Security assessment of the handset's Android secure messaging application: local data storage and key handling, transport and certificate validation, platform integrity and anti-tampering controls, and the end-to-end encrypted messaging protocol as implemented on the client.",
+    "status": "done",
+    "created_date": "2026-06-22",
+    "completed_date": "2026-09-11",
+    "source_service_id": "SVC-PENTEST-MOB",
+    "requirements": {
+      "from_service": "SVC-PENTEST-MOB",
+      "drop": [
+        "SWSEC-MOB-IOS"
+      ],
+      "add": [
+        {
+          "skill": "SWSEC-MOB-RESILIENCE",
+          "minimum_level": 3
+        },
+        {
+          "skill": "CRYPTO-PROTO-E2EE",
+          "minimum_level": 3
+        }
+      ]
+    }
+  },
+  {
+    "id": "PRJ-SAT-APP-PROV",
+    "name": "SATCOM Handset — Provisioning Companion App Assessment (Android)",
+    "description": "Security assessment of the Android companion application used to provision and enrol handsets: the device pairing and enrolment flow, authorisation of provisioning operations, the backend provisioning API contract, and local storage of enrolment secrets.",
+    "status": "planning",
+    "created_date": "2026-09-20",
+    "completed_date": null,
+    "source_service_id": "SVC-PENTEST-MOB",
+    "requirements": {
+      "from_service": "SVC-PENTEST-MOB",
+      "drop": [
+        "SWSEC-MOB-IOS"
+      ],
+      "add": [
+        {
+          "skill": "SWSEC-WEB-AUTHZ",
+          "minimum_level": 3
+        },
+        {
+          "skill": "SWSEC-APP-CONTRACT",
+          "minimum_level": 2
+        }
+      ]
+    }
+  },
+  {
+    "id": "PRJ-SAT-OS",
+    "name": "SATCOM Handset — Operating System Assessment",
+    "description": "Assessment of the handset's hardened operating system: secure boot chain and RTOS configuration, kernel and driver attack surface, trusted execution environment boundaries, sandbox and mandatory access control policy, and kernel-level fuzzing of the exposed interfaces.",
+    "status": "planning",
+    "created_date": "2026-09-29",
+    "completed_date": null,
+    "source_service_id": "",
+    "requirements": {
+      "add": [
+        {
+          "skill": "HWSEC-EMBED-BOOT",
+          "minimum_level": 3
+        },
+        {
+          "skill": "HWSEC-EMBED-RTOS",
+          "minimum_level": 3
+        },
+        {
+          "skill": "SWSEC-OS-KERNEL",
+          "minimum_level": 4
+        },
+        {
+          "skill": "SWSEC-OS-DRIVER",
+          "minimum_level": 3
+        },
+        {
+          "skill": "SWSEC-OS-LINPRIV",
+          "minimum_level": 3
+        },
+        {
+          "skill": "SWSEC-PLATFORM-TEE",
+          "minimum_level": 3
+        },
+        {
+          "skill": "SWSEC-PLATFORM-SANDBOX",
+          "minimum_level": 3
+        },
+        {
+          "skill": "SWSEC-PLATFORM-LSM",
+          "minimum_level": 3
+        },
+        {
+          "skill": "SWSEC-FUZZ-KERN",
+          "minimum_level": 3
+        },
+        {
+          "skill": "FOUND-REPORT",
+          "minimum_level": 3
+        }
+      ]
+    }
+  },
+  {
+    "id": "PRJ-SAT-CP-INV",
+    "name": "SATCOM Handset — Crypto-Processor Invasive Attack Assessment",
+    "description": "Chip-invasive follow-up to the crypto-processor blackbox assessment, covering what that engagement explicitly excluded: decapsulation and delayering, optical and electron microscopy, microprobing of internal buses, focused ion beam circuit edit, and evaluation of the active shield and tamper response.",
+    "status": "planning",
+    "created_date": "2026-10-02",
+    "completed_date": null,
+    "source_service_id": "SVC-HWSEC-EVAL",
+    "requirements": {
+      "add": [
+        {
+          "skill": "HWSEC-INV-DECAP",
+          "minimum_level": 3
+        },
+        {
+          "skill": "HWSEC-INV-DELAYER",
+          "minimum_level": 3
+        },
+        {
+          "skill": "HWSEC-INV-PROBE",
+          "minimum_level": 3
+        },
+        {
+          "skill": "HWSEC-INV-FIB",
+          "minimum_level": 4
+        },
+        {
+          "skill": "HWSEC-INV-TAMPER",
+          "minimum_level": 3
+        },
+        {
+          "skill": "HWSEC-SPREP-MECH",
+          "minimum_level": 3
+        },
+        {
+          "skill": "HWSEC-SPREP-CHEM",
+          "minimum_level": 3
+        },
+        {
+          "skill": "HWSEC-SPREP-OPTICAL",
+          "minimum_level": 3
+        },
+        {
+          "skill": "HWSEC-SPREP-SEM",
+          "minimum_level": 3
+        },
+        {
+          "skill": "HWSEC-SPREP-ACTIVE",
+          "minimum_level": 3
+        },
+        {
+          "skill": "FOUND-REPORT",
+          "minimum_level": 3
+        },
+        {
+          "skill": "FOUND-EVIDENCE",
+          "minimum_level": 3
+        }
+      ]
+    }
+  },
+  {
+    "id": "PRJ-MEDGRANT-WEB",
+    "name": "MedGrant AI — Web Application Penetration Test",
+    "description": "Penetration test of an AI-assisted analysis platform used to evaluate medical research grant applications. Covers the web application and its API, plus the model-specific surface: prompt injection through submitted applications, the retrieval pipeline over the grant corpus, agent tool access, and the privacy of applicant data held in the model's context.",
+    "status": "planning",
+    "created_date": "2026-10-09",
+    "completed_date": null,
+    "source_service_id": "SVC-PENTEST-WEB",
+    "requirements": {
+      "from_service": "SVC-PENTEST-WEB",
+      "add": [
+        {
+          "skill": "AIML-LLM-PROMPTINJ",
+          "minimum_level": 3
+        },
+        {
+          "skill": "AIML-LLM-RAG",
+          "minimum_level": 3
+        },
+        {
+          "skill": "AIML-LLM-AGENT",
+          "minimum_level": 3
+        },
+        {
+          "skill": "AIML-ADV-PRIVACY",
+          "minimum_level": 4
+        },
+        {
+          "skill": "AIML-OPS-THREATMODEL",
+          "minimum_level": 3
+        },
+        {
+          "skill": "INFRA-CONTAINER-K8S",
+          "minimum_level": 3
+        }
+      ]
+    }
+  }
+]

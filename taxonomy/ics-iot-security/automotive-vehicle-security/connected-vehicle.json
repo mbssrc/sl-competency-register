@@ -1,0 +1,154 @@
+{
+  "id": "ICSIOT-AUTO-CONNECT",
+  "name": "Connected Vehicle & V2X Security",
+  "domain": "ics-iot-security",
+  "category": "Automotive & Vehicle Security",
+  "status": "active",
+  "description": "Security assessment of a vehicle's external interfaces and connected ecosystem. Covers the telematics control unit and its cellular, Wi-Fi and Bluetooth attack surface, remote service APIs and companion mobile applications, and the infotainment boundary; keyless entry and immobiliser systems, including rolling-code RKE, passive entry relay attacks, transponder cryptography and UWB-based digital key (CCC Digital Key); V2X communication under IEEE 1609.2 and ETSI ITS-G5 or C-V2X PC5, with pseudonym certificate handling and misbehaviour detection; and EV charging interfaces including ISO 15118 Plug and Charge, contract certificate provisioning, and OCPP charge-point backends. In-vehicle buses belong to ICSIOT-AUTO-IVN and diagnostics to ICSIOT-AUTO-ECU; generic IoT backends belong to ICSIOT-IOT-CLOUD; raw RF capture and demodulation belong to the WSEC domain; companion app internals belong to SWSEC-MOB-ANDROID and SWSEC-MOB-IOS.",
+
+  "requires": [
+    "FOUND-ETHICS"
+  ],
+  "recommended": [
+    "ICSIOT-AUTO-IVN",
+    "ICSIOT-IOT-CLOUD",
+    "WSEC-SDR-CAPTURE",
+    "WSEC-PROTO-SUBGHZ",
+    "WSEC-PROTO-BLE",
+    "CRYPTO-PKI-CERTS",
+    "SWSEC-WEB-API",
+    "HWSEC-RF-NFC"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to connected vehicle or V2X security"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands a vehicle's external interfaces and why connectivity extends the attack surface",
+      "evidence": [
+        "Can name the external interfaces of a modern vehicle (cellular, Wi-Fi, Bluetooth, RKE, UWB, charging, V2X) and what each reaches",
+        "Can explain why a relay attack defeats passive keyless entry without breaking any cryptography",
+        "Understands the role of the telematics unit as a bridge between the internet and in-vehicle networks",
+        "Can describe what a V2X pseudonym certificate is for"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Enumerates and tests connected interfaces on a bench or test vehicle under supervision",
+      "evidence": [
+        "Maps the exposed services of a telematics unit and infotainment head unit under guidance",
+        "Captures and replays RKE transmissions on a test vehicle or bench key using an SDR under supervision",
+        "Exercises remote service APIs and the companion app against a lab account, following a documented scope",
+        "Documents interface inventory, radio parameters and observed protocol behaviour"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses a vehicle's connected interfaces against a defined scope",
+      "evidence": [
+        "Assesses remote service APIs for broken object-level authorisation, allowing one account to reach another vehicle",
+        "Demonstrates and bounds keyless entry weaknesses: rolling-code replay or desynchronisation, relay attacks, and weak transponder ciphers",
+        "Evaluates the telematics unit's separation from safety-relevant in-vehicle domains and whether a compromised TCU reaches them",
+        "Assesses ISO 15118 Plug and Charge contract certificate handling and OCPP backend authentication and authorisation",
+        "Reviews V2X message signing and verification, certificate validity handling and replay protection",
+        "Plans and documents testing so that radio transmission stays within legal limits and safety functions are only exercised on benches or immobilised vehicles"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Assesses complex connected architectures and their cryptographic protections; mentors others",
+      "evidence": [
+        "Assesses UWB digital key implementations including distance-bounding and ranging integrity against relay and distance-reduction attacks",
+        "Evaluates V2X pseudonym certificate provisioning, SCMS or equivalent PKI enrolment, revocation and misbehaviour reporting",
+        "Builds custom tooling or test harnesses for proprietary telematics, keyless or charging protocols",
+        "Chains a connectivity foothold through to in-vehicle network or diagnostic impact as a demonstrated end-to-end attack path",
+        "Mentors staff on connected vehicle methodology, radio-legal test practice and responsible disclosure with manufacturers"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines the lab's connected vehicle assessment methodology; recognised authority",
+      "evidence": [
+        "Authored the lab's connected vehicle and V2X assessment methodology, including its radio and safety rules",
+        "Published research or disclosed vulnerabilities in telematics platforms, keyless entry systems, V2X stacks or charging infrastructure",
+        "Advises manufacturers, suppliers or charging operators on connected architecture and PKI strategy",
+        "Contributes to automotive connectivity, V2X or charging security standards and industry working groups"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "On a test vehicle and bench setup, inventory the external interfaces, demonstrate a relay or replay attack against keyless entry, and determine whether the telematics unit can reach a safety-relevant domain"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given a connected vehicle architecture and its remote API documentation, identify the paths by which an attacker holding only a user account could affect a vehicle they do not own"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review a connected vehicle assessment report for interface coverage, legality and safety of the test approach, and accuracy of impact and exploitability statements"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1089", "K1119", "S0899", "K0840"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-007 Systems Testing and Evaluation"]
+    },
+    "iso_sae_21434": {
+      "supports": ["cybersecurity verification and validation (clauses 10 and 11)"],
+      "excludes": ["TARA and risk management", "cybersecurity case", "CSMS and SUMS governance"]
+    },
+    "unece": ["R155"],
+    "iso": ["ISO 15118", "IEEE 1609.2"],
+    "mitre_attack": {
+      "note": "ATT&CK has no automotive matrix"
+    },
+    "cwe": ["CWE-294", "CWE-639", "CWE-290", "CWE-1390", "CWE-923"]
+  },
+
+  "equipment": [
+    "Software-defined radio covering automotive RKE bands (315/433/868 MHz) with transmit capability",
+    "Shielded enclosure or RF-screened room for lawful transmission testing",
+    "BLE and UWB protocol sniffer",
+    "ISO 15118 / CCS charging test equipment or EV charging emulator",
+    "Test vehicle or telematics bench unit with lab SIM and lab backend account"
+  ],
+
+  "tags": [
+    "automotive",
+    "vehicle",
+    "connected-vehicle",
+    "telematics",
+    "tcu",
+    "keyless-entry",
+    "rke",
+    "relay-attack",
+    "immobiliser",
+    "digital-key",
+    "uwb",
+    "v2x",
+    "ieee-1609-2",
+    "c-v2x",
+    "iso-15118",
+    "plug-and-charge",
+    "ocpp",
+    "ev-charging",
+    "api",
+    "authentication",
+    "bluetooth",
+    "mobile",
+    "safety",
+    "key-management",
+    "pki",
+    "replay-attack"
+  ]
+}

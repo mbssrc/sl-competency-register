@@ -1,0 +1,108 @@
+{
+  "id": "SWSEC-SUPPLY-DEP",
+  "name": "Dependency & Component Analysis",
+  "domain": "software-security",
+  "category": "Supply Chain Security",
+  "status": "active",
+  "description": "Analysis of third-party dependencies and open-source components for known vulnerabilities, license risks, and malicious packages. Covers SCA tool operation, vulnerability database correlation, transitive dependency analysis, and risk-based prioritization of dependency findings.",
+
+  "requires": [],
+  "recommended": [
+    "FOUND-RISK",
+    "FOUND-REPORT",
+    "SWSEC-SUPPLY-SBOM",
+    "FOUND-TOOLS",
+    "SWSEC-SUPPLY-OS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to dependency analysis"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands software supply chain risks and dependency management",
+      "evidence": [
+        "Can explain the risks of third-party dependencies (known vulnerabilities, malicious packages)",
+        "Familiar with package managers (npm, pip, Maven, NuGet) and lock files",
+        "Understands CVE databases and vulnerability scoring (CVSS)"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Runs SCA tools under supervision and reviews basic findings",
+      "evidence": [
+        "Executed dependency scans using tools (Snyk, OWASP Dependency-Check, Trivy)",
+        "Identified known vulnerable dependencies in lab projects",
+        "Reviewed transitive dependency trees for risk assessment",
+        "Work reviewed by authorized analyst"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently analyzes dependencies and produces risk-prioritized reports",
+      "evidence": [
+        "Independently performed dependency analysis on 5+ engagements",
+        "Correlates findings with NVD/OSV and assesses exploitability in context",
+        "Identifies reachability of vulnerable code paths in dependencies",
+        "Produces prioritized remediation guidance based on risk and exploitability",
+        "Passed proficiency assessment on dependency analysis"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex dependency ecosystems; detects malicious packages",
+      "evidence": [
+        "Identifies dependency confusion and typosquatting risks",
+        "Evaluates package maintainer trustworthiness and project health metrics",
+        "Develops custom policies for dependency governance",
+        "Mentors junior analysts on dependency analysis methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Authority on software composition analysis; develops lab standards",
+      "evidence": [
+        "Published research on supply chain vulnerabilities or malicious packages",
+        "Developed the lab's SCA methodology and governance framework",
+        "Discovered malicious packages or dependency-based attack vectors",
+        "Trains teams on advanced dependency analysis"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Analyze a project with complex dependencies, identify vulnerabilities, assess reachability, and produce a prioritized risk report"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review of dependency analysis findings and prioritization from 3 recent engagements"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1374", "K0820", "S0973", "S0974"],
+      "work_roles": ["OG-WRL-017 Cybersecurity Supply Chain Risk Management", "DD-WRL-005 Software Security Assessment"]
+    },
+    "owasp": ["A03:2025 Software Supply Chain Failures"],
+    "cwe": ["CWE-1395", "CWE-1104"],
+    "mitre_attack": {"techniques": ["T1195.001"]}
+  },
+
+  "tags": [
+    "supply-chain",
+    "sca",
+    "dependencies",
+    "open-source",
+    "vulnerability-management",
+    "risk-assessment",
+    "malware"
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "id": "INFRA-ONPREM-WINHARDEN",
+  "name": "Windows Hardening Assessment",
+  "domain": "infrastructure-security",
+  "category": "On-Premises Infrastructure",
+  "status": "active",
+  "description": "Focused assessment of Windows system hardening configurations. Covers Group Policy security settings, Microsoft Defender Antivirus and Attack Surface Reduction rules, Credential Guard and LSA protection, WDAC and AppLocker policy assessment, Windows Firewall configuration, BitLocker and encryption configuration, Windows Event Forwarding, account policies, and CIS Windows Benchmark compliance.",
+
+  "requires": [],
+  "recommended": [
+    "INFRA-ONPREM-HARDEN",
+    "INFRA-ONPREM-AD",
+    "INFRA-ONPREM-LOGGING",
+    "SWSEC-OS-WINPRIV",
+    "FOUND-RISK"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to Windows hardening assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands Windows hardening principles and security baseline concepts",
+      "evidence": [
+        "Can explain Group Policy security settings, Microsoft Defender features, and UAC",
+        "Familiar with CIS Windows Server and Windows 11 Enterprise Benchmark structure",
+        "Understands Credential Guard, LSA protection, and WDAC at a conceptual level",
+        "Completed introductory training on Windows security hardening"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Runs Windows hardening assessment tools and reviews configurations under supervision",
+      "evidence": [
+        "Runs CIS-CAT, Microsoft Security Compliance Toolkit, or equivalent under guidance",
+        "Reviews Group Policy settings against CIS benchmarks using checklists",
+        "Assesses Windows Firewall rules, account policies, and audit policy configuration",
+        "Documents findings with supervision and produces basic hardening reports"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses Windows hardening and provides contextualized remediation",
+      "evidence": [
+        "Independently assesses Windows servers and workstations against CIS benchmarks",
+        "Evaluates Credential Guard, WDAC/AppLocker, and ASR rule configurations",
+        "Assesses BitLocker configuration including TPM and recovery key management",
+        "Produces compliant hardening assessment reports with risk-prioritized remediation"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Develops custom Windows hardening baselines; handles complex environments",
+      "evidence": [
+        "Develops organization-specific Group Policy baselines for different server roles",
+        "Assesses complex environments with mixed Windows versions and domain configurations",
+        "Evaluates Microsoft Defender for Endpoint configuration and exclusion security",
+        "Reviews hardening assessment work of junior analysts"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines lab Windows hardening methodology; contributes to industry standards",
+      "evidence": [
+        "Designed or maintains the lab's Windows hardening assessment framework",
+        "Contributes to CIS Benchmark development for Windows platforms",
+        "Trains teams on advanced Windows hardening across Server and Desktop editions",
+        "Recognized as authority on Windows security baseline configuration"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess a set of Windows servers and workstations with varying hardening levels and produce a prioritized findings report with Windows-specific remediation"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review Windows hardening assessment findings and remediation guidance from recent engagements"
+    }
+  ],
+
+  "framework_mappings": {
+    "cis": [
+      "CIS Microsoft Windows Server Benchmark",
+      "CIS Microsoft Windows 11 Enterprise Benchmark"
+    ],
+    "nice": {
+      "tks": ["K0837", "S0643", "K0744", "K0716", "K1238"],
+      "work_roles": ["IO-WRL-005 Systems Administration", "IO-WRL-006 Systems Security Analysis"]
+    }
+  },
+
+  "tags": [
+    "windows",
+    "hardening",
+    "cis-benchmark",
+    "group-policy",
+    "credential-guard",
+    "wdac",
+    "bitlocker",
+    "on-premises",
+    "encryption",
+    "key-management",
+    "tpm"
+  ]
+}

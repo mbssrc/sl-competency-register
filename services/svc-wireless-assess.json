@@ -1,0 +1,25 @@
+{
+  "id": "SVC-WIRELESS-ASSESS",
+  "name": "Wireless & Signal Security Assessment",
+  "description": "Assessment of wireless communication systems including SDR-based signal analysis, Wi-Fi infrastructure, protocol reverse engineering, and spectrum analysis to identify vulnerabilities in radio frequency and wireless protocols.",
+  "scope_reference": "Security assessment of wireless communication systems and RF protocols",
+  "required_competencies": [
+    { "skill": "WSEC-SDR-FUNDM", "minimum_level": 3 },
+    { "skill": "WSEC-SDR-CAPTURE", "minimum_level": 3 },
+    { "skill": "WSEC-SDR-DEMOD", "minimum_level": 3 },
+    { "skill": "WSEC-SDR-DSP", "minimum_level": 2 },
+    { "skill": "WSEC-WIFI-RECON", "minimum_level": 3 },
+    { "skill": "WSEC-WIFI-WPA", "minimum_level": 3 },
+    { "skill": "WSEC-WIFI-CLIENT", "minimum_level": 3 },
+    { "skill": "WSEC-WIFI-ENT", "minimum_level": 2 },
+    { "skill": "WSEC-PROTO-BLE", "minimum_level": 3 },
+    { "skill": "WSEC-PROTO-SUBGHZ", "minimum_level": 2 },
+    { "skill": "WSEC-PROTO-REVENG", "minimum_level": 3 },
+    { "skill": "WSEC-PROTO-CUSTOM", "minimum_level": 2 },
+    { "skill": "FOUND-REPORT", "minimum_level": 3 },
+    { "skill": "FOUND-RISK", "minimum_level": 3 }
+  ],
+  "standards": [
+    "Internal wireless assessment methodology"
+  ]
+}

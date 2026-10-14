@@ -1,0 +1,94 @@
+{
+  "id": "FOUND-STANDARDS",
+  "name": "Standards Knowledge",
+  "domain": "foundations",
+  "category": "Foundations",
+  "status": "active",
+  "description": "Knowledge of the standards, regulations, and compliance frameworks relevant to the lab's work. Covers ISO/IEC 17025:2017 (lab competence), ISO/IEC 27001 (ISMS), Common Criteria (ISO/IEC 15408/18045), FIPS 140-3, digital forensic standards (ISO/IEC 27037/27041/27042/27043, UK Forensic Science Regulator Code of Practice), GDPR/privacy regulations, and the broader regulatory landscape affecting security testing and evaluation.",
+
+  "requires": [],
+  "recommended": [
+    "FOUND-ETHICS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to security standards or regulations"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Knows the major standards exist and their general purpose",
+      "evidence": [
+        "Can name the key standards relevant to the lab (ISO 17025, 27001, CC, FIPS)",
+        "Understands that standards drive lab processes and engagement methodology"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Understands how standards apply to day-to-day work; follows standards-driven procedures",
+      "evidence": [
+        "Follows lab procedures derived from ISO 17025 requirements",
+        "Understands the sections of relevant standards that affect their domain",
+        "Can explain how a specific standard requirement maps to a lab process"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Applies standards knowledge independently to engagements and evaluations",
+      "evidence": [
+        "References appropriate standards in reports and assessments",
+        "Identifies when an engagement falls within or outside accreditation scope",
+        "Understands compliance requirements for client-facing deliverables"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Interprets standards for complex scenarios; contributes to compliance processes",
+      "evidence": [
+        "Interprets standards requirements for non-obvious or complex scenarios",
+        "Contributes to internal audit preparation and gap analysis",
+        "Advises team on standards applicability for specific engagements"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Drives standards adoption; manages accreditation; participates in standards bodies",
+      "evidence": [
+        "Leads or manages the lab's compliance with ISO 17025 or similar",
+        "Participates in standards body working groups or committees",
+        "Trains teams on standards and regulatory requirements"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "problem_solving",
+      "description": "Scenario: determine which standards and compliance requirements apply to a described engagement"
+    },
+    {
+      "type": "controlled_exercise",
+      "description": "Map a set of lab procedures to their originating standard requirements"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1138", "S0384", "K0917", "K1160"],
+      "work_roles": ["OG-WRL-012 Security Control Assessment", "OG-WRL-013 Systems Authorization"]
+    }
+  },
+
+  "tags": [
+    "cross-cutting",
+    "compliance",
+    "iso-17025",
+    "iso-27001",
+    "regulatory",
+    "fips-140-3"
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "id": "AIML-LLM-RAG",
+  "name": "RAG & Retrieval Pipeline Security",
+  "domain": "ai-ml-security",
+  "category": "LLM & Generative AI",
+  "status": "active",
+  "description": "Security assessment of retrieval-augmented generation (RAG) pipelines. Covers access control on vector stores and retrieval, poisoning of retrieval corpora and embeddings, sensitive data leakage through retrieval (OWASP LLM08), and document-borne injection delivered via retrieved content. Poisoning of model training data belongs to AIML-ADV-POISON.",
+  "requires": [
+    "AIML-LLM-PROMPTINJ"
+  ],
+  "recommended": [
+    "AIML-ADV-POISON"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to RAG or retrieval pipeline security"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands how RAG pipelines ingest, embed, and retrieve content into model context",
+      "evidence": [
+        "Can describe the ingestion, chunking, embedding, vector store, and retrieval stages of a RAG pipeline",
+        "Aware of vector and embedding weaknesses (LLM08) and retrieval-borne injection",
+        "Understands why retrieval must enforce the querying user's document permissions"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Can assess basic RAG pipeline risks under guidance",
+      "evidence": [
+        "Tests whether a user can retrieve documents outside their authorisation through crafted queries",
+        "Plants a poisoned document in a lab corpus and observes its effect on answers",
+        "Reviews ingestion sources and vector store exposure with supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses RAG pipelines for access control, poisoning, and leakage",
+      "evidence": [
+        "Evaluates permission propagation from source systems through chunking into retrieval filters",
+        "Demonstrates corpus poisoning that steers retrieval ranking and model answers",
+        "Tests for sensitive data leakage across tenants, sessions, and embedding inversion",
+        "Produces findings with reproducible queries and pipeline-stage-specific mitigations"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Assesses complex retrieval architectures; develops RAG assessment methodology; mentors others",
+      "evidence": [
+        "Assesses hybrid search, multi-tenant vector stores, and agentic retrieval over live sources",
+        "Designs corpus integrity monitoring and provenance controls for ingestion pipelines",
+        "Develops tooling to measure poisoning success and retrieval leakage at scale",
+        "Reviews and calibrates RAG assessments across the team"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines the lab's RAG security assessment practice; publishes research",
+      "evidence": [
+        "Established the lab's methodology for retrieval pipeline security assessment",
+        "Published research on retrieval poisoning, embedding leakage, or RAG access control",
+        "Trains teams on RAG security assessment",
+        "Contributes to external guidance on secure retrieval-augmented generation"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Against a multi-user lab RAG application, demonstrate cross-permission document retrieval and a corpus-poisoning attack that alters answers, then verify proposed fixes"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review a RAG assessment report for pipeline-stage coverage, access-control testing depth, and reproducibility of poisoning and leakage findings"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1320", "S0953"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-008 Technology Research and Development"]
+    },
+    "mitre_atlas": ["AML.T0051", "AML.T0070", "AML.T0057"],
+    "owasp_llm_top10": ["LLM08:2025", "LLM01:2025", "LLM02:2025"]
+  },
+  "tags": [
+    "llm",
+    "rag",
+    "data-poisoning",
+    "access-control",
+    "atlas"
+  ]
+}

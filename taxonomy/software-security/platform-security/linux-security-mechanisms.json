@@ -1,0 +1,113 @@
+{
+  "id": "SWSEC-PLATFORM-LSM",
+  "name": "Linux Security Mechanism Bypass",
+  "domain": "software-security",
+  "category": "Platform Security",
+  "status": "active",
+  "description": "Assessment and bypass of Linux mandatory access controls and security frameworks. Covers SELinux, AppArmor, and seccomp-bpf bypass techniques, namespace and cgroup escape, eBPF exploitation, Landlock circumvention, and analysis of Linux Security Module (LSM) framework internals.",
+
+  "requires": [
+    "FOUND-ETHICS",
+    "SWSEC-OS-LINPRIV"
+  ],
+  "recommended": [
+    "SWSEC-OS-KERNEL",
+    "INFRA-CONTAINER-DOCKER",
+    "FOUND-TOOLS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to Linux security mechanism bypass"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands Linux security frameworks and mandatory access control concepts",
+      "evidence": [
+        "Can explain SELinux, AppArmor, seccomp-bpf, and their enforcement models",
+        "Understands Linux namespaces, cgroups, and their role in isolation",
+        "Familiar with the LSM hook framework architecture",
+        "Completed introductory training on Linux security mechanisms"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Identifies security mechanism configurations and tests basic bypasses under supervision",
+      "evidence": [
+        "Enumerated SELinux and AppArmor policy configurations on target systems",
+        "Tested known seccomp-bpf escape techniques in lab environments",
+        "Identified overly permissive namespace configurations under guidance",
+        "Work reviewed by authorized tester"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses and bypasses Linux security mechanisms",
+      "evidence": [
+        "Independently bypasses SELinux or AppArmor policies through policy weakness exploitation",
+        "Escapes seccomp-bpf sandboxes using allowed syscall chains",
+        "Exploits namespace misconfigurations for privilege boundary violations",
+        "Passed proficiency assessment on Linux security mechanism bypass"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Exploits advanced Linux security internals; develops custom bypass tooling",
+      "evidence": [
+        "Exploits eBPF verifier bugs or abuses eBPF capabilities for escalation",
+        "Chains multiple namespace and cgroup escapes in complex container environments",
+        "Analyzes and bypasses Landlock and custom LSM policies",
+        "Mentors team on Linux security mechanism internals and bypass methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Authority on Linux security frameworks; discovers novel bypass vectors",
+      "evidence": [
+        "Published research or CVEs related to SELinux, eBPF, or LSM bypass",
+        "Developed lab methodology for Linux security mechanism assessment",
+        "Discovers novel bypass techniques in current kernel versions",
+        "Trains teams on Linux security framework internals and exploitation"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Escape from a seccomp-bpf and AppArmor-confined process on a prepared Linux host, demonstrating multiple bypass techniques"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given a SELinux policy and seccomp filter, identify exploitable weaknesses and propose escape strategies"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0923", "K0685", "K1373", "S0606"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-008 Technology Research and Development"]
+    },
+    "mitre_attack": {"techniques": ["T1548", "T1611", "T1562.001"]},
+    "cwe": ["CWE-269", "CWE-284"]
+  },
+
+  "tags": [
+    "linux",
+    "selinux",
+    "apparmor",
+    "seccomp",
+    "ebpf",
+    "namespaces",
+    "mandatory-access-control",
+    "cgroups",
+    "containers",
+    "escape",
+    "kernel",
+    "container-escape"
+  ]
+}

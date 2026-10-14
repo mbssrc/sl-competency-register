@@ -1,0 +1,101 @@
+{
+  "id": "INFRA-IAC-POLICY",
+  "name": "Policy-as-Code Evaluation",
+  "domain": "infrastructure-security",
+  "category": "Infrastructure as Code Security",
+  "status": "active",
+  "description": "Evaluation of policy-as-code frameworks for infrastructure security enforcement. Covers Open Policy Agent (OPA/Rego, including Gatekeeper and Conftest), Kyverno, HashiCorp Sentinel, AWS Service Control Policies, Azure Policy, and GCP Organization Policies. Includes policy rule effectiveness assessment, bypass testing, and coverage gap analysis.",
+  "requires": [],
+  "recommended": [
+    "INFRA-IAC-TERRAFORM",
+    "FOUND-STANDARDS",
+    "FOUND-RISK"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to policy-as-code evaluation"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands policy-as-code concepts and common frameworks",
+      "evidence": [
+        "Can explain the purpose and architecture of policy-as-code in infrastructure security",
+        "Familiar with at least two frameworks (OPA, Sentinel, cloud-native policies)",
+        "Understands the difference between preventive and detective policy controls"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Reviews policy rules and evaluates coverage under supervision",
+      "evidence": [
+        "Reviews OPA/Rego or Sentinel policies against security requirements under guidance",
+        "Tests policy enforcement against known misconfiguration scenarios",
+        "Documents policy evaluation findings with supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently evaluates policy-as-code effectiveness and identifies bypass paths",
+      "evidence": [
+        "Independently assesses policy rule coverage against security baselines",
+        "Identifies policy bypass techniques through resource attribute manipulation",
+        "Evaluates policy enforcement points in CI/CD and deployment pipelines",
+        "Produces compliant policy evaluation reports"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Develops policy rules and bypass tests; evaluates complex policy architectures; mentors others",
+      "evidence": [
+        "Writes and reviews complex OPA/Rego and Sentinel policy rules",
+        "Develops systematic bypass testing methodologies for policy frameworks",
+        "Reviews policy evaluation work of junior analysts",
+        "Assesses multi-layer policy enforcement architectures"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines lab policy evaluation methodology; publishes research on policy-as-code security",
+      "evidence": [
+        "Designed or maintains the lab's policy-as-code evaluation framework",
+        "Published research on policy bypass techniques or enforcement gaps",
+        "Trains teams on policy-as-code evaluation",
+        "Recognized as authority on infrastructure policy enforcement"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Given a set of OPA/Sentinel policies, identify coverage gaps and demonstrate bypass techniques"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Design a policy-as-code ruleset for a given security baseline and justify enforcement decisions"
+    }
+  ],
+  "framework_mappings": {
+    "csa_ccm": [
+      "GRC-01",
+      "CCC-01"
+    ],
+    "nice": {
+      "tks": ["K1369", "K0746", "K1212", "S0667", "K1072"],
+      "work_roles": ["OG-WRL-012 Security Control Assessment", "DD-WRL-001 Cybersecurity Architecture"]
+    }
+  },
+  "tags": [
+    "iac",
+    "policy-as-code",
+    "opa",
+    "sentinel",
+    "compliance-automation",
+    "aws",
+    "azure",
+    "gcp"
+  ]
+}

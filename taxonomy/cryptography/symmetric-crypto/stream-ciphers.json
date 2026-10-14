@@ -1,0 +1,107 @@
+{
+  "id": "CRYPTO-SYM-STREAMCIPHER",
+  "name": "Stream Cipher Assessment",
+  "domain": "cryptography",
+  "category": "Symmetric Cryptography",
+  "status": "active",
+  "description": "Assessment of stream cipher implementations including ChaCha20, RC4 (legacy), and Salsa20. Covers nonce/IV management, keystream reuse detection, cipher selection review, and identification of implementation weaknesses specific to stream cipher constructions.",
+
+  "requires": [],
+  "recommended": [
+    "FOUND-STANDARDS",
+    "CRYPTO-SYM-BLOCKCIPHER",
+    "FOUND-TOOLS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to stream cipher concepts or assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands stream cipher fundamentals and how they differ from block ciphers",
+      "evidence": [
+        "Can explain how a stream cipher generates a keystream and XORs it with plaintext",
+        "Understands why RC4 is deprecated and its known biases",
+        "Can describe the role of nonces in stream cipher security"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Identifies stream cipher usage and common misconfigurations under supervision",
+      "evidence": [
+        "Detects RC4 usage in TLS configurations and protocol implementations",
+        "Identifies nonce reuse risks in ChaCha20/Salsa20 deployments under guidance",
+        "Documents stream cipher findings following lab templates"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently evaluates stream cipher implementations for correctness and security",
+      "evidence": [
+        "Assesses nonce generation and management in ChaCha20-Poly1305 deployments",
+        "Identifies keystream reuse vulnerabilities and demonstrates impact",
+        "Evaluates stream cipher selection against current best-practice guidance (RFC 8439, RFC 7465 prohibiting RC4 in TLS, BSI TR-02102)",
+        "Produces compliant findings with clear remediation recommendations"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex stream cipher assessment scenarios; identifies subtle implementation flaws",
+      "evidence": [
+        "Analyses custom protocol implementations using stream ciphers for nonce management flaws",
+        "Demonstrates keystream recovery attacks against nonce-reuse in lab environments",
+        "Reviews junior staff assessments of stream cipher implementations",
+        "Develops tooling to detect stream cipher misuse patterns in code"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines stream cipher assessment methodology; recognised authority on stream cipher security",
+      "evidence": [
+        "Authored or maintains lab methodology for stream cipher assessment",
+        "Published research on stream cipher vulnerabilities or novel attack techniques",
+        "Provides expert consultation on stream cipher selection for protocol design",
+        "Trains teams on stream cipher internals and assessment approaches"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Given a protocol implementation using ChaCha20, identify nonce management issues and demonstrate the impact of keystream reuse"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review stream cipher assessment findings from a recent engagement for accuracy and completeness"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0875", "K0697", "S0971", "S0969"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-005 Software Security Assessment"]
+    },
+    "ietf": {
+      "rfcs": ["RFC 8439", "RFC 7465"]
+    }
+  },
+
+  "tags": [
+    "stream-cipher",
+    "chacha20",
+    "salsa20",
+    "rc4",
+    "nonce-reuse",
+    "keystream",
+    "symmetric",
+    "encryption",
+    "tls",
+    "transport-security"
+  ]
+}

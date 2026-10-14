@@ -1,0 +1,104 @@
+{
+  "id": "INTEL-OSINT-GEO",
+  "name": "Geospatial Intelligence (GEOINT)",
+  "domain": "intelligence",
+  "category": "Open-Source Intelligence (OSINT)",
+  "status": "active",
+  "description": "Exploiting geospatial data from open sources for intelligence purposes. Covers satellite and street-level imagery analysis, geotagged content extraction, facility identification, physical security assessment from open imagery, and correlating geospatial data with other intelligence to support engagements.",
+  "requires": [
+    "FOUND-ETHICS",
+    "FOUND-EVIDENCE"
+  ],
+  "recommended": [
+    "INTEL-OSINT-INFRA",
+    "FOUND-TOOLS"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to geospatial intelligence or open-source imagery analysis"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the types of geospatial data available from open sources and their intelligence applications",
+      "evidence": [
+        "Can describe common geospatial data sources (Google Earth, Sentinel, Mapillary)",
+        "Understands EXIF/geotag metadata and its intelligence value",
+        "Aware of basic geolocation concepts and coordinate systems"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs basic geospatial analysis using standard tools under supervision",
+      "evidence": [
+        "Extracts and analyzes geotag metadata from images and files under guidance",
+        "Uses satellite imagery platforms to identify and document facilities",
+        "Performs basic geolocation of photos using visual landmarks",
+        "Results reviewed by authorized personnel"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently conducts geospatial intelligence collection and analysis for engagements",
+      "evidence": [
+        "Geolocates images and content using chronolocation and visual analysis across 3+ cases",
+        "Assesses physical security posture of facilities from open imagery",
+        "Correlates geospatial data with infrastructure and person OSINT to enrich assessments",
+        "Produces geospatial intelligence reports that pass QA review"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex geospatial analysis; develops workflows; mentors analysts",
+      "evidence": [
+        "Conducts temporal analysis using historical imagery to detect changes",
+        "Develops automated geospatial data collection and analysis workflows",
+        "Performs complex geolocation challenges requiring multi-source correlation",
+        "Reviews and mentors junior analysts on geospatial tradecraft"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines geospatial intelligence methodology; develops novel techniques; trains teams",
+      "evidence": [
+        "Designed or maintains the lab's GEOINT methodology and toolchain",
+        "Develops novel geolocation or imagery analysis techniques",
+        "Publishes research on geospatial intelligence methods",
+        "Trains teams on GEOINT tradecraft and develops training scenarios"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Geolocate a set of images to within 1km accuracy using only open-source tools and imagery"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given a facility address, produce a physical security assessment using only open-source geospatial data"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["S0862", "K1104", "S0695"],
+      "work_roles": ["PD-WRL-006 Threat Analysis"]
+    },
+    "mitre_attack": {
+      "techniques": [
+        "T1591.001",
+        "T1591.002"
+      ]
+    }
+  },
+  "tags": [
+    "osint",
+    "geospatial",
+    "geoint",
+    "imagery-analysis",
+    "physical-security",
+    "reconnaissance"
+  ]
+}

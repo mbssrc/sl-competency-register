@@ -1,0 +1,104 @@
+{
+  "id": "SWSEC-REVIEW-AUTH",
+  "name": "Authentication & Authorization Logic Review",
+  "domain": "software-security",
+  "category": "Secure Code Review",
+  "status": "active",
+  "description": "Source code review focused on authentication and authorization logic. Covers session management implementation, RBAC/ABAC enforcement, middleware and decorator patterns, credential handling, multi-tenancy isolation, and business logic flaws in access control.",
+
+  "requires": [
+    "SWSEC-REVIEW-MANUAL"
+  ],
+  "recommended": [
+    "SWSEC-WEB-AUTHZ",
+    "FOUND-REPORT"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to authentication or authorization logic review"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands common auth/authz implementation patterns and flaws",
+      "evidence": [
+        "Can explain session management, token-based auth, and RBAC at the code level",
+        "Understands how missing authorization checks lead to IDOR and privilege escalation",
+        "Familiar with common auth bypass patterns in web frameworks"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Reviews basic auth/authz code under supervision",
+      "evidence": [
+        "Identified missing authorization checks in controller/route handlers",
+        "Reviewed session management code for common flaws (fixation, weak tokens)",
+        "Traced authentication flows to identify bypass opportunities",
+        "Findings reviewed by authorized reviewer"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently reviews auth/authz implementations across frameworks",
+      "evidence": [
+        "Independently reviewed auth/authz code on 5+ engagements",
+        "Identifies inconsistent authorization enforcement across endpoints",
+        "Reviews JWT creation, validation, and claims processing code",
+        "Maps authorization matrices from code and identifies gaps",
+        "Passed proficiency assessment on auth/authz logic review"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Reviews complex auth architectures; identifies subtle logic flaws",
+      "evidence": [
+        "Reviews multi-tenancy isolation code for cross-tenant data access",
+        "Identifies business logic vulnerabilities in multi-step authorization workflows",
+        "Reviews SSO integration code (SAML, OIDC) for implementation flaws",
+        "Mentors junior reviewers on auth/authz review methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Authority on auth/authz code patterns; develops review methodology",
+      "evidence": [
+        "Published research on authentication or authorization code vulnerabilities",
+        "Developed the lab's auth/authz review methodology and checklists",
+        "Reviews custom authentication protocols at the implementation level",
+        "Trains teams on auth/authz code review"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Review a multi-role web application codebase and identify all authorization bypass paths"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review of auth/authz findings from 3 recent code review engagements"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0686", "K1368", "S0972", "S0623"],
+      "work_roles": ["DD-WRL-005 Software Security Assessment"]
+    },
+    "owasp": ["A01:2025 Broken Access Control", "A07:2025 Authentication Failures"],
+    "cwe": ["CWE-862", "CWE-863", "CWE-306"]
+  },
+
+  "tags": [
+    "code-review",
+    "authentication",
+    "authorization",
+    "business-logic",
+    "privilege-escalation"
+  ]
+}

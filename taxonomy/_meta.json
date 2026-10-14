@@ -1,0 +1,112 @@
+{
+  "version": "1.0.0",
+  "title": "Security Laboratory Personnel Skill Taxonomy",
+  "description": "Comprehensive competency taxonomy for a full-spectrum security laboratory, aligned with ISO 17025 competence management principles.",
+
+  "proficiency_model": {
+    "name": "Dreyfus-ISO17025 Hybrid",
+    "levels": {
+      "0": {
+        "label": "None",
+        "dreyfus": null,
+        "iso17025_status": "N/A",
+        "description": "No exposure to this competency.",
+        "default_evidence": []
+      },
+      "1": {
+        "label": "Awareness",
+        "dreyfus": "Novice",
+        "iso17025_status": "Under training",
+        "description": "Can describe concepts; has completed awareness training.",
+        "default_evidence": [
+          "Completed relevant awareness or introductory training",
+          "Can explain the concept to a non-technical audience"
+        ]
+      },
+      "2": {
+        "label": "Guided Practice",
+        "dreyfus": "Advanced Beginner",
+        "iso17025_status": "Supervised",
+        "description": "Performs tasks under supervision; work output reviewed by authorized personnel.",
+        "default_evidence": [
+          "Completed hands-on lab exercises or training",
+          "Performed tasks under supervision on real engagements",
+          "Work reviewed and approved by authorized personnel"
+        ]
+      },
+      "3": {
+        "label": "Independent Practice",
+        "dreyfus": "Competent",
+        "iso17025_status": "Authorized",
+        "description": "Works independently; has passed proficiency assessment and received formal authorization.",
+        "authorization_required": true,
+        "default_evidence": [
+          "Demonstrated competence in 3+ real engagements",
+          "Passed proficiency assessment",
+          "Produces compliant reports independently"
+        ]
+      },
+      "4": {
+        "label": "Advanced / Mentor",
+        "dreyfus": "Proficient",
+        "iso17025_status": "Authorized (complex cases)",
+        "description": "Handles complex cases; mentors others; reviews work of junior personnel.",
+        "authorization_required": true,
+        "default_evidence": [
+          "Handles complex and unusual cases",
+          "Develops custom tools or methodologies",
+          "Reviews and mentors junior personnel",
+          "Contributes to methodology documentation"
+        ]
+      },
+      "5": {
+        "label": "Expert / Authority",
+        "dreyfus": "Expert",
+        "iso17025_status": "Technical authority",
+        "description": "Recognized authority; develops methods; publishes research; trains teams.",
+        "authorization_required": true,
+        "default_evidence": [
+          "Published research, CVEs, or novel techniques",
+          "Develops lab methodology and training materials",
+          "Recognized as internal or external expert",
+          "Trains teams and leads technical direction"
+        ]
+      }
+    },
+    "authorization_note": "Authorization (level 3+) is a separate, explicit management decision — not just reaching a proficiency threshold. This follows ISO 17025 Clause 6.2.5(e)."
+  },
+
+  "domains": [
+    { "id": "FOUND",  "name": "Foundations",                   "directory": "foundations" },
+    { "id": "ADVSIM", "name": "Adversarial Simulation",        "directory": "adversarial-simulation" },
+    { "id": "INTEL",  "name": "Intelligence",                  "directory": "intelligence" },
+    { "id": "NETSEC", "name": "Network Security",              "directory": "network-security" },
+    { "id": "HWSEC",  "name": "Hardware Security",             "directory": "hardware-security" },
+    { "id": "WSEC",   "name": "Wireless & Signal Security",    "directory": "wireless-signal-security" },
+    { "id": "SWSEC",  "name": "Software & Application Security", "directory": "software-security" },
+    { "id": "INFRA",  "name": "Infrastructure Security",       "directory": "infrastructure-security" },
+    { "id": "DFIR",   "name": "Digital Forensics",             "directory": "digital-forensics" },
+    { "id": "CRYPTO", "name": "Cryptography",                  "directory": "cryptography" },
+    { "id": "AIML",   "name": "AI & ML Security",              "directory": "ai-ml-security" },
+    { "id": "ICSIOT", "name": "ICS & IoT Security",            "directory": "ics-iot-security" }
+  ],
+
+  "framework_versions": {
+    "nice": "NICE Framework Components v2.2.0 — tks are v2 K/S statement IDs; work_roles are \"<Work Role ID> <name>\""
+  },
+
+  "relationship_types": [
+    {
+      "id": "requires",
+      "description": "Hard prerequisite — must be mastered before this skill. Inverse (required_by) is computed by tooling.",
+      "direction": "directed",
+      "strength": "hard"
+    },
+    {
+      "id": "recommended",
+      "description": "Soft suggestion — beneficial but not blocking. Inverse (recommended_for) is computed by tooling.",
+      "direction": "directed",
+      "strength": "soft"
+    }
+  ]
+}

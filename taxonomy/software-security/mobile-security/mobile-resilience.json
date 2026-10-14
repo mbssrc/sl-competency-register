@@ -1,0 +1,108 @@
+{
+  "id": "SWSEC-MOB-RESILIENCE",
+  "name": "Mobile App Resilience Assessment",
+  "domain": "software-security",
+  "category": "Mobile Security",
+  "status": "active",
+  "description": "Evaluation of mobile application resilience controls against reverse engineering and tampering. Covers anti-tamper and integrity checks, code obfuscation, root/jailbreak and emulator detection, anti-debugging and anti-hooking, and device binding, assessed against OWASP MASVS-RESILIENCE and the corresponding MASTG tests. General Android and iOS security testing belongs to SWSEC-MOB-ANDROID and SWSEC-MOB-IOS.",
+
+  "requires": [
+    "SWSEC-MOB-ANDROID"
+  ],
+  "recommended": [
+    "SWSEC-MOB-IOS",
+    "SWSEC-RE-ANTIRE",
+    "SWSEC-DAST-INSTRUMENT"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to mobile resilience assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the purpose and limits of mobile resilience controls",
+      "evidence": [
+        "Can explain the MASVS-RESILIENCE control group and its role as defence-in-depth",
+        "Can describe common root/jailbreak detection, anti-debugging and obfuscation techniques",
+        "Understands why resilience controls delay rather than prevent a determined attacker"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Tests basic resilience controls under supervision",
+      "evidence": [
+        "Bypassed standard root or jailbreak detection using Frida or Objection in a lab app",
+        "Identified the presence and type of obfuscation in a decompiled application",
+        "Repackaged an application to test signature and integrity verification",
+        "Work reviewed by authorized tester"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses resilience controls against MASTG test cases",
+      "evidence": [
+        "Independently assessed resilience of 5+ mobile applications against MASVS-RESILIENCE",
+        "Measures and reports the effort required to bypass each control rather than only pass/fail",
+        "Tests anti-debugging, anti-hooking and emulator detection on Android and iOS builds",
+        "Passed proficiency assessment on mobile resilience testing"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Assesses commercial protection solutions and layered resilience schemes",
+      "evidence": [
+        "Defeats commercial app shielding or RASP products including native-layer checks",
+        "Deobfuscates control-flow-flattened or string-encrypted code to locate protection logic",
+        "Advises clients on resilience control design relative to their threat model",
+        "Mentors junior testers on resilience assessment methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Authority on mobile resilience; defines evaluation methodology",
+      "evidence": [
+        "Developed the lab's resilience evaluation methodology and effort-based rating scheme",
+        "Published research on bypassing or evaluating mobile protection mechanisms",
+        "Builds custom tooling for automated detection and bypass of protection schemes",
+        "Trains teams on advanced mobile anti-tamper analysis"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess a prepared mobile application with layered resilience controls, bypass each control and report effort and findings against MASVS-RESILIENCE"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review a submitted resilience assessment report for correct MASTG test coverage and justified effort ratings"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0688", "K0842", "S0656", "S0738"],
+      "work_roles": ["DD-WRL-005 Software Security Assessment", "PD-WRL-007 Vulnerability Analysis"]
+    },
+    "owasp": ["OWASP MASVS", "OWASP MASTG"],
+    "cwe": ["CWE-693", "CWE-656"]
+  },
+
+  "tags": [
+    "mobile",
+    "owasp-mobile",
+    "obfuscation",
+    "anti-tamper",
+    "frida",
+    "android",
+    "ios",
+    "debugging",
+    "reverse-engineering"
+  ]
+}

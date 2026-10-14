@@ -1,0 +1,114 @@
+{
+  "id": "DFIR-MEM-ROOTKIT",
+  "name": "Rootkit & Kernel Analysis",
+  "domain": "digital-forensics",
+  "category": "Memory Forensics",
+  "status": "active",
+  "description": "Ability to detect and analyse kernel-level rootkits and manipulation through memory forensics. Covers DKOM (Direct Kernel Object Manipulation), kernel callback enumeration, driver analysis including bring-your-own-vulnerable-driver abuse, ETW tampering, bootkit indicators in memory, and the legacy SSDT and IDT hooking techniques still seen on x86. Requires deep understanding of OS kernel internals.",
+
+  "requires": [
+    "DFIR-MEM-MALDET",
+    "FOUND-EVIDENCE"
+  ],
+  "recommended": [
+    "DFIR-MAL-STATIC",
+    "SWSEC-OS-KERNEL"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to rootkit or kernel-level memory analysis"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the concept of kernel-level rootkits and why they are difficult to detect from a running system",
+      "evidence": [
+        "Can explain what a rootkit is and how kernel-mode rootkits differ from user-mode",
+        "Understands DKOM, SSDT hooking, and driver-based rootkit concepts at a high level",
+        "Can describe why memory forensics is essential for rootkit detection"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Uses Volatility kernel analysis plugins to scan for rootkit indicators under supervision",
+      "evidence": [
+        "Ran Volatility ssdt, callbacks, driverscan, and modules plugins under guidance",
+        "Compared loaded driver lists with on-disk driver files to identify discrepancies",
+        "Identified DKOM-hidden processes using cross-referencing techniques (pslist vs. psscan)",
+        "Documented kernel analysis findings with supervisor review"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently detects kernel-level compromise and rootkits in memory dumps and reports findings with technical accuracy",
+      "evidence": [
+        "Independently identified kernel rootkits or DKOM manipulation in 3+ investigations",
+        "Correctly determined rootkit persistence mechanisms from memory evidence",
+        "Extracted and analysed malicious kernel drivers from memory dumps",
+        "Produced rootkit analysis reports with clear technical explanations for case findings"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Analyses advanced kernel exploitation and bootkits; develops detection capabilities for new rootkit techniques",
+      "evidence": [
+        "Detected bootkit indicators in memory and corroborated suspected firmware-level persistence with firmware or disk acquisition",
+        "Analysed rootkits using advanced kernel patching or hypervisor-based subversion",
+        "Developed custom detection plugins for emerging kernel-level threats",
+        "Mentors analysts on kernel internals and rootkit detection methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines kernel forensics methodology; researches new kernel attack surfaces; recognised authority in rootkit detection",
+      "evidence": [
+        "Authored or maintains the lab's kernel forensics and rootkit detection procedures",
+        "Published research on kernel rootkit techniques or detection methods",
+        "Contributes to open-source kernel forensics tooling or frameworks",
+        "Trains teams and presents on advanced kernel forensics at conferences or in training courses"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Analyse a memory dump from a system compromised with a kernel rootkit, identify the rootkit technique, extract artifacts, and document findings"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given a memory dump with subtle kernel manipulation, determine whether rootkit activity is present and characterise the technique used"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0923", "S0599", "K0480", "K0852", "S0642"],
+      "work_roles": ["PD-WRL-002 Digital Forensics", "PD-WRL-003 Incident Response"]
+    },
+    "sfia": {
+      "skill": "DGFS"
+    },
+    "giac": ["GREM", "GCFA"]
+  },
+
+  "tags": [
+    "rootkit",
+    "kernel",
+    "dkom",
+    "ssdt-hooking",
+    "bootkit",
+    "driver-analysis",
+    "kernel-forensics",
+    "firmware",
+    "forensics",
+    "hypervisor",
+    "persistence",
+    "windows",
+    "malware"
+  ]
+}

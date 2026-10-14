@@ -1,0 +1,106 @@
+{
+  "id": "ADVSIM-SE-PRETEXT",
+  "name": "Pretext Development",
+  "domain": "adversarial-simulation",
+  "category": "Social Engineering",
+  "status": "active",
+  "description": "Ability to develop convincing pretexts for social engineering operations. Covers persona creation, backstory construction, prop and credential fabrication, scenario design, and adapting pretexts to target organisational culture. A foundational skill that underpins phishing, vishing, and physical social engineering.",
+
+  "requires": [
+    "FOUND-ETHICS"
+  ],
+  "recommended": [
+    "ADVSIM-SE-OSINT",
+    "FOUND-COMM"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to pretext development"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands what a pretext is and the principles behind effective pretexting",
+      "evidence": [
+        "Completed social engineering fundamentals training covering pretext theory",
+        "Can explain the elements of a credible pretext (authority, urgency, social proof)",
+        "Understands Cialdini's principles of influence and their application"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Develops pretexts using established templates with senior review",
+      "evidence": [
+        "Created pretexts for lab exercises based on provided templates and scenarios",
+        "Developed personas with basic backstories reviewed by experienced operators",
+        "Adapted standard pretext templates to specific target contexts with guidance"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently develops tailored pretexts for a range of social engineering vectors",
+      "evidence": [
+        "Designed original pretexts used successfully in 3+ engagements",
+        "Created pretexts tailored to target organisational culture based on OSINT",
+        "Developed supporting materials (fake emails, badges, websites) for pretexts",
+        "Pretexts withstood target scrutiny without detection",
+        "Kept pretexts within agreed legal limits, avoiding impersonation of law enforcement, regulators or named third-party organisations without written authorisation"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Creates sophisticated multi-layered pretexts; develops the lab's pretext library",
+      "evidence": [
+        "Designed multi-stage pretexts spanning email, phone, and in-person channels",
+        "Created pretexts that successfully targeted security-aware personnel",
+        "Built and maintains a pretext library and development framework for the lab",
+        "Reviews and improves pretexts developed by junior operators"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines pretexting methodology; applies behavioural psychology expertise; trains teams",
+      "evidence": [
+        "Authored the lab's pretext development methodology and training curriculum",
+        "Applies advanced behavioural psychology principles to pretext design",
+        "Trains teams on pretext development through workshops and scenario exercises",
+        "Recognised as an authority on social engineering pretext craft"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "problem_solving",
+      "description": "Given a target organisation profile and engagement objective, develop a complete pretext including persona, backstory, approach vector, and supporting materials"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review pretexts and supporting materials from recent social engineering engagements"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["S0591", "K1087"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis"]
+    },
+    "mitre_attack": {
+      "tactics": ["TA0042", "TA0043", "TA0005"],
+      "techniques": ["T1585.001", "T1656", "T1598"]
+    }
+  },
+
+  "tags": [
+    "pretext",
+    "persona",
+    "social-engineering",
+    "influence",
+    "scenario-design",
+    "osint"
+  ]
+}

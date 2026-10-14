@@ -1,0 +1,117 @@
+{
+  "id": "WSEC-SPEC-SHIELD",
+  "name": "Shielding Effectiveness Evaluation",
+  "domain": "wireless-signal-security",
+  "category": "Spectrum Analysis & TEMPEST",
+  "status": "active",
+  "description": "Ability to measure and evaluate the electromagnetic shielding effectiveness of enclosures, rooms, and facilities. Covers SE measurement methodology per IEEE 299/299.1 and related enclosure specifications (e.g., EN 50147-1, NSA 94-106), identification of shielding degradation, penetration and filter assessment, door and window seal testing, and evaluation of TEMPEST installation shielding adequacy.",
+  "requires": [
+    "WSEC-SPEC-ANALYSIS",
+    "FOUND-STANDARDS"
+  ],
+  "recommended": [
+    "WSEC-SPEC-TEMPEST",
+    "FOUND-QA"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to shielding effectiveness measurement"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands shielding principles and measurement standards",
+      "evidence": [
+        "Can describe how electromagnetic shielding works (reflection, absorption, re-reflection)",
+        "Understands the basics of IEEE 299 shielding effectiveness measurement methodology",
+        "Completed training on shielding effectiveness evaluation fundamentals"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs shielding effectiveness measurements using standard setups under supervision",
+      "evidence": [
+        "Set up transmit and receive equipment for SE measurement per lab procedures under guidance",
+        "Measured shielding effectiveness at specified frequencies following standard methodology under supervision",
+        "Identified measurement points (doors, penetrations, seams) under guidance"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently conducts shielding effectiveness evaluations per applicable standards",
+      "evidence": [
+        "Independently measured shielding effectiveness for 3+ enclosures or facilities",
+        "Identified shielding degradation points and documented their location and severity",
+        "Assessed penetration filters and waveguide-below-cutoff entries for shielding integrity",
+        "Produced SE evaluation reports with calibrated measurements referenced to applicable standards"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Evaluates complex shielded installations; diagnoses shielding failures; advises on remediation",
+      "evidence": [
+        "Diagnosed shielding effectiveness degradation root causes in operational facilities",
+        "Evaluated shielding performance across wide frequency ranges including magnetic, electric, and plane-wave regimes",
+        "Advised facility operators on shielding remediation and maintenance",
+        "Mentors junior staff on SE measurement technique and standard application"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines lab SE measurement methodology; designs shielded facilities; recognized measurement authority",
+      "evidence": [
+        "Authored the lab's shielding effectiveness measurement methodology",
+        "Designed or specified shielded room/facility construction to meet TEMPEST zone requirements (SDIP-28)",
+        "Maintained measurement traceability and calibration standards for SE testing",
+        "Trains teams on SE measurement and advises on shielded facility design and certification"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Measure the shielding effectiveness of a lab enclosure at specified frequencies, identify degradation points, and produce a standards-compliant evaluation report"
+    },
+    {
+      "type": "direct_observation",
+      "description": "Observe SE measurement setup, calibration, measurement execution, and degradation point identification"
+    }
+  ],
+  "equipment": [
+    "Keysight N9040B or equivalent spectrum analyzer",
+    "Calibrated signal generator with external amplifier",
+    "Calibrated broadband antenna set (biconical, log-periodic, horn)",
+    "Near-field probe set for leak detection"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1284", "K1248", "K0937"],
+      "work_roles": ["DD-WRL-007 Systems Testing and Evaluation", "OG-WRL-001 Communications Security (COMSEC) Management"]
+    },
+    "sfia": {
+      "skill": "SCAD",
+      "levels": [
+        3,
+        4,
+        5
+      ]
+    },
+    "ieee": {
+      "standards": [
+        "IEEE 299",
+        "IEEE 299.1"
+      ]
+    }
+  },
+  "tags": [
+    "shielding",
+    "shielding-effectiveness",
+    "ieee-299",
+    "tempest",
+    "facility-security",
+    "measurement"
+  ]
+}

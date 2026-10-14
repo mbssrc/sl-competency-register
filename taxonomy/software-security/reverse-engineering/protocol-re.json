@@ -1,0 +1,108 @@
+{
+  "id": "SWSEC-RE-PROTOCOL",
+  "name": "Protocol Reverse Engineering",
+  "domain": "software-security",
+  "category": "Reverse Engineering",
+  "status": "active",
+  "description": "Reverse engineering of network protocols and file formats from binary implementations or traffic captures. Covers traffic analysis, message structure recovery, state machine extraction, cryptographic protocol identification, and documentation of undocumented protocols.",
+
+  "requires": [
+    "SWSEC-RE-DISASM"
+  ],
+  "recommended": [
+    "SWSEC-RE-DECOMPILE",
+    "SWSEC-DAST-INSTRUMENT",
+    "SWSEC-FUZZ-CORE",
+    "WSEC-PROTO-REVENG"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to protocol reverse engineering"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands network protocols, serialization formats, and RE concepts",
+      "evidence": [
+        "Can explain common serialization formats (protobuf, msgpack, ASN.1)",
+        "Familiar with Wireshark for traffic capture and analysis",
+        "Understands the concept of reverse engineering a protocol from traffic or binaries"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Analyzes simple protocols under supervision using traffic captures",
+      "evidence": [
+        "Captured and analyzed protocol traffic using Wireshark",
+        "Identified message boundaries, fields, and basic structure in traffic",
+        "Correlated network traffic with application behavior",
+        "Work reviewed by authorized analyst"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently reverse engineers protocols to produce functional documentation",
+      "evidence": [
+        "Independently reverse engineered protocols on 3+ engagements",
+        "Recovers message structures, field types, and state machines from traffic and binaries",
+        "Writes Wireshark dissectors or protocol parsers for reverse-engineered protocols",
+        "Passed proficiency assessment on protocol reverse engineering"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles encrypted and complex multi-stage protocols",
+      "evidence": [
+        "Reverse engineers protocols with encryption by extracting keys via instrumentation",
+        "Recovers complex state machines with authentication and session management",
+        "Develops fuzzers targeting reverse-engineered protocol specifications",
+        "Mentors others on protocol RE methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Authority on protocol reverse engineering; handles novel and complex protocols",
+      "evidence": [
+        "Published research on reverse-engineered protocols or protocol vulnerabilities",
+        "Developed the lab's protocol RE methodology and tooling",
+        "Reverse engineers novel binary protocols with custom crypto and compression",
+        "Trains teams on protocol reverse engineering"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Given a traffic capture and client binary, reverse engineer the protocol and produce a specification document"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review of protocol documentation and dissector quality from recent engagements"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0851", "K0674", "K1089", "S0875", "S0738"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development", "PD-WRL-007 Vulnerability Analysis"]
+    },
+    "mitre_attack": {"techniques": ["T1040"]}
+  },
+
+  "tags": [
+    "reverse-engineering",
+    "protocol",
+    "network",
+    "wireshark",
+    "traffic-analysis",
+    "cryptographic",
+    "encryption",
+    "protocol-analysis",
+    "fuzzing"
+  ]
+}

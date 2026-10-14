@@ -1,0 +1,66 @@
+{
+  "A01:2025 Broken Access Control": [
+    "SWSEC-REVIEW-AUTH",
+    "SWSEC-WEB-AUTHZ",
+    "SWSEC-WEB-INJECT"
+  ],
+  "A02:2025 Security Misconfiguration": [
+    "SWSEC-WEB-HTTPCONF"
+  ],
+  "A03:2025 Software Supply Chain Failures": [
+    "SWSEC-SUPPLY-DEP",
+    "SWSEC-SUPPLY-SBOM"
+  ],
+  "A04:2025 Cryptographic Failures": [
+    "SWSEC-REVIEW-CRYPTO"
+  ],
+  "A05:2025 Injection": [
+    "SWSEC-WEB-INJECT",
+    "SWSEC-WEB-SQLI",
+    "SWSEC-WEB-XSS"
+  ],
+  "A06:2025 Insecure Design": [
+    "SWSEC-WEB-LOGIC"
+  ],
+  "A07:2025 Authentication Failures": [
+    "SWSEC-REVIEW-AUTH",
+    "SWSEC-WEB-AUTHZ"
+  ],
+  "A08:2025 Software or Data Integrity Failures": [
+    "SWSEC-WEB-DESER"
+  ],
+  "OWASP API Security Top 10 2023": [
+    "SWSEC-WEB-API"
+  ],
+  "OWASP Code Review Guide": [
+    "SWSEC-REVIEW-MANUAL",
+    "SWSEC-SAST-CUSTOM",
+    "SWSEC-SAST-TRIAGE"
+  ],
+  "OWASP DevSecOps Guideline": [
+    "SWSEC-SAST-TOOLING"
+  ],
+  "OWASP MASTG": [
+    "SWSEC-MOB-ANDROID",
+    "SWSEC-MOB-IOS",
+    "SWSEC-MOB-RESILIENCE",
+    "SWSEC-MOB-TIC"
+  ],
+  "OWASP MASVS": [
+    "SWSEC-MOB-ANDROID",
+    "SWSEC-MOB-IOS",
+    "SWSEC-MOB-RESILIENCE"
+  ],
+  "OWASP Smart Contract Top 10": [
+    "SWSEC-APP-CONTRACT"
+  ],
+  "OWASP Top 10 CI/CD Security Risks": [
+    "SWSEC-SUPPLY-PIPELINE"
+  ],
+  "OWASP WSTG-BUSL": [
+    "SWSEC-WEB-LOGIC"
+  ],
+  "OWASP Web Security Testing Guide": [
+    "SWSEC-DAST-WEBAPP"
+  ]
+}

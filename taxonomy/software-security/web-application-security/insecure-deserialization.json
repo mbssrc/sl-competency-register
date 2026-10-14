@@ -1,0 +1,109 @@
+{
+  "id": "SWSEC-WEB-DESER",
+  "name": "Insecure Deserialization Testing",
+  "domain": "software-security",
+  "category": "Web Application Security",
+  "status": "active",
+  "description": "Identification and exploitation of insecure deserialization vulnerabilities across language runtimes and serialization formats. Covers detecting deserialization sinks, analyzing available gadget chains, and demonstrating impact in Java (ObjectInputStream, Jackson, XStream), .NET (BinaryFormatter, Json.NET), Python (pickle, PyYAML), PHP (unserialize), Ruby (Marshal), and Node.js (node-serialize). Includes assessment of serialization format choice and defense effectiveness.",
+  "requires": [
+    "FOUND-ETHICS"
+  ],
+  "recommended": [
+    "SWSEC-WEB-INJECT",
+    "SWSEC-RE-DECOMPILE",
+    "SWSEC-REVIEW-MANUAL",
+    "FOUND-TOOLS"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to deserialization vulnerability assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands why deserialization of untrusted data is dangerous and how it leads to code execution",
+      "evidence": [
+        "Can explain the deserialization attack pattern: untrusted input reaches a deserialization sink with available gadget chains",
+        "Aware of which languages and serialization formats are commonly vulnerable",
+        "Familiar with CWE-502 and OWASP A08:2025 Software or Data Integrity Failures"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Can detect and exploit known deserialization vulnerabilities in lab settings under guidance",
+      "evidence": [
+        "Uses ysoserial or equivalent tooling to generate payloads for known Java gadget chains",
+        "Identifies deserialization indicators in HTTP traffic (magic bytes, base64-encoded objects)",
+        "Exploits basic deserialization vulnerabilities in controlled exercises with supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently identifies deserialization sinks and exploits them across common runtimes",
+      "evidence": [
+        "Detects deserialization sinks through traffic analysis and code review",
+        "Selects and adapts gadget chains for the target runtime and available libraries",
+        "Exploits deserialization in at least two different language ecosystems",
+        "Assesses effectiveness of deserialization defenses (allow-lists, type filtering, format restrictions)",
+        "Produces findings with clear impact demonstration and remediation guidance"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Discovers novel gadget chains; assesses custom serialization formats; mentors others",
+      "evidence": [
+        "Discovers new gadget chains by analyzing application and library classpaths",
+        "Assesses custom or binary serialization formats for exploitability",
+        "Evaluates deserialization in non-HTTP contexts (message queues, RPC, caching layers)",
+        "Reviews and mentors junior testers on deserialization methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on deserialization security; publishes research; develops methodology",
+      "evidence": [
+        "Published research on novel gadget chains, deserialization bypass techniques, or defense mechanisms",
+        "Developed the lab's deserialization testing methodology and training materials",
+        "Deep expertise across multiple serialization formats and language runtimes",
+        "Trains teams on deserialization exploitation and secure serialization practices"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Given applications using different serialization formats (Java, .NET, Python), identify deserialization sinks and achieve code execution using appropriate gadget chains"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review deserialization findings from engagements for sink identification accuracy, gadget chain selection, and remediation quality"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0688", "K1079", "S0656", "S0737"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-005 Software Security Assessment"]
+    },
+    "owasp": [
+      "A08:2025 Software or Data Integrity Failures"
+    ],
+    "cwe": [
+      "CWE-502"
+    ],
+    "mitre_attack": {"techniques": ["T1190"]}
+  },
+  "tags": [
+    "deserialization",
+    "gadget-chain",
+    "owasp-top-10",
+    "java",
+    "dotnet",
+    "python",
+    "web",
+    "code-review",
+    "traffic-analysis"
+  ]
+}

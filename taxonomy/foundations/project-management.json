@@ -1,0 +1,97 @@
+{
+  "id": "FOUND-PM",
+  "name": "Project Management",
+  "domain": "foundations",
+  "category": "Foundations",
+  "status": "active",
+  "description": "Ability to scope, plan, schedule, and manage security engagements from kick-off through delivery. Covers effort estimation, resource planning, milestone tracking, client expectation management, and handling scope changes.",
+
+  "requires": [],
+  "recommended": [
+    "FOUND-COMM",
+    "FOUND-REPORT"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to project or engagement management"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the phases of a security engagement and basic project management concepts",
+      "evidence": [
+        "Can describe the typical engagement lifecycle (scoping, execution, reporting, delivery)",
+        "Understands time tracking and task allocation"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Manages own workload within an engagement; provides status updates",
+      "evidence": [
+        "Tracks own tasks and time accurately",
+        "Provides progress updates to engagement lead",
+        "Flags blockers and delays promptly"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Leads small to medium engagements; manages timeline and deliverables",
+      "evidence": [
+        "Led 3+ engagements from scoping to delivery",
+        "Demonstrates consistently reasonable effort estimates with post-engagement review",
+        "Manages client expectations on scope and timeline"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Manages complex, multi-team engagements; handles scope changes and escalations",
+      "evidence": [
+        "Manages concurrent or multi-phase engagements",
+        "Handles scope changes and client escalations professionally",
+        "Mentors junior staff on engagement management"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines engagement methodology; manages lab-wide resource planning",
+      "evidence": [
+        "Designed or maintains the lab's engagement management framework",
+        "Contributes to lab-wide capacity and resource planning",
+        "Trains teams on project management practices"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "work_product_review",
+      "description": "Review scoping documents, timelines, and status reports from recent engagements"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Scenario: handle a mid-engagement scope change request with timeline and resource implications"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0799", "K1202", "S0639", "K0664"],
+      "work_roles": ["OG-WRL-011 Secure Project Management"]
+    },
+    "sfia": {
+      "skill": "PRMG",
+      "levels": [4, 5, 6]
+    }
+  },
+
+  "tags": [
+    "cross-cutting",
+    "management",
+    "scoping",
+    "engagement-lifecycle"
+  ]
+}

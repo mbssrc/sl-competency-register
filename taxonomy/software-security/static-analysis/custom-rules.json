@@ -1,0 +1,103 @@
+{
+  "id": "SWSEC-SAST-CUSTOM",
+  "name": "Custom Static Analysis Rule Development",
+  "domain": "software-security",
+  "category": "Static Analysis",
+  "status": "active",
+  "description": "Development of custom static analysis rules and queries for detecting organization-specific or novel vulnerability patterns. Covers Semgrep rule authoring, CodeQL query development, custom checker creation, and rule testing and validation.",
+
+  "requires": [
+    "SWSEC-SAST-TOOLING",
+    "SWSEC-REVIEW-MANUAL"
+  ],
+  "recommended": [
+    "SWSEC-SAST-TRIAGE"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to custom static analysis rule development"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands that SAST tools support custom rules and their purpose",
+      "evidence": [
+        "Can explain the value of custom rules for detecting organization-specific patterns",
+        "Familiar with Semgrep rule syntax or CodeQL query concepts",
+        "Understands pattern matching and data flow analysis in SAST engines"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Writes basic custom rules under supervision",
+      "evidence": [
+        "Authored simple Semgrep rules or CodeQL queries for known patterns",
+        "Tested rules against known-vulnerable code samples",
+        "Rules reviewed and validated by authorized analyst",
+        "Completed hands-on training on at least one rule authoring framework"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently writes and validates custom rules for engagement-specific patterns",
+      "evidence": [
+        "Independently authored custom rules deployed on 3+ engagements",
+        "Writes data flow rules that track taint from sources to sinks",
+        "Tests rules against true positive and false positive test cases",
+        "Passed proficiency assessment on custom rule development"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Develops complex rules; maintains rule libraries; optimizes performance",
+      "evidence": [
+        "Maintains a library of reusable custom rules for the lab",
+        "Develops inter-procedural and cross-file analysis rules",
+        "Optimizes rule performance for large codebases",
+        "Mentors others on rule authoring best practices"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Authority on custom SAST rule development; contributes to the community",
+      "evidence": [
+        "Published custom rules or research on static analysis techniques",
+        "Developed the lab's custom rule development standards and testing framework",
+        "Contributes rules to open-source SAST rule repositories",
+        "Trains teams on advanced rule development techniques"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Given a novel vulnerability pattern, write a custom Semgrep or CodeQL rule that detects it with acceptable precision"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review of custom rules authored for quality, test coverage, and detection effectiveness"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1099", "S0382", "S0883", "S0650"],
+      "work_roles": ["DD-WRL-005 Software Security Assessment", "DD-WRL-003 Secure Software Development"]
+    },
+    "owasp": ["OWASP Code Review Guide"]
+  },
+
+  "tags": [
+    "sast",
+    "custom-rules",
+    "semgrep",
+    "codeql",
+    "automation",
+    "static-analysis"
+  ]
+}

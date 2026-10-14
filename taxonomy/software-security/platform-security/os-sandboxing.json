@@ -1,0 +1,114 @@
+{
+  "id": "SWSEC-PLATFORM-SANDBOX",
+  "name": "OS Sandboxing & Isolation Evaluation",
+  "domain": "software-security",
+  "category": "Platform Security",
+  "status": "active",
+  "description": "Evaluation and bypass testing of OS-level sandboxing and application isolation mechanisms. Covers Windows Sandbox and AppContainer, macOS App Sandbox and Hardened Runtime, Linux Landlock, seccomp-bpf profiles, Flatpak and Snap confinement, Chromium-style multi-process sandboxes, and isolation boundary analysis for security product evaluation.",
+
+  "requires": [
+    "FOUND-ETHICS"
+  ],
+  "recommended": [
+    "SWSEC-OS-KERNEL",
+    "SWSEC-PLATFORM-LSM",
+    "SWSEC-OS-MACPRIV",
+    "FOUND-TOOLS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to OS sandboxing evaluation"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands sandboxing concepts and isolation mechanisms across major OSes",
+      "evidence": [
+        "Can explain Windows AppContainer, macOS App Sandbox, and Linux seccomp/Landlock",
+        "Understands the principle of least privilege as applied to sandbox design",
+        "Familiar with common sandbox escape categories (file system, IPC, kernel)",
+        "Completed introductory training on OS isolation mechanisms"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Enumerates sandbox configurations and tests known escape techniques under supervision",
+      "evidence": [
+        "Enumerated sandbox policies and restrictions on target applications",
+        "Tested known sandbox escape techniques against lab environments",
+        "Analyzed Flatpak/Snap confinement profiles for overly permissive configurations",
+        "Work reviewed by authorized researcher"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently evaluates sandbox implementations and identifies weaknesses",
+      "evidence": [
+        "Independently assessed sandbox boundary integrity for 3+ applications",
+        "Identifies IPC and file system based sandbox escape vectors",
+        "Evaluates sandbox policy completeness against application threat model",
+        "Passed proficiency assessment on sandbox evaluation"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Discovers novel sandbox escapes; evaluates complex multi-layered isolation",
+      "evidence": [
+        "Discovers sandbox escape vulnerabilities through auditing and fuzzing",
+        "Evaluates multi-layered isolation architectures (sandbox + container + hypervisor)",
+        "Assesses browser and productivity application sandbox implementations",
+        "Mentors team on sandbox evaluation methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Authority on OS isolation; published sandbox escape research",
+      "evidence": [
+        "Published research or CVEs on sandbox escape vulnerabilities",
+        "Developed lab methodology for sandbox and isolation evaluation",
+        "Contributes to sandbox design guidance for application developers",
+        "Trains teams and presents at conferences on sandbox security"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Evaluate the sandbox implementation of a provided application, document the isolation boundary, and identify potential escape vectors"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given a sandbox policy configuration, identify weaknesses and propose escape strategies with justification"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0923", "K0806", "K1373", "S0606"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-004 Secure Systems Development"]
+    },
+    "mitre_attack": {"techniques": ["T1559", "T1611", "T1548"]},
+    "cwe": ["CWE-269", "CWE-250"]
+  },
+
+  "tags": [
+    "sandbox",
+    "isolation",
+    "appcontainer",
+    "seccomp",
+    "landlock",
+    "app-sandbox",
+    "escape",
+    "containers",
+    "hypervisor",
+    "linux",
+    "macos",
+    "windows",
+    "fuzzing"
+  ]
+}

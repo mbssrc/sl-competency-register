@@ -1,0 +1,116 @@
+{
+  "id": "ADVSIM-PHYS-ACCESS",
+  "name": "Access Control Bypass",
+  "domain": "adversarial-simulation",
+  "category": "Physical Security",
+  "status": "active",
+  "description": "Ability to assess and bypass electronic and physical access control systems as part of authorised security assessments. Covers RFID/NFC badge cloning, access control system architecture assessment, tailgating, door hardware bypass (request-to-exit sensors, door gap tools), and evaluation of access control policies and configurations.",
+
+  "requires": [
+    "FOUND-ETHICS"
+  ],
+  "recommended": [
+    "ADVSIM-PHYS-LOCKPICK",
+    "ADVSIM-PHYS-COVERT",
+    "HWSEC-RF-NFC",
+    "FOUND-EVIDENCE"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to access control systems or bypass techniques"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands common access control technologies and their general weaknesses",
+      "evidence": [
+        "Completed access control systems fundamentals training",
+        "Can identify common access control technologies (proximity cards, smart cards, biometrics, keypads)",
+        "Understands the difference between low-frequency (125kHz) and high-frequency (13.56MHz) card systems"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs basic access control assessments and bypass under supervision",
+      "evidence": [
+        "Cloned low-frequency proximity cards in lab environment using Proxmark or similar",
+        "Performed tailgating exercises under supervision during physical assessments",
+        "Used basic door bypass tools (under-door tools, shims) in lab training",
+        "Carried signed authorisation and engagement contact details on every on-site exercise, and followed the agreed procedure when challenged"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses and bypasses standard access control systems on engagements",
+      "evidence": [
+        "Conducted access control assessments on 3+ physical penetration tests",
+        "Successfully cloned access badges and used them to gain entry on live engagements",
+        "Identified and exploited request-to-exit sensor weaknesses and door hardware gaps",
+        "Documented access control weaknesses with evidence for client reports"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Bypasses advanced access control systems; assesses system architecture; mentors team",
+      "evidence": [
+        "Assessed high-frequency smart card deployments (e.g., legacy iCLASS, MIFARE Classic, DESFire) for weaknesses such as UID-only reads, default or diversified-key flaws, and downgrade, and bypassed multi-factor access control where weaknesses allowed",
+        "Evaluated access control system architecture and policy configurations",
+        "Developed access control bypass toolkits and methodologies for the lab",
+        "Mentors team on access control technology and bypass techniques"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Researches access control vulnerabilities; defines lab methodology; recognised specialist",
+      "evidence": [
+        "Discovered or published vulnerabilities in commercial access control systems",
+        "Authored the lab's access control assessment methodology",
+        "Trains teams on access control technology, from card systems to biometrics",
+        "Recognised as the lab's authority on electronic access control security"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Given a lab-configured access control system, identify the technology, assess weaknesses, and demonstrate bypass within a time constraint"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review access control assessment findings from recent physical penetration test reports"
+    }
+  ],
+
+  "equipment": [
+    "Proxmark3 or equivalent RFID/NFC reader-writer",
+    "Under-door tool and door bypass toolkit"
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1248", "K0685", "K0882"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis"]
+    },
+    "mitre_attack": {
+      "tactics": ["TA0001"]
+    },
+    "cbest": {
+      "phase": "Penetration Testing - Physical"
+    }
+  },
+
+  "tags": [
+    "access-control",
+    "rfid",
+    "badge-cloning",
+    "tailgating",
+    "door-bypass",
+    "smart-card",
+    "physical-security"
+  ]
+}

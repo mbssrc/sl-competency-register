@@ -1,0 +1,44 @@
+{
+  "key": "PERS-014",
+  "bands": {
+    "strong": [
+      "WSEC-SDR"
+    ],
+    "weak": [
+      "WSEC-SPEC",
+      "WSEC-CELL"
+    ]
+  },
+  "signature": {
+    "WSEC-SDR-FUNDM": 2,
+    "WSEC-SDR-CAPTURE": 2
+  },
+  "never": [],
+  "foundations": [
+    1,
+    2
+  ],
+  "projects": [
+    "PRJ-HUMANOID-WIFI"
+  ],
+  "stale_skills": [],
+  "self_assessment": {
+    "mode": "seeded",
+    "bias": 1,
+    "jitter": 1,
+    "skills": [
+      "WSEC-SDR-DEMOD",
+      "WSEC-SDR-DSP"
+    ]
+  },
+  "development_plan": [],
+  "name": "Ingrid Solheim",
+  "role": "Junior Wireless Security Evaluator",
+  "start_date": "2025-09-01",
+  "domains": [
+    "WSEC"
+  ],
+  "target_maturity": {
+    "WSEC": "junior"
+  }
+}

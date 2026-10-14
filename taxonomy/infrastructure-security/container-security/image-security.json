@@ -1,0 +1,102 @@
+{
+  "id": "INFRA-CONTAINER-IMAGE",
+  "name": "Container Image Security",
+  "domain": "infrastructure-security",
+  "category": "Container Security",
+  "status": "active",
+  "description": "Security assessment of container images and image supply chain. Covers image scanning for vulnerabilities and malware, Dockerfile review, base image selection, image signing and verification, registry security, and supply chain integrity from build to deployment.",
+  "requires": [
+    "INFRA-CONTAINER-DOCKER"
+  ],
+  "recommended": [
+    "FOUND-QA",
+    "SWSEC-SUPPLY-PIPELINE"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to container image security assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands container image layers, registries, and common vulnerability patterns",
+      "evidence": [
+        "Can explain image layers, tags, digests, and registry architecture",
+        "Understands common image security risks (outdated base images, embedded secrets)",
+        "Familiar with image scanning concepts"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Runs image scanning tools and reviews Dockerfiles under supervision",
+      "evidence": [
+        "Runs image scanning tools (e.g., Trivy, Grype, Snyk) under guidance",
+        "Reviews Dockerfiles for security anti-patterns using lab checklists",
+        "Documents image security findings with supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses container image security and supply chain integrity",
+      "evidence": [
+        "Independently scans and triages image vulnerabilities with contextual risk assessment",
+        "Reviews Dockerfiles and multi-stage builds for secret leakage and attack surface reduction",
+        "Evaluates image signing, verification, and admission policies",
+        "Produces compliant image security assessment reports"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex supply chain scenarios; develops scanning pipeline integrations; mentors others",
+      "evidence": [
+        "Designs and integrates automated image scanning into CI/CD pipelines",
+        "Evaluates image provenance and SBOM (Software Bill of Materials) integrity",
+        "Reviews image security assessment work of junior analysts",
+        "Assesses custom or distroless base image security"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines lab image security methodology; publishes research on container supply chain attacks",
+      "evidence": [
+        "Designed or maintains the lab's container image security assessment framework",
+        "Published research on container supply chain attacks or image tampering techniques",
+        "Trains teams on container image security best practices",
+        "Recognized as authority on container supply chain security"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "work_product_review",
+      "description": "Review container image scan results and Dockerfile assessments from recent engagements"
+    },
+    {
+      "type": "controlled_exercise",
+      "description": "Assess a set of container images with embedded vulnerabilities, secrets, and supply chain weaknesses"
+    }
+  ],
+  "framework_mappings": {
+    "csa_ccm": [
+      "AIS-01",
+      "STA-08"
+    ],
+    "nice": {
+      "tks": ["K1373", "K0820", "S0963", "S0723", "S0480"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "OG-WRL-017 Cybersecurity Supply Chain Risk Management"]
+    }
+  },
+  "tags": [
+    "containers",
+    "images",
+    "supply-chain",
+    "vulnerability-scanning",
+    "sbom",
+    "risk-assessment",
+    "docker",
+    "malware"
+  ]
+}

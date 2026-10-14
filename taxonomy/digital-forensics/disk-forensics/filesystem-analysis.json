@@ -1,0 +1,112 @@
+{
+  "id": "DFIR-DISK-FILESYS",
+  "name": "Filesystem Analysis",
+  "domain": "digital-forensics",
+  "category": "Disk Forensics",
+  "status": "active",
+  "description": "Ability to analyse filesystem structures across NTFS, ext4, APFS, HFS+, FAT32, and exFAT. Covers parsing Master File Table (MFT), inode structures, journal analysis, alternate data streams, file system metadata, and identifying evidence of anti-forensic manipulation.",
+
+  "requires": [
+    "DFIR-DISK-IMAGING",
+    "FOUND-EVIDENCE"
+  ],
+  "recommended": [
+    "FOUND-DOC"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to forensic filesystem analysis"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands basic filesystem concepts and why filesystem metadata is forensically significant",
+      "evidence": [
+        "Can describe the major filesystem types and their forensic relevance",
+        "Understands concepts of file allocation, slack space, and unallocated space",
+        "Can explain why timestamps and metadata are important evidence"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Navigates and examines filesystem structures using forensic tools under supervision",
+      "evidence": [
+        "Parsed NTFS MFT entries and extracted file metadata using Autopsy or X-Ways",
+        "Identified alternate data streams in NTFS volumes under guidance",
+        "Examined ext4 inode structures and journal entries with supervisor review",
+        "Located files in unallocated space using keyword and signature searches"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently analyses filesystem structures across Windows, Linux, and macOS evidence and produces forensic reports",
+      "evidence": [
+        "Independently analysed filesystems in 5+ cases across NTFS, ext4, and APFS",
+        "Correctly identified timestomping and other anti-forensic filesystem manipulation",
+        "Correlated filesystem journal entries with user activity to establish timelines",
+        "Produced filesystem analysis reports that withstood technical and legal review"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex multi-filesystem and damaged volume analysis; identifies sophisticated anti-forensic techniques",
+      "evidence": [
+        "Analysed complex multi-partition and multi-OS boot configurations",
+        "Recovered evidence from partially overwritten or corrupted filesystems",
+        "Detected sophisticated anti-forensic techniques including journal manipulation",
+        "Reviews filesystem analysis work products of junior examiners",
+        "Developed custom parsing scripts for non-standard filesystem artifacts"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines filesystem analysis methodology; researches new filesystem internals; provides expert testimony",
+      "evidence": [
+        "Authored or maintains lab filesystem analysis procedures for multiple OS types",
+        "Published research on filesystem artifact interpretation or anti-forensic detection",
+        "Validated forensic tool accuracy against filesystem specifications",
+        "Provides expert testimony on filesystem evidence interpretation"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Analyse prepared disk images containing filesystem artifacts across NTFS, ext4, and APFS, identify anti-forensic manipulation, and produce a findings report"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review filesystem analysis sections from recent case reports for accuracy and completeness"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0794", "K0852", "S0860", "S0603"],
+      "work_roles": ["PD-WRL-002 Digital Forensics", "IN-WRL-002 Digital Evidence Analysis"]
+    },
+    "sfia": {
+      "skill": "DGFS"
+    },
+    "giac": ["GCFE", "GCFA"]
+  },
+
+  "tags": [
+    "ntfs",
+    "ext4",
+    "apfs",
+    "mft",
+    "metadata",
+    "anti-forensics",
+    "filesystem",
+    "forensics",
+    "windows",
+    "linux",
+    "macos"
+  ]
+}

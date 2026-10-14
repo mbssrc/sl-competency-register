@@ -1,0 +1,271 @@
+{% extends "core/base.html" %}
+
+{% block title %}Gap Analysis - Reports - {{ product_name }}{% endblock %}
+
+{% block page_crumbs %}
+  {% include "core/partials/crumb.html" with label="Reports" first=True %}
+  {% include "core/partials/crumb.html" with label="Gap Analysis" current=True %}
+{% endblock %}
+
+{% block page_title %}Gap Analysis{% endblock %}
+{% block page_description %}Skill coverage and maturity progression gaps across all personnel.{% endblock %}
+
+{% block page_actions %}
+<a href="{% url 'personnel:gap-analysis-export' %}"
+     class="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-md hover:bg-gray-50 dark:hover:bg-white/10 transition-colors">
+    Export Excel
+  </a>
+{% endblock %}
+
+{% block content %}
+<!-- Domain Coverage Heatmap -->
+<div class="mb-8">
+  <div class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg overflow-hidden">
+    <table class="w-full text-sm">
+      <thead>
+        <tr class="border-b border-gray-200 dark:border-white/10">
+          <th class="text-left px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Domain</th>
+          <th class="text-center px-2 py-2.5 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Skills</th>
+          <th class="text-center px-2 py-2.5 text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500">L0</th>
+          <th class="text-center px-2 py-2.5 text-xs font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400">L1</th>
+          <th class="text-center px-2 py-2.5 text-xs font-semibold uppercase tracking-wider text-cyan-600 dark:text-cyan-400">L2</th>
+          <th class="text-center px-2 py-2.5 text-xs font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">L3</th>
+          <th class="text-center px-2 py-2.5 text-xs font-semibold uppercase tracking-wider text-violet-600 dark:text-violet-400">L4</th>
+          <th class="text-center px-2 py-2.5 text-xs font-semibold uppercase tracking-wider text-amber-600 dark:text-amber-400">L5</th>
+          <th class="text-left px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400" style="width: 40%">Distribution</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for dc in domain_coverage %}
+        <tr class="border-b border-gray-100 dark:border-white/5 last:border-b-0">
+          <td class="px-4 py-2.5 text-sm font-medium text-gray-900 dark:text-white whitespace-nowrap">
+            <a href="{% url 'taxonomy:domain-detail' dc.domain_id %}" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">{{ dc.domain_name }}</a>
+          </td>
+          <td class="px-2 py-2.5 text-center text-xs text-gray-500 dark:text-gray-400">{{ dc.total_skills }}</td>
+          {% for ld in dc.level_distribution %}
+          <td class="px-2 py-2.5 text-center">
+            {% if ld.count > 0 %}
+            <span class="inline-flex items-center justify-center min-w-[1.5rem] h-6 rounded text-xs font-bold
+              {% if ld.level == 0 %}bg-gray-200 dark:bg-white/10 text-gray-600 dark:text-gray-400
+              {% elif ld.level == 1 %}bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300
+              {% elif ld.level == 2 %}bg-cyan-100 dark:bg-cyan-900/40 text-cyan-700 dark:text-cyan-300
+              {% elif ld.level == 3 %}bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300
+              {% elif ld.level == 4 %}bg-violet-100 dark:bg-violet-900/40 text-violet-700 dark:text-violet-300
+              {% elif ld.level == 5 %}bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300
+              {% endif %}">{{ ld.count }}</span>
+            {% else %}
+            <span class="text-gray-300 dark:text-gray-700 text-xs">&mdash;</span>
+            {% endif %}
+          </td>
+          {% endfor %}
+          <td class="px-3 py-2.5">
+            <div class="flex h-3 rounded-full overflow-hidden bg-gray-200 dark:bg-white/10">
+              {% for ld in dc.level_distribution %}
+              {% if ld.pct > 0 %}
+              <div class="h-full
+                {% if ld.level == 0 %}bg-gray-400 dark:bg-gray-600
+                {% elif ld.level == 1 %}bg-blue-400 dark:bg-blue-500
+                {% elif ld.level == 2 %}bg-cyan-400 dark:bg-cyan-500
+                {% elif ld.level == 3 %}bg-emerald-400 dark:bg-emerald-500
+                {% elif ld.level == 4 %}bg-violet-400 dark:bg-violet-500
+                {% elif ld.level == 5 %}bg-amber-400 dark:bg-amber-500
+                {% endif %}" style="width: {{ ld.pct }}%" title="L{{ ld.level }}: {{ ld.count }} skills ({{ ld.pct }}%)"></div>
+              {% endif %}
+              {% endfor %}
+            </div>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Domain Coverage -->
+<div class="mb-8">
+  <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Domain Coverage</h3>
+
+  <div class="space-y-3">
+    {% for dc in domain_coverage %}
+    <details class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg group">
+      <summary class="flex items-center gap-4 px-5 py-3 cursor-pointer select-none hover:bg-gray-50 dark:hover:bg-white/10 transition-colors rounded-lg">
+        <svg class="w-4 h-4 text-gray-400 dark:text-gray-500 transition-transform group-open:rotate-90 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <span class="text-sm font-medium text-gray-900 dark:text-white w-48 flex-shrink-0">{{ dc.domain_name }}</span>
+        <span class="text-xs text-gray-500 dark:text-gray-500 w-16 flex-shrink-0">{{ dc.total_skills }} skills</span>
+
+        <!-- Coverage bars -->
+        <div class="flex-1 flex items-center gap-3 min-w-0">
+          <!-- L1+ bar -->
+          <div class="flex items-center gap-2 flex-1">
+            <span class="text-[10px] text-gray-500 dark:text-gray-500 w-6 text-right flex-shrink-0">L1+</span>
+            <div class="flex-1 bg-gray-200 dark:bg-white/10 rounded-full h-2">
+              <div class="h-2 rounded-full bg-emerald-500 dark:bg-emerald-400 transition-all" style="width: {{ dc.pct_l1 }}%"></div>
+            </div>
+            <span class="text-xs font-medium w-10 text-right flex-shrink-0 {% if dc.pct_l1 == 100 %}text-emerald-600 dark:text-emerald-400{% elif dc.pct_l1 >= 50 %}text-amber-600 dark:text-amber-400{% else %}text-rose-600 dark:text-rose-400{% endif %}">{{ dc.pct_l1 }}%</span>
+          </div>
+          <!-- L3+ bar -->
+          <div class="flex items-center gap-2 flex-1">
+            <span class="text-[10px] text-gray-500 dark:text-gray-500 w-6 text-right flex-shrink-0">L3+</span>
+            <div class="flex-1 bg-gray-200 dark:bg-white/10 rounded-full h-2">
+              <div class="h-2 rounded-full bg-indigo-500 dark:bg-indigo-400 transition-all" style="width: {{ dc.pct_l3 }}%"></div>
+            </div>
+            <span class="text-xs font-medium w-10 text-right flex-shrink-0 {% if dc.pct_l3 == 100 %}text-emerald-600 dark:text-emerald-400{% elif dc.pct_l3 >= 50 %}text-amber-600 dark:text-amber-400{% else %}text-rose-600 dark:text-rose-400{% endif %}">{{ dc.pct_l3 }}%</span>
+          </div>
+        </div>
+      </summary>
+
+      <!-- Expanded skill detail -->
+      <div class="border-t border-gray-200 dark:border-white/10 px-5 py-3">
+        <table class="w-full text-sm table-fixed">
+          <colgroup>
+            <col style="width: 20%">
+            <col style="width: 25%">
+            <col style="width: 15%">
+            <col style="width: 10%">
+            <col style="width: 30%">
+          </colgroup>
+          <thead>
+            <tr class="border-b border-gray-200 dark:border-white/10">
+              <th class="text-left px-3 py-2 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Skill ID</th>
+              <th class="text-left px-3 py-2 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Name</th>
+              <th class="text-left px-3 py-2 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Category</th>
+              <th class="text-center px-3 py-2 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Best</th>
+              <th class="text-left px-3 py-2 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Personnel</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for s in dc.skills %}
+            <tr class="border-b border-gray-100 dark:border-white/5 last:border-b-0 {% if s.best_level == 0 %}bg-rose-50/50 dark:bg-rose-900/10{% endif %}">
+              <td class="px-3 py-2 font-mono text-xs text-gray-600 dark:text-gray-400 truncate max-w-0">
+                <a href="{% url 'taxonomy:skill-detail' s.skill_id %}" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">{{ s.skill_id }}</a>
+              </td>
+              <td class="px-3 py-2 text-gray-900 dark:text-gray-200 truncate max-w-0">{{ s.skill_name }}</td>
+              <td class="px-3 py-2 text-gray-500 dark:text-gray-400 text-xs truncate max-w-0">{{ s.category }}</td>
+              <td class="px-3 py-2 text-center">
+                {% if s.best_level > 0 %}
+                <span class="inline-flex items-center justify-center w-6 h-6 rounded-full text-xs font-bold
+                  {% if s.best_level == 1 %}bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300
+                  {% elif s.best_level == 2 %}bg-cyan-100 dark:bg-cyan-900/40 text-cyan-700 dark:text-cyan-300
+                  {% elif s.best_level == 3 %}bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300
+                  {% elif s.best_level == 4 %}bg-violet-100 dark:bg-violet-900/40 text-violet-700 dark:text-violet-300
+                  {% elif s.best_level == 5 %}bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300
+                  {% endif %}">{{ s.best_level }}</span>
+                {% else %}
+                <span class="inline-flex items-center rounded-full bg-rose-100 dark:bg-rose-900/40 px-2 py-0.5 text-[10px] font-bold text-rose-700 dark:text-rose-400">NONE</span>
+                {% endif %}
+              </td>
+              <td class="px-3 py-2 text-gray-600 dark:text-gray-400 text-xs truncate max-w-0">
+                {% if s.personnel %}
+                {% for p in s.personnel %}{% if not forloop.first %}, {% endif %}{{ p.name }} (L{{ p.level }}){% endfor %}
+                {% else %}
+                <span class="text-rose-600 dark:text-rose-400">No coverage</span>
+                {% endif %}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </details>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Personnel Maturity Gaps -->
+<div class="mb-8">
+  <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+    Personnel Maturity Gaps
+    <span class="ml-2 text-sm font-normal text-gray-500 dark:text-gray-500">{{ people_with_gaps }} personnel</span>
+  </h3>
+
+  <!-- Filter bar -->
+  <div class="mb-4 bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg p-4">
+    <form method="get" class="flex flex-wrap items-end gap-4">
+      <div>
+        <label for="filter-person" class="block text-xs font-medium text-gray-600 dark:text-gray-400 mb-1">Person</label>
+        <div x-data="combobox" class="relative w-64">
+          <select id="filter-person" name="person" class="rounded-md border border-gray-300 dark:border-white/10 bg-white dark:bg-white/5 text-gray-900 dark:text-gray-100 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:border-transparent">
+            <option value="">All</option>
+            {% for pid, pname in unique_persons %}
+            <option value="{{ pid }}" {% if filter_person == pid %}selected{% endif %}>{{ pname }}</option>
+            {% endfor %}
+          </select>
+          {% include "core/partials/combobox.html" with compact=True %}
+        </div>
+      </div>
+      <div>
+        <label class="block text-xs font-medium text-gray-600 dark:text-gray-400 mb-1">Domain</label>
+        <select name="domain" class="rounded-md border border-gray-300 dark:border-white/10 bg-white dark:bg-white/5 text-gray-900 dark:text-gray-100 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:border-transparent">
+          <option value="">All</option>
+          {% for did, dname in unique_domains %}
+          <option value="{{ did }}" {% if filter_domain == did %}selected{% endif %}>{{ dname }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div>
+        <button type="submit" class="inline-flex items-center px-4 py-1.5 text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 rounded-md transition-colors">
+          Filter
+        </button>
+        {% if filter_person or filter_domain %}
+        <a href="{% url 'personnel:gap-analysis' %}" class="ml-2 text-sm text-gray-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Clear</a>
+        {% endif %}
+      </div>
+    </form>
+  </div>
+
+  {% if gaps %}
+  <div class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg overflow-hidden">
+    <table class="w-full text-sm table-fixed">
+      <colgroup>
+        <col style="width: 15%">
+        <col style="width: 18%">
+        <col style="width: 17%">
+        <col style="width: 15%">
+        <col style="width: 35%">
+      </colgroup>
+      <thead>
+        <tr class="border-b border-gray-200 dark:border-white/10">
+          <th class="text-left px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Person</th>
+          <th class="text-left px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Domain</th>
+          <th class="text-left px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Current Level</th>
+          <th class="text-left px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Next Level</th>
+          <th class="text-left px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">What's Needed</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for gap in gaps %}
+        <tr class="border-b border-gray-100 dark:border-white/5 last:border-b-0 hover:bg-gray-50 dark:hover:bg-white/10 transition-colors {% if forloop.counter|divisibleby:2 %}bg-gray-50/50 dark:bg-white/[0.03]{% endif %}">
+          <td class="px-4 py-2.5 text-gray-900 dark:text-gray-200">
+            <a href="{% url 'personnel:person-detail' gap.person_id %}" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors font-medium">{{ gap.person_name }}</a>
+          </td>
+          <td class="px-4 py-2.5 text-gray-600 dark:text-gray-400 text-sm">{{ gap.domain_name }}</td>
+          <td class="px-4 py-2.5">
+            <span class="text-sm text-gray-900 dark:text-gray-200">{{ gap.current_title }}</span>
+            <span class="ml-1 text-xs text-gray-500 dark:text-gray-500">({{ gap.current_level }})</span>
+          </td>
+          <td class="px-4 py-2.5">
+            <span class="text-sm text-gray-900 dark:text-gray-200">{{ gap.next_title }}</span>
+          </td>
+          <td class="px-4 py-2.5">
+            <div class="flex flex-wrap gap-1">
+              {% for item in gap.gaps %}
+              <span class="inline-flex items-center rounded-md bg-rose-50 dark:bg-rose-900/20 px-2 py-0.5 text-[11px] text-rose-700 dark:text-rose-400 border border-rose-200 dark:border-rose-800">{{ item }}</span>
+              {% endfor %}
+            </div>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+  <div class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg p-8 text-center text-gray-500 dark:text-gray-400">
+    {% if filter_person or filter_domain %}
+    No gaps match the current filters.
+    {% else %}
+    No maturity progression gaps found across any personnel.
+    {% endif %}
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,107 @@
+{
+  "id": "CRYPTO-IMPL-ENTROPY",
+  "name": "Entropy Source & DRBG Assessment",
+  "domain": "cryptography",
+  "category": "Implementation & Validation",
+  "status": "active",
+  "description": "Covers assessment of random bit generation according to NIST SP 800-90A/B/C and BSI AIS 20/31. Includes entropy estimation and health test evaluation for entropy sources, DRBG mechanism selection, instantiation, seeding and reseeding configuration, RBG construction review, and preparation of entropy assessment evidence for validation. Hardware TRNG design and noise-source physics evaluation belongs to HWSEC-CRYPTO-RNG.",
+
+  "requires": [
+    "CRYPTO-HASH-ASSESSMENT"
+  ],
+  "recommended": [
+    "HWSEC-CRYPTO-RNG",
+    "FOUND-STANDARDS",
+    "CRYPTO-IMPL-ACVP",
+    "CRYPTO-SYM-BLOCKCIPHER"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to entropy source or DRBG assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands random bit generation architecture and the governing standards",
+      "evidence": [
+        "Can explain the roles of entropy sources, conditioning and DRBGs in an RBG construction",
+        "Can describe the DRBG mechanisms of SP 800-90A and their security strength",
+        "Aware of the scope of SP 800-90B, SP 800-90C and the AIS 20/31 functionality classes"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Assists with entropy and DRBG assessment under supervision",
+      "evidence": [
+        "Collects raw and restart noise samples according to the test procedure",
+        "Runs SP 800-90B entropy estimation tooling and records the results",
+        "Reviews DRBG configuration (mechanism, seed length, reseed interval) against a checklist with guidance",
+        "Documents observations in the lab's records"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses entropy sources and DRBG configurations",
+      "evidence": [
+        "Interprets entropy estimates and justifies the claimed min-entropy rate, including IID versus non-IID treatment",
+        "Evaluates continuous and start-up health tests for adequacy and correct failure handling",
+        "Reviews RBG construction against SP 800-90C and identifies seeding, reseeding or prediction resistance weaknesses",
+        "Prepares or reviews entropy assessment documentation for submission"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex RBG designs; reviews assessments; mentors team",
+      "evidence": [
+        "Assesses entropy sources with complex conditioning chains or multiple noise sources",
+        "Evaluates RBG designs against AIS 20/31 classes and maps findings between BSI and NIST requirements",
+        "Technically reviews entropy assessment reports for statistical soundness and justification",
+        "Mentors analysts on entropy estimation and DRBG review"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognised authority on random bit generation; defines methodology; contributes to standards",
+      "evidence": [
+        "Defines the lab's entropy and DRBG assessment methodology",
+        "Contributes to SP 800-90 series, AIS 20/31 or equivalent standards and guidance",
+        "Publishes research on entropy estimation or RBG weaknesses",
+        "Advises vendors and validation bodies on RBG design and assessment"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "work_product_review",
+      "description": "Review a vendor's entropy assessment report and DRBG configuration for a module, identifying unjustified entropy claims, inadequate health tests or seeding weaknesses"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given raw noise samples and a description of the entropy source, run SP 800-90B estimation, interpret the results and state a justified min-entropy claim"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1380", "K1339", "K0942"],
+      "work_roles": ["DD-WRL-007 Systems Testing and Evaluation", "PD-WRL-007 Vulnerability Analysis"]
+    },
+    "common_criteria": ["FCS_RNG.1"],
+    "nist_sp": ["800-90A", "800-90B", "800-90C"],
+    "bsi": ["AIS 20", "AIS 31"]
+  },
+
+  "tags": [
+    "entropy",
+    "drbg",
+    "rng",
+    "sp-800-90",
+    "cryptographic",
+    "statistical"
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "id": "INFRA-IAC-TERRAFORM",
+  "name": "Terraform Security Review",
+  "domain": "infrastructure-security",
+  "category": "Infrastructure as Code Security",
+  "status": "active",
+  "description": "Security review of Terraform and OpenTofu configurations and state. Covers HCL code review for misconfigurations, state file security, provider credential management, module supply chain risks, and evaluation of Terraform-provisioned infrastructure against security baselines.",
+  "requires": [],
+  "recommended": [
+    "FOUND-DOC",
+    "FOUND-TOOLS",
+    "INFRA-IAC-POLICY",
+    "FOUND-RISK"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to Terraform security review"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands Terraform concepts, HCL syntax, and common security concerns",
+      "evidence": [
+        "Can explain Terraform providers, resources, state files, and modules",
+        "Understands common Terraform misconfigurations that lead to security issues",
+        "Familiar with Terraform state file sensitivity and backend security"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Reviews Terraform configurations under supervision using static analysis tools",
+      "evidence": [
+        "Runs Terraform security scanning tools (e.g., Trivy (formerly tfsec), Checkov, KICS) under guidance",
+        "Identifies common misconfigurations in HCL code using lab checklists",
+        "Documents Terraform security findings with supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently reviews Terraform codebases for security misconfigurations and risks",
+      "evidence": [
+        "Independently reviews Terraform configurations across multiple providers",
+        "Evaluates state file security (backend encryption, access controls, secret exposure)",
+        "Identifies security risks in module dependencies and provider configurations",
+        "Produces compliant Terraform security review reports"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex multi-provider Terraform reviews; develops custom policies; mentors others",
+      "evidence": [
+        "Reviews complex multi-provider, multi-workspace Terraform codebases",
+        "Develops custom policy rules for Terraform security scanning tools",
+        "Reviews Terraform security work of junior analysts",
+        "Evaluates Terraform CI/CD pipeline security (plan-time vs apply-time controls)"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines lab Terraform review methodology; publishes research on IaC security",
+      "evidence": [
+        "Designed or maintains the lab's Terraform security review framework",
+        "Published research on Terraform security risks or novel misconfiguration patterns",
+        "Trains teams on advanced Terraform security review",
+        "Recognized as authority on Terraform and HCL security"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Review a Terraform codebase with intentional misconfigurations and identify all security issues"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review Terraform security findings from recent IaC assessment engagements"
+    }
+  ],
+  "framework_mappings": {
+    "cis": [
+      "CIS AWS, Azure and GCP Foundations Benchmarks as scan baselines"
+    ],
+    "nice": {
+      "tks": ["K1369", "K0863", "K1122", "S0532", "S0972"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-001 Cybersecurity Architecture"]
+    }
+  },
+  "tags": [
+    "iac",
+    "terraform",
+    "hcl",
+    "static-analysis",
+    "misconfiguration",
+    "code-review",
+    "scanning",
+    "supply-chain"
+  ]
+}

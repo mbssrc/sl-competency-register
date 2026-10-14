@@ -1,0 +1,111 @@
+{
+  "id": "HWSEC-EMBED-TPM",
+  "name": "TPM & Hardware Root of Trust Assessment",
+  "domain": "hardware-security",
+  "category": "Embedded Systems Security",
+  "status": "active",
+  "description": "Covers security evaluation of Trusted Platform Modules and hardware roots of trust. Includes TPM 2.0 architecture (hierarchies, PCRs, key and policy model), evaluation of measured boot and attestation implementations, the security differences between discrete, integrated and firmware TPMs, TCG specifications and certification (TPM Library, PC Client PTP, ISO/IEC 11889), and assessment of TPM interface exposure (LPC/SPI/I2C bus sniffing and interposer risks). Software use of TPM-backed attestation within TEEs belongs to SWSEC-PLATFORM-TEE.",
+  "requires": [
+    "HWSEC-EMBED-FW"
+  ],
+  "recommended": [
+    "HWSEC-EMBED-BOOT",
+    "SWSEC-PLATFORM-TEE",
+    "HWSEC-PCB-BUS",
+    "HWSEC-CRYPTO-HSM",
+    "SWSEC-PLATFORM-UEFI"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to TPM or hardware root of trust assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands TPM 2.0 concepts and the role of hardware roots of trust",
+      "evidence": [
+        "Can explain TPM hierarchies, PCR extend semantics and sealing to PCR policy",
+        "Can describe measured boot versus verified boot and how attestation quotes are produced",
+        "Aware of the differences between discrete, integrated and firmware TPMs and their threat models"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Reviews TPM configuration and measured boot logs under supervision",
+      "evidence": [
+        "Collects and interprets TPM event logs and replays them against PCR values with guidance",
+        "Reviews TPM ownership, hierarchy authorisation and lockout configuration against a checklist",
+        "Identifies the physical TPM interface on a target board and documents its exposure",
+        "Documents findings in the lab's reporting template"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently evaluates TPM-based root of trust implementations",
+      "evidence": [
+        "Assesses completeness of measured boot coverage and identifies unmeasured or mis-measured components",
+        "Evaluates attestation protocol use (nonce freshness, quote verification, endorsement key validation)",
+        "Assesses TPM bus exposure risks (sniffing, interposer, reset attacks) and the use of parameter encryption sessions",
+        "Verifies a TPM's certification status (TCG certification, Common Criteria, FIPS 140-3) against the claims made for the product"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Evaluates complex or novel root of trust designs; reviews TPM assessments; mentors team",
+      "evidence": [
+        "Evaluates firmware TPM implementations and their dependency on the host TEE and platform firmware",
+        "Assesses vendor-specific or SoC-integrated roots of trust against TCG and platform requirements",
+        "Technically reviews TPM and attestation assessment reports for coverage and correct interpretation",
+        "Mentors analysts on TPM architecture and evaluation methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognised authority on TPM and root of trust security; defines methodology; contributes to specifications",
+      "evidence": [
+        "Defines the lab's TPM and root of trust evaluation methodology",
+        "Contributes to TCG specifications, protection profiles or published research on TPM security",
+        "Advises vendors and certification bodies on root of trust architecture and certification",
+        "Authored CVEs or advisories against TPM or attestation implementations"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "On a lab platform with a discrete TPM, evaluate the measured boot chain and attestation flow, assess the physical bus exposure, and report findings against TCG requirements"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review a TPM or root of trust assessment report for coverage of measured boot, attestation verification and interface exposure, and for correct use of TCG and certification references"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0948", "K0942", "K0932", "S0531", "S0504"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-004 Secure Systems Development"]
+    },
+    "common_criteria": ["AVA_VAN.4"],
+    "iso_iec": ["ISO/IEC 11889"],
+    "tcg": {
+      "specifications": ["TPM 2.0 Library Specification", "PC Client Platform TPM Profile (PTP)"]
+    }
+  },
+  "equipment": [
+    "Logic analyser for LPC/SPI/I2C TPM bus capture",
+    "TPM interposer or bus breakout fixture"
+  ],
+  "tags": [
+    "tpm",
+    "root-of-trust",
+    "measured-boot",
+    "attestation",
+    "embedded",
+    "trust-chain",
+    "secure-boot",
+    "non-invasive"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "key": "PERS-002",
+  "bands": {
+    "strong": [
+      "HWSEC-PCB",
+      "HWSEC-EMBED"
+    ],
+    "weak": [
+      "HWSEC-INV",
+      "HWSEC-SPREP"
+    ]
+  },
+  "signature": {
+    "HWSEC-PCB-RE": 4,
+    "HWSEC-PCB-BUS": 4,
+    "HWSEC-PCB-MOD": 4,
+    "HWSEC-EMBED-FW": 4,
+    "HWSEC-EMBED-DBG": 4
+  },
+  "never": [],
+  "foundations": [
+    2,
+    3
+  ],
+  "projects": [
+    "PRJ-SAT-PCB",
+    "PRJ-SAT-DSP"
+  ],
+  "stale_skills": [],
+  "self_assessment": {
+    "mode": "all",
+    "bias": 0,
+    "jitter": 1
+  },
+  "development_plan": [],
+  "name": "Jonas Wengert",
+  "role": "Senior Hardware Security Evaluator",
+  "start_date": "2020-09-14",
+  "domains": [
+    "HWSEC"
+  ],
+  "target_maturity": {
+    "HWSEC": "senior"
+  }
+}

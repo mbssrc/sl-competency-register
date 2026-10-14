@@ -1,0 +1,96 @@
+{
+  "id": "FOUND-COMM",
+  "name": "Communication",
+  "domain": "foundations",
+  "category": "Foundations",
+  "status": "active",
+  "description": "Ability to communicate security findings, risks, and recommendations effectively to diverse audiences. Covers client-facing communication, technical briefings, presentation skills, and the ability to translate complex technical issues for non-technical stakeholders.",
+
+  "requires": [],
+  "recommended": [
+    "FOUND-RISK",
+    "FOUND-REPORT"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No experience communicating security findings"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the importance of audience-appropriate communication",
+      "evidence": [
+        "Can distinguish between technical and executive audiences",
+        "Understands that findings must be communicated, not just documented"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Participates in client communications under supervision",
+      "evidence": [
+        "Has attended client debriefs and kick-off meetings",
+        "Can explain individual findings clearly in verbal discussion",
+        "Communication reviewed by senior staff before client delivery"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently leads technical briefings and client communications",
+      "evidence": [
+        "Led debrief sessions for 3+ engagements",
+        "Effectively communicates risk to non-technical stakeholders",
+        "Handles client questions and pushback professionally"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles sensitive and high-stakes communications; mentors on presentation skills",
+      "evidence": [
+        "Leads communications for complex, multi-stakeholder engagements",
+        "Delivers findings to board-level or regulatory audiences",
+        "Coaches junior staff on communication and presentation"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines the lab's communication standards; recognized thought leader; trains teams",
+      "evidence": [
+        "Keynotes or invited talks at major industry conferences",
+        "Defines communication standards and templates adopted across the lab",
+        "Trains teams on technical communication and stakeholder management"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "direct_observation",
+      "description": "Observe a client debrief or technical presentation led by the individual"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Scenario: explain a complex vulnerability chain to a non-technical executive audience"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["S0923", "S0385", "S0791", "S0824"],
+      "work_roles": ["OG-WRL-005 Cybersecurity Instruction", "PD-WRL-007 Vulnerability Analysis"]
+    },
+    "sfia": {
+      "skill": "RLMT",
+      "levels": [4, 5, 6]
+    }
+  },
+
+  "tags": [
+    "cross-cutting",
+    "client-facing",
+    "soft-skill"
+  ]
+}

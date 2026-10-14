@@ -1,0 +1,110 @@
+{
+  "id": "DFIR-NET-FLOW",
+  "name": "Network Flow Analysis",
+  "domain": "digital-forensics",
+  "category": "Network Forensics",
+  "status": "active",
+  "description": "Ability to analyse network flow data (NetFlow, IPFIX, Zeek logs) for forensic investigations. Covers identifying communication patterns, data exfiltration, lateral movement, beaconing behaviour, and anomalous traffic volumes without requiring full packet captures.",
+
+  "requires": [
+    "FOUND-EVIDENCE"
+  ],
+  "recommended": [
+    "DFIR-NET-CAPTURE",
+    "DFIR-NET-PROTO",
+    "NETSEC-RECON-NETMAPPING"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to network flow analysis"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands what network flow data is and how it differs from full packet capture",
+      "evidence": [
+        "Can explain the difference between flow data and full packet capture",
+        "Understands NetFlow/IPFIX record fields and what they represent",
+        "Can describe scenarios where flow analysis is preferable to PCAP analysis"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Queries and analyses flow data to answer basic investigative questions under supervision",
+      "evidence": [
+        "Queried NetFlow or Zeek conn.log data to identify communication partners for a given host",
+        "Identified high-volume data transfers and unusual port usage in flow data under guidance",
+        "Used flow query tools (SiLK, nfdump) to summarise and explore traffic patterns",
+        "Documented flow analysis findings with supervisor review"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently analyses flow data to detect lateral movement, exfiltration, and beaconing in investigations",
+      "evidence": [
+        "Independently used flow analysis in 5+ forensic investigations",
+        "Detected beaconing patterns and C2 communication intervals from flow data",
+        "Identified data exfiltration by volume, timing, and destination analysis",
+        "Correlated flow data with other evidence sources to establish attacker movement"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles large-scale flow analysis across enterprise networks; develops detection analytics; performs statistical traffic analysis",
+      "evidence": [
+        "Analysed flow data across large enterprise networks (thousands of hosts) efficiently",
+        "Developed automated beaconing and exfiltration detection scripts or queries",
+        "Applied statistical methods to identify anomalous traffic patterns in flow data",
+        "Mentors analysts on flow analysis techniques and tooling"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines flow analysis methodology; develops analytics frameworks; recognised authority in network forensic flow analysis",
+      "evidence": [
+        "Authored or maintains the lab's network flow analysis methodology",
+        "Developed flow analysis frameworks or tooling used across the lab",
+        "Published research on flow-based forensic analysis techniques",
+        "Trains teams on flow analysis and network forensic triage"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Given a week of flow data from a compromised network, identify lateral movement, beaconing, and exfiltration activity"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review flow analysis sections from recent investigation reports for analytical rigour and completeness"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["S0872", "S0874", "K1175", "K1245", "S0477"],
+      "work_roles": ["PD-WRL-002 Digital Forensics", "PD-WRL-001 Defensive Cybersecurity", "PD-WRL-003 Incident Response"]
+    },
+    "sfia": {
+      "skill": "DGFS"
+    },
+    "giac": ["GNFA"]
+  },
+
+  "tags": [
+    "netflow",
+    "ipfix",
+    "zeek",
+    "beaconing",
+    "exfiltration",
+    "lateral-movement",
+    "traffic-analysis",
+    "c2",
+    "forensics"
+  ]
+}

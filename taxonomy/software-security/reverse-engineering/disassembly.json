@@ -1,0 +1,105 @@
+{
+  "id": "SWSEC-RE-DISASM",
+  "name": "Binary Disassembly & Analysis",
+  "domain": "software-security",
+  "category": "Reverse Engineering",
+  "status": "active",
+  "description": "Disassembly and analysis of compiled binaries across architectures (x86, x64, ARM). Covers use of disassemblers (IDA Pro, Ghidra, Binary Ninja), reading assembly code, control flow analysis, data structure recovery, and cross-referencing to understand program behavior.",
+
+  "requires": [],
+  "recommended": [
+    "SWSEC-RE-DECOMPILE",
+    "SWSEC-DAST-INSTRUMENT",
+    "HWSEC-EMBED-FW",
+    "DFIR-MAL-STATIC",
+    "FOUND-TOOLS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to binary disassembly"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands binary analysis concepts and tools",
+      "evidence": [
+        "Can explain the difference between source code, assembly, and machine code",
+        "Familiar with major disassemblers (IDA Pro, Ghidra, Binary Ninja)",
+        "Understands basic x86/x64 instruction set and calling conventions"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Reads disassembly and performs basic analysis under supervision",
+      "evidence": [
+        "Loaded binaries into Ghidra or IDA Pro and navigated the disassembly",
+        "Identified function boundaries, strings, and cross-references",
+        "Traced basic control flow and identified conditional logic",
+        "Work reviewed by authorized analyst"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently analyzes binaries to understand functionality and identify vulnerabilities",
+      "evidence": [
+        "Independently analyzed binaries on 5+ engagements or research projects",
+        "Reads x86/x64 and ARM assembly fluently for common patterns",
+        "Identifies vulnerability patterns (buffer overflows, format strings, integer issues) in disassembly",
+        "Uses scripting (IDAPython, Ghidra scripts) for analysis automation",
+        "Passed proficiency assessment on binary disassembly"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Analyzes complex and obfuscated binaries; recovers data structures",
+      "evidence": [
+        "Analyzes stripped and statically linked binaries",
+        "Recovers C++ class hierarchies and virtual function tables from binaries",
+        "Develops analysis scripts and plugins for recurring patterns",
+        "Mentors junior analysts on disassembly methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Authority on binary analysis; develops tooling; handles any architecture",
+      "evidence": [
+        "Published research on binary analysis techniques or tools",
+        "Developed the lab's binary analysis methodology and tooling",
+        "Analyzes binaries across multiple architectures (x86, ARM, MIPS, RISC-V)",
+        "Trains teams on binary disassembly and analysis"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Analyze a stripped binary to identify its purpose, key algorithms, and any security vulnerabilities"
+    },
+    {
+      "type": "direct_observation",
+      "description": "Observe use of disassembler for navigation, annotation, and analysis of an unfamiliar binary"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0842", "K0738", "K0914", "S0621", "S0738"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development", "DD-WRL-005 Software Security Assessment"]
+    },
+    "mitre_attack": {"techniques": ["T1027"]}
+  },
+
+  "tags": [
+    "reverse-engineering",
+    "disassembly",
+    "binary-analysis",
+    "ida-pro",
+    "ghidra",
+    "static-analysis"
+  ]
+}

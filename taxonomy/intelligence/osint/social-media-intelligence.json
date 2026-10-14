@@ -1,0 +1,106 @@
+{
+  "id": "INTEL-OSINT-SOCIAL",
+  "name": "Social Media Intelligence (SOCMINT)",
+  "domain": "intelligence",
+  "category": "Open-Source Intelligence (OSINT)",
+  "status": "active",
+  "description": "Collecting and analyzing intelligence from social media platforms and online communities. Covers account discovery, content analysis, network mapping, sentiment analysis, and monitoring for security-relevant information such as credential leaks, insider threats, or brand impersonation across platforms.",
+  "requires": [
+    "FOUND-ETHICS",
+    "FOUND-EVIDENCE"
+  ],
+  "recommended": [
+    "FOUND-DOC",
+    "INTEL-OSINT-PERSON"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to social media intelligence techniques"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the intelligence value of social media and the ethical and legal constraints on collection",
+      "evidence": [
+        "Can describe the types of intelligence obtainable from major social platforms",
+        "Understands platform terms of service and legal boundaries for SOCMINT",
+        "Aware of the risks of attribution and sock puppet detection"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs basic social media research and monitoring under supervision",
+      "evidence": [
+        "Discovers and documents target accounts across multiple platforms under guidance",
+        "Uses platform-native search and third-party tools for content discovery",
+        "Collects and preserves social media evidence with proper documentation",
+        "Results reviewed by authorized personnel for completeness and ethical compliance"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently conducts social media intelligence collection and analysis",
+      "evidence": [
+        "Builds comprehensive social media footprints for targets across 3+ engagements",
+        "Maps social networks and identifies key relationships and influence patterns",
+        "Monitors social channels for security-relevant disclosures (credential leaks, insider threats)",
+        "Produces social media intelligence reports that pass QA review"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex SOCMINT operations; develops monitoring capabilities; mentors analysts",
+      "evidence": [
+        "Conducts cross-platform correlation to de-anonymize accounts or link personas",
+        "Develops automated monitoring and alerting pipelines for social media sources",
+        "Analyzes disinformation campaigns and coordinated inauthentic behavior",
+        "Mentors junior analysts on SOCMINT tradecraft and operational security"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines SOCMINT methodology; develops novel techniques; trains teams",
+      "evidence": [
+        "Designed or maintains the lab's social media intelligence methodology",
+        "Develops novel techniques for cross-platform persona analysis",
+        "Publishes research on SOCMINT methods or platform analysis",
+        "Trains teams on social media intelligence tradecraft and tool development"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Given a target persona, build a comprehensive social media footprint and relationship map using open sources"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review social media intelligence reports for analytical rigor, source reliability assessment, and ethical compliance"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["S0695", "S0751", "S0896"],
+      "work_roles": ["PD-WRL-006 Threat Analysis"]
+    },
+    "mitre_attack": {
+      "techniques": [
+        "T1593.001"
+      ]
+    }
+  },
+  "tags": [
+    "osint",
+    "social-media",
+    "socmint",
+    "reconnaissance",
+    "monitoring",
+    "brand-protection",
+    "insider-threat",
+    "attribution",
+    "counter-attribution"
+  ]
+}

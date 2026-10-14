@@ -1,0 +1,109 @@
+{
+  "id": "HWSEC-SCA-TVLA",
+  "name": "Non-Invasive Leakage Assessment (ISO/IEC 17825)",
+  "domain": "hardware-security",
+  "category": "Side-Channel Analysis",
+  "status": "active",
+  "description": "Covers conformance-style side-channel leakage assessment of cryptographic modules using Test Vector Leakage Assessment (TVLA) and the Welch t-test methodology defined in ISO/IEC 17825. Includes fixed-vs-random and specific test design, measurement setup qualification and calibration (ISO/IEC 20085), statistical threshold interpretation and false-positive control, and reporting of results against the FIPS 140-3 non-invasive security requirements. Key-recovery attacks belong to HWSEC-SCA-DPA.",
+  "requires": [
+    "HWSEC-SCA-SPA"
+  ],
+  "recommended": [
+    "HWSEC-SCA-DPA",
+    "FOUND-STANDARDS",
+    "HWSEC-SCA-EMA",
+    "FOUND-QA"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to leakage assessment methodology"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the purpose of leakage assessment and the statistics behind the Welch t-test",
+      "evidence": [
+        "Can explain the difference between leakage detection (TVLA) and key-recovery attacks",
+        "Can describe fixed-vs-random and fixed-vs-fixed test designs and the significance threshold used in ISO/IEC 17825",
+        "Aware of how FIPS 140-3 references ISO/IEC 17825 for non-invasive security requirements"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Executes leakage assessment test campaigns from a prepared procedure under supervision",
+      "evidence": [
+        "Acquires interleaved fixed and random trace sets following the test procedure",
+        "Computes first-order t-test statistics with provided tooling and plots results over time",
+        "Records acquisition parameters (sampling rate, bandwidth, trigger, trace count) in the test record",
+        "Repeats tests on independent data sets as required by the procedure"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently designs, qualifies and executes ISO/IEC 17825 leakage assessments",
+      "evidence": [
+        "Qualifies the measurement setup (noise floor, bandwidth, synchronisation) and documents it against ISO/IEC 20085 calibration expectations",
+        "Selects test vectors, trace counts and statistical orders appropriate to the security level being assessed",
+        "Distinguishes genuine leakage from artefacts (misalignment, trigger leakage, environmental drift) and justifies verdicts",
+        "Produces leakage assessment reports stating pass/fail per test with full traceability to the standard"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Applies higher-order and multivariate assessment; reviews leakage reports; mentors team",
+      "evidence": [
+        "Performs higher-order and multivariate t-tests for masked implementations and interprets their limitations",
+        "Correlates detected leakage with the implementation to inform targeted key-recovery attempts",
+        "Technically reviews leakage assessment reports for statistical soundness and measurement validity",
+        "Mentors analysts on test design, setup qualification and result interpretation"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognised authority on leakage assessment; defines lab methodology; contributes to standards",
+      "evidence": [
+        "Defines the lab's leakage assessment methodology and measurement setup qualification procedure",
+        "Contributes to ISO/IEC 17825, ISO/IEC 20085 or related standardisation and guidance",
+        "Publishes research on leakage detection statistics or their limitations",
+        "Advises validation bodies and vendors on interpretation of non-invasive test results"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Qualify a provided measurement setup and run a fixed-vs-random TVLA campaign on a training target with a known leaking and a protected configuration, reporting the verdict for each with supporting statistics"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review a leakage assessment report for correct test design, documented setup qualification, sound handling of false positives and verdicts traceable to ISO/IEC 17825"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1362", "K0018", "K1339", "S0563"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development", "DD-WRL-007 Systems Testing and Evaluation"]
+    },
+    "common_criteria": ["AVA_VAN.4", "AVA_VAN.5"],
+    "fips_140_3": ["AS08"],
+    "iso_iec": ["ISO/IEC 17825", "ISO/IEC 20085-1", "ISO/IEC 20085-2"],
+    "jil_attack_methods": ["5.5 Side-channel attacks"]
+  },
+  "equipment": [
+    "High-resolution oscilloscope or SCA acquisition platform meeting ISO/IEC 20085 requirements",
+    "Low-noise amplifier and current probe for power measurement",
+    "Near-field EM probes for EM-channel assessment"
+  ],
+  "tags": [
+    "tvla",
+    "leakage-assessment",
+    "side-channel",
+    "fips-140-3",
+    "statistical",
+    "non-invasive",
+    "cryptographic"
+  ]
+}

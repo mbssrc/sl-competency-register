@@ -1,0 +1,109 @@
+{
+  "id": "NETSEC-ENUM-SMB",
+  "name": "SMB Enumeration",
+  "domain": "network-security",
+  "category": "Enumeration",
+  "status": "active",
+  "description": "Ability to enumerate Windows and Samba file-sharing services using SMB/CIFS protocols. Covers share enumeration, user and group listing, session enumeration, null session exploitation, and extraction of security policy information from SMB services.",
+
+  "requires": [
+    "NETSEC-RECON-PORTSCANNING",
+    "NETSEC-RECON-FINGERPRINTING"
+  ],
+  "recommended": [
+    "FOUND-DOC"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to SMB enumeration techniques"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands SMB protocol basics and why SMB enumeration is valuable in engagements",
+      "evidence": [
+        "Can explain the SMB/CIFS protocol and its common ports (445, 139)",
+        "Understands concepts of shares, sessions, and null sessions",
+        "Knows the security implications of exposed SMB services"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs basic SMB enumeration under supervision using standard tools",
+      "evidence": [
+        "Uses smbclient, enum4linux, or NetExec to list shares",
+        "Enumerates users and groups via null sessions when available",
+        "Identifies accessible shares and their permissions under guidance",
+        "Documents SMB findings in engagement notes under review"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently performs comprehensive SMB enumeration and identifies security weaknesses",
+      "evidence": [
+        "Systematically enumerates shares, users, groups, and policies across networks",
+        "Identifies sensitive data in accessible shares (credentials, configs, PII)",
+        "Detects SMB signing configuration and relay attack opportunities",
+        "Integrates SMB findings into the broader engagement attack path"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex SMB environments; automates enumeration workflows; mentors others",
+      "evidence": [
+        "Enumerates large Active Directory environments with thousands of shares",
+        "Develops automated SMB enumeration scripts for engagement efficiency",
+        "Identifies non-obvious information leakage through SMB metadata",
+        "Mentors junior staff on SMB enumeration methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines SMB enumeration methodology; develops tools; trains teams on advanced techniques",
+      "evidence": [
+        "Authored the lab's SMB enumeration standard methodology",
+        "Develops or contributes to SMB enumeration tools",
+        "Deep understanding of SMB protocol internals and dialect negotiation",
+        "Trains teams on advanced SMB enumeration and attack surface analysis"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Enumerate all shares, users, and accessible data on a lab Windows domain environment with mixed SMB configurations"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review SMB enumeration findings from a recent engagement for completeness and accuracy"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0674", "K0744", "K0956", "S0504"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis"]
+    },
+    "mitre_attack": {
+      "techniques": ["T1135", "T1087", "T1069", "T1021.002"]
+    },
+    "crest": {
+      "areas": ["service-enumeration"]
+    }
+  },
+
+  "tags": [
+    "smb",
+    "cifs",
+    "windows",
+    "shares",
+    "enumeration",
+    "active-directory",
+    "relay-attack"
+  ]
+}

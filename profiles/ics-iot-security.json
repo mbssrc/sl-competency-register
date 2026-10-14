@@ -1,0 +1,83 @@
+{
+  "id": "ICSIOT",
+  "name": "ICS & IoT Security Specialist",
+  "domain": "ICSIOT",
+  "description": "Industrial control systems and IoT security track covering PLC assessment, ICS protocol analysis, IoT device testing, OT risk and safety analysis, and automotive and vehicle security.",
+  "maturity_levels": {
+    "junior": {
+      "title": "Junior ICS/IoT Security Specialist",
+      "description": "Assists with ICS and IoT assessments under supervision. Performs device enumeration and passive protocol capture on approved targets; active interaction with OT equipment only under direct supervision. Outputs are reviewed by an authorized assessor.",
+      "thresholds": {
+        "domain_skills_at": {"1": 3, "2": 2},
+        "min_categories": 1,
+        "foundation_avg": 0.5
+      },
+      "pinned": [
+        {"skill": "FOUND-ETHICS", "minimum_level": 2}
+      ]
+    },
+    "practitioner": {
+      "title": "ICS/IoT Security Specialist",
+      "description": "Independently assesses IoT devices, analyzes ICS protocols and evaluates OT risk, and is authorized to sign off routine assessments. Works within agreed scope and safety constraints on live systems, and delivers reports that state safety and process impact.",
+      "thresholds": {
+        "domain_skills_at": {"2": 4, "3": 2},
+        "min_categories": 2,
+        "foundation_avg": 1.0
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 3},
+        {"skill": "FOUND-ETHICS", "minimum_level": 3},
+        {"skill": "FOUND-RISK", "minimum_level": 3}
+      ]
+    },
+    "senior": {
+      "title": "Senior ICS/IoT Security Specialist",
+      "description": "Handles complex OT environments, for example multi-site networks with safety instrumented systems or legacy protocols, and judges safety impact of test actions. Performs QA review of assessment reports and mentors junior specialists.",
+      "thresholds": {
+        "domain_skills_at": {"3": 5, "4": 2},
+        "min_categories": 2,
+        "foundation_avg": 1.5
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 4},
+        {"skill": "FOUND-QA", "minimum_level": 3},
+        {"skill": "FOUND-ETHICS", "minimum_level": 3},
+        {"skill": "FOUND-RISK", "minimum_level": 3}
+      ]
+    },
+    "lead": {
+      "title": "Lead ICS/IoT Security Specialist",
+      "description": "Technical lead for ICS & IoT Security: owns the methodology, performs technical quality review of evaluations and reports, and plans the technical approach across engagements. Acts as the senior technical contact for clients on scope and findings. Technical depth stays at senior level or above.",
+      "thresholds": {
+        "domain_skills_at": {"3": 5, "4": 3},
+        "min_categories": 3,
+        "foundation_avg": 2.0
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 4},
+        {"skill": "FOUND-QA", "minimum_level": 3},
+        {"skill": "FOUND-PM", "minimum_level": 3},
+        {"skill": "FOUND-COMM", "minimum_level": 3},
+        {"skill": "FOUND-ETHICS", "minimum_level": 3},
+        {"skill": "FOUND-RISK", "minimum_level": 4}
+      ]
+    },
+    "principal": {
+      "title": "Principal ICS/IoT Security Specialist",
+      "description": "Technical authority in ICS/IoT security. Publishes research, contributes to IEC 62443, ISO/SAE 21434 and industry guidance, defines lab OT practice. The deepest technical tier in the domain; it extends Lead rather than branching from it.",
+      "thresholds": {
+        "domain_skills_at": {"4": 5, "5": 2},
+        "min_categories": 4,
+        "foundation_avg": 2.5
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 4},
+        {"skill": "FOUND-QA", "minimum_level": 3},
+        {"skill": "FOUND-PM", "minimum_level": 3},
+        {"skill": "FOUND-COMM", "minimum_level": 3},
+        {"skill": "FOUND-ETHICS", "minimum_level": 3},
+        {"skill": "FOUND-RISK", "minimum_level": 4}
+      ]
+    }
+  }
+}

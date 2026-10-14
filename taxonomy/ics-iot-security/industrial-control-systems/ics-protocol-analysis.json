@@ -1,0 +1,123 @@
+{
+  "id": "ICSIOT-ICS-PROTO",
+  "name": "ICS Protocol Security Analysis",
+  "domain": "ics-iot-security",
+  "category": "Industrial Control Systems",
+  "status": "active",
+  "description": "Deep security analysis of industrial communication protocols. Covers protocol-level vulnerability assessment of Modbus, DNP3, OPC UA/DA, EtherNet/IP (CIP), PROFINET, BACnet, IEC 61850, and HART. Includes traffic analysis, command injection testing, authentication bypass, and replay attack assessment.",
+  "requires": [
+    "FOUND-ETHICS",
+    "ICSIOT-ICS-NETWORK"
+  ],
+  "recommended": [
+    "ICSIOT-ICS-CTRL",
+    "SWSEC-FUZZ-PROTO",
+    "FOUND-TOOLS"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to ICS protocol security analysis"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands common ICS protocols and their inherent security limitations",
+      "evidence": [
+        "Can describe major ICS protocols (Modbus, DNP3, OPC UA, EtherNet/IP) and their typical use",
+        "Aware that many legacy ICS protocols lack authentication and encryption",
+        "Understands why protocol testing must be performed with extreme caution in live environments"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Can capture and analyze ICS protocol traffic under supervision",
+      "evidence": [
+        "Captures and decodes ICS protocol traffic using Wireshark or protocol-specific tools",
+        "Identifies unencrypted commands and unauthenticated operations in captured traffic",
+        "Performs basic protocol interaction in lab environments with guidance",
+        "Documents protocol traffic analysis findings with appropriate context for OT safety review"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently analyzes ICS protocol security and identifies exploitable weaknesses",
+      "evidence": [
+        "Performs protocol-level vulnerability assessment across multiple ICS protocols",
+        "Tests for command injection, replay, and man-in-the-middle conditions in the lab, or against operational assets only under a process-safe profile agreed with the asset owner, including abort criteria",
+        "Evaluates OPC UA security configurations including certificate and session management",
+        "Produces protocol security analysis reports with prioritized findings and mitigations"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Analyzes complex multi-protocol environments; develops custom protocol tooling; mentors others",
+      "evidence": [
+        "Develops custom dissectors, fuzzers, or interaction scripts for ICS protocols, exercising fuzzers against lab or bench devices rather than operational assets",
+        "Assesses protocol security in converged IT/OT environments with multiple protocol stacks",
+        "Reviews and calibrates protocol analysis findings across the team",
+        "Evaluates protocol-level detection and monitoring capabilities"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines ICS protocol analysis practice; publishes research; shapes assessment standards",
+      "evidence": [
+        "Established the lab's ICS protocol security analysis methodology",
+        "Published research on ICS protocol vulnerabilities or novel attack techniques",
+        "Deep expertise across legacy and modern industrial protocol stacks",
+        "Trains teams on ICS protocol analysis and contributes to industry guidance"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Analyze ICS protocol traffic in a lab environment: identify protocol vulnerabilities, demonstrate command injection or replay, and evaluate deployed mitigations"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review ICS protocol analysis reports for protocol coverage, attack depth, and safety-aware recommendations"
+    }
+  ],
+  "framework_mappings": {
+    "mitre_attack": {
+      "matrices": [
+        "ICS"
+      ],
+      "techniques": [
+        "T0830",
+        "T0869",
+        "T1692.001",
+        "T0842"
+      ]
+    },
+    "iec_62443": [
+      "3-3"
+    ],
+    "nice": {
+      "tks": ["K1309", "S0951", "K1289", "S0875", "K1089"],
+      "work_roles": ["DD-WRL-009 Operational Technology (OT) Cybersecurity Engineering", "PD-WRL-007 Vulnerability Analysis"]
+    }
+  },
+  "tags": [
+    "ics",
+    "scada",
+    "modbus",
+    "dnp3",
+    "opc-ua",
+    "ethernet-ip",
+    "protocol-analysis",
+    "industrial",
+    "authentication",
+    "encryption",
+    "ot",
+    "traffic-analysis",
+    "wireshark",
+    "fuzzing",
+    "replay-attack",
+    "pki"
+  ]
+}

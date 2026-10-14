@@ -1,0 +1,132 @@
+{
+  "id": "HWSEC-CRYPTO-HSM",
+  "name": "HSM & Secure Element Assessment",
+  "domain": "hardware-security",
+  "category": "Cryptographic Implementation Assessment",
+  "status": "active",
+  "description": "Security evaluation of Hardware Security Modules (HSMs), secure elements (SE), Trusted Platform Modules (TPMs), and secure enclaves. Covers logical interface assessment (API abuse, key extraction via protocol flaws), firmware and configuration review, physical tamper protection evaluation, and compliance assessment against FIPS 140-3, Common Criteria, PCI HSM, and GlobalPlatform standards. Detailed TPM and hardware root of trust evaluation belongs to HWSEC-EMBED-TPM, and conformance testing of physical tamper mechanisms against FIPS 140-3 / ISO/IEC 19790 belongs to HWSEC-INV-TAMPER.",
+  "requires": [
+    "HWSEC-CRYPTO-KEY",
+    "HWSEC-EMBED-FW"
+  ],
+  "recommended": [
+    "HWSEC-SCA-DPA",
+    "HWSEC-FI-VG",
+    "FOUND-STANDARDS",
+    "CRYPTO-PKI-KEYMANAGEMENT",
+    "HWSEC-EMBED-TPM",
+    "HWSEC-INV-TAMPER"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to HSM or secure element assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands HSM/SE architectures and relevant security standards",
+      "evidence": [
+        "Can explain the role of HSMs, secure elements, and TPMs in security architectures",
+        "Understands FIPS 140-3 security levels and their physical security requirements",
+        "Aware of HSM API standards (PKCS#11, GlobalPlatform) and common API abuse patterns"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Assesses HSM/SE configurations and interfaces under supervision",
+      "evidence": [
+        "Reviews HSM/SE configuration for security policy compliance",
+        "Tests cryptographic API for known vulnerability patterns (key extraction, role confusion)",
+        "Assesses TPM configuration and PCR policy on target platforms with guidance",
+        "Documents HSM/SE security architecture and interface attack surface"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently evaluates HSM/SE security including both logical and physical aspects",
+      "evidence": [
+        "Performs comprehensive PKCS#11 or proprietary API security assessment",
+        "Evaluates tamper protection mechanisms (meshes, sensors, environmental detectors, zeroization response)",
+        "Assesses firmware update mechanisms and secure boot on HSM/SE platforms",
+        "Completed HSM/SE assessments on 3+ distinct platforms against applicable standards"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Performs deep HSM/SE assessments combining logical and physical attacks; mentors team",
+      "evidence": [
+        "Combines API testing with physical attacks (SCA, FI) against HSM/SE targets",
+        "Assesses custom secure element applets and JavaCard/GlobalPlatform implementations",
+        "Evaluates HSM cluster security including key synchronization and failover mechanisms",
+        "Mentors team on HSM/SE assessment methodology and standard compliance evaluation"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on HSM/SE security; defines evaluation methodology; contributes to standards",
+      "evidence": [
+        "Defines the lab's HSM/SE evaluation methodology aligned with FIPS 140-3 and Common Criteria",
+        "Published research on HSM/SE vulnerabilities or evaluation techniques",
+        "Provides expert consultation on HSM/SE security architecture to vendors and certification bodies",
+        "Contributes to HSM/SE security standards or certification guidelines"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Perform a security assessment of an HSM or secure element: evaluate API security, assess tamper protection, and report compliance against a specified standard"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review HSM/SE assessment reports for standard compliance coverage, API testing thoroughness, and physical security evaluation completeness"
+    }
+  ],
+  "equipment": [
+    "Tamper response testing equipment (thermal chamber, voltage stress source)"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0932", "K0698", "S0531", "K1351", "K1362"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-007 Systems Testing and Evaluation"]
+    },
+    "common_criteria": [
+      "AVA_VAN.4",
+      "AVA_VAN.5",
+      "FPT_PHP",
+      "FPT_TST"
+    ],
+    "fips_140_3": [
+      "AS01",
+      "AS02",
+      "AS03",
+      "AS07",
+      "AS09",
+      "AS11"
+    ],
+    "pci_hsm": [
+      "A1",
+      "A2",
+      "B1",
+      "B2"
+    ]
+  },
+  "tags": [
+    "hsm",
+    "secure-element",
+    "tpm",
+    "fips-140-3",
+    "tamper-protection",
+    "pkcs11",
+    "cryptographic",
+    "api",
+    "firmware",
+    "physical-security",
+    "secure-boot",
+    "key-management",
+    "non-invasive"
+  ]
+}

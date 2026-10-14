@@ -1,0 +1,19 @@
+{
+  "id": "SVC-OSINT",
+  "name": "OSINT Investigation",
+  "description": "Open source intelligence collection and analysis covering person and organization research, social media intelligence, infrastructure enumeration, geospatial analysis, and breach data monitoring to support security assessments and investigations.",
+  "scope_reference": "Open source intelligence investigation",
+  "required_competencies": [
+    { "skill": "INTEL-OSINT-PERSON", "minimum_level": 3 },
+    { "skill": "INTEL-OSINT-SOCIAL", "minimum_level": 3 },
+    { "skill": "INTEL-OSINT-GEO", "minimum_level": 2 },
+    { "skill": "INTEL-OSINT-INFRA", "minimum_level": 3 },
+    { "skill": "INTEL-OSINT-BREACH", "minimum_level": 3 },
+    { "skill": "FOUND-REPORT", "minimum_level": 3 },
+    { "skill": "FOUND-ETHICS", "minimum_level": 3 }
+  ],
+  "standards": [
+    "Internal OSINT methodology",
+    "Berkeley Protocol on Digital Open Source Investigations (UN OHCHR, 2022)"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "key": "PERS-007",
+  "bands": {
+    "strong": [
+      "SWSEC-WEB",
+      "SWSEC-REVIEW"
+    ],
+    "weak": [
+      "SWSEC-FUZZ",
+      "SWSEC-OS",
+      "SWSEC-SUPPLY",
+      "SWSEC-MOB"
+    ]
+  },
+  "signature": {
+    "SWSEC-WEB-AUTHZ": 5,
+    "SWSEC-WEB-API": 4,
+    "SWSEC-REVIEW-MANUAL": 4,
+    "SWSEC-REVIEW-AUTH": 4,
+    "SWSEC-REVIEW-CRYPTO": 4
+  },
+  "never": [],
+  "foundations": [
+    2,
+    3
+  ],
+  "projects": [
+    "PRJ-SAT-BACKEND"
+  ],
+  "stale_skills": [],
+  "self_assessment": {
+    "mode": "all",
+    "bias": 0,
+    "jitter": 1
+  },
+  "development_plan": [],
+  "name": "Marisol Ferreira",
+  "role": "Lead Software Security Evaluator (Web and Code Review)",
+  "start_date": "2018-07-16",
+  "domains": [
+    "SWSEC"
+  ],
+  "target_maturity": {
+    "SWSEC": "lead"
+  }
+}

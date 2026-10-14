@@ -1,0 +1,119 @@
+{
+  "id": "WSEC-SPEC-TSCM",
+  "name": "Technical Surveillance Countermeasures",
+  "domain": "wireless-signal-security",
+  "category": "Spectrum Analysis & TEMPEST",
+  "status": "active",
+  "description": "Ability to conduct technical surveillance countermeasures (TSCM) inspections to detect covert surveillance devices. Covers RF spectrum sweeps for active transmitters, non-linear junction detection (NLJD) for electronic components, physical inspection methodology, telephone and wiring analysis, thermal and power-line analysis, and assessment of facility technical security posture.",
+  "requires": [
+    "WSEC-SPEC-ANALYSIS",
+    "FOUND-ETHICS",
+    "FOUND-EVIDENCE"
+  ],
+  "recommended": [
+    "WSEC-SPEC-TEMPEST",
+    "FOUND-REPORT"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to technical surveillance countermeasures"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands TSCM threat landscape and inspection methodology concepts",
+      "evidence": [
+        "Can describe common covert surveillance device types (RF, GSM, WiFi, audio, video)",
+        "Understands the TSCM inspection methodology phases (RF survey, physical, electronic, reporting)",
+        "Completed training on TSCM fundamentals and threat awareness"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Assists in TSCM inspections and operates detection equipment under supervision",
+      "evidence": [
+        "Conducted RF spectrum sweeps for anomalous transmissions under guidance",
+        "Operated non-linear junction detector (NLJD) on target areas under supervision",
+        "Assisted with physical inspection of fixtures, furnishings, and building elements"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently conducts TSCM inspections of standard office and meeting room environments",
+      "evidence": [
+        "Independently conducted TSCM inspections for 3+ facilities",
+        "Identified and characterized anomalous RF emissions during spectrum sweeps",
+        "Conducted systematic physical and electronic inspection of target spaces",
+        "Produced TSCM inspection reports documenting methodology, findings, and risk assessment"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Inspects high-security facilities; detects sophisticated devices; develops inspection methodology",
+      "evidence": [
+        "Conducted TSCM inspections of high-security or sensitive compartmented facilities",
+        "Detected sophisticated surveillance devices including burst transmitters and carrier-current devices",
+        "Performed telephone and structured cabling analysis for surveillance taps",
+        "Mentors junior TSCM inspectors and reviews inspection reports"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines TSCM methodology; designs technical security programs; recognized surveillance detection authority",
+      "evidence": [
+        "Authored the lab's TSCM inspection methodology and equipment standards",
+        "Designed ongoing technical security monitoring programs for sensitive facilities",
+        "Evaluated emerging surveillance technologies and updated detection methodologies accordingly",
+        "Trains TSCM inspection teams and provides expert testimony on surveillance detection"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Conduct a TSCM inspection of a prepared lab space containing planted surveillance devices, documenting all findings and detection methodology"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review TSCM inspection reports for methodology completeness, detection coverage, and risk assessment quality"
+    }
+  ],
+  "equipment": [
+    "Keysight N9040B or equivalent real-time spectrum analyzer",
+    "Non-linear junction detector (NLJD)",
+    "Broadband RF detector/receiver",
+    "Telephone and wiring analyzer"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0884", "K0925", "K1248"],
+      "work_roles": ["PD-WRL-001 Defensive Cybersecurity", "OG-WRL-001 Communications Security (COMSEC) Management"]
+    },
+    "sfia": {
+      "skill": "SCAD",
+      "levels": [
+        3,
+        4,
+        5
+      ]
+    },
+    "mitre_attack": {
+      "techniques": [
+        "T1123",
+        "T1125",
+        "T1040"
+      ]
+    }
+  },
+  "tags": [
+    "tscm",
+    "surveillance-detection",
+    "counter-surveillance",
+    "nljd",
+    "sweep",
+    "physical-security"
+  ]
+}

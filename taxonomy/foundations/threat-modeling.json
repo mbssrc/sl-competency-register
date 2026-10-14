@@ -1,0 +1,101 @@
+{
+  "id": "FOUND-THREATMODEL",
+  "name": "Threat Modeling",
+  "domain": "foundations",
+  "category": "Foundations",
+  "status": "active",
+  "description": "Systematic identification and prioritization of threats to a system, application, or process. Encompasses understanding what is being built, what can go wrong, and what to do about it — independent of any single methodology or framework.",
+
+  "requires": [],
+  "recommended": [
+    "FOUND-RISK",
+    "FOUND-DOC"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to threat modeling concepts"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the purpose and basic structure of threat modeling",
+      "evidence": [
+        "Can explain why threat modeling is performed and when it adds value",
+        "Understands the general flow: scope definition, threat identification, mitigation planning",
+        "Aware that multiple methodologies and diagramming approaches exist"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Can participate in and contribute to a threat modeling exercise with guidance",
+      "evidence": [
+        "Contributes meaningful threats during facilitated sessions",
+        "Can decompose a system into components, trust boundaries, and data flows",
+        "Produces threat model documentation reviewed and approved by senior staff"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently conducts threat modeling for systems of moderate complexity",
+      "evidence": [
+        "Selects and applies an appropriate approach based on the target system",
+        "Identifies threats across relevant categories without significant gaps",
+        "Produces actionable threat models that inform design and testing decisions",
+        "Integrates threat modeling outputs into engagement planning or development lifecycle"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Facilitates threat modeling for complex or novel systems; coaches others through the process",
+      "evidence": [
+        "Leads threat modeling for multi-component or cross-domain systems",
+        "Adapts approach to the audience and system type (embedded, cloud, protocol, etc.)",
+        "Reviews and improves threat models produced by others",
+        "Connects threat model findings to concrete test plans and security architecture recommendations"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines the lab's threat modeling practice; advances methodology for novel problem domains",
+      "evidence": [
+        "Established or significantly evolved the lab's threat modeling practice",
+        "Develops custom approaches for domains where standard methodologies fall short",
+        "Trains teams and embeds threat modeling into organizational processes",
+        "Recognized externally for threat modeling expertise"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "work_product_review",
+      "description": "Review threat model artifacts from 2-3 recent engagements for completeness, accuracy, and actionability"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given an unfamiliar system architecture, produce a threat model covering scope, decomposition, threat identification, and prioritized mitigations"
+    },
+    {
+      "type": "direct_observation",
+      "description": "Observe facilitation of a threat modeling session with a cross-functional group"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["S0588", "K1274", "K0682", "K0825"],
+      "work_roles": ["DD-WRL-001 Cybersecurity Architecture", "DD-WRL-005 Software Security Assessment"]
+    }
+  },
+
+  "tags": [
+    "cross-cutting",
+    "methodology",
+    "design-time",
+    "proactive"
+  ]
+}

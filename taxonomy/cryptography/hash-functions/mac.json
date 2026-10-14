@@ -1,0 +1,113 @@
+{
+  "id": "CRYPTO-HASH-MAC",
+  "name": "MAC & HMAC Assessment",
+  "domain": "cryptography",
+  "category": "Hash Functions",
+  "status": "active",
+  "description": "Assessment of message authentication code (MAC) implementations including HMAC, CMAC, GMAC, and Poly1305. Covers key management for MAC keys, constant-time comparison verification, truncation risks, and correct usage patterns for integrity and authentication.",
+
+  "requires": [
+    "CRYPTO-HASH-ASSESSMENT"
+  ],
+  "recommended": [
+    "CRYPTO-SYM-BLOCKCIPHER"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to MAC or HMAC assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands MAC concepts and the difference between MACs and plain hashes",
+      "evidence": [
+        "Can explain why a MAC requires a secret key and a plain hash does not",
+        "Understands the HMAC construction and its purpose",
+        "Can describe when MACs are used versus digital signatures"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Identifies MAC usage and basic implementation issues under supervision",
+      "evidence": [
+        "Identifies HMAC usage in APIs, authentication tokens, and protocol implementations",
+        "Detects use of plain hashes where MACs are required under guidance",
+        "Reviews code for MAC key management practices",
+        "Documents MAC-related findings following lab templates"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses MAC implementations for correctness and security",
+      "evidence": [
+        "Identifies timing-based MAC verification vulnerabilities (non-constant-time comparison)",
+        "Evaluates HMAC key derivation and rotation practices",
+        "Assesses MAC tag truncation and its impact on forgery resistance",
+        "Produces findings referencing RFC 2104, FIPS 198-1, NIST SP 800-38B (CMAC), or relevant standards"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex MAC assessment scenarios; demonstrates timing attacks in lab",
+      "evidence": [
+        "Demonstrates timing-based MAC forgery attacks in lab environments",
+        "Evaluates CMAC and GMAC implementations in protocol contexts",
+        "Assesses MAC usage in key derivation (HKDF) and key wrapping constructions",
+        "Reviews and mentors junior staff on MAC assessment methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines MAC assessment methodology; recognised authority on MAC security",
+      "evidence": [
+        "Authored or maintains the lab's MAC assessment methodology",
+        "Published research on MAC implementation vulnerabilities or timing attacks",
+        "Provides expert guidance on MAC scheme selection and integration patterns",
+        "Trains teams on MAC internals, failure modes, and assessment approaches"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess an API using HMAC-based authentication: evaluate key management, comparison logic, and tag handling"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given an application with a timing side-channel in MAC verification, demonstrate exploitation and propose a fix"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1358", "S0622", "K0942", "S0969"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-005 Software Security Assessment"]
+    },
+    "fips": {
+      "standards": ["FIPS 198-1"]
+    },
+    "nist_sp": ["800-38B", "800-38D", "800-185"],
+    "ietf": {
+      "rfcs": ["RFC 2104", "RFC 8439"]
+    }
+  },
+
+  "tags": [
+    "hmac",
+    "mac",
+    "cmac",
+    "poly1305",
+    "message-authentication",
+    "timing-attack",
+    "integrity",
+    "authentication",
+    "constant-time",
+    "key-management",
+    "side-channel"
+  ]
+}

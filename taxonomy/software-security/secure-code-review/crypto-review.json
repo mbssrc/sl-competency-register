@@ -1,0 +1,113 @@
+{
+  "id": "SWSEC-REVIEW-CRYPTO",
+  "name": "Cryptographic Implementation Review",
+  "domain": "software-security",
+  "category": "Secure Code Review",
+  "status": "active",
+  "description": "Review of cryptographic implementations in source code for correctness and security. Covers identification of weak algorithms, insecure modes of operation, improper key management, IV/nonce reuse, padding oracle exposure, and misuse of cryptographic libraries.",
+
+  "requires": [
+    "SWSEC-REVIEW-MANUAL"
+  ],
+  "recommended": [
+    "FOUND-REPORT",
+    "CRYPTO-SYM-BLOCKCIPHER",
+    "CRYPTO-ASYM-RSA",
+    "CRYPTO-IMPL-CONSTTIME"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to cryptographic implementation review"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands cryptographic primitives and common misuse patterns",
+      "evidence": [
+        "Can explain symmetric vs. asymmetric encryption, hashing, and MAC",
+        "Familiar with deprecated algorithms (MD5, SHA1, DES, RC4)",
+        "Understands the concept of cryptographic misuse vs. broken cryptography"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Identifies obvious cryptographic misuse under supervision",
+      "evidence": [
+        "Identified use of deprecated algorithms in code under guidance",
+        "Detected hardcoded keys and credentials in source code",
+        "Reviewed TLS configuration code for basic issues",
+        "Findings reviewed by authorized reviewer"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently reviews cryptographic implementations for common flaws",
+      "evidence": [
+        "Independently reviewed cryptographic code on 5+ engagements",
+        "Identifies ECB mode, static IV/nonce, and insecure PRNG usage",
+        "Reviews key derivation functions and password hashing implementations",
+        "Evaluates certificate validation code for bypass vulnerabilities",
+        "Passed proficiency assessment on cryptographic review"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Reviews complex crypto implementations; identifies subtle timing and oracle issues",
+      "evidence": [
+        "Identifies timing side-channels and padding oracle vulnerabilities in code",
+        "Reviews custom protocol implementations for cryptographic weaknesses",
+        "Evaluates key management lifecycles and secure storage mechanisms",
+        "Mentors others on cryptographic review methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Authority on applied cryptography review; evaluates novel constructions",
+      "evidence": [
+        "Published research on cryptographic implementation vulnerabilities",
+        "Reviews custom cryptographic protocols and novel constructions",
+        "Developed lab methodology for cryptographic implementation review",
+        "Trains teams on cryptographic code review"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Review a codebase with seeded cryptographic misuse (weak algorithms, IV reuse, hardcoded keys, timing leaks)"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given a custom authentication protocol implementation, identify cryptographic weaknesses"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1361", "S0971", "S0972", "K0698"],
+      "work_roles": ["DD-WRL-005 Software Security Assessment"]
+    },
+    "owasp": ["A04:2025 Cryptographic Failures"],
+    "cwe": ["CWE-327", "CWE-330", "CWE-321", "CWE-916"]
+  },
+
+  "tags": [
+    "code-review",
+    "cryptography",
+    "applied-crypto",
+    "key-management",
+    "cryptographic",
+    "encryption",
+    "side-channel",
+    "tls",
+    "transport-security",
+    "constant-time",
+    "timing-attack",
+    "pki"
+  ]
+}

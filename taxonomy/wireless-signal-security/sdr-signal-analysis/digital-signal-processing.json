@@ -1,0 +1,98 @@
+{
+  "id": "WSEC-SDR-DSP",
+  "name": "Digital Signal Processing for Security",
+  "domain": "wireless-signal-security",
+  "category": "SDR & Signal Analysis",
+  "status": "active",
+  "description": "Ability to apply digital signal processing techniques to RF security analysis tasks. Covers filtering, spectral analysis (FFT/PSD), correlation, signal detection and classification, noise floor characterization, and time-frequency analysis. Enables extraction of intelligence from captured signals beyond basic demodulation.",
+  "requires": [
+    "WSEC-SDR-FUNDM"
+  ],
+  "recommended": [
+    "WSEC-SDR-DEMOD"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to digital signal processing concepts"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands basic DSP concepts including sampling, filtering, and frequency-domain representation",
+      "evidence": [
+        "Can explain Fourier transforms, filtering, and aliasing at a conceptual level",
+        "Completed introductory DSP training or equivalent coursework",
+        "Understands the role of DSP in RF signal analysis"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Applies standard DSP techniques using existing tools and scripts under supervision",
+      "evidence": [
+        "Applied FFT-based spectral analysis to captured signals using Python/NumPy or GNU Radio",
+        "Designed and applied basic FIR/IIR filters to isolate signals of interest under guidance",
+        "Used spectrogram/waterfall analysis to characterize signal timing patterns"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently applies DSP techniques to extract information from complex signal captures",
+      "evidence": [
+        "Independently characterized signal parameters (bandwidth, symbol rate, periodicity) using DSP techniques",
+        "Applied correlation and matched filtering for signal detection in noisy captures",
+        "Implemented custom DSP processing chains for lab analysis tasks",
+        "Documented DSP processing parameters and results for reproducibility"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Develops advanced DSP analysis pipelines; applies statistical signal processing to challenging problems",
+      "evidence": [
+        "Developed automated signal classification pipelines using statistical or ML-based approaches",
+        "Applied advanced techniques (cyclostationary analysis, wavelet transforms, blind source separation) to real captures",
+        "Built reusable DSP analysis tools for the lab",
+        "Mentors junior analysts on DSP technique selection and application"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines lab DSP methodology; develops novel analysis techniques; recognized signal processing authority",
+      "evidence": [
+        "Published research on DSP techniques for security signal analysis",
+        "Designed the lab's standard DSP processing and analysis toolkit",
+        "Developed novel signal detection or classification methods applied in lab operations",
+        "Trains teams on DSP fundamentals and advanced techniques"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Given a raw IQ capture containing multiple overlapping signals, isolate and characterize each signal using DSP techniques"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Design a processing chain to detect and extract a weak signal of interest from a capture with strong adjacent-channel interference"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0812", "K0925", "K1284"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development"]
+    },
+    "certifications": [
+      "GIAC GAWN"
+    ]
+  },
+  "tags": [
+    "dsp",
+    "fft",
+    "filtering",
+    "spectral-analysis",
+    "signal-classification",
+    "python"
+  ]
+}

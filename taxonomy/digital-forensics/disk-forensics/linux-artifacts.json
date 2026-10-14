@@ -1,0 +1,117 @@
+{
+  "id": "DFIR-DISK-LINART",
+  "name": "Linux Forensic Artifacts",
+  "domain": "digital-forensics",
+  "category": "Disk Forensics",
+  "status": "active",
+  "description": "Extraction and analysis of Linux-specific forensic artifacts. Covers systemd journal and syslog analysis, authentication logs (auth.log, secure, wtmp, btmp, lastlog), shell history files, cron and systemd timer/service persistence, package manager logs (dpkg, apt, yum/dnf), SSH artifacts (authorized_keys, known_hosts), auditd logs, user and service account configuration, and ext4/XFS-specific timestamp and journal behaviour. Windows artifacts are covered by DFIR-DISK-ARTIFACTS and macOS artifacts by DFIR-DISK-MACART.",
+
+  "requires": [
+    "DFIR-DISK-FILESYS",
+    "FOUND-EVIDENCE"
+  ],
+  "recommended": [
+    "DFIR-DISK-ARTIFACTS",
+    "DFIR-DISK-TIMELINE",
+    "DFIR-CLOUD-CONTAINER",
+    "INFRA-ONPREM-LINHARDEN",
+    "FOUND-REPORT"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to Linux forensic artifact analysis"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands Linux artifact categories and their forensic value",
+      "evidence": [
+        "Can describe major Linux artifact sources (journald, syslog, auth logs, shell history, cron)",
+        "Understands how distribution differences affect log locations and formats",
+        "Can explain the forensic implications of ext4 and XFS timestamps, including crtime support"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Extracts and parses Linux artifacts under supervision",
+      "evidence": [
+        "Parsed systemd journals offline from a disk image using journalctl --directory or equivalent under guidance",
+        "Extracted login history from wtmp, btmp, and auth.log/secure with supervisor review",
+        "Reviewed shell history, cron tables, and systemd unit files for evidence of attacker activity",
+        "Parsed package manager logs to identify installed or removed software"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently analyses Linux artifacts across investigation types",
+      "evidence": [
+        "Independently analysed Linux artifacts in 5+ investigations across multiple distributions",
+        "Correlates journal, auth log, shell history, and filesystem timestamps to reconstruct attacker activity",
+        "Identifies persistence via cron, systemd services and timers, SSH keys, shell profiles, and LD_PRELOAD",
+        "Produces Linux forensic reports withstanding peer and legal review"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles advanced Linux forensic scenarios; detects anti-forensics",
+      "evidence": [
+        "Identifies evidence of Linux anti-forensics (log truncation, history disabling, timestomping, journal tampering)",
+        "Recovers deleted log and history content from ext4 journals or unallocated space",
+        "Develops custom parsers for Linux artifacts from new distributions or application stacks",
+        "Reviews and mentors junior examiners on Linux artifact analysis"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Authority on Linux forensics; discovers new artifact sources",
+      "evidence": [
+        "Authored or maintains lab's Linux forensic analysis procedures",
+        "Published research on Linux artifacts or analysis techniques",
+        "Validated forensic tool accuracy against Linux ground truth data",
+        "Provides expert testimony on Linux forensic evidence"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Given a Linux server disk image from a simulated intrusion, extract and analyse platform-specific artifacts to establish initial access, attacker commands, and persistence within a specified timeframe"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review Linux artifact analysis sections from recent case reports"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0923", "K0744", "K0794", "S0481", "S0612"],
+      "work_roles": ["PD-WRL-002 Digital Forensics", "IN-WRL-002 Digital Evidence Analysis"]
+    },
+    "sfia": {
+      "skill": "DGFS"
+    },
+    "mitre_attack": {
+      "techniques": ["T1053.003", "T1543.002", "T1070.002", "T1070.003"]
+    },
+    "giac": ["GCFA"]
+  },
+
+  "tags": [
+    "linux",
+    "forensics",
+    "journald",
+    "syslog",
+    "shell-history",
+    "persistence",
+    "ext4",
+    "disk-forensics",
+    "authentication",
+    "ssh"
+  ]
+}

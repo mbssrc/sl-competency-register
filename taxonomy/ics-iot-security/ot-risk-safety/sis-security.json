@@ -1,0 +1,108 @@
+{
+  "id": "ICSIOT-OT-SIS",
+  "name": "Safety Instrumented System Security",
+  "domain": "ics-iot-security",
+  "category": "OT Risk & Safety",
+  "status": "active",
+  "description": "Covers the security of safety instrumented systems (SIS): SIS architecture and separation from the basic process control system, the interplay of IEC 61511 and IEC 61508 functional safety with IEC 62443 security, safety-security co-engineering, and assessment of safety controller engineering access, key switches and network integration. Draws on the Triton/TRISIS incident as a reference case. General OT risk methodology belongs to ICSIOT-OT-RISK.",
+  "requires": [
+    "ICSIOT-OT-RISK"
+  ],
+  "recommended": [
+    "ICSIOT-ICS-CTRL",
+    "ICSIOT-ICS-NETWORK",
+    "ICSIOT-OT-62443"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to safety instrumented system security"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands what a SIS does and why its compromise threatens life and the environment",
+      "evidence": [
+        "Can explain the role of a SIS, safety instrumented functions and safety integrity levels (SIL)",
+        "Can summarise the Triton/TRISIS attack and the safety controller weaknesses it exploited",
+        "Knows that IEC 61511 requires a security risk assessment of the SIS"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Contributes to SIS security reviews under supervision",
+      "evidence": [
+        "Documents SIS architecture: integrated vs. interfaced vs. air-gapped designs and their conduits to the BPCS",
+        "Reviews safety controller key switch, engineering workstation and program-mode procedures with guidance",
+        "Identifies where a SIS shares network, engineering or HMI infrastructure with the process control system",
+        "Records findings in terms that both safety and security engineers can act on"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses SIS security and safety-security interactions",
+      "evidence": [
+        "Performs the IEC 61511 SIS security risk assessment, linking threat scenarios to hazards in the HAZOP/LOPA",
+        "Evaluates segregation, engineering access control and change detection for safety controllers",
+        "Assesses whether security countermeasures could degrade safety functions (and vice versa)",
+        "Produces SIS security assessment reports with recommendations agreed with functional safety engineers"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Leads SIS security assessments and co-engineering; mentors others",
+      "evidence": [
+        "Leads safety-security co-engineering workshops across the lifecycle (design, FAT/SAT, operation, modification)",
+        "Assesses SIS security in a lab safety controller environment, including logic integrity verification and mode-change monitoring",
+        "Translates incidents such as Triton/TRISIS into concrete test cases and detection requirements",
+        "Mentors staff on working safely with safety controllers and with functional safety teams"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines the lab's SIS security practice; recognised authority",
+      "evidence": [
+        "Established the lab's SIS security assessment and safety-security co-engineering methodology",
+        "Published research or contributed to standards on SIS security or safety-security alignment",
+        "Recognised authority consulted on SIS architecture and incident lessons",
+        "Trains teams on SIS security and safety-security integration"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "problem_solving",
+      "description": "Given a plant architecture with an integrated SIS and its HAZOP extract, perform a SIS security risk assessment and identify the conduits and engineering paths that could defeat a safety instrumented function"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review a SIS security assessment for coverage of IEC 61511 security requirements, linkage of threats to hazards, and recommendations that do not compromise functional safety"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1297", "K1340", "K1315", "K1289"],
+      "work_roles": ["DD-WRL-009 Operational Technology (OT) Cybersecurity Engineering"]
+    },
+    "mitre_attack": {
+      "matrices": ["ICS"],
+      "techniques": ["T0880", "T0837"]
+    },
+    "iec_61511": true,
+    "iec_61508": true,
+    "iec_62443": ["3-2", "3-3"]
+  },
+  "tags": [
+    "sis",
+    "safety",
+    "ot",
+    "ics",
+    "cyber-physical",
+    "iec-62443",
+    "industrial",
+    "risk-assessment",
+    "segmentation"
+  ]
+}

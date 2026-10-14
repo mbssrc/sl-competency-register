@@ -1,0 +1,63 @@
+{
+  "id": "HWSEC",
+  "name": "Hardware Security",
+  "description": "Skills related to the security evaluation and testing of hardware, embedded systems, and physical devices. Covers non-invasive, semi-invasive, and invasive analysis techniques. Note: no established framework (NICE/SFIA/ECSF) covers this domain. Taxonomy synthesized from CHES/COSADE academic literature, Common Criteria methodology, FIPS 140-3, and EMVCo evaluation standards.",
+
+  "categories": [
+    {
+      "id": "HWSEC-EMBED",
+      "name": "Embedded Systems Security",
+      "description": "Firmware extraction, debug interface exploitation (JTAG/SWD/UART), secure boot analysis, firmware reverse engineering, and embedded OS security."
+    },
+    {
+      "id": "HWSEC-SCA",
+      "name": "Side-Channel Analysis",
+      "description": "Power analysis (SPA/DPA/CPA), electromagnetic analysis (EMA), timing attacks, and cache-based side channels. Covers acquisition, signal processing, and statistical analysis."
+    },
+    {
+      "id": "HWSEC-FI",
+      "name": "Fault Injection",
+      "description": "Voltage glitching, clock glitching, electromagnetic fault injection (EMFI), and laser fault injection. Covers glitch parameter optimization, fault models, and combined attacks."
+    },
+    {
+      "id": "HWSEC-INV",
+      "name": "Invasive Analysis",
+      "description": "Chip decapsulation, delayering, microprobing, FIB (focused ion beam) circuit editing, and optical/electron microscopy analysis."
+    },
+    {
+      "id": "HWSEC-PCB",
+      "name": "PCB Reverse Engineering",
+      "description": "Component identification, schematic reconstruction, bus analysis and sniffing, test point identification, and PCB-level modification."
+    },
+    {
+      "id": "HWSEC-RF",
+      "name": "RF & Wireless (On-Device)",
+      "description": "On-device RF analysis: RFID/NFC chip security, hardware radio transceiver evaluation, antenna analysis, and RF emission characterization at the hardware level."
+    },
+    {
+      "id": "HWSEC-CRYPTO",
+      "name": "Cryptographic Implementation Assessment",
+      "description": "Review of cryptographic algorithm implementations in hardware. Covers RNG evaluation, key management in hardware, HSM assessment, and crypto accelerator analysis."
+    },
+    {
+      "id": "HWSEC-SPREP",
+      "name": "Sample Preparation",
+      "description": "Physical and chemical preparation of IC and hardware samples for analysis. Covers mechanical preparation (mounting, cross-sectioning, polishing), chemical handling and safety, and goal-specific preparation for optical imaging, SEM/FIB imaging, and active analysis (fault injection, probing, FIB editing) where device functionality must be preserved."
+    }
+  ],
+
+  "attack_tiers": [
+    {
+      "tier": "non-invasive",
+      "categories": ["HWSEC-SCA", "HWSEC-FI", "HWSEC-EMBED", "HWSEC-RF"]
+    },
+    {
+      "tier": "semi-invasive",
+      "categories": ["HWSEC-FI", "HWSEC-INV", "HWSEC-SPREP"]
+    },
+    {
+      "tier": "invasive",
+      "categories": ["HWSEC-INV", "HWSEC-SPREP"]
+    }
+  ]
+}

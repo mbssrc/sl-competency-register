@@ -1,0 +1,109 @@
+{
+  "id": "CRYPTO-HASH-ASSESSMENT",
+  "name": "Hash Function Assessment",
+  "domain": "cryptography",
+  "category": "Hash Functions",
+  "status": "active",
+  "description": "Assessment of cryptographic hash function usage including SHA-2 family, SHA-3, and identification of deprecated functions (MD5, SHA-1). Covers evaluation of collision resistance requirements, preimage resistance, hash function selection for specific use cases, and detection of length-extension vulnerabilities.",
+
+  "requires": [],
+  "recommended": [
+    "FOUND-STANDARDS",
+    "FOUND-TOOLS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to hash function assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands hash function properties and why algorithm selection matters",
+      "evidence": [
+        "Can explain collision resistance, preimage resistance, and second-preimage resistance",
+        "Understands why MD5 and SHA-1 are deprecated for security-critical uses (SHA-1 is disallowed for signature generation and NIST plans to retire it entirely by 31 December 2030)",
+        "Can describe the SHA-2 and SHA-3 families and their output sizes"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Identifies hash function usage and deprecated algorithms under supervision",
+      "evidence": [
+        "Detects use of MD5 or SHA-1 in certificates, signatures, and integrity checks",
+        "Identifies hash function usage in code review under guidance",
+        "Uses tools to compute and verify hashes for evidence integrity",
+        "Documents hash-related findings following lab templates"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses hash function usage for security and appropriateness",
+      "evidence": [
+        "Evaluates hash function selection against the specific security requirements (collision vs preimage resistance)",
+        "Identifies length-extension vulnerabilities where Merkle-Damgard hashes (MD5, SHA-1, SHA-256, SHA-512) are used as naive secret-prefix MACs",
+        "Assesses hash function usage in digital signatures, integrity verification, and commitment schemes",
+        "Produces findings referencing NIST SP 800-131A or FIPS 180-4 guidance"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex hash function assessment; demonstrates practical attack impact",
+      "evidence": [
+        "Demonstrates MD5 collision attacks and their impact on certificate security",
+        "Evaluates custom MAC and hash constructions for length-extension and related structural weaknesses",
+        "Assesses hash function usage in Merkle trees, blockchain, and commitment schemes",
+        "Reviews and mentors junior staff on hash function assessment"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines hash function assessment methodology; recognised authority on hash security",
+      "evidence": [
+        "Authored or maintains the lab's hash function assessment methodology",
+        "Published research on hash function vulnerabilities or practical collision attacks",
+        "Provides expert guidance on hash function migration strategies (SHA-1 to SHA-2/SHA-3)",
+        "Trains teams on hash function internals, attacks, and selection criteria"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Audit a system for deprecated hash function usage: identify all instances, assess risk based on context (signature vs checksum vs HMAC), and produce prioritised remediation recommendations"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given an API using SHA-256 for request signing, determine whether it is vulnerable to length-extension attacks and propose a fix"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["S0622", "S0971", "K0942", "S0967"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-005 Software Security Assessment"]
+    },
+    "fips": {
+      "standards": ["FIPS 180-4", "FIPS 202"]
+    },
+    "nist_sp": ["800-131A"]
+  },
+
+  "tags": [
+    "hash-functions",
+    "sha-2",
+    "sha-3",
+    "md5",
+    "sha-1",
+    "collision-resistance",
+    "integrity",
+    "length-extension",
+    "code-review",
+    "cryptographic",
+    "evidence-integrity"
+  ]
+}

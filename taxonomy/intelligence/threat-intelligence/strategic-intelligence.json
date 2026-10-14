@@ -1,0 +1,101 @@
+{
+  "id": "INTEL-TI-STRATEGIC",
+  "name": "Strategic & Operational Intelligence",
+  "domain": "intelligence",
+  "category": "Threat Intelligence",
+  "status": "active",
+  "description": "Producing higher-level intelligence that informs organizational strategy, risk decisions, and operational planning. Covers threat landscape assessments, industry-specific threat briefings, geopolitical cyber risk analysis, trend forecasting, and translating threat intelligence into business risk language for executive and operational decision-makers.",
+  "requires": [
+    "INTEL-TI-PRODUCTION",
+    "INTEL-TI-ADVERSARY"
+  ],
+  "recommended": [
+    "FOUND-RISK",
+    "FOUND-COMM"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to strategic or operational intelligence production"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the purpose and audience of strategic intelligence and how it differs from tactical products",
+      "evidence": [
+        "Can explain the difference between strategic, operational, and tactical intelligence",
+        "Understands how threat intelligence informs business risk decisions",
+        "Aware of geopolitical factors that influence the cyber threat landscape"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Contributes research to strategic intelligence products under supervision",
+      "evidence": [
+        "Researches industry-specific threats and contributes to landscape assessments under guidance",
+        "Assists in preparing threat briefing materials for operational or executive audiences",
+        "Tracks geopolitical events with potential cyber implications",
+        "Contributions reviewed by senior analyst before inclusion in products"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently produces operational intelligence and contributes substantively to strategic assessments",
+      "evidence": [
+        "Authors operational threat assessments for engagement planning across 3+ cases",
+        "Produces industry-specific or sector-specific threat landscape reports",
+        "Translates technical threat intelligence into business risk language",
+        "Products pass senior analytical review and are accepted by stakeholders"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Produces strategic intelligence for executive audiences; leads threat landscape analysis",
+      "evidence": [
+        "Authors strategic threat assessments consumed by executive leadership",
+        "Leads periodic threat landscape reviews and trend analysis",
+        "Integrates geopolitical, economic, and technical factors into threat forecasts",
+        "Mentors junior analysts on strategic thinking and executive communication"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines strategic intelligence program; recognized authority on threat landscape; trains teams",
+      "evidence": [
+        "Designed or maintains the lab's strategic intelligence program and methodology",
+        "Recognized as subject matter expert on threat landscape and forecasting",
+        "Publishes strategic assessments referenced by industry peers",
+        "Trains teams on strategic intelligence production and geopolitical cyber risk analysis"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "work_product_review",
+      "description": "Review strategic intelligence products for analytical depth, proper risk framing, source diversity, and executive-appropriate communication"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given a scenario involving geopolitical change, produce a strategic threat assessment covering implications for a specified industry sector"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["S0965", "K0836", "K0818", "S0728", "K1009"],
+      "work_roles": ["PD-WRL-006 Threat Analysis", "OG-WRL-002 Cybersecurity Policy and Planning"]
+    },
+    "mitre_attack": {
+      "note": "Informs strategic threat assessments using ATT&CK-derived trend data"
+    }
+  },
+  "tags": [
+    "threat-intelligence",
+    "strategic-intelligence",
+    "risk-assessment",
+    "threat-landscape",
+    "executive-briefing",
+    "geopolitical"
+  ]
+}

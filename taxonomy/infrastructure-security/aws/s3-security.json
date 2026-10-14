@@ -1,0 +1,104 @@
+{
+  "id": "INFRA-AWS-S3",
+  "name": "AWS S3 Security Assessment",
+  "domain": "infrastructure-security",
+  "category": "AWS Security",
+  "status": "active",
+  "description": "Security assessment of Amazon S3 storage configurations. Covers bucket policies, ACLs, public access settings, encryption, logging, versioning, cross-account access, and data exfiltration risks.",
+  "requires": [
+    "INFRA-AWS-IAM"
+  ],
+  "recommended": [
+    "FOUND-EVIDENCE"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to S3 security assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands S3 access control mechanisms and common misconfiguration patterns",
+      "evidence": [
+        "Can explain bucket policies, ACLs (disabled by default via S3 Object Ownership since 2023), and Block Public Access settings",
+        "Understands S3 encryption options (SSE-S3, SSE-KMS, DSSE-KMS, SSE-C)",
+        "Familiar with common S3 data exposure incidents"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Enumerates and reviews S3 configurations under supervision",
+      "evidence": [
+        "Uses tools to scan for publicly accessible buckets and objects",
+        "Reviews bucket policies for overly permissive access under guidance",
+        "Documents S3 security findings with supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses S3 security posture across accounts",
+      "evidence": [
+        "Independently identifies misconfigured bucket policies and ACLs",
+        "Evaluates cross-account S3 access and data exfiltration risks",
+        "Assesses S3 logging, versioning, and encryption configurations",
+        "Produces compliant S3 assessment reports"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex S3 security scenarios including data flow analysis and exfiltration simulation",
+      "evidence": [
+        "Identifies subtle data exposure through pre-signed URLs and cross-account trust",
+        "Develops automated S3 configuration audit tooling",
+        "Reviews S3 assessment work of junior analysts",
+        "Assesses S3-backed application architectures for data leakage"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines lab S3 assessment methodology; discovers novel S3 attack vectors",
+      "evidence": [
+        "Designed or maintains the lab's S3 security assessment methodology",
+        "Published research on S3 security bypass techniques or data exfiltration",
+        "Trains teams on advanced S3 security assessment"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess a multi-account S3 environment with intentional misconfigurations and identify all data exposure risks"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review S3 security findings from recent cloud assessment engagements"
+    }
+  ],
+  "framework_mappings": {
+    "cis": [
+      "CIS AWS Foundations Benchmark v5.0.0 - Section 2.1 Simple Storage Service (S3)"
+    ],
+    "csa_ccm": [
+      "DSP-04",
+      "DSP-05"
+    ],
+    "nice": {
+      "tks": ["K0863", "K1369", "K0931", "K0685", "K1150"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "IO-WRL-006 Systems Security Analysis"]
+    }
+  },
+  "tags": [
+    "aws",
+    "s3",
+    "storage",
+    "data-exposure",
+    "cloud-security",
+    "encryption",
+    "exfiltration",
+    "kms",
+    "iam"
+  ]
+}

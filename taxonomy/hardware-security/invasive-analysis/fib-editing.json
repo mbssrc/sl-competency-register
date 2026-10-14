@@ -1,0 +1,110 @@
+{
+  "id": "HWSEC-INV-FIB",
+  "name": "Focused Ion Beam Circuit Editing",
+  "domain": "hardware-security",
+  "category": "Invasive Analysis",
+  "status": "active",
+  "description": "Use of Focused Ion Beam (FIB) systems to perform precision circuit modifications on integrated circuits. Covers FIB milling to cut conductors, FIB-assisted deposition to create new connections, creation of probe landing pads for microprobing, bypass of security fuses, and targeted modification of circuit functionality. FIB editing is the highest-capability invasive technique, enabling surgical alteration of IC behavior.",
+  "requires": [
+    "HWSEC-INV-DECAP",
+    "HWSEC-INV-DELAYER"
+  ],
+  "recommended": [
+    "HWSEC-INV-PROBE",
+    "HWSEC-SPREP-ACTIVE"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to FIB systems or circuit editing"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands FIB system capabilities and applications in IC security analysis",
+      "evidence": [
+        "Can explain FIB milling and deposition processes at a conceptual level",
+        "Understands FIB applications in security evaluation (fuse bypass, pad creation, circuit modification)",
+        "Aware of FIB imaging modalities (secondary electron, secondary ion) and their uses"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Operates FIB system for basic tasks under supervision",
+      "evidence": [
+        "Loads and navigates a sample in the FIB system under guidance",
+        "Performs FIB cross-sections for layer inspection on practice samples",
+        "Performs basic conductor cuts on large (top metal) features with supervision",
+        "Creates simple probe landing pads via FIB deposition on practice targets"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently performs FIB circuit edits for security analysis objectives",
+      "evidence": [
+        "Plans and executes FIB edits based on IC layout analysis and attack objectives",
+        "Cuts and reroutes conductors on target ICs to bypass security mechanisms (fuse bits, lock signals)",
+        "Creates reliable probe landing pads on sub-micron features for subsequent microprobing",
+        "Completed FIB editing tasks on 3+ distinct target ICs with verified functional results"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Performs complex multi-step FIB edits on advanced nodes; develops edit strategies",
+      "evidence": [
+        "Performs multi-layer FIB edits requiring navigation through multiple metal layers",
+        "Edits circuits at sub-100nm features on advanced process nodes",
+        "Develops FIB edit strategies from IC layout analysis and reverse-engineered schematics",
+        "Mentors team on FIB operation, edit planning, and endpoint detection"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on FIB circuit editing; defines methodology; specifies FIB equipment",
+      "evidence": [
+        "Defines the lab's FIB editing methodology and capability roadmap",
+        "Evaluates and specifies FIB system procurement (Ga-FIB, Xe plasma FIB, cryo-FIB)",
+        "Pushes the limits of FIB editing on leading-edge process nodes",
+        "Provides expert consultation on FIB resistance and anti-FIB countermeasures"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Plan and execute a FIB circuit edit on a prepared target: cut a specified conductor, deposit a new connection or probe pad, and verify the edit electrically"
+    },
+    {
+      "type": "direct_observation",
+      "description": "Observe FIB system operation, navigation technique, milling precision, and deposition quality during a live editing session"
+    }
+  ],
+  "equipment": [
+    "Focused Ion Beam (FIB) system (e.g., Thermo Fisher Helios, ZEISS Crossbeam)",
+    "FIB gas injection system (GIS) for conductor and insulator deposition",
+    "Nanomanipulator for in-situ electrical verification"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0840", "K0883", "K1164", "K0714"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development"]
+    },
+    "common_criteria": [
+      "AVA_VAN.5"
+    ],
+    "jil_attack_methods": [
+      "5.1 Physical attacks"
+    ]
+  },
+  "tags": [
+    "fib",
+    "circuit-editing",
+    "invasive",
+    "milling",
+    "deposition",
+    "fuse-bypass",
+    "reverse-engineering"
+  ]
+}

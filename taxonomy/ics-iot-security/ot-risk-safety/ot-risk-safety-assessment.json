@@ -1,0 +1,121 @@
+{
+  "id": "ICSIOT-OT-RISK",
+  "name": "OT Risk & Safety Assessment",
+  "domain": "ics-iot-security",
+  "category": "OT Risk & Safety",
+  "status": "active",
+  "description": "Risk assessment and safety analysis for operational technology environments. Covers IEC 62443 zone and conduit modeling, Purdue Model architecture review, safety instrumented system (SIS) security evaluation, and cyber-physical consequence analysis. Addresses the intersection of cybersecurity risk and physical process safety.",
+  "requires": [
+    "FOUND-RISK",
+    "FOUND-ETHICS"
+  ],
+  "recommended": [
+    "ICSIOT-ICS-NETWORK",
+    "ICSIOT-ICS-CTRL",
+    "FOUND-THREATMODEL"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to OT risk or safety assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the intersection of cybersecurity and physical process safety in OT environments",
+      "evidence": [
+        "Can explain why OT risk assessment differs from IT risk assessment",
+        "Aware of IEC 62443 zone and conduit concepts and the Purdue Model",
+        "Understands what safety instrumented systems (SIS) are and why their security is critical"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Can contribute to OT risk assessments and architecture reviews under guidance",
+      "evidence": [
+        "Assists with IEC 62443 zone and conduit identification and documentation",
+        "Reviews Purdue Model layer compliance under supervision",
+        "Participates in OT asset inventory and criticality classification using IEC 62443 security levels or equivalent methodology",
+        "Documents OT risk findings with awareness of safety implications"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently conducts OT risk assessments including safety impact analysis",
+      "evidence": [
+        "Performs IEC 62443 zone and conduit risk assessment with security level target assignment",
+        "Evaluates SIS segmentation and access control against IEC 61511 requirements",
+        "Conducts cyber-physical consequence analysis for identified attack scenarios",
+        "Produces OT risk assessment reports integrating both cybersecurity and safety perspectives"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Assesses complex OT environments across sectors; mentors others on OT risk methodology",
+      "evidence": [
+        "Leads OT risk assessments for multi-site or multi-sector environments",
+        "Evaluates SIS security in depth, including controller access controls and safety/process network segregation",
+        "Adapts OT risk methodology for sector-specific requirements (energy, water, manufacturing, transport)",
+        "Reviews and calibrates OT risk assessments across the team"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines OT risk assessment practice; shapes standards; trains teams",
+      "evidence": [
+        "Established the lab's OT risk and safety assessment methodology",
+        "Published research on OT risk quantification, SIS security, or cyber-physical consequence modeling",
+        "Trains teams on OT risk assessment and IEC 62443 application",
+        "Contributes to external ICS/OT security standards and guidance"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "work_product_review",
+      "description": "Review OT risk assessment reports for IEC 62443 compliance, safety impact coverage, and actionable recommendations"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given an OT architecture diagram, perform zone/conduit analysis, assign security level targets, and identify cyber-physical consequence scenarios"
+    }
+  ],
+  "framework_mappings": {
+    "mitre_attack": {
+      "matrices": [
+        "ICS"
+      ],
+      "tactics": [
+        "TA0105",
+        "TA0106",
+        "TA0107"
+      ]
+    },
+    "iec_62443": [
+      "2-1",
+      "3-2",
+      "3-3"
+    ],
+    "iec_61511": true,
+    "nist_sp": [
+      "800-82"
+    ],
+    "nice": {
+      "tks": ["K1293", "S0948", "K1297", "K1310", "K1292"],
+      "work_roles": ["DD-WRL-009 Operational Technology (OT) Cybersecurity Engineering"]
+    }
+  },
+  "tags": [
+    "ot",
+    "ics",
+    "risk-assessment",
+    "safety",
+    "sis",
+    "iec-62443",
+    "cyber-physical",
+    "purdue-model",
+    "segmentation"
+  ]
+}

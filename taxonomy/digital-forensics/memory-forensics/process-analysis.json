@@ -1,0 +1,109 @@
+{
+  "id": "DFIR-MEM-PROCESS",
+  "name": "Process & Handle Analysis",
+  "domain": "digital-forensics",
+  "category": "Memory Forensics",
+  "status": "active",
+  "description": "Ability to analyse process trees, loaded modules, open handles, injected code, and thread contexts from memory dumps. Covers identifying suspicious processes, parent-child relationships, DLL injection, process hollowing, and reconstructing the runtime state of a system at the time of capture.",
+
+  "requires": [
+    "DFIR-MEM-ACQUISITION",
+    "FOUND-EVIDENCE"
+  ],
+  "recommended": [
+    "DFIR-MAL-RE"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to memory-based process analysis"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands that process information persists in memory and can reveal malicious activity",
+      "evidence": [
+        "Can explain what process trees, handles, and loaded modules are",
+        "Understands why memory-resident process data can reveal activity not visible on disk",
+        "Can describe common process injection techniques at a high level"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Uses Volatility 3 (or equivalent memory forensics framework) to enumerate and examine processes under supervision",
+      "evidence": [
+        "Enumerated process lists and trees from memory dumps using Volatility plugins (pslist, pstree, psscan)",
+        "Identified open handles and network connections associated with processes",
+        "Examined loaded DLLs and modules for anomalies under guidance",
+        "Documented process analysis findings with supervisor review"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently analyses process state in memory to identify malicious or anomalous activity and documents findings for case reports",
+      "evidence": [
+        "Independently identified malicious processes in 5+ memory analysis engagements",
+        "Detected DLL injection, process hollowing, or code injection in real cases",
+        "Correctly distinguished legitimate from suspicious parent-child process relationships",
+        "Produced process analysis reports accepted in case findings without major revision"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Analyses advanced in-memory techniques; handles non-standard OS builds; develops custom Volatility plugins",
+      "evidence": [
+        "Identified advanced memory-only malware techniques (reflective loading, module stomping, direct syscalls)",
+        "Generated Volatility 3 symbol tables (ISF, e.g. via dwarf2json) or Volatility 2 profiles for non-standard or patched OS builds",
+        "Developed custom plugins or scripts for automated process anomaly detection",
+        "Mentors junior analysts on process analysis methodology and interpretation"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines memory analysis methodology; researches new in-memory attack techniques; provides expert testimony on process state evidence",
+      "evidence": [
+        "Authored or maintains the lab's memory forensics process analysis methodology",
+        "Published research on in-memory attack detection or new analysis techniques",
+        "Provides expert testimony on process analysis evidence and its interpretation",
+        "Trains teams on advanced memory forensics techniques"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Analyse a memory dump containing injected or malicious processes, identify all suspicious activity, and produce a structured findings report"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given a memory dump with multiple suspicious indicators, determine the attack sequence by correlating process, network, and handle evidence"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["S0599", "K0923", "S0624", "S0612"],
+      "work_roles": ["PD-WRL-002 Digital Forensics", "PD-WRL-003 Incident Response"]
+    },
+    "sfia": {
+      "skill": "DGFS"
+    },
+    "giac": ["GCFA", "GREM"]
+  },
+
+  "tags": [
+    "volatility",
+    "process-tree",
+    "dll-injection",
+    "process-hollowing",
+    "handles",
+    "in-memory",
+    "forensics",
+    "windows",
+    "malware"
+  ]
+}

@@ -1,0 +1,47 @@
+{% comment %}
+Searchable list for the <select> it sits beside, inside an x-data="combobox"
+wrapper; see static/js/combobox.js. Optional: placeholder="...", compact=True.
+Hidden until Alpine starts, so without JS the plain <select> is used.
+{% endcomment %}
+<div x-show="ready" style="display: none" class="relative" @focusout="onFocusOut($event)" @click.outside="close()">
+  <div class="relative">
+    <svg class="pointer-events-none absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z"/></svg>
+    <input type="text" role="combobox" autocomplete="off" spellcheck="false"
+           aria-autocomplete="list" placeholder="{{ placeholder|default:'' }}"
+           :placeholder="open && current() ? current().label : placeholder"
+           :aria-expanded="open.toString()" :aria-controls="uid + '-list'"
+           :aria-activedescendant="open && active >= 0 ? uid + '-' + active : null"
+           :aria-invalid="invalid.toString()"
+           :value="query"
+           @focus="openList()" @click="openList()"
+           @input="onInput($event)"
+           @keydown.down.prevent="move(1)" @keydown.up.prevent="move(-1)"
+           @keydown.enter="onEnter($event)" @keydown.escape="onEscape($event)"
+           class="w-full pl-8 pr-8 {% if compact %}py-1.5{% else %}py-2{% endif %} rounded-md border bg-white dark:bg-white/5 text-gray-900 dark:text-white text-sm placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:border-transparent"
+           :class="invalid ? 'border-red-500 dark:border-red-500' : 'border-gray-300 dark:border-white/10'">
+    <button type="button" tabindex="-1" x-show="clearable && value" title="Clear"
+            @mousedown.prevent @click="clear()"
+            class="absolute right-2 top-1/2 -translate-y-1/2 p-0.5 rounded text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+
+  <ul x-show="open" :id="uid + '-list'" role="listbox"
+      class="absolute z-20 mt-1 w-full min-w-[16rem] max-h-72 overflow-y-auto rounded-md border border-gray-200 dark:border-white/10 bg-white dark:bg-gray-900 shadow-lg py-1 text-sm">
+    <template x-for="(row, i) in results" :key="row.opt.value">
+      <li role="none">
+        <div x-show="row.heading" x-text="row.heading"
+             class="px-3 pt-2 pb-1 text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500"></div>
+        <div role="option" :id="uid + '-' + i" :aria-selected="(row.opt.value === value).toString()"
+             @mousedown.prevent @click="choose(row.opt)" @mousemove="active = i"
+             class="flex items-center justify-between gap-2 px-3 py-1.5 cursor-pointer"
+             :class="i === active ? 'bg-indigo-50 dark:bg-indigo-500/20 text-indigo-900 dark:text-white' : 'text-gray-900 dark:text-gray-100'">
+          <span><template x-for="part in parts(row.opt.label)"><span :class="part.hit && 'font-semibold text-indigo-600 dark:text-indigo-300'" x-text="part.text"></span></template><template x-for="reason in row.reasons"><span class="ml-1.5 inline-block whitespace-nowrap rounded bg-gray-100 dark:bg-white/10 px-1.5 py-0.5 text-[11px] text-gray-500 dark:text-gray-400" title="Matched a tag or category" x-text="reason"></span></template></span>
+          <svg x-show="row.opt.value === value" class="w-4 h-4 flex-shrink-0 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+        </div>
+      </li>
+    </template>
+    <li x-show="!results.length" class="px-3 py-2 text-gray-500 dark:text-gray-400">No matches</li>
+  </ul>
+  <p x-show="invalid" class="mt-1 text-xs text-red-600 dark:text-red-400">Please choose an option from the list.</p>
+</div>

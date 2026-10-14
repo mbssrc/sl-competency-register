@@ -1,0 +1,103 @@
+{
+  "id": "INFRA-AWS-GOVERN",
+  "name": "AWS Organizations, KMS & CloudTrail Assessment",
+  "domain": "infrastructure-security",
+  "category": "AWS Security",
+  "status": "active",
+  "description": "Assessment of AWS account governance, key management, and logging controls. Covers AWS Organizations and multi-account structure, service control policies (SCPs) and resource control policies (RCPs), KMS key policies, grants, and rotation, and the configuration of CloudTrail, AWS Config, and GuardDuty for organisation-wide coverage. Identity and permission assessment within accounts is covered by INFRA-AWS-IAM.",
+  "requires": [
+    "INFRA-AWS-IAM"
+  ],
+  "recommended": [
+    "FOUND-REPORT",
+    "FOUND-STANDARDS",
+    "FOUND-RISK"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to AWS Organizations, KMS, or logging assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands AWS multi-account governance, key management, and logging concepts",
+      "evidence": [
+        "Can explain AWS Organizations, organisational units, and service control policies",
+        "Understands KMS key types, key policies, and the difference from IAM policies",
+        "Familiar with CloudTrail, AWS Config, and GuardDuty and their purposes"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Reviews governance and logging configurations under supervision",
+      "evidence": [
+        "Reviewed SCPs and organisation structure against a checklist under guidance",
+        "Inspected KMS key policies and rotation settings with supervisor review",
+        "Verified CloudTrail, Config, and GuardDuty coverage across accounts with supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses account governance, key management, and logging posture",
+      "evidence": [
+        "Independently assessed Organizations structure and SCP/RCP effectiveness across a multi-account estate",
+        "Evaluated KMS key policies, grants, and rotation for over-permissive or cross-account exposure",
+        "Verified organisation-wide CloudTrail, Config, and GuardDuty coverage, log integrity, and delivery",
+        "Produced governance assessment reports with prioritised remediation"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex multi-account governance assessments and mentors others",
+      "evidence": [
+        "Assessed complex Organizations with nested OUs, delegated administration, and layered SCPs/RCPs",
+        "Identified gaps where SCP, KMS, and logging controls could be bypassed or disabled",
+        "Developed tooling or baselines for governance and logging configuration review",
+        "Reviews governance assessment work of junior analysts"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines the lab's AWS governance assessment methodology and is a recognised authority",
+      "evidence": [
+        "Designed or maintains the lab's AWS Organizations, KMS, and logging assessment framework",
+        "Published research on AWS governance, SCP bypass, or logging evasion techniques",
+        "Advises organisations on landing-zone, key management, and logging architecture",
+        "Trains teams on advanced AWS governance assessment"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess a lab AWS Organization, reviewing SCPs, KMS key policies, and CloudTrail/Config/GuardDuty coverage, and report bypass or coverage gaps with remediation"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review AWS governance, key management, and logging assessment findings from recent engagements for completeness and accuracy"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0742", "K0863", "K0971", "K0874", "K0876"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "IO-WRL-006 Systems Security Analysis"]
+    },
+    "cis": ["CIS AWS Foundations Benchmark v5.0.0 - Section 3 Logging"],
+    "csa_ccm": ["LOG-01", "CEK-01", "GRC-01"]
+  },
+  "tags": [
+    "aws",
+    "organizations",
+    "scp",
+    "kms",
+    "cloudtrail",
+    "guardduty",
+    "cloud-security",
+    "evasion",
+    "iam",
+    "key-management"
+  ]
+}

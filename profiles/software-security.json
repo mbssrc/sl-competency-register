@@ -1,0 +1,79 @@
+{
+  "id": "SWSEC",
+  "name": "Software Security Specialist",
+  "domain": "SWSEC",
+  "description": "Software security evaluation track covering source code review, binary analysis, web and mobile application testing, fuzzing, operating system security, and software supply-chain assessment.",
+  "maturity_levels": {
+    "junior": {
+      "title": "Junior Software Security Specialist",
+      "description": "Assists with application security assessments under supervision. Runs automated scanners and triages their output on approved targets; triage decisions and findings are reviewed by an authorized assessor before reporting.",
+      "thresholds": {
+        "domain_skills_at": {"1": 13, "2": 6},
+        "min_categories": 1,
+        "foundation_avg": 0.5
+      },
+      "pinned": [
+        {"skill": "FOUND-ETHICS", "minimum_level": 2}
+      ]
+    },
+    "practitioner": {
+      "title": "Software Security Specialist",
+      "description": "Independently performs and signs off routine software security evaluations, including manual code review, application testing and vulnerability analysis. Reports contain reproducible findings with evidence, severity rationale and remediation advice.",
+      "thresholds": {
+        "domain_skills_at": {"2": 18, "3": 9},
+        "min_categories": 2,
+        "foundation_avg": 1.0
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 3},
+        {"skill": "FOUND-ETHICS", "minimum_level": 3}
+      ]
+    },
+    "senior": {
+      "title": "Senior Software Security Specialist",
+      "description": "Handles complex evaluations, for example binary reverse engineering of undocumented software, OS-level analysis or supply-chain compromise review. Performs QA review of assessors' reports and mentors junior analysts.",
+      "thresholds": {
+        "domain_skills_at": {"3": 23, "4": 9},
+        "min_categories": 6,
+        "foundation_avg": 1.5
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 4},
+        {"skill": "FOUND-QA", "minimum_level": 3},
+        {"skill": "FOUND-ETHICS", "minimum_level": 3}
+      ]
+    },
+    "lead": {
+      "title": "Lead Software Security Specialist",
+      "description": "Technical lead for Software & Application Security: owns the methodology, performs technical quality review of evaluations and reports, and plans the technical approach across engagements. Acts as the senior technical contact for clients on scope and findings. Technical depth stays at senior level or above.",
+      "thresholds": {
+        "domain_skills_at": {"3": 25, "4": 13},
+        "min_categories": 7,
+        "foundation_avg": 2.0
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 4},
+        {"skill": "FOUND-QA", "minimum_level": 3},
+        {"skill": "FOUND-PM", "minimum_level": 3},
+        {"skill": "FOUND-COMM", "minimum_level": 3},
+        {"skill": "FOUND-ETHICS", "minimum_level": 3}
+      ]
+    },
+    "principal": {
+      "title": "Principal Software Security Specialist",
+      "description": "Technical authority in software security. Defines lab direction for application evaluation services, publishes vulnerability research, and is a recognized expert in software exploitation and defense. The deepest technical tier in the domain; it extends Lead rather than branching from it.",
+      "thresholds": {
+        "domain_skills_at": {"4": 25, "5": 9},
+        "min_categories": 8,
+        "foundation_avg": 2.5
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 4},
+        {"skill": "FOUND-QA", "minimum_level": 3},
+        {"skill": "FOUND-PM", "minimum_level": 3},
+        {"skill": "FOUND-COMM", "minimum_level": 3},
+        {"skill": "FOUND-ETHICS", "minimum_level": 3}
+      ]
+    }
+  }
+}

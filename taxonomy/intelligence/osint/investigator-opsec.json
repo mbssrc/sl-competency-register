@@ -1,0 +1,101 @@
+{
+  "id": "INTEL-OSINT-OPSEC",
+  "name": "Investigator OPSEC & Research Environment Management",
+  "domain": "intelligence",
+  "category": "Open-Source Intelligence (OSINT)",
+  "status": "active",
+  "description": "Covers protecting the investigator, the client, and the investigation during open-source research: attribution-resistant research environments (isolated virtual machines, managed egress, browser fingerprint control), research account governance under documented legal and policy approval, and logging of research activity so that every collection step is auditable. Includes assessing the exposure an investigation creates and handling compromise of a research identity. Target-specific collection tradecraft belongs to INTEL-OSINT-SOCIAL and INTEL-OSINT-PERSON.",
+  "requires": [
+    "FOUND-ETHICS"
+  ],
+  "recommended": [
+    "INTEL-OSINT-SOCIAL",
+    "FOUND-DOC",
+    "INTEL-OSINT-PERSON",
+    "FOUND-EVIDENCE",
+    "INFRA-ONPREM-VIRT"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to investigator operational security or managed research environments"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands how open-source research can expose the investigator, the client, and the investigation",
+      "evidence": [
+        "Can describe how browsing activity, IP addresses, and fingerprints can attribute research to the lab or client",
+        "Understands that research accounts require documented legal and policy approval before use",
+        "Aware of the lab's requirements for logging research activity"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Conducts research from approved environments under supervision",
+      "evidence": [
+        "Performs assigned research only from lab-provisioned, isolated research environments",
+        "Uses approved research accounts within their documented scope and records each use",
+        "Maintains a complete research activity log (time, environment, account, sources accessed) that is reviewed by a senior investigator",
+        "Reports suspected exposure or account compromise to the supervising investigator"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently plans and maintains OPSEC for investigations",
+      "evidence": [
+        "Produces an OPSEC plan per investigation covering exposure risks, environment, egress, and approved accounts across 3+ engagements",
+        "Builds, resets, and verifies research environments against the lab's baseline before and after use",
+        "Operates research accounts within approved legal and policy boundaries, with approvals on file",
+        "Research logs are complete enough for an independent reviewer to reconstruct collection; work passes QA review"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Manages research infrastructure and account governance; mentors investigators",
+      "evidence": [
+        "Maintains the lab's research environment images, egress options, and fingerprint controls",
+        "Administers the research account register: approval, scope, lifecycle, and retirement",
+        "Leads response to a burned research identity or environment exposure, including impact assessment and client notification where required",
+        "Mentors investigators on OPSEC planning and audit-ready logging"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines the lab's investigator OPSEC policy and research environment standards; trains teams",
+      "evidence": [
+        "Designed or maintains the lab's investigator OPSEC policy, research account governance procedure, and logging standard",
+        "Agreed the legal and policy approval framework for research accounts with legal counsel and management",
+        "Assesses emerging attribution techniques and updates environment standards accordingly",
+        "Trains teams on investigator OPSEC and research environment management"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Provision a research environment from the lab baseline, conduct a defined open-source research task using an approved research account, then demonstrate fingerprint and egress checks and hand over a complete research log"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review an investigation's OPSEC plan, account approvals, and research activity logs for completeness, adherence to approved scope, and ability to reconstruct the collection"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1019", "S0695"],
+      "work_roles": ["PD-WRL-006 Threat Analysis"]
+    }
+  },
+  "tags": [
+    "osint",
+    "opsec",
+    "research-environment",
+    "audit-trail",
+    "sock-puppet",
+    "counter-attribution",
+    "vpn"
+  ]
+}

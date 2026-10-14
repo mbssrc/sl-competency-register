@@ -1,0 +1,19 @@
+{
+  "id": "SVC-CODEREVIEW",
+  "name": "Secure Code Review",
+  "description": "Manual and tool-assisted review of application source code to identify security vulnerabilities, insecure design patterns, authentication and authorization logic flaws, and cryptographic implementation errors.",
+  "scope_reference": "Security-focused source code review of applications",
+  "required_competencies": [
+    { "skill": "SWSEC-REVIEW-MANUAL", "minimum_level": 3 },
+    { "skill": "SWSEC-REVIEW-AUTH", "minimum_level": 3 },
+    { "skill": "SWSEC-REVIEW-CRYPTO", "minimum_level": 3 },
+    { "skill": "SWSEC-SAST-TOOLING", "minimum_level": 3 },
+    { "skill": "SWSEC-SAST-TRIAGE", "minimum_level": 3 },
+    { "skill": "SWSEC-SAST-CUSTOM", "minimum_level": 2 },
+    { "skill": "FOUND-REPORT", "minimum_level": 3 },
+    { "skill": "FOUND-RISK", "minimum_level": 3 }
+  ],
+  "standards": [
+    "OWASP Code Review Guide"
+  ]
+}

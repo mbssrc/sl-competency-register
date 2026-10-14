@@ -1,0 +1,96 @@
+{
+  "id": "FOUND-QA",
+  "name": "Quality Assurance",
+  "domain": "foundations",
+  "category": "Foundations",
+  "status": "active",
+  "description": "Ability to perform and participate in quality assurance processes for security engagements. Covers peer and technical review of work, methodology compliance checks, report QA, proficiency testing and interlaboratory comparisons (ISO/IEC 17025:2017 clause 7.7), control of nonconforming work (7.10), corrective action (8.7), and continuous improvement of lab processes.",
+
+  "requires": [],
+  "recommended": [
+    "FOUND-REPORT",
+    "FOUND-STANDARDS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to QA processes"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the purpose of QA in a security lab",
+      "evidence": [
+        "Can explain why peer review and QA processes exist",
+        "Familiar with the lab's QA workflow"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Participates in QA processes; submits work for review following procedures",
+      "evidence": [
+        "Consistently submits work for peer review before delivery",
+        "Responds constructively to QA feedback",
+        "Follows methodology checklists"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Performs QA reviews on others' work; identifies deviations from methodology",
+      "evidence": [
+        "Conducts peer review of engagement reports and deliverables",
+        "Catches substantive issues during review (not just formatting)",
+        "Documents QA findings clearly"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Leads QA processes; identifies systemic quality issues; drives improvements",
+      "evidence": [
+        "Identifies patterns in QA findings and drives process improvements",
+        "Leads QA for complex or high-profile engagements",
+        "Mentors junior staff on quality standards"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Designs QA framework; manages lab quality system; handles audit preparation",
+      "evidence": [
+        "Designed or maintains the lab's quality management system",
+        "Prepares for and supports accreditation or external audits",
+        "Trains teams on quality assurance methodology"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "work_product_review",
+      "description": "Review QA feedback provided on 3 recent peer reviews for quality and thoroughness"
+    },
+    {
+      "type": "direct_observation",
+      "description": "Observe a QA review session and assess the individual's review process"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0827", "S0463", "S0713", "K1242"],
+      "work_roles": ["OG-WRL-012 Security Control Assessment", "OG-WRL-016 Technology Program Auditing"]
+    },
+    "sfia": {
+      "skill": "QUAS"
+    }
+  },
+
+  "tags": [
+    "cross-cutting",
+    "process",
+    "iso-17025",
+    "peer-review"
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "domain.schema.json",
+  "title": "Domain",
+  "description": "Metadata for a skill taxonomy domain, defining its categories and optional classification tiers",
+  "type": "object",
+  "required": ["id", "name", "description", "categories"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9-]+$",
+      "description": "Unique domain identifier (e.g., HWSEC, NETSEC)"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "note": {
+      "type": "string",
+      "description": "Optional note about framework coverage gaps or taxonomy provenance"
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "description"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Z][A-Z0-9-]+$",
+            "description": "Category identifier prefix (e.g., HWSEC-SCA)"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "minItems": 1
+    },
+    "attack_tiers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["tier", "categories"],
+        "additionalProperties": false,
+        "properties": {
+          "tier": {
+            "type": "string",
+            "minLength": 1
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Z][A-Z0-9-]+$"
+            },
+            "minItems": 1
+          }
+        }
+      },
+      "description": "Optional classification of categories by attack tier (e.g., non-invasive, semi-invasive, invasive)"
+    }
+  }
+}

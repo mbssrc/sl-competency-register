@@ -1,0 +1,105 @@
+{
+  "id": "INFRA-AZURE-NETWORK",
+  "name": "Azure Network Security Assessment",
+  "domain": "infrastructure-security",
+  "category": "Azure Security",
+  "status": "active",
+  "description": "Security assessment of Azure networking configurations. Covers virtual networks, network security groups (NSGs), Azure Firewall, Application Gateway, Private Link, VNet peering, ExpressRoute, and network segmentation within Azure environments.",
+  "requires": [],
+  "recommended": [
+    "INFRA-AZURE-ENTRAID",
+    "FOUND-RISK",
+    "NETSEC-RECON-NETMAPPING"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to Azure network security assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands Azure VNet architecture and network security primitives",
+      "evidence": [
+        "Can explain VNets, subnets, NSGs, and Azure Firewall",
+        "Understands the difference between NSGs and Azure Firewall",
+        "Familiar with Azure network topology options (peering, hub-spoke)"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Reviews Azure network configurations under supervision using established tooling",
+      "evidence": [
+        "Enumerates VNet configurations and NSG rules with guidance",
+        "Identifies overly permissive NSG rules using lab checklists",
+        "Documents network security findings with supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses Azure network architecture and segmentation",
+      "evidence": [
+        "Independently reviews network segmentation across multi-VNet environments",
+        "Identifies lateral movement risks through VNet peering and service endpoint misconfigurations",
+        "Evaluates VNet flow logs (successor to retiring NSG flow logs) and Azure Network Watcher data for security insights",
+        "Produces compliant network assessment reports"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex multi-region Azure network assessments; develops automated analysis tooling",
+      "evidence": [
+        "Assesses complex hub-and-spoke and Azure Virtual WAN architectures",
+        "Develops tooling for automated NSG and network path analysis",
+        "Reviews network assessment work of junior analysts",
+        "Evaluates hybrid connectivity (ExpressRoute, VPN Gateway) security"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines lab Azure network assessment methodology; publishes network security research",
+      "evidence": [
+        "Designed or maintains the lab's Azure network security assessment framework",
+        "Published research on Azure network security bypass or segmentation failures",
+        "Trains teams on advanced Azure network security assessment",
+        "Recognized as authority on Azure network architecture security"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess a multi-VNet Azure environment and identify all network segmentation weaknesses and lateral movement paths"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review network security findings from recent Azure assessments"
+    }
+  ],
+  "framework_mappings": {
+    "cis": [
+      "CIS Microsoft Azure Foundations Benchmark v5.0.0 - Section 7 Networking Services"
+    ],
+    "csa_ccm": [
+      "IVS-01",
+      "IVS-03",
+      "IVS-09"
+    ],
+    "nice": {
+      "tks": ["K0863", "K1014", "K0878", "S0950", "S0920"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-001 Cybersecurity Architecture"]
+    }
+  },
+  "tags": [
+    "azure",
+    "vnet",
+    "networking",
+    "nsg",
+    "segmentation",
+    "cloud-security",
+    "lateral-movement",
+    "vpn"
+  ]
+}

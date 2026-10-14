@@ -1,0 +1,119 @@
+{
+  "id": "HWSEC-SPREP-ACTIVE",
+  "name": "Active Sample Preparation",
+  "domain": "hardware-security",
+  "category": "Sample Preparation",
+  "status": "active",
+  "description": "Preparation of IC samples that must remain electrically functional after preparation. This is the most demanding form of sample preparation, required for fault injection (laser, EMFI), microprobing, FIB circuit editing, and active SEM techniques (voltage contrast, EBIC). Covers backside silicon substrate thinning (mechanical polishing, CMP, plasma/wet etch) to controlled remaining thickness, maintaining bond wire and solder ball integrity during preparation, electrical verification at each preparation stage, custom PCB adapter and socket fabrication for prepared samples, and thermal management of thinned die during operation.",
+  "requires": [
+    "HWSEC-SPREP-MECH",
+    "HWSEC-INV-DECAP"
+  ],
+  "recommended": [
+    "HWSEC-SPREP-CHEM",
+    "HWSEC-FI-LFI",
+    "HWSEC-INV-FIB",
+    "HWSEC-INV-PROBE",
+    "HWSEC-PCB-RE",
+    "FOUND-TOOLS"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to active sample preparation"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands why active preparation differs from passive and the constraints involved",
+      "evidence": [
+        "Can explain why device functionality must be preserved for fault injection, probing, and FIB editing",
+        "Understands the concept of backside thinning and remaining silicon thickness targets for different analysis types",
+        "Aware of the risks: die cracking, bond wire damage, thermal issues, ESD damage to thinned die"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs backside thinning on standard packages under supervision with electrical verification",
+      "evidence": [
+        "Removes package substrate/heatspreader to expose backside of die without damaging bond wires or solder connections",
+        "Performs mechanical backside thinning on a standard flip-chip or wire-bond package under guidance",
+        "Verifies device functionality after each preparation stage using basic electrical tests",
+        "Mounts prepared sample on test PCB/socket adapter for continued electrical access"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently prepares active samples to target thickness for specified analysis technique",
+      "evidence": [
+        "Thins silicon substrate to target remaining thickness (e.g., ~50-100\u00b5m for backside LFI and IR photon-emission imaging, <10\u00b5m for backside FIB access) with consistent results",
+        "Selects appropriate thinning technique (mechanical, CMP, plasma, wet etch) based on target thickness and uniformity requirements",
+        "Fabricates custom adapter PCBs or modifies sockets for electrical access to prepared samples",
+        "Achieves >80% yield on active sample preparations across a batch"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex packages and extreme thinning requirements; develops preparation procedures",
+      "evidence": [
+        "Prepares advanced packages (PoP, 2.5D/3D, fan-out WLP) while maintaining functionality of target die",
+        "Achieves sub-10\u00b5m remaining silicon thickness with controlled uniformity for backside FIB access",
+        "Designs and fabricates thermal management solutions (heat sinks, active cooling) for thinned die under operation",
+        "Develops preparation procedures for new device types and mentors team on yield optimization"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines active preparation methodology; pushes limits of what can be prepared alive",
+      "evidence": [
+        "Defines the lab's active sample preparation SOPs, yield targets, and quality criteria",
+        "Specifies thinning and polishing equipment for active sample preparation procurement",
+        "Develops techniques for preparing samples at bleeding-edge nodes where substrate thickness is already minimal",
+        "Trains teams, conducts proficiency assessments, and drives continuous improvement in preparation yield"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Prepare an active sample from a packaged IC: decap, backside thin to target thickness, verify functionality, mount on test adapter. Assessed on remaining thickness accuracy, device functionality, and process documentation."
+    },
+    {
+      "type": "direct_observation",
+      "description": "Observe full active preparation workflow including electrical verification checkpoints, handling of thinned die, and ESD precautions"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review preparation logs including thickness measurements, electrical test results at each stage, and final yield data"
+    }
+  ],
+  "equipment": [
+    "Silicon substrate thinning/polishing system (mechanical + CMP capability)",
+    "IR microscope or IR camera for remaining thickness verification through silicon",
+    "Profilometer or interferometer for thickness and planarity measurement",
+    "Custom PCB fabrication capability (for test adapter boards)",
+    "ESD-safe workstation with device-specific test fixtures",
+    "Thermal management components (heat sinks, Peltier coolers, thermal interface materials)"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0840", "K1284", "K0714"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development"]
+    },
+    "common_criteria": [
+      "AVA_VAN.4",
+      "AVA_VAN.5"
+    ]
+  },
+  "tags": [
+    "sample-preparation",
+    "backside-thinning",
+    "active-sample",
+    "fault-injection",
+    "fib",
+    "microprobing",
+    "invasive"
+  ]
+}

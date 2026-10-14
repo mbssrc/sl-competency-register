@@ -1,0 +1,104 @@
+{
+  "id": "INTEL-OSINT-CRYPTO",
+  "name": "Cryptocurrency Transaction Tracing",
+  "domain": "intelligence",
+  "category": "Open-Source Intelligence (OSINT)",
+  "status": "active",
+  "description": "Covers tracing funds on public blockchains to support investigations: blockchain analytics platforms, address clustering heuristics (common-input-ownership, change address detection) and their failure modes, attribution of addresses to exchanges and services, tracing ransomware and extortion payments, and recognising obfuscation such as mixers, cross-chain bridges, and privacy coins. Includes documenting tracing steps, heuristics, and confidence so that findings meet evidential standard and can support law enforcement or exchange requests. Attribution of the actor behind a wallet belongs to INTEL-TI-ADVERSARY.",
+  "requires": [
+    "FOUND-EVIDENCE"
+  ],
+  "recommended": [
+    "INTEL-TI-ADVERSARY",
+    "INTEL-OSINT-DARKWEB",
+    "INTEL-TI-TRADECRAFT",
+    "DFIR-IR-COORD"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to cryptocurrency transaction tracing"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands blockchain structure and the principles and limits of transaction tracing",
+      "evidence": [
+        "Can explain the UTXO and account models and what a public ledger does and does not reveal",
+        "Can describe common clustering heuristics and why they produce probabilistic, not certain, results",
+        "Aware of obfuscation methods (mixers, bridges, privacy coins) and of the legal context for tracing findings"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Traces transactions under supervision",
+      "evidence": [
+        "Follows funds from a given address across several hops using block explorers and analytics tools under guidance",
+        "Records each tracing step with transaction IDs, block heights, and timestamps",
+        "Identifies deposits to known exchange addresses using attribution data provided",
+        "Tracing graphs and notes reviewed by a senior investigator before use"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently traces funds and documents findings to evidential standard",
+      "evidence": [
+        "Traces ransomware or fraud payments to cash-out points across 3+ cases",
+        "Applies and documents clustering heuristics with stated confidence and known false-positive risks",
+        "Produces reproducible tracing reports, with every hop independently verifiable on chain, that pass QA review",
+        "Prepares information packages supporting exchange freeze or law enforcement requests"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex tracing through obfuscation; mentors investigators",
+      "evidence": [
+        "Traces funds through mixers, cross-chain bridges, and peel chains, stating where confidence breaks down",
+        "Validates and challenges commercial analytics attributions against independent on-chain evidence",
+        "Presents tracing findings to clients, counsel, or law enforcement and defends methodology under questioning",
+        "Mentors investigators on tracing methodology and evidential documentation"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines tracing methodology; recognised authority; trains teams",
+      "evidence": [
+        "Designed or maintains the lab's cryptocurrency tracing methodology and reporting standard",
+        "Has provided expert opinion on tracing findings in legal or regulatory proceedings",
+        "Develops or validates new clustering heuristics or tracing techniques",
+        "Trains teams on cryptocurrency investigation"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "problem_solving",
+      "description": "Given a ransomware payment address and transaction ID, trace the funds to likely cash-out services, document every hop and heuristic applied with confidence, and identify where the trail cannot be followed reliably"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review cryptocurrency tracing reports for reproducibility of each hop, justified heuristics and attributions, clearly separated facts and opinions, and evidential documentation"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["S0695"],
+      "work_roles": ["PD-WRL-006 Threat Analysis"]
+    },
+    "mitre_attack": {
+      "techniques": ["T1486", "T1657"]
+    }
+  },
+  "tags": [
+    "osint",
+    "cryptocurrency",
+    "blockchain-analytics",
+    "ransomware",
+    "financial-investigation",
+    "evidence",
+    "attribution",
+    "obfuscation"
+  ]
+}

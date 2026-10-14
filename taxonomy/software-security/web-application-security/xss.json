@@ -1,0 +1,106 @@
+{
+  "id": "SWSEC-WEB-XSS",
+  "name": "Cross-Site Scripting Testing",
+  "domain": "software-security",
+  "category": "Web Application Security",
+  "status": "active",
+  "description": "Identification and exploitation of cross-site scripting (XSS) vulnerabilities including reflected, stored, and DOM-based variants. Covers context-aware payload crafting, CSP bypass, filter evasion, and impact demonstration.",
+
+  "requires": [
+    "FOUND-ETHICS"
+  ],
+  "recommended": [
+    "FOUND-REPORT",
+    "SWSEC-REVIEW-MANUAL",
+    "FOUND-TOOLS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to XSS testing"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands XSS concepts and the three main variants",
+      "evidence": [
+        "Can explain reflected, stored, and DOM-based XSS",
+        "Completed introductory XSS training modules",
+        "Understands output encoding and its role in XSS prevention"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Detects basic XSS under supervision; crafts simple payloads",
+      "evidence": [
+        "Identified XSS in lab environments across HTML, attribute, and JavaScript contexts",
+        "Performed supervised XSS testing on at least 2 engagements",
+        "Findings reviewed and confirmed by authorized tester"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently identifies XSS across contexts and demonstrates impact",
+      "evidence": [
+        "Identified XSS independently on 5+ engagements",
+        "Crafts context-appropriate payloads (HTML, JS, attribute, URL contexts)",
+        "Demonstrates realistic impact (session hijacking, credential theft) in proof-of-concept",
+        "Passed proficiency assessment for XSS identification and exploitation"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Bypasses filters and CSP; identifies DOM-based XSS via source analysis",
+      "evidence": [
+        "Demonstrated CSP bypass techniques in engagements",
+        "Identifies DOM-based XSS through JavaScript source review",
+        "Develops custom XSS payloads for complex filter evasion",
+        "Mentors junior testers on XSS methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on client-side injection; discovers novel vectors",
+      "evidence": [
+        "Published research or CVEs related to XSS or client-side injection",
+        "Developed lab XSS testing methodology and training materials",
+        "Discovers novel injection vectors in modern frameworks (React, Angular, Vue)",
+        "Trains teams on advanced client-side attack techniques"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Identify and exploit XSS in a prepared application with various output contexts and filtering"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review of XSS findings and proof-of-concept quality from recent engagements"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1079", "K0984", "S0565", "S0656"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-005 Software Security Assessment"]
+    },
+    "owasp": ["A05:2025 Injection"],
+    "cwe": ["CWE-79"],
+    "crest_cct_app": ["H16"],
+    "mitre_attack": {"techniques": ["T1189"]}
+  },
+
+  "tags": [
+    "injection",
+    "owasp-top-10",
+    "client-side",
+    "web",
+    "credential-harvesting",
+    "evasion"
+  ]
+}

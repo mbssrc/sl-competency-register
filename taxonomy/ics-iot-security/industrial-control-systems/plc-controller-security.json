@@ -1,0 +1,128 @@
+{
+  "id": "ICSIOT-ICS-CTRL",
+  "name": "PLC & Controller Security Assessment",
+  "domain": "ics-iot-security",
+  "category": "Industrial Control Systems",
+  "status": "active",
+  "description": "Security assessment of programmable logic controllers, RTUs, and DCS controllers. Covers unauthorized logic modification detection, firmware integrity verification, programming port exposure, default credential auditing, and controller access control evaluation.",
+  "requires": [
+    "FOUND-ETHICS",
+    "ICSIOT-ICS-PROTO"
+  ],
+  "recommended": [
+    "ICSIOT-ICS-NETWORK",
+    "HWSEC-EMBED-FW",
+    "HWSEC-EMBED-DBG",
+    "FOUND-TOOLS"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to PLC or controller security assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands PLC/RTU/DCS function and why controller security matters for operational safety",
+      "evidence": [
+        "Can explain what PLCs, RTUs, and DCS controllers do in an industrial process",
+        "Aware of common controller attack vectors: logic modification, firmware tampering, programming port access",
+        "Understands why controller assessment requires extreme caution and safety coordination"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Can perform basic controller security checks in lab environments under supervision",
+      "evidence": [
+        "Identifies controller models, firmware versions, and exposed interfaces",
+        "Tests for default credentials and unauthenticated programming access",
+        "Reviews controller access control configuration with guidance",
+        "Documents findings with awareness of operational safety constraints"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses controller security with appropriate safety controls",
+      "evidence": [
+        "Evaluates controller authentication, authorization, and firmware integrity",
+        "Assesses logic protection mechanisms and unauthorized modification risks",
+        "Tests programming protocol security without disrupting operational processes",
+        "Produces controller security assessment reports with safety-aware recommendations"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Assesses diverse controller platforms; develops safe assessment methodology; mentors others",
+      "evidence": [
+        "Assesses controllers across multiple vendors and industrial protocols",
+        "Develops safe, repeatable assessment procedures for production environments",
+        "Reviews ladder logic and structured text for security-relevant conditions",
+        "Mentors junior staff on safe controller assessment practices"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines the lab's controller security assessment practice; publishes research",
+      "evidence": [
+        "Established the lab's PLC and controller security assessment methodology",
+        "Published research on controller vulnerabilities or assessment techniques",
+        "Deep expertise across multiple PLC/DCS platforms",
+        "Trains teams on controller security assessment and safe testing"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess a lab PLC environment: enumerate controllers, test authentication, evaluate logic protection, and verify firmware integrity without disrupting simulated processes"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review controller security assessment reports for technical depth, safety compliance, and actionable findings"
+    }
+  ],
+  "framework_mappings": {
+    "mitre_attack": {
+      "matrices": [
+        "ICS"
+      ],
+      "techniques": [
+        "T0843",
+        "T0845",
+        "T1693.002",
+        "T1693.001",
+        "T0889",
+        "T1694.001"
+      ]
+    },
+    "iec_62443": [
+      "4-2",
+      "3-3"
+    ],
+    "nice": {
+      "tks": ["K1306", "K1002", "K1289", "S0943", "K1081"],
+      "work_roles": ["DD-WRL-009 Operational Technology (OT) Cybersecurity Engineering", "PD-WRL-007 Vulnerability Analysis"]
+    }
+  },
+  "equipment": [
+    "ICS/SCADA lab environment with representative PLCs and HMIs"
+  ],
+  "tags": [
+    "ics",
+    "plc",
+    "rtu",
+    "dcs",
+    "controller",
+    "scada",
+    "industrial",
+    "ladder-logic",
+    "structured-text",
+    "iec-61131",
+    "authentication",
+    "firmware",
+    "safety",
+    "ot"
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "id": "HWSEC-INV-DECAP",
+  "name": "Chip Decapsulation",
+  "domain": "hardware-security",
+  "category": "Invasive Analysis",
+  "status": "active",
+  "description": "Removal of integrated circuit packaging to expose the silicon die for further analysis. Covers chemical decapsulation (acid etching with fuming nitric acid, sulfuric acid), mechanical decapsulation (CNC milling, laser ablation), plasma decapsulation, and package-specific techniques for BGA, QFN, QFP, WLCSP, and multi-die/stacked-die packages. Proper decapsulation is the critical first step for all invasive and many semi-invasive analysis techniques.",
+  "requires": [],
+  "recommended": [
+    "HWSEC-PCB-RE",
+    "FOUND-EVIDENCE",
+    "FOUND-TOOLS"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to IC decapsulation"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands IC packaging types and decapsulation methods",
+      "evidence": [
+        "Can identify common IC package types (QFP, BGA, QFN, WLCSP, SiP)",
+        "Understands chemical, mechanical, and plasma decapsulation methods at a conceptual level",
+        "Aware of chemical safety requirements for acid handling in the decapping lab"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs decapsulation on standard package types under supervision",
+      "evidence": [
+        "Safely handles fuming nitric acid and sulfuric acid following lab chemical safety protocols",
+        "Decapsulates standard plastic packages (QFP, QFN) using chemical etching under guidance",
+        "Operates the automated decapsulation station (e.g., Nisene JetEtch) for routine packages",
+        "Verifies die integrity after decapsulation using optical microscopy"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently decapsulates diverse package types while preserving die and bond wires",
+      "evidence": [
+        "Decapsulates BGA, WLCSP, and multi-chip packages without damaging bond wires or die surface",
+        "Selects appropriate decapsulation method and parameters for unfamiliar package types",
+        "Performs partial decapsulation to expose specific die regions while maintaining device functionality",
+        "Maintains consistent quality across decapsulation batches with documented success rates"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex and novel packaging; develops decapsulation procedures; mentors team",
+      "evidence": [
+        "Decapsulates advanced packages (3D-stacked, fan-out wafer-level, SiP with embedded dies)",
+        "Develops and documents decapsulation recipes for new package types",
+        "Performs live decapsulation maintaining device electrical functionality for semi-invasive analysis",
+        "Mentors team on chemical safety, technique selection, and quality control"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on IC decapsulation; defines lab methodology; specifies equipment",
+      "evidence": [
+        "Defines the lab's decapsulation methodology and chemical safety procedures",
+        "Evaluates and specifies decapsulation equipment for lab procurement",
+        "Develops novel decapsulation techniques for emerging package technologies",
+        "Trains teams and conducts proficiency assessments for decapsulation operators"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Decapsulate a set of devices in different package types, demonstrating correct method selection, safety compliance, and die preservation quality"
+    },
+    {
+      "type": "direct_observation",
+      "description": "Observe chemical handling, PPE usage, process control, and quality verification during a live decapsulation session"
+    }
+  ],
+  "equipment": [
+    "Automated decapsulation station (e.g., Nisene JetEtch Pro)",
+    "Chemical fume hood with acid-rated exhaust",
+    "Plasma etcher for sensitive decapsulation",
+    "CNC mill or laser ablation system for mechanical decapsulation"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0840", "K0851", "K1284"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development"]
+    },
+    "common_criteria": [
+      "AVA_VAN.5"
+    ]
+  },
+  "tags": [
+    "decapsulation",
+    "sample-preparation",
+    "chemical",
+    "invasive",
+    "die-exposure"
+  ]
+}

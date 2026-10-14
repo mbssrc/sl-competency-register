@@ -1,0 +1,107 @@
+{
+  "id": "HWSEC-PCB-MOD",
+  "name": "PCB Modification & Rework",
+  "domain": "hardware-security",
+  "category": "PCB Reverse Engineering",
+  "status": "active",
+  "description": "Physical modification of PCBs to enable security analysis. Covers component removal and replacement (BGA reballing, QFN rework), trace cutting and jumper wiring, interposer installation for bus interception, decoupling capacitor removal for fault injection preparation, and installation of monitoring taps. Critical supporting skill for many hardware attack techniques.",
+  "requires": [
+    "HWSEC-PCB-RE"
+  ],
+  "recommended": [
+    "HWSEC-FI-VG",
+    "HWSEC-PCB-BUS"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to PCB modification or rework"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands PCB rework techniques and their role in hardware security analysis",
+      "evidence": [
+        "Can describe common PCB modification techniques (trace cut, jumper wire, component swap)",
+        "Understands why PCB modification is necessary for many hardware attacks",
+        "Aware of soldering and rework station equipment and basic operation"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs basic PCB modifications on practice boards under supervision",
+      "evidence": [
+        "Solders and desolders through-hole and basic SMD components (0805, SOIC)",
+        "Cuts traces and installs jumper wires for signal rerouting on practice boards",
+        "Removes decoupling capacitors for voltage glitch preparation under guidance",
+        "Installs wire taps for bus monitoring on identified signal pads"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently performs PCB modifications on production targets without damaging functionality",
+      "evidence": [
+        "Removes and replaces fine-pitch SMD components (0402, QFN) without board damage",
+        "Installs interposers for bus interception between IC and PCB",
+        "Prepares target boards for fault injection (power rail isolation, shunt installation)",
+        "Modifications maintain target device functionality for continued analysis",
+        "Completed PCB modification tasks on 3+ engagement targets successfully"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Performs complex rework on high-density boards; designs custom interposer boards",
+      "evidence": [
+        "Performs BGA reballing and replacement on production targets",
+        "Designs and fabricates custom interposer PCBs for bus interception",
+        "Modifies multi-layer boards with buried component access requirements",
+        "Mentors team on soldering technique, rework procedures, and modification planning"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on PCB rework for security analysis; defines lab capability",
+      "evidence": [
+        "Defines the lab's PCB rework capability requirements and equipment specifications",
+        "Develops standard modification procedures for common hardware attack preparations",
+        "Performs rework on the most challenging targets (01005 components, ultra-fine-pitch BGA)",
+        "Trains teams on advanced soldering and rework techniques for security analysis"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Prepare a target PCB for a specified attack: remove/replace components, install monitoring taps, and verify continued device functionality"
+    },
+    {
+      "type": "direct_observation",
+      "description": "Observe soldering technique, rework station operation, and modification quality during a live PCB rework session"
+    }
+  ],
+  "equipment": [
+    "Hot air rework station with precision nozzle set",
+    "BGA reballing station and stencil kit",
+    "Stereo microscope for fine-pitch rework"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1090", "S0594", "K0714", "K0840"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development"]
+    },
+    "common_criteria": [
+      "AVA_VAN.4"
+    ]
+  },
+  "tags": [
+    "pcb-rework",
+    "soldering",
+    "modification",
+    "interposer",
+    "preparation",
+    "non-invasive",
+    "fault-injection"
+  ]
+}

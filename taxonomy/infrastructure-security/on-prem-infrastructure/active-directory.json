@@ -1,0 +1,105 @@
+{
+  "id": "INFRA-ONPREM-AD",
+  "name": "Active Directory Security Assessment",
+  "domain": "infrastructure-security",
+  "category": "On-Premises Infrastructure",
+  "status": "active",
+  "description": "Security assessment of Active Directory environments. Covers domain enumeration, Group Policy analysis, Kerberos attacks (Kerberoasting, AS-REP roasting, delegation abuse), ACL analysis, trust relationship assessment, certificate services (AD CS) attacks, and privilege escalation paths within AD forests.",
+  "requires": [],
+  "recommended": [
+    "FOUND-REPORT",
+    "FOUND-ETHICS",
+    "NETSEC-ENUM-LDAP",
+    "NETSEC-EXPLOIT-AUTHN",
+    "FOUND-RISK"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to Active Directory security assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands Active Directory architecture, authentication protocols, and common attack patterns",
+      "evidence": [
+        "Can explain AD forests, domains, trusts, and organizational units",
+        "Understands Kerberos and NTLM authentication at a conceptual level",
+        "Familiar with common AD attack techniques (pass-the-hash, Kerberoasting)"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs AD enumeration and basic attack path analysis under supervision",
+      "evidence": [
+        "Runs AD enumeration tools (e.g., BloodHound, PowerView, ADRecon) under guidance",
+        "Identifies overly permissive ACLs and Group Policy misconfigurations using checklists",
+        "Documents AD security findings with supervision; work reviewed by authorized personnel"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses AD security posture and identifies privilege escalation paths",
+      "evidence": [
+        "Independently performs comprehensive AD enumeration and attack path analysis",
+        "Identifies Kerberos delegation, ACL abuse, and trust misconfiguration risks",
+        "Assesses AD CS configurations for certificate-based privilege escalation",
+        "Produces compliant AD security assessment reports"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex multi-forest assessments; discovers novel attack paths; mentors others",
+      "evidence": [
+        "Assesses complex multi-forest environments with external and cross-forest trusts",
+        "Develops custom tooling for AD attack path discovery and exploitation",
+        "Reviews AD assessment work of junior analysts",
+        "Demonstrates advanced techniques (AD CS abuse, shadow credentials, DACL manipulation)"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines lab AD assessment methodology; publishes research on AD attack techniques",
+      "evidence": [
+        "Designed or maintains the lab's AD security assessment framework",
+        "Published research on novel AD attack techniques or defense bypass methods",
+        "Trains teams on advanced Active Directory security assessment",
+        "Recognized as internal or external authority on AD security"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess a deliberately misconfigured AD environment and achieve domain admin through multiple independent attack paths"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review AD assessment findings from recent engagements for completeness and accuracy"
+    }
+  ],
+  "framework_mappings": {
+    "cis": [
+      "CIS Microsoft Windows Server Benchmark - Domain Controller (DC only) recommendations"
+    ],
+    "nice": {
+      "tks": ["K0742", "K0686", "K0685", "S0587", "S0925"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "IO-WRL-005 Systems Administration"]
+    }
+  },
+  "tags": [
+    "active-directory",
+    "kerberos",
+    "privilege-escalation",
+    "identity",
+    "on-premises",
+    "authentication",
+    "windows",
+    "iam",
+    "ntlm",
+    "ldap",
+    "pki"
+  ]
+}

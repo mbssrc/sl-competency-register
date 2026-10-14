@@ -1,0 +1,113 @@
+{
+  "id": "DFIR-NET-COVERT",
+  "name": "Covert Channel Detection",
+  "domain": "digital-forensics",
+  "category": "Network Forensics",
+  "status": "active",
+  "description": "Ability to detect and analyse covert communication channels in network traffic. Covers DNS tunnelling, ICMP tunnelling, steganographic channels, protocol abuse (HTTP header manipulation, TLS certificate field abuse), and timing-based covert channels. Requires deep protocol knowledge and statistical analysis skills.",
+
+  "requires": [
+    "DFIR-NET-PROTO",
+    "FOUND-EVIDENCE"
+  ],
+  "recommended": [
+    "DFIR-NET-FLOW",
+    "DFIR-MAL-C2"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to covert channel detection"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the concept of covert channels and common techniques used by attackers to hide communications",
+      "evidence": [
+        "Can describe common covert channel techniques (DNS tunnelling, ICMP tunnelling, steganography)",
+        "Understands why attackers use covert channels to evade detection",
+        "Can explain the difference between storage and timing covert channels"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Identifies obvious covert channels in traffic captures using known signatures and tools under supervision",
+      "evidence": [
+        "Detected DNS tunnelling in PCAP files using entropy analysis and query length heuristics under guidance",
+        "Identified ICMP tunnelling by examining payload sizes and patterns",
+        "Applied IDS signatures or Zeek scripts to flag known tunnelling tools (e.g. dnscat2, iodine)",
+        "Documented covert channel findings with supervisor review"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently detects covert channels using both signature-based and statistical methods in real investigations",
+      "evidence": [
+        "Independently detected covert channels in 3+ real investigations",
+        "Applied entropy and statistical analysis to identify non-signature-based covert channels",
+        "Reconstructed tunnelled data from detected covert channels to recover exfiltrated content",
+        "Produced covert channel analysis reports with clear methodology and evidence"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Detects sophisticated and novel covert channels; develops detection analytics; handles timing and steganographic channels",
+      "evidence": [
+        "Detected novel covert channels not matching known tool signatures",
+        "Developed detection rules or analytics for new covert channel techniques",
+        "Analysed timing-based covert channels using statistical methods",
+        "Mentors analysts on covert channel detection methodology and tooling"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines covert channel detection methodology; researches new covert communication techniques; recognised authority",
+      "evidence": [
+        "Authored or maintains the lab's covert channel detection methodology",
+        "Published research on covert channel detection or novel covert communication techniques",
+        "Develops detection frameworks adopted beyond the immediate team",
+        "Trains teams and presents on advanced covert channel analysis"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Analyse a PCAP file containing multiple covert channels (DNS tunnel, steganographic, and protocol abuse), detect all channels, and reconstruct tunnelled data"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given network traffic with no known signatures matching, use statistical and behavioural methods to determine whether covert channels are present"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0884", "K1220", "S0732", "S0875"],
+      "work_roles": ["PD-WRL-002 Digital Forensics", "PD-WRL-001 Defensive Cybersecurity", "PD-WRL-006 Threat Analysis"]
+    },
+    "sfia": {
+      "skill": "DGFS"
+    },
+    "giac": ["GNFA"]
+  },
+
+  "tags": [
+    "covert-channel",
+    "dns-tunnelling",
+    "icmp-tunnelling",
+    "steganography",
+    "protocol-abuse",
+    "exfiltration",
+    "dns",
+    "entropy",
+    "tls",
+    "traffic-analysis",
+    "protocol-analysis",
+    "pki"
+  ]
+}

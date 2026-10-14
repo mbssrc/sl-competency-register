@@ -1,0 +1,116 @@
+{
+  "id": "HWSEC-RF-TXRX",
+  "name": "Hardware Transceiver Evaluation",
+  "domain": "hardware-security",
+  "category": "RF & Wireless (On-Device)",
+  "status": "active",
+  "description": "Security evaluation of hardware radio transceivers embedded in devices. Covers assessment of Bluetooth, Zigbee, LoRa, Sub-GHz, and proprietary radio hardware at the chip and firmware level. Includes transceiver configuration extraction, firmware analysis of radio stacks, baseband protocol analysis, and evaluation of frequency hopping, encryption, and pairing mechanisms as implemented in hardware.",
+  "requires": [
+    "HWSEC-EMBED-FW",
+    "HWSEC-PCB-RE"
+  ],
+  "recommended": [
+    "HWSEC-PCB-BUS",
+    "HWSEC-RF-NFC",
+    "WSEC-PROTO-BLE",
+    "WSEC-SDR-CAPTURE"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to hardware-level radio transceiver security"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands common wireless transceiver architectures and their security properties",
+      "evidence": [
+        "Can describe common wireless transceiver architectures (SoC-integrated, external module, discrete)",
+        "Understands the difference between baseband/PHY and protocol-level security assessment",
+        "Aware of common radio standards (BLE, Zigbee, LoRa, Sub-GHz) and their hardware implementations"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Analyzes radio hardware configuration and captures RF traffic under supervision",
+      "evidence": [
+        "Identifies radio transceiver ICs on target PCBs and locates relevant datasheets",
+        "Extracts radio configuration registers via debug interface or firmware analysis",
+        "Captures and decodes OTA radio traffic using SDR or dedicated sniffers with guidance",
+        "Identifies the RF communication protocol stack and key parameters (frequency, modulation, channel hopping)"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses hardware radio security including firmware-level radio stack analysis",
+      "evidence": [
+        "Reverse engineers radio transceiver firmware to assess encryption and authentication implementation",
+        "Evaluates pairing and key exchange mechanisms as implemented in device hardware/firmware",
+        "Assesses frequency hopping sequence predictability and randomness",
+        "Completed hardware radio assessments on 3+ distinct wireless platforms independently"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Assesses proprietary radio implementations; develops custom analysis tooling; mentors team",
+      "evidence": [
+        "Reverse engineers proprietary radio protocols from hardware/firmware analysis",
+        "Develops custom radio analysis and injection tooling using SDR platforms",
+        "Assesses baseband processor security and radio firmware update mechanisms",
+        "Mentors team on radio hardware identification, firmware extraction, and protocol analysis"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on radio hardware security; publishes research; defines methodology",
+      "evidence": [
+        "Published research on radio transceiver vulnerabilities or wireless hardware attacks",
+        "Defines the lab's hardware radio assessment methodology",
+        "Provides expert consultation on radio hardware security to product development teams",
+        "Develops novel hardware-level wireless attack techniques"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess the radio implementation of a prepared target: identify the transceiver, extract configuration, analyze the protocol stack, and evaluate security mechanisms"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review hardware radio assessment reports for completeness of transceiver analysis and quality of security findings"
+    }
+  ],
+  "equipment": [
+    "Software-defined radio (SDR) platform for RF capture and analysis",
+    "BLE 5-capable sniffer (nRF52-based, e.g. Sniffle), or Ubertooth One for BLE 4.x only",
+    "RF shielded enclosure for controlled testing"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0925", "K0375", "K0948", "S0758"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-008 Technology Research and Development"]
+    },
+    "common_criteria": [
+      "AVA_VAN.3",
+      "AVA_VAN.4"
+    ]
+  },
+  "tags": [
+    "transceiver",
+    "radio",
+    "bluetooth",
+    "zigbee",
+    "lora",
+    "wireless-hardware",
+    "non-invasive",
+    "authentication",
+    "embedded",
+    "encryption",
+    "firmware",
+    "protocol-analysis",
+    "reverse-engineering"
+  ]
+}

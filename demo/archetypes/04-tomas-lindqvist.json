@@ -1,0 +1,87 @@
+{
+  "key": "PERS-004",
+  "bands": {
+    "strong": [
+      "HWSEC-SCA",
+      "HWSEC-FI"
+    ],
+    "weak": [
+      "HWSEC-RF",
+      "HWSEC-INV",
+      "HWSEC-SPREP"
+    ]
+  },
+  "signature": {
+    "HWSEC-SCA-DPA": 3,
+    "HWSEC-SCA-SPA": 3,
+    "HWSEC-FI-VG": 3,
+    "HWSEC-FI-CG": 3,
+    "HWSEC-INV-DECAP": 2,
+    "HWSEC-INV-DELAYER": 2,
+    "HWSEC-INV-FIB": 1,
+    "HWSEC-SPREP-MECH": 2,
+    "HWSEC-SPREP-CHEM": 2,
+    "HWSEC-INV-PROBE": 2,
+    "HWSEC-INV-TAMPER": 1
+  },
+  "never": [],
+  "foundations": [
+    1,
+    2
+  ],
+  "projects": [
+    "PRJ-SAT-DSP",
+    "PRJ-SAT-CP-BLACK"
+  ],
+  "stale_skills": [
+    "HWSEC-RF-NFC",
+    "HWSEC-RF-TXRX"
+  ],
+  "self_assessment": {
+    "mode": "all",
+    "bias": 0,
+    "jitter": 1,
+    "extra": {
+      "HWSEC-SPREP-OPTICAL": 3,
+      "HWSEC-SPREP-SEM": 2
+    }
+  },
+  "development_plan": [
+    {
+      "skill": "HWSEC-INV-DELAYER",
+      "target_level": 3,
+      "target_date": "2027-06-30",
+      "actions": [
+        "Complete supervised delayering of five sacrificial samples",
+        "Pass the invasive analysis proficiency assessment",
+        "Second evaluator on the crypto-processor invasive engagement"
+      ]
+    },
+    {
+      "skill": "HWSEC-INV-FIB",
+      "target_level": 2,
+      "target_date": "2027-12-31",
+      "actions": [
+        "Attend FIB circuit edit training at the equipment vendor",
+        "Perform two supervised circuit edits on training samples"
+      ]
+    },
+    {
+      "skill": "FOUND-QA",
+      "target_level": 3,
+      "target_date": "2027-09-30",
+      "actions": [
+        "Complete internal ISO/IEC 17025 QA reviewer training"
+      ]
+    }
+  ],
+  "name": "Tomas Lindqvist",
+  "role": "Hardware Security Evaluator",
+  "start_date": "2021-06-01",
+  "domains": [
+    "HWSEC"
+  ],
+  "target_maturity": {
+    "HWSEC": "practitioner"
+  }
+}

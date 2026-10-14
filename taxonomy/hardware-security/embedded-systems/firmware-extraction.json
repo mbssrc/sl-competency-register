@@ -1,0 +1,117 @@
+{
+  "id": "HWSEC-EMBED-FW",
+  "name": "Firmware Extraction & Analysis",
+  "domain": "hardware-security",
+  "category": "Embedded Systems Security",
+  "status": "active",
+  "description": "Extraction of firmware from embedded devices via hardware and software methods (SPI/I2C flash reading, JTAG/SWD memory dumps, bootloader extraction, OTA capture) followed by binary analysis including filesystem unpacking, string analysis, and reverse engineering of embedded application logic.",
+  "requires": [],
+  "recommended": [
+    "HWSEC-EMBED-DBG",
+    "HWSEC-PCB-RE",
+    "FOUND-EVIDENCE",
+    "SWSEC-RE-DISASM",
+    "FOUND-TOOLS"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to firmware extraction or embedded binary analysis"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands firmware storage architectures and common extraction vectors",
+      "evidence": [
+        "Can explain the difference between NOR flash, NAND flash, and eMMC storage",
+        "Understands firmware image structure (bootloader, kernel, filesystem, configuration)",
+        "Familiar with common firmware extraction tools (binwalk, flashrom)"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Extracts firmware from common targets using documented procedures under supervision",
+      "evidence": [
+        "Successfully reads SPI flash contents using a flash programmer under guidance",
+        "Unpacks firmware images using binwalk and identifies filesystem contents",
+        "Extracts firmware via UART bootloader console with documented steps",
+        "Work reviewed by authorized hardware analyst"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently extracts and analyzes firmware across diverse embedded platforms",
+      "evidence": [
+        "Extracts firmware from targets using multiple methods (flash read, JTAG dump, bootloader exploit) without assistance",
+        "Identifies and extracts encrypted or obfuscated firmware sections",
+        "Produces complete firmware analysis reports with identified attack surfaces",
+        "Successfully analyzed firmware in 3+ distinct engagement types (IoT, automotive, industrial)"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex extraction scenarios including protected and encrypted targets; mentors others",
+      "evidence": [
+        "Bypasses firmware readout protections (RDP, CRP, JTAG locks) to extract firmware",
+        "Decrypts vendor-encrypted firmware update packages",
+        "Develops custom extraction scripts and tooling for the lab",
+        "Reviews firmware analysis work products of junior analysts",
+        "Documents new extraction techniques for internal knowledge base"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on firmware security; develops methodology; publishes research",
+      "evidence": [
+        "Develops novel firmware extraction techniques for previously undocumented platforms",
+        "Published research or CVEs related to firmware security vulnerabilities",
+        "Defines the lab's firmware analysis methodology and training curriculum",
+        "Provides expert consultation on firmware security architecture to product teams"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Extract firmware from a prepared target device using at least two different methods and produce a complete analysis report"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review firmware analysis reports from recent engagements for completeness and accuracy"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Present an unknown embedded device and assess the analyst's approach to identifying and executing firmware extraction"
+    }
+  ],
+  "equipment": [
+    "SPI/I2C flash programmer (e.g., FlashcatUSB, Dediprog SF600)",
+    "eMMC adapter and reader",
+    "SOIC-8/SOIC-16 test clips"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0948", "K0914", "S0621", "K0842", "S0738"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-005 Software Security Assessment", "DD-WRL-008 Technology Research and Development"]
+    },
+    "common_criteria": [
+      "AVA_VAN.3",
+      "ADV_IMP"
+    ],
+    "fips_140_3": [
+      "AS05"
+    ]
+  },
+  "tags": [
+    "firmware",
+    "extraction",
+    "flash-reading",
+    "binary-analysis",
+    "embedded",
+    "non-invasive",
+    "jtag",
+    "reverse-engineering"
+  ]
+}

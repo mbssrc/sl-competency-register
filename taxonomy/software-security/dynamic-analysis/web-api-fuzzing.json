@@ -1,0 +1,110 @@
+{
+  "id": "SWSEC-DAST-WEBFUZZ",
+  "name": "Web Application & API Fuzzing",
+  "domain": "software-security",
+  "category": "Dynamic Analysis",
+  "status": "active",
+  "description": "Automated discovery of web application and API vulnerabilities through targeted fuzzing. Covers directory and path brute-forcing (ffuf, feroxbuster), parameter and header fuzzing, authentication-aware fuzzing with session management, OpenAPI/GraphQL schema-based API fuzzing, server-side template injection discovery, business logic fuzzing through input permutation, and integration of web fuzzing into assessment workflows.",
+
+  "requires": [
+    "FOUND-ETHICS"
+  ],
+  "recommended": [
+    "SWSEC-FUZZ-CORE",
+    "SWSEC-WEB-API",
+    "SWSEC-WEB-SQLI",
+    "SWSEC-WEB-XSS",
+    "FOUND-TOOLS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to web application or API fuzzing"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands web fuzzing concepts and common tools",
+      "evidence": [
+        "Can explain the difference between web fuzzing and binary/protocol fuzzing",
+        "Familiar with ffuf, Burp Intruder, and feroxbuster at a conceptual level",
+        "Understands wordlist selection and response filtering for web fuzzing",
+        "Completed introductory training on web application fuzzing"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Runs web fuzzing tools with provided configurations under supervision",
+      "evidence": [
+        "Used ffuf for directory discovery and parameter brute-forcing in lab",
+        "Applied Burp Intruder with position markers and payload lists under guidance",
+        "Filtered fuzzing results by response code, size, and content to identify findings",
+        "Work reviewed by authorized tester"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently develops web fuzzing strategies tailored to target applications",
+      "evidence": [
+        "Independently applied web fuzzing in 5+ web application assessments",
+        "Develops custom wordlists and fuzzing strategies based on application technology stack",
+        "Performs authentication-aware fuzzing maintaining session state across requests",
+        "Identifies injection points, hidden endpoints, and access control gaps through fuzzing"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Builds API schema-aware fuzzers; discovers complex vulnerabilities",
+      "evidence": [
+        "Develops schema-based fuzzers from OpenAPI, GraphQL, and gRPC definitions",
+        "Builds custom fuzzing tools for application-specific logic and workflow testing",
+        "Chains fuzzing discoveries into exploitation (SSTI, SSRF, deserialization)",
+        "Mentors team on web fuzzing methodology and custom tool development"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Authority on web fuzzing; develops methodology and discovers significant vulnerabilities",
+      "evidence": [
+        "Discovered significant vulnerabilities in production web applications through fuzzing",
+        "Published research on web or API fuzzing techniques",
+        "Developed or maintains the lab's web fuzzing methodology and tool configurations",
+        "Trains teams on advanced web application fuzzing strategies"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Given a web application with hidden endpoints and injection points, use fuzzing techniques to discover vulnerabilities and document findings"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review of web fuzzing methodology, custom wordlists, and vulnerability findings from recent assessments"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1079", "K1366", "S0616", "S0656"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-005 Software Security Assessment"]
+    },
+    "cwe": ["CWE-20", "CWE-89", "CWE-79", "CWE-94"],
+    "mitre_attack": {"techniques": ["T1190"]}
+  },
+
+  "tags": [
+    "fuzzing",
+    "web-application",
+    "api",
+    "ffuf",
+    "burp",
+    "graphql",
+    "vulnerability-discovery",
+    "authentication"
+  ]
+}

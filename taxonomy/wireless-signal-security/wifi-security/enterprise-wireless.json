@@ -1,0 +1,129 @@
+{
+  "id": "WSEC-WIFI-ENT",
+  "name": "Enterprise Wireless Security Assessment",
+  "domain": "wireless-signal-security",
+  "category": "WiFi Security",
+  "status": "active",
+  "description": "Ability to assess enterprise wireless deployments including 802.1X/EAP authentication, RADIUS infrastructure, certificate validation, wireless intrusion detection/prevention systems, and network segmentation. Covers attacks against EAP-PEAP, EAP-TLS, EAP-TTLS, and RADIUS server misconfigurations, as well as assessment of wireless management plane security.",
+  "requires": [
+    "WSEC-WIFI-RECON",
+    "WSEC-WIFI-WPA"
+  ],
+  "recommended": [
+    "FOUND-REPORT",
+    "FOUND-RISK",
+    "INFRA-ONPREM-AD"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to enterprise wireless security assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands enterprise wireless architecture, 802.1X, and EAP authentication methods",
+      "evidence": [
+        "Can describe 802.1X architecture (supplicant, authenticator, authentication server)",
+        "Understands the differences between EAP-PEAP, EAP-TLS, and EAP-TTLS",
+        "Completed training on enterprise wireless security assessment"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs enterprise wireless assessment tasks using standard tools under supervision",
+      "evidence": [
+        "Deployed evil twin attacks against EAP-PEAP networks using hostapd-mana or eaphammer under guidance",
+        "Captured EAP credentials from misconfigured supplicants in lab exercises",
+        "Assessed wireless controller configurations for common misconfigurations under supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses enterprise wireless deployments end to end",
+      "evidence": [
+        "Independently assessed 3+ enterprise wireless deployments covering authentication, segmentation, and WIDS",
+        "Identified certificate validation failures and EAP credential exposure in real engagements",
+        "Evaluated RADIUS server configurations and authentication policy enforcement",
+        "Produced comprehensive reports with risk-rated findings and remediation roadmaps"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Assesses complex enterprise wireless environments; develops advanced attack chains",
+      "evidence": [
+        "Chained wireless access with internal network pivoting in enterprise assessments",
+        "Assessed wireless deployments with WIPS and performed evasion techniques",
+        "Evaluated 802.11w (PMF/MFP) and 802.11r (FT) security in enterprise environments",
+        "Reviews enterprise wireless assessment reports and mentors junior assessors"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines enterprise wireless assessment methodology; advises on secure architecture design",
+      "evidence": [
+        "Authored the lab's enterprise wireless assessment methodology",
+        "Advises clients on enterprise wireless architecture design and hardening",
+        "Published research on enterprise 802.1X or EAP security vulnerabilities",
+        "Trains teams on enterprise wireless security assessment and remediation"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess a lab enterprise wireless deployment with 802.1X/EAP authentication, identifying configuration weaknesses and credential exposure"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review enterprise wireless assessment reports for finding completeness, risk accuracy, and remediation quality"
+    }
+  ],
+  "equipment": [
+    "Alfa AWUS036ACH or equivalent monitor-mode-capable WiFi adapter",
+    "Managed access point for evil twin deployment"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0998", "K0686", "K1239", "S0758"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-001 Cybersecurity Architecture"]
+    },
+    "sfia": {
+      "skill": "PENT",
+      "levels": [
+        3,
+        4,
+        5
+      ]
+    },
+    "mitre_attack": {
+      "techniques": [
+        "T1557",
+        "T1040",
+        "T1110"
+      ]
+    },
+    "certifications": [
+      "GIAC GAWN",
+      "Offensive Security OSWP",
+      "CompTIA PenTest+",
+      "CEH"
+    ]
+  },
+  "tags": [
+    "wifi",
+    "enterprise",
+    "802.1x",
+    "eap",
+    "radius",
+    "evil-twin",
+    "authentication",
+    "evasion",
+    "segmentation",
+    "tls",
+    "mitm",
+    "pki"
+  ]
+}

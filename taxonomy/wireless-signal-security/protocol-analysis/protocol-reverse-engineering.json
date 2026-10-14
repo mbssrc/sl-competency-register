@@ -1,0 +1,117 @@
+{
+  "id": "WSEC-PROTO-REVENG",
+  "name": "Wireless Protocol Reverse Engineering",
+  "domain": "wireless-signal-security",
+  "category": "Protocol Analysis",
+  "status": "active",
+  "description": "Ability to reverse-engineer unknown or proprietary wireless protocols from signal captures. Covers identification of framing and synchronization patterns, bit-level protocol structure extraction, state machine inference, correlation of RF activity with device behavior, and reconstruction of protocol specifications sufficient for security analysis.",
+  "requires": [
+    "WSEC-SDR-DEMOD",
+    "WSEC-SDR-DSP"
+  ],
+  "recommended": [
+    "WSEC-SDR-CAPTURE",
+    "FOUND-DOC",
+    "SWSEC-RE-PROTOCOL"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to wireless protocol reverse engineering"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the concept and methodology of wireless protocol reverse engineering",
+      "evidence": [
+        "Can describe the general approach to reverse-engineering an unknown wireless protocol",
+        "Understands common framing patterns (preamble, sync word, length, CRC) in digital protocols",
+        "Completed training on protocol reverse engineering fundamentals"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Assists in protocol reverse engineering tasks under supervision",
+      "evidence": [
+        "Identified preamble and sync word patterns in demodulated bitstreams under guidance",
+        "Correlated RF transmission patterns with observed device behavior under supervision",
+        "Used Inspectrum, Universal Radio Hacker, or equivalent to analyze signal structure with assistance"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently reverse-engineers standard-complexity proprietary wireless protocols",
+      "evidence": [
+        "Independently reverse-engineered the framing and field structure of 3+ unknown wireless protocols",
+        "Identified and documented CRC/checksum algorithms, field encodings, and state transitions",
+        "Correlated protocol fields with device functions through systematic behavioral testing",
+        "Produced protocol specification documents sufficient for independent security analysis"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Reverse-engineers complex protocols with encryption or frequency agility; develops RE tools",
+      "evidence": [
+        "Reverse-engineered protocols using encryption, obfuscation, or frequency hopping",
+        "Inferred protocol state machines from traffic analysis and device behavior correlation",
+        "Developed custom protocol analysis and visualization tools for the lab",
+        "Mentors junior analysts on reverse engineering methodology and technique selection"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on wireless protocol reverse engineering; publishes novel techniques",
+      "evidence": [
+        "Published research on wireless protocol reverse engineering methods or findings",
+        "Reverse-engineered protocols that led to significant security vulnerability discoveries",
+        "Authored the lab's wireless protocol reverse engineering methodology",
+        "Trains teams on reverse engineering techniques and develops lab RE capabilities"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Given signal captures from an unknown wireless device, identify the modulation, extract the framing structure, and document the protocol fields and their likely purpose"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Reverse-engineer a proprietary wireless protocol from a provided IoT device, producing a protocol specification and security analysis"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0851", "K1207", "K0812", "K0925"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development", "PD-WRL-007 Vulnerability Analysis"]
+    },
+    "sfia": {
+      "skill": "PENT",
+      "levels": [
+        4,
+        5
+      ]
+    },
+    "mitre_attack": {
+      "techniques": [
+        "T1040"
+      ]
+    },
+    "certifications": [
+      "GIAC GAWN",
+      "GIAC GREM"
+    ]
+  },
+  "tags": [
+    "reverse-engineering",
+    "protocol-analysis",
+    "framing",
+    "proprietary",
+    "unknown-signals",
+    "encryption",
+    "iot",
+    "obfuscation",
+    "traffic-analysis"
+  ]
+}

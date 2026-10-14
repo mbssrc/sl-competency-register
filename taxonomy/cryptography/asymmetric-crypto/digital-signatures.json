@@ -1,0 +1,113 @@
+{
+  "id": "CRYPTO-ASYM-SIGNATURES",
+  "name": "Digital Signature Assessment",
+  "domain": "cryptography",
+  "category": "Asymmetric Cryptography",
+  "status": "active",
+  "description": "Assessment of application-level digital signature security including signature verification correctness, algorithm confusion, signature stripping, and protocol-level misuse. Covers cross-scheme concerns (JWT, code signing, multi-signature) while algorithm-specific implementation details (RSA padding, ECDSA nonce management) are assessed under their respective algorithm skills.",
+
+  "requires": [
+    "CRYPTO-ASYM-RSA",
+    "CRYPTO-ASYM-ECC"
+  ],
+  "recommended": [
+    "CRYPTO-HASH-ASSESSMENT",
+    "HWSEC-EMBED-BOOT"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to digital signature assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the purpose of digital signatures and basic signature schemes",
+      "evidence": [
+        "Can explain how digital signatures provide authentication, integrity, and non-repudiation",
+        "Understands the difference between RSA-PSS and RSA-PKCS#1 v1.5 signatures",
+        "Can describe common signature algorithms (RSA, ECDSA, EdDSA) and their use cases"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Identifies signature scheme configurations and basic misuse under supervision",
+      "evidence": [
+        "Identifies signature algorithms used in certificates, JWTs, and code signing",
+        "Detects use of deprecated or disallowed signature algorithms (SHA-1 based signatures; DSA, which FIPS 186-5 no longer approves for signature generation) under guidance",
+        "Reviews code for correct signature verification patterns",
+        "Documents signature-related findings following lab templates"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses digital signature implementations for security flaws",
+      "evidence": [
+        "Identifies signature stripping and algorithm confusion vulnerabilities (e.g., JWT 'none' algorithm)",
+        "Evaluates ECDSA implementations for nonce quality issues affecting signature security",
+        "Assesses signature verification for proper handling of malformed or malleated signatures",
+        "Produces findings referencing FIPS 186-5 or relevant protocol specifications"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Assesses complex signature deployments; identifies subtle verification flaws",
+      "evidence": [
+        "Identifies signature malleability issues in blockchain and protocol contexts",
+        "Evaluates deterministic signature schemes (RFC 6979) for correct implementation",
+        "Assesses multi-signature and threshold signature implementations",
+        "Reviews and mentors junior staff on digital signature assessment"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines signature assessment methodology; publishes research on signature security",
+      "evidence": [
+        "Authored or maintains the lab's digital signature assessment methodology",
+        "Published research on signature scheme vulnerabilities or novel attacks",
+        "Provides expert guidance on signature scheme selection for system design",
+        "Trains teams on signature internals, verification pitfalls, and emerging standards"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess a JWT-based authentication system: evaluate signature algorithm enforcement, key management, and verification correctness"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given an ECDSA-signed protocol, identify whether the implementation is vulnerable to nonce reuse and demonstrate key recovery"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["S0658", "S0969", "K0697", "S0971"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-005 Software Security Assessment"]
+    },
+    "fips": {
+      "standards": ["FIPS 186-5"]
+    },
+    "ietf": {
+      "rfcs": ["RFC 6979", "RFC 8032"]
+    }
+  },
+
+  "tags": [
+    "digital-signatures",
+    "ecdsa",
+    "eddsa",
+    "rsa-pss",
+    "jwt",
+    "code-signing",
+    "verification",
+    "non-repudiation",
+    "authentication",
+    "key-management"
+  ]
+}

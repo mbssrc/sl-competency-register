@@ -1,0 +1,109 @@
+{
+  "id": "DFIR-MEM-ACQUISITION",
+  "name": "Memory Acquisition",
+  "domain": "digital-forensics",
+  "category": "Memory Forensics",
+  "status": "active",
+  "description": "Ability to acquire volatile memory from live systems in a forensically sound manner. Covers RAM capture from physical and virtual machines using tools such as WinPmem, LiME, DumpIt, and hypervisor-based snapshot extraction. Includes understanding of acquisition artifacts, memory smear, and integrity considerations unique to volatile evidence.",
+
+  "requires": [
+    "FOUND-EVIDENCE"
+  ],
+  "recommended": [
+    "DFIR-DISK-IMAGING",
+    "FOUND-DOC"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to memory acquisition techniques"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands why volatile memory is forensically valuable and the challenges of capturing it",
+      "evidence": [
+        "Can explain what volatile memory contains and why it matters forensically",
+        "Understands the concept of memory smear and order of volatility",
+        "Can describe the difference between live acquisition and VM snapshot extraction"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Captures memory from standard systems under supervision using established tools and procedures",
+      "evidence": [
+        "Captured RAM from Windows systems using DumpIt or WinPmem under guidance",
+        "Captured RAM from Linux systems using LiME under guidance",
+        "Extracted memory snapshots from VMware or Hyper-V virtual machines",
+        "Documented memory acquisition with hash values, timestamps, and system details"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently acquires memory from various system types with appropriate tool selection and full documentation",
+      "evidence": [
+        "Independently acquired memory in 5+ investigations across Windows, Linux, and VM environments",
+        "Correctly selected acquisition tools based on OS, architecture, and deployment constraints",
+        "Acquisition documentation passes QA review consistently",
+        "Handled time-critical volatile evidence collection as part of live incident response"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Acquires memory from complex environments including hardened systems, cloud VMs, and embedded devices; mentors others on acquisition best practices",
+      "evidence": [
+        "Acquired memory from systems with Secure Boot, HVCI, or kernel integrity protections",
+        "Performed memory acquisition from cloud VM instances via hypervisor API or agent-based methods",
+        "Handled acquisition from non-standard platforms (ARM-based, embedded, or containerised environments)",
+        "Reviews acquisition procedures and mentors junior staff on volatile evidence collection"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines memory acquisition methodology; validates tools against new platforms; researches acquisition challenges",
+      "evidence": [
+        "Authored or maintains the lab's memory acquisition procedures",
+        "Validated acquisition tool compatibility and reliability for new OS versions and architectures",
+        "Published research on memory acquisition techniques or tool reliability",
+        "Trains teams on memory acquisition and advises on volatile evidence strategy"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Acquire memory from a live Windows and Linux system using appropriate tools, document the process, and verify the capture"
+    },
+    {
+      "type": "direct_observation",
+      "description": "Observe memory acquisition during a live incident response or simulated exercise"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1155", "K0796", "S0624", "S0607", "S0653"],
+      "work_roles": ["PD-WRL-002 Digital Forensics", "PD-WRL-003 Incident Response", "IN-WRL-002 Digital Evidence Analysis"]
+    },
+    "sfia": {
+      "skill": "DGFS"
+    },
+    "giac": ["GCFA", "GREM"]
+  },
+
+  "tags": [
+    "volatile-evidence",
+    "ram-capture",
+    "live-acquisition",
+    "order-of-volatility",
+    "incident-response",
+    "hypervisor",
+    "linux",
+    "windows",
+    "forensics"
+  ]
+}

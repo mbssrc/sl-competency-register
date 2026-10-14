@@ -1,0 +1,115 @@
+{% extends "core/base.html" %}
+
+{% block title %}{{ profile.name }} - Domain Profiles - {{ product_name }}{% endblock %}
+
+{% block page_crumbs %}
+<a href="{% url 'taxonomy:profile-list' %}" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Domain Profiles</a>
+  <svg class="w-4 h-4 mx-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+  <span class="text-gray-900 dark:text-white font-medium">{{ profile.name }}</span>
+{% endblock %}
+
+{% block page_title %}{{ profile.name }}{% endblock %}
+{% block page_description %}{{ profile.description }}{% endblock %}
+
+{% block content %}
+<!-- Profile header -->
+<div class="mb-8">
+  <div class="flex items-center gap-3 mb-2">
+    <span class="inline-flex items-center font-mono text-xs bg-gray-100 dark:bg-white/5 text-gray-600 dark:text-gray-400 px-2.5 py-1 rounded">{{ profile.id }}</span>
+    {% if profile.domain %}
+    <a href="{% url 'taxonomy:domain-detail' profile.domain.id %}"
+       class="inline-flex items-center gap-1 text-xs text-indigo-600 dark:text-indigo-400 hover:underline">
+      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+      {{ profile.domain.name }}
+    </a>
+    {% endif %}
+  </div>
+{% if request.user.is_manager %}
+  <button onclick="loadModal('{% url 'taxonomy:profile-edit' profile.id %}')"
+          class="mt-4 inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-500/15 border border-indigo-200 dark:border-indigo-800 rounded-md hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+    Edit
+  </button>
+  {% endif %}
+</div>
+
+<!-- Maturity Levels -->
+{% if maturity_data %}
+<div class="mb-8">
+  <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+    Maturity Levels
+    <span class="ml-2 text-sm font-normal text-gray-500 dark:text-gray-500">{{ maturity_data|length }}</span>
+  </h3>
+
+  <div class="space-y-4">
+    {% for md in maturity_data %}
+    <div class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg p-5">
+      <div class="flex items-center gap-3 mb-3">
+        {% if md.level == "principal" %}
+        <span class="inline-flex items-center rounded-full bg-amber-50 dark:bg-amber-900/30 px-2.5 py-0.5 text-xs font-medium text-amber-700 dark:text-amber-300">Principal</span>
+        {% elif md.level == "lead" %}
+        <span class="inline-flex items-center rounded-full bg-violet-50 dark:bg-violet-900/30 px-2.5 py-0.5 text-xs font-medium text-violet-700 dark:text-violet-300">Lead</span>
+        {% elif md.level == "senior" %}
+        <span class="inline-flex items-center rounded-full bg-emerald-50 dark:bg-emerald-900/30 px-2.5 py-0.5 text-xs font-medium text-emerald-700 dark:text-emerald-300">Senior</span>
+        {% elif md.level == "practitioner" %}
+        <span class="inline-flex items-center rounded-full bg-blue-50 dark:bg-blue-900/30 px-2.5 py-0.5 text-xs font-medium text-blue-700 dark:text-blue-300">Practitioner</span>
+        {% elif md.level == "junior" %}
+        <span class="inline-flex items-center rounded-full bg-cyan-50 dark:bg-cyan-900/30 px-2.5 py-0.5 text-xs font-medium text-cyan-700 dark:text-cyan-300">Junior</span>
+        {% endif %}
+        <h4 class="text-sm font-semibold text-gray-900 dark:text-white">{{ md.title }}</h4>
+      </div>
+
+      {% if md.description %}
+      <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">{{ md.description }}</p>
+      {% endif %}
+
+      <!-- Thresholds -->
+      {% if md.thresholds %}
+      <div class="mb-3">
+        <h5 class="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Thresholds</h5>
+        <div class="flex flex-wrap gap-2">
+          {% for min_level, count in md.thresholds.domain_skills_at.items %}
+          <span class="inline-flex items-center rounded-md bg-gray-100 dark:bg-white/10 px-2 py-1 text-xs text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-white/10">
+            {{ count }} skills at L{{ min_level }}+
+          </span>
+          {% endfor %}
+          {% if md.thresholds.min_categories %}
+          <span class="inline-flex items-center rounded-md bg-gray-100 dark:bg-white/10 px-2 py-1 text-xs text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-white/10">
+            {{ md.thresholds.min_categories }} categories min
+          </span>
+          {% endif %}
+          {% if md.thresholds.foundation_avg %}
+          <span class="inline-flex items-center rounded-md bg-gray-100 dark:bg-white/10 px-2 py-1 text-xs text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-white/10">
+            Foundation avg {{ md.thresholds.foundation_avg }}+
+          </span>
+          {% endif %}
+        </div>
+      </div>
+      {% endif %}
+
+      <!-- Pinned skills -->
+      {% if md.pinned %}
+      <div>
+        <h5 class="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Pinned Skills</h5>
+        <div class="flex flex-wrap gap-2">
+          {% for pin in md.pinned %}
+          <a href="{% url 'taxonomy:skill-detail' pin.skill %}"
+             class="inline-flex items-center gap-1.5 rounded-md bg-indigo-50 dark:bg-indigo-900/20 px-2 py-1 text-xs text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 hover:border-indigo-400 dark:hover:border-indigo-600 transition-colors">
+            <span>{{ pin.skill_name }}</span>
+            <span class="font-mono text-[10px] text-indigo-500 dark:text-indigo-400">{{ pin.skill }}</span>
+            <span class="font-medium">L{{ pin.minimum_level }}+</span>
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% else %}
+<div class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg p-8 text-center text-gray-500 dark:text-gray-400">
+  No maturity levels defined for this profile.
+</div>
+{% endif %}
+{% endblock %}

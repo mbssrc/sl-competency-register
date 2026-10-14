@@ -1,0 +1,112 @@
+{
+  "id": "NETSEC-RECON-PASSIVERECON",
+  "name": "Passive Reconnaissance",
+  "domain": "network-security",
+  "category": "Reconnaissance",
+  "status": "active",
+  "description": "Ability to gather network intelligence without directly interacting with target systems. Covers OSINT techniques for network infrastructure discovery, DNS record enumeration, certificate transparency logs, BGP/ASN analysis, and passive traffic analysis where applicable.",
+
+  "requires": [
+    "FOUND-ETHICS"
+  ],
+  "recommended": [
+    "FOUND-DOC",
+    "INTEL-OSINT-INFRA",
+    "FOUND-TOOLS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to passive reconnaissance techniques"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the distinction between active and passive reconnaissance and why passive techniques reduce detection risk",
+      "evidence": [
+        "Can explain the difference between passive and active reconnaissance",
+        "Knows common OSINT sources for network information (WHOIS, DNS, Shodan)",
+        "Understands the operational security benefits of passive techniques"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Uses standard passive recon tools under supervision to collect network intelligence",
+      "evidence": [
+        "Queries WHOIS, DNS records, and certificate transparency logs",
+        "Uses Shodan, Censys, or similar services to identify exposed assets",
+        "Documents findings with proper source attribution under review",
+        "Follows engagement scope boundaries during passive collection"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently conducts comprehensive passive reconnaissance campaigns and integrates findings into engagement planning",
+      "evidence": [
+        "Builds complete network profiles from passive sources alone",
+        "Correlates data across multiple OSINT sources to map infrastructure",
+        "Identifies attack surface elements not visible through active scanning",
+        "Produces actionable intelligence summaries for the engagement team"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Develops advanced passive collection workflows; automates OSINT pipelines; mentors others",
+      "evidence": [
+        "Automates passive recon workflows using scripting and APIs",
+        "Performs BGP/ASN analysis and network topology inference from public data",
+        "Develops recon runbooks for different engagement types",
+        "Reviews and mentors junior staff on OSINT methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines the lab's passive recon methodology; develops novel collection techniques; trains teams",
+      "evidence": [
+        "Designed or maintains the lab's passive reconnaissance framework",
+        "Developed novel OSINT collection or correlation techniques",
+        "Published research on passive network intelligence gathering",
+        "Trains teams on passive recon strategy and tradecraft"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Given a target organization name, produce a comprehensive network profile using only passive techniques within a time limit"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review OSINT collection reports from recent engagements for completeness and source quality"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["S0695", "K0938", "S0011"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "PD-WRL-006 Threat Analysis"]
+    },
+    "mitre_attack": {
+      "techniques": ["T1590", "T1593", "T1596.001"]
+    },
+    "crest": {
+      "areas": ["open-source-intelligence"]
+    }
+  },
+
+  "tags": [
+    "osint",
+    "passive",
+    "dns",
+    "whois",
+    "shodan",
+    "reconnaissance",
+    "traffic-analysis",
+    "passive-scanning",
+    "network-discovery"
+  ]
+}

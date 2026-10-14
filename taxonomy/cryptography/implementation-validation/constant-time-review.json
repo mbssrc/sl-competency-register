@@ -1,0 +1,106 @@
+{
+  "id": "CRYPTO-IMPL-CONSTTIME",
+  "name": "Constant-Time & Software Side-Channel Review",
+  "domain": "cryptography",
+  "category": "Implementation & Validation",
+  "status": "active",
+  "description": "Covers review of cryptographic software for secret-dependent timing, branches and memory access patterns. Includes manual review techniques, use of constant-time verification tooling (dynamic analysis, statistical timing tests, formal and symbolic checkers), awareness of cache-timing and microarchitectural leakage, and reporting of findings with exploitability context. Physical timing and power measurement of devices belongs to HWSEC-SCA-TIMING.",
+
+  "requires": [
+    "CRYPTO-SYM-BLOCKCIPHER"
+  ],
+  "recommended": [
+    "SWSEC-REVIEW-CRYPTO",
+    "HWSEC-SCA-TIMING",
+    "CRYPTO-ASYM-RSA",
+    "CRYPTO-ASYM-ECC"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to constant-time code review"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands software timing side channels and the constant-time programming discipline",
+      "evidence": [
+        "Can explain how secret-dependent branches, table lookups and variable-time instructions leak information",
+        "Aware of cache-timing attacks against table-based AES and timing attacks against modular exponentiation",
+        "Understands why compiler optimisation can break source-level constant-time guarantees"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Reviews cryptographic code for obvious timing leaks under supervision",
+      "evidence": [
+        "Identifies secret-dependent branches and memory indexing in a provided code sample",
+        "Runs constant-time analysis tooling on a library function and records the results with guidance",
+        "Identifies non-constant-time comparisons of MACs or authentication tags",
+        "Documents findings in the lab's reporting template"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently reviews cryptographic implementations for software side-channel weaknesses",
+      "evidence": [
+        "Reviews symmetric and public-key implementations for secret-dependent control flow and memory access",
+        "Selects and applies appropriate verification tooling and interprets its findings and false positives",
+        "Inspects compiled output to confirm constant-time properties survive compilation",
+        "Rates findings with consideration of attacker position (remote, co-resident, local) and exploitability"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Assesses complex implementations and microarchitectural exposure; reviews work; mentors team",
+      "evidence": [
+        "Evaluates implementations against microarchitectural leakage (speculative execution, cache and port contention)",
+        "Assesses masking or blinding countermeasures in software and their limitations",
+        "Technically reviews constant-time review reports for completeness and accuracy",
+        "Mentors analysts on constant-time review techniques and tooling"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognised authority on software side channels; defines methodology; publishes research",
+      "evidence": [
+        "Defines the lab's constant-time review methodology and tooling baseline",
+        "Publishes research on software side-channel attacks or verification techniques",
+        "Advises library maintainers and vendors on constant-time implementation",
+        "Evaluates new verification tools for adoption by the lab"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "work_product_review",
+      "description": "Review the constant-time review report for a cryptographic library function, checking coverage of branches, memory access and compiled output, and the justification of severity ratings"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given source code and compiled binaries of several cryptographic routines with seeded timing leaks, identify each leak, demonstrate it with appropriate tooling, and propose a constant-time fix"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1361", "K1362", "S0972"],
+      "work_roles": ["DD-WRL-005 Software Security Assessment"]
+    },
+    "cwe": ["CWE-208", "CWE-385"]
+  },
+
+  "tags": [
+    "constant-time",
+    "timing-attack",
+    "side-channel",
+    "code-review",
+    "cryptographic",
+    "dynamic-analysis",
+    "static-analysis"
+  ]
+}

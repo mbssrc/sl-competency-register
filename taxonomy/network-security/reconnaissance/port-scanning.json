@@ -1,0 +1,110 @@
+{
+  "id": "NETSEC-RECON-PORTSCANNING",
+  "name": "Port Scanning",
+  "domain": "network-security",
+  "category": "Reconnaissance",
+  "status": "active",
+  "description": "Ability to perform comprehensive port scanning against target hosts and networks using tools such as Nmap, Masscan, and Unicornscan. Covers TCP/UDP scanning techniques, scan timing and evasion, output interpretation, and the ability to scope scans appropriately for the engagement context.",
+
+  "requires": [
+    "FOUND-ETHICS"
+  ],
+  "recommended": [
+    "FOUND-DOC",
+    "FOUND-TOOLS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to port scanning tools or concepts"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands TCP/UDP port concepts and the purpose of port scanning in engagements",
+      "evidence": [
+        "Can explain the difference between TCP and UDP scanning",
+        "Understands the three-way handshake and how SYN scanning works",
+        "Can describe common port ranges and well-known service ports"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Runs basic port scans under supervision and interprets results with guidance",
+      "evidence": [
+        "Executes Nmap SYN and TCP connect scans on lab targets",
+        "Interprets Nmap output to identify open, closed, and filtered ports",
+        "Documents scan results in engagement notes under review",
+        "Follows lab rules of engagement for scan scope and timing"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently plans and executes scanning campaigns appropriate to engagement scope",
+      "evidence": [
+        "Selects appropriate scan types and timing profiles for the engagement context",
+        "Performs comprehensive TCP and UDP scans across large network ranges",
+        "Uses Nmap scripting engine (NSE) for targeted service detection",
+        "Integrates scan results into engagement workflow and reporting"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex scanning scenarios; optimizes scan performance; mentors junior staff",
+      "evidence": [
+        "Develops custom Nmap NSE scripts for specialized reconnaissance",
+        "Optimizes scan parameters for speed and stealth in constrained environments",
+        "Combines multiple scanning tools (Nmap, Masscan, Unicornscan) for comprehensive coverage",
+        "Reviews and mentors junior staff on scan methodology and interpretation"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines scanning methodology for the lab; develops advanced evasion and detection techniques",
+      "evidence": [
+        "Authored the lab's port scanning methodology and standard operating procedures",
+        "Develops novel scan techniques that evade common IDS/IPS detection",
+        "Published research on scanning techniques or tool improvements",
+        "Trains teams on advanced scanning strategy and tool usage"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Scan a lab network segment and produce a complete host and service inventory within a time constraint"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review scan logs and documentation from a recent engagement for completeness and appropriate technique selection"
+    }
+  ],
+
+  "framework_mappings": {
+    "mitre_attack": {
+      "techniques": ["T1046"]
+    },
+    "nice": {
+      "tks": ["K0861", "K0956", "S0543", "S0723"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis"]
+    },
+    "crest": {
+      "areas": ["network-mapping"]
+    }
+  },
+
+  "tags": [
+    "nmap",
+    "masscan",
+    "tcp",
+    "udp",
+    "reconnaissance",
+    "scanning",
+    "evasion",
+    "network-discovery"
+  ]
+}

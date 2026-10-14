@@ -1,0 +1,107 @@
+{
+  "id": "SWSEC-SUPPLY-SBOM",
+  "name": "SBOM Generation & Analysis",
+  "domain": "software-security",
+  "category": "Supply Chain Security",
+  "status": "active",
+  "description": "Generation, validation, and analysis of Software Bills of Materials (SBOMs). Covers SPDX and CycloneDX formats, SBOM generation from source and binary analysis, completeness validation, SBOM-driven vulnerability management, and regulatory compliance requirements.",
+
+  "requires": [],
+  "recommended": [
+    "SWSEC-SUPPLY-DEP",
+    "FOUND-DOC",
+    "FOUND-STANDARDS",
+    "FOUND-TOOLS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to SBOM concepts"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands SBOM purpose, formats, and regulatory context",
+      "evidence": [
+        "Can explain the purpose of SBOMs and their role in supply chain security",
+        "Familiar with SPDX and CycloneDX formats",
+        "Understands regulatory requirements (EO 14028, EU CRA) related to SBOMs"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Generates SBOMs under supervision using standard tools",
+      "evidence": [
+        "Generated SBOMs using Syft, cdxgen, or similar tools",
+        "Validated SBOM format compliance (SPDX, CycloneDX) with schema validators",
+        "Compared SBOM contents against actual project dependencies",
+        "Work reviewed by authorized analyst"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently generates, validates, and analyzes SBOMs for engagements",
+      "evidence": [
+        "Independently generated and analyzed SBOMs on 5+ engagements",
+        "Assesses SBOM completeness and identifies missing components",
+        "Correlates SBOM contents with vulnerability databases for risk assessment",
+        "Passed proficiency assessment on SBOM generation and analysis"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex SBOM scenarios; integrates into workflows; assesses quality",
+      "evidence": [
+        "Generates SBOMs for complex multi-language and containerized applications",
+        "Integrates SBOM generation into build pipelines",
+        "Develops SBOM quality metrics and completeness scoring",
+        "Mentors others on SBOM methodology and tooling"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Authority on SBOM methodology; contributes to standards",
+      "evidence": [
+        "Developed the lab's SBOM methodology and governance framework",
+        "Contributes to SBOM standard development or community tooling",
+        "Advises clients on SBOM compliance requirements and implementation",
+        "Trains teams on SBOM generation, analysis, and compliance"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Generate SBOMs for a multi-component application, validate completeness, and identify discrepancies"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review of SBOM quality and analysis reports from recent engagements"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1349", "K1355", "S0973", "S0974"],
+      "work_roles": ["OG-WRL-017 Cybersecurity Supply Chain Risk Management", "DD-WRL-005 Software Security Assessment"]
+    },
+    "owasp": ["A03:2025 Software Supply Chain Failures"],
+    "cwe": ["CWE-1104"],
+    "mitre_attack": {"techniques": ["T1195.001"]}
+  },
+
+  "tags": [
+    "supply-chain",
+    "sbom",
+    "spdx",
+    "cyclonedx",
+    "compliance",
+    "binary-analysis",
+    "containers",
+    "risk-assessment"
+  ]
+}

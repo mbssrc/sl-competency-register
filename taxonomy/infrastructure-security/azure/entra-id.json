@@ -1,0 +1,106 @@
+{
+  "id": "INFRA-AZURE-ENTRAID",
+  "name": "Microsoft Entra ID Security Assessment",
+  "domain": "infrastructure-security",
+  "category": "Azure Security",
+  "status": "active",
+  "description": "Security assessment of Microsoft Entra ID (formerly Azure AD) configurations. Covers tenant configuration, user and group management, conditional access policies, app registrations, service principals, privileged identity management (PIM), and Entra ID-specific attack paths.",
+  "requires": [],
+  "recommended": [
+    "FOUND-REPORT",
+    "FOUND-STANDARDS",
+    "FOUND-RISK"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to Entra ID security assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands Entra ID concepts including tenants, principals, and conditional access",
+      "evidence": [
+        "Can explain Entra ID tenants, users, groups, and service principals",
+        "Understands app registrations and OAuth consent frameworks",
+        "Familiar with conditional access policy concepts"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Reviews Entra ID configurations under supervision using established tools",
+      "evidence": [
+        "Runs Entra ID enumeration tools (e.g., ROADtools, AzureHound) under guidance",
+        "Reviews conditional access policies against lab checklists",
+        "Documents Entra ID findings with supervision; work reviewed by authorized personnel"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses Entra ID security posture and identifies attack paths",
+      "evidence": [
+        "Independently enumerates and reviews tenant-wide Entra ID configurations",
+        "Identifies privilege escalation through app registration abuse and consent grants",
+        "Evaluates PIM configurations and standing admin access risks",
+        "Produces compliant Entra ID assessment reports"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex multi-tenant assessments; discovers novel Entra ID attack paths; mentors others",
+      "evidence": [
+        "Assesses complex multi-tenant, B2B collaboration and Entra External ID configurations, treating Azure AD B2C as legacy",
+        "Develops custom tooling for Entra ID enumeration and attack path analysis",
+        "Reviews Entra ID assessment work of junior analysts",
+        "Identifies novel attack chains through Entra ID misconfigurations"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines lab Entra ID assessment methodology; publishes research on Entra ID attack techniques",
+      "evidence": [
+        "Designed or maintains the lab's Entra ID security assessment framework",
+        "Published research on novel Entra ID attack techniques or defense bypasses",
+        "Trains teams on advanced Entra ID security assessment",
+        "Recognized as internal or external authority on Entra ID security"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess a deliberately misconfigured Entra ID tenant and identify all privilege escalation and lateral movement paths"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review Entra ID assessment findings from recent engagements for completeness and accuracy"
+    }
+  ],
+  "framework_mappings": {
+    "cis": [
+      "CIS Microsoft Azure Foundations Benchmark v5.0.0 - Section 5 Identity Services"
+    ],
+    "csa_ccm": [
+      "IAM-01",
+      "IAM-02",
+      "IAM-04"
+    ],
+    "nice": {
+      "tks": ["K0742", "K1368", "K0746", "K0686", "S0844"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "IO-WRL-006 Systems Security Analysis"]
+    }
+  },
+  "tags": [
+    "azure",
+    "entra-id",
+    "identity",
+    "conditional-access",
+    "cloud-security",
+    "lateral-movement",
+    "privilege-escalation",
+    "authentication",
+    "iam"
+  ]
+}

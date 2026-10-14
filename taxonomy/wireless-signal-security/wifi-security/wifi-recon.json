@@ -1,0 +1,120 @@
+{
+  "id": "WSEC-WIFI-RECON",
+  "name": "WiFi Reconnaissance",
+  "domain": "wireless-signal-security",
+  "category": "WiFi Security",
+  "status": "active",
+  "description": "Ability to perform wireless network discovery and reconnaissance. Covers passive and active scanning of 802.11 networks, SSID enumeration, client identification, channel mapping, signal strength analysis, and identification of security configurations advertised in beacons and probe responses (WPA2, WPA3, WPS, management frame protection). PMKID capture and handshake attacks belong to WSEC-WIFI-WPA. Provides the situational awareness needed for all subsequent WiFi security assessments.",
+  "requires": ["FOUND-ETHICS"],
+  "recommended": [
+    "WSEC-SDR-FUNDM",
+    "FOUND-DOC",
+    "FOUND-TOOLS"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to WiFi reconnaissance techniques"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands 802.11 network architecture and the purpose of wireless reconnaissance",
+      "evidence": [
+        "Can describe 802.11 frame types (management, control, data) and their roles",
+        "Understands the difference between passive and active scanning",
+        "Completed training on WiFi fundamentals and security assessment methodology"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs WiFi reconnaissance using standard tools under supervision",
+      "evidence": [
+        "Configured monitor mode on wireless adapters and captured 802.11 frames under guidance",
+        "Used airodump-ng or equivalent to enumerate networks, clients, and security settings",
+        "Identified WPA2, WPA3, WPS, and open networks from captured beacons under supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently conducts comprehensive WiFi reconnaissance across target environments",
+      "evidence": [
+        "Independently performed WiFi reconnaissance for 3+ engagements producing complete network maps",
+        "Identified hidden SSIDs, client associations, and roaming patterns",
+        "Mapped channel utilization and signal coverage across physical spaces",
+        "Produced reconnaissance reports documenting all discovered networks and their security posture"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Conducts advanced reconnaissance across complex multi-site environments; develops recon automation",
+      "evidence": [
+        "Performed reconnaissance in high-density enterprise environments with hundreds of access points",
+        "Developed automated scanning and reporting scripts for WiFi reconnaissance",
+        "Identified non-standard or rogue 802.11 implementations through frame analysis",
+        "Reviews reconnaissance findings of junior staff and mentors on technique selection"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines WiFi reconnaissance methodology; develops novel discovery techniques",
+      "evidence": [
+        "Authored the lab's WiFi reconnaissance methodology and tooling standards",
+        "Developed novel passive fingerprinting or network discovery techniques",
+        "Published research on 802.11 reconnaissance or wireless network mapping",
+        "Trains teams on WiFi reconnaissance and operational security considerations"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Perform comprehensive WiFi reconnaissance in a controlled lab environment and produce a complete network inventory with security assessments"
+    },
+    {
+      "type": "direct_observation",
+      "description": "Observe WiFi reconnaissance setup, tool configuration, and passive/active scanning technique execution"
+    }
+  ],
+  "equipment": [
+    "Alfa AWUS036ACH or equivalent monitor-mode-capable WiFi adapter",
+    "Directional WiFi antenna for signal source location"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0998", "K0925", "S0758"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis"]
+    },
+    "sfia": {
+      "skill": "PENT",
+      "levels": [
+        2,
+        3,
+        4
+      ]
+    },
+    "mitre_attack": {
+      "techniques": [
+        "T1040",
+        "T1018",
+        "T1595.002"
+      ]
+    },
+    "certifications": [
+      "GIAC GAWN",
+      "Offensive Security OSWP",
+      "CompTIA PenTest+",
+      "CEH"
+    ]
+  },
+  "tags": [
+    "wifi",
+    "802.11",
+    "reconnaissance",
+    "network-discovery",
+    "passive-scanning",
+    "scanning"
+  ]
+}

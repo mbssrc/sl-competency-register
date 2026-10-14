@@ -1,0 +1,110 @@
+{
+  "id": "WSEC-SAT-JAM",
+  "name": "Jamming & Spoofing Detection",
+  "domain": "wireless-signal-security",
+  "category": "Satellite & Navigation Security",
+  "status": "active",
+  "description": "Ability to detect, characterize, and locate RF jamming and spoofing activity targeting satellite navigation and communication systems. Covers jammer signal classification, direction-finding techniques, spoofing indicator analysis, interference power measurement, and assessment of anti-jam and anti-spoof countermeasure effectiveness.",
+  "requires": [
+    "WSEC-SDR-FUNDM",
+    "WSEC-SPEC-ANALYSIS"
+  ],
+  "recommended": [
+    "WSEC-SAT-GNSS",
+    "WSEC-SDR-DSP"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to jamming or spoofing detection techniques"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands RF jamming and spoofing threat types and their impact on satellite systems",
+      "evidence": [
+        "Can describe common jammer types (broadband, narrowband, swept, pulsed) and their effects",
+        "Understands the observable indicators of GNSS spoofing versus jamming",
+        "Completed training on RF interference detection and characterization"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Detects and classifies controlled jamming and spoofing signals under supervision",
+      "evidence": [
+        "Identified jamming signals in spectrum analyzer displays and characterized their parameters under guidance",
+        "Distinguished between jamming and spoofing indicators in GNSS receiver telemetry under supervision",
+        "Measured interference power levels and calculated jammer-to-signal ratios with assistance"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently detects, classifies, and documents RF interference events",
+      "evidence": [
+        "Independently detected and characterized jamming events in 3+ field or lab assessments",
+        "Classified jammer types from spectrum captures and documented signal parameters",
+        "Applied direction-finding techniques to estimate interference source location",
+        "Produced interference analysis reports with spectral evidence and source characterization"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Performs advanced interference analysis; evaluates anti-jam countermeasure effectiveness",
+      "evidence": [
+        "Assessed anti-jam receiver performance (CRPA, beam-steering, adaptive nulling) under controlled interference",
+        "Characterized sophisticated or adaptive jammer behavior through time-frequency analysis",
+        "Developed automated interference detection and alerting systems",
+        "Mentors junior analysts on interference characterization and geolocation techniques"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on RF interference analysis; defines detection methodology; advises on resilience",
+      "evidence": [
+        "Published research on jamming detection, spoofing detection, or interference mitigation techniques",
+        "Authored the lab's RF interference analysis and detection methodology",
+        "Advises on critical infrastructure RF resilience and anti-jam architecture",
+        "Trains teams on interference detection and develops lab interference analysis capabilities"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Detect, classify, and geolocate controlled interference sources in a lab or field environment, documenting signal parameters and source characteristics"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given spectrum captures of an unknown interference event, classify the interference type, estimate source parameters, and recommend countermeasures"
+    }
+  ],
+  "equipment": [
+    "Spectrum analyzer with interference detection modes",
+    "Direction-finding antenna array",
+    "Multi-constellation GNSS reference receiver",
+    "Controlled RF signal generator for interference simulation"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0926", "K1032", "K0925"],
+      "work_roles": ["PD-WRL-001 Defensive Cybersecurity", "DD-WRL-008 Technology Research and Development"]
+    },
+    "mitre_attack": {
+      "techniques": [
+        "T1565"
+      ]
+    }
+  },
+  "tags": [
+    "jamming",
+    "spoofing",
+    "interference",
+    "direction-finding",
+    "gnss",
+    "anti-jam",
+    "detection",
+    "gps"
+  ]
+}

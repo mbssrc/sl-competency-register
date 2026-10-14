@@ -1,0 +1,334 @@
+{% extends "core/base.html" %}
+
+{% block title %}{{ person.name }} - {{ product_name }}{% endblock %}
+
+{% block page_crumbs %}
+<a href="{% url 'personnel:person-list' %}" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Personnel</a>
+  <svg class="w-4 h-4 mx-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+  <span class="text-gray-900 dark:text-white font-medium">{{ person.name }}</span>
+{% endblock %}
+
+{% block page_title %}{{ person.name }}{% endblock %}
+{% block page_description %}{% endblock %}
+
+{% block content %}
+<!-- Jump links -->
+<div class="mb-6 flex flex-wrap gap-2 text-xs">
+  <a href="#maturity-section" class="px-2.5 py-1 rounded-full bg-gray-100 dark:bg-white/5 text-gray-600 dark:text-gray-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/30 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors">Primary Domains</a>
+  <a href="#skills-section" class="px-2.5 py-1 rounded-full bg-gray-100 dark:bg-white/5 text-gray-600 dark:text-gray-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/30 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors">Skills</a>
+  <a href="#plans-section" class="px-2.5 py-1 rounded-full bg-gray-100 dark:bg-white/5 text-gray-600 dark:text-gray-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/30 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors">Development Plans</a>
+</div>
+
+<!-- Person header -->
+<div class="mb-8">
+  <div class="flex items-center justify-between">
+    <div>
+      <div class="flex items-center gap-3 mb-2">
+        <span class="inline-flex items-center font-mono text-xs bg-gray-100 dark:bg-white/5 text-gray-600 dark:text-gray-400 px-2.5 py-1 rounded">{{ person.id }}</span>
+      </div>
+<p class="mt-1 text-sm text-gray-500 dark:text-gray-500">Started {{ person.start_date|date:"j F Y" }}</p>
+    </div>
+    {% if request.user.is_manager %}
+    <div class="flex items-center gap-2">
+      <button onclick="loadModal('{% url 'personnel:person-edit' person.id %}')"
+              class="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-md hover:bg-gray-50 dark:hover:bg-white/10 transition-colors">
+        Edit
+      </button>
+      {% if request.user.is_admin %}
+      <div x-data="{ confirm: false }">
+        <button x-show="!confirm" @click="confirm = true"
+                class="px-4 py-2 text-sm font-medium text-gray-400 dark:text-gray-500 hover:text-red-600 dark:hover:text-red-400 transition-colors">
+          Delete
+        </button>
+        <form x-show="confirm" method="post" action="{% url 'personnel:person-delete' person.id %}" class="inline-flex items-center gap-2">
+          {% csrf_token %}
+          <span class="text-sm text-red-600 dark:text-red-400">Delete {{ person.name }}?</span>
+          <button type="submit" class="px-3 py-1.5 text-sm font-medium text-white bg-red-600 hover:bg-red-700 rounded-md transition-colors">
+            Confirm
+          </button>
+          <button type="button" @click="confirm = false" class="px-3 py-1.5 text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 transition-colors">
+            Cancel
+          </button>
+        </form>
+      </div>
+      {% endif %}
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+<!-- Primary domains: the domains this person is assigned to, with their
+     rung on each one's ladder. Not every domain they hold a skill in. -->
+<div id="maturity-section" class="mb-8">
+  <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+    Primary Domains
+    <span class="ml-2 text-sm font-normal text-gray-500 dark:text-gray-500">{{ domain_maturities|length }}</span>
+  </h3>
+
+  {% if domain_maturities %}
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    {% for m in domain_maturities %}
+    <div class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg p-5">
+      <div class="flex items-center justify-between mb-3">
+        <h4 class="text-sm font-semibold text-gray-900 dark:text-white">{{ m.domain_name }}</h4>
+        {% if m.level == "principal" %}
+        <span class="inline-flex items-center rounded-full bg-amber-50 dark:bg-amber-900/30 px-2.5 py-0.5 text-xs font-medium text-amber-700 dark:text-amber-300">Principal</span>
+        {% elif m.level == "lead" %}
+        <span class="inline-flex items-center rounded-full bg-violet-50 dark:bg-violet-900/30 px-2.5 py-0.5 text-xs font-medium text-violet-700 dark:text-violet-300">Lead</span>
+        {% elif m.level == "senior" %}
+        <span class="inline-flex items-center rounded-full bg-emerald-50 dark:bg-emerald-900/30 px-2.5 py-0.5 text-xs font-medium text-emerald-700 dark:text-emerald-300">Senior</span>
+        {% elif m.level == "practitioner" %}
+        <span class="inline-flex items-center rounded-full bg-blue-50 dark:bg-blue-900/30 px-2.5 py-0.5 text-xs font-medium text-blue-700 dark:text-blue-300">Practitioner</span>
+        {% elif m.level == "junior" %}
+        <span class="inline-flex items-center rounded-full bg-cyan-50 dark:bg-cyan-900/30 px-2.5 py-0.5 text-xs font-medium text-cyan-700 dark:text-cyan-300">Junior</span>
+        {% else %}
+        <span class="inline-flex items-center rounded-full bg-gray-100 dark:bg-white/10 px-2.5 py-0.5 text-xs font-medium text-gray-500 dark:text-gray-400">Below Junior</span>
+        {% endif %}
+      </div>
+
+      {% if m.title %}
+      <p class="text-xs text-gray-600 dark:text-gray-400 mb-3">{{ m.title }}</p>
+      {% endif %}
+
+      <!-- Stats -->
+      <div class="grid grid-cols-3 gap-2 mb-3">
+        <div class="text-center">
+          <div class="text-lg font-bold text-gray-900 dark:text-white">{{ m.detail.domain_skill_count }}</div>
+          <div class="text-[10px] text-gray-500 dark:text-gray-500 uppercase tracking-wider">Skills</div>
+        </div>
+        <div class="text-center">
+          <div class="text-lg font-bold text-gray-900 dark:text-white">{{ m.detail.categories_covered }}</div>
+          <div class="text-[10px] text-gray-500 dark:text-gray-500 uppercase tracking-wider">Categories</div>
+        </div>
+        <div class="text-center">
+          <div class="text-lg font-bold text-gray-900 dark:text-white">{{ m.detail.foundation_avg }}</div>
+          <div class="text-[10px] text-gray-500 dark:text-gray-500 uppercase tracking-wider">Found. Avg</div>
+        </div>
+      </div>
+
+      <!-- Next level gaps -->
+      {% if m.next_gaps and m.next_gaps.gaps %}
+      <div class="border-t border-gray-100 dark:border-white/5 pt-3">
+        <div class="text-xs font-medium text-gray-500 dark:text-gray-500 mb-1.5">To reach {{ m.next_gaps.title }}:</div>
+        <div class="flex flex-wrap gap-1">
+          {% for gap in m.next_gaps.gaps %}
+          <span class="inline-flex items-center rounded-md bg-rose-50 dark:bg-rose-900/20 px-2 py-0.5 text-[11px] text-rose-700 dark:text-rose-400 border border-rose-200 dark:border-rose-800">{{ gap }}</span>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg p-8 text-center text-gray-500 dark:text-gray-400">
+    No domains assigned.
+  </div>
+  {% endif %}
+</div>
+
+<!-- Skills section -->
+<!-- Project fitness -->
+{% if project_fitness %}
+<div class="mb-8">
+  <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+    Project Fitness
+    <span class="ml-2 text-sm font-normal text-gray-500 dark:text-gray-500">{{ project_fitness|length }}</span>
+  </h3>
+  <div class="space-y-2">
+    {% for pf in project_fitness %}
+    <details class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg group">
+      <summary class="flex items-center gap-4 px-4 py-3 cursor-pointer select-none hover:bg-gray-50 dark:hover:bg-white/10 transition-colors rounded-lg">
+        <svg class="w-4 h-4 text-gray-400 dark:text-gray-500 transition-transform group-open:rotate-90 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <span class="text-sm font-medium text-gray-900 dark:text-white flex-shrink-0">{{ pf.project.name }}</span>
+        <span class="inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium flex-shrink-0
+          {% if pf.project.status == 'done' %}bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300
+          {% elif pf.project.status == 'planning' %}bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300
+          {% else %}bg-gray-100 dark:bg-white/5 text-gray-500 dark:text-gray-400{% endif %}">
+          {{ pf.project.get_status_display }}
+        </span>
+        <div class="flex items-center gap-2 flex-1 min-w-0">
+          <div class="flex-1 bg-gray-200 dark:bg-white/10 rounded-full h-1.5">
+            <div class="h-1.5 rounded-full {% if pf.pct == 100 %}bg-emerald-500{% elif pf.pct >= 50 %}bg-amber-500{% else %}bg-red-500{% endif %}"
+                 style="width: {{ pf.pct }}%"></div>
+          </div>
+          <span class="text-xs font-medium flex-shrink-0 {% if pf.pct == 100 %}text-emerald-600 dark:text-emerald-400{% elif pf.pct >= 50 %}text-amber-600 dark:text-amber-400{% else %}text-red-600 dark:text-red-400{% endif %}">
+            {{ pf.met }}/{{ pf.total }}
+          </span>
+        </div>
+        <a href="{% url 'personnel:project-detail' pf.project.id %}" class="text-xs text-indigo-600 dark:text-indigo-400 hover:underline flex-shrink-0" onclick="event.stopPropagation()">View project</a>
+      </summary>
+      <div class="px-4 pb-3 pt-1 border-t border-gray-100 dark:border-white/5">
+        <div class="flex flex-wrap gap-2 mt-2">
+          {% for s in pf.skills %}
+          <span class="inline-flex items-center gap-1 rounded-md px-2 py-1 text-xs
+            {% if s.is_met %}bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800
+            {% else %}bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 border border-red-200 dark:border-red-800{% endif %}">
+            {{ s.skill_name }}
+            <span class="font-mono text-[10px] opacity-70">{{ s.current_level }}/{{ s.minimum_level }}</span>
+          </span>
+          {% endfor %}
+        </div>
+      </div>
+    </details>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+
+<div id="skills-section" class="mb-8">
+  <div class="flex items-center justify-between mb-4">
+    <div class="flex items-center gap-3">
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+        Skills
+        <span class="ml-2 text-sm font-normal text-gray-500 dark:text-gray-500">{{ total_visible }}{% if not show_zero and total_skills != total_visible %} / {{ total_skills }}{% endif %}</span>
+      </h3>
+      <div class="flex items-center gap-1.5">
+        <a href="?managed={% if show_managed %}0{% else %}1{% endif %}&self={{ show_self|yesno:'1,0' }}&show_zero={{ show_zero|yesno:'1,0' }}#skills-section"
+           class="text-xs px-2 py-1 rounded-md transition-colors {% if show_managed %}bg-indigo-100 dark:bg-indigo-500/15 text-indigo-700 dark:text-indigo-300{% else %}text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/10{% endif %}">
+          Managed
+        </a>
+        <a href="?managed={{ show_managed|yesno:'1,0' }}&self={% if show_self %}0{% else %}1{% endif %}&show_zero={{ show_zero|yesno:'1,0' }}#skills-section"
+           class="text-xs px-2 py-1 rounded-md transition-colors {% if show_self %}bg-indigo-100 dark:bg-indigo-500/15 text-indigo-700 dark:text-indigo-300{% else %}text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/10{% endif %}">
+          Self-Assessed
+        </a>
+        <a href="?managed={{ show_managed|yesno:'1,0' }}&self={{ show_self|yesno:'1,0' }}&show_zero={% if show_zero %}0{% else %}1{% endif %}#skills-section"
+           class="text-xs px-2 py-1 rounded-md transition-colors {% if show_zero %}bg-indigo-100 dark:bg-indigo-500/15 text-indigo-700 dark:text-indigo-300{% else %}text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/10{% endif %}">
+          {% if show_zero %}Hide unassessed{% else %}Show all{% endif %}
+        </a>
+      </div>
+    </div>
+    <div class="flex items-center gap-2">
+      <a href="{% url 'personnel:self-assessment-export' person.id %}"
+         class="px-3 py-1.5 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-md hover:bg-gray-50 dark:hover:bg-white/10 transition-colors">
+        Export Self-Assessment
+      </a>
+      <button onclick="loadModal('{% url 'personnel:self-assessment-import' person.id %}')"
+              class="px-3 py-1.5 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-md hover:bg-gray-50 dark:hover:bg-white/10 transition-colors">
+        Import Self-Assessment
+      </button>
+      {% if request.user.is_manager %}
+      <button onclick="loadModal('{% url 'personnel:seed-self-assessment' person.id %}')"
+              class="px-3 py-1.5 text-sm font-medium text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-500/15 border border-amber-200 dark:border-amber-800 rounded-md hover:bg-amber-100 dark:hover:bg-amber-900/50 transition-colors">
+        Seed from Self-Assessment
+      </button>
+      <button onclick="loadModal('{% url 'personnel:person-skill-add' person.id %}')"
+              class="px-3 py-1.5 text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 rounded-md transition-colors">
+        Add Skill
+      </button>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if skills_by_domain %}
+  {% for domain_name, domain_skills in skills_by_domain.items %}
+  <div class="mb-4">
+    <h4 class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+      {{ domain_name }}
+      <span class="ml-1 text-xs font-normal text-gray-400 dark:text-gray-500">{{ domain_skills|length }}</span>
+    </h4>
+    <div class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg overflow-x-auto">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="border-b border-gray-200 dark:border-white/10">
+            <th style="width:11%" class="text-left px-4 py-2 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Skill ID</th>
+            <th style="width:15%" class="text-left px-4 py-2 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Name</th>
+            <th style="width:12%" class="text-left px-4 py-2 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Current Level</th>
+            <th style="width:12%" class="text-left px-4 py-2 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Self-Assessed</th>
+            <th style="width:4%" class="text-center px-4 py-2 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Δ</th>
+            <th style="width:10%" class="text-left px-4 py-2 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Assessed</th>
+            <th style="width:10%" class="text-left px-4 py-2 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Assessed By</th>
+            <th style="width:10%" class="text-left px-4 py-2 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Last Practiced</th>
+            <th style="width:5%" class="text-center px-4 py-2 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Auth</th>
+            <th style="width:11%" class="px-4 py-2"></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in domain_skills %}
+          {% with person_skill=item.person_skill skill_name=item.skill_name skill_exists=item.skill_exists self_level=item.self_level delta=item.delta level_label=item.level_label self_label=item.self_label %}
+          {% include "personnel/partials/skill_row.html" %}
+          {% endwith %}
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  {% endfor %}
+  {% else %}
+  <div class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg p-8 text-center text-gray-500 dark:text-gray-400">
+    No skills assessed yet.
+  </div>
+  {% endif %}
+</div>
+
+<!-- Development plans section -->
+<div id="plans-section" class="mb-8">
+  <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+    Development Plans
+    <span class="ml-2 text-sm font-normal text-gray-500 dark:text-gray-500">{{ plans|length }}</span>
+  </h3>
+
+  {% if plans %}
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    {% for item in plans %}
+    <div class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg p-5">
+      <div class="flex items-start justify-between mb-3">
+        <div>
+          <h4 class="text-sm font-semibold text-gray-900 dark:text-white">{{ item.skill_name }}</h4>
+          <span class="font-mono text-xs text-gray-500 dark:text-gray-500">{{ item.plan.skill_id }}</span>
+        </div>
+        <span class="text-xs text-gray-500 dark:text-gray-500">Target: {{ item.plan.target_date|date:"Y-m-d" }}</span>
+      </div>
+
+      <!-- Level progression -->
+      <div class="flex items-center gap-2 mb-4">
+        <span class="inline-flex items-center justify-center w-7 h-7 rounded-full text-xs font-bold
+          {% if item.plan.current_level == 0 %}bg-gray-100 dark:bg-white/5 text-gray-500 dark:text-gray-400
+          {% elif item.plan.current_level == 1 %}bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300
+          {% elif item.plan.current_level == 2 %}bg-cyan-100 dark:bg-cyan-900/40 text-cyan-700 dark:text-cyan-300
+          {% elif item.plan.current_level == 3 %}bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300
+          {% elif item.plan.current_level == 4 %}bg-violet-100 dark:bg-violet-900/40 text-violet-700 dark:text-violet-300
+          {% elif item.plan.current_level == 5 %}bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300
+          {% endif %}">
+          {{ item.plan.current_level }}
+        </span>
+        <svg class="w-4 h-4 text-gray-400 dark:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+        <span class="inline-flex items-center justify-center w-7 h-7 rounded-full text-xs font-bold
+          {% if item.plan.target_level == 0 %}bg-gray-100 dark:bg-white/5 text-gray-500 dark:text-gray-400
+          {% elif item.plan.target_level == 1 %}bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300
+          {% elif item.plan.target_level == 2 %}bg-cyan-100 dark:bg-cyan-900/40 text-cyan-700 dark:text-cyan-300
+          {% elif item.plan.target_level == 3 %}bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300
+          {% elif item.plan.target_level == 4 %}bg-violet-100 dark:bg-violet-900/40 text-violet-700 dark:text-violet-300
+          {% elif item.plan.target_level == 5 %}bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300
+          {% endif %}">
+          {{ item.plan.target_level }}
+        </span>
+      </div>
+
+      <!-- Actions list -->
+      {% if item.plan.actions %}
+      <ul class="space-y-1.5">
+        {% for action in item.plan.actions %}
+        <li class="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
+          <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-gray-400 dark:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          <span>
+            {{ action.action }}
+            {% if action.deadline %}
+            <span class="text-xs text-gray-400 dark:text-gray-600 ml-1">({{ action.deadline }})</span>
+            {% endif %}
+          </span>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg p-8 text-center text-gray-500 dark:text-gray-400">
+    No development plans defined.
+  </div>
+  {% endif %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,77 @@
+{
+  "id": "INFRA",
+  "name": "Infrastructure Security Specialist",
+  "domain": "INFRA",
+  "description": "Infrastructure security evaluation track covering cloud security (AWS, Azure, GCP), container and Kubernetes security, identity and directory services, infrastructure-as-code review, and on-premises system hardening.",
+  "maturity_levels": {
+    "junior": {
+      "title": "Junior Infrastructure Security Specialist",
+      "description": "Assists with infrastructure assessments under supervision. Performs configuration reviews and baseline compliance checks against defined benchmarks on approved systems; findings and report sections are reviewed by an authorized assessor.",
+      "thresholds": {
+        "domain_skills_at": {"1": 9, "2": 4},
+        "min_categories": 1,
+        "foundation_avg": 0.5
+      },
+      "pinned": []
+    },
+    "practitioner": {
+      "title": "Infrastructure Security Specialist",
+      "description": "Independently assesses cloud, container, identity and on-premises systems against recognized benchmarks, and is authorized to sign off routine assessments. Delivers risk-rated findings with evidence and practical remediation steps.",
+      "thresholds": {
+        "domain_skills_at": {"2": 12, "3": 6},
+        "min_categories": 2,
+        "foundation_avg": 1.0
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 3},
+        {"skill": "FOUND-RISK", "minimum_level": 3}
+      ]
+    },
+    "senior": {
+      "title": "Senior Infrastructure Security Specialist",
+      "description": "Handles complex assessments spanning multi-cloud, Kubernetes and hybrid identity environments, for example privilege escalation paths across account boundaries. Performs QA review of assessment reports, mentors junior analysts and advises on remediation.",
+      "thresholds": {
+        "domain_skills_at": {"3": 15, "4": 6},
+        "min_categories": 4,
+        "foundation_avg": 1.5
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 4},
+        {"skill": "FOUND-QA", "minimum_level": 3},
+        {"skill": "FOUND-RISK", "minimum_level": 3}
+      ]
+    },
+    "lead": {
+      "title": "Lead Infrastructure Security Specialist",
+      "description": "Technical lead for Infrastructure Security: owns the methodology, performs technical quality review of evaluations and reports, and plans the technical approach across engagements. Acts as the senior technical contact for clients on scope and findings. Technical depth stays at senior level or above.",
+      "thresholds": {
+        "domain_skills_at": {"3": 17, "4": 9},
+        "min_categories": 5,
+        "foundation_avg": 2.0
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 4},
+        {"skill": "FOUND-QA", "minimum_level": 3},
+        {"skill": "FOUND-PM", "minimum_level": 3},
+        {"skill": "FOUND-COMM", "minimum_level": 3},
+        {"skill": "FOUND-RISK", "minimum_level": 3}
+      ]
+    },
+    "principal": {
+      "title": "Principal Infrastructure Security Specialist",
+      "description": "Technical authority in infrastructure security. Shapes organizational security architecture, publishes research, and is a recognized expert in cloud and enterprise infrastructure security assessment. The deepest technical tier in the domain; it extends Lead rather than branching from it.",
+      "thresholds": {
+        "domain_skills_at": {"4": 17, "5": 6},
+        "min_categories": 5,
+        "foundation_avg": 2.5
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 4},
+        {"skill": "FOUND-QA", "minimum_level": 3},
+        {"skill": "FOUND-PM", "minimum_level": 3},
+        {"skill": "FOUND-COMM", "minimum_level": 3},
+        {"skill": "FOUND-RISK", "minimum_level": 3}
+      ]
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "id": "ADVSIM",
+  "name": "Adversarial Simulation Specialist",
+  "domain": "ADVSIM",
+  "description": "Adversarial simulation track covering red team campaign planning and execution, C2 and detection evasion, purple teaming, social engineering, and physical intrusion testing.",
+  "maturity_levels": {
+    "junior": {
+      "title": "Junior Adversarial Simulation Specialist",
+      "description": "Supports red team, social engineering or physical engagements under supervision within the agreed rules of engagement. Performs reconnaissance and support tasks; operational actions, findings and report sections are reviewed by an authorized operator before release.",
+      "thresholds": {
+        "domain_skills_at": {"1": 4, "2": 2},
+        "min_categories": 1,
+        "foundation_avg": 0.5
+      },
+      "pinned": [
+        {"skill": "FOUND-ETHICS", "minimum_level": 2}
+      ]
+    },
+    "practitioner": {
+      "title": "Adversarial Simulation Specialist",
+      "description": "Independently executes red team, social engineering or physical scenarios strictly within the rules of engagement and is authorized to sign off routine engagements. Delivers client reports with findings, evidence and remediation advice, and stops and escalates when scope is unclear.",
+      "thresholds": {
+        "domain_skills_at": {"2": 5, "3": 3},
+        "min_categories": 2,
+        "foundation_avg": 1.0
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 3},
+        {"skill": "FOUND-ETHICS", "minimum_level": 3}
+      ]
+    },
+    "senior": {
+      "title": "Senior Adversarial Simulation Specialist",
+      "description": "Plans and leads complex multi-phase engagements, for example a red team campaign combining phishing, physical entry and detection-evasion objectives. Authorizes scope and rules of engagement changes, runs purple-team debriefs, reviews operators' reports for QA, and mentors junior operators.",
+      "thresholds": {
+        "domain_skills_at": {"3": 7, "4": 3},
+        "min_categories": 2,
+        "foundation_avg": 1.5
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 4},
+        {"skill": "FOUND-QA", "minimum_level": 3},
+        {"skill": "FOUND-ETHICS", "minimum_level": 4}
+      ]
+    },
+    "lead": {
+      "title": "Lead Adversarial Simulation Specialist",
+      "description": "Technical lead for Adversarial Simulation: owns the methodology, performs technical quality review of evaluations and reports, and plans the technical approach across engagements. Acts as the senior technical contact for clients on scope and findings. Technical depth stays at senior level or above.",
+      "thresholds": {
+        "domain_skills_at": {"3": 7, "4": 4},
+        "min_categories": 2,
+        "foundation_avg": 2.0
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 4},
+        {"skill": "FOUND-QA", "minimum_level": 3},
+        {"skill": "FOUND-PM", "minimum_level": 3},
+        {"skill": "FOUND-COMM", "minimum_level": 3},
+        {"skill": "FOUND-ETHICS", "minimum_level": 4}
+      ]
+    },
+    "principal": {
+      "title": "Principal Adversarial Simulation Specialist",
+      "description": "Technical authority in adversarial simulation. Pioneers novel attack techniques, publishes research, and shapes industry red teaming standards. The deepest technical tier in the domain; it extends Lead rather than branching from it.",
+      "thresholds": {
+        "domain_skills_at": {"4": 7, "5": 3},
+        "min_categories": 3,
+        "foundation_avg": 2.5
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 4},
+        {"skill": "FOUND-QA", "minimum_level": 3},
+        {"skill": "FOUND-PM", "minimum_level": 3},
+        {"skill": "FOUND-COMM", "minimum_level": 3},
+        {"skill": "FOUND-ETHICS", "minimum_level": 4}
+      ]
+    }
+  }
+}

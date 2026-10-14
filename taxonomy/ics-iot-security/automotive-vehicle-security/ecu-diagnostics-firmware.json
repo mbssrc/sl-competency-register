@@ -1,0 +1,156 @@
+{
+  "id": "ICSIOT-AUTO-ECU",
+  "name": "ECU Diagnostics & Firmware Security",
+  "domain": "ics-iot-security",
+  "category": "Automotive & Vehicle Security",
+  "status": "active",
+  "description": "Security assessment of electronic control unit diagnostic services and firmware. Covers UDS (ISO 14229), OBD-II legislated modes (ISO 15031, SAE J1979), KWP2000 and DoIP (ISO 13400) diagnostics; diagnostic session and SecurityAccess (service 0x27) seed-key analysis, authenticated diagnostics (service 0x29), memory read and write services, and routine control abuse; flash bootloader and reprogramming assessment (RequestDownload, TransferData), signed firmware verification, rollback and anti-downgrade protection, and calibration access over XCP. Also covers extraction and analysis of ECU firmware images and their AUTOSAR configuration. The buses that carry these diagnostic services belong to ICSIOT-AUTO-IVN; chip-level and debug-port firmware extraction belongs to HWSEC-EMBED-FW and HWSEC-EMBED-DBG; generic binary analysis belongs to SWSEC-RE-DISASM.",
+
+  "requires": [
+    "FOUND-ETHICS"
+  ],
+  "recommended": [
+    "ICSIOT-AUTO-IVN",
+    "HWSEC-EMBED-FW",
+    "HWSEC-EMBED-BOOT",
+    "HWSEC-EMBED-DBG",
+    "SWSEC-RE-DISASM",
+    "FOUND-TOOLS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to ECU diagnostics or automotive firmware security"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands how ECUs are diagnosed and reprogrammed, and why those paths are an attack surface",
+      "evidence": [
+        "Can explain the UDS request/response model, diagnostic sessions and negative response codes",
+        "Distinguishes legislated OBD-II modes from manufacturer-specific UDS services",
+        "Understands that SecurityAccess seed-key exchange is an authentication step and why weak seeds matter",
+        "Can describe the flash reprogramming sequence at a conceptual level"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Enumerates and exercises diagnostic services on a bench ECU under supervision",
+      "evidence": [
+        "Scans for responding diagnostic addresses and supported services with tooling such as caringcaribou or custom scripts",
+        "Requests DTCs, data identifiers and ECU identification under guidance",
+        "Transitions diagnostic sessions and documents which services each session unlocks",
+        "Extracts a firmware image from a bench ECU using a documented procedure under supervision",
+        "Keeps guided activity to read-only diagnostic services, escalating any write, routine-control or reprogramming request to the supervising assessor"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses an ECU's diagnostic interface and firmware against a defined scope",
+      "evidence": [
+        "Enumerates the full diagnostic service and DID/RID surface and identifies services reachable without authentication",
+        "Analyses SecurityAccess implementations for weak or static seeds, short key spaces, missing delay and attempt counters, and brute-forces them where scope permits",
+        "Assesses whether safety-relevant routines or memory write services are reachable outside a protected session or while the vehicle is in motion",
+        "Reviews the flash bootloader for signature verification, version anti-rollback and failure handling",
+        "Analyses an extracted firmware image for hardcoded secrets, diagnostic backdoors and weak cryptographic material",
+        "Plans testing so that memory-write, routine-control and flash reprogramming services are exercised only on bench ECUs or immobilised vehicles with a documented recovery path, and so that SecurityAccess brute force respects attempt counters and lockout behaviour",
+        "Produces findings that state preconditions and real-world reachability for each diagnostic weakness"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Assesses complex and protected diagnostic implementations; mentors others",
+      "evidence": [
+        "Reverse engineers proprietary seed-key algorithms out of firmware or tester software and demonstrates key derivation",
+        "Evaluates authenticated diagnostics (service 0x29) and certificate-based tester authentication, including trust anchor and revocation handling",
+        "Assesses secure flashing end to end: key provisioning, signature scheme, chain of trust and downgrade resistance",
+        "Builds custom UDS and DoIP tooling or fuzzers for manufacturer-specific service sets",
+        "Chains diagnostic findings with in-vehicle network or connectivity findings into end-to-end attack paths",
+        "Mentors staff on diagnostic assessment methodology and safe bench and vehicle practice"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines the lab's ECU diagnostic and firmware assessment methodology; recognised authority",
+      "evidence": [
+        "Authored the lab's ECU diagnostics and firmware assessment methodology and its safe reprogramming rules",
+        "Published research or disclosed vulnerabilities in diagnostic implementations, seed-key schemes or flash bootloaders",
+        "Advises manufacturers or suppliers on diagnostic hardening and secure update design",
+        "Contributes to automotive diagnostic or cybersecurity standards and industry working groups"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "On a bench ECU, enumerate the supported diagnostic services, identify which are reachable without SecurityAccess, defeat or assess the seed-key scheme, and judge whether the flash bootloader accepts unsigned or downgraded firmware"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given an extracted ECU firmware image and a diagnostic specification, locate the seed-key routine and determine whether the key can be derived offline"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review an ECU diagnostic assessment report for service coverage, correctness of claimed preconditions, and accuracy of reachability and impact statements"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1089", "K1119", "S0899", "K0840"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-007 Systems Testing and Evaluation"]
+    },
+    "iso_sae_21434": {
+      "supports": ["cybersecurity verification and validation (clauses 10 and 11)"],
+      "excludes": ["TARA and risk management", "cybersecurity case", "CSMS and SUMS governance"]
+    },
+    "unece": ["R155", "R156"],
+    "mitre_attack": {
+      "note": "ATT&CK has no automotive matrix"
+    },
+    "cwe": ["CWE-1262", "CWE-287", "CWE-798", "CWE-345", "CWE-1328"]
+  },
+
+  "equipment": [
+    "UDS-capable vehicle communication interface (e.g. VN1600-class or equivalent)",
+    "DoIP-capable automotive Ethernet interface",
+    "Bench ECU with flash programming harness",
+    "Regulated bench power supply with current monitoring"
+  ],
+
+  "tags": [
+    "automotive",
+    "vehicle",
+    "uds",
+    "iso-14229",
+    "obd-ii",
+    "doip",
+    "kwp2000",
+    "seed-key",
+    "security-access",
+    "flash-bootloader",
+    "ecu-firmware",
+    "secure-flashing",
+    "anti-rollback",
+    "xcp",
+    "autosar",
+    "authentication",
+    "backdoor",
+    "cryptographic",
+    "firmware",
+    "firmware-signing",
+    "key-management",
+    "reverse-engineering",
+    "safety",
+    "update-integrity",
+    "secure-boot",
+    "embedded",
+    "protocol-analysis",
+    "fuzzing",
+    "pki"
+  ]
+}

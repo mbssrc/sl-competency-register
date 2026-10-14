@@ -1,0 +1,119 @@
+{
+  "id": "WSEC-CELL-GSM",
+  "name": "GSM Security Analysis",
+  "domain": "wireless-signal-security",
+  "category": "Cellular & Telecom Security",
+  "status": "active",
+  "description": "Ability to analyze the security of GSM (2G) cellular networks. Covers GSM air interface analysis, A5 cipher suite assessment, base station identification and characterization, IMSI/TMSI tracking analysis, and assessment of downgrade attack susceptibility. Includes operation of GSM test infrastructure for controlled security analysis.",
+  "requires": [
+    "WSEC-SDR-FUNDM",
+    "WSEC-SDR-DEMOD",
+    "FOUND-ETHICS"
+  ],
+  "recommended": [
+    "WSEC-SPEC-ANALYSIS",
+    "FOUND-EVIDENCE"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to GSM security analysis"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands GSM architecture, air interface, and known security weaknesses",
+      "evidence": [
+        "Can describe the GSM protocol stack (Um, Abis, A interfaces) and their security properties",
+        "Understands A5/1, A5/2, and A5/3 cipher suites and their known weaknesses",
+        "Completed training on GSM architecture and security assessment methodology"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs GSM signal analysis and base station identification under supervision",
+      "evidence": [
+        "Captured and decoded GSM broadcast channels (BCCH) using gr-gsm or equivalent under guidance",
+        "Identified cell IDs, LACs, and ARFCN configurations from captured GSM signals",
+        "Operated a controlled GSM base station (osmo-bts) in a shielded lab environment under supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently performs GSM security assessments in controlled environments",
+      "evidence": [
+        "Independently analyzed GSM networks for cipher suite downgrade vulnerabilities across 3+ assessments",
+        "Decoded GSM signaling to identify IMSI/TMSI assignment and tracking exposure",
+        "Configured and operated GSM test infrastructure for controlled security analysis",
+        "Documented GSM security findings with protocol-level evidence and remediation guidance"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Performs advanced GSM protocol analysis; assesses IMSI catcher detection and resistance",
+      "evidence": [
+        "Assessed effectiveness of IMSI catcher detection mechanisms in target environments",
+        "Performed deep protocol analysis of GSM signaling for non-standard or anomalous behavior",
+        "Developed custom GSM analysis tools or modified open-source GSM stacks for security testing",
+        "Mentors junior analysts on GSM security assessment and lab safety controls"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on GSM security; develops novel analysis techniques; defines lab methodology",
+      "evidence": [
+        "Authored the lab's GSM security assessment methodology and shielded environment procedures",
+        "Published research on GSM security vulnerabilities or analysis techniques",
+        "Developed novel GSM interception detection or vulnerability assessment methods",
+        "Trains teams on GSM security analysis and provides expert guidance on cellular security"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Analyze a controlled GSM test network: decode broadcast channels, identify security configuration, assess cipher suite vulnerability, and document findings"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review GSM security assessment reports for protocol-level accuracy and finding completeness"
+    }
+  ],
+  "equipment": [
+    "Ettus USRP B200/B210 SDR platform",
+    "RF shielded enclosure for cellular testing",
+    "osmocom GSM base station components"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0773", "K0925", "K0375", "S0758"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-008 Technology Research and Development"]
+    },
+    "sfia": {
+      "skill": "PENT",
+      "levels": [
+        3,
+        4,
+        5
+      ]
+    },
+    "mitre_attack": {
+      "techniques": [
+        "T1040",
+        "T1557"
+      ]
+    }
+  },
+  "tags": [
+    "gsm",
+    "2g",
+    "cellular",
+    "imsi",
+    "a5-cipher",
+    "base-station",
+    "protocol-analysis",
+    "encryption"
+  ]
+}

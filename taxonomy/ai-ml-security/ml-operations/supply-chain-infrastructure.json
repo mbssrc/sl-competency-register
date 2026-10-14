@@ -1,0 +1,116 @@
+{
+  "id": "AIML-OPS-SUPPLY",
+  "name": "ML Supply Chain & Infrastructure Security",
+  "domain": "ai-ml-security",
+  "category": "ML Operations Security",
+  "status": "active",
+  "description": "Security assessment of ML development and deployment infrastructure. Covers model provenance and integrity, dependency and package security, model serving and API hardening, and pipeline access control. Evaluates risks from pre-trained model reuse, third-party datasets, and ML framework vulnerabilities.",
+  "requires": [
+    "FOUND-ETHICS"
+  ],
+  "recommended": [
+    "AIML-ADV-POISON",
+    "INFRA-CONTAINER-DOCKER",
+    "SWSEC-SUPPLY-DEP",
+    "FOUND-TOOLS",
+    "SWSEC-SUPPLY-SBOM"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to ML supply chain or infrastructure security"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the ML supply chain and where security risks arise in the ML lifecycle",
+      "evidence": [
+        "Can describe the ML pipeline stages where supply chain attacks can occur",
+        "Aware of risks from pre-trained models, public datasets, and third-party ML packages",
+        "Familiar with model serialization risks and code execution via model files"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Can assess basic ML supply chain and infrastructure risks under guidance",
+      "evidence": [
+        "Reviews ML dependency manifests for known vulnerable packages",
+        "Evaluates model file integrity and serialization format risks",
+        "Assesses model serving API exposure and authentication with supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses ML infrastructure and supply chain security",
+      "evidence": [
+        "Evaluates model provenance, signing, and integrity verification controls",
+        "Assesses ML pipeline access controls and secrets management",
+        "Tests model serving infrastructure for API abuse, resource exhaustion, and unauthorized access",
+        "Produces ML infrastructure assessment reports with prioritized findings"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Assesses complex ML platforms and MLOps pipelines; develops assessment methodology; mentors others",
+      "evidence": [
+        "Evaluates end-to-end MLOps platforms covering training, registry, deployment, and monitoring",
+        "Assesses transfer learning and fine-tuning supply chain risks",
+        "Reviews and improves ML infrastructure assessments across the team",
+        "Develops tooling for automated ML supply chain auditing"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines the lab's ML infrastructure assessment practice; publishes research",
+      "evidence": [
+        "Established the lab's ML supply chain and infrastructure security methodology",
+        "Published research on ML supply chain attacks, model integrity, or pipeline security",
+        "Trains teams on ML infrastructure assessment",
+        "Contributes to external standards on ML lifecycle security"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Audit an MLOps pipeline: assess model provenance, dependency integrity, serving configuration, and access controls"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review ML infrastructure assessment reports for supply chain coverage and practical mitigations"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1320", "K0820", "K1373", "S0974"],
+      "work_roles": ["OG-WRL-017 Cybersecurity Supply Chain Risk Management", "DD-WRL-004 Secure Systems Development"]
+    },
+    "mitre_atlas": [
+      "AML.T0010",
+      "AML.T0058",
+      "AML.T0011",
+      "AML.T0049",
+      "AML.T0029"
+    ],
+    "owasp_ml_top10": [
+      "ML06:2023",
+      "ML07:2023"
+    ],
+    "owasp_llm_top10": [
+      "LLM03:2025",
+      "LLM10:2025"
+    ]
+  },
+  "tags": [
+    "supply-chain",
+    "mlops",
+    "infrastructure",
+    "model-provenance",
+    "atlas",
+    "api",
+    "authentication",
+    "access-control"
+  ]
+}

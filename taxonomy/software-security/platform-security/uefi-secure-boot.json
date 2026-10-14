@@ -1,0 +1,123 @@
+{
+  "id": "SWSEC-PLATFORM-UEFI",
+  "name": "UEFI & Secure Boot Assessment",
+  "domain": "software-security",
+  "category": "Platform Security",
+  "status": "active",
+  "description": "Security assessment of UEFI firmware and Secure Boot implementations. Covers UEFI application analysis, Secure Boot bypass and key management, bootkit detection and development, firmware extraction and reverse engineering, TPM-backed Measured Boot evaluation, and boot chain integrity verification across Windows, Linux, and macOS platforms. Scope is PC/UEFI platforms; embedded and SoC boot chains belong to HWSEC-EMBED-BOOT.",
+
+  "requires": [
+    "SWSEC-OS-KERNEL",
+    "SWSEC-RE-DISASM"
+  ],
+  "recommended": [
+    "HWSEC-EMBED-FW",
+    "SWSEC-OS-DRIVER",
+    "FOUND-ETHICS",
+    "HWSEC-EMBED-BOOT"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to UEFI or Secure Boot security assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands UEFI architecture, Secure Boot, and boot chain concepts",
+      "evidence": [
+        "Can explain UEFI boot process, Secure Boot key hierarchy (PK, KEK, db, dbx)",
+        "Understands the difference between BIOS and UEFI and security implications",
+        "Familiar with Measured Boot, TPM PCRs, and boot chain attestation concepts",
+        "Completed introductory training on UEFI security"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Extracts and analyzes UEFI firmware and Secure Boot configuration under supervision",
+      "evidence": [
+        "Extracted UEFI firmware images using flashrom, CHIPSEC, or vendor tools",
+        "Analyzed Secure Boot key database and policy configuration",
+        "Reviewed UEFI variable storage for security-relevant settings under guidance",
+        "Work reviewed by authorized researcher"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses UEFI and Secure Boot implementations",
+      "evidence": [
+        "Independently assessed Secure Boot configuration and identified bypass vectors",
+        "Extracts and analyzes UEFI DXE drivers and runtime services",
+        "Evaluates Measured Boot and TPM-backed attestation chains",
+        "Passed proficiency assessment on UEFI security"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Discovers UEFI vulnerabilities and evaluates bootkit resilience",
+      "evidence": [
+        "Discovers vulnerabilities in UEFI DXE drivers or SMM handlers",
+        "Evaluates system resilience against known bootkit techniques (BlackLotus, FinSpy)",
+        "Performs UEFI firmware fuzzing and CHIPSEC-based security assessment",
+        "Mentors team on boot chain security methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Authority on boot chain security; published UEFI vulnerability research",
+      "evidence": [
+        "Published research or CVEs on UEFI or Secure Boot vulnerabilities",
+        "Developed lab methodology for boot chain security assessment",
+        "Contributes to Secure Boot policy and firmware security guidance",
+        "Trains teams and presents at conferences on UEFI exploitation"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess the UEFI and Secure Boot configuration of a prepared system, identify bypass vectors, and evaluate boot chain integrity"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given a UEFI firmware image, extract and analyze DXE drivers to identify potential vulnerabilities"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1081", "K0842", "S0738", "K0948"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development", "PD-WRL-007 Vulnerability Analysis"]
+    },
+    "mitre_attack": {"techniques": ["T1542.003", "T1542.001", "T1495"]},
+    "cwe": ["CWE-693", "CWE-345"]
+  },
+
+  "equipment": [
+    "SPI flash programmer",
+    "CHIPSEC framework",
+    "UEFI firmware analysis tools (UEFITool, efiXplorer)"
+  ],
+
+  "tags": [
+    "uefi",
+    "secure-boot",
+    "firmware",
+    "bootkit",
+    "tpm",
+    "boot-chain",
+    "measured-boot",
+    "attestation",
+    "key-management",
+    "linux",
+    "macos",
+    "reverse-engineering",
+    "windows",
+    "fuzzing",
+    "malware"
+  ]
+}

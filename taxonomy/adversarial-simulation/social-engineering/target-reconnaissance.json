@@ -1,0 +1,112 @@
+{
+  "id": "ADVSIM-SE-OSINT",
+  "name": "Target Reconnaissance & OSINT",
+  "domain": "adversarial-simulation",
+  "category": "Social Engineering",
+  "status": "active",
+  "description": "Ability to gather open-source intelligence on target organisations and individuals to support social engineering campaigns. Covers organisational mapping, employee profiling, social media analysis, metadata harvesting, and building target dossiers. Focused on the social engineering application of OSINT (target selection, email-format and pretext discovery, phishability assessment) rather than the broader intelligence discipline; general person, social media, and infrastructure research techniques are covered by INTEL-OSINT-PERSON, INTEL-OSINT-SOCIAL, and INTEL-OSINT-INFRA.",
+
+  "requires": [
+    "FOUND-ETHICS",
+    "INTEL-OSINT-PERSON"
+  ],
+  "recommended": [
+    "FOUND-TOOLS",
+    "FOUND-DOC",
+    "INTEL-OSINT-INFRA",
+    "INTEL-OSINT-SOCIAL"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to OSINT or target reconnaissance for social engineering"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands OSINT sources and techniques relevant to social engineering",
+      "evidence": [
+        "Completed OSINT fundamentals training",
+        "Can identify key open-source data sources (LinkedIn, company websites, SEC filings, social media)",
+        "Understands OPSEC considerations when conducting OSINT"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs basic target reconnaissance under supervision using standard tools and methods",
+      "evidence": [
+        "Conducted OSINT gathering on target organisations in lab exercises",
+        "Used tools such as theHarvester, Maltego, or LinkedIn to map target personnel",
+        "Produced basic target profiles reviewed by senior staff"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently conducts comprehensive target reconnaissance supporting campaign design",
+      "evidence": [
+        "Produced target dossiers used to design social engineering campaigns on 3+ engagements",
+        "Identified key targets, reporting structures, and communication patterns from open sources",
+        "Discovered pretextable information (events, projects, vendors) from OSINT",
+        "Conducted reconnaissance without alerting target (maintained OPSEC)"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Conducts deep-dive reconnaissance against security-conscious targets; develops OSINT playbooks",
+      "evidence": [
+        "Performed OSINT against targets with limited public exposure, finding actionable intelligence",
+        "Combined multiple OSINT sources to build comprehensive organisational maps",
+        "Developed automated OSINT collection workflows for the lab",
+        "Mentors team on OSINT methodology and tool usage"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines OSINT methodology for social engineering; researches novel collection techniques",
+      "evidence": [
+        "Authored the lab's OSINT methodology for social engineering reconnaissance",
+        "Developed novel OSINT collection techniques or tool integrations",
+        "Trains teams on advanced OSINT techniques and operational security",
+        "Recognised as the authority on target reconnaissance within the lab"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Given a target organisation name, produce a reconnaissance dossier within a defined time window, assessed on breadth, depth, actionability, and OPSEC"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review target dossiers and OSINT reports from recent engagements"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["S0695", "S0751", "K1087", "S0512"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "PD-WRL-006 Threat Analysis"]
+    },
+    "mitre_attack": {
+      "tactics": ["TA0043"],
+      "techniques": ["T1589", "T1590", "T1591", "T1593"]
+    },
+    "cbest": {
+      "phase": "Threat Intelligence - Target Reconnaissance"
+    }
+  },
+
+  "tags": [
+    "osint",
+    "reconnaissance",
+    "target-profiling",
+    "social-media",
+    "organisational-mapping",
+    "opsec",
+    "social-engineering"
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "id": "DFIR-MOB-LOCATION",
+  "name": "Location Data Analysis",
+  "domain": "digital-forensics",
+  "category": "Mobile Forensics",
+  "status": "active",
+  "description": "Ability to extract and analyse location data from mobile devices. Covers GPS logs, cell tower records, Wi-Fi connection history, significant locations and on-device timeline databases, application-embedded geolocation metadata, and correlating location data with other evidence to establish movement patterns and presence at specific locations.",
+
+  "requires": [
+    "DFIR-MOB-ACQUISITION",
+    "FOUND-EVIDENCE"
+  ],
+  "recommended": [
+    "DFIR-MOB-APPDATA",
+    "DFIR-DISK-TIMELINE"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to mobile location data analysis"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the types of location data stored on mobile devices and their forensic significance",
+      "evidence": [
+        "Can describe location data sources on mobile devices (GPS, cell tower, Wi-Fi, app data)",
+        "Understands the difference between precise GPS positioning and cell site location estimation",
+        "Can explain privacy considerations and legal requirements for location evidence"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Extracts and maps location data from mobile device acquisitions under supervision",
+      "evidence": [
+        "Extracted iOS Significant Locations and Android on-device Timeline data, or Takeout exports where available, under guidance",
+        "Parsed GPS coordinates from photo EXIF metadata on mobile devices",
+        "Plotted location data on maps using forensic tools to visualise movement patterns",
+        "Documented location data findings with supervisor review and proper coordinate notation"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently analyses location data from multiple sources to establish movement patterns and produces court-ready location reports",
+      "evidence": [
+        "Independently analysed location evidence in 5+ investigations",
+        "Correlated cell tower records with GPS data and Wi-Fi history to confirm location patterns",
+        "Produced location timeline reports with maps suitable for court presentation",
+        "Correctly accounted for location data accuracy limitations in reports and testimony"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex location analysis including multi-device correlation, cell site analysis, and challenging accuracy assessments",
+      "evidence": [
+        "Performed cell site analysis using tower location data and propagation modelling",
+        "Correlated location data across multiple devices and evidence sources",
+        "Assessed and communicated location data accuracy and reliability for contentious cases",
+        "Mentors junior examiners on location data interpretation and reporting"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines location analysis methodology; provides expert testimony on location evidence reliability; researches new location artifacts",
+      "evidence": [
+        "Authored or maintains the lab's mobile location data analysis methodology",
+        "Provided expert testimony on location evidence interpretation and accuracy",
+        "Published research on mobile location artifacts or analysis techniques",
+        "Trains teams on location data analysis and cell site interpretation"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Extract location data from a mobile device acquisition, correlate with cell tower records, and produce a movement timeline with mapped visualisation"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given conflicting location data from multiple sources, assess reliability and determine the most probable location timeline"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["S0482", "K1144", "S0604", "S0612"],
+      "work_roles": ["IN-WRL-002 Digital Evidence Analysis", "IN-WRL-001 Cybercrime Investigation"]
+    },
+    "sfia": {
+      "skill": "DGFS"
+    },
+    "giac": ["GASF"]
+  },
+
+  "tags": [
+    "geolocation",
+    "gps",
+    "cell-tower",
+    "wifi-history",
+    "movement-patterns",
+    "location-evidence",
+    "mapping",
+    "android",
+    "ios",
+    "mobile",
+    "forensics"
+  ]
+}

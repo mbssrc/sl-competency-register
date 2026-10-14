@@ -1,0 +1,122 @@
+{
+  "CCT APP B1": [
+    "SWSEC-DAST-WEBAPP"
+  ],
+  "CCT APP H12": [
+    "SWSEC-WEB-AUTHZ"
+  ],
+  "CCT APP H13": [
+    "SWSEC-WEB-AUTHZ"
+  ],
+  "CCT APP H15": [
+    "SWSEC-DAST-WEBAPP"
+  ],
+  "CCT APP H16": [
+    "SWSEC-WEB-XSS"
+  ],
+  "CCT APP H17": [
+    "SWSEC-WEB-SQLI"
+  ],
+  "CCT APP H20": [
+    "SWSEC-WEB-INJECT"
+  ],
+  "CCT APP H21": [
+    "SWSEC-WEB-INJECT"
+  ],
+  "CCT APP H24": [
+    "SWSEC-WEB-INJECT"
+  ],
+  "CCT APP H25": [
+    "SWSEC-WEB-INJECT"
+  ],
+  "CCT APP H26": [
+    "SWSEC-WEB-AUTHZ"
+  ],
+  "CCT APP H27": [
+    "SWSEC-WEB-HTTPCONF"
+  ],
+  "CCT APP H28": [
+    "SWSEC-WEB-INJECT"
+  ],
+  "CCT APP H29": [
+    "SWSEC-WEB-API"
+  ],
+  "CCT APP H4": [
+    "SWSEC-WEB-HTTPCONF"
+  ],
+  "CCT APP H7": [
+    "SWSEC-WEB-API"
+  ],
+  "CCT APP H9": [
+    "SWSEC-DAST-WEBAPP"
+  ],
+  "CCT APP N1": [
+    "SWSEC-REVIEW-MANUAL"
+  ],
+  "active-directory": [
+    "NETSEC-ENUM-LDAP",
+    "NETSEC-EXPLOIT-AUTHN"
+  ],
+  "authentication-attacks": [
+    "NETSEC-EXPLOIT-AUTHN"
+  ],
+  "credential-attacks": [
+    "NETSEC-POST-CREDHARVEST"
+  ],
+  "data-exfiltration": [
+    "NETSEC-POST-EXFIL"
+  ],
+  "dns-enumeration": [
+    "NETSEC-ENUM-DNS"
+  ],
+  "ics-scada-assessment": [
+    "ICSIOT-ICS-NETWORK",
+    "NETSEC-INFRA-ICSOT"
+  ],
+  "infrastructure-assessment": [
+    "NETSEC-EXPLOIT-PROTOCOL",
+    "NETSEC-INFRA-FIREWALL",
+    "NETSEC-INFRA-SEGMENTATION",
+    "NETSEC-INFRA-ROUTERSWITCH"
+  ],
+  "network-architecture": [
+    "NETSEC-INFRA-SEGMENTATION"
+  ],
+  "network-attacks": [
+    "NETSEC-EXPLOIT-MITM",
+    "NETSEC-EXPLOIT-PROTOCOL"
+  ],
+  "network-mapping": [
+    "NETSEC-RECON-NETMAPPING",
+    "NETSEC-RECON-PORTSCANNING",
+    "NETSEC-RECON-FINGERPRINTING"
+  ],
+  "open-source-intelligence": [
+    "NETSEC-RECON-PASSIVERECON"
+  ],
+  "pivoting": [
+    "NETSEC-PIVOT-PORTFWD",
+    "NETSEC-PIVOT-PROXYCHAINS",
+    "NETSEC-PIVOT-VPN"
+  ],
+  "post-exploitation": [
+    "INFRA-CONTAINER-ESCAPE",
+    "NETSEC-POST-ESCAPE",
+    "NETSEC-POST-CREDHARVEST",
+    "NETSEC-POST-EXFIL",
+    "NETSEC-POST-MACOS",
+    "NETSEC-POST-PERSISTENCE",
+    "NETSEC-POST-PRIVESC"
+  ],
+  "service-enumeration": [
+    "NETSEC-ENUM-LDAP",
+    "NETSEC-ENUM-SMB",
+    "NETSEC-ENUM-SNMP"
+  ],
+  "service-identification": [
+    "NETSEC-RECON-FINGERPRINTING"
+  ],
+  "vulnerability-exploitation": [
+    "NETSEC-EXPLOIT-SVCEXPLOIT"
+  ]
+}

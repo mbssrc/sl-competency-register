@@ -1,0 +1,58 @@
+<div class="bg-white dark:bg-gray-800 rounded-xl shadow-2xl border border-gray-200 dark:border-white/10 p-6 max-h-[85vh] overflow-y-auto">
+  <div class="flex items-center justify-between mb-6">
+    <h3 class="text-lg font-bold text-gray-900 dark:text-white">Staffing Suggestions — {{ project.name }}</h3>
+    <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+
+  {% if not suggestions %}
+  <p class="text-sm text-gray-500 dark:text-gray-400">No personnel available.</p>
+  {% else %}
+  <div class="space-y-3">
+    {% for s in suggestions %}
+    <div class="border border-gray-200 dark:border-white/10 rounded-lg p-3 {% if s.is_assigned %}opacity-60{% endif %}">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div>
+            <span class="text-sm font-medium text-gray-900 dark:text-white">{{ s.person.name }}</span>
+            {% if s.on_active_projects and not s.is_assigned %}
+            <span class="ml-2 inline-flex items-center rounded-full bg-amber-50 dark:bg-amber-900/30 px-2 py-0.5 text-xs text-amber-700 dark:text-amber-300">On active project</span>
+            {% endif %}
+            {% if s.is_assigned %}
+            <span class="ml-2 inline-flex items-center rounded-full bg-indigo-50 dark:bg-indigo-500/15 px-2 py-0.5 text-xs text-indigo-700 dark:text-indigo-300">Assigned</span>
+            {% endif %}
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-sm {% if s.is_fully_qualified %}text-emerald-600 dark:text-emerald-400 font-medium{% elif s.met > 0 %}text-amber-600 dark:text-amber-400{% else %}text-gray-400 dark:text-gray-500{% endif %}">
+            {{ s.met }}/{{ s.total }} skills
+          </span>
+          {% if not s.is_assigned %}
+          <form method="post" action="{% url 'personnel:project-assign' project.id %}" class="inline">
+            {% csrf_token %}
+            <input type="hidden" name="person_id" value="{{ s.person.id }}">
+            <button type="submit"
+                    class="px-3 py-1 text-xs font-medium text-white bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 rounded transition-colors">
+              Assign
+            </button>
+          </form>
+          {% endif %}
+        </div>
+      </div>
+      {% if s.gaps %}
+      <div class="mt-2 flex flex-wrap gap-1.5">
+        {% for gap in s.gaps %}
+        <span class="inline-flex items-center rounded-full px-2 py-0.5 text-xs
+          {% if gap.gap == 1 %}bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400
+          {% else %}bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400{% endif %}">
+          {{ gap.skill_name }} -{{ gap.gap }}
+        </span>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+</div>

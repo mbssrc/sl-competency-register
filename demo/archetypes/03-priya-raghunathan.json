@@ -1,0 +1,58 @@
+{
+  "key": "PERS-003",
+  "bands": {
+    "strong": [
+      "HWSEC-EMBED"
+    ],
+    "weak": [
+      "HWSEC-INV",
+      "HWSEC-SPREP",
+      "HWSEC-RF"
+    ]
+  },
+  "signature": {
+    "HWSEC-EMBED-FW": 3,
+    "HWSEC-EMBED-BOOT": 3,
+    "HWSEC-EMBED-RTOS": 3,
+    "HWSEC-EMBED-DBG": 3
+  },
+  "never": [],
+  "foundations": [
+    1,
+    2
+  ],
+  "projects": [
+    "PRJ-SAT-PCB",
+    "PRJ-SAT-DSP"
+  ],
+  "stale_skills": [],
+  "self_assessment": {
+    "mode": "all",
+    "bias": 1,
+    "jitter": 1,
+    "extra": {
+      "HWSEC-INV-PROBE": 2
+    }
+  },
+  "development_plan": [
+    {
+      "skill": "FOUND-QA",
+      "target_level": 3,
+      "target_date": "2027-03-31",
+      "actions": [
+        "Complete internal ISO/IEC 17025 QA reviewer training",
+        "Co-review two evaluation reports with the quality specialist",
+        "Act as second reviewer on one full hardware engagement"
+      ]
+    }
+  ],
+  "name": "Priya Raghunathan",
+  "role": "Hardware Security Evaluator",
+  "start_date": "2022-02-07",
+  "domains": [
+    "HWSEC"
+  ],
+  "target_maturity": {
+    "HWSEC": "practitioner"
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "id": "SWSEC-PLATFORM-TEE",
+  "name": "Trusted Execution Environment Assessment",
+  "domain": "software-security",
+  "category": "Platform Security",
+  "status": "active",
+  "description": "Security assessment of trusted execution environments and hardware-backed isolation. Covers Intel SGX enclave security, ARM TrustZone and Secure World assessment, AMD SEV-SNP and Intel TDX confidential computing evaluation, TPM-based attestation and sealing, Apple Secure Enclave Processor, and remote attestation protocol analysis. Evaluation of TPM hardware and hardware roots of trust belongs to HWSEC-EMBED-TPM.",
+
+  "requires": [
+    "SWSEC-OS-KERNEL",
+    "FOUND-RISK"
+  ],
+  "recommended": [
+    "HWSEC-CRYPTO-HSM",
+    "SWSEC-RE-DISASM",
+    "CRYPTO-ASYM-RSA",
+    "HWSEC-EMBED-TPM"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to trusted execution environment assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands TEE architectures and hardware-backed isolation concepts",
+      "evidence": [
+        "Can explain Intel SGX, ARM TrustZone, and AMD SEV at an architectural level",
+        "Understands TPM attestation, sealing, and remote attestation concepts",
+        "Familiar with the threat models TEEs address and their limitations",
+        "Completed introductory training on trusted execution environments"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Evaluates TEE configurations and reviews attestation under supervision",
+      "evidence": [
+        "Reviewed SGX enclave configurations and attestation evidence",
+        "Assessed TPM-based Measured Boot and sealing policies",
+        "Tested basic TEE side-channel attack concepts in lab environment",
+        "Work reviewed by authorized researcher"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses TEE implementations and attestation chains",
+      "evidence": [
+        "Independently assessed SGX or TrustZone implementations in 3+ engagements",
+        "Evaluates remote attestation protocols for correctness and replay vulnerabilities",
+        "Identifies enclave interface attack surface and sealing weaknesses",
+        "Passed proficiency assessment on TEE security"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Exploits TEE weaknesses; evaluates confidential computing platforms",
+      "evidence": [
+        "Performs side-channel attacks against SGX enclaves (cache timing, page fault)",
+        "Evaluates confidential computing platforms (Azure CC, GCP Confidential VMs)",
+        "Assesses enclave code for information leakage and interface vulnerabilities",
+        "Mentors team on TEE assessment methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Authority on TEE security; published enclave or attestation research",
+      "evidence": [
+        "Published research on SGX, TrustZone, or confidential computing vulnerabilities",
+        "Developed lab methodology for TEE security assessment",
+        "Contributes to confidential computing security guidance",
+        "Trains teams and presents at conferences on TEE exploitation"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess an SGX enclave application for interface vulnerabilities and side-channel exposure in a lab environment"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given a remote attestation protocol specification, identify weaknesses and propose attack scenarios"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1164", "K0932", "K0923", "S0531"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development", "DD-WRL-001 Cybersecurity Architecture"]
+    },
+    "mitre_attack": {"techniques": ["T1068", "T1553"]},
+    "cwe": ["CWE-501", "CWE-693"]
+  },
+
+  "equipment": [
+    "SGX-capable hardware",
+    "TPM diagnostic tools"
+  ],
+
+  "tags": [
+    "tee",
+    "sgx",
+    "trustzone",
+    "tpm",
+    "attestation",
+    "confidential-computing",
+    "enclave",
+    "apple",
+    "measured-boot",
+    "side-channel",
+    "azure",
+    "gcp",
+    "replay-attack",
+    "timing-attack"
+  ]
+}

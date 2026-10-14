@@ -1,0 +1,119 @@
+{
+  "id": "WSEC-SAT-GNSS",
+  "name": "GNSS/GPS Security Assessment",
+  "domain": "wireless-signal-security",
+  "category": "Satellite & Navigation Security",
+  "status": "active",
+  "description": "Ability to assess the security of Global Navigation Satellite System receivers and signals, including GPS, GLONASS, Galileo, and BeiDou. Covers GNSS signal structure analysis, spoofing attack generation and detection, meaconing assessment, receiver vulnerability testing, and evaluation of authentication mechanisms such as Galileo OSNMA and proposed GPS authentication mechanisms such as CHIMERA.",
+  "requires": [
+    "WSEC-SDR-FUNDM",
+    "WSEC-SDR-DEMOD",
+    "FOUND-ETHICS"
+  ],
+  "recommended": [
+    "WSEC-SAT-JAM",
+    "WSEC-SDR-DSP"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to GNSS security assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands GNSS signal architecture and known vulnerability classes",
+      "evidence": [
+        "Can describe GPS/GNSS signal structure (L1 C/A, L2, L5) and positioning principles",
+        "Understands the difference between spoofing, meaconing, and jamming attacks",
+        "Completed training on GNSS security threats and assessment methodology"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs GNSS signal analysis and basic spoofing exercises in shielded environments under supervision",
+      "evidence": [
+        "Captured and analyzed GNSS signals using SDR in a shielded environment under guidance",
+        "Generated simulated GPS signals using a GNSS simulator for receiver testing under supervision",
+        "Observed the effect of spoofed signals on GNSS receivers in controlled conditions"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses GNSS receiver security in controlled environments",
+      "evidence": [
+        "Independently assessed GNSS receiver vulnerability to spoofing across 3+ receiver types",
+        "Conducted meaconing and signal replay attacks in shielded lab conditions",
+        "Evaluated receiver-level anti-spoofing mechanisms and detection capabilities",
+        "Produced reports documenting spoofing attack effectiveness, receiver behavior, and countermeasure recommendations"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Performs advanced GNSS spoofing scenarios; assesses navigation authentication mechanisms",
+      "evidence": [
+        "Developed sophisticated spoofing scenarios including gradual position drift and time manipulation",
+        "Assessed Galileo OSNMA or GPS signal authentication implementations",
+        "Evaluated multi-constellation receiver resilience to targeted single-constellation attacks",
+        "Mentors junior analysts on GNSS assessment and develops custom spoofing profiles"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on GNSS security; publishes research; defines lab assessment methodology",
+      "evidence": [
+        "Published research on GNSS spoofing, detection, or authentication mechanisms",
+        "Authored the lab's GNSS security assessment methodology",
+        "Discovered novel GNSS receiver vulnerabilities or spoofing techniques",
+        "Trains teams on GNSS security and advises on critical infrastructure GNSS hardening"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "In a shielded lab environment, assess a GNSS receiver's vulnerability to spoofing attacks of increasing sophistication and document receiver behavior at each stage"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review GNSS security assessment reports for attack methodology rigor and countermeasure recommendation quality"
+    }
+  ],
+  "equipment": [
+    "Spirent GSS9000 or LabSat GNSS simulator",
+    "RF shielded enclosure for GNSS testing",
+    "Ettus USRP B200/B210 SDR platform",
+    "Multi-constellation GNSS reference receiver"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1032", "K0926", "K0375"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-008 Technology Research and Development"]
+    },
+    "sfia": {
+      "skill": "PENT",
+      "levels": [
+        3,
+        4,
+        5
+      ]
+    },
+    "mitre_attack": {
+      "techniques": [
+        "T1565.002"
+      ]
+    }
+  },
+  "tags": [
+    "gnss",
+    "gps",
+    "spoofing",
+    "navigation",
+    "satellite",
+    "positioning",
+    "authentication",
+    "replay-attack"
+  ]
+}

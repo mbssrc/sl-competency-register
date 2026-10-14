@@ -1,0 +1,107 @@
+{
+  "id": "NETSEC-ENUM-SNMP",
+  "name": "SNMP Enumeration",
+  "domain": "network-security",
+  "category": "Enumeration",
+  "status": "active",
+  "description": "Ability to enumerate network devices and services via SNMP. Covers community string guessing and brute-forcing, MIB tree walking, extraction of system information, user accounts, network interfaces, routing tables, and ARP caches from SNMP-enabled devices.",
+
+  "requires": [
+    "NETSEC-RECON-PORTSCANNING"
+  ],
+  "recommended": [
+    "NETSEC-RECON-FINGERPRINTING",
+    "FOUND-DOC"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to SNMP enumeration techniques"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands SNMP protocol fundamentals and the security risks of exposed SNMP services",
+      "evidence": [
+        "Can explain SNMP versions (v1, v2c, v3) and their security differences",
+        "Understands community strings and their role as authentication",
+        "Knows common SNMP ports (161/UDP, 162/UDP) and MIB concepts"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs basic SNMP enumeration under supervision using standard tools",
+      "evidence": [
+        "Uses snmpwalk, snmp-check, or onesixtyone to query SNMP services",
+        "Brute-forces common community strings on discovered SNMP services",
+        "Extracts basic system information (sysDescr, sysName, interfaces) under guidance",
+        "Documents SNMP findings in engagement notes under review"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently performs thorough SNMP enumeration and extracts actionable intelligence",
+      "evidence": [
+        "Systematically walks MIB trees to extract users, routes, ARP tables, and processes",
+        "Identifies SNMP write access and its exploitation potential",
+        "Correlates SNMP data with other enumeration to map network topology",
+        "Uses SNMP data to identify additional attack targets and pivot opportunities"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex SNMP environments; exploits advanced MIBs; mentors others",
+      "evidence": [
+        "Enumerates vendor-specific MIBs for specialized device intelligence",
+        "Exploits SNMPv3 weaknesses and misconfigured authentication",
+        "Develops automated SNMP enumeration workflows for large network scans",
+        "Mentors junior staff on SNMP enumeration and its role in infrastructure assessment"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines SNMP enumeration methodology; deep protocol expertise; trains teams",
+      "evidence": [
+        "Authored the lab's SNMP enumeration standard methodology",
+        "Deep understanding of SNMP protocol internals across all versions",
+        "Develops custom SNMP enumeration tools or MIB analysis utilities",
+        "Trains teams on SNMP-based network intelligence gathering"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Enumerate a lab network with multiple SNMP-enabled devices and extract complete system information, routing data, and network topology intelligence"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review SNMP enumeration results from recent infrastructure assessments for completeness"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0849", "K0674", "K0956", "S0694"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis"]
+    },
+    "mitre_attack": {
+      "techniques": ["T1602.001"]
+    },
+    "crest": {
+      "areas": ["service-enumeration"]
+    }
+  },
+
+  "tags": [
+    "snmp",
+    "mib",
+    "community-strings",
+    "enumeration",
+    "network-devices"
+  ]
+}

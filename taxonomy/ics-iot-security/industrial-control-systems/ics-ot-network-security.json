@@ -1,0 +1,116 @@
+{
+  "id": "ICSIOT-ICS-NETWORK",
+  "name": "ICS/OT Network Security",
+  "domain": "ics-iot-security",
+  "category": "Industrial Control Systems",
+  "status": "active",
+  "description": "Covers security assessment of industrial control system (ICS) and operational technology (OT) networks: Purdue model architecture review, IEC 62443 zones and conduits, IT/OT boundary and DMZ security, and OT segmentation effectiveness. Includes passive asset discovery from span ports and taps and safe, rate-limited active scanning that avoids disrupting operational processes. Protocol-level attack analysis belongs to ICSIOT-ICS-PROTO; controller assessment belongs to ICSIOT-ICS-CTRL. Supersedes NETSEC-INFRA-ICSOT.",
+  "requires": [
+    "FOUND-ETHICS"
+  ],
+  "recommended": [
+    "NETSEC-INFRA-SEGMENTATION",
+    "NETSEC-RECON-NETMAPPING",
+    "NETSEC-INFRA-ROUTERSWITCH",
+    "ICSIOT-OT-RISK",
+    "FOUND-TOOLS"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to ICS/OT network security assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands ICS/OT network architecture and why OT networks require specialised, safety-first assessment",
+      "evidence": [
+        "Can explain the Purdue model levels and where the IT/OT DMZ sits",
+        "Can describe IEC 62443 zones and conduits and how they differ from flat VLAN segmentation",
+        "Knows why active scanning can crash fragile OT devices and why change control applies"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs basic OT network discovery and boundary review under strict supervision",
+      "evidence": [
+        "Builds an asset inventory from passive traffic capture on a span port or tap in a lab ICS",
+        "Reviews IT/OT boundary firewall rule sets against a documented zone model with guidance",
+        "Runs pre-approved, rate-limited active discovery against lab OT devices",
+        "Documents findings with the operational constraints and test windows that applied"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses OT network architecture and segmentation with appropriate safety controls",
+      "evidence": [
+        "Maps the as-built network to the Purdue model and documents deviations, dual-homed hosts and uncontrolled conduits",
+        "Evaluates zone and conduit enforcement, remote access paths and the IT/OT DMZ for effectiveness",
+        "Plans and executes a safe active scanning profile agreed with asset owners, including abort criteria",
+        "Produces an OT network assessment report with safety-aware, prioritised segmentation recommendations"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Assesses complex, multi-site OT networks; develops safe assessment procedures; mentors others",
+      "evidence": [
+        "Assesses OT networks across sectors (energy, water, manufacturing) with differing protocols and constraints",
+        "Develops and validates passive-first discovery and safe active scanning procedures for production plants",
+        "Evaluates OT network monitoring coverage (sensor placement, protocol visibility) as part of the assessment",
+        "Mentors junior staff on OT network assessment and coordination with operations"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines the lab's OT network assessment methodology; publishes research; trains teams",
+      "evidence": [
+        "Authored the lab's ICS/OT network security assessment methodology and rules of engagement",
+        "Published research or guidance on OT network architecture, segmentation or safe discovery",
+        "Recognised authority consulted on IT/OT convergence and remote-access architectures",
+        "Trains teams on ICS/OT network security assessment and safe testing practice"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "In a lab ICS with simulated process, build an asset inventory from passive capture, compare it to the documented zone model, and perform an agreed safe active scan without tripping the process or devices"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review an OT network assessment report for Purdue/zone mapping accuracy, documented safety controls during testing, and actionable segmentation recommendations"
+    }
+  ],
+  "framework_mappings": {
+    "mitre_attack": {
+      "matrices": ["ICS"],
+      "techniques": ["T0842", "T0846", "T0840", "T0883", "T0886"]
+    },
+    "iec_62443": ["3-2", "3-3"],
+    "nist_sp": ["800-82"],
+    "nice": {
+      "tks": ["K1309", "K1300", "K1289", "S0941", "S0946"],
+      "work_roles": ["DD-WRL-009 Operational Technology (OT) Cybersecurity Engineering", "PD-WRL-007 Vulnerability Analysis"]
+    },
+    "crest": {
+      "areas": ["ics-scada-assessment"]
+    }
+  },
+  "equipment": [
+    "ICS/SCADA lab environment with representative PLCs and HMIs"
+  ],
+  "tags": [
+    "ics",
+    "ot",
+    "scada",
+    "purdue-model",
+    "segmentation",
+    "passive-scanning",
+    "network-discovery",
+    "industrial",
+    "safety",
+    "scanning"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "key": "PERS-010",
+  "bands": {
+    "strong": [
+      "SWSEC-RE",
+      "SWSEC-FUZZ"
+    ],
+    "weak": [
+      "SWSEC-SUPPLY",
+      "SWSEC-REVIEW",
+      "SWSEC-MOB"
+    ]
+  },
+  "signature": {
+    "SWSEC-RE-DISASM": 5,
+    "SWSEC-RE-DECOMPILE": 4,
+    "SWSEC-RE-ANTIRE": 4,
+    "SWSEC-RE-PROTOCOL": 4,
+    "SWSEC-OS-BINEXPLOIT": 4,
+    "SWSEC-OS-KERNEL": 3,
+    "SWSEC-FUZZ-CORE": 4,
+    "SWSEC-FUZZ-KERN": 3
+  },
+  "never": [],
+  "foundations": [
+    2,
+    3
+  ],
+  "projects": [
+    "PRJ-SAT-DSP",
+    "PRJ-SAT-CP-BLACK"
+  ],
+  "stale_skills": [],
+  "self_assessment": {
+    "mode": "all",
+    "bias": -1,
+    "jitter": 1
+  },
+  "development_plan": [],
+  "name": "Hannes Müller",
+  "role": "Senior Reverse Engineer and Vulnerability Researcher",
+  "start_date": "2019-08-19",
+  "domains": [
+    "SWSEC"
+  ],
+  "target_maturity": {
+    "SWSEC": "senior"
+  }
+}

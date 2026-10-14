@@ -1,0 +1,112 @@
+{
+  "id": "WSEC-SPEC-ANALYSIS",
+  "name": "RF Spectrum Analysis",
+  "domain": "wireless-signal-security",
+  "category": "Spectrum Analysis & TEMPEST",
+  "status": "active",
+  "description": "Ability to perform comprehensive RF spectrum analysis using spectrum analyzers and SDR platforms. Covers spectrum survey methodology, signal identification and classification, measurement of signal parameters (power, bandwidth, occupied bandwidth, spurious emissions), spectrum occupancy analysis, and characterization of the RF environment in target facilities.",
+  "requires": [
+    "WSEC-SDR-FUNDM"
+  ],
+  "recommended": [
+    "FOUND-DOC",
+    "FOUND-EVIDENCE",
+    "FOUND-TOOLS"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to RF spectrum analysis"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands spectrum analysis concepts and the RF measurement environment",
+      "evidence": [
+        "Can explain spectrum analyzer operation (RBW, VBW, sweep time, detector types)",
+        "Understands dBm, dBc, and signal-to-noise ratio measurement fundamentals",
+        "Completed training on RF spectrum analysis methodology"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs spectrum measurements and signal identification under supervision",
+      "evidence": [
+        "Configured spectrum analyzer parameters for signal measurement tasks under guidance",
+        "Identified common signal types (WiFi, Bluetooth, cellular, ISM-band devices) from spectral signatures",
+        "Performed basic signal power and bandwidth measurements under supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently conducts spectrum surveys and characterizes the RF environment",
+      "evidence": [
+        "Independently conducted spectrum surveys for 3+ facilities or frequency ranges",
+        "Classified and documented all observed signals with frequency, bandwidth, power, and modulation type",
+        "Identified anomalous or unauthorized emissions in surveyed environments",
+        "Produced spectrum survey reports with calibrated measurements and signal inventories"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Performs advanced spectrum analysis; develops survey automation; handles challenging RF environments",
+      "evidence": [
+        "Conducted spectrum analysis in high-density RF environments with hundreds of concurrent signals",
+        "Developed automated spectrum monitoring and anomaly detection systems",
+        "Performed calibrated power measurements with documented measurement uncertainty",
+        "Mentors junior analysts on spectrum analysis methodology and measurement technique"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines lab spectrum analysis methodology; designs measurement systems; recognized RF measurement authority",
+      "evidence": [
+        "Authored the lab's spectrum analysis methodology and measurement procedures",
+        "Designed custom spectrum monitoring and measurement systems for the lab",
+        "Published research on RF spectrum analysis or monitoring techniques",
+        "Trains teams on spectrum analysis and maintains lab measurement traceability"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Conduct a spectrum survey of a lab environment across a specified frequency range, identifying and documenting all observed signals with calibrated measurements"
+    },
+    {
+      "type": "direct_observation",
+      "description": "Observe spectrum analyzer configuration, measurement technique, and signal identification during a survey"
+    }
+  ],
+  "equipment": [
+    "Keysight N9040B or equivalent real-time spectrum analyzer",
+    "Calibrated broadband antenna set (biconical, log-periodic, horn)",
+    "Ettus USRP B200/B210 SDR platform"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0925", "K0773", "K1284"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development", "DD-WRL-007 Systems Testing and Evaluation"]
+    },
+    "sfia": {
+      "skill": "SCAD",
+      "levels": [
+        3,
+        4,
+        5
+      ]
+    },
+    "certifications": [
+      "GIAC GAWN"
+    ]
+  },
+  "tags": [
+    "spectrum-analysis",
+    "rf-survey",
+    "signal-identification",
+    "measurement",
+    "spectrum-monitoring"
+  ]
+}

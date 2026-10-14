@@ -1,0 +1,282 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}{{ project.name }} - {{ product_name }}{% endblock %}
+
+{% block head_scripts %}{% if is_manager %}<script src="{% static 'project_skills.js' %}" defer></script>{% endif %}{% endblock %}
+
+{% block page_crumbs %}
+<a href="{% url 'personnel:project-list' %}" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Projects</a>
+  <svg class="w-4 h-4 mx-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+  <span class="text-gray-900 dark:text-white font-medium">{{ project.name }}</span>
+{% endblock %}
+
+{% block page_title %}{{ project.name }}{% endblock %}
+{% block page_description %}{% endblock %}
+
+{% block content %}
+<!-- Header -->
+<div class="mb-8">
+  <div class="flex items-center justify-between">
+    <div>
+      <div class="flex items-center gap-3 mb-2">
+        <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium
+          {% if project.status == 'done' %}bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300
+          {% elif project.status == 'planning' %}bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300
+          {% else %}bg-gray-100 dark:bg-white/5 text-gray-500 dark:text-gray-400{% endif %}">
+          {{ project.get_status_display }}
+        </span>
+        {% if project.source_service_id %}
+        <span class="text-xs text-gray-500 dark:text-gray-400">from
+          <a href="{% url 'taxonomy:service-detail' project.source_service_id %}" class="text-indigo-600 dark:text-indigo-400 hover:underline">{{ project.source_service_id }}</a>
+        </span>
+        {% endif %}
+      </div>
+{% if project.description %}
+      <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">{{ project.description }}</p>
+      {% endif %}
+    </div>
+    {% if is_manager %}
+    <div class="flex items-center gap-2">
+      {% if project.status == 'done' and project.required_competencies %}
+      <a href="{% url 'personnel:project-assess' project.id %}"
+         class="px-4 py-2 text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 rounded-md transition-colors">
+        Assess Skills
+      </a>
+      {% endif %}
+      <button onclick="loadModal('{% url 'personnel:project-edit' project.id %}')"
+              class="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-md hover:bg-gray-50 dark:hover:bg-white/10 transition-colors">
+        Edit
+      </button>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+<!-- Skills -->
+<div class="mb-8">
+  {% if is_manager %}
+  {{ skill_rows|json_script:"project-skill-rows" }}
+  {{ skill_holders|json_script:"project-skill-holders" }}
+  <form method="post" action="{% url 'personnel:project-skills' project.id %}"
+        x-data="projectSkills" data-skill-url="{% url 'taxonomy:skill-detail' 'SKILL_ID' %}"
+        @submit="onSubmit()" :class="changes.any && 'pb-20'">
+    {% csrf_token %}
+    {# What is saved: generated from row state, so filtered-out ticks still submit. #}
+    <template x-for="row in rows" :key="row.id">
+      <span>
+        <input type="hidden" name="skill" :value="row.id" :disabled="!row.required">
+        <input type="hidden" :name="'level_' + row.id" :value="row.level" :disabled="!row.required">
+      </span>
+    </template>
+
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Skills</h3>
+      <span x-show="coverage.pct !== null" class="text-sm font-medium"
+            :class="coverage.pct === 100 ? 'text-emerald-600 dark:text-emerald-400' : coverage.pct > 0 ? 'text-amber-600 dark:text-amber-400' : 'text-red-600 dark:text-red-400'"
+            x-text="coverage.covered + ' of ' + coverage.required + ' covered (' + coverage.pct + '%)'"></span>
+    </div>
+
+    {% include "core/partials/form_errors.html" %}
+
+    <div class="flex flex-wrap items-center gap-3 mb-3">
+      <div class="inline-flex rounded-md border border-gray-300 dark:border-white/10 overflow-hidden text-sm" role="group" aria-label="Show">
+        <button type="button" @click="view = 'all'" :aria-pressed="(view === 'all').toString()"
+                class="px-3 py-1.5 transition-colors"
+                :class="view === 'all' ? 'bg-indigo-600 text-white dark:bg-indigo-500' : 'bg-white dark:bg-white/5 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/10'">
+          All <span class="opacity-70" x-text="rows.length"></span>
+        </button>
+        <button type="button" @click="view = 'required'" :aria-pressed="(view === 'required').toString()"
+                class="px-3 py-1.5 border-l border-gray-300 dark:border-white/10 transition-colors"
+                :class="view === 'required' ? 'bg-indigo-600 text-white dark:bg-indigo-500' : 'bg-white dark:bg-white/5 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/10'">
+          Required <span class="opacity-70" x-text="coverage.required"></span>
+        </button>
+      </div>
+      <div class="relative flex-1 min-w-[14rem] max-w-md">
+        <svg class="pointer-events-none absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z"/></svg>
+        <input type="search" x-model="query" @keydown.enter.prevent aria-label="Search skills"
+               placeholder="Search skills by name, tag, domain or ID…"
+               class="w-full pl-8 pr-3 py-1.5 rounded-md border border-gray-300 dark:border-white/10 bg-white dark:bg-white/5 text-gray-900 dark:text-white text-sm placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:border-transparent">
+      </div>
+      <select x-model="domain" aria-label="Domain"
+              class="rounded-md border border-gray-300 dark:border-white/10 bg-white dark:bg-white/5 text-gray-900 dark:text-gray-100 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:border-transparent">
+        <option value="">All domains</option>
+        <template x-for="d in domains" :key="d"><option :value="d" x-text="d"></option></template>
+      </select>
+      <div x-show="!filtering" class="flex items-center gap-3 text-sm">
+        <button type="button" @click="setAllOpen(true)" class="text-indigo-600 dark:text-indigo-400 hover:underline">Expand all</button>
+        <button type="button" @click="setAllOpen(false)" class="text-indigo-600 dark:text-indigo-400 hover:underline">Collapse all</button>
+      </div>
+    </div>
+
+    <div class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg overflow-x-auto">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="border-b border-gray-200 dark:border-white/10">
+            <th class="w-10 pl-4 pr-2 py-2.5"><span class="sr-only">Required</span></th>
+            <th class="text-left px-2 py-2.5 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Skill</th>
+            <th class="text-left px-2 py-2.5 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Min level</th>
+            <th class="text-center px-2 py-2.5 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Status</th>
+            <th class="text-left px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Qualified Personnel</th>
+            <th class="text-left px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Close (within 1)</th>
+          </tr>
+        </thead>
+        <template x-for="group in groups" :key="group.name">
+          <tbody x-show="groupVisible(group)">
+            <tr class="bg-gray-50 dark:bg-white/[0.04] border-b border-gray-200 dark:border-white/10">
+              <th colspan="6" class="p-0">
+                <button type="button" @click="toggle(group)" :disabled="filtering" :aria-expanded="isOpen(group).toString()"
+                        class="w-full flex items-center gap-2 px-4 py-2 text-left text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 enabled:hover:bg-gray-100 dark:enabled:hover:bg-white/[0.06] disabled:cursor-default">
+                  <svg class="w-3.5 h-3.5 flex-shrink-0 transition-transform" :class="isOpen(group) && 'rotate-90'" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                  <span x-text="group.name"></span>
+                  <span class="ml-1 font-normal normal-case tracking-normal text-gray-400 dark:text-gray-500" x-text="groupSummary(group)"></span>
+                </button>
+              </th>
+            </tr>
+            <template x-for="row in group.rows" :key="row.id">
+              <tr x-show="isOpen(group) && matches(row)" @click="openSkill(row, $event)"
+                  class="border-b border-gray-100 dark:border-white/5"
+                  :class="(row.required ? 'bg-indigo-50/60 dark:bg-indigo-500/[0.07] ' : '')
+                          + (row.status === 'missing' ? '' : 'cursor-pointer')">
+                <td class="pl-4 pr-2 py-2">
+                  <input type="checkbox" :id="'req-' + row.id" x-model="row.required"
+                         :aria-label="'Require ' + row.name"
+                         class="h-4 w-4 rounded border-gray-300 dark:border-white/20 dark:bg-white/5 text-indigo-600 focus:ring-indigo-500">
+                </td>
+                <td class="px-2 py-2">
+                  <a x-show="row.status !== 'missing'" :href="skillUrl(row)" target="_blank" rel="noopener"
+                     x-text="row.name" :title="'Open ' + row.name + ' in a new tab'"
+                     class="hover:underline"
+                     :class="row.required ? 'text-gray-900 dark:text-white font-medium' : 'text-gray-700 dark:text-gray-300'"></a>
+                  <span x-show="row.status === 'missing'" x-text="row.name"
+                        class="text-gray-700 dark:text-gray-300"></span>
+                  <a x-show="row.status !== 'missing'" :href="skillUrl(row)" x-text="row.id"
+                     class="ml-1 whitespace-nowrap text-xs font-mono text-gray-400 dark:text-gray-500 hover:text-indigo-600 dark:hover:text-indigo-400"></a>
+                  <template x-for="reason in reasons(row)"><span class="ml-1 inline-block whitespace-nowrap rounded bg-gray-100 dark:bg-white/10 px-1.5 py-0.5 text-[11px] text-gray-500 dark:text-gray-400" title="Matched a tag or category" x-text="reason"></span></template>
+                  <span x-show="row.status === 'deprecated'" class="ml-1 rounded px-1.5 py-0.5 text-[10px] font-medium uppercase bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400">deprecated</span>
+                  <span x-show="row.status === 'missing'" class="ml-1 rounded px-1.5 py-0.5 text-[10px] font-medium uppercase bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-400">not in taxonomy</span>
+                </td>
+                <td class="px-2 py-2">
+                  <select :value="row.level" @change="setLevel(row, $event.target.value)" :aria-label="'Minimum level for ' + row.name"
+                          class="rounded-md border border-gray-300 dark:border-white/10 bg-white dark:bg-white/5 px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                          :class="row.required ? 'text-gray-900 dark:text-gray-100' : 'text-gray-400 dark:text-gray-500'">
+                    <option value="0">0 — None</option>
+                    <option value="1">1 — Awareness</option>
+                    <option value="2">2 — Guided</option>
+                    <option value="3">3 — Independent</option>
+                    <option value="4">4 — Expert</option>
+                    <option value="5">5 — Authority</option>
+                  </select>
+                </td>
+                <td class="px-2 py-2 text-center">
+                  <span x-show="row.required" x-text="status(row).text" :class="status(row).cls"
+                        class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium whitespace-nowrap"></span>
+                </td>
+                <td class="px-4 py-2" :class="row.required ? 'text-gray-600 dark:text-gray-400' : 'text-gray-400 dark:text-gray-600'"
+                    x-text="qualified(row).join(', ') || '—'"></td>
+                <td class="px-4 py-2" :class="row.required ? 'text-gray-500 dark:text-gray-400' : 'text-gray-400 dark:text-gray-600'"
+                    x-text="close(row).join(', ') || '—'"></td>
+              </tr>
+            </template>
+          </tbody>
+        </template>
+      </table>
+      <div x-show="!anyVisible" class="p-8 text-center text-sm text-gray-500 dark:text-gray-400">
+        <span x-show="view === 'required' && !coverage.required">No skills required yet. Switch to <button type="button" @click="view = 'all'" class="text-indigo-600 dark:text-indigo-400 hover:underline">All</button> to choose some.</span>
+        <span x-show="view === 'all' || coverage.required">No skills match.</span>
+      </div>
+    </div>
+
+    {# Fixed rather than sticky: <main> is an overflow container that never scrolls itself. #}
+    <div x-show="changes.any" x-transition.opacity style="display: none"
+         class="fixed bottom-6 left-72 right-8 z-30">
+      <div class="flex items-center justify-between gap-4 rounded-lg border border-indigo-200 dark:border-indigo-500/30 bg-white dark:bg-gray-800 shadow-xl px-4 py-3">
+        <span class="text-sm text-gray-700 dark:text-gray-300">Unsaved changes: <span class="font-medium" x-text="changes.summary"></span></span>
+        <div class="flex items-center gap-2">
+          <button type="button" @click="discard()"
+                  class="px-3 py-1.5 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-md hover:bg-gray-50 dark:hover:bg-white/10 transition-colors">
+            Discard
+          </button>
+          <button type="submit"
+                  class="px-3 py-1.5 text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 rounded-md transition-colors">
+            Save changes
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  {% else %}
+  <div class="flex items-center justify-between mb-4">
+    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+      Required Skills
+      <span class="ml-2 text-sm font-normal text-gray-500 dark:text-gray-500">{{ coverage|length }}</span>
+    </h3>
+    {% if coverage_pct is not None %}
+    <span class="text-sm font-medium {% if coverage_pct == 100 %}text-emerald-600 dark:text-emerald-400{% elif coverage_pct > 0 %}text-amber-600 dark:text-amber-400{% else %}text-red-600 dark:text-red-400{% endif %}">
+      {{ coverage_pct }}% covered
+    </span>
+    {% endif %}
+  </div>
+
+  {% if coverage %}
+  <div class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg overflow-x-auto">
+    <table class="w-full text-sm">
+      <thead>
+        <tr class="border-b border-gray-200 dark:border-white/10">
+          <th class="text-left px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Skill</th>
+          <th class="text-center px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Required</th>
+          <th class="text-center px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for c in coverage %}
+        <tr class="border-b border-gray-100 dark:border-white/5 last:border-b-0 {% if forloop.counter|divisibleby:2 %}bg-gray-50/50 dark:bg-white/[0.03]{% endif %}">
+          <td class="px-4 py-2.5">
+            <a href="{% url 'taxonomy:skill-detail' c.skill_id %}" class="text-gray-900 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">{{ c.skill_name }}</a>
+            <span class="ml-1 text-xs text-gray-400 dark:text-gray-500 font-mono">{{ c.skill_id }}</span>
+          </td>
+          <td class="px-4 py-2.5 text-center">
+            <span class="inline-flex items-center justify-center w-7 h-7 rounded-full text-xs font-bold bg-gray-100 dark:bg-white/5 text-gray-600 dark:text-gray-400">
+              {{ c.minimum_level }}
+            </span>
+          </td>
+          <td class="px-4 py-2.5 text-center">
+            {% if c.is_covered %}
+            <span class="inline-flex items-center rounded-full bg-emerald-50 dark:bg-emerald-900/30 px-2.5 py-0.5 text-xs font-medium text-emerald-700 dark:text-emerald-400">Covered</span>
+            {% else %}
+            <span class="inline-flex items-center rounded-full bg-red-50 dark:bg-red-900/30 px-2.5 py-0.5 text-xs font-medium text-red-700 dark:text-red-400">Gap</span>
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+  <div class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg p-8 text-center text-gray-500 dark:text-gray-400">
+    No skills required yet.
+  </div>
+  {% endif %}
+  {% endif %}
+
+  {% if my_fitness %}
+  <div class="mt-6 rounded-lg border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 p-5">
+    <h2 class="text-sm font-medium text-gray-700 dark:text-gray-300">
+      Your fitness — {{ my_fitness.met }} of {{ my_fitness.total }} requirements met
+      ({{ my_fitness.pct }}%)
+    </h2>
+    <ul class="mt-3 space-y-1 text-sm">
+      {% for skill in my_fitness.skills %}
+      <li class="flex items-center justify-between">
+        <span class="text-gray-700 dark:text-gray-300">{{ skill.skill_name }}</span>
+        <span class="{% if skill.is_met %}text-emerald-600 dark:text-emerald-400{% else %}text-amber-600 dark:text-amber-400{% endif %}">
+          you: L{{ skill.current_level }} · needs L{{ skill.minimum_level }}
+        </span>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

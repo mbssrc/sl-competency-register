@@ -1,0 +1,38 @@
+{
+  "id": "NETSEC",
+  "name": "Network Security",
+  "description": "Skills related to the security assessment and exploitation of network infrastructure, services, and protocols. Covers the full lifecycle from reconnaissance through post-exploitation, as well as network architecture and infrastructure security assessment.",
+
+  "categories": [
+    {
+      "id": "NETSEC-RECON",
+      "name": "Reconnaissance",
+      "description": "Active and passive network reconnaissance techniques. Covers host discovery, port scanning, service identification, network mapping, and fingerprinting."
+    },
+    {
+      "id": "NETSEC-ENUM",
+      "name": "Enumeration",
+      "description": "In-depth enumeration of network services, users, shares, and configurations. Covers protocol-specific enumeration (SMB, LDAP, DNS, SNMP, etc.) and information gathering from exposed services."
+    },
+    {
+      "id": "NETSEC-EXPLOIT",
+      "name": "Exploitation",
+      "description": "Exploitation of network services and protocols. Covers vulnerability identification, exploit selection and modification, service-level attacks, and authentication attacks."
+    },
+    {
+      "id": "NETSEC-POST",
+      "name": "Post-Exploitation",
+      "description": "Activities following initial access. Covers privilege escalation, credential harvesting, persistence mechanisms, lateral movement preparation, and data exfiltration techniques."
+    },
+    {
+      "id": "NETSEC-PIVOT",
+      "name": "Pivoting",
+      "description": "Network pivoting and tunneling techniques. Covers port forwarding, proxy chains, VPN tunneling, and multi-hop access to segmented networks."
+    },
+    {
+      "id": "NETSEC-INFRA",
+      "name": "Network Infrastructure",
+      "description": "Assessment of network infrastructure components. Covers routers, switches, firewalls, VPN concentrators, network segmentation, and ICS/SCADA/OT network security."
+    }
+  ]
+}

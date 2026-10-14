@@ -1,0 +1,257 @@
+{% extends "core/base.html" %}
+
+{% block title %}{{ skill.name }} - Skills - {{ product_name }}{% endblock %}
+
+{% block page_crumbs %}
+<a href="{% url 'taxonomy:domain-list' %}" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Skills</a>
+  <svg class="w-4 h-4 mx-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+  <a href="{% url 'taxonomy:domain-detail' skill.domain_id %}" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">{{ skill.domain.name }}</a>
+  <svg class="w-4 h-4 mx-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+  <span class="text-gray-900 dark:text-white font-medium">{{ skill.name }}</span>
+{% endblock %}
+
+{% block page_title %}{{ skill.name }}{% endblock %}
+{% block page_description %}{{ skill.description }}{% endblock %}
+
+{% block content %}
+<div id="skill-detail-content">
+<div class="flex flex-col lg:flex-row gap-8">
+  <!-- Main content -->
+  <div class="flex-1 min-w-0">
+    <!-- Skill header -->
+    <div class="mb-8">
+      <div class="flex items-center gap-3 mb-2 flex-wrap">
+        <span class="inline-flex items-center font-mono text-xs bg-gray-100 dark:bg-white/5 text-gray-600 dark:text-gray-400 px-2.5 py-1 rounded">{{ skill.id }}</span>
+        {% if skill.status == "active" %}
+        <span class="inline-flex items-center rounded-full bg-green-50 dark:bg-green-900/30 px-2 py-0.5 text-xs font-medium text-green-700 dark:text-green-400">Active</span>
+        {% elif skill.status == "deprecated" %}
+        <span class="inline-flex items-center rounded-full bg-amber-50 dark:bg-amber-900/30 px-2 py-0.5 text-xs font-medium text-amber-700 dark:text-amber-400">Deprecated</span>
+        {% else %}
+        <span class="inline-flex items-center rounded-full bg-gray-50 dark:bg-white/5 px-2 py-0.5 text-xs font-medium text-gray-700 dark:text-gray-400">{{ skill.status }}</span>
+        {% endif %}
+        {% if skill.category %}
+        <span class="text-xs text-gray-500 dark:text-gray-500">{{ skill.category }}</span>
+        {% endif %}
+      </div>
+{% if can_edit %}
+      <button onclick="loadModal('{% url 'taxonomy:skill-edit' skill.id %}')"
+              class="mt-4 inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-500/15 border border-indigo-200 dark:border-indigo-800 rounded-md hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+        Edit
+      </button>
+      {% endif %}
+    </div>
+
+    <!-- Proficiency Ladder -->
+    {% if proficiency_levels %}
+    <div class="mb-8">
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Proficiency Ladder</h3>
+      <div class="space-y-0">
+        {% for level in proficiency_levels %}
+        <div class="relative flex">
+          <!-- Level indicator -->
+          <div class="flex flex-col items-center mr-4 flex-shrink-0">
+            <div class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold
+              {% if level.level == 0 %}bg-gray-100 dark:bg-white/5 text-gray-400 dark:text-gray-500
+              {% elif level.level == 1 %}bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300
+              {% elif level.level == 2 %}bg-cyan-100 dark:bg-cyan-900/40 text-cyan-700 dark:text-cyan-300
+              {% elif level.level == 3 %}bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300
+              {% elif level.level == 4 %}bg-violet-100 dark:bg-violet-900/40 text-violet-700 dark:text-violet-300
+              {% elif level.level == 5 %}bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300
+              {% endif %}">
+              {{ level.level }}
+            </div>
+            {% if not forloop.last %}
+            <div class="w-0.5 flex-1 bg-gray-200 dark:bg-gray-700"></div>
+            {% endif %}
+          </div>
+
+          <!-- Level content -->
+          <div class="pb-6 flex-1 min-w-0">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-sm font-semibold text-gray-900 dark:text-white">{{ level.label }}</span>
+              {% if level.authorization %}
+              <span class="inline-flex items-center gap-1 rounded-full bg-emerald-50 dark:bg-emerald-900/30 px-2 py-0.5 text-xs font-medium text-emerald-700 dark:text-emerald-400">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                Authorized
+              </span>
+              {% endif %}
+            </div>
+            <p class="text-sm text-gray-600 dark:text-gray-400">{{ level.description }}</p>
+            {% if level.evidence %}
+            <ul class="mt-2 space-y-1">
+              {% for item in level.evidence %}
+              <li class="flex items-start gap-2 text-sm text-gray-500 dark:text-gray-500">
+                <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-gray-400 dark:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                {{ item }}
+              </li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+    <!-- Prerequisites and Recommendations -->
+    {% if prerequisites or recommendations %}
+    <div class="mb-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+      {% if prerequisites %}
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3">Prerequisites</h3>
+        <div class="flex flex-wrap gap-2">
+          {% for req in prerequisites %}
+          <a href="{% url 'taxonomy:skill-detail' req.id %}"
+             class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-md text-sm hover:border-indigo-400 dark:hover:border-indigo-500 transition-colors group">
+            <span class="font-mono text-xs text-gray-500 dark:text-gray-500 group-hover:text-indigo-500 dark:group-hover:text-indigo-400">{{ req.id }}</span>
+            <span class="text-gray-700 dark:text-gray-300 group-hover:text-indigo-600 dark:group-hover:text-indigo-400">{{ req.name }}</span>
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+      {% if recommendations %}
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3">Recommended</h3>
+        <div class="flex flex-wrap gap-2">
+          {% for rec in recommendations %}
+          <a href="{% url 'taxonomy:skill-detail' rec.id %}"
+             class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-md text-sm hover:border-indigo-400 dark:hover:border-indigo-500 transition-colors group">
+            <span class="font-mono text-xs text-gray-500 dark:text-gray-500 group-hover:text-indigo-500 dark:group-hover:text-indigo-400">{{ rec.id }}</span>
+            <span class="text-gray-700 dark:text-gray-300 group-hover:text-indigo-600 dark:group-hover:text-indigo-400">{{ rec.name }}</span>
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    <!-- Required By / Recommended For -->
+    {% if required_by or recommended_for %}
+    <div class="mb-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+      {% if required_by %}
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3">Required By</h3>
+        <div class="flex flex-wrap gap-2">
+          {% for skill in required_by %}
+          <a href="{% url 'taxonomy:skill-detail' skill.id %}"
+             class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-md text-sm hover:border-indigo-400 dark:hover:border-indigo-500 transition-colors group">
+            <span class="font-mono text-xs text-gray-500 dark:text-gray-500 group-hover:text-indigo-500 dark:group-hover:text-indigo-400">{{ skill.id }}</span>
+            <span class="text-gray-700 dark:text-gray-300 group-hover:text-indigo-600 dark:group-hover:text-indigo-400">{{ skill.name }}</span>
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+      {% if recommended_for %}
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3">Recommended For</h3>
+        <div class="flex flex-wrap gap-2">
+          {% for skill in recommended_for %}
+          <a href="{% url 'taxonomy:skill-detail' skill.id %}"
+             class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-md text-sm hover:border-indigo-400 dark:hover:border-indigo-500 transition-colors group">
+            <span class="font-mono text-xs text-gray-500 dark:text-gray-500 group-hover:text-indigo-500 dark:group-hover:text-indigo-400">{{ skill.id }}</span>
+            <span class="text-gray-700 dark:text-gray-300 group-hover:text-indigo-600 dark:group-hover:text-indigo-400">{{ skill.name }}</span>
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    <!-- Assessment Methods -->
+    {% if skill.assessment_methods %}
+    <div class="mb-8">
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Assessment Methods</h3>
+      <div class="space-y-3">
+        {% for method in skill.assessment_methods %}
+        <div class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg p-4">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="inline-flex items-center rounded-full bg-indigo-50 dark:bg-indigo-500/15 px-2 py-0.5 text-xs font-medium text-indigo-700 dark:text-indigo-300 capitalize">{{ method.type|default:"" }}</span>
+          </div>
+          <p class="text-sm text-gray-600 dark:text-gray-400">{{ method.description|default:"" }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+    <!-- Framework Mappings -->
+    {% if framework_rows %}
+    <div class="mb-8">
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Framework Mappings</h3>
+      <div class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg divide-y divide-gray-200 dark:divide-gray-700" x-data="{ open: {} }">
+        {% for fw in framework_rows %}
+        <div>
+          <button x-on:click="open[{{ forloop.counter }}] = !open[{{ forloop.counter }}]"
+                  class="w-full flex items-center justify-between px-4 py-3 text-left hover:bg-gray-50 dark:hover:bg-white/10 transition-colors">
+            <span class="text-sm font-medium text-gray-900 dark:text-white uppercase">
+              {{ fw.label }}
+            </span>
+            <svg class="w-4 h-4 text-gray-400 transition-transform" x-bind:class="open[{{ forloop.counter }}] ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div x-show="open[{{ forloop.counter }}]" x-cloak class="px-4 pb-3">
+            {% for key, values in fw.entries %}
+            <div class="mb-2">
+              {% if key %}<span class="text-xs font-medium text-gray-500 dark:text-gray-500 uppercase">{{ key }}</span>{% endif %}
+              <div class="{% if key %}mt-1 {% endif %}flex flex-wrap gap-1.5">
+                {% for val in values %}
+                <span class="inline-flex items-center font-mono text-xs bg-gray-100 dark:bg-white/5 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded">{{ val }}</span>
+                {% endfor %}
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+  </div>
+
+  <!-- Sidebar -->
+  <div class="lg:w-72 flex-shrink-0">
+    <div class="space-y-5 sticky top-8">
+      <!-- Tags -->
+      {% if skill.tags %}
+      <div class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg p-5">
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3">Tags</h3>
+        <div class="flex flex-wrap gap-1.5">
+          {% for tag in skill.tags %}
+          <span class="inline-flex items-center rounded-full bg-gray-100 dark:bg-white/5 px-2.5 py-0.5 text-xs font-medium text-gray-600 dark:text-gray-400">{{ tag }}</span>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+
+      <!-- Equipment -->
+      {% if skill.equipment %}
+      <div class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg p-5">
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3">Equipment</h3>
+        <ul class="space-y-1.5">
+          {% for item in skill.equipment %}
+          <li class="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
+            <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-gray-400 dark:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>
+            {{ item }}
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
+      <!-- Domain link -->
+      <div class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg p-5">
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3">Domain</h3>
+        <a href="{% url 'taxonomy:domain-detail' skill.domain_id %}" class="text-sm text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors">
+          {{ skill.domain.name }}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock %}

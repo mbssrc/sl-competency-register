@@ -1,0 +1,107 @@
+{
+  "id": "SWSEC-WEB-AUTHZ",
+  "name": "Authentication & Authorization Testing",
+  "domain": "software-security",
+  "category": "Web Application Security",
+  "status": "active",
+  "description": "Testing of authentication mechanisms and authorization controls in web applications. Covers session management, credential handling, multi-factor authentication, IDOR, privilege escalation, RBAC/ABAC bypass, OAuth/OIDC, and JWT security.",
+
+  "requires": [
+    "FOUND-ETHICS"
+  ],
+  "recommended": [
+    "FOUND-REPORT",
+    "SWSEC-REVIEW-AUTH",
+    "FOUND-TOOLS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to authentication or authorization testing"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands authentication and authorization concepts and common flaws",
+      "evidence": [
+        "Can explain the difference between authentication and authorization",
+        "Understands session management, cookies, and token-based auth",
+        "Completed introductory training on OWASP Broken Access Control"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Tests basic auth/authz controls under supervision",
+      "evidence": [
+        "Tested for IDOR and horizontal privilege escalation in lab environments",
+        "Evaluated session token entropy and cookie attributes under guidance",
+        "Findings reviewed by authorized tester before inclusion in reports"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently tests authentication and authorization across standard implementations",
+      "evidence": [
+        "Independently identified access control flaws on 5+ engagements",
+        "Tests OAuth 2.0/OIDC flows for common misconfigurations",
+        "Evaluates JWT implementations for known vulnerabilities (alg:none, key confusion)",
+        "Passed proficiency assessment on auth/authz testing"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Tests complex authorization models; identifies subtle logic flaws",
+      "evidence": [
+        "Tests complex RBAC/ABAC models and multi-tenant isolation",
+        "Identifies business logic flaws in authorization workflows",
+        "Evaluates SSO integrations and federated identity implementations",
+        "Reviews and mentors junior staff on auth/authz findings"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Authority on authentication and authorization security; develops methodology",
+      "evidence": [
+        "Published research on novel auth/authz bypass techniques",
+        "Developed the lab's auth/authz testing methodology",
+        "Evaluates custom authentication protocols and novel identity systems",
+        "Trains teams on advanced access control testing"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Identify access control flaws in a multi-role application with RBAC, OAuth, and JWT-based authentication"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given a complex authorization matrix, identify gaps and demonstrate exploitation paths"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0686", "K0742", "K1368", "K1079", "S0656"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-005 Software Security Assessment"]
+    },
+    "owasp": ["A01:2025 Broken Access Control", "A07:2025 Authentication Failures"],
+    "cwe": ["CWE-284", "CWE-287", "CWE-639"],
+    "crest_cct_app": ["H12", "H13", "H26"],
+    "mitre_attack": {"techniques": ["T1078"]}
+  },
+
+  "tags": [
+    "access-control",
+    "owasp-top-10",
+    "authentication",
+    "authorization",
+    "web",
+    "entropy",
+    "privilege-escalation"
+  ]
+}

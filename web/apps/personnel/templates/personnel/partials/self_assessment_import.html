@@ -1,0 +1,39 @@
+<div class="bg-white dark:bg-gray-800 rounded-xl shadow-2xl border border-gray-200 dark:border-white/10 p-6">
+  <div class="flex items-center justify-between mb-6">
+    <h3 class="text-lg font-bold text-gray-900 dark:text-white">Import Self-Assessment — {{ person.name }}</h3>
+    <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+
+  {% if imported is not None %}
+  <div class="mb-4 rounded-md bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800/50 p-3 text-sm text-amber-800 dark:text-amber-300">
+    Imported {{ imported }} row{{ imported|pluralize }}.
+    {% if errors %}{{ errors|length }} could not be read:{% endif %}
+  </div>
+  {% endif %}
+  {% include "core/partials/form_errors.html" %}
+
+  <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Upload a completed self-assessment questionnaire. This will not affect official skill levels.</p>
+
+  <form method="post" action="{% url 'personnel:self-assessment-import' person.id %}" enctype="multipart/form-data" class="space-y-5">
+    {% csrf_token %}
+
+    <div>
+      <label for="id_file" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Excel File</label>
+      <input type="file" name="file" id="id_file" accept=".xlsx" required
+             class="w-full text-sm text-gray-600 dark:text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border file:border-gray-300 dark:file:border-white/10 file:text-sm file:font-medium file:bg-white dark:file:bg-white/5 file:text-gray-700 dark:file:text-gray-300 hover:file:bg-gray-50 dark:hover:file:bg-white/10 file:transition-colors file:cursor-pointer">
+    </div>
+
+    <div class="flex items-center justify-end gap-3 pt-4 border-t border-gray-200 dark:border-white/10">
+      <button type="button" onclick="closeModal()"
+              class="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-md hover:bg-gray-50 dark:hover:bg-white/10 transition-colors">
+        Cancel
+      </button>
+      <button type="submit"
+              class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        Import
+      </button>
+    </div>
+  </form>
+</div>

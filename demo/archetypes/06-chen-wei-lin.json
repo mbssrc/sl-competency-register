@@ -1,0 +1,51 @@
+{
+  "key": "PERS-006",
+  "bands": {
+    "strong": [
+      "HWSEC-CRYPTO",
+      "CRYPTO-IMPL",
+      "CRYPTO-SYM"
+    ],
+    "weak": [
+      "HWSEC-INV",
+      "HWSEC-SPREP",
+      "CRYPTO-PQ"
+    ]
+  },
+  "signature": {
+    "HWSEC-CRYPTO-HSM": 4,
+    "HWSEC-CRYPTO-ACCEL": 4,
+    "HWSEC-CRYPTO-KEY": 4,
+    "HWSEC-CRYPTO-RNG": 4,
+    "CRYPTO-IMPL-CONSTTIME": 3,
+    "CRYPTO-IMPL-ENTROPY": 3,
+    "CRYPTO-SYM-BLOCKCIPHER": 3
+  },
+  "never": [],
+  "foundations": [
+    2,
+    3
+  ],
+  "projects": [
+    "PRJ-SAT-DSP",
+    "PRJ-SAT-CP-BLACK"
+  ],
+  "stale_skills": [],
+  "self_assessment": {
+    "mode": "all",
+    "bias": -1,
+    "jitter": 1
+  },
+  "development_plan": [],
+  "name": "Chen Wei-Lin",
+  "role": "Senior Evaluator, Cryptographic Implementation",
+  "start_date": "2020-11-30",
+  "domains": [
+    "HWSEC",
+    "CRYPTO"
+  ],
+  "target_maturity": {
+    "HWSEC": "senior",
+    "CRYPTO": "practitioner"
+  }
+}

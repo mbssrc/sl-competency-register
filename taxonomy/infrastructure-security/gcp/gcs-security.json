@@ -1,0 +1,104 @@
+{
+  "id": "INFRA-GCP-GCS",
+  "name": "GCP Cloud Storage Security Assessment",
+  "domain": "infrastructure-security",
+  "category": "GCP Security",
+  "status": "active",
+  "description": "Security assessment of Google Cloud Storage configurations. Covers bucket IAM policies, ACLs, uniform bucket-level access, signed URLs, encryption (CMEK/CSEK), retention policies, and data exposure risks in GCS.",
+  "requires": [
+    "INFRA-GCP-IAM"
+  ],
+  "recommended": [
+    "FOUND-EVIDENCE"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to GCS security assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands GCS access control mechanisms and common misconfiguration patterns",
+      "evidence": [
+        "Can explain bucket IAM policies, ACLs, and uniform bucket-level access",
+        "Understands GCS encryption options (Google-managed, CMEK, CSEK)",
+        "Familiar with common GCS data exposure patterns"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Enumerates and reviews GCS configurations under supervision",
+      "evidence": [
+        "Uses tools to scan for publicly accessible buckets and objects",
+        "Reviews bucket policies for overly permissive access under guidance",
+        "Documents GCS security findings with supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses GCS security posture across projects",
+      "evidence": [
+        "Independently identifies misconfigured bucket policies and public access",
+        "Evaluates cross-project GCS access and signed URL risks",
+        "Assesses encryption, logging, and retention configurations",
+        "Produces compliant GCS assessment reports"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex GCS security scenarios including cross-project data flows and exfiltration simulation",
+      "evidence": [
+        "Identifies subtle data exposure through signed URL abuse and cross-project IAM",
+        "Develops automated GCS configuration audit tooling",
+        "Reviews GCS assessment work of junior analysts",
+        "Assesses GCS-backed application architectures for data leakage"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines lab GCS assessment methodology; discovers novel GCS attack vectors",
+      "evidence": [
+        "Designed or maintains the lab's GCS security assessment methodology",
+        "Published research on GCS security bypass techniques or data exfiltration",
+        "Trains teams on advanced GCS security assessment"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess a multi-project GCS environment with intentional misconfigurations and identify all data exposure risks"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review GCS security findings from recent cloud assessment engagements"
+    }
+  ],
+  "framework_mappings": {
+    "cis": [
+      "CIS Google Cloud Platform Foundation Benchmark v4.0.0 - Section 5 Storage"
+    ],
+    "csa_ccm": [
+      "DSP-04",
+      "DSP-05",
+      "CEK-03"
+    ],
+    "nice": {
+      "tks": ["K0863", "K1369", "K0931", "K0685", "K1150"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "IO-WRL-006 Systems Security Analysis"]
+    }
+  },
+  "tags": [
+    "gcp",
+    "gcs",
+    "storage",
+    "data-exposure",
+    "cloud-security",
+    "encryption",
+    "exfiltration",
+    "iam"
+  ]
+}

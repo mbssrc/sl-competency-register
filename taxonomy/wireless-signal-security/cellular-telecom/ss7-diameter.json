@@ -1,0 +1,121 @@
+{
+  "id": "WSEC-CELL-SS7",
+  "name": "SS7 & Diameter Protocol Analysis",
+  "domain": "wireless-signal-security",
+  "category": "Cellular & Telecom Security",
+  "status": "active",
+  "description": "Ability to analyze the security of SS7 (Signaling System 7) and Diameter signaling protocols used in telecom core networks. Covers assessment of MAP/CAP/ISUP message security, Diameter AVP manipulation, location tracking via signaling, call and SMS interception vectors, subscriber data extraction, and evaluation of signaling firewalls and filtering effectiveness.",
+  "requires": [
+    "FOUND-ETHICS"
+  ],
+  "recommended": [
+    "WSEC-CELL-GSM",
+    "WSEC-CELL-LTE5G",
+    "FOUND-RISK",
+    "FOUND-TOOLS"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to SS7 or Diameter signaling security"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands telecom signaling architecture and known vulnerability classes",
+      "evidence": [
+        "Can describe the SS7 protocol stack and the role of MAP, CAP, and ISUP",
+        "Understands Diameter signaling in LTE/EPC and 5G non-standalone, and that 5G standalone uses HTTP/2 service-based interfaces with SEPP at the roaming boundary",
+        "Completed training on telecom signaling security and known attack vectors"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Analyzes signaling traffic and executes basic assessment procedures under supervision",
+      "evidence": [
+        "Parsed and analyzed SS7/MAP message captures using Wireshark or SigPloit under guidance",
+        "Identified location tracking, subscriber data query, and call interception message types",
+        "Executed basic SS7 assessment procedures against lab signaling infrastructure under supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses SS7 and Diameter signaling security",
+      "evidence": [
+        "Independently assessed signaling security for 3+ telecom operators or deployments",
+        "Evaluated signaling firewall rule effectiveness against GSMA-documented attack categories",
+        "Demonstrated location tracking, subscriber profiling, and interception vectors in controlled environments",
+        "Produced GSMA-aligned assessment reports with risk-rated findings and remediation priorities"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Performs advanced signaling attacks; assesses firewall bypass techniques; develops assessment automation",
+      "evidence": [
+        "Developed signaling firewall bypass techniques exploiting filtering gaps or message crafting",
+        "Assessed cross-protocol attack chains (SS7/Diameter/GTP interworking vulnerabilities)",
+        "Built automated signaling security assessment tools for the lab",
+        "Mentors junior analysts on telecom signaling security and reviews assessment reports"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on telecom signaling security; advises operators and regulators",
+      "evidence": [
+        "Published research on SS7 or Diameter security vulnerabilities or assessment techniques",
+        "Authored the lab's telecom signaling security assessment methodology",
+        "Advises telecom operators or regulators on signaling security architecture and controls",
+        "Trains teams on signaling security and develops lab assessment infrastructure"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Execute a structured SS7/Diameter security assessment against lab telecom signaling infrastructure, demonstrating key attack categories and firewall bypass techniques"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review telecom signaling assessment reports for GSMA alignment, attack coverage completeness, and remediation quality"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0773", "K0674", "K0831", "S0483"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-008 Technology Research and Development"]
+    },
+    "sfia": {
+      "skill": "PENT",
+      "levels": [
+        4,
+        5
+      ]
+    },
+    "mitre_attack": {
+      "techniques": [
+        "T1557",
+        "T1040"
+      ]
+    },
+    "gsma": {
+      "documents": [
+        "FS.11",
+        "FS.19",
+        "FS.20"
+      ]
+    }
+  },
+  "tags": [
+    "ss7",
+    "diameter",
+    "telecom",
+    "signaling",
+    "map",
+    "location-tracking",
+    "gsma",
+    "wireshark",
+    "protocol-analysis"
+  ]
+}

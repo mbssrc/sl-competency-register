@@ -1,0 +1,23 @@
+[
+  {
+    "username": "admin",
+    "role": "admin",
+    "person": null,
+    "password": "admin",
+    "note": "Full access, including user management and the admin tools."
+  },
+  {
+    "username": "manager",
+    "role": "manager",
+    "person": "PERS-020",
+    "password": "manager",
+    "note": "Everything a user sees, for everyone, plus assessment and project editing and the reports."
+  },
+  {
+    "username": "user",
+    "role": "user",
+    "person": "PERS-011",
+    "password": "user",
+    "note": "Linked to the new hire, so the restricted view shows a record with self-assessments on it."
+  }
+]

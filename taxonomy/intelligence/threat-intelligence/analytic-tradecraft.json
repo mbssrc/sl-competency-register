@@ -1,0 +1,98 @@
+{
+  "id": "INTEL-TI-TRADECRAFT",
+  "name": "Analytic Tradecraft & Source Evaluation",
+  "domain": "intelligence",
+  "category": "Threat Intelligence",
+  "status": "active",
+  "description": "Covers the analytic discipline underpinning intelligence judgments: structured analytic techniques such as Analysis of Competing Hypotheses (ACH) and key assumptions checks, source reliability and information credibility grading (Admiralty / NATO system), calibrated estimative language, cognitive bias mitigation, and collection requirements management. Includes recording how each judgment was reached so that it can be reviewed and reproduced. Writing and disseminating finished intelligence products belongs to INTEL-TI-PRODUCTION.",
+  "requires": [
+    "INTEL-TI-PRODUCTION"
+  ],
+  "recommended": [
+    "INTEL-TI-STRATEGIC",
+    "INTEL-TI-ADVERSARY",
+    "FOUND-QA"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to structured analytic techniques or source evaluation"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands why structured techniques, source grading, and estimative language are used in intelligence analysis",
+      "evidence": [
+        "Can explain the difference between source reliability and information credibility in the Admiralty grading system",
+        "Can name common cognitive biases affecting analysts (confirmation bias, anchoring, mirror imaging)",
+        "Can describe the purpose of ACH and a key assumptions check"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Applies structured techniques and source grading to analytic tasks under supervision",
+      "evidence": [
+        "Grades sources and reports with the Admiralty system on assigned tasks, with grades reviewed by a senior analyst",
+        "Builds an ACH matrix for a defined question under guidance and documents diagnostic evidence",
+        "Uses the lab's estimative language and confidence scale consistently in draft judgments",
+        "Maps collection gaps against stated intelligence requirements with mentor support"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently applies analytic tradecraft and manages collection requirements across engagements",
+      "evidence": [
+        "Selects and applies appropriate structured analytic techniques across 3+ engagements, with the analytic record retained",
+        "Separates source reliability, information credibility, and analytic confidence explicitly in every key judgment",
+        "Runs key assumptions checks and documents which assumptions would change the assessment if invalid",
+        "Maintains a collection requirements register linking requirements, sources, and gaps; work passes peer review"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Leads analytic quality; facilitates contrarian techniques; mentors analysts",
+      "evidence": [
+        "Facilitates group techniques (red team analysis, devil's advocacy, premortem) on contested assessments",
+        "Reviews colleagues' products for unsupported judgments, bias indicators, and misused estimative language",
+        "Resolves conflicting source reporting and documents the rationale for the weighting applied",
+        "Mentors junior analysts on structured techniques and source evaluation"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines the lab's analytic standards and source evaluation methodology; trains teams",
+      "evidence": [
+        "Designed or maintains the lab's analytic standards, estimative language scale, and source grading procedure",
+        "Established the analytic review and quality control process for intelligence products",
+        "Publishes or presents analytic methodology recognized outside the organization",
+        "Trains teams on analytic tradecraft and calibrates graders across the team"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "problem_solving",
+      "description": "Given a scenario with conflicting multi-source reporting, grade each source and item with the Admiralty system, run an ACH against at least three hypotheses, and state key judgments with calibrated estimative language and confidence"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review an analyst's recent assessments and analytic records for traceability from source grades to judgments, documented assumptions, bias mitigation, and correct use of estimative language"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0968", "K0658", "S0443", "K0815", "S0811", "S0739"],
+      "work_roles": ["PD-WRL-006 Threat Analysis"]
+    }
+  },
+  "tags": [
+    "threat-intelligence",
+    "analytical-techniques",
+    "source-evaluation",
+    "estimative-language",
+    "cognitive-bias",
+    "collection-management"
+  ]
+}

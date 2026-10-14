@@ -1,0 +1,103 @@
+{
+  "id": "WSEC-PROTO-CUSTOM",
+  "name": "Custom Modulation Analysis",
+  "domain": "wireless-signal-security",
+  "category": "Protocol Analysis",
+  "status": "active",
+  "description": "Ability to identify and characterize non-standard, proprietary, or custom modulation schemes encountered in security assessments. Covers modulation classification from blind signal captures, parameter estimation (symbol rate, carrier offset, roll-off), constellation analysis, and development of custom demodulation approaches for previously unseen modulation types.",
+  "requires": [
+    "WSEC-SDR-DEMOD",
+    "WSEC-SDR-DSP"
+  ],
+  "recommended": [
+    "WSEC-PROTO-REVENG"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to custom modulation analysis"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands modulation scheme diversity and the challenge of non-standard modulations",
+      "evidence": [
+        "Can describe the properties that distinguish major modulation families (ASK, FSK, PSK, QAM, spread-spectrum)",
+        "Understands how modulation parameters affect spectral shape and time-domain characteristics",
+        "Completed training on modulation classification fundamentals"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Assists in characterizing unknown modulations using analysis tools under supervision",
+      "evidence": [
+        "Used spectral and time-domain analysis to distinguish modulation families under guidance",
+        "Estimated symbol rates from cyclostationary features or eye diagram analysis with assistance",
+        "Identified constellation diagrams and mapped them to modulation orders under supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently classifies and characterizes non-standard modulation schemes",
+      "evidence": [
+        "Independently classified modulation schemes from 3+ blind signal captures",
+        "Estimated symbol rate, carrier offset, and excess bandwidth from captured signals",
+        "Developed custom demodulation approaches for non-standard modulations",
+        "Documented modulation parameters with sufficient detail for independent reproduction"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Characterizes complex modulation schemes; develops automated classification approaches",
+      "evidence": [
+        "Characterized multi-carrier, spread-spectrum, or hybrid modulation schemes from blind captures",
+        "Developed automated or semi-automated modulation classification tools for the lab",
+        "Resolved challenging cases with low SNR, interference, or partial captures",
+        "Mentors junior analysts on modulation characterization methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on modulation analysis; publishes research; defines lab capability",
+      "evidence": [
+        "Published research on modulation classification or blind signal analysis techniques",
+        "Characterized modulation schemes that had not been previously publicly documented",
+        "Authored the lab's modulation analysis methodology and reference library",
+        "Trains teams on advanced modulation analysis techniques"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Given blind IQ captures of signals with non-standard modulations, classify each modulation type, estimate parameters, and produce demodulated output"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Develop a demodulation approach for a previously uncharacterized modulation scheme from a captured signal"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0812", "K0925", "K0851"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development"]
+    },
+    "mitre_attack": {
+      "techniques": [
+        "T1040"
+      ]
+    },
+    "certifications": [
+      "GIAC GAWN"
+    ]
+  },
+  "tags": [
+    "modulation",
+    "classification",
+    "blind-analysis",
+    "constellation",
+    "signal-characterization"
+  ]
+}

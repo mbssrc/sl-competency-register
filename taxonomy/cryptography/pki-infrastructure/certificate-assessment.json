@@ -1,0 +1,110 @@
+{
+  "id": "CRYPTO-PKI-CERTS",
+  "name": "Certificate Assessment",
+  "domain": "cryptography",
+  "category": "PKI & Infrastructure",
+  "status": "active",
+  "description": "Assessment of X.509 certificate configurations, validation logic, and lifecycle management. Covers certificate chain verification, extension review (SAN, key usage, constraints), revocation checking (CRL, OCSP), certificate transparency, and detection of misissued or misconfigured certificates.",
+
+  "requires": [
+    "CRYPTO-ASYM-SIGNATURES"
+  ],
+  "recommended": [
+    "CRYPTO-ASYM-ECC",
+    "FOUND-STANDARDS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to X.509 certificate assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands X.509 certificate structure and the purpose of PKI",
+      "evidence": [
+        "Can explain the certificate chain of trust model (root, intermediate, leaf)",
+        "Understands the purpose of key usage and extended key usage extensions",
+        "Can describe certificate revocation mechanisms (CRL, OCSP)"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Inspects certificates and identifies basic misconfiguration under supervision",
+      "evidence": [
+        "Uses OpenSSL and browser tools to inspect certificate chains",
+        "Identifies expired, self-signed, or improperly chained certificates under guidance",
+        "Checks Subject Alternative Name (SAN) coverage for target domains",
+        "Documents certificate findings following lab templates"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses certificate configurations and validation practices",
+      "evidence": [
+        "Evaluates certificate key usage, basic constraints, and name constraints",
+        "Assesses revocation checking implementation (CRL distribution; OCSP and stapling where still offered, noting OCSP is optional under the CA/B Forum Baseline Requirements and Let's Encrypt ended OCSP in August 2025)",
+        "Identifies wildcard certificate overuse and scope risks",
+        "Evaluates certificate renewal automation (e.g., ACME) against shrinking CA/B Forum maximum validity periods (Ballot SC-081: 200 days from March 2026, 100 days from March 2027, 47 days from March 2029)",
+        "Produces findings referencing CA/Browser Forum Baseline Requirements or RFC 5280"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex certificate assessment; evaluates certificate transparency and pinning",
+      "evidence": [
+        "Evaluates Certificate Transparency (CT) log monitoring and enforcement",
+        "Assesses certificate pinning implementations (HPKP legacy, app-level pinning)",
+        "Identifies certificate misissuance through CT log analysis",
+        "Reviews and mentors junior staff on certificate assessment methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines certificate assessment methodology; recognised authority on PKI certificate security",
+      "evidence": [
+        "Authored or maintains the lab's certificate assessment methodology",
+        "Published research on certificate misissuance, CT, or validation bypass techniques",
+        "Provides expert guidance on certificate policy and lifecycle management",
+        "Trains teams on X.509 internals, validation pitfalls, and assessment approaches"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Audit certificates across a set of services: evaluate chain validity, extensions, revocation, and produce a prioritised findings report"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review certificate assessment findings from a recent engagement for completeness and technical accuracy"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1239", "K1203", "S0657", "S0969"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-001 Cybersecurity Architecture"]
+    },
+    "nist_sp": ["800-57"],
+    "ietf": {
+      "rfcs": ["RFC 5280", "RFC 6962", "RFC 9162"]
+    }
+  },
+
+  "tags": [
+    "x509",
+    "certificates",
+    "pki",
+    "certificate-transparency",
+    "revocation",
+    "ocsp",
+    "chain-of-trust",
+    "tls",
+    "transport-security"
+  ]
+}

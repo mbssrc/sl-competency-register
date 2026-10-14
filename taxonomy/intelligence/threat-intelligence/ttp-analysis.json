@@ -1,0 +1,104 @@
+{
+  "id": "INTEL-TI-TTP",
+  "name": "TTP Analysis",
+  "domain": "intelligence",
+  "category": "Threat Intelligence",
+  "status": "active",
+  "description": "Analyzing and documenting adversary tactics, techniques, and procedures (TTPs) using structured frameworks. Covers MITRE ATT&CK mapping, behavioral pattern analysis, technique evolution tracking, and translating TTP intelligence into actionable detection and hunting guidance for defensive operations.",
+  "requires": [],
+  "recommended": [
+    "INTEL-TI-ADVERSARY",
+    "FOUND-DOC",
+    "FOUND-TOOLS"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to TTP analysis or the MITRE ATT&CK framework"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the concept of TTPs and the structure of the MITRE ATT&CK framework",
+      "evidence": [
+        "Can explain the ATT&CK matrix structure (tactics, techniques, sub-techniques)",
+        "Understands why TTP analysis is more durable than IOC-based detection",
+        "Familiar with the distinction between tactics, techniques, and procedures"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Maps observed behaviors to ATT&CK techniques under supervision",
+      "evidence": [
+        "Maps malware and incident artifacts to ATT&CK techniques under guidance",
+        "Documents observed procedures with supporting evidence",
+        "Creates basic ATT&CK Navigator layers for engagements",
+        "Mappings reviewed by authorized analyst for accuracy"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently performs TTP analysis and produces detection-oriented intelligence",
+      "evidence": [
+        "Conducts thorough TTP analysis for engagements and produces ATT&CK-mapped reports across 3+ cases",
+        "Translates TTP intelligence into detection rule concepts or hunting hypotheses",
+        "Identifies technique variations and procedure-level distinctions between actors",
+        "TTP analysis products pass analytical quality review"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Performs advanced behavioral analysis; identifies technique trends; mentors analysts",
+      "evidence": [
+        "Identifies novel techniques or undocumented sub-technique variants",
+        "Tracks technique evolution across campaigns and adversary groups over time",
+        "Develops structured TTP comparison methodologies for campaign correlation",
+        "Mentors junior analysts on TTP analysis and ATT&CK mapping rigor"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines TTP analysis methodology; contributes to framework development; trains teams",
+      "evidence": [
+        "Designed or maintains the lab's TTP analysis methodology and standards",
+        "Contributes technique submissions or refinements to MITRE ATT&CK or similar frameworks",
+        "Publishes original research on adversary behavior patterns",
+        "Trains teams on TTP analysis and develops training scenarios"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Given a malware analysis report or incident timeline, produce a complete ATT&CK mapping with procedure-level detail and detection recommendations"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review ATT&CK-mapped engagement reports for mapping accuracy, evidence support, and detection utility"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0788", "K0789", "K1066", "K0844"],
+      "work_roles": ["PD-WRL-006 Threat Analysis", "PD-WRL-001 Defensive Cybersecurity"]
+    },
+    "mitre_attack": {
+      "techniques": [
+        "T1059",
+        "T1053",
+        "T1078"
+      ],
+      "note": "This skill directly covers ATT&CK framework proficiency"
+    }
+  },
+  "tags": [
+    "threat-intelligence",
+    "ttp-analysis",
+    "mitre-attack",
+    "behavioral-analysis",
+    "detection",
+    "malware"
+  ]
+}

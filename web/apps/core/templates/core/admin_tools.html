@@ -1,0 +1,89 @@
+{% extends "core/base.html" %}
+
+{% block title %}Admin Tools - {{ product_name }}{% endblock %}
+
+{% block page_crumbs %}
+  {% include "core/partials/crumb.html" with label="Admin" first=True %}
+  {% include "core/partials/crumb.html" with label="Admin Tools" current=True %}
+{% endblock %}
+
+{% block page_title %}Admin Tools{% endblock %}
+{% block page_description %}Taxonomy management and system integrity controls.{% endblock %}
+
+{% block content %}
+<div class="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+  <!-- Seed Taxonomy -->
+  <div class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg p-6">
+    <div class="flex items-center mb-4">
+      <svg class="w-6 h-6 text-indigo-500 dark:text-indigo-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Import from JSON</h3>
+    </div>
+    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Import taxonomy data from the JSON source files in the repository into the database. Updates or creates all domains, skills, profiles, and services.</p>
+    <form method="post" action="{% url 'admin-seed' %}">
+      {% csrf_token %}
+      <button type="submit"
+              class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        Run Import
+      </button>
+    </form>
+    {% if seed_result is not None %}
+    <div class="mt-4 p-3 rounded-md text-sm {% if seed_success %}bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/50{% else %}bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 border border-red-200 dark:border-red-800/50{% endif %}">
+      <pre class="whitespace-pre-wrap font-mono text-xs">{{ seed_result }}</pre>
+    </div>
+    {% endif %}
+  </div>
+
+  <!-- Export Taxonomy to JSON -->
+  <div class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg p-6">
+    <div class="flex items-center mb-4">
+      <svg class="w-6 h-6 text-emerald-500 dark:text-emerald-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Export to JSON</h3>
+    </div>
+    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Export the current taxonomy database back to JSON files. Use <strong>Run Export</strong> to validate round-tripping, or <strong>Download</strong> to get a .tar.gz archive you can extract into the repo and commit as a patch.</p>
+    <div class="flex items-center gap-3">
+      <form method="post" action="{% url 'admin-export-json' %}">
+        {% csrf_token %}
+        <button type="submit"
+                class="px-4 py-2 text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500">
+          Run Export
+        </button>
+      </form>
+      <form method="post" action="{% url 'admin-export-download' %}">
+        {% csrf_token %}
+        <button type="submit"
+                class="px-4 py-2 text-sm font-medium text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-500/15 border border-emerald-200 dark:border-emerald-800 rounded-md hover:bg-emerald-100 dark:hover:bg-emerald-900/50 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500">
+          Download .tar.gz
+        </button>
+      </form>
+    </div>
+    {% if export_result is not None %}
+    <div class="mt-4 p-3 rounded-md text-sm {% if export_success %}bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/50{% else %}bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 border border-red-200 dark:border-red-800/50{% endif %}">
+      <pre class="whitespace-pre-wrap font-mono text-xs">{{ export_result }}</pre>
+    </div>
+    {% endif %}
+  </div>
+
+  <!-- Integrity Check -->
+  <div class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg p-6">
+    <div class="flex items-center mb-4">
+      <svg class="w-6 h-6 text-amber-500 dark:text-amber-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Integrity Check</h3>
+    </div>
+    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Validate cross-database references, DAG integrity (no circular dependencies), and identify orphaned skills.</p>
+    <form method="post" action="{% url 'admin-check-integrity' %}">
+      {% csrf_token %}
+      <button type="submit"
+              class="px-4 py-2 text-sm font-medium text-white bg-amber-600 hover:bg-amber-700 dark:bg-amber-500 dark:hover:bg-amber-600 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500">
+        Run Check
+      </button>
+    </form>
+    {% if integrity_result is not None %}
+    <div class="mt-4 p-3 rounded-md text-sm {% if integrity_success %}bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/50{% else %}bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 border border-red-200 dark:border-red-800/50{% endif %}">
+      <pre class="whitespace-pre-wrap font-mono text-xs">{{ integrity_result }}</pre>
+    </div>
+    {% endif %}
+  </div>
+
+</div>
+{% endblock %}

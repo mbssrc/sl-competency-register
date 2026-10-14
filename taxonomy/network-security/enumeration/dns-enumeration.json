@@ -1,0 +1,108 @@
+{
+  "id": "NETSEC-ENUM-DNS",
+  "name": "DNS Enumeration",
+  "domain": "network-security",
+  "category": "Enumeration",
+  "status": "active",
+  "description": "Ability to enumerate DNS infrastructure and extract network intelligence from name services. Covers zone transfers, subdomain brute-forcing, reverse DNS sweeps, DNS record analysis, and identification of DNS misconfigurations that may expose internal network information.",
+
+  "requires": [
+    "NETSEC-RECON-PORTSCANNING"
+  ],
+  "recommended": [
+    "NETSEC-RECON-PASSIVERECON",
+    "FOUND-DOC"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to DNS enumeration techniques"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands DNS fundamentals and the security implications of DNS misconfigurations",
+      "evidence": [
+        "Can explain DNS record types (A, AAAA, MX, NS, CNAME, TXT, SRV, PTR)",
+        "Understands zone transfers and why they represent a security risk",
+        "Knows the role of DNS in network reconnaissance"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs basic DNS enumeration using standard tools under supervision",
+      "evidence": [
+        "Uses dig, nslookup, or host for DNS queries and record retrieval",
+        "Attempts zone transfers against target name servers",
+        "Runs subdomain enumeration tools (gobuster, amass, subfinder) with guidance",
+        "Documents DNS findings in engagement notes under review"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently conducts comprehensive DNS enumeration and identifies attack surface from DNS data",
+      "evidence": [
+        "Performs systematic DNS enumeration including forward and reverse lookups",
+        "Discovers hidden subdomains and internal hostnames through multiple techniques",
+        "Identifies DNS misconfigurations (open resolvers, DNSSEC issues, zone transfer leaks)",
+        "Correlates DNS data with other enumeration findings to map infrastructure"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex DNS environments; develops enumeration automation; mentors others",
+      "evidence": [
+        "Enumerates split-horizon DNS and multi-domain environments",
+        "Develops automated DNS enumeration pipelines and wordlists",
+        "Identifies DNS-based attack opportunities (poisoning, takeover, tunneling)",
+        "Mentors junior staff on DNS enumeration methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines DNS enumeration methodology; deep protocol expertise; trains teams",
+      "evidence": [
+        "Authored the lab's DNS enumeration standard methodology",
+        "Deep understanding of DNS protocol internals and resolution mechanics",
+        "Published research on DNS security or enumeration techniques",
+        "Trains teams on advanced DNS enumeration and DNS attack surface analysis"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Perform comprehensive DNS enumeration against a lab domain and produce a complete record of all discovered hostnames, records, and misconfigurations"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review DNS enumeration results from recent engagements for thoroughness"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0674", "K1011", "K0956", "S0845"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis"]
+    },
+    "mitre_attack": {
+      "techniques": ["T1590.002"]
+    },
+    "crest": {
+      "areas": ["dns-enumeration"]
+    }
+  },
+
+  "tags": [
+    "dns",
+    "zone-transfer",
+    "subdomain",
+    "enumeration",
+    "name-resolution",
+    "reconnaissance"
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "id": "DFIR-CLOUD-CONTAINER",
+  "name": "Container & Kubernetes Forensics",
+  "domain": "digital-forensics",
+  "category": "Cloud Forensics",
+  "status": "active",
+  "description": "Ability to perform forensic investigation of containerised environments including Docker, Kubernetes, and container orchestration platforms. Covers container image analysis, runtime artifact collection, pod and node forensics, container escape detection, and dealing with the ephemeral nature of container workloads.",
+
+  "requires": [
+    "DFIR-CLOUD-LOGS",
+    "FOUND-EVIDENCE"
+  ],
+  "recommended": [
+    "DFIR-CLOUD-ARTIFACTS",
+    "DFIR-DISK-FILESYS",
+    "INFRA-CONTAINER-K8S"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to container forensics"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands container architectures and the unique forensic challenges they present",
+      "evidence": [
+        "Can describe Docker and Kubernetes architecture at a level relevant to forensics",
+        "Understands why container ephemerality complicates evidence collection",
+        "Can explain the difference between container image layers and runtime state"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Collects and examines container artifacts under supervision",
+      "evidence": [
+        "Exported and analysed Docker container filesystem layers under guidance",
+        "Collected Kubernetes audit logs and pod event histories",
+        "Examined container image manifests and layer diffs for suspicious modifications",
+        "Documented container evidence collection with supervisor review"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently investigates container security incidents and preserves ephemeral container evidence",
+      "evidence": [
+        "Independently investigated container-based incidents in 3+ engagements",
+        "Preserved running container state (filesystem, process list, network connections) before termination",
+        "Analysed container images to identify supply chain compromise or backdoored images",
+        "Produced container forensic reports detailing evidence collection methodology"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Investigates complex Kubernetes cluster compromises; detects container escapes; develops container forensic tooling",
+      "evidence": [
+        "Investigated Kubernetes cluster-level compromises involving RBAC abuse and lateral movement",
+        "Detected container escape attempts and node-level compromise from container artifacts",
+        "Developed automated container evidence collection scripts for incident response",
+        "Mentors analysts on container forensics methodology and Kubernetes security"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines container forensics methodology; researches new container attack artifacts; advises on forensic-ready container architectures",
+      "evidence": [
+        "Authored or maintains the lab's container and Kubernetes forensics methodology",
+        "Published research on container forensic artifacts or investigation techniques",
+        "Advises organisations on container logging and runtime monitoring for forensic readiness",
+        "Trains teams on container forensics and Kubernetes incident investigation"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Investigate a simulated Kubernetes cluster compromise: collect container and cluster artifacts, determine attack vector, and document findings"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given a scenario where suspicious containers have already been terminated, determine what evidence is available and reconstruct the incident"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1373", "K0806", "K1092", "S0612"],
+      "work_roles": ["PD-WRL-002 Digital Forensics", "IN-WRL-002 Digital Evidence Analysis"]
+    },
+    "sfia": {
+      "skill": "DGFS"
+    },
+    "giac": ["GCFR"]
+  },
+
+  "tags": [
+    "container",
+    "docker",
+    "kubernetes",
+    "k8s",
+    "orchestration",
+    "ephemeral",
+    "container-escape",
+    "containers",
+    "forensics",
+    "lateral-movement",
+    "supply-chain",
+    "linux"
+  ]
+}

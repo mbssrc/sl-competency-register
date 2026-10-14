@@ -1,0 +1,4 @@
+# Personnel data is private — do not commit to public repo
+*
+!.gitignore
+!person-template.json

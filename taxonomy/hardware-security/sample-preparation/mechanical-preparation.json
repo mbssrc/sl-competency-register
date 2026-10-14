@@ -1,0 +1,107 @@
+{
+  "id": "HWSEC-SPREP-MECH",
+  "name": "Mechanical Sample Preparation",
+  "domain": "hardware-security",
+  "category": "Sample Preparation",
+  "status": "active",
+  "description": "Physical preparation of IC and hardware samples for analysis. Covers sample mounting (epoxy potting, vacuum impregnation, clip mounting), cross-sectioning (precision saw, manual cleaving), mechanical polishing (grinding, lapping, final polish to sub-micron finish), and chemical-mechanical polishing (CMP). Includes selection of consumables (abrasives, polishing cloths, mounting resins) and quality verification under optical microscopy.",
+  "requires": [],
+  "recommended": [
+    "HWSEC-INV-DECAP",
+    "FOUND-EVIDENCE",
+    "FOUND-TOOLS"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to mechanical sample preparation"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands sample preparation goals, mounting methods, and polishing stages",
+      "evidence": [
+        "Can explain the purpose of mounting, cross-sectioning, and polishing in the analysis workflow",
+        "Understands the difference between rough grinding, fine grinding, and final polishing stages",
+        "Aware of how preparation quality affects downstream analysis (optical, SEM, FIB)"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs standard mounting and polishing under supervision",
+      "evidence": [
+        "Mounts samples in epoxy resin with correct orientation and minimal void formation",
+        "Operates precision saw for cross-sectioning with appropriate blade and feed rate selection",
+        "Follows a polishing sequence from coarse to fine abrasives on standard metallographic polisher",
+        "Verifies surface quality under optical microscope and identifies common preparation artifacts (scratches, smearing, pullout)"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently prepares samples to target quality for specified analysis goals",
+      "evidence": [
+        "Selects appropriate mounting method (hot/cold mount, clip, vacuum impregnation) based on sample type and target analysis",
+        "Achieves consistent sub-micron polish finish suitable for optical layer imaging",
+        "Performs CMP to expose specific metal or poly layers at target depth",
+        "Documents preparation parameters and maintains preparation logs for traceability"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles difficult samples and unusual geometries; develops preparation recipes; mentors team",
+      "evidence": [
+        "Prepares multi-die stacked packages, interposers, and non-standard geometries",
+        "Develops and documents new preparation recipes for novel sample types",
+        "Achieves sub-micron planarity and low surface roughness as a basis for FIB-SEM cross-sectioning and ion-milling follow-on preparation",
+        "Mentors team on technique selection, artifact prevention, and quality control"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines lab preparation methodology; specifies equipment; trains teams",
+      "evidence": [
+        "Defines the lab's sample preparation SOPs and quality acceptance criteria",
+        "Evaluates and specifies polishing systems, consumables, and CMP slurries for procurement",
+        "Develops novel preparation techniques for emerging packaging technologies (chiplets, 3D integration)",
+        "Conducts proficiency assessments and certification of preparation operators"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Prepare a set of samples (cross-section, planview) to specified quality targets, demonstrating correct method selection and finish verification"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review preparation logs and resulting micrographs for quality, artifact control, and documentation completeness"
+    }
+  ],
+  "equipment": [
+    "Precision cut-off saw (e.g., Struers Secotom, Buehler IsoMet)",
+    "Metallographic mounting press (hot mount) or cold-mount vacuum impregnation system",
+    "Semi-automatic grinding/polishing system (e.g., Struers Tegramin, Buehler AutoMet)",
+    "Chemical-mechanical polishing (CMP) system",
+    "Stereo and compound optical microscopes for quality verification"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1284", "K0840"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development"]
+    },
+    "common_criteria": [
+      "AVA_VAN.4",
+      "AVA_VAN.5"
+    ]
+  },
+  "tags": [
+    "sample-preparation",
+    "polishing",
+    "cross-section",
+    "mounting",
+    "cmp",
+    "invasive"
+  ]
+}

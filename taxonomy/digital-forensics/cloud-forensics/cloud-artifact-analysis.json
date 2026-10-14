@@ -1,0 +1,110 @@
+{
+  "id": "DFIR-CLOUD-ARTIFACTS",
+  "name": "Cloud Infrastructure Artifact Analysis",
+  "domain": "digital-forensics",
+  "category": "Cloud Forensics",
+  "status": "active",
+  "description": "Ability to analyse cloud infrastructure artifacts beyond logs. Covers VM disk snapshot forensics, serverless function analysis, storage bucket metadata, IAM policy reconstruction, infrastructure-as-code history, and cloud-native database forensics. Addresses the ephemeral nature of cloud resources and strategies for evidence preservation.",
+
+  "requires": [
+    "DFIR-CLOUD-LOGS",
+    "FOUND-EVIDENCE"
+  ],
+  "recommended": [
+    "DFIR-DISK-FILESYS",
+    "DFIR-DISK-ARTIFACTS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to cloud infrastructure artifact analysis"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands what forensic artifacts exist in cloud infrastructure beyond logs",
+      "evidence": [
+        "Can describe cloud infrastructure artifacts (VM snapshots, storage metadata, IAM configurations)",
+        "Understands the ephemeral nature of cloud resources and its forensic implications",
+        "Can explain why traditional disk forensics alone is insufficient for cloud investigations"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Collects and examines cloud infrastructure artifacts under supervision",
+      "evidence": [
+        "Acquired and mounted VM disk snapshots from AWS EBS or Azure Managed Disks under guidance",
+        "Examined S3 bucket or Azure Blob versioning and access logs",
+        "Reviewed IAM policies and role trust relationships to understand access patterns",
+        "Documented cloud artifact collection with supervisor review"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently collects and analyses cloud infrastructure artifacts to support forensic investigations",
+      "evidence": [
+        "Independently analysed cloud infrastructure artifacts in 5+ investigations",
+        "Performed forensic analysis of VM disk snapshots including OS artifact extraction",
+        "Reconstructed IAM policy changes and permission modifications from cloud history",
+        "Preserved serverless function code and configuration as evidence before resource termination"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex multi-account cloud investigations; analyses managed-service, database, and infrastructure-as-code artifacts; develops collection automation",
+      "evidence": [
+        "Investigated incidents spanning multiple cloud accounts and organisations",
+        "Recovered evidence from cloud-native databases and infrastructure-as-code state or history (e.g. Terraform state, CloudFormation stack events)",
+        "Developed automated cloud artifact collection tools using cloud-native APIs",
+        "Mentors junior analysts on cloud infrastructure forensic techniques"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines cloud artifact analysis methodology; researches new cloud forensic artifacts; advises on cloud forensic readiness architecture",
+      "evidence": [
+        "Authored or maintains the lab's cloud infrastructure forensic methodology",
+        "Published research on cloud-specific forensic artifacts or collection techniques",
+        "Advises organisations on cloud architecture decisions for forensic readiness",
+        "Trains teams on cloud infrastructure forensics across multiple providers"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Given access to a compromised cloud environment, identify and collect relevant infrastructure artifacts, analyse VM snapshots, and produce a forensic report"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Presented with a scenario where cloud resources have been terminated, determine what artifacts remain available and develop a collection strategy"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0863", "K0898", "K1373", "S0612", "S0604"],
+      "work_roles": ["PD-WRL-002 Digital Forensics", "IN-WRL-002 Digital Evidence Analysis"]
+    },
+    "sfia": {
+      "skill": "DGFS"
+    },
+    "giac": ["GCFR"]
+  },
+
+  "tags": [
+    "cloud-infrastructure",
+    "vm-snapshot",
+    "iam",
+    "serverless",
+    "storage-forensics",
+    "ephemeral",
+    "aws",
+    "forensics",
+    "azure"
+  ]
+}

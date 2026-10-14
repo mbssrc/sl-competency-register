@@ -1,0 +1,115 @@
+{
+  "id": "HWSEC-SCA-EMA",
+  "name": "Electromagnetic Analysis",
+  "domain": "hardware-security",
+  "category": "Side-Channel Analysis",
+  "status": "active",
+  "description": "Acquisition and analysis of electromagnetic emanations from integrated circuits to extract secret information. Covers near-field EM probe positioning, spatial scanning to locate leakage hotspots, SEMA (Simple EMA) and DEMA (Differential EMA) attacks, and exploitation of localized EM leakage for targeted key extraction even in the presence of power-domain countermeasures.",
+  "requires": [
+    "HWSEC-SCA-SPA"
+  ],
+  "recommended": [
+    "HWSEC-SCA-DPA",
+    "HWSEC-PCB-RE",
+    "WSEC-SPEC-TEMPEST"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to electromagnetic emanation analysis"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the physical basis of EM emanations and how they differ from power analysis",
+      "evidence": [
+        "Can explain why EM emanations carry information about computation",
+        "Understands the advantage of spatial resolution in EM analysis vs. power analysis",
+        "Aware of near-field probe types (H-field, E-field) and their characteristics"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs EM measurements and basic EMA attacks on training targets under supervision",
+      "evidence": [
+        "Positions near-field EM probes over a target IC and captures EM traces",
+        "Performs XY scanning to identify EM leakage hotspots on a decapped or packaged IC",
+        "Executes DEMA attack on training target using documented procedures",
+        "Correctly configures amplification chain (LNA, bandpass filtering) for EM acquisition"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently performs EMA on real targets and exploits localized EM leakage",
+      "evidence": [
+        "Identifies optimal probe positions and frequency bands for leakage extraction on unfamiliar targets",
+        "Performs successful DEMA/CEMA attacks on production devices independently",
+        "Exploits EM leakage to bypass power-domain countermeasures (e.g., on-chip voltage regulators)",
+        "Completed EMA assessments on 3+ real targets with documented results"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Performs advanced EMA on hardened targets; develops EM measurement methodology",
+      "evidence": [
+        "Performs EMA on targets with active EM countermeasures (shielding, noise generators)",
+        "Develops automated XY scanning workflows for systematic leakage mapping",
+        "Combines EM leakage from multiple probe positions for improved attack performance",
+        "Mentors team on EM probe selection, positioning, and signal conditioning techniques"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on EMA; publishes research; defines lab EM measurement methodology",
+      "evidence": [
+        "Published research on novel EMA techniques or countermeasure evaluations",
+        "Defines the lab's EMA methodology and probe characterization procedures",
+        "Designs custom EM measurement setups for specialized evaluation scenarios",
+        "Provides expert consultation on EM emanation security to IC designers"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Perform EM leakage mapping on a prepared target IC, identify optimal acquisition parameters, and execute a DEMA attack to recover key material"
+    },
+    {
+      "type": "direct_observation",
+      "description": "Observe probe positioning technique, scanning methodology, and signal quality assessment during a live EMA session"
+    }
+  ],
+  "equipment": [
+    "Near-field EM probe set (H-field and E-field, various diameters, e.g., Langer EMV-Technik)",
+    "XY/XYZ motorized positioning stage for automated scanning",
+    "Low-noise amplifier (30-60 dB gain, wideband)",
+    "ChipWhisperer-Pro or equivalent acquisition platform with EM input"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1362", "K0018", "K0714", "S0898"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development", "PD-WRL-007 Vulnerability Analysis"]
+    },
+    "common_criteria": [
+      "AVA_VAN.4",
+      "AVA_VAN.5"
+    ],
+    "jil_attack_methods": [
+      "5.5 Side-channel attacks"
+    ],
+    "fips_140_3": [
+      "AS08"
+    ]
+  },
+  "tags": [
+    "ema",
+    "dema",
+    "electromagnetic",
+    "near-field",
+    "side-channel",
+    "spatial",
+    "non-invasive"
+  ]
+}

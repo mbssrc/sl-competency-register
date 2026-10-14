@@ -1,0 +1,112 @@
+{
+  "id": "WSEC-SDR-FUNDM",
+  "name": "SDR Fundamentals & Operation",
+  "domain": "wireless-signal-security",
+  "category": "SDR & Signal Analysis",
+  "status": "active",
+  "description": "Ability to operate software-defined radio platforms for signal reception, transmission, and analysis. Covers SDR hardware configuration, gain and bandwidth tuning, antenna selection, frequency calibration, and integration with signal processing toolchains such as GNU Radio and SDR#. Foundational skill for all wireless security work in the lab.",
+  "requires": [
+    "FOUND-ETHICS"
+  ],
+  "recommended": [
+    "FOUND-DOC",
+    "HWSEC-RF-TXRX",
+    "FOUND-TOOLS"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to software-defined radio hardware or concepts"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands SDR concepts, frequency spectrum basics, and the role of SDR in wireless security",
+      "evidence": [
+        "Completed SDR fundamentals training or equivalent coursework",
+        "Can explain the difference between direct-sampling and superheterodyne SDR architectures",
+        "Understands Nyquist sampling, bandwidth, and center frequency concepts"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Operates SDR hardware under supervision to receive and visualize known signals",
+      "evidence": [
+        "Configured and operated USRP or HackRF under guidance for signal reception",
+        "Built basic GNU Radio flowgraphs for signal visualization",
+        "Tuned SDR parameters (gain, sample rate, bandwidth) to receive target signals under supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently configures and operates SDR platforms for a range of reception and analysis tasks",
+      "evidence": [
+        "Independently configured SDR hardware for 3+ different signal types across distinct frequency bands",
+        "Selected appropriate antennas and front-end filtering for target frequency ranges",
+        "Calibrated SDR frequency accuracy and documented measurement uncertainty",
+        "Produced repeatable signal captures with documented parameters"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex SDR configurations; integrates multiple SDR platforms; mentors junior analysts",
+      "evidence": [
+        "Configured multi-channel or MIMO SDR setups for simultaneous monitoring",
+        "Developed custom GNU Radio blocks or SDR automation scripts for lab use",
+        "Troubleshot and resolved SDR hardware and software integration issues",
+        "Reviews SDR capture setups and mentors junior staff on hardware operation"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines lab SDR methodology and hardware standards; designs custom SDR solutions",
+      "evidence": [
+        "Evaluated and selected lab SDR hardware platforms and established configuration standards",
+        "Designed custom SDR receive chains for specialized lab requirements",
+        "Published research or developed novel SDR-based security analysis techniques",
+        "Trains teams on SDR operation and maintains lab SDR methodology documentation"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "direct_observation",
+      "description": "Observe configuration and operation of SDR hardware for a specified signal reception task"
+    },
+    {
+      "type": "controlled_exercise",
+      "description": "Receive, identify, and document three different signal types across VHF/UHF/microwave bands using lab SDR equipment"
+    }
+  ],
+  "equipment": [
+    "Ettus USRP B200/B210 SDR platform",
+    "HackRF One wideband SDR",
+    "RTL-SDR v3 dongle (receive-only reference)"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0925", "K0812", "K1284"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development", "DD-WRL-007 Systems Testing and Evaluation"]
+    },
+    "sfia": {
+      "skill": "PENT",
+      "levels": [
+        2,
+        3,
+        4
+      ]
+    },
+    "certifications": [
+      "GIAC GAWN"
+    ]
+  },
+  "tags": [
+    "sdr",
+    "gnu-radio",
+    "signal-reception",
+    "rf-fundamentals",
+    "foundational"
+  ]
+}

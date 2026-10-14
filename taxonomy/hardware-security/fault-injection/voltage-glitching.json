@@ -1,0 +1,118 @@
+{
+  "id": "HWSEC-FI-VG",
+  "name": "Voltage Glitching",
+  "domain": "hardware-security",
+  "category": "Fault Injection",
+  "status": "active",
+  "description": "Injection of transient voltage perturbations into a target device's power supply to induce computational faults. Covers VCC glitching, crowbar glitching, body-biasing, glitch parameter optimization (width, offset, repeat), fault characterization, and exploitation of induced faults to bypass security checks or extract cryptographic keys via differential fault analysis.",
+  "requires": [
+    "HWSEC-PCB-RE"
+  ],
+  "recommended": [
+    "HWSEC-EMBED-FW",
+    "HWSEC-EMBED-BOOT",
+    "HWSEC-PCB-MOD",
+    "FOUND-TOOLS"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to voltage fault injection techniques"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands voltage glitching principles and common fault models",
+      "evidence": [
+        "Can explain how voltage glitches cause instruction skips and data corruption in CMOS logic",
+        "Understands glitch parameters (width, offset, voltage level) and their effects",
+        "Aware of common voltage glitch targets (secure boot checks, password verification, crypto operations)"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs voltage glitching on training targets using established setups under supervision",
+      "evidence": [
+        "Configures ChipWhisperer glitch module parameters for a documented target",
+        "Performs VCC glitching to bypass a simple security check on a training board",
+        "Sweeps glitch parameters systematically and logs results",
+        "Identifies successful fault injection through target behavior analysis (crash, skip, corruption)"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently performs voltage glitching on real targets and exploits induced faults",
+      "evidence": [
+        "Prepares target PCB for voltage glitching (decoupling capacitor removal, power rail isolation)",
+        "Optimizes glitch parameters for unfamiliar targets without documented setups",
+        "Bypasses secure boot or readout protection via voltage glitching on production devices",
+        "Performs differential fault analysis (DFA) using glitch-induced faulty ciphertexts",
+        "Completed voltage glitching assessments on 3+ different target platforms"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Attacks hardened targets; develops custom glitch setups; combines with other techniques",
+      "evidence": [
+        "Defeats voltage glitch detectors and countermeasures on hardened targets",
+        "Develops custom glitch insertion circuits and triggering mechanisms",
+        "Combines voltage glitching with software exploitation for complex attack chains",
+        "Mentors junior analysts on PCB preparation, parameter optimization, and fault exploitation"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on voltage fault injection; publishes research; defines methodology",
+      "evidence": [
+        "Published research on novel voltage glitching techniques or countermeasure evaluations",
+        "Defines the lab's voltage glitching methodology aligned with Common Criteria and EMVCo",
+        "Specifies and procures voltage glitch injection platforms for the lab's evaluation capability",
+        "Provides expert consultation on voltage glitch resistance to silicon designers"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Prepare a target for voltage glitching, optimize glitch parameters, and demonstrate a security bypass (e.g., secure boot bypass or readout protection defeat)"
+    },
+    {
+      "type": "direct_observation",
+      "description": "Observe PCB preparation technique, parameter sweep methodology, and fault characterization during a live glitching session"
+    }
+  ],
+  "equipment": [
+    "ChipWhisperer-Husky or ChipWhisperer-Pro with glitch module",
+    "Custom crowbar glitch circuit (MOSFET-based)",
+    "Voltage glitch amplifier"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0714", "K0055", "S0898", "K1248"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development", "PD-WRL-007 Vulnerability Analysis"]
+    },
+    "common_criteria": [
+      "AVA_VAN.4",
+      "AVA_VAN.5"
+    ],
+    "jil_attack_methods": [
+      "5.3 Perturbation attacks",
+      "5.4 Retrieving keys with FA"
+    ],
+    "fips_140_3": [
+      "AS07"
+    ]
+  },
+  "tags": [
+    "voltage-glitch",
+    "fault-injection",
+    "dfa",
+    "security-bypass",
+    "non-invasive",
+    "crowbar",
+    "cryptographic",
+    "secure-boot"
+  ]
+}

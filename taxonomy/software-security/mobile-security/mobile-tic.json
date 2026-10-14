@@ -1,0 +1,110 @@
+{
+  "id": "SWSEC-MOB-TIC",
+  "name": "Mobile Transport & Inter-Component Security",
+  "domain": "software-security",
+  "category": "Mobile Security",
+  "status": "active",
+  "description": "Assessment of mobile application network transport security and inter-component communication. Covers TLS configuration analysis, certificate validation, inter-app communication (intents, URL schemes, deep links), and backend API interaction security from the mobile client perspective.",
+
+  "requires": [
+    "FOUND-ETHICS"
+  ],
+  "recommended": [
+    "SWSEC-MOB-ANDROID",
+    "SWSEC-MOB-IOS",
+    "SWSEC-WEB-API",
+    "FOUND-TOOLS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to mobile transport or IPC security testing"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands mobile network security and IPC concepts",
+      "evidence": [
+        "Can explain certificate pinning, ATS, and Network Security Config",
+        "Understands Android Intents and iOS URL schemes as IPC mechanisms",
+        "Familiar with common mobile transport security weaknesses"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Intercepts and analyzes mobile traffic under supervision",
+      "evidence": [
+        "Configured proxy interception for mobile devices (Burp/mitmproxy)",
+        "Identified cleartext traffic or weak TLS configurations",
+        "Tested basic IPC mechanisms under supervision",
+        "Work reviewed by authorized tester"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses transport and IPC security on mobile engagements",
+      "evidence": [
+        "Independently tested transport security on 5+ mobile engagements",
+        "Evaluates certificate pinning implementations and identifies bypasses",
+        "Tests intent filters, deep links, and custom URL schemes for injection",
+        "Passed proficiency assessment on mobile transport and IPC security"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex transport analysis; tests custom protocols",
+      "evidence": [
+        "Analyzes custom binary protocols used by mobile applications",
+        "Tests WebSocket and non-HTTP transport channels",
+        "Evaluates mutual TLS and custom certificate validation logic",
+        "Mentors junior testers on mobile network interception setup"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Authority on mobile transport security; develops methodology",
+      "evidence": [
+        "Published research on mobile transport or IPC vulnerabilities",
+        "Developed lab methodology for mobile network security testing",
+        "Discovers vulnerabilities in platform-level IPC implementations",
+        "Trains teams on advanced mobile transport analysis"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Intercept, analyze, and identify vulnerabilities in a mobile app's network traffic and IPC mechanisms"
+    },
+    {
+      "type": "direct_observation",
+      "description": "Observe proxy setup, certificate installation, and traffic interception workflow"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0688", "K1239", "S0483", "S0656"],
+      "work_roles": ["DD-WRL-005 Software Security Assessment", "PD-WRL-007 Vulnerability Analysis"]
+    },
+    "owasp": ["OWASP MASTG"],
+    "cwe": ["CWE-295", "CWE-319", "CWE-927"]
+  },
+
+  "tags": [
+    "mobile",
+    "transport-security",
+    "ipc",
+    "tls",
+    "android",
+    "ios",
+    "api",
+    "proxy",
+    "mitm",
+    "pki"
+  ]
+}

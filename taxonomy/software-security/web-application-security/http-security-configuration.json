@@ -1,0 +1,121 @@
+{
+  "id": "SWSEC-WEB-HTTPCONF",
+  "name": "HTTP Security & Configuration Testing",
+  "domain": "software-security",
+  "category": "Web Application Security",
+  "status": "active",
+  "description": "Assessment of web application and server security configuration at the HTTP layer. Covers security header evaluation (CSP, CORS, HSTS, X-Frame-Options, Permissions-Policy), cookie security attributes, HTTP request smuggling, cache poisoning, clickjacking, TLS configuration at the application tier, and deployment hardening (error handling, debug endpoints, default credentials, directory listing).",
+  "requires": [
+    "FOUND-ETHICS"
+  ],
+  "recommended": [
+    "SWSEC-DAST-WEBAPP",
+    "CRYPTO-PKI-TLS",
+    "FOUND-TOOLS"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to HTTP security configuration assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the purpose of HTTP security headers and common misconfiguration risks",
+      "evidence": [
+        "Can explain the role of CSP, CORS, HSTS, and X-Frame-Options",
+        "Understands cookie security attributes (Secure, HttpOnly, SameSite) and their protective value",
+        "Aware of common deployment misconfigurations: verbose errors, debug endpoints, directory listing"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Can audit HTTP security headers and basic deployment configuration under supervision",
+      "evidence": [
+        "Evaluates security header presence and configuration using browser tools and scanners",
+        "Identifies missing or misconfigured CORS policies",
+        "Reviews cookie attributes and flags for security gaps",
+        "Documents configuration findings with supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses HTTP-layer security configuration and demonstrates exploitation of misconfigurations",
+      "evidence": [
+        "Evaluates CSP policies for bypass conditions (unsafe-inline, overly broad source lists, base-uri gaps)",
+        "Identifies exploitable CORS misconfigurations and demonstrates cross-origin data access",
+        "Tests for clickjacking via missing or misconfigured framing controls",
+        "Assesses TLS configuration at the application tier (protocol versions, cipher suites, certificate handling)",
+        "Produces configuration assessment reports with prioritized findings and remediation guidance"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Exploits advanced HTTP-layer vulnerabilities; assesses complex deployment architectures; mentors others",
+      "evidence": [
+        "Identifies and exploits HTTP request smuggling across front-end/back-end desynchronization",
+        "Exploits web cache poisoning through header injection and cache key manipulation",
+        "Assesses security configuration across CDN, load balancer, reverse proxy, and application layers",
+        "Reviews and calibrates configuration assessments across the team"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on HTTP-layer security; publishes research; develops methodology",
+      "evidence": [
+        "Published research on HTTP protocol abuse, request smuggling, or cache poisoning",
+        "Developed the lab's HTTP security configuration assessment methodology",
+        "Discovers novel HTTP-layer attack vectors in modern web stacks",
+        "Trains teams on advanced HTTP security assessment"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Audit a web application's HTTP security configuration: evaluate headers, cookie attributes, CORS, framing controls, and TLS; demonstrate exploitation of identified misconfigurations"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review HTTP configuration assessment findings from engagements for completeness and remediation quality"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0984", "K0782", "K1079", "S0532"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-005 Software Security Assessment"]
+    },
+    "owasp": [
+      "A02:2025 Security Misconfiguration"
+    ],
+    "cwe": [
+      "CWE-1004",
+      "CWE-693",
+      "CWE-942",
+      "CWE-444",
+      "CWE-1021",
+      "CWE-614"
+    ],
+    "crest_cct_app": [
+      "H4",
+      "H27"
+    ],
+    "mitre_attack": {"techniques": ["T1189"]}
+  },
+  "tags": [
+    "configuration",
+    "http-headers",
+    "cors",
+    "csp",
+    "request-smuggling",
+    "cache-poisoning",
+    "clickjacking",
+    "owasp-top-10",
+    "web",
+    "tls",
+    "transport-security",
+    "pki"
+  ]
+}

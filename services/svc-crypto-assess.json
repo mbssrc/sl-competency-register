@@ -1,0 +1,32 @@
+{
+  "id": "SVC-CRYPTO-ASSESS",
+  "name": "Cryptographic Assessment",
+  "description": "Assessment of cryptographic implementations, protocol design, key management practices, and algorithm selection against current standards, including evaluation of PKI infrastructure, post-quantum readiness, and compliance with cryptographic policy requirements.",
+  "scope_reference": "Assessment of cryptographic implementations and protocols",
+  "required_competencies": [
+    { "skill": "CRYPTO-SYM-BLOCKCIPHER", "minimum_level": 3 },
+    { "skill": "CRYPTO-SYM-STREAMCIPHER", "minimum_level": 2 },
+    { "skill": "CRYPTO-SYM-AEAD", "minimum_level": 3 },
+    { "skill": "CRYPTO-ASYM-RSA", "minimum_level": 3 },
+    { "skill": "CRYPTO-ASYM-ECC", "minimum_level": 3 },
+    { "skill": "CRYPTO-ASYM-KEYEXCHANGE", "minimum_level": 3 },
+    { "skill": "CRYPTO-ASYM-SIGNATURES", "minimum_level": 3 },
+    { "skill": "CRYPTO-HASH-ASSESSMENT", "minimum_level": 3 },
+    { "skill": "CRYPTO-HASH-MAC", "minimum_level": 3 },
+    { "skill": "CRYPTO-HASH-PASSWORD", "minimum_level": 2 },
+    { "skill": "CRYPTO-PKI-CERTS", "minimum_level": 3 },
+    { "skill": "CRYPTO-PKI-TLS", "minimum_level": 3 },
+    { "skill": "CRYPTO-PKI-CA", "minimum_level": 2 },
+    { "skill": "CRYPTO-PKI-KEYMANAGEMENT", "minimum_level": 3 },
+    { "skill": "CRYPTO-PQ-LATTICE", "minimum_level": 2 },
+    { "skill": "CRYPTO-PQ-HASHSIG", "minimum_level": 2 },
+    { "skill": "CRYPTO-PQ-AGILITY", "minimum_level": 2 },
+    { "skill": "FOUND-REPORT", "minimum_level": 3 },
+    { "skill": "FOUND-RISK", "minimum_level": 3 },
+    { "skill": "FOUND-STANDARDS", "minimum_level": 3 }
+  ],
+  "standards": [
+    "NIST SP 800-57 (Recommendation for Key Management)",
+    "FIPS 140-3"
+  ]
+}

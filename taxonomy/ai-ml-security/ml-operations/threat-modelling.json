@@ -1,0 +1,96 @@
+{
+  "id": "AIML-OPS-THREATMODEL",
+  "name": "AI System Threat Modelling",
+  "domain": "ai-ml-security",
+  "category": "ML Operations Security",
+  "status": "active",
+  "description": "Threat modelling of machine learning and LLM-based systems. Covers decomposing ML systems into data flows and trust boundaries across data collection, training, model storage, serving, and LLM application layers, and enumerating threats with MITRE ATLAS and the NIST AI 100-2 adversarial machine learning taxonomy. General threat modelling methodology is covered by FOUND-THREATMODEL; executing the identified attacks belongs to the Adversarial ML and LLM skills.",
+  "requires": [
+    "FOUND-THREATMODEL"
+  ],
+  "recommended": [
+    "AIML-OPS-SUPPLY",
+    "AIML-LLM-PROMPTINJ"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to AI system threat modelling"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands how ML systems extend the classic threat model",
+      "evidence": [
+        "Can describe the ML lifecycle stages and the assets each introduces (data, models, prompts, embeddings)",
+        "Familiar with the MITRE ATLAS matrix and the NIST AI 100-2 attack taxonomy",
+        "Aware of attack classes absent from traditional systems: evasion, poisoning, privacy, and prompt injection"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Can contribute to AI system threat models under guidance",
+      "evidence": [
+        "Draws data-flow diagrams of an ML or LLM application with trust boundaries marked",
+        "Maps components to applicable ATLAS techniques with supervision",
+        "Documents threats and assumptions in the lab's threat model template"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently threat-models ML and LLM systems and scopes assessments from the result",
+      "evidence": [
+        "Produces complete threat models covering training, serving, retrieval, and agent components",
+        "Classifies threats by attacker goal, knowledge, and capability using NIST AI 100-2",
+        "Prioritises threats by impact and feasibility and derives a test plan for the assessment",
+        "Identifies missing controls and maps them to concrete mitigations"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Threat-models complex AI platforms; develops methodology; mentors others",
+      "evidence": [
+        "Threat-models multi-model, multi-tenant, and agentic platforms with third-party model dependencies",
+        "Develops reusable AI threat libraries and pattern catalogues for the lab",
+        "Facilitates threat modelling workshops with ML engineering teams",
+        "Reviews and calibrates AI threat models across the team"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines the lab's AI threat modelling practice; shapes external guidance",
+      "evidence": [
+        "Established the lab's AI system threat modelling methodology",
+        "Published case studies or research on AI threat modelling",
+        "Trains teams on AI threat modelling",
+        "Contributes to MITRE ATLAS, NIST, or ISO/IEC AI security work"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "problem_solving",
+      "description": "Given the architecture of an LLM application with RAG and tool use, produce a data-flow diagram, an ATLAS-mapped threat list, and a prioritised test plan"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review an AI system threat model for lifecycle coverage, correct taxonomy mapping, and traceability from threats to mitigations and tests"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1320", "K1334", "S0588"],
+      "work_roles": ["DD-WRL-001 Cybersecurity Architecture", "DD-WRL-008 Technology Research and Development"]
+    },
+    "nist_ai": ["AI 100-2 E2025", "AI 100-1"],
+    "iso_iec": ["ISO/IEC 23894:2023"]
+  },
+  "tags": [
+    "threat-modeling",
+    "atlas",
+    "mlops",
+    "architecture"
+  ]
+}

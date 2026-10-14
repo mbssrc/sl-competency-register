@@ -1,0 +1,112 @@
+{
+  "id": "CRYPTO-PKI-CA",
+  "name": "Certificate Authority Security Assessment",
+  "domain": "cryptography",
+  "category": "PKI & Infrastructure",
+  "status": "active",
+  "description": "Assessment of certificate authority (CA) infrastructure including root and intermediate CA security, certificate issuance policies, CA key protection, registration authority controls, and PKI architecture review. Covers both public and private/enterprise CA deployments.",
+
+  "requires": [
+    "CRYPTO-PKI-CERTS"
+  ],
+  "recommended": [
+    "CRYPTO-PKI-KEYMANAGEMENT",
+    "FOUND-RISK",
+    "INFRA-ONPREM-AD"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to CA security assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands CA architecture and the role of root and intermediate CAs",
+      "evidence": [
+        "Can explain the CA hierarchy (root, intermediate, issuing) and trust model",
+        "Understands the difference between public and private CA deployments",
+        "Can describe why root CA key protection is critical"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Reviews basic CA configurations and policies under supervision",
+      "evidence": [
+        "Inspects CA certificate extensions (basic constraints, key usage, name constraints) under guidance",
+        "Reviews certificate policy (CP) and certification practice statement (CPS) documents",
+        "Identifies overly permissive issuing CA configurations",
+        "Documents CA assessment findings following lab templates"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses enterprise CA infrastructure for security weaknesses",
+      "evidence": [
+        "Evaluates CA key protection mechanisms (HSM usage, key ceremony procedures)",
+        "Assesses certificate issuance controls and template security (AD CS, EJBCA)",
+        "Identifies misconfigured certificate templates enabling privilege escalation (ESC1-ESC8+ patterns)",
+        "Produces findings referencing CA/Browser Forum requirements or NIST SP 800-57"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex CA assessment scenarios; evaluates PKI architecture design",
+      "evidence": [
+        "Assesses multi-tier PKI architectures for design weaknesses",
+        "Evaluates cross-certification and bridge CA trust models",
+        "Identifies AD CS attack paths (CVE-2022-26923 / Certifried, ESC variants) and validates exploitability",
+        "Reviews and mentors junior staff on CA security assessment methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines CA assessment methodology; recognised authority on PKI architecture security",
+      "evidence": [
+        "Authored or maintains the lab's CA security assessment methodology",
+        "Published research on CA compromise, misissuance, or PKI architecture flaws",
+        "Provides expert guidance on PKI architecture design and CA hardening",
+        "Trains teams on CA internals, trust models, and assessment approaches"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess an enterprise AD CS deployment: review certificate templates, CA permissions, and issuance controls; identify privilege escalation paths"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review CA security assessment findings from a recent engagement for completeness and risk accuracy"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1239", "K1203", "S0657", "K0698", "K0932"],
+      "work_roles": ["DD-WRL-001 Cybersecurity Architecture", "PD-WRL-007 Vulnerability Analysis", "OG-WRL-001 Communications Security (COMSEC) Management"]
+    },
+    "nist_sp": ["800-57"],
+    "ietf": {
+      "rfcs": ["RFC 3647", "RFC 5280"]
+    }
+  },
+
+  "tags": [
+    "certificate-authority",
+    "pki",
+    "ad-cs",
+    "ca-security",
+    "certificate-templates",
+    "hsm",
+    "trust-model",
+    "enterprise-pki",
+    "key-management",
+    "privilege-escalation",
+    "active-directory"
+  ]
+}

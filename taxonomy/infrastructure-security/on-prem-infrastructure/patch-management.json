@@ -1,0 +1,110 @@
+{
+  "id": "INFRA-ONPREM-PATCH",
+  "name": "Patch Management & Vulnerability Assessment",
+  "domain": "infrastructure-security",
+  "category": "On-Premises Infrastructure",
+  "status": "active",
+  "description": "Assessment of OS patch management posture and vulnerability management processes. Covers patch currency evaluation across Windows (Windows Update for Business, Autopatch, Configuration Manager and Intune, with WSUS deprecated for new features), Linux (apt, yum, zypper), and macOS (Software Update, MDM), vulnerability scanning methodology, patch impact and risk analysis, zero-day exposure assessment, and patch management process maturity evaluation.",
+
+  "requires": [],
+  "recommended": [
+    "FOUND-STANDARDS",
+    "INFRA-ONPREM-HARDEN",
+    "INFRA-ONPREM-LINHARDEN",
+    "INFRA-ONPREM-WINHARDEN",
+    "FOUND-RISK"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to patch management assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands patch management principles and vulnerability assessment concepts",
+      "evidence": [
+        "Can explain patch management lifecycle and common update mechanisms",
+        "Understands CVSS scoring, vulnerability prioritization, and risk-based patching",
+        "Familiar with vulnerability scanning tools and their limitations",
+        "Completed introductory training on vulnerability management"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Runs vulnerability scans and reviews patch posture under supervision",
+      "evidence": [
+        "Runs Nessus, Qualys, or equivalent vulnerability scanners under guidance",
+        "Reviews patch currency reports for Windows and Linux systems",
+        "Identifies missing critical and high-severity patches using scan results",
+        "Documents vulnerability findings with supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses patch management and vulnerability posture across platforms",
+      "evidence": [
+        "Independently assesses patch posture across Windows, Linux, and macOS environments",
+        "Evaluates Windows Update for Business, Configuration Manager and WSUS, apt/yum, and MDM patch distribution effectiveness",
+        "Contextualizes vulnerability findings by exploitability, exposure, and compensating controls",
+        "Produces actionable patch management assessment reports with risk-based prioritization"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Evaluates complex patching environments; assesses process maturity",
+      "evidence": [
+        "Assesses patch management process maturity against industry frameworks",
+        "Evaluates complex environments with mixed OS, legacy systems, and air-gapped networks",
+        "Develops vulnerability management KPIs and patch SLA recommendations",
+        "Reviews junior analysts' vulnerability assessment work"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines lab vulnerability assessment methodology; advises on patch strategy",
+      "evidence": [
+        "Designed or maintains the lab's patch management assessment framework",
+        "Advises organizations on vulnerability management program design",
+        "Trains teams on advanced vulnerability assessment and patch risk analysis",
+        "Recognized as authority on vulnerability management best practices"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess the patch management posture of a mixed OS environment and produce a risk-prioritized vulnerability report with remediation timeline recommendations"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review vulnerability assessment findings and patch management recommendations from recent engagements"
+    }
+  ],
+
+  "framework_mappings": {
+    "cis": [
+      "CIS Controls v8.1 - Control 7 (Continuous Vulnerability Management)"
+    ],
+    "nice": {
+      "tks": ["K0692", "S0723", "S0543", "S0705", "K1249"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "IO-WRL-005 Systems Administration"]
+    }
+  },
+
+  "tags": [
+    "patch-management",
+    "vulnerability-assessment",
+    "wsus",
+    "scanning",
+    "cvss",
+    "windows",
+    "linux",
+    "macos",
+    "on-premises"
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "id": "INTEL-OSINT-DARKWEB",
+  "name": "Dark Web & Closed-Source Monitoring",
+  "domain": "intelligence",
+  "category": "Open-Source Intelligence (OSINT)",
+  "status": "active",
+  "description": "Covers monitoring Tor and I2P services, criminal forums, marketplaces, and closed messaging channels for exposure of the lab's clients: operating research environments for these networks, gaining and maintaining access within legal and policy limits, preserving observed content to evidential standard, and handling leaked material safely. Includes recognising legal boundaries such as prohibitions on purchasing data, engaging with criminal services, or possessing illegal content. Analysis of breach datasets and credential exposure belongs to INTEL-OSINT-BREACH.",
+  "requires": [
+    "INTEL-OSINT-OPSEC",
+    "FOUND-EVIDENCE"
+  ],
+  "recommended": [
+    "INTEL-OSINT-BREACH",
+    "INTEL-TI-ADVERSARY",
+    "INTEL-TI-TRADECRAFT",
+    "DFIR-IR-COORD"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to dark web or closed-source monitoring"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the dark web and closed-source landscape and the legal and safety constraints on monitoring it",
+      "evidence": [
+        "Can describe how Tor and I2P hidden services work and the risks they pose to an investigator",
+        "Can describe the types of criminal forums, marketplaces, and leak sites relevant to client exposure",
+        "Understands legal boundaries, including prohibitions on purchasing data, transacting with criminals, and possessing illegal content"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs dark web searches and monitoring tasks under supervision",
+      "evidence": [
+        "Accesses Tor and I2P services only from approved research environments under guidance",
+        "Searches known forums and leak sites for client references using provided keywords",
+        "Captures observed content with URL, timestamp, and hash per the lab's evidence procedure",
+        "Escalates encountered illegal or high-risk material immediately; results reviewed by authorized personnel"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently monitors dark web and closed sources for client exposure",
+      "evidence": [
+        "Conducts client exposure monitoring across 3+ engagements, from keyword plan to reported findings",
+        "Maintains approved forum and channel access within documented legal and policy limits",
+        "Assesses the credibility of claims and leaked samples before reporting, using source grading",
+        "Produces exposure reports with preserved, hash-verified captures that pass QA review"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Develops monitoring capability; handles sensitive leaks; mentors analysts",
+      "evidence": [
+        "Develops collection pipelines for forums, leak sites, and channels with integrity-protected archiving",
+        "Leads handling of large leaked datasets: segregated storage, minimal access, retention, and destruction",
+        "Supports incident response with time-critical intelligence on ransomware leak site postings",
+        "Mentors analysts on safe access, legal boundaries, and evidential capture"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines dark web monitoring methodology and legal handling procedures; trains teams",
+      "evidence": [
+        "Designed or maintains the lab's dark web monitoring methodology and leaked-material handling procedure",
+        "Agreed the legal boundaries for closed-source access and engagement with legal counsel",
+        "Maintains relationships with law enforcement and sharing communities for referral of illegal content and threats",
+        "Trains teams on dark web monitoring tradecraft"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "In a lab-hosted simulated hidden-service forum and leak site, locate references to a fictitious client, capture and hash the evidence, assess the credibility of the claim, and produce a short exposure notification"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review dark web monitoring reports and associated captures for evidential integrity, credibility assessment, and adherence to legal and leaked-material handling procedures"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1019", "S0469", "S0695"],
+      "work_roles": ["PD-WRL-006 Threat Analysis"]
+    },
+    "mitre_attack": {
+      "techniques": ["T1597", "T1597.002"]
+    }
+  },
+  "tags": [
+    "osint",
+    "dark-web",
+    "tor",
+    "monitoring",
+    "leak-sites",
+    "client-exposure",
+    "opsec",
+    "evidence-integrity"
+  ]
+}

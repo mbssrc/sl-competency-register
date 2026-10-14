@@ -1,0 +1,117 @@
+{
+  "id": "CRYPTO-ASYM-RSA",
+  "name": "RSA Assessment",
+  "domain": "cryptography",
+  "category": "Asymmetric Cryptography",
+  "status": "active",
+  "description": "Assessment of RSA implementations for encryption and digital signatures. Covers key size evaluation, padding scheme review (PKCS#1 v1.5, OAEP, PSS), common implementation vulnerabilities (Bleichenbacher attacks, low-exponent attacks, fault attacks), and RSA key generation quality.",
+
+  "requires": [],
+  "recommended": [
+    "FOUND-STANDARDS",
+    "CRYPTO-HASH-ASSESSMENT",
+    "FOUND-TOOLS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to RSA concepts or assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands RSA fundamentals and the role of key sizes and padding",
+      "evidence": [
+        "Can explain RSA encryption and signature operations at a high level",
+        "Understands why key size matters and current minimum recommendations (2048-bit)",
+        "Can describe the difference between PKCS#1 v1.5 and OAEP padding"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Identifies RSA configurations and basic weaknesses under supervision",
+      "evidence": [
+        "Extracts RSA key sizes from certificates and protocol negotiations",
+        "Identifies use of PKCS#1 v1.5 padding in encryption contexts under guidance",
+        "Uses tools (OpenSSL, RsaCtfTool) to inspect RSA parameters",
+        "Documents RSA-related findings following lab reporting templates"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses RSA implementations and identifies padding vulnerabilities",
+      "evidence": [
+        "Evaluates RSA key generation quality (entropy, prime selection)",
+        "Identifies Bleichenbacher-vulnerable PKCS#1 v1.5 implementations",
+        "Assesses RSA signature schemes for RSASSA-PSS vs RSASSA-PKCS1-v1_5 usage and verification strictness",
+        "Produces actionable findings referencing NIST SP 800-56B (key establishment), FIPS 186-5 (signatures), or equivalent standards"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex RSA assessment scenarios; demonstrates advanced attacks in lab",
+      "evidence": [
+        "Demonstrates Bleichenbacher and ROBOT attacks against lab targets",
+        "Evaluates RSA implementations for timing side-channels",
+        "Identifies weak key generation (shared primes, low entropy) across large certificate datasets",
+        "Reviews and mentors junior staff on RSA assessment methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines RSA assessment methodology; publishes research on RSA implementation security",
+      "evidence": [
+        "Authored or maintains the lab's RSA assessment methodology",
+        "Published research on RSA implementation vulnerabilities or novel factoring techniques",
+        "Provides expert consultation on RSA migration strategies (key size upgrades, algorithm transitions)",
+        "Trains teams on RSA internals, attacks, and assessment approaches"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess an RSA deployment: evaluate key sizes, padding schemes, and implementation quality; demonstrate a Bleichenbacher attack on a vulnerable lab target"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review RSA assessment findings from a recent engagement for completeness and technical accuracy"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0697", "K1361", "S0969", "S0971", "K1362"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-005 Software Security Assessment"]
+    },
+    "fips": {
+      "standards": ["FIPS 186-5"]
+    },
+    "nist_sp": ["800-56B", "800-131A"],
+    "ietf": {
+      "rfcs": ["RFC 8017"]
+    }
+  },
+
+  "tags": [
+    "rsa",
+    "asymmetric",
+    "bleichenbacher",
+    "padding",
+    "oaep",
+    "pss",
+    "public-key",
+    "encryption",
+    "signatures",
+    "entropy",
+    "side-channel",
+    "constant-time",
+    "key-management",
+    "timing-attack",
+    "fault-injection"
+  ]
+}

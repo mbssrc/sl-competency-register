@@ -1,0 +1,20 @@
+{
+  "id": "SVC-CC-EVAL",
+  "name": "Common Criteria Evaluation",
+  "description": "Formal evaluation of IT products against Common Criteria protection profiles and security targets, including evaluation technical report preparation, CEM methodology application, security target evaluation, and TOE testing per ISO/IEC 15408.",
+  "scope_reference": "Common Criteria evaluation (ISO/IEC 15408 / ISO/IEC 18045) of IT products",
+  "required_competencies": [
+    { "skill": "HWSEC-EMBED-FW", "minimum_level": 2 },
+    { "skill": "HWSEC-SCA-SPA", "minimum_level": 2 },
+    { "skill": "HWSEC-FI-VG", "minimum_level": 2 },
+    { "skill": "SWSEC-REVIEW-MANUAL", "minimum_level": 2 },
+    { "skill": "FOUND-REPORT", "minimum_level": 3 },
+    { "skill": "FOUND-EVIDENCE", "minimum_level": 3 },
+    { "skill": "FOUND-STANDARDS", "minimum_level": 3 },
+    { "skill": "FOUND-THREATMODEL", "minimum_level": 3 }
+  ],
+  "standards": [
+    "ISO/IEC 15408:2022 (Common Criteria CC:2022)",
+    "ISO/IEC 18045:2022 (Common Evaluation Methodology CEM:2022)"
+  ]
+}

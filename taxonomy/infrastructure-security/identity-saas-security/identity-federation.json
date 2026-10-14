@@ -1,0 +1,110 @@
+{
+  "id": "INFRA-IDENTITY-FEDERATION",
+  "name": "Identity Federation & SSO Security",
+  "domain": "infrastructure-security",
+  "category": "Identity & SaaS Security",
+  "status": "active",
+  "description": "Security assessment of identity federation and single sign-on deployments. Covers SAML 2.0 and OIDC/OAuth 2.0 flows, identity provider configuration (Okta, Microsoft Entra ID, Ping Identity, AD FS), token issuance, validation, and lifetime, federation trust and signing-certificate management, token-forgery attack paths such as golden SAML, and multi-factor authentication and conditional access bypass. Entra ID tenant configuration is covered by INFRA-AZURE-ENTRAID and application-level authorisation flaws by SWSEC-WEB-AUTHZ.",
+  "requires": [
+    "FOUND-ETHICS"
+  ],
+  "recommended": [
+    "INFRA-AZURE-ENTRAID",
+    "SWSEC-WEB-AUTHZ",
+    "INFRA-ONPREM-AD",
+    "INFRA-AWS-IAM",
+    "FOUND-RISK"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to identity federation or SSO security assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands federation and SSO protocols and their security properties",
+      "evidence": [
+        "Can explain SAML 2.0 and OIDC/OAuth 2.0 roles, flows, and assertions/tokens",
+        "Understands the trust relationship between an identity provider and service providers",
+        "Familiar with common federation weaknesses (weak assertion validation, long token lifetimes, misconfigured trust)"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Reviews federation and SSO configurations under supervision",
+      "evidence": [
+        "Reviewed SAML and OIDC application configurations against a checklist under guidance",
+        "Inspected tokens and assertions with tooling (SAML tracer, jwt decoders) with supervisor review",
+        "Documented signing-certificate, audience, and token-lifetime findings with supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses federation deployments and identifies attack paths",
+      "evidence": [
+        "Independently assessed SAML and OIDC/OAuth configurations across multiple identity providers",
+        "Identified assertion-validation, signature, and audience-restriction weaknesses that enable token forgery such as golden SAML",
+        "Evaluated MFA enrolment and conditional access policies for bypassable gaps",
+        "Produced federation assessment reports with prioritised remediation"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex multi-IdP federation assessments and mentors others",
+      "evidence": [
+        "Assessed complex federation topologies spanning multiple IdPs, SaaS relying parties, and B2B trust",
+        "Traced end-to-end token-forgery and session-hijacking attack chains across federated systems",
+        "Developed tooling or detections for federation abuse (anomalous assertions, token replay)",
+        "Reviews federation assessment work of junior analysts"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines the lab's federation assessment methodology and is a recognised authority",
+      "evidence": [
+        "Designed or maintains the lab's identity federation and SSO assessment framework",
+        "Published research on federation protocol weaknesses or token-forgery techniques",
+        "Advises organisations on secure federation and conditional access architecture",
+        "Trains teams on advanced identity federation security assessment"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess a lab federation deployment with a misconfigured IdP and relying parties, identify assertion/token validation and conditional access weaknesses, and demonstrate their impact"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review federation and SSO assessment findings from recent engagements for completeness and accuracy"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0742", "K0686", "K0746", "K1368"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "IO-WRL-006 Systems Security Analysis"]
+    },
+    "mitre_attack": {
+      "techniques": ["T1606.002", "T1550.001", "T1556.007"]
+    },
+    "csa_ccm": ["IAM-01", "IAM-02", "IAM-04"]
+  },
+  "tags": [
+    "identity",
+    "federation",
+    "sso",
+    "saml",
+    "oauth",
+    "oidc",
+    "conditional-access",
+    "cloud-security",
+    "authentication",
+    "saas",
+    "iam",
+    "azure",
+    "replay-attack"
+  ]
+}

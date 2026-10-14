@@ -1,0 +1,102 @@
+{
+  "id": "AIML-ADV-ROBUST",
+  "name": "ML Robustness & Evasion Testing",
+  "domain": "ai-ml-security",
+  "category": "Adversarial ML",
+  "status": "active",
+  "description": "Assessment of machine learning model resilience against adversarial inputs. Covers crafting adversarial examples, evaluating model robustness boundaries, and testing detection and classification systems under evasion conditions.",
+  "requires": [
+    "FOUND-ETHICS"
+  ],
+  "recommended": [
+    "FOUND-RISK",
+    "SWSEC-FUZZ-CORE",
+    "FOUND-TOOLS"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to adversarial ML concepts"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the concept of adversarial examples and why ML models can be brittle",
+      "evidence": [
+        "Can explain what adversarial perturbations are and why they succeed",
+        "Aware of the difference between white-box, black-box, and transfer attacks",
+        "Familiar with the MITRE ATLAS adversarial ML landscape"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Can run existing adversarial attack tooling and interpret results under guidance",
+      "evidence": [
+        "Generates adversarial examples against image or text classifiers using established libraries",
+        "Evaluates model accuracy under adversarial perturbation budgets",
+        "Documents robustness findings with supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses model robustness and produces actionable findings",
+      "evidence": [
+        "Selects appropriate attack strategies based on model access level and threat model",
+        "Evaluates both targeted and untargeted evasion across modalities",
+        "Produces robustness assessment reports with quantified success rates and practical mitigations",
+        "Tests adversarial defenses for effectiveness and identifies bypass conditions"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Develops custom adversarial strategies; assesses novel model architectures; mentors others",
+      "evidence": [
+        "Designs attack strategies for non-standard models or deployment scenarios",
+        "Evaluates robustness of deployed ML pipelines end-to-end, including pre- and post-processing",
+        "Reviews and calibrates robustness assessments across the team",
+        "Develops internal tooling or methodology for adversarial evaluation"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines the lab's adversarial ML assessment practice; publishes research",
+      "evidence": [
+        "Established the lab's ML robustness assessment methodology",
+        "Published research on adversarial attacks, defenses, or robustness evaluation",
+        "Trains teams on adversarial ML assessment",
+        "Contributes to external standards or industry guidance"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Given a deployed classifier, craft adversarial inputs that achieve targeted misclassification and document the attack surface"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review robustness assessment reports for technical depth, appropriate attack selection, and actionable mitigations"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1320", "K1341", "S0955", "S0956"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development", "DD-WRL-007 Systems Testing and Evaluation"]
+    },
+    "mitre_atlas": [
+      "AML.T0043",
+      "AML.T0015"
+    ],
+    "owasp_ml_top10": [
+      "ML01:2023"
+    ]
+  },
+  "tags": [
+    "adversarial-ml",
+    "evasion",
+    "robustness",
+    "atlas"
+  ]
+}

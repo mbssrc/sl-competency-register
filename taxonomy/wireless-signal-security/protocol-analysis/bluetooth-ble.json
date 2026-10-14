@@ -1,0 +1,129 @@
+{
+  "id": "WSEC-PROTO-BLE",
+  "name": "Bluetooth & BLE Protocol Analysis",
+  "domain": "wireless-signal-security",
+  "category": "Protocol Analysis",
+  "status": "active",
+  "description": "Ability to analyze the security of Bluetooth Classic and Bluetooth Low Energy (BLE) protocols. Covers BLE GATT/ATT service enumeration, pairing mechanism analysis (Just Works, Passkey, OOB, Numeric Comparison), sniffing of BLE advertisement and connection traffic, Bluetooth Classic L2CAP and SDP analysis, and assessment of device authentication and encryption implementations.",
+  "requires": [
+    "WSEC-SDR-FUNDM"
+  ],
+  "recommended": [
+    "WSEC-PROTO-REVENG",
+    "FOUND-DOC",
+    "FOUND-TOOLS"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to Bluetooth or BLE security analysis"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands Bluetooth/BLE protocol architecture and known security concerns",
+      "evidence": [
+        "Can describe the Bluetooth protocol stack (HCI, L2CAP, SDP, RFCOMM) and BLE (GATT, ATT, GAP)",
+        "Understands LE Legacy Pairing vs LE Secure Connections, the pairing association models, and their relative security properties",
+        "Completed training on Bluetooth/BLE security assessment methodology"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs BLE scanning, enumeration, and traffic capture under supervision",
+      "evidence": [
+        "Scanned and enumerated BLE devices and GATT services using gatttool or equivalent under guidance",
+        "Captured BLE advertisement and connection traffic using Ubertooth or nRF Sniffer under supervision",
+        "Identified pairing mode and encryption configuration of BLE devices with assistance"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses Bluetooth/BLE device security",
+      "evidence": [
+        "Independently assessed Bluetooth/BLE security for 3+ different device types",
+        "Captured and decoded pairing exchanges to evaluate authentication strength",
+        "Identified unprotected GATT characteristics exposing sensitive data or control functions",
+        "Produced reports documenting BLE security findings with protocol traces and remediation guidance"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Performs advanced Bluetooth attacks; analyzes custom BLE profiles; develops assessment tools",
+      "evidence": [
+        "Exploited Bluetooth pairing, authentication, and reconnection weaknesses (e.g., KNOB key-size negotiation, BIAS impersonation, BLURtooth cross-transport key overwrite, BLESA reconnection spoofing) in device assessments",
+        "Reverse-engineered proprietary BLE profiles and custom GATT services",
+        "Developed BLE fuzzing or automated assessment tools for the lab",
+        "Mentors junior analysts on Bluetooth/BLE assessment methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on Bluetooth/BLE security; discovers implementation vulnerabilities",
+      "evidence": [
+        "Published research on Bluetooth or BLE security vulnerabilities",
+        "Discovered novel Bluetooth/BLE implementation vulnerabilities in commercial devices",
+        "Authored the lab's Bluetooth/BLE security assessment methodology",
+        "Trains teams on Bluetooth/BLE protocol security and develops custom analysis tools"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess the BLE security of a target IoT device: enumerate services, capture pairing traffic, evaluate encryption, and document exploitable weaknesses"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review Bluetooth/BLE security assessment reports for protocol analysis depth and finding accuracy"
+    }
+  ],
+  "equipment": [
+    "nRF52-based BLE 5 sniffer (e.g. Sniffle); Ubertooth One for BLE 4.x",
+    "Nordic nRF52840 BLE dongle/sniffer",
+    "Sena UD100 or equivalent Bluetooth Classic adapter"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0925", "K0375", "K0674", "S0758"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis"]
+    },
+    "sfia": {
+      "skill": "PENT",
+      "levels": [
+        3,
+        4,
+        5
+      ]
+    },
+    "mitre_attack": {
+      "techniques": [
+        "T1040",
+        "T1557",
+        "T1005"
+      ]
+    },
+    "certifications": [
+      "GIAC GAWN",
+      "CompTIA PenTest+",
+      "CEH"
+    ]
+  },
+  "tags": [
+    "bluetooth",
+    "ble",
+    "gatt",
+    "pairing",
+    "iot",
+    "2.4ghz",
+    "authentication",
+    "encryption",
+    "protocol-analysis",
+    "reverse-engineering",
+    "traffic-analysis",
+    "fuzzing",
+    "spoofing"
+  ]
+}

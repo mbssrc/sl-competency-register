@@ -1,0 +1,110 @@
+{
+  "id": "DFIR-DISK-ARTIFACTS",
+  "name": "Windows Forensic Artifacts",
+  "domain": "digital-forensics",
+  "category": "Disk Forensics",
+  "status": "active",
+  "description": "Ability to locate, extract, and interpret Windows operating system artifacts for forensic investigations. Covers registry hives, prefetch, event logs (EVTX), Amcache and ShimCache, LNK files and jump lists, SRUM, ShellBags, and related execution, file-access, and user-activity traces. macOS artifacts are covered by DFIR-DISK-MACART and Linux artifacts by DFIR-DISK-LINART.",
+
+  "requires": [
+    "DFIR-DISK-FILESYS",
+    "FOUND-EVIDENCE"
+  ],
+  "recommended": [
+    "DFIR-DISK-TIMELINE",
+    "FOUND-REPORT"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to OS artifact extraction and analysis"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Knows that operating systems create forensically valuable artifacts and can name the major categories",
+      "evidence": [
+        "Can describe major Windows artifact categories (registry, prefetch, event logs)",
+        "Understands that different OSes store user activity traces in different locations",
+        "Can explain why OS artifacts are important for establishing user actions"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Extracts and parses common OS artifacts using established tools under supervision",
+      "evidence": [
+        "Extracted and parsed Windows registry hives using RegRipper or Registry Explorer under guidance",
+        "Analysed prefetch files, shimcache, and amcache entries with supervisor review",
+        "Parsed Windows event logs (Security, System, PowerShell) for relevant entries",
+        "Extracted and reviewed Linux auth.log and bash_history entries"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently extracts and correlates OS artifacts across Windows and Linux systems to answer investigative questions",
+      "evidence": [
+        "Independently analysed OS artifacts in 5+ investigations across multiple OS types",
+        "Correlated artifacts from multiple sources (registry + event logs + prefetch) to establish program execution, distinguishing artifacts that evidence execution from those that only indicate file presence (e.g. ShimCache, Amcache inventory entries)",
+        "Produced artifact analysis reports that withstood peer and legal review",
+        "Correctly identified evidence of user actions, program execution, and file access from OS artifacts"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Analyses complex artifact scenarios; handles anti-forensic artifact clearing; develops custom parsers for emerging artifacts",
+      "evidence": [
+        "Identified evidence of anti-forensic artifact clearing (log wiping, prefetch deletion, timestomping)",
+        "Analysed artifacts from non-standard or customized OS configurations",
+        "Developed custom parsers or analysis scripts for novel or undocumented artifacts",
+        "Reviews artifact analysis work of junior examiners and provides technical feedback"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines artifact analysis methodology; researches new OS artifacts; validates tool accuracy against ground truth",
+      "evidence": [
+        "Authored or maintains the lab's OS artifact analysis procedures",
+        "Published research on newly discovered OS artifacts or artifact behaviour",
+        "Validated forensic tool artifact parsing accuracy against known ground truth datasets",
+        "Provides expert testimony on OS artifact interpretation and its evidentiary significance"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Given a disk image, extract and analyse OS artifacts to determine what programs were executed, what files were accessed, and what user actions occurred within a specified timeframe"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review artifact analysis sections from recent case reports for completeness and accuracy of interpretation"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0923", "K0744", "K1092", "S0481", "S0612"],
+      "work_roles": ["PD-WRL-002 Digital Forensics", "IN-WRL-002 Digital Evidence Analysis"]
+    },
+    "sfia": {
+      "skill": "DGFS"
+    },
+    "giac": ["GCFE", "GCFA"]
+  },
+
+  "tags": [
+    "registry",
+    "prefetch",
+    "event-logs",
+    "amcache",
+    "shimcache",
+    "os-artifacts",
+    "windows",
+    "linux",
+    "forensics"
+  ]
+}

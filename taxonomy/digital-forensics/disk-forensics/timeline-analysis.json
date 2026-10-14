@@ -1,0 +1,108 @@
+{
+  "id": "DFIR-DISK-TIMELINE",
+  "name": "Timeline Analysis",
+  "domain": "digital-forensics",
+  "category": "Disk Forensics",
+  "status": "active",
+  "description": "Ability to construct and analyse forensic timelines (super-timelines) from multiple evidence sources. Covers extracting timestamps from filesystem metadata, log files, registry entries, browser history, and application artifacts, then correlating them to reconstruct sequences of events.",
+
+  "requires": [
+    "DFIR-DISK-FILESYS",
+    "FOUND-EVIDENCE"
+  ],
+  "recommended": [
+    "FOUND-REPORT",
+    "DFIR-DISK-ARTIFACTS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to forensic timeline analysis"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the concept of forensic timelines and why correlating timestamps matters in investigations",
+      "evidence": [
+        "Can explain what a super-timeline is and its role in forensic investigations",
+        "Understands MACB timestamps and their forensic meaning (e.g. NTFS $STANDARD_INFORMATION vs. $FILE_NAME attributes)",
+        "Can describe common timestamp sources (filesystem, registry, logs, browser)"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Generates and filters timelines using established tools under supervision",
+      "evidence": [
+        "Generated super-timelines using log2timeline/plaso under guidance",
+        "Filtered and searched timeline data using Timeline Explorer or similar tools",
+        "Identified key events in a timeline exercise with supervisor assistance",
+        "Documented timeline findings with proper timestamp format and timezone notation"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently constructs comprehensive timelines and uses them to answer investigative questions",
+      "evidence": [
+        "Built and analysed super-timelines in 5+ real investigations",
+        "Correctly resolved timezone discrepancies across multiple evidence sources",
+        "Used timeline analysis to establish user activity sequences in case reports",
+        "Timeline-based findings accepted in case reports without significant revision"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex multi-source timelines; detects timestamp manipulation; correlates timelines across multiple systems",
+      "evidence": [
+        "Correlated timelines across multiple systems and evidence sources in a single investigation",
+        "Detected timestamp manipulation and anti-forensic timeline artifacts",
+        "Developed custom plaso parsers or timeline processing scripts for novel artifact types",
+        "Mentors junior examiners on timeline construction and interpretation"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines timeline analysis methodology; researches timestamp artifact behaviour; provides expert testimony on event reconstruction",
+      "evidence": [
+        "Authored or maintains the lab's timeline analysis methodology",
+        "Published research on timestamp artifact behaviour or timeline analysis techniques",
+        "Provides expert testimony on event reconstruction based on timeline evidence",
+        "Trains teams on advanced timeline analysis and correlation techniques"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Given a multi-source disk image, generate a super-timeline, resolve timezone issues, and produce a chronological narrative of key events"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Presented with conflicting timestamps across evidence sources, determine the correct sequence of events and explain discrepancies"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["S0794", "K1144", "K0817", "S0482", "S0866"],
+      "work_roles": ["PD-WRL-002 Digital Forensics", "IN-WRL-002 Digital Evidence Analysis", "PD-WRL-003 Incident Response"]
+    },
+    "sfia": {
+      "skill": "DGFS"
+    },
+    "giac": ["GCFA", "GCFE"]
+  },
+
+  "tags": [
+    "super-timeline",
+    "plaso",
+    "timestamps",
+    "macb",
+    "event-reconstruction",
+    "correlation",
+    "forensics"
+  ]
+}

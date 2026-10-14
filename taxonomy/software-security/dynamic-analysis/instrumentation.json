@@ -1,0 +1,102 @@
+{
+  "id": "SWSEC-DAST-INSTRUMENT",
+  "name": "Runtime Instrumentation & Debugging",
+  "domain": "software-security",
+  "category": "Dynamic Analysis",
+  "status": "active",
+  "description": "Dynamic instrumentation and debugging of applications at runtime. Covers use of Frida, DynamoRIO, PIN, and debuggers (GDB, WinDbg, LLDB) for hooking, tracing, memory inspection, and behavioral analysis of applications during execution.",
+
+  "requires": [],
+  "recommended": [
+    "SWSEC-RE-DISASM",
+    "SWSEC-RE-DECOMPILE",
+    "FOUND-TOOLS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to runtime instrumentation or debugging"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands runtime instrumentation and debugging concepts",
+      "evidence": [
+        "Can explain the difference between static and dynamic analysis",
+        "Familiar with debuggers (GDB, WinDbg) and instrumentation frameworks (Frida)",
+        "Understands breakpoints, memory inspection, and function hooking concepts"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Uses debuggers and basic Frida scripts under supervision",
+      "evidence": [
+        "Set breakpoints, inspected memory, and stepped through code in a debugger",
+        "Ran pre-written Frida scripts to hook and trace function calls",
+        "Analyzed application behavior during execution in lab environments",
+        "Work reviewed by authorized analyst"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently instruments applications and writes custom hooks",
+      "evidence": [
+        "Independently used runtime instrumentation on 5+ engagements",
+        "Writes custom Frida scripts for function hooking, argument logging, and return value modification",
+        "Uses debugger scripting (Python/GDB, WinDbg scripts) for automated analysis",
+        "Passed proficiency assessment on runtime instrumentation"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Develops complex instrumentation; handles anti-debug; builds analysis frameworks",
+      "evidence": [
+        "Bypasses anti-debugging and anti-instrumentation protections",
+        "Develops DBI (dynamic binary instrumentation) tools with DynamoRIO or PIN",
+        "Builds reusable instrumentation scripts for common analysis tasks",
+        "Mentors junior analysts on instrumentation techniques"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Authority on runtime analysis; develops novel instrumentation techniques",
+      "evidence": [
+        "Published research on dynamic instrumentation or analysis techniques",
+        "Developed the lab's instrumentation toolkit and methodology",
+        "Creates custom DBI frameworks for specialized analysis needs",
+        "Trains teams on advanced runtime analysis"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Instrument a running application to extract encryption keys, trace API calls, and modify runtime behavior"
+    },
+    {
+      "type": "direct_observation",
+      "description": "Observe debugger and Frida usage for a live analysis task"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0855", "S0560", "S0625", "S0857"],
+      "work_roles": ["DD-WRL-005 Software Security Assessment", "DD-WRL-008 Technology Research and Development"]
+    }
+  },
+
+  "tags": [
+    "dynamic-analysis",
+    "frida",
+    "debugging",
+    "instrumentation",
+    "runtime",
+    "python",
+    "reverse-engineering"
+  ]
+}

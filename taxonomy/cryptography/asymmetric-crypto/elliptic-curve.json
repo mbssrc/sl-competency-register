@@ -1,0 +1,112 @@
+{
+  "id": "CRYPTO-ASYM-ECC",
+  "name": "Elliptic Curve Cryptography Assessment",
+  "domain": "cryptography",
+  "category": "Asymmetric Cryptography",
+  "status": "active",
+  "description": "Assessment of elliptic curve cryptography (ECC) implementations including ECDSA, ECDH, EdDSA (Ed25519, Ed448), and curve selection. Covers curve parameter validation, nonce generation for ECDSA, invalid curve attacks, twist security, and implementation quality review.",
+
+  "requires": [],
+  "recommended": [
+    "FOUND-STANDARDS",
+    "CRYPTO-ASYM-RSA",
+    "FOUND-TOOLS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to elliptic curve cryptography assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands ECC fundamentals and why curve selection matters",
+      "evidence": [
+        "Can explain elliptic curve operations at a conceptual level",
+        "Understands the security advantage of ECC over RSA at equivalent key sizes",
+        "Can name common curves (P-256, P-384, Curve25519) and their use cases"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Identifies ECC configurations and curve selections under supervision",
+      "evidence": [
+        "Extracts ECC parameters from certificates and key exchange negotiations",
+        "Identifies use of weak or non-standard curves under guidance",
+        "Documents ECC configuration findings following lab templates",
+        "Uses OpenSSL and similar tools to inspect ECC key parameters"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses ECC implementations for correctness and known vulnerabilities",
+      "evidence": [
+        "Evaluates ECDSA implementations for nonce quality (k-value reuse, biased nonces)",
+        "Identifies invalid curve attack vectors in ECDH implementations",
+        "Assesses curve selection against current standards (NIST, SafeCurves criteria)",
+        "Produces findings with clear remediation paths referencing FIPS 186-5, SP 800-186 (curve parameters), or equivalent"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex ECC assessment scenarios; demonstrates advanced attacks in lab",
+      "evidence": [
+        "Demonstrates ECDSA nonce-reuse key recovery in lab environment",
+        "Evaluates ECC implementations for timing and power analysis side-channels",
+        "Assesses EdDSA (Ed25519/Ed448) implementations for cofactor handling and malleability",
+        "Reviews and mentors junior staff on ECC assessment techniques"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines ECC assessment methodology; recognised authority on ECC security",
+      "evidence": [
+        "Authored or maintains the lab's ECC assessment methodology",
+        "Published research on ECC implementation vulnerabilities or novel attacks",
+        "Provides expert consultation on curve selection and ECC migration strategies",
+        "Trains teams on ECC internals, mathematical foundations, and assessment approaches"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess an ECDSA implementation: evaluate curve selection, nonce generation, and signature verification; demonstrate nonce-reuse key recovery on a lab target"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given a custom ECDH implementation, identify whether it is vulnerable to invalid curve attacks and propose mitigations"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0697", "K0942", "S0969", "S0971", "K1361"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-005 Software Security Assessment", "DD-WRL-008 Technology Research and Development"]
+    },
+    "fips": {
+      "standards": ["FIPS 186-5"]
+    },
+    "nist_sp": ["800-186", "800-56A"]
+  },
+
+  "tags": [
+    "ecc",
+    "ecdsa",
+    "ecdh",
+    "eddsa",
+    "ed25519",
+    "curve25519",
+    "asymmetric",
+    "elliptic-curve",
+    "signatures",
+    "side-channel",
+    "constant-time",
+    "key-management",
+    "timing-attack"
+  ]
+}

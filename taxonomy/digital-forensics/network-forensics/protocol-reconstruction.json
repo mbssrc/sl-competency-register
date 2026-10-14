@@ -1,0 +1,112 @@
+{
+  "id": "DFIR-NET-PROTO",
+  "name": "Protocol Reconstruction & Analysis",
+  "domain": "digital-forensics",
+  "category": "Network Forensics",
+  "status": "active",
+  "description": "Ability to reconstruct and analyse network protocols from captured traffic. Covers TCP stream reassembly, HTTP/HTTPS session reconstruction, DNS analysis, email protocol reconstruction (SMTP/IMAP), file carving from network streams, and analysis of encrypted protocol metadata.",
+
+  "requires": [
+    "DFIR-NET-CAPTURE",
+    "FOUND-EVIDENCE"
+  ],
+  "recommended": [
+    "FOUND-REPORT"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to forensic protocol reconstruction"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands common network protocols and the concept of session reconstruction from packet data",
+      "evidence": [
+        "Can describe TCP/IP fundamentals and common application protocols",
+        "Understands the concept of stream reassembly and session reconstruction",
+        "Can explain why protocol analysis is important for forensic investigations"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Reconstructs common protocol sessions from PCAP files using forensic tools under supervision",
+      "evidence": [
+        "Reassembled TCP streams and followed HTTP sessions in Wireshark under guidance",
+        "Extracted files transferred via HTTP and FTP from PCAP files",
+        "Reconstructed DNS query/response sequences to map domain resolution activity",
+        "Documented protocol analysis findings with supervisor review"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently reconstructs multi-protocol sessions and extracts forensic evidence from network traffic",
+      "evidence": [
+        "Independently reconstructed application sessions in 5+ network forensics investigations",
+        "Carved files and extracted credentials from captured network traffic",
+        "Correlated DNS, HTTP, and TLS metadata to establish communication patterns",
+        "Produced protocol analysis reports accepted in case findings"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex protocol analysis including custom protocols, tunnelling, and encrypted traffic metadata analysis",
+      "evidence": [
+        "Analysed custom or proprietary protocols by reverse-engineering wire formats",
+        "Identified tunnelled traffic (DNS tunnelling, HTTP tunnelling, ICMP covert channels)",
+        "Extracted meaningful intelligence from TLS metadata without decryption (JA3/JA4, certificate analysis)",
+        "Developed Wireshark dissectors or Zeek scripts for novel protocol analysis"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines protocol analysis methodology; researches new protocol forensic artifacts; recognised as authority in network evidence interpretation",
+      "evidence": [
+        "Authored or maintains the lab's protocol reconstruction and analysis methodology",
+        "Published research on protocol forensic artifacts or reconstruction techniques",
+        "Provides expert testimony on network evidence derived from protocol reconstruction",
+        "Trains teams on advanced protocol analysis and network evidence interpretation"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Given a PCAP file from a simulated incident, reconstruct all application sessions, extract transferred files, and identify malicious communication patterns"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Analyse PCAP containing encrypted and tunnelled traffic to identify covert communication channels and extract available metadata"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0674", "K1089", "S0875", "S0221", "K0782"],
+      "work_roles": ["PD-WRL-002 Digital Forensics", "PD-WRL-003 Incident Response"]
+    },
+    "sfia": {
+      "skill": "DGFS"
+    },
+    "giac": ["GNFA"]
+  },
+
+  "tags": [
+    "protocol-analysis",
+    "stream-reassembly",
+    "http",
+    "dns",
+    "file-carving",
+    "wireshark",
+    "zeek",
+    "forensics",
+    "reverse-engineering",
+    "tls",
+    "traffic-analysis",
+    "pki"
+  ]
+}

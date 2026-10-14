@@ -1,0 +1,116 @@
+{
+  "id": "DFIR-IR-LIVE",
+  "name": "Live Response & Triage",
+  "domain": "digital-forensics",
+  "category": "Incident Response",
+  "status": "active",
+  "description": "Ability to collect and triage evidence from running systems during an incident. Covers order of volatility, volatile data collection (processes, network connections, logged-on users, scheduled tasks, loaded modules), targeted triage collection with tools such as KAPE, Velociraptor, and UAC, EDR-based remote collection, rapid scoping and indicator sweeps across fleets, and documenting the footprint of live response actions. Full memory imaging belongs to DFIR-MEM-ACQUISITION and deep artifact analysis to the Disk Forensics skills.",
+
+  "requires": [
+    "FOUND-EVIDENCE"
+  ],
+  "recommended": [
+    "DFIR-MEM-ACQUISITION",
+    "DFIR-DISK-ARTIFACTS",
+    "DFIR-DISK-LINART",
+    "DFIR-IR-COORD",
+    "INFRA-ONPREM-EDR",
+    "FOUND-TOOLS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to live response or triage collection"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands why and how evidence is collected from live systems",
+      "evidence": [
+        "Can explain the order of volatility (RFC 3227) and its effect on collection sequencing",
+        "Understands the trade-off between live response and powering a system down",
+        "Can name common triage collection tools and what they collect"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs live response collections under supervision using established playbooks",
+      "evidence": [
+        "Collected volatile data from Windows and Linux hosts using lab scripts under guidance",
+        "Ran KAPE or Velociraptor triage collections and verified output integrity with hashes",
+        "Documented commands executed and their timestamps in case notes reviewed by a supervisor"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently performs live response and scopes incidents across multiple hosts",
+      "evidence": [
+        "Independently performed live response on 10+ hosts across Windows, Linux, and macOS",
+        "Ran fleet-wide indicator hunts (e.g. Velociraptor hunts, EDR queries) to scope compromise",
+        "Selected collection depth per host (triage versus full image) based on investigative need",
+        "Live response records pass QA review for completeness and footprint documentation"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Leads triage at enterprise scale and builds collection capability",
+      "evidence": [
+        "Led triage and scoping across environments of 1,000+ endpoints during an incident",
+        "Developed custom Velociraptor artifacts or KAPE targets/modules for new artifact sources",
+        "Handles collection from constrained systems (servers that cannot be rebooted, hypervisors, appliances)",
+        "Mentors responders on live response tradecraft and footprint minimisation"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines the lab's live response methodology and validates its tooling",
+      "evidence": [
+        "Authored or maintains the lab's live response and triage procedures",
+        "Validated triage tools for evidence integrity and system impact against ground truth",
+        "Published research or tooling for live response or fleet-scale triage",
+        "Provides expert testimony on the soundness of live-collected evidence"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Given a lab network with a seeded compromise, perform volatile data and triage collection on affected hosts, scope the compromise across the fleet, and document every action and hash"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review live response logs and triage packages from recent incidents for order-of-volatility compliance, integrity verification, and footprint documentation"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0725", "K1155", "K0796", "S0624", "S0653"],
+      "work_roles": ["PD-WRL-003 Incident Response", "PD-WRL-002 Digital Forensics"]
+    },
+    "ietf": {
+      "rfcs": ["RFC 3227"]
+    },
+    "nist_sp": ["800-86"],
+    "giac": ["GCFA", "GCIH"]
+  },
+
+  "tags": [
+    "live-response",
+    "triage",
+    "volatile-data",
+    "velociraptor",
+    "kape",
+    "scoping",
+    "incident-response",
+    "evidence-integrity",
+    "linux",
+    "macos",
+    "windows",
+    "forensics"
+  ]
+}

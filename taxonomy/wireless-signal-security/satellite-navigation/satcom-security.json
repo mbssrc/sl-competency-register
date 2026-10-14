@@ -1,0 +1,118 @@
+{
+  "id": "WSEC-SAT-COMM",
+  "name": "Satellite Communications Security",
+  "domain": "wireless-signal-security",
+  "category": "Satellite & Navigation Security",
+  "status": "active",
+  "description": "Ability to analyze the security of satellite communication links and protocols. Covers DVB-S/S2 signal analysis, VSAT terminal security, satellite modem protocol assessment, ground segment security evaluation, and analysis of satellite internet services (Ku/Ka-band). Includes identification of unencrypted or weakly protected satellite data streams.",
+  "requires": [
+    "WSEC-SDR-FUNDM",
+    "WSEC-SDR-DEMOD"
+  ],
+  "recommended": [
+    "WSEC-SDR-DSP",
+    "WSEC-SPEC-ANALYSIS",
+    "FOUND-ETHICS"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to satellite communications security analysis"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands satellite communication architecture and security considerations",
+      "evidence": [
+        "Can describe satellite link budget concepts and common frequency bands (L, S, C, Ku, Ka)",
+        "Understands DVB-S/S2 modulation and framing at a conceptual level",
+        "Completed training on satellite communications security and known vulnerability classes"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Receives and analyzes satellite signals using appropriate equipment under supervision",
+      "evidence": [
+        "Received DVB-S/S2 satellite signals and decoded transport streams under guidance",
+        "Identified satellite carriers, symbol rates, and modulation parameters from spectrum analysis",
+        "Analyzed VSAT terminal traffic for unencrypted data streams under supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses satellite communication link security",
+      "evidence": [
+        "Independently analyzed satellite communication security for 3+ different services or links",
+        "Identified unencrypted or weakly protected satellite data streams and characterized exposed data",
+        "Assessed VSAT terminal configurations and ground segment security posture",
+        "Produced reports documenting satellite link security findings with protocol-level evidence"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Analyzes complex satellite protocols; assesses modern high-throughput satellite security",
+      "evidence": [
+        "Analyzed proprietary satellite modem protocols and identified security weaknesses",
+        "Assessed high-throughput satellite (HTS) multi-beam and spot-beam isolation",
+        "Developed custom satellite signal analysis and data extraction tools",
+        "Mentors junior analysts on satellite communications analysis techniques"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on satellite communications security; defines lab methodology",
+      "evidence": [
+        "Published research on satellite communication security vulnerabilities",
+        "Authored the lab's satellite communications security assessment methodology",
+        "Assessed security of satellite constellations or advanced satellite networking protocols",
+        "Trains teams on satellite communications security and advises operators on link hardening"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Receive and analyze a satellite signal: identify modulation, decode transport stream, assess encryption, and characterize any data exposure"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review satellite communications security assessment reports for signal analysis accuracy and finding completeness"
+    }
+  ],
+  "equipment": [
+    "Satellite dish with LNB (Ku/C-band)",
+    "Ettus USRP B200/B210 SDR platform",
+    "DVB-S/S2 demodulator/receiver"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1032", "K0812", "K0375"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-008 Technology Research and Development"]
+    },
+    "sfia": {
+      "skill": "PENT",
+      "levels": [
+        3,
+        4,
+        5
+      ]
+    },
+    "mitre_attack": {
+      "techniques": [
+        "T1040"
+      ]
+    }
+  },
+  "tags": [
+    "satellite",
+    "dvb-s",
+    "vsat",
+    "satcom",
+    "ku-band",
+    "ground-segment",
+    "encryption",
+    "protocol-analysis"
+  ]
+}

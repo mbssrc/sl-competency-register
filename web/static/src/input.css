@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Native widgets (select popups, date pickers, scrollbars) follow the theme
+     toggle; Tailwind's class-based dark mode doesn't tell the browser. */
+  html { color-scheme: light; }
+  html.dark { color-scheme: dark; }
+
+  /* Selects use a translucent dark background, which the browser can't blend
+     into the separately drawn option popup, so give options a solid one. */
+  .dark option,
+  .dark optgroup {
+    @apply bg-gray-900 text-gray-100;
+  }
+}

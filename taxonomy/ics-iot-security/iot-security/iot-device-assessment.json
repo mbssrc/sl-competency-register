@@ -1,0 +1,129 @@
+{
+  "id": "ICSIOT-IOT-DEVICE",
+  "name": "IoT Device Security Assessment",
+  "domain": "ics-iot-security",
+  "category": "IoT Security",
+  "status": "active",
+  "description": "Security assessment of Internet of Things devices and their supporting ecosystems. Covers firmware analysis, credential auditing, network service evaluation, update mechanism integrity, physical interface exposure, cloud backend and API security, and mobile companion app assessment. Aligned with OWASP IoT Top 10 and ETSI EN 303 645.",
+  "requires": [
+    "FOUND-ETHICS"
+  ],
+  "recommended": [
+    "HWSEC-EMBED-FW",
+    "HWSEC-EMBED-DBG",
+    "SWSEC-WEB-API",
+    "WSEC-PROTO-BLE",
+    "SWSEC-MOB-ANDROID",
+    "FOUND-TOOLS"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to IoT security assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the IoT attack surface and common vulnerability categories",
+      "evidence": [
+        "Can describe the OWASP IoT Top 10 vulnerability categories",
+        "Aware of the end-to-end IoT attack surface: device, network, cloud, mobile app",
+        "Familiar with ETSI EN 303 645 consumer IoT security baseline"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Can perform structured IoT device assessment tasks under supervision",
+      "evidence": [
+        "Tests IoT devices for default credentials and insecure network services",
+        "Extracts and examines firmware images for hardcoded secrets and known vulnerabilities",
+        "Evaluates basic cloud API and mobile app security with guidance",
+        "Documents findings against OWASP IoT Top 10 with supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses IoT devices and ecosystems end-to-end",
+      "evidence": [
+        "Performs comprehensive device assessment covering firmware, services, update mechanisms, and physical interfaces",
+        "Evaluates cloud backend authentication, authorization, and data handling",
+        "Tests device-to-cloud communication for integrity and confidentiality",
+        "Produces IoT assessment reports with findings mapped to OWASP IoT Top 10 or ETSI EN 303 645"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Assesses complex IoT ecosystems; develops assessment methodology; mentors others",
+      "evidence": [
+        "Evaluates multi-device IoT deployments including provisioning, fleet management, and OTA infrastructure",
+        "Evaluates IoT communication protocol configurations and security (MQTT, CoAP, AMQP, Zigbee, BLE) in the context of device ecosystem assessment",
+        "Reviews and improves IoT assessments across the team",
+        "Develops IoT security assessment tooling and procedures"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines the lab's IoT assessment practice; publishes research; shapes standards",
+      "evidence": [
+        "Established the lab's IoT security assessment methodology",
+        "Published research on IoT vulnerabilities, attack techniques, or security evaluation",
+        "Trains teams on IoT security assessment",
+        "Contributes to external IoT security standards or certification schemes"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess an IoT device end-to-end: firmware extraction, credential audit, network service enumeration, cloud API testing, and update mechanism evaluation"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review IoT assessment reports for coverage of OWASP IoT Top 10 categories and actionable mitigations"
+    }
+  ],
+  "framework_mappings": {
+    "mitre_attack": {
+      "note": "ATT&CK does not comprehensively cover IoT; MITRE EMB3D is the primary threat model for embedded/IoT devices"
+    },
+    "owasp_iot_top10": [
+      "I1",
+      "I2",
+      "I3",
+      "I4",
+      "I5",
+      "I6",
+      "I7",
+      "I8",
+      "I9",
+      "I10"
+    ],
+    "etsi_en_303_645": true,
+    "nice": {
+      "tks": ["K0948", "K1081", "K0840", "S0504", "K1366"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-007 Systems Testing and Evaluation"]
+    }
+  },
+  "tags": [
+    "iot",
+    "firmware",
+    "embedded",
+    "owasp",
+    "etsi",
+    "smart-devices",
+    "ecosystem",
+    "mqtt",
+    "coap",
+    "ota-updates",
+    "cloud-api",
+    "companion-app",
+    "api",
+    "authentication",
+    "mobile",
+    "zigbee",
+    "update-integrity",
+    "bluetooth"
+  ]
+}

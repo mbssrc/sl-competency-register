@@ -1,0 +1,102 @@
+{
+  "id": "INFRA-AWS-VPC",
+  "name": "AWS VPC and Network Security Assessment",
+  "domain": "infrastructure-security",
+  "category": "AWS Security",
+  "status": "active",
+  "description": "Security assessment of AWS networking configurations. Covers VPCs, subnets, security groups, NACLs, VPC peering, Transit Gateway, VPN, PrivateLink, flow logs, and network segmentation within AWS environments.",
+  "requires": [
+    "INFRA-AWS-IAM"
+  ],
+  "recommended": ["FOUND-RISK", "NETSEC-RECON-NETMAPPING"],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to AWS VPC and network security assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands AWS VPC architecture and network security primitives",
+      "evidence": [
+        "Can explain VPCs, subnets, route tables, and internet/NAT gateways",
+        "Understands the difference between security groups and NACLs",
+        "Familiar with VPC flow logs and their use in security monitoring"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Reviews AWS network configurations under supervision using established tooling",
+      "evidence": [
+        "Enumerates VPC configurations and security group rules with guidance",
+        "Identifies overly permissive security group rules using lab checklists",
+        "Documents network security findings with supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses AWS network architecture and segmentation",
+      "evidence": [
+        "Independently reviews network segmentation across multi-VPC environments",
+        "Identifies lateral movement risks through VPC peering and Transit Gateway misconfigurations",
+        "Analyzes VPC flow logs for security insights",
+        "Produces compliant network assessment reports"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex multi-region network assessments; develops automated network analysis tooling",
+      "evidence": [
+        "Assesses complex hub-and-spoke and Transit Gateway architectures",
+        "Develops tooling for automated security group and network path analysis",
+        "Reviews network assessment work of junior analysts",
+        "Evaluates hybrid connectivity (VPN, Direct Connect) security"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines lab AWS network assessment methodology; publishes network security research",
+      "evidence": [
+        "Designed or maintains the lab's AWS network security assessment framework",
+        "Published research on AWS network security bypass or segmentation failures",
+        "Trains teams on advanced AWS network security assessment",
+        "Recognized as authority on cloud network architecture security"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess a multi-VPC AWS environment and identify all network segmentation weaknesses and lateral movement paths"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review network security findings and architecture diagrams from recent AWS assessments"
+    }
+  ],
+  "framework_mappings": {
+    "cis": [
+      "CIS AWS Foundations Benchmark v5.0.0 - Section 5 Networking"
+    ],
+    "csa_ccm": [
+      "IVS-01",
+      "IVS-03",
+      "IVS-09"
+    ],
+    "nice": {
+      "tks": ["K0863", "K1014", "K0878", "S0950", "S0920"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-001 Cybersecurity Architecture"]
+    }
+  },
+  "tags": [
+    "aws",
+    "vpc",
+    "networking",
+    "segmentation",
+    "cloud-security",
+    "lateral-movement",
+    "vpn"
+  ]
+}

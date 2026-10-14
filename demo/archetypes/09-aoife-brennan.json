@@ -1,0 +1,67 @@
+{
+  "key": "PERS-009",
+  "bands": {
+    "strong": [
+      "SWSEC-WEB",
+      "SWSEC-DAST"
+    ],
+    "weak": [
+      "SWSEC-OS",
+      "SWSEC-FUZZ",
+      "SWSEC-PLATFORM"
+    ]
+  },
+  "signature": {
+    "SWSEC-WEB-XSS": 3,
+    "SWSEC-WEB-SQLI": 3,
+    "SWSEC-WEB-INJECT": 3,
+    "SWSEC-WEB-HTTPCONF": 3,
+    "SWSEC-WEB-DESER": 3,
+    "SWSEC-DAST-WEBAPP": 3,
+    "SWSEC-DAST-WEBFUZZ": 3,
+    "SWSEC-MOB-ANDROID": 2
+  },
+  "never": [],
+  "foundations": [
+    1,
+    2
+  ],
+  "projects": [
+    "PRJ-SAT-BACKEND"
+  ],
+  "stale_skills": [],
+  "self_assessment": {
+    "mode": "all",
+    "bias": 0,
+    "jitter": 1
+  },
+  "development_plan": [
+    {
+      "skill": "SWSEC-MOB-ANDROID",
+      "target_level": 3,
+      "target_date": "2027-05-31",
+      "actions": [
+        "Shadow the provisioning companion app engagement",
+        "Complete two supervised Android application assessments",
+        "Pass the mobile assessment proficiency assessment"
+      ]
+    },
+    {
+      "skill": "FOUND-QA",
+      "target_level": 3,
+      "target_date": "2027-09-30",
+      "actions": [
+        "Complete internal ISO/IEC 17025 QA reviewer training"
+      ]
+    }
+  ],
+  "name": "Aoife Brennan",
+  "role": "Application Security Evaluator",
+  "start_date": "2022-10-03",
+  "domains": [
+    "SWSEC"
+  ],
+  "target_maturity": {
+    "SWSEC": "practitioner"
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "id": "CRYPTO-SYM-BLOCKCIPHER",
+  "name": "Block Cipher Assessment",
+  "domain": "cryptography",
+  "category": "Symmetric Cryptography",
+  "status": "active",
+  "description": "Assessment of block cipher implementations including AES and legacy ciphers (3DES, Blowfish). Covers algorithm selection review, mode of operation analysis (ECB, CBC, CTR, GCM), key size evaluation, padding oracle identification, and implementation weakness detection.",
+
+  "requires": [],
+  "recommended": [
+    "FOUND-STANDARDS",
+    "FOUND-REPORT",
+    "HWSEC-SCA-DPA",
+    "FOUND-TOOLS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to block cipher concepts or assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands block cipher fundamentals and why mode selection matters",
+      "evidence": [
+        "Can explain the difference between ECB, CBC, CTR, and GCM modes",
+        "Understands why ECB mode is insecure for structured data",
+        "Can identify deprecated algorithms (DES, 3DES, Blowfish) and explain their respective weaknesses (key size, block size, performance)"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Identifies block cipher configurations in systems under supervision",
+      "evidence": [
+        "Extracts cipher suite configurations from TLS, application, and protocol settings",
+        "Identifies use of deprecated algorithms or weak key sizes in code review",
+        "Documents cipher findings following lab reporting templates",
+        "Uses tools (e.g., testssl.sh, OpenSSL) to enumerate cipher configurations under guidance"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses block cipher implementations and produces compliant findings",
+      "evidence": [
+        "Evaluates mode-of-operation correctness including IV/nonce handling",
+        "Identifies padding oracle vulnerabilities in CBC implementations",
+        "Assesses key derivation and key management practices for symmetric keys",
+        "Produces clear, actionable findings referencing NIST SP 800-131A (e.g., TDEA disallowed for encryption after 2023), SP 800-38A, or equivalent guidance"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Assesses complex or custom block cipher deployments; develops assessment tooling",
+      "evidence": [
+        "Evaluates custom or non-standard cipher modes in proprietary protocols",
+        "Develops scripts or tools to automate block cipher configuration auditing",
+        "Reviews and mentors junior staff on symmetric cryptography assessment",
+        "Identifies subtle implementation flaws such as key reuse, nonce mismanagement, or timing leaks"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines block cipher assessment methodology; publishes research on cipher weaknesses",
+      "evidence": [
+        "Authored or maintains the lab's symmetric cipher assessment methodology",
+        "Published research on block cipher implementation vulnerabilities",
+        "Provides expert guidance on algorithm migration (e.g., 3DES to AES transitions)",
+        "Trains teams on block cipher assessment techniques and emerging threats"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Given a system with multiple symmetric cipher configurations, identify all weak or misconfigured ciphers and produce a prioritised findings report"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Analyse a CBC-mode implementation and determine whether it is vulnerable to padding oracle attacks; demonstrate exploitation on a lab target"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0875", "K0697", "S0971", "K1362", "K1361"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-005 Software Security Assessment"]
+    },
+    "fips": {
+      "standards": ["FIPS 197"]
+    },
+    "nist_sp": ["800-38A", "800-131A"]
+  },
+
+  "tags": [
+    "aes",
+    "block-cipher",
+    "cbc",
+    "gcm",
+    "padding-oracle",
+    "symmetric",
+    "encryption",
+    "code-review",
+    "key-management",
+    "tls",
+    "transport-security",
+    "timing-attack"
+  ]
+}

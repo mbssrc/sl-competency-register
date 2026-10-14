@@ -1,0 +1,112 @@
+{
+  "id": "NETSEC-ENUM-LDAP",
+  "name": "LDAP & Active Directory Enumeration",
+  "domain": "network-security",
+  "category": "Enumeration",
+  "status": "active",
+  "description": "Ability to enumerate directory services via LDAP, with emphasis on Active Directory environments. Covers user, group, and computer object enumeration, trust relationships, Group Policy Objects, ACL analysis, and identification of privilege escalation paths through directory structure.",
+
+  "requires": [
+    "NETSEC-RECON-PORTSCANNING",
+    "NETSEC-RECON-FINGERPRINTING"
+  ],
+  "recommended": [
+    "NETSEC-ENUM-SMB",
+    "FOUND-DOC",
+    "INFRA-ONPREM-AD"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to LDAP or Active Directory enumeration"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands LDAP and Active Directory concepts and their relevance to network security assessments",
+      "evidence": [
+        "Can explain LDAP protocol basics and common ports (389, 636)",
+        "Understands Active Directory concepts: domains, forests, trusts, OUs",
+        "Knows why AD enumeration is critical in enterprise penetration tests"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs basic LDAP and AD enumeration under supervision",
+      "evidence": [
+        "Uses ldapsearch or similar tools to query directory objects",
+        "Enumerates users, groups, and computer accounts with BloodHound or ADExplorer",
+        "Identifies domain controllers and domain functional level",
+        "Documents AD enumeration findings under review"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently performs comprehensive AD enumeration and identifies attack paths",
+      "evidence": [
+        "Maps complete AD structure including trusts, GPOs, and delegations",
+        "Uses BloodHound to identify privilege escalation paths",
+        "Enumerates service accounts, SPNs, and Kerberos delegation settings",
+        "Identifies misconfigured ACLs and dangerous group memberships"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex multi-domain environments; develops custom queries; mentors others",
+      "evidence": [
+        "Enumerates multi-forest environments with complex trust relationships",
+        "Develops custom LDAP queries and BloodHound queries for specific scenarios",
+        "Identifies subtle AD misconfigurations that enable attack chains",
+        "Mentors junior staff on AD enumeration methodology and tooling"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines AD enumeration methodology; develops tools and techniques; trains teams",
+      "evidence": [
+        "Authored the lab's Active Directory enumeration methodology",
+        "Develops custom tools or BloodHound extensions for AD analysis",
+        "Published research on AD attack paths or enumeration techniques",
+        "Trains teams on advanced AD enumeration and attack path analysis"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Enumerate a lab Active Directory environment and produce a complete attack path analysis identifying all privilege escalation routes to Domain Admin"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review AD enumeration reports and BloodHound analysis from recent engagements"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0742", "K0685", "K0956", "S0587"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis"]
+    },
+    "mitre_attack": {
+      "techniques": ["T1087.002", "T1069.002", "T1482"]
+    },
+    "crest": {
+      "areas": ["service-enumeration", "active-directory"]
+    }
+  },
+
+  "tags": [
+    "ldap",
+    "active-directory",
+    "bloodhound",
+    "enumeration",
+    "kerberos",
+    "ad-attack-paths",
+    "privilege-escalation",
+    "windows"
+  ]
+}

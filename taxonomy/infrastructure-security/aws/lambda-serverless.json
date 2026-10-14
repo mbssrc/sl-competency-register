@@ -1,0 +1,104 @@
+{
+  "id": "INFRA-AWS-LAMBDA",
+  "name": "AWS Lambda and Serverless Security Assessment",
+  "domain": "infrastructure-security",
+  "category": "AWS Security",
+  "status": "active",
+  "description": "Security assessment of AWS serverless architectures. Covers Lambda function configurations, execution roles, event source mappings, API Gateway integration, Step Functions, and serverless-specific attack surfaces including injection, misconfigured triggers, and over-privileged functions.",
+  "requires": [
+    "INFRA-AWS-IAM"
+  ],
+  "recommended": [
+    "INFRA-AWS-VPC"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to AWS serverless security assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands AWS Lambda architecture and serverless security concerns",
+      "evidence": [
+        "Can explain Lambda execution model, triggers, and execution roles",
+        "Understands common serverless security risks (OWASP Serverless Top 10)",
+        "Familiar with API Gateway authorization mechanisms"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Reviews Lambda configurations and permissions under supervision",
+      "evidence": [
+        "Enumerates Lambda functions and their execution role permissions with guidance",
+        "Identifies overly permissive execution roles using lab checklists",
+        "Reviews API Gateway configurations for authentication gaps under supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses serverless architecture security and identifies exploitation paths",
+      "evidence": [
+        "Independently reviews Lambda functions for injection vulnerabilities and insecure configurations",
+        "Assesses event source trust boundaries and trigger abuse potential",
+        "Evaluates serverless application data flows for exposure risks",
+        "Produces compliant serverless assessment reports"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex serverless architectures; develops assessment tooling; mentors others",
+      "evidence": [
+        "Assesses complex multi-service serverless workflows (Step Functions, EventBridge)",
+        "Develops automated tooling for serverless configuration and code review",
+        "Reviews serverless assessment work of junior analysts",
+        "Identifies novel attack chains across serverless service boundaries"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines lab serverless assessment methodology; publishes serverless security research",
+      "evidence": [
+        "Designed or maintains the lab's serverless security assessment methodology",
+        "Published research on novel serverless attack techniques or defense bypasses",
+        "Trains teams on advanced serverless security assessment",
+        "Recognized as authority on serverless security"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess a serverless application with intentional misconfigurations across Lambda, API Gateway, and event sources"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given a serverless architecture diagram and IAM policies, identify all privilege escalation and data exfiltration paths"
+    }
+  ],
+  "framework_mappings": {
+    "csa_ccm": [
+      "AIS-01",
+      "AIS-02"
+    ],
+    "nice": {
+      "tks": ["K0863", "K0898", "K1079", "K1366", "S0656"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-005 Software Security Assessment"]
+    }
+  },
+  "tags": [
+    "aws",
+    "lambda",
+    "serverless",
+    "api-gateway",
+    "cloud-security",
+    "api",
+    "authentication",
+    "code-review",
+    "exfiltration",
+    "iam",
+    "privilege-escalation"
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "id": "DFIR-DISK-MACART",
+  "name": "macOS Forensic Artifacts",
+  "domain": "digital-forensics",
+  "category": "Disk Forensics",
+  "status": "active",
+  "description": "Extraction and analysis of macOS-specific forensic artifacts. Covers Unified Logging (log show/log collect), FSEvents for file system activity reconstruction, Spotlight metadata (mdls, mdfind), KnowledgeC database (and the Biome streams that increasingly supersede it on recent macOS versions) for application and device usage, TCC.db for privacy permission history, quarantine events and XProtect detections, Apple Mail and iMessage artifact analysis, Safari history and downloads, Launch Services database, and APFS snapshot forensics.",
+
+  "requires": [
+    "DFIR-DISK-FILESYS",
+    "FOUND-EVIDENCE"
+  ],
+  "recommended": [
+    "DFIR-DISK-ARTIFACTS",
+    "DFIR-DISK-TIMELINE",
+    "FOUND-REPORT"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to macOS forensic artifact analysis"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands macOS artifact categories and their forensic value",
+      "evidence": [
+        "Can describe major macOS artifact sources (Unified Logs, FSEvents, Spotlight, KnowledgeC)",
+        "Understands APFS filesystem structure and its forensic implications",
+        "Familiar with macOS-specific artifact locations compared to Windows/Linux equivalents",
+        "Completed introductory training on macOS forensics"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Extracts and parses macOS artifacts under supervision",
+      "evidence": [
+        "Collected and filtered Unified Logs using log collect/log show (including offline .logarchive parsing from disk images) under guidance",
+        "Parsed FSEvents databases to reconstruct file system activity",
+        "Extracted Spotlight metadata and quarantine event records",
+        "Analysed Safari history, downloads, and bookmark artifacts with supervisor review"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently analyses macOS artifacts across investigation types",
+      "evidence": [
+        "Independently analysed macOS artifacts in 5+ investigations",
+        "Correlates KnowledgeC, FSEvents, and Unified Logs to reconstruct user activity timelines",
+        "Extracts and interprets TCC.db permission grants and quarantine attributes",
+        "Produces macOS forensic reports withstanding peer and legal review"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles advanced macOS forensic scenarios; detects anti-forensics",
+      "evidence": [
+        "Identifies evidence of macOS anti-forensic techniques (log clearing, FSEvents manipulation, timestomping)",
+        "Analyses APFS snapshots and Time Machine backups for historical state recovery",
+        "Develops custom parsers for macOS artifacts from new OS versions",
+        "Reviews and mentors junior examiners on macOS artifact analysis"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Authority on macOS forensics; discovers new artifact sources",
+      "evidence": [
+        "Authored or maintains lab's macOS forensic analysis procedures",
+        "Published research on newly discovered macOS artifacts or analysis techniques",
+        "Validated forensic tool accuracy against macOS ground truth data",
+        "Provides expert testimony on macOS forensic evidence"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Given a macOS disk image, extract and analyze platform-specific artifacts to reconstruct user activity and determine program execution within a specified timeframe"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review macOS artifact analysis sections from recent case reports"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0923", "K0744", "K0794", "S0481", "S0612"],
+      "work_roles": ["PD-WRL-002 Digital Forensics", "IN-WRL-002 Digital Evidence Analysis"]
+    },
+    "sfia": {
+      "skill": "DGFS"
+    },
+    "giac": ["GCFE", "GCFA"]
+  },
+
+  "tags": [
+    "macos",
+    "forensics",
+    "unified-logging",
+    "fsevents",
+    "spotlight",
+    "knowledgec",
+    "apfs",
+    "disk-forensics",
+    "apple",
+    "tcc"
+  ]
+}

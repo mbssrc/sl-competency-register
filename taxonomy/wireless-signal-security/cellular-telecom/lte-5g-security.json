@@ -1,0 +1,127 @@
+{
+  "id": "WSEC-CELL-LTE5G",
+  "name": "LTE & 5G Security Assessment",
+  "domain": "wireless-signal-security",
+  "category": "Cellular & Telecom Security",
+  "status": "active",
+  "description": "Ability to assess the security of LTE (4G) and 5G NR cellular networks. Covers LTE/5G air interface analysis, authentication and key agreement (AKA) assessment, rogue base station (fake eNodeB/gNodeB) detection and analysis, NAS and RRC protocol security, network slicing isolation, and assessment of subscriber privacy protections including SUPI/SUCI mechanisms.",
+  "requires": [
+    "WSEC-SDR-DEMOD",
+    "FOUND-ETHICS"
+  ],
+  "recommended": [
+    "WSEC-CELL-GSM",
+    "WSEC-SDR-DSP",
+    "FOUND-RISK"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to LTE or 5G security assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands LTE and 5G network architecture and security mechanisms",
+      "evidence": [
+        "Can describe the LTE protocol stack (PHY, MAC, RLC, PDCP, RRC, NAS) and security functions",
+        "Understands EPS-AKA and 5G-AKA authentication mechanisms at a conceptual level",
+        "Completed training on LTE/5G security architecture and known vulnerability classes"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs LTE signal analysis and base station characterization under supervision",
+      "evidence": [
+        "Decoded LTE MIB and SIB messages to characterize cell parameters using srsRAN or equivalent under guidance",
+        "Identified LTE cell IDs, frequencies, bandwidths, and security configurations",
+        "Operated srsRAN or Open5GS test infrastructure in a shielded environment under supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses LTE/5G security in controlled environments",
+      "evidence": [
+        "Independently analyzed LTE network security configurations across 3+ assessments",
+        "Assessed subscriber privacy by analyzing IMSI exposure, paging, and tracking attack surfaces",
+        "Configured and operated LTE/5G test infrastructure for controlled security analysis",
+        "Produced detailed reports documenting protocol-level findings and remediation recommendations"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Performs advanced LTE/5G protocol analysis; assesses 5G-specific security features",
+      "evidence": [
+        "Assessed 5G network slicing isolation and inter-slice security boundaries",
+        "Analyzed NAS and RRC protocol implementations for non-standard behavior or vulnerabilities",
+        "Evaluated 5G SUPI/SUCI privacy mechanisms and their implementation correctness",
+        "Developed custom LTE/5G analysis tools and mentors junior staff on assessment methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on LTE/5G security; discovers implementation vulnerabilities; defines lab methodology",
+      "evidence": [
+        "Published research on LTE or 5G security vulnerabilities or assessment techniques",
+        "Discovered novel protocol-level vulnerabilities in LTE or 5G implementations",
+        "Authored the lab's LTE/5G security assessment methodology",
+        "Trains teams on LTE/5G security and advises operators on network hardening"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Analyze a controlled LTE test network: decode system information, assess authentication configuration, evaluate subscriber privacy protections, and document findings"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given a 5G network architecture diagram, identify security assessment priorities and design a test plan addressing authentication, slicing isolation, and privacy"
+    }
+  ],
+  "equipment": [
+    "Ettus USRP B200/B210 SDR platform",
+    "RF shielded enclosure for cellular testing",
+    "srsRAN LTE/5G test platform",
+    "Programmable SIM cards (sysmoISIM)"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0773", "K0925", "K0375", "S0758"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-008 Technology Research and Development"]
+    },
+    "sfia": {
+      "skill": "PENT",
+      "levels": [
+        3,
+        4,
+        5
+      ]
+    },
+    "mitre_attack": {
+      "techniques": [
+        "T1040",
+        "T1557"
+      ]
+    },
+    "3gpp": {
+      "specs": [
+        "TS 33.401",
+        "TS 33.501"
+      ]
+    }
+  },
+  "tags": [
+    "lte",
+    "5g",
+    "4g",
+    "cellular",
+    "aka",
+    "network-slicing",
+    "enodeb",
+    "authentication",
+    "protocol-analysis"
+  ]
+}

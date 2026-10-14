@@ -1,0 +1,102 @@
+{
+  "id": "INFRA-ONPREM-BACKUP",
+  "name": "Backup and Recovery Security Assessment",
+  "domain": "infrastructure-security",
+  "category": "On-Premises Infrastructure",
+  "status": "active",
+  "description": "Security assessment of backup systems and disaster recovery infrastructure. Covers backup server hardening, credential and access controls, backup data encryption, network segmentation of backup infrastructure, immutable backup validation, and resilience against ransomware and destructive attacks.",
+  "requires": [],
+  "recommended": [
+    "INFRA-ONPREM-HARDEN",
+    "INFRA-ONPREM-AD",
+    "FOUND-RISK"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to backup and recovery security assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands backup architecture, common platforms, and security concerns",
+      "evidence": [
+        "Can explain backup types (full, incremental, differential) and retention concepts",
+        "Understands why backup infrastructure is a high-value target for attackers",
+        "Familiar with common backup platforms (Veeam, Commvault, Veritas)"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Reviews backup system configurations under supervision",
+      "evidence": [
+        "Reviews backup server access controls and network placement under guidance",
+        "Assesses backup encryption configurations using lab checklists",
+        "Documents backup security findings with supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses backup infrastructure security and ransomware resilience",
+      "evidence": [
+        "Independently evaluates backup server hardening and access control effectiveness",
+        "Assesses backup data encryption at rest and in transit",
+        "Evaluates immutable backup configurations and air-gapped storage",
+        "Produces compliant backup security assessment reports"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex backup environments; simulates destructive attack scenarios; mentors others",
+      "evidence": [
+        "Assesses complex multi-site backup and replication architectures",
+        "Simulates ransomware attack paths targeting backup infrastructure",
+        "Reviews backup assessment work of junior analysts",
+        "Evaluates disaster recovery plan effectiveness through tabletop exercises"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines lab backup assessment methodology; publishes research on backup security",
+      "evidence": [
+        "Designed or maintains the lab's backup security assessment framework",
+        "Published research on backup infrastructure attack techniques or defense strategies",
+        "Trains teams on backup and recovery security assessment",
+        "Recognized as authority on backup infrastructure security and resilience"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess a backup infrastructure environment and identify all paths an attacker could use to compromise or destroy backups"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given a backup architecture diagram, identify ransomware resilience gaps and recommend immutability controls"
+    }
+  ],
+  "framework_mappings": {
+    "csa_ccm": [
+      "BCR-01",
+      "BCR-02",
+      "BCR-03",
+      "BCR-08"
+    ],
+    "nice": {
+      "tks": ["K0701", "K0709", "K1223", "K0931", "K0715"],
+      "work_roles": ["IO-WRL-005 Systems Administration", "DD-WRL-001 Cybersecurity Architecture"]
+    }
+  },
+  "tags": [
+    "backup",
+    "disaster-recovery",
+    "ransomware-resilience",
+    "immutable-backup",
+    "on-premises",
+    "encryption",
+    "segmentation"
+  ]
+}

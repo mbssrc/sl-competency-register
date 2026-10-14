@@ -1,0 +1,18 @@
+{
+  "id": "INTEL",
+  "name": "Intelligence",
+  "description": "Skills related to intelligence gathering, analysis, and dissemination. Covers open-source intelligence (OSINT) for reconnaissance and investigation support, and threat intelligence for tracking adversaries, understanding TTPs, and informing defensive and offensive operations.",
+
+  "categories": [
+    {
+      "id": "INTEL-OSINT",
+      "name": "Open-Source Intelligence (OSINT)",
+      "description": "Gathering, analyzing, and correlating information from publicly available sources. Covers person/organization research, infrastructure mapping, data breach monitoring, social media analysis, geospatial intelligence, dark web and closed-source monitoring, cryptocurrency transaction tracing, and the investigator operational security that keeps research attribution-resistant and auditable."
+    },
+    {
+      "id": "INTEL-TI",
+      "name": "Threat Intelligence",
+      "description": "Collecting, processing, and analyzing threat data to produce actionable intelligence. Covers adversary tracking, TTP analysis, indicator management, intelligence sharing (MISP, STIX/TAXII), strategic/operational/tactical intelligence production, and the analytic tradecraft (structured analytic techniques, source evaluation, estimative language) behind it."
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "id": "INTEL-TI-SHARING",
+  "name": "Intelligence Sharing (MISP, STIX/TAXII)",
+  "domain": "intelligence",
+  "category": "Threat Intelligence",
+  "status": "active",
+  "description": "Sharing and receiving threat intelligence using standardized formats and platforms. Covers STIX/TAXII protocols, MISP administration and event management, traffic light protocol (TLP) handling, intelligence sharing communities, and ensuring interoperability of intelligence products across organizational boundaries.",
+  "requires": [
+    "INTEL-TI-IOC"
+  ],
+  "recommended": [
+    "FOUND-ETHICS",
+    "INTEL-TI-PRODUCTION"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to structured threat intelligence sharing"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the purpose of intelligence sharing and common standards and protocols",
+      "evidence": [
+        "Can describe STIX, TAXII, and their roles in intelligence sharing",
+        "Understands TLP markings and their handling requirements",
+        "Aware of MISP and its role as a sharing platform"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Creates and receives intelligence in standard formats under supervision",
+      "evidence": [
+        "Creates MISP events with proper attributes and tagging under guidance",
+        "Produces basic STIX bundles from engagement findings",
+        "Applies correct TLP markings to intelligence products",
+        "Sharing decisions reviewed by authorized personnel"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently manages intelligence sharing workflows and community participation",
+      "evidence": [
+        "Manages MISP event lifecycle (creation, correlation, publication) across 3+ sharing actions",
+        "Produces and validates STIX 2.1 objects for automated sharing",
+        "Participates in sharing communities with appropriate handling of received intelligence",
+        "Sharing products and decisions pass QA and policy review"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Administers sharing platforms; develops integrations; mentors analysts on sharing tradecraft",
+      "evidence": [
+        "Administers MISP instances including taxonomy management, feeds, and synchronization",
+        "Develops TAXII server/client integrations with defensive tooling",
+        "Evaluates and onboards new sharing communities and feeds",
+        "Mentors junior analysts on sharing standards, TLP compliance, and community norms"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Architects sharing infrastructure; defines sharing policy; trains teams",
+      "evidence": [
+        "Designed or maintains the lab's intelligence sharing architecture and policy",
+        "Develops custom MISP modules, galaxies, or taxonomies",
+        "Contributes to standardization efforts (OASIS CTI, MISP project)",
+        "Trains teams and establishes sharing community relationships"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Given engagement findings, produce a properly TLP-marked MISP event with STIX export suitable for community sharing"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Audit MISP events and STIX packages for data quality, proper marking, and compliance with sharing agreements"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1009", "S0454", "S0826"],
+      "work_roles": ["PD-WRL-006 Threat Analysis"]
+    },
+    "mitre_attack": {
+      "note": "Covers sharing of intelligence encoded as ATT&CK-mapped STIX objects"
+    }
+  },
+  "tags": [
+    "threat-intelligence",
+    "misp",
+    "stix",
+    "taxii",
+    "intelligence-sharing",
+    "tlp"
+  ]
+}

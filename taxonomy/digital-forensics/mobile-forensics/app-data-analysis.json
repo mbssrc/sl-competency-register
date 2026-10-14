@@ -1,0 +1,115 @@
+{
+  "id": "DFIR-MOB-APPDATA",
+  "name": "Mobile Application Data Analysis",
+  "domain": "digital-forensics",
+  "category": "Mobile Forensics",
+  "status": "active",
+  "description": "Ability to extract and analyse data from mobile applications including messaging apps (WhatsApp, Signal, Telegram), social media, browsers, email clients, and third-party applications. Covers SQLite database parsing, plist and protobuf decoding, deleted message recovery, and understanding application-specific data storage patterns.",
+
+  "requires": [
+    "DFIR-MOB-ACQUISITION",
+    "FOUND-EVIDENCE"
+  ],
+  "recommended": [
+    "DFIR-DISK-ARTIFACTS",
+    "FOUND-REPORT",
+    "SWSEC-MOB-ANDROID"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to mobile application data analysis"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands that mobile applications store forensically relevant data and knows common data storage formats",
+      "evidence": [
+        "Can describe common mobile app data storage formats (SQLite, plist, protobuf, XML)",
+        "Understands the concept of app sandboxing and how it affects data location",
+        "Can explain why messaging app data is often critical in investigations"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Extracts and examines app data from common applications using forensic tools under supervision",
+      "evidence": [
+        "Extracted and parsed WhatsApp and Telegram databases from acquired devices under guidance",
+        "Queried SQLite databases to recover chat messages, contacts, and media references",
+        "Examined browser history, bookmarks, and cached data from mobile browser app data",
+        "Documented application data findings with supervisor review"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently analyses application data across a range of apps to answer investigative questions and produces court-ready reports",
+      "evidence": [
+        "Independently analysed app data in 5+ investigations across messaging, social media, and financial apps",
+        "Recovered deleted messages and media from SQLite databases using WAL and journal analysis",
+        "Correctly interpreted application-specific timestamps, status indicators, and metadata",
+        "Produced app data analysis reports that met evidentiary standards"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles encrypted and obfuscated app data; reverse-engineers undocumented storage formats; develops custom parsing tools",
+      "evidence": [
+        "Decrypted application databases and backups using extracted keys (e.g. Signal's SQLCipher database, WhatsApp crypt14/crypt15 backups)",
+        "Reverse-engineered undocumented or proprietary app data storage formats",
+        "Developed custom parsing scripts for apps not supported by commercial tools",
+        "Reviews app data analysis work and mentors junior examiners"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines app data analysis methodology; researches new application artifacts; validates tool parsing accuracy",
+      "evidence": [
+        "Authored or maintains the lab's mobile application data analysis procedures",
+        "Published research on application artifact discovery or parsing techniques",
+        "Validated commercial tool parsing accuracy against manual analysis for key applications",
+        "Trains teams on mobile application data analysis and provides expert testimony"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Given a mobile device extraction, analyse messaging app databases, recover deleted content, and produce an evidence report with message timelines"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review app data analysis sections from recent case reports for parsing accuracy and completeness"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1152", "K0705", "S0604", "S0612"],
+      "work_roles": ["IN-WRL-002 Digital Evidence Analysis", "PD-WRL-002 Digital Forensics", "IN-WRL-001 Cybercrime Investigation"]
+    },
+    "sfia": {
+      "skill": "DGFS"
+    },
+    "giac": ["GASF"]
+  },
+
+  "tags": [
+    "mobile-apps",
+    "sqlite",
+    "messaging",
+    "whatsapp",
+    "signal",
+    "deleted-recovery",
+    "app-forensics",
+    "mobile",
+    "reverse-engineering",
+    "social-media",
+    "forensics",
+    "android",
+    "ios"
+  ]
+}

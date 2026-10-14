@@ -1,0 +1,111 @@
+{
+  "id": "SWSEC-MOB-ANDROID",
+  "name": "Android Application Security Testing",
+  "domain": "software-security",
+  "category": "Mobile Security",
+  "status": "active",
+  "description": "Security assessment of Android applications. Covers APK analysis, manifest review, component security (activities, services, broadcast receivers, content providers), data storage review, certificate pinning bypass, root detection bypass, and runtime manipulation with Frida.",
+
+  "requires": [
+    "FOUND-ETHICS"
+  ],
+  "recommended": [
+    "SWSEC-RE-DECOMPILE",
+    "SWSEC-DAST-INSTRUMENT",
+    "DFIR-MOB-APPDATA",
+    "FOUND-TOOLS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to Android security testing"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands Android application architecture and security model",
+      "evidence": [
+        "Can explain the Android component model (activities, services, providers, receivers)",
+        "Understands Android permission model and IPC mechanisms",
+        "Familiar with OWASP Mobile Top 10"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs basic Android app analysis under supervision",
+      "evidence": [
+        "Decompiled APKs using jadx or apktool and reviewed manifest",
+        "Tested data storage (SharedPreferences, SQLite, files) for sensitive data leaks",
+        "Set up and used an Android testing environment (emulator or rooted device)",
+        "Work reviewed by authorized tester"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently tests Android apps against OWASP MASTG methodology",
+      "evidence": [
+        "Independently tested 5+ Android applications",
+        "Bypasses certificate pinning using Frida or Objection",
+        "Tests exported components for unauthorized access and injection",
+        "Evaluates cryptographic storage and transport security independently",
+        "Passed proficiency assessment on Android security testing"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Tests complex Android apps; bypasses advanced protections; writes Frida scripts",
+      "evidence": [
+        "Bypasses root detection and integrity checking mechanisms",
+        "Writes custom Frida scripts for runtime hooking and manipulation",
+        "Tests NDK/native code components for vulnerabilities",
+        "Mentors junior testers on Android testing methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Authority on Android security; discovers platform-level vulnerabilities",
+      "evidence": [
+        "Published research or CVEs related to Android application or platform security",
+        "Developed the lab's Android testing methodology and tooling",
+        "Reverse engineers obfuscated and packed applications",
+        "Trains teams on advanced Android exploitation techniques"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Complete a security assessment of a prepared Android application covering OWASP MASTG test cases"
+    },
+    {
+      "type": "direct_observation",
+      "description": "Observe setup of test environment and dynamic analysis workflow"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0688", "K0842", "S0656", "S0857"],
+      "work_roles": ["DD-WRL-005 Software Security Assessment", "PD-WRL-007 Vulnerability Analysis"]
+    },
+    "owasp": ["OWASP MASTG", "OWASP MASVS"],
+    "cwe": ["CWE-312", "CWE-319", "CWE-926"],
+    "mitre_attack": {"techniques": ["T1407", "T1409", "T1404", "T1417"]}
+  },
+
+  "tags": [
+    "mobile",
+    "android",
+    "owasp-mobile",
+    "frida",
+    "cryptographic",
+    "dynamic-analysis",
+    "reverse-engineering",
+    "transport-security",
+    "pki"
+  ]
+}

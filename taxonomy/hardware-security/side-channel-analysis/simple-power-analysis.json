@@ -1,0 +1,112 @@
+{
+  "id": "HWSEC-SCA-SPA",
+  "name": "Simple Power Analysis",
+  "domain": "hardware-security",
+  "category": "Side-Channel Analysis",
+  "status": "active",
+  "description": "Acquisition and visual/manual analysis of power consumption traces from cryptographic and security-critical operations. Covers measurement setup (shunt resistor placement, decoupling bypass), single-trace analysis to identify algorithmic operations, distinguish conditional branches, and extract key-dependent patterns in implementations of RSA, ECC, AES, and other algorithms.",
+  "requires": [],
+  "recommended": [
+    "HWSEC-PCB-RE",
+    "HWSEC-CRYPTO-ACCEL",
+    "FOUND-STANDARDS",
+    "FOUND-TOOLS"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to power analysis techniques"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the physical basis of power analysis and common leakage models",
+      "evidence": [
+        "Can explain why CMOS circuits leak information through power consumption",
+        "Understands Hamming weight and Hamming distance leakage models",
+        "Aware of common SPA targets (RSA square-and-multiply, AES SubBytes)"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Sets up power measurement and identifies operations in traces under supervision",
+      "evidence": [
+        "Correctly installs a shunt resistor and configures the measurement chain on a training target",
+        "Captures aligned power traces using ChipWhisperer or equivalent platform",
+        "Identifies distinct cryptographic operations (encryption rounds, key schedule) in a power trace with guidance",
+        "Distinguishes conditional branches in RSA traces on a reference implementation"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently performs SPA on real targets and extracts key material from vulnerable implementations",
+      "evidence": [
+        "Sets up power measurement on unfamiliar targets including shunt placement and signal conditioning",
+        "Extracts RSA private key bits from unprotected square-and-multiply implementations via SPA",
+        "Identifies countermeasure presence (blinding, shuffling, constant-time code) from trace inspection",
+        "Produces SPA assessment reports meeting lab quality standards on 3+ engagements"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Performs SPA on hardened targets; develops custom analysis scripts; mentors team",
+      "evidence": [
+        "Applies advanced trace processing (filtering, alignment, pattern matching) to extract leakage from noisy environments",
+        "Assesses effectiveness of SPA countermeasures through practical analysis",
+        "Develops custom SPA analysis scripts and visualization tools for the lab",
+        "Mentors junior analysts on measurement setup and trace interpretation"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on SPA; develops novel techniques; publishes at CHES/COSADE level",
+      "evidence": [
+        "Published research on novel SPA techniques or countermeasure analysis",
+        "Defines the lab's SPA methodology aligned with Common Criteria or EMVCo standards",
+        "Provides expert consultation on SPA resistance to silicon designers",
+        "Trains teams on advanced SPA techniques and trace interpretation"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Set up power measurement on a reference target, capture traces, and extract key-dependent information using single-trace analysis"
+    },
+    {
+      "type": "direct_observation",
+      "description": "Observe measurement setup technique, probe placement, and trace interpretation during a live SPA session"
+    }
+  ],
+  "equipment": [
+    "ChipWhisperer (CW-Lite or CW-Pro)",
+    "Shunt resistor (1-10 Ohm) or current probe (e.g., Tektronix CT-1) for power measurement",
+    "Low-noise amplifier for power measurement chain"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1362", "K0018", "K0714", "S0898"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development", "PD-WRL-007 Vulnerability Analysis"]
+    },
+    "common_criteria": [
+      "AVA_VAN.3",
+      "AVA_VAN.4"
+    ],
+    "jil_attack_methods": [
+      "5.5 Side-channel attacks"
+    ],
+    "fips_140_3": [
+      "AS08"
+    ]
+  },
+  "tags": [
+    "spa",
+    "power-analysis",
+    "side-channel",
+    "cryptographic",
+    "non-invasive",
+    "constant-time"
+  ]
+}

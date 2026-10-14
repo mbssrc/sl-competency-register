@@ -1,0 +1,20 @@
+{
+  "id": "SVC-SUPPLY-CHAIN",
+  "name": "Software Supply Chain Assessment",
+  "description": "Assessment of software supply chain security including dependency analysis, SBOM generation and review, build pipeline integrity verification, and static analysis of third-party components to identify risks from upstream dependencies and build processes.",
+  "scope_reference": "Security assessment of software supply chains and build pipelines",
+  "required_competencies": [
+    { "skill": "SWSEC-SUPPLY-DEP", "minimum_level": 3 },
+    { "skill": "SWSEC-SUPPLY-SBOM", "minimum_level": 3 },
+    { "skill": "SWSEC-SUPPLY-PIPELINE", "minimum_level": 3 },
+    { "skill": "SWSEC-SAST-TOOLING", "minimum_level": 3 },
+    { "skill": "SWSEC-SAST-TRIAGE", "minimum_level": 2 },
+    { "skill": "SWSEC-SAST-CUSTOM", "minimum_level": 2 },
+    { "skill": "FOUND-REPORT", "minimum_level": 3 },
+    { "skill": "FOUND-RISK", "minimum_level": 3 }
+  ],
+  "standards": [
+    "NIST SP 800-218 Secure Software Development Framework (SSDF)",
+    "SLSA (Supply-chain Levels for Software Artifacts)"
+  ]
+}

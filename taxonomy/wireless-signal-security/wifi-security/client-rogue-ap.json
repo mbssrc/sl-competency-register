@@ -1,0 +1,123 @@
+{
+  "id": "WSEC-WIFI-CLIENT",
+  "name": "WiFi Client & Rogue AP Attacks",
+  "domain": "wireless-signal-security",
+  "category": "WiFi Security",
+  "status": "active",
+  "description": "Ability to assess WiFi client-side security through rogue access point deployment, client deauthentication attacks, karma/MANA attacks, captive portal credential harvesting, and client probe request analysis. Covers both targeted client attacks and broad rogue AP detection assessment to evaluate organizational exposure.",
+  "requires": [
+    "WSEC-WIFI-RECON",
+    "FOUND-ETHICS"
+  ],
+  "recommended": [
+    "WSEC-WIFI-WPA"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to WiFi client-side attack techniques"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands client-side WiFi vulnerabilities and rogue AP concepts",
+      "evidence": [
+        "Can explain how rogue access points and evil twin attacks work",
+        "Understands probe request information leakage and auto-association risks",
+        "Completed training on WiFi client attack vectors and countermeasures"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Deploys rogue APs and executes client attacks in controlled environments under supervision",
+      "evidence": [
+        "Deployed a rogue AP with captive portal in a lab environment under guidance",
+        "Performed client deauthentication attacks and observed reconnection behavior",
+        "Analyzed probe requests to identify preferred networks and client behavior under supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently plans and executes WiFi client-side assessments with appropriate scoping and controls",
+      "evidence": [
+        "Independently planned and conducted WiFi client attack assessments for 3+ engagements",
+        "Deployed rogue APs with proper scoping to minimize impact on non-target clients",
+        "Assessed organizational exposure to rogue AP threats and client misconfiguration, including whether Protected Management Frames (802.11w) block deauthentication-based attacks",
+        "Produced reports documenting attack results, exposure scope, and client hardening recommendations"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Develops advanced client attack scenarios; assesses rogue AP detection capabilities",
+      "evidence": [
+        "Tested organizational WIDS/WIPS effectiveness against various rogue AP techniques",
+        "Developed multi-stage client attack chains combining WiFi and network-level techniques",
+        "Built custom captive portal credential harvesting platforms for engagement-specific scenarios",
+        "Mentors junior staff on safe and scoped client attack execution"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines client-side WiFi assessment methodology; discovers new client vulnerability classes",
+      "evidence": [
+        "Authored the lab's WiFi client assessment methodology and safety controls",
+        "Discovered novel client-side WiFi vulnerabilities or attack techniques",
+        "Published research on WiFi client security or rogue AP detection evasion",
+        "Trains teams on client-side WiFi assessment and develops custom attack tools"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Deploy a rogue AP in a controlled environment, attract target clients, and demonstrate credential capture while documenting scope controls"
+    },
+    {
+      "type": "direct_observation",
+      "description": "Observe planning and execution of a WiFi client assessment, evaluating scoping discipline and impact minimization"
+    }
+  ],
+  "equipment": [
+    "Alfa AWUS036ACH or equivalent monitor-mode-capable WiFi adapter",
+    "WiFi Pineapple or equivalent rogue AP platform"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0998", "K0375", "K0831", "S0758"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis"]
+    },
+    "sfia": {
+      "skill": "PENT",
+      "levels": [
+        3,
+        4,
+        5
+      ]
+    },
+    "mitre_attack": {
+      "techniques": [
+        "T1557",
+        "T1200"
+      ]
+    },
+    "certifications": [
+      "GIAC GAWN",
+      "Offensive Security OSWP",
+      "CompTIA PenTest+",
+      "CEH"
+    ]
+  },
+  "tags": [
+    "wifi",
+    "client-attacks",
+    "rogue-ap",
+    "evil-twin",
+    "captive-portal",
+    "deauthentication",
+    "credential-harvesting",
+    "mitm",
+    "spoofing"
+  ]
+}

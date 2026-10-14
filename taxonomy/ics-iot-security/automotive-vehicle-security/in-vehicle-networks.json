@@ -1,0 +1,142 @@
+{
+  "id": "ICSIOT-AUTO-IVN",
+  "name": "In-Vehicle Network Security",
+  "domain": "ics-iot-security",
+  "category": "Automotive & Vehicle Security",
+  "status": "active",
+  "description": "Security assessment of the networks inside a road vehicle. Covers CAN (ISO 11898), CAN FD and CAN XL, LIN, FlexRay, and automotive Ethernet with SOME/IP and DoIP; traffic capture and message reverse engineering (DBC reconstruction), frame injection and spoofing, bus-off and denial-of-service attacks, central gateway and domain/zonal segmentation review, and secure onboard communication (AUTOSAR SecOC, CANsec, MACsec). Physical tapping of on-board buses at PCB level belongs to HWSEC-PCB-BUS; diagnostic services on these buses belong to ICSIOT-AUTO-ECU.",
+
+  "requires": [
+    "FOUND-ETHICS"
+  ],
+  "recommended": [
+    "HWSEC-PCB-BUS",
+    "ICSIOT-ICS-PROTO",
+    "SWSEC-RE-PROTOCOL",
+    "SWSEC-FUZZ-PROTO",
+    "FOUND-TOOLS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to in-vehicle network security"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands how vehicle ECUs communicate and why in-vehicle networks are an attack surface",
+      "evidence": [
+        "Can explain CAN arbitration, identifiers and the absence of sender authentication on classic CAN",
+        "Can name the main in-vehicle bus types (CAN, CAN FD, LIN, FlexRay, automotive Ethernet) and where each is typically used",
+        "Understands the role of a central gateway and of domain or zonal architectures"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Captures and analyses in-vehicle traffic on a bench setup under supervision",
+      "evidence": [
+        "Connects to CAN through the OBD-II port or a bench harness and captures traffic with SocketCAN, can-utils or Wireshark",
+        "Identifies the CAN IDs and signals behind a vehicle function by differential capture and replay",
+        "Replays and injects frames on a bench ECU or test vehicle under supervision",
+        "Documents bus topology, bit rates and observed message sets"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses the in-vehicle network of an ECU network or vehicle against a defined scope",
+      "evidence": [
+        "Reverse engineers message layouts into a DBC description and identifies safety-relevant signals",
+        "Demonstrates spoofing, injection or bus-off attacks and assesses their impact under controlled conditions",
+        "Reviews gateway filtering, routing tables and domain segmentation for unintended paths between domains",
+        "Assesses SOME/IP and DoIP services on automotive Ethernet for exposed and unauthenticated functions",
+        "Plans testing so that safety-critical functions are only exercised on benches or immobilised vehicles"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Assesses complex vehicle architectures and onboard communication protections; mentors others",
+      "evidence": [
+        "Evaluates SecOC, CANsec or MACsec deployments, including freshness value handling, key distribution and truncated MACs",
+        "Builds custom tooling or fuzzers for proprietary or higher-layer in-vehicle protocols",
+        "Chains in-vehicle network weaknesses with diagnostic or connectivity findings into end-to-end attack paths",
+        "Mentors staff on safe vehicle testing practice and in-vehicle network methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines the lab's in-vehicle network assessment methodology; recognised authority",
+      "evidence": [
+        "Authored the lab's in-vehicle network test methodology and safety rules for vehicle testing",
+        "Published research or disclosed vulnerabilities in in-vehicle network designs or onboard communication security",
+        "Advises vehicle manufacturers or suppliers on network architecture and segmentation strategy",
+        "Contributes to automotive security standards, specifications or industry working groups"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "On a multi-ECU bench network, identify the messages behind given vehicle functions, demonstrate a spoofing attack, and assess the gateway's filtering between two domains"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review an in-vehicle network assessment report for coverage of all bus types in scope, safe test planning, and accuracy of impact statements"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1089", "K1119", "S0899", "K0840"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-007 Systems Testing and Evaluation"]
+    },
+    "iso_sae_21434": {
+      "supports": ["cybersecurity verification and validation (clauses 10 and 11)"],
+      "excludes": ["TARA and risk management", "cybersecurity case", "CSMS and SUMS governance"]
+    },
+    "unece": ["R155"],
+    "mitre_attack": {
+      "note": "ATT&CK has no automotive matrix"
+    },
+    "cwe": ["CWE-290", "CWE-294", "CWE-345"]
+  },
+
+  "equipment": [
+    "CAN / CAN FD bus interface (e.g. PCAN-USB FD or equivalent)",
+    "Automotive Ethernet media converter (100BASE-T1 / 1000BASE-T1)",
+    "Multi-ECU bench network or immobilised test vehicle"
+  ],
+
+  "tags": [
+    "automotive",
+    "vehicle",
+    "in-vehicle-network",
+    "can-bus",
+    "can-fd",
+    "can-xl",
+    "lin",
+    "flexray",
+    "automotive-ethernet",
+    "some-ip",
+    "doip",
+    "gateway",
+    "secoc",
+    "socketcan",
+    "dbc",
+    "authentication",
+    "key-management",
+    "reverse-engineering",
+    "safety",
+    "segmentation",
+    "wireshark",
+    "protocol-analysis",
+    "traffic-analysis",
+    "embedded",
+    "fuzzing",
+    "replay-attack",
+    "spoofing"
+  ]
+}

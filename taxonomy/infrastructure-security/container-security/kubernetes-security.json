@@ -1,0 +1,105 @@
+{
+  "id": "INFRA-CONTAINER-K8S",
+  "name": "Kubernetes Security Assessment",
+  "domain": "infrastructure-security",
+  "category": "Container Security",
+  "status": "active",
+  "description": "Security assessment of Kubernetes clusters and workloads. Covers RBAC, network policies, Pod Security Standards enforced via Pod Security Admission (PodSecurityPolicy was removed in v1.25), secrets management, admission controllers, service mesh, API server security, and Kubernetes-specific attack paths including privilege escalation and lateral movement.",
+  "requires": [
+    "INFRA-CONTAINER-DOCKER"
+  ],
+  "recommended": [
+    "FOUND-STANDARDS",
+    "DFIR-CLOUD-CONTAINER"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to Kubernetes security assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands Kubernetes architecture, RBAC model, and common security concerns",
+      "evidence": [
+        "Can explain Kubernetes components (API server, kubelet, etcd, scheduler)",
+        "Understands RBAC roles, bindings, and service accounts",
+        "Familiar with Kubernetes threat model and common attack patterns"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Reviews Kubernetes configurations under supervision using established tools",
+      "evidence": [
+        "Runs Kubernetes security tools (e.g., kube-bench, Kubescape) under guidance",
+        "Identifies overly permissive RBAC bindings and pod security violations using checklists",
+        "Documents Kubernetes security findings with supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses Kubernetes cluster security and identifies attack paths",
+      "evidence": [
+        "Independently enumerates and reviews RBAC configurations, network policies, and pod security",
+        "Identifies privilege escalation paths through RBAC, pod specs, and node access",
+        "Evaluates secrets management and admission controller effectiveness",
+        "Produces compliant Kubernetes security assessment reports"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex multi-cluster assessments; develops exploitation tooling; mentors others",
+      "evidence": [
+        "Assesses complex multi-cluster environments with service mesh and custom operators",
+        "Develops tooling for automated Kubernetes RBAC analysis and attack path discovery",
+        "Reviews Kubernetes assessment work of junior analysts",
+        "Demonstrates advanced exploitation (node compromise, etcd access, API server abuse)"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines lab Kubernetes assessment methodology; publishes Kubernetes security research",
+      "evidence": [
+        "Designed or maintains the lab's Kubernetes security assessment framework",
+        "Published research on novel Kubernetes attack techniques or admission controller bypasses",
+        "Trains teams on advanced Kubernetes security assessment",
+        "Recognized as authority on Kubernetes security"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess a deliberately misconfigured Kubernetes cluster and identify all privilege escalation and lateral movement paths"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given a Kubernetes RBAC configuration and pod specs, identify all paths from unprivileged pod to cluster-admin"
+    }
+  ],
+  "framework_mappings": {
+    "cis": [
+      "CIS Kubernetes Benchmark"
+    ],
+    "csa_ccm": [
+      "IVS-01",
+      "IAM-16"
+    ],
+    "nice": {
+      "tks": ["K1373", "K1368", "K0863", "K0717", "S0925"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "IO-WRL-006 Systems Security Analysis"]
+    }
+  },
+  "tags": [
+    "containers",
+    "kubernetes",
+    "rbac",
+    "orchestration",
+    "cluster-security",
+    "api",
+    "lateral-movement",
+    "privilege-escalation"
+  ]
+}

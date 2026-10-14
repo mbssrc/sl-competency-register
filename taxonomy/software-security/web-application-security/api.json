@@ -1,0 +1,105 @@
+{
+  "id": "SWSEC-WEB-API",
+  "name": "API Security Testing",
+  "domain": "software-security",
+  "category": "Web Application Security",
+  "status": "active",
+  "description": "Security testing of web APIs including REST, GraphQL, gRPC, and SOAP. Covers endpoint enumeration, input validation, authentication/authorization at the API layer, rate limiting, mass assignment, BOLA/BFLA, and API specification analysis.",
+
+  "requires": [
+    "FOUND-ETHICS"
+  ],
+  "recommended": [
+    "SWSEC-WEB-AUTHZ",
+    "FOUND-REPORT",
+    "FOUND-TOOLS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to API security testing"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands API architectures and common security concerns",
+      "evidence": [
+        "Can explain REST, GraphQL, and SOAP architectures",
+        "Familiar with the OWASP API Security Top 10",
+        "Understands API authentication mechanisms (API keys, OAuth, JWT)"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Tests APIs under supervision using proxy tools and API clients",
+      "evidence": [
+        "Intercepted and manipulated API requests using Burp Suite or similar",
+        "Tested for BOLA (broken object-level authorization) in lab environments",
+        "Performed supervised API testing on at least 2 engagements"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently tests APIs for OWASP API Top 10 vulnerabilities",
+      "evidence": [
+        "Independently tested APIs on 5+ engagements",
+        "Identifies BOLA, BFLA, mass assignment, and broken object property level authorization (excessive data exposure)",
+        "Tests GraphQL APIs for introspection leaks, batching attacks, and injection",
+        "Passed proficiency assessment on API security testing"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Tests complex API ecosystems; develops custom testing automation",
+      "evidence": [
+        "Tests microservice architectures and inter-service API trust boundaries",
+        "Develops custom Burp extensions or scripts for API testing automation",
+        "Reviews OpenAPI/Swagger specifications for security gaps",
+        "Mentors junior testers on API security methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Authority on API security; develops methodology and tooling",
+      "evidence": [
+        "Published research or CVEs related to API security flaws",
+        "Developed the lab's API testing methodology and tooling",
+        "Tests novel API protocols (gRPC, WebSocket, server-sent events) at depth",
+        "Trains teams on advanced API security testing"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Test a REST and GraphQL API for OWASP API Top 10 vulnerabilities in a lab environment"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review of API security findings from 3 recent engagement reports"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1366", "K0782", "K1079", "S0656"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-005 Software Security Assessment"]
+    },
+    "owasp": ["OWASP API Security Top 10 2023"],
+    "cwe": ["CWE-285", "CWE-915"],
+    "crest_cct_app": ["H7", "H29"]
+  },
+
+  "tags": [
+    "api",
+    "rest",
+    "graphql",
+    "owasp-top-10",
+    "web",
+    "authentication"
+  ]
+}

@@ -1,0 +1,79 @@
+{% extends "core/base.html" %}
+
+{% block title %}Personnel - {{ product_name }}{% endblock %}
+
+{% block page_crumbs %}
+  {% include "core/partials/crumb.html" with label="Overview" first=True %}
+  {% include "core/partials/crumb.html" with label="Personnel" current=True %}
+{% endblock %}
+
+{% block page_title %}Personnel{% endblock %}
+{% block page_description %}Lab personnel competency records.{% endblock %}
+
+{% block page_actions %}
+{% if request.user.is_manager %}
+  <button onclick="loadModal('{% url 'personnel:person-create' %}')"
+          class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 rounded-md transition-colors">
+    Add Person
+  </button>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="mt-8 bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg overflow-hidden">
+  <table class="w-full text-sm table-fixed">
+    <colgroup>
+      <col style="width: 12%">
+      <col style="width: 22%">
+      <col style="width: 14%">
+      <col style="width: 32%">
+      <col style="width: 10%">
+      <col style="width: 10%">
+    </colgroup>
+    <thead>
+      <tr class="border-b border-gray-200 dark:border-white/10">
+        <th class="text-left px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">ID</th>
+        <th class="text-left px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Name</th>
+        <th class="text-left px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Start Date</th>
+        <th class="text-left px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Domains</th>
+        <th class="text-center px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Skills</th>
+        <th class="text-center px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Dev Plans</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in person_data %}
+      <tr class="border-b border-gray-100 dark:border-white/5 last:border-b-0 hover:bg-gray-50 dark:hover:bg-white/10 transition-colors {% if forloop.counter|divisibleby:2 %}bg-gray-50/50 dark:bg-white/[0.03]{% endif %}">
+        <td class="px-4 py-2.5 font-mono text-xs text-gray-600 dark:text-gray-400">
+          <a href="{% url 'personnel:person-detail' item.person.id %}" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">{{ item.person.id }}</a>
+        </td>
+        <td class="px-4 py-2.5 text-gray-900 dark:text-gray-200">
+          <a href="{% url 'personnel:person-detail' item.person.id %}" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors font-medium">{{ item.person.name }}</a>
+        </td>
+        <td class="px-4 py-2.5 text-gray-600 dark:text-gray-400">
+          {{ item.person.start_date|date:"Y-m-d" }}
+        </td>
+        <td class="px-4 py-2.5">
+          <div class="flex flex-wrap gap-1">
+            {% for domain in item.domains %}
+            <span class="inline-flex items-center rounded-full bg-indigo-50 dark:bg-indigo-500/15 px-2 py-0.5 text-xs font-medium text-indigo-700 dark:text-indigo-300">{{ domain.name }}</span>
+            {% endfor %}
+          </div>
+        </td>
+        <td class="px-4 py-2.5 text-center text-gray-600 dark:text-gray-400">
+          {{ item.skill_count }}
+        </td>
+        <td class="px-4 py-2.5 text-center text-gray-600 dark:text-gray-400">
+          {{ item.plan_count }}
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="6" class="text-center py-12 text-gray-500 dark:text-gray-400">
+          No personnel records yet.{% if request.user.is_manager %} <button onclick="loadModal('{% url 'personnel:person-create' %}')" class="text-indigo-600 dark:text-indigo-400 hover:underline">Add the first person</button>.{% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

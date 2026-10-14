@@ -1,0 +1,72 @@
+{% extends "core/base.html" %}
+
+{% block title %}Assess Skills — {{ project.name }} - {{ product_name }}{% endblock %}
+
+{% block page_crumbs %}
+<a href="{% url 'personnel:project-list' %}" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Projects</a>
+  <svg class="w-4 h-4 mx-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+  <a href="{% url 'personnel:project-detail' project.id %}" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">{{ project.name }}</a>
+  <svg class="w-4 h-4 mx-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+  <span class="text-gray-900 dark:text-white font-medium">Assess Skills</span>
+{% endblock %}
+
+{% block page_title %}Assess Skills — {{ project.name }}{% endblock %}
+{% block page_description %}This project has been marked as done. For each person who participated, select the skill level they demonstrated.
+    Leave blank ("-") for people who did not participate. Existing assessments will be updated.{% endblock %}
+
+{% block content %}
+<div class="mb-6">
+</div>
+
+<form method="post" action="{% url 'personnel:project-assess' project.id %}">
+  {% csrf_token %}
+
+  <div class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg overflow-x-auto">
+    <table class="w-full text-sm">
+      <thead>
+        <tr class="border-b border-gray-200 dark:border-white/10">
+          <th class="text-left px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 sticky left-0 bg-white dark:bg-white/5">Person</th>
+          {% for comp in requirements %}
+          <th class="text-center px-3 py-2.5 text-xs font-semibold text-gray-500 dark:text-gray-400 min-w-[7rem]">
+            <div class="truncate" title="{{ skill_names|default_if_none:'' }}">{{ comp.skill }}</div>
+            <div class="font-normal text-gray-400 dark:text-gray-500 mt-0.5">min {{ comp.minimum_level }}</div>
+          </th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for entry in assessment_data %}
+        <tr class="border-b border-gray-100 dark:border-white/5 last:border-b-0 hover:bg-gray-50 dark:hover:bg-white/10 transition-colors">
+          <td class="px-4 py-2.5 font-medium text-gray-900 dark:text-gray-200 sticky left-0 bg-white dark:bg-white/5 whitespace-nowrap">
+            <a href="{% url 'personnel:person-detail' entry.person.id %}" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">{{ entry.person.name }}</a>
+          </td>
+          {% for skill in entry.skills %}
+          <td class="px-3 py-2 text-center">
+            <select name="person_{{ entry.person.id }}_skill_{{ skill.skill_id }}"
+                    class="w-16 rounded border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 text-gray-900 dark:text-gray-100 px-1 py-1 text-xs text-center focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-transparent
+                    {% if skill.current_level is not None and skill.current_level >= skill.minimum_level %}border-emerald-300 dark:border-emerald-700{% endif %}">
+              <option value="-">-</option>
+              {% for n in "012345" %}
+              <option value="{{ n }}" {% if skill.current_level is not None and skill.current_level|stringformat:"d" == n %}selected{% endif %}>{{ n }}</option>
+              {% endfor %}
+            </select>
+          </td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="mt-6 flex items-center justify-between">
+    <a href="{% url 'personnel:project-detail' project.id %}"
+       class="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-md hover:bg-gray-50 dark:hover:bg-white/10 transition-colors">
+      Skip
+    </a>
+    <button type="submit"
+            class="px-6 py-2 text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+      Save Assessments
+    </button>
+  </div>
+</form>
+{% endblock %}

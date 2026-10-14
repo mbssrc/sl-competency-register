@@ -1,0 +1,110 @@
+{
+  "id": "ADVSIM-PHYS-SURVEIL",
+  "name": "Surveillance & Reconnaissance",
+  "domain": "adversarial-simulation",
+  "category": "Physical Security",
+  "status": "active",
+  "description": "Ability to conduct physical surveillance and site reconnaissance to support authorised physical security assessments and covert entry operations. Covers static and mobile observation, site photography, guard patrol analysis, CCTV coverage mapping, entry/exit point identification, and building operational pictures of target facilities.",
+
+  "requires": [
+    "FOUND-ETHICS"
+  ],
+  "recommended": [
+    "ADVSIM-SE-OSINT",
+    "ADVSIM-PHYS-COVERT",
+    "FOUND-DOC"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to physical surveillance or site reconnaissance"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the purpose of surveillance and basic observation techniques",
+      "evidence": [
+        "Completed surveillance and reconnaissance awareness training",
+        "Can describe what information is gathered during site reconnaissance (entry points, guards, CCTV, schedules)",
+        "Understands the legal and ethical boundaries of physical surveillance"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Conducts basic site reconnaissance under supervision",
+      "evidence": [
+        "Performed guided site reconnaissance walks identifying entry points and security controls",
+        "Documented observations using structured templates with senior review",
+        "Took covert site photographs and produced basic site diagrams under guidance",
+        "Carried signed authorisation and engagement contact details during observation, and followed the agreed procedure when challenged by staff or police"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently conducts surveillance and produces actionable site assessments",
+      "evidence": [
+        "Conducted site reconnaissance for 3+ physical penetration tests independently",
+        "Produced site assessment reports with entry point analysis, CCTV coverage gaps, and guard patterns",
+        "Maintained cover and avoided detection during observation periods",
+        "Identified optimal entry routes and timing windows from surveillance data"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Conducts extended surveillance operations against security-conscious targets; develops methodology",
+      "evidence": [
+        "Conducted multi-day surveillance operations building detailed operational pictures",
+        "Mapped complex security systems including guard rotations, CCTV blind spots, and alarm schedules",
+        "Combined aerial imagery, street-level observation, and OSINT into comprehensive site assessments",
+        "Mentors team on surveillance tradecraft and counter-detection techniques"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines surveillance methodology; handles the most sensitive reconnaissance; trains teams",
+      "evidence": [
+        "Authored the lab's physical surveillance and reconnaissance methodology",
+        "Conducted reconnaissance for high-sensitivity regulated engagements",
+        "Develops training scenarios for surveillance and counter-surveillance skill development",
+        "Recognised as the lab's authority on physical surveillance operations"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Conduct a site reconnaissance of a designated facility and produce a site assessment report within a time constraint, assessed on completeness, accuracy, and OPSEC"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review site assessment reports and surveillance logs from recent physical penetration tests"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1248", "S0912"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis"]
+    },
+    "mitre_attack": {
+      "tactics": ["TA0043"]
+    },
+    "cbest": {
+      "phase": "Threat Intelligence - Physical Reconnaissance"
+    }
+  },
+
+  "tags": [
+    "surveillance",
+    "reconnaissance",
+    "site-assessment",
+    "physical-security",
+    "observation",
+    "opsec",
+    "osint"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "key": "PERS-015",
+  "bands": {
+    "strong": [
+      "CRYPTO-PROTO",
+      "CRYPTO-ASYM",
+      "CRYPTO-PQ",
+      "CRYPTO-SYM"
+    ],
+    "weak": []
+  },
+  "signature": {
+    "CRYPTO-PROTO-ANALYSIS": 5,
+    "CRYPTO-PROTO-E2EE": 5,
+    "CRYPTO-ASYM-ECC": 5,
+    "CRYPTO-ASYM-RSA": 4,
+    "CRYPTO-PQ-LATTICE": 4,
+    "CRYPTO-SYM-AEAD": 4,
+    "CRYPTO-PKI-TLS": 4
+  },
+  "never": [],
+  "foundations": [
+    2,
+    3
+  ],
+  "projects": [
+    "PRJ-SAT-BACKEND",
+    "PRJ-SAT-APP-MSG",
+    "PRJ-SAT-CP-BLACK"
+  ],
+  "stale_skills": [],
+  "self_assessment": {
+    "mode": "all",
+    "bias": 0,
+    "jitter": 1
+  },
+  "development_plan": [],
+  "name": "Rahul Chandrasekhar",
+  "role": "Principal Cryptographer",
+  "start_date": "2017-02-01",
+  "domains": [
+    "CRYPTO"
+  ],
+  "target_maturity": {
+    "CRYPTO": "principal"
+  }
+}

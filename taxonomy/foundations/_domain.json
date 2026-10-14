@@ -1,0 +1,13 @@
+{
+  "id": "FOUND",
+  "name": "Foundations",
+  "description": "Cross-cutting foundational skills required across all security domains. These competencies underpin every technical discipline in the lab and are referenced by domain-specific skills via requires or recommended links.",
+
+  "categories": [
+    {
+      "id": "FOUND",
+      "name": "Foundations",
+      "description": "Report writing, risk assessment, threat modeling, evidence handling, quality assurance, communication, documentation, ethics, project management, tool proficiency, and standards knowledge"
+    }
+  ]
+}

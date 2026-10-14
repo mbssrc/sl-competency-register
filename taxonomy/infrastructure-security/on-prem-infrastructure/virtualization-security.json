@@ -1,0 +1,102 @@
+{
+  "id": "INFRA-ONPREM-VIRT",
+  "name": "Virtualization Platform Security Assessment",
+  "domain": "infrastructure-security",
+  "category": "On-Premises Infrastructure",
+  "status": "active",
+  "description": "Security assessment of virtualization platforms and hypervisors. Covers VMware vSphere/ESXi, Microsoft Hyper-V, KVM/Proxmox, virtual networking, storage, management interface security, VM escape techniques, and hypervisor hardening evaluation.",
+  "requires": [],
+  "recommended": [
+    "INFRA-ONPREM-HARDEN",
+    "FOUND-TOOLS",
+    "FOUND-RISK"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to virtualization platform security assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands virtualization architecture, hypervisor types, and common security concerns",
+      "evidence": [
+        "Can explain Type 1 and Type 2 hypervisors, VMs, and virtual networking",
+        "Understands common virtualization security risks (VM escape, management interface exposure)",
+        "Familiar with VMware vSphere or Hyper-V architecture at a conceptual level"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Reviews virtualization platform configurations under supervision",
+      "evidence": [
+        "Reviews ESXi or Hyper-V hardening configurations against CIS benchmarks under guidance",
+        "Identifies management interface exposure and access control weaknesses",
+        "Documents virtualization security findings with supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses virtualization platform security and isolation effectiveness",
+      "evidence": [
+        "Independently reviews hypervisor configurations, patching, and access controls",
+        "Assesses virtual network segmentation and virtual switch configurations",
+        "Evaluates vCenter/management platform security and role-based access",
+        "Produces compliant virtualization security assessment reports"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex multi-platform assessments; evaluates advanced isolation; mentors others",
+      "evidence": [
+        "Assesses complex multi-cluster environments with distributed virtual switches",
+        "Evaluates VM escape mitigations and hypervisor vulnerability exposure",
+        "Reviews virtualization assessment work of junior analysts",
+        "Assesses hybrid environments spanning multiple hypervisor platforms"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines lab virtualization assessment methodology; publishes hypervisor security research",
+      "evidence": [
+        "Designed or maintains the lab's virtualization security assessment framework",
+        "Published research on hypervisor vulnerabilities or VM escape techniques",
+        "Trains teams on advanced virtualization security assessment",
+        "Recognized as authority on virtualization platform security"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess a deliberately misconfigured vSphere or Hyper-V environment and identify all security weaknesses"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review virtualization security findings from recent on-premises assessments"
+    }
+  ],
+  "framework_mappings": {
+    "cis": [
+      "CIS VMware ESXi Benchmark"
+    ],
+    "nice": {
+      "tks": ["K0806", "K1069", "K0837", "K0752", "S0643"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "IO-WRL-005 Systems Administration"]
+    }
+  },
+  "tags": [
+    "virtualization",
+    "vmware",
+    "hypervisor",
+    "esxi",
+    "on-premises",
+    "hyper-v",
+    "kvm",
+    "proxmox",
+    "escape",
+    "segmentation"
+  ]
+}

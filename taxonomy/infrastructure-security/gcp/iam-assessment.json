@@ -1,0 +1,104 @@
+{
+  "id": "INFRA-GCP-IAM",
+  "name": "GCP IAM Security Assessment",
+  "domain": "infrastructure-security",
+  "category": "GCP Security",
+  "status": "active",
+  "description": "Security assessment of Google Cloud Platform Identity and Access Management. Covers IAM policies, roles (basic, predefined, custom), service accounts, workload identity federation, organization policies, and privilege escalation paths within GCP environments.",
+  "requires": [],
+  "recommended": [
+    "FOUND-REPORT",
+    "FOUND-STANDARDS",
+    "FOUND-RISK"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to GCP IAM security assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands GCP IAM concepts including resource hierarchy, roles, and service accounts",
+      "evidence": [
+        "Can explain GCP resource hierarchy (organization, folders, projects)",
+        "Understands IAM policy inheritance and role types",
+        "Familiar with service account impersonation and key management concepts"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Reviews GCP IAM configurations under supervision using established tools",
+      "evidence": [
+        "Runs IAM enumeration tools (e.g., ScoutSuite, GCP-specific scanners) under guidance",
+        "Identifies overly permissive role bindings using lab checklists",
+        "Documents IAM findings with supervision; work reviewed by authorized personnel"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses GCP IAM posture and identifies privilege escalation paths",
+      "evidence": [
+        "Independently enumerates IAM policies across organization hierarchies",
+        "Identifies privilege escalation through service account impersonation and key abuse",
+        "Evaluates organization policy constraints and their effectiveness",
+        "Produces compliant GCP IAM assessment reports"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex multi-project IAM assessments; discovers novel escalation techniques; mentors others",
+      "evidence": [
+        "Assesses complex GCP organizations with nested folder structures and custom roles",
+        "Develops custom tooling for GCP IAM policy analysis and escalation detection",
+        "Reviews GCP IAM assessment work of junior analysts",
+        "Contributes to lab GCP IAM assessment methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines lab GCP IAM assessment methodology; publishes research on GCP IAM attack techniques",
+      "evidence": [
+        "Designed or maintains the lab's GCP IAM assessment framework",
+        "Published research on novel GCP privilege escalation techniques",
+        "Trains teams on advanced GCP IAM security assessment",
+        "Recognized as authority on GCP IAM security"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess a deliberately misconfigured GCP organization and identify all privilege escalation paths through IAM"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review GCP IAM assessment findings from recent engagements for completeness and accuracy"
+    }
+  ],
+  "framework_mappings": {
+    "cis": [
+      "CIS Google Cloud Platform Foundation Benchmark v4.0.0 - Section 1 Identity and Access Management"
+    ],
+    "csa_ccm": [
+      "IAM-01",
+      "IAM-02",
+      "IAM-04"
+    ],
+    "nice": {
+      "tks": ["K0742", "K1368", "K0746", "K0863", "S0844"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "IO-WRL-006 Systems Security Analysis"]
+    }
+  },
+  "tags": [
+    "gcp",
+    "iam",
+    "service-accounts",
+    "privilege-escalation",
+    "cloud-security",
+    "key-management",
+    "authentication"
+  ]
+}

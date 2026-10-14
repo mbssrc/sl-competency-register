@@ -1,0 +1,97 @@
+{
+  "id": "INFRA-IAC-ANSIBLE",
+  "name": "Ansible Security Review",
+  "domain": "infrastructure-security",
+  "category": "Infrastructure as Code Security",
+  "status": "active",
+  "description": "Security review of Ansible playbooks, roles, and automation configurations. Covers credential management (Ansible Vault), privilege escalation patterns, insecure module usage, secrets in playbooks, role supply chain risks, and evaluation of Ansible-managed infrastructure compliance.",
+  "requires": [],
+  "recommended": [
+    "FOUND-TOOLS",
+    "INFRA-ONPREM-HARDEN",
+    "FOUND-RISK"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to Ansible security review"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands Ansible architecture, playbook structure, and common security concerns",
+      "evidence": [
+        "Can explain Ansible inventory, playbooks, roles, and modules",
+        "Understands Ansible Vault and credential management concepts",
+        "Familiar with common Ansible security anti-patterns"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Reviews Ansible playbooks under supervision using static analysis tools",
+      "evidence": [
+        "Runs Ansible linting and security tools (e.g., ansible-lint, Checkov) under guidance",
+        "Identifies hardcoded credentials and insecure module usage using lab checklists",
+        "Documents Ansible security findings with supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently reviews Ansible codebases for security issues and compliance gaps",
+      "evidence": [
+        "Independently reviews playbooks for credential exposure and privilege escalation",
+        "Evaluates Ansible Vault usage and key management practices",
+        "Assesses role dependencies for supply chain risks",
+        "Produces compliant Ansible security review reports"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex Ansible review scenarios; develops custom rules; mentors others",
+      "evidence": [
+        "Reviews complex multi-environment Ansible codebases with dynamic inventory",
+        "Develops custom ansible-lint rules for security policy enforcement",
+        "Reviews Ansible security work of junior analysts",
+        "Evaluates Ansible Automation Platform (automation controller, formerly Tower) or AWX deployment security and access controls"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines lab Ansible review methodology; publishes IaC security research",
+      "evidence": [
+        "Designed or maintains the lab's Ansible security review framework",
+        "Published research on Ansible security risks or automation exploitation techniques",
+        "Trains teams on advanced Ansible security review",
+        "Recognized as authority on configuration management security"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Review an Ansible codebase with intentional security issues and identify all misconfigurations and risks"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review Ansible security findings from recent IaC assessment engagements"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1122", "K0755", "K0930", "S0532", "S0837"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "IO-WRL-005 Systems Administration"]
+    }
+  },
+  "tags": [
+    "iac",
+    "ansible",
+    "configuration-management",
+    "automation",
+    "credential-security",
+    "key-management",
+    "privilege-escalation",
+    "supply-chain"
+  ]
+}

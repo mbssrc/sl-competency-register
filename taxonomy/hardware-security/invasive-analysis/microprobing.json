@@ -1,0 +1,107 @@
+{
+  "id": "HWSEC-INV-PROBE",
+  "name": "Microprobing",
+  "domain": "hardware-security",
+  "category": "Invasive Analysis",
+  "status": "active",
+  "description": "Direct electrical contact with exposed IC conductors using precision probes to observe or inject signals at the circuit level. Covers probe station operation, tungsten and platinum probe needle manipulation, signal observation on internal buses, data extraction from memory arrays, and active probing to inject signals or force logic states. Requires decapsulated or partially decapsulated samples.",
+  "requires": [
+    "HWSEC-INV-DECAP"
+  ],
+  "recommended": [
+    "HWSEC-INV-DELAYER",
+    "HWSEC-PCB-RE"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to IC microprobing"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands microprobing concepts, equipment, and applications",
+      "evidence": [
+        "Can explain the purpose and capabilities of a probe station for IC analysis",
+        "Understands the difference between passive (observation) and active (injection) probing",
+        "Aware of probe types (passive tungsten/platinum needles, active high-impedance probes) and their applications"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Operates probe station and makes contact with exposed conductors under supervision",
+      "evidence": [
+        "Navigates a decapped IC on the probe station using optical microscopy",
+        "Successfully lands probe needles on bond pads and top-metal conductors",
+        "Observes digital signals (clock, data bus) on exposed IC conductors with guidance",
+        "Follows anti-static and ESD safety procedures during probing sessions"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently probes IC signals and extracts data from internal buses and memory",
+      "evidence": [
+        "Identifies target signal lines on decapped ICs using layout analysis or optical inspection",
+        "Extracts data from internal buses (address, data, control) via passive probing",
+        "Reads memory contents by probing memory array bit lines and word lines",
+        "Completed microprobing assessments on 3+ different IC targets independently"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Performs active probing on sub-micron features; develops probing strategies; mentors team",
+      "evidence": [
+        "Probes sub-micron features on advanced process nodes using FIB-exposed landing pads",
+        "Performs active probing to inject signals, force logic states, or bypass security fuses",
+        "Develops probing strategies based on IC layout analysis and known circuit function",
+        "Mentors team on probe station operation, needle manipulation, and signal integrity"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on microprobing; defines methodology; specifies probe station equipment",
+      "evidence": [
+        "Defines the lab's microprobing methodology and capability requirements",
+        "Evaluates and specifies probe station equipment (manual, semi-auto, AFM-based)",
+        "Develops novel probing techniques for advanced packaging and process technologies",
+        "Provides expert consultation on probing resistance and anti-probing countermeasures to IC designers"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Using a decapped target IC on a probe station, identify target signals, make electrical contact, and extract meaningful data from internal IC buses"
+    },
+    {
+      "type": "direct_observation",
+      "description": "Observe probe needle manipulation technique, signal identification methodology, and ESD safety compliance during a live probing session"
+    }
+  ],
+  "equipment": [
+    "Manual or semi-automated probe station (e.g., FormFactor/Cascade Microtech, MPI)",
+    "Tungsten and platinum probe needles (various tip radii)",
+    "Probe station microscope with high-magnification optics"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0883", "K0840", "K0714", "S0898"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development", "PD-WRL-007 Vulnerability Analysis"]
+    },
+    "common_criteria": [
+      "AVA_VAN.5"
+    ],
+    "jil_attack_methods": [
+      "5.1 Physical attacks"
+    ]
+  },
+  "tags": [
+    "microprobing",
+    "probe-station",
+    "invasive",
+    "signal-extraction",
+    "active-probing"
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "id": "ADVSIM-SE-PHISHING",
+  "name": "Phishing Campaigns",
+  "domain": "adversarial-simulation",
+  "category": "Social Engineering",
+  "status": "active",
+  "description": "Ability to design, execute, and measure email-based phishing campaigns as part of adversarial simulations. Covers spear-phishing, payload delivery via email, credential harvesting, phishing infrastructure setup, campaign tracking, and metrics collection. Distinct from bulk security awareness phishing (which is a defensive function).",
+
+  "requires": [
+    "FOUND-ETHICS",
+    "ADVSIM-SE-PRETEXT"
+  ],
+  "recommended": [
+    "ADVSIM-SE-OSINT",
+    "ADVSIM-RED-PLANNING",
+    "FOUND-REPORT",
+    "INTEL-OSINT-PERSON"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to phishing campaign execution"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands phishing attack types, delivery mechanisms, and campaign structure",
+      "evidence": [
+        "Completed phishing methodology training",
+        "Can distinguish spear-phishing, whaling, and credential harvesting approaches",
+        "Understands email authentication mechanisms (SPF, DKIM, DMARC) and their relevance"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Executes phishing campaigns using established templates and infrastructure under supervision",
+      "evidence": [
+        "Deployed phishing campaigns using lab infrastructure (e.g., GoPhish) with oversight",
+        "Configured email sending infrastructure and landing pages under guidance",
+        "Collected and reported campaign metrics with senior review"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently designs and executes targeted phishing campaigns",
+      "evidence": [
+        "Designed and executed 3+ spear-phishing campaigns with custom pretexts",
+        "Built phishing infrastructure with proper OPSEC and domain ageing",
+        "Bypassed email filtering and security controls to achieve inbox delivery",
+        "Produced campaign reports with click rates, credential capture rates, and analysis",
+        "Handled captured credentials and session tokens under the agreed retention and destruction policy, and reported outcomes in aggregate rather than naming individuals"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Executes sophisticated phishing against hardened targets; develops lab phishing capabilities",
+      "evidence": [
+        "Successfully phished targets with advanced email security (sandbox, AI-based filtering)",
+        "Developed custom delivery payloads (e.g., HTML smuggling, container formats) that evade attachment scanning and Mark-of-the-Web controls",
+        "Executed adversary-in-the-middle phishing (e.g., Evilginx) to demonstrate MFA bypass within rules of engagement",
+        "Built reusable phishing infrastructure automation for the lab",
+        "Mentors team on phishing tradecraft and infrastructure setup"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines phishing methodology; researches novel delivery techniques; trains teams",
+      "evidence": [
+        "Authored the lab's phishing campaign methodology and playbooks",
+        "Researched and published novel phishing delivery or evasion techniques",
+        "Developed metrics frameworks for measuring organisational phishing resilience",
+        "Trains teams and delivers client workshops on phishing defence"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Design and execute a phishing campaign against a lab-controlled target environment, assessed on pretext quality, infrastructure OPSEC, delivery success, and reporting"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review phishing campaign reports from recent engagements including pretexts, infrastructure design, and metrics"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["S0591", "K1087", "S0446"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis"]
+    },
+    "mitre_attack": {
+      "tactics": ["TA0001", "TA0043"],
+      "techniques": ["T1566.001", "T1566.002", "T1566.003", "T1598"]
+    },
+    "cbest": {
+      "phase": "Penetration Testing - Execution"
+    }
+  },
+
+  "tags": [
+    "phishing",
+    "spear-phishing",
+    "email",
+    "credential-harvesting",
+    "payload-delivery",
+    "authentication",
+    "evasion",
+    "opsec",
+    "social-engineering",
+    "spoofing"
+  ]
+}

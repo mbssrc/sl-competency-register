@@ -1,0 +1,108 @@
+{
+  "id": "DFIR-DISK-IMAGING",
+  "name": "Forensic Disk Imaging",
+  "domain": "digital-forensics",
+  "category": "Disk Forensics",
+  "status": "active",
+  "description": "Ability to create forensically sound images of storage media including HDDs, SSDs, NVMe drives, USB devices, and RAID arrays. Covers write-blocking, imaging formats (E01, AFF4, dd), integrity verification, and dealing with damaged or encrypted media. Foundational to all disk-based forensic work.",
+
+  "requires": [
+    "FOUND-EVIDENCE"
+  ],
+  "recommended": [
+    "FOUND-DOC",
+    "FOUND-TOOLS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to forensic disk imaging"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands why forensic imaging differs from standard copying and the importance of write-blocking",
+      "evidence": [
+        "Can explain the difference between a forensic image and a file copy",
+        "Understands the role of write blockers in preserving evidence integrity",
+        "Can describe common forensic image formats (E01, dd, AFF4)"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Creates forensic images of standard media under supervision using established procedures",
+      "evidence": [
+        "Successfully imaged HDDs and USB devices using FTK Imager or dc3dd under guidance",
+        "Correctly connected and verified hardware write blockers before imaging",
+        "Computed and recorded SHA-256 hashes at acquisition time",
+        "Documented imaging process in case notes reviewed by authorized personnel"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently images a range of storage media with full procedural compliance and chain of custody documentation",
+      "evidence": [
+        "Independently imaged 10+ evidence items across HDD, SSD, NVMe, and USB media",
+        "Imaging logs and hash verification records pass QA audit without findings",
+        "Handles both hardware and software write-blocking appropriately per media type",
+        "Produces acquisition reports that meet lab and legal standards"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Images complex and damaged media; handles encryption, RAID, and degraded drives; mentors junior examiners",
+      "evidence": [
+        "Successfully imaged degraded drives using ddrescue or similar recovery tools",
+        "Handled RAID reconstruction and imaging of multi-disk arrays",
+        "Imaged encrypted media (BitLocker, FileVault, LUKS) with appropriate key management",
+        "Reviews imaging procedures and acquisition logs of junior staff",
+        "Contributed to lab imaging SOP updates"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines lab imaging methodology; handles novel storage technologies; supports legal challenges to evidence admissibility",
+      "evidence": [
+        "Authored or maintains the lab's forensic imaging methodology",
+        "Validated imaging procedures for new storage technologies (e.g., UFS 4.0, CXL memory)",
+        "Provided expert testimony or declarations on imaging integrity and methodology",
+        "Trains teams on forensic imaging procedures and troubleshooting"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Image a provided drive using a write blocker, verify hashes, and produce an acquisition report within lab SOP requirements"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Audit acquisition reports and hash verification logs from recent casework"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1163", "K1155", "S0653", "S0589", "K0796"],
+      "work_roles": ["IN-WRL-002 Digital Evidence Analysis", "PD-WRL-002 Digital Forensics", "IN-WRL-001 Cybercrime Investigation"]
+    },
+    "sfia": {
+      "skill": "DGFS"
+    },
+    "giac": ["GCFE", "GCFA"]
+  },
+
+  "tags": [
+    "acquisition",
+    "write-blocking",
+    "chain-of-custody",
+    "evidence-integrity",
+    "disk-imaging",
+    "forensics",
+    "encryption"
+  ]
+}

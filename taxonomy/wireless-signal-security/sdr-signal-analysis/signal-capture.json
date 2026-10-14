@@ -1,0 +1,106 @@
+{
+  "id": "WSEC-SDR-CAPTURE",
+  "name": "Signal Capture & Recording",
+  "domain": "wireless-signal-security",
+  "category": "SDR & Signal Analysis",
+  "status": "active",
+  "description": "Ability to plan and execute RF signal captures with evidential quality. Covers capture parameter selection, metadata recording, timestamping, storage format management, integrity hashing, and maintaining signal capture chain of custody. Ensures captured signal data is suitable for analysis, reporting, and potential legal proceedings.",
+  "requires": [
+    "WSEC-SDR-FUNDM",
+    "FOUND-EVIDENCE"
+  ],
+  "recommended": [
+    "FOUND-DOC",
+    "WSEC-SPEC-ANALYSIS"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to structured signal capture procedures"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the importance of structured signal capture and metadata recording",
+      "evidence": [
+        "Can explain why capture parameters and metadata must be documented",
+        "Understands common IQ recording formats (complex float, interleaved I/Q)",
+        "Completed training on lab signal capture procedures"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Records signals with correct parameters and metadata under supervision",
+      "evidence": [
+        "Performed signal captures following lab standard operating procedures under guidance",
+        "Recorded center frequency, sample rate, gain, timestamp, and antenna details for each capture",
+        "Computed integrity hashes on capture files under supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently plans and executes signal captures with full evidential documentation",
+      "evidence": [
+        "Independently planned and executed signal captures for 3+ engagements",
+        "Capture packages consistently pass QA review for completeness and integrity",
+        "Selected appropriate sample rates and capture durations to preserve signal fidelity",
+        "Maintained chain of custody for signal capture files across engagement lifecycle"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Manages complex multi-band captures; develops capture automation and procedures",
+      "evidence": [
+        "Coordinated simultaneous multi-band or multi-site signal captures",
+        "Developed automated capture scripts with metadata tagging and integrity verification",
+        "Reviews capture packages from junior analysts for procedural compliance",
+        "Contributed to lab signal capture SOP updates"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines lab signal capture methodology and standards; supports legal proceedings with capture evidence",
+      "evidence": [
+        "Authored the lab's signal capture methodology and evidence handling procedures",
+        "Provided expert declarations on signal capture integrity for legal or regulatory proceedings",
+        "Designed the lab's signal archive and retrieval infrastructure",
+        "Trains teams on evidential signal capture techniques"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "work_product_review",
+      "description": "Audit signal capture packages from recent engagements for metadata completeness, integrity hashes, and procedural compliance"
+    },
+    {
+      "type": "direct_observation",
+      "description": "Observe signal capture planning and execution for a specified target band and duration"
+    }
+  ],
+  "equipment": [
+    "Ettus USRP B200/B210 SDR platform",
+    "HackRF One wideband SDR",
+    "GPS-disciplined oscillator (GPSDO) for timestamp accuracy"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0925", "K1284", "S0653"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development", "IN-WRL-002 Digital Evidence Analysis"]
+    },
+    "certifications": [
+      "GIAC GAWN"
+    ]
+  },
+  "tags": [
+    "signal-capture",
+    "evidence",
+    "iq-recording",
+    "chain-of-custody",
+    "metadata",
+    "evidence-integrity",
+    "forensics"
+  ]
+}

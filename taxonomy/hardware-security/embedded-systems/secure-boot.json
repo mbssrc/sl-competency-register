@@ -1,0 +1,114 @@
+{
+  "id": "HWSEC-EMBED-BOOT",
+  "name": "Secure Boot Analysis",
+  "domain": "hardware-security",
+  "category": "Embedded Systems Security",
+  "status": "active",
+  "description": "Assessment of secure boot implementations in embedded devices. Covers analysis of boot chain trust anchors (hardware root of trust, OTP fuses, eFuses), signature verification logic, chain-of-trust integrity, boot mode vulnerabilities, and bypass techniques including rollback attacks and fault injection against boot verification. Scope is embedded and SoC boot chains; PC/UEFI platform firmware and Secure Boot belong to SWSEC-PLATFORM-UEFI.",
+  "requires": [
+    "HWSEC-EMBED-FW",
+    "HWSEC-EMBED-DBG"
+  ],
+  "recommended": [
+    "HWSEC-FI-VG",
+    "HWSEC-CRYPTO-KEY",
+    "CRYPTO-ASYM-SIGNATURES",
+    "SWSEC-PLATFORM-UEFI",
+    "HWSEC-EMBED-TPM"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to secure boot mechanisms"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands secure boot concepts, trust chains, and common architectures",
+      "evidence": [
+        "Can explain a typical secure boot chain (ROM bootloader, signed stages, kernel verification)",
+        "Understands hardware root of trust concepts (OTP fuses, eFuses, immutable ROM)",
+        "Aware of common secure boot bypass categories (signature bypass, rollback, fault injection)"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Analyzes documented secure boot implementations under supervision",
+      "evidence": [
+        "Maps the boot chain of a target device using firmware analysis and documentation",
+        "Identifies signature verification routines in bootloader firmware",
+        "Tests for known secure boot vulnerabilities (e.g., unsigned secondary stages) under guidance",
+        "Documents boot chain trust boundaries and potential attack surfaces"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses secure boot implementations and identifies weaknesses",
+      "evidence": [
+        "Reverse engineers undocumented boot chains and maps trust boundaries without assistance",
+        "Identifies and exploits implementation flaws in signature verification logic",
+        "Assesses anti-rollback protections and version enforcement mechanisms",
+        "Completed secure boot assessments on 3+ distinct SoC platforms independently"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Breaks hardened secure boot implementations; combines software and hardware attacks",
+      "evidence": [
+        "Combines fault injection with software techniques to bypass secure boot verification",
+        "Exploits TOC/TOU vulnerabilities in boot chain implementations",
+        "Develops custom tooling to automate secure boot analysis workflows",
+        "Reviews and mentors junior analysts on secure boot assessment methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on secure boot security; publishes research; advises silicon vendors",
+      "evidence": [
+        "Published research on novel secure boot bypass techniques",
+        "Provides expert consultation to silicon vendors on secure boot architecture",
+        "Defines the lab's secure boot assessment methodology",
+        "Authored CVEs against secure boot implementations in shipping products"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess the secure boot implementation of a target device: map the trust chain, identify weaknesses, and demonstrate a bypass if feasible"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review secure boot analysis reports for completeness of trust chain mapping and quality of vulnerability assessment"
+    }
+  ],
+  "equipment": [],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1081", "K0948", "K0942", "S0504"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-004 Secure Systems Development"]
+    },
+    "common_criteria": [
+      "AVA_VAN.4",
+      "AVA_VAN.5"
+    ],
+    "fips_140_3": [
+      "AS05",
+      "AS10"
+    ]
+  },
+  "tags": [
+    "secure-boot",
+    "trust-chain",
+    "boot-security",
+    "embedded",
+    "root-of-trust",
+    "non-invasive",
+    "firmware",
+    "reverse-engineering",
+    "update-integrity",
+    "fault-injection"
+  ]
+}

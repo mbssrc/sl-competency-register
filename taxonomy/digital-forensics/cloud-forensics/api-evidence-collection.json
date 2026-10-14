@@ -1,0 +1,113 @@
+{
+  "id": "DFIR-CLOUD-API",
+  "name": "API-Based Evidence Collection",
+  "domain": "digital-forensics",
+  "category": "Cloud Forensics",
+  "status": "active",
+  "description": "Ability to collect forensic evidence from cloud and SaaS platforms using APIs. Covers using provider APIs to export mailboxes, drive contents, user activity, admin audit logs, and platform-specific evidence. Includes understanding API rate limits, pagination, authentication, and ensuring collected data meets forensic integrity standards.",
+
+  "requires": [
+    "FOUND-EVIDENCE"
+  ],
+  "recommended": [
+    "DFIR-CLOUD-LOGS",
+    "FOUND-DOC",
+    "FOUND-TOOLS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to API-based forensic evidence collection"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands that cloud and SaaS platforms provide APIs for evidence collection and the advantages over manual methods",
+      "evidence": [
+        "Can explain why API-based collection is often the only option for cloud evidence",
+        "Understands basic REST API concepts (authentication, endpoints, pagination)",
+        "Can describe the types of evidence available via major platform APIs (Google Workspace, M365)"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Uses existing scripts and tools to collect evidence via APIs under supervision",
+      "evidence": [
+        "Collected Microsoft 365 mailbox content using compliance eDiscovery tools under guidance",
+        "Used Google Workspace Admin SDK to export user data with supervisor oversight",
+        "Applied API-based collection tools to gather Slack or similar SaaS platform data",
+        "Documented API collection parameters, timestamps, and output verification"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently plans and executes API-based evidence collection across major cloud and SaaS platforms",
+      "evidence": [
+        "Independently collected evidence via APIs in 5+ investigations",
+        "Handled API authentication, rate limiting, and pagination to ensure complete collection",
+        "Verified collected data integrity through hashing and record count validation",
+        "Produced API collection reports documenting scope, method, and completeness"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Develops custom API collection tools; handles complex multi-platform collection; addresses API limitations and gaps",
+      "evidence": [
+        "Developed custom API collection scripts for platforms lacking forensic tool support",
+        "Designed collection workflows handling cross-platform data correlation requirements",
+        "Identified and worked around API limitations that could result in incomplete collection",
+        "Mentors junior analysts on API-based collection methodology and tool development"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines API evidence collection methodology; evaluates platform API forensic capabilities; advises on SaaS forensic readiness",
+      "evidence": [
+        "Authored or maintains the lab's API-based evidence collection methodology",
+        "Evaluated and documented forensic capabilities and limitations of major platform APIs",
+        "Advised organisations on SaaS platform selection considering forensic evidence availability",
+        "Trains teams on API-based forensic collection techniques and tool development"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Collect evidence from a test Microsoft 365 or Google Workspace tenant using APIs, handle pagination and rate limits, and verify collection completeness"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review API collection logs and documentation from recent cloud forensic engagements for completeness and integrity verification"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0863", "K0898", "K1366", "S0607", "K1152"],
+      "work_roles": ["PD-WRL-002 Digital Forensics", "IN-WRL-002 Digital Evidence Analysis"]
+    },
+    "sfia": {
+      "skill": "DGFS"
+    },
+    "giac": ["GCFR"]
+  },
+
+  "tags": [
+    "api",
+    "saas",
+    "ediscovery",
+    "cloud-collection",
+    "m365",
+    "google-workspace",
+    "slack",
+    "aws",
+    "evidence-collection",
+    "authentication",
+    "forensics",
+    "evidence-integrity"
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "id": "HWSEC",
+  "name": "Hardware Security Evaluator",
+  "domain": "HWSEC",
+  "description": "Hardware security evaluation track covering PCB analysis, side-channel analysis, fault injection, IC security, and embedded systems security.",
+  "maturity_levels": {
+    "junior": {
+      "title": "Junior Hardware Security Evaluator",
+      "description": "Assists with hardware evaluations under supervision. Inspects PCBs, prepares test setups and follows lab safety rules for equipment and samples; measurements, setups and sample preparation are checked by an authorized evaluator.",
+      "thresholds": {
+        "domain_skills_at": {"1": 9, "2": 5},
+        "min_categories": 1,
+        "foundation_avg": 0.5
+      },
+      "pinned": []
+    },
+    "practitioner": {
+      "title": "Hardware Security Evaluator",
+      "description": "Independently performs and signs off routine hardware evaluations. Operates side-channel and fault-injection equipment, handles hazardous sample preparation safely, and applies the relevant evaluation standards. Reports document setup, calibration and measurement conditions.",
+      "thresholds": {
+        "domain_skills_at": {"2": 13, "3": 7},
+        "min_categories": 2,
+        "foundation_avg": 1.0
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 3},
+        {"skill": "FOUND-STANDARDS", "minimum_level": 3}
+      ]
+    },
+    "senior": {
+      "title": "Senior Hardware Security Evaluator",
+      "description": "Handles complex evaluations, for example IC-level invasive analysis or fault attacks on hardened secure elements, and adapts test setups to novel targets. Performs QA review of evaluation reports and measurement records and mentors junior evaluators.",
+      "thresholds": {
+        "domain_skills_at": {"3": 16, "4": 7},
+        "min_categories": 4,
+        "foundation_avg": 1.5
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 4},
+        {"skill": "FOUND-QA", "minimum_level": 3},
+        {"skill": "FOUND-STANDARDS", "minimum_level": 3}
+      ]
+    },
+    "lead": {
+      "title": "Lead Hardware Security Evaluator",
+      "description": "Technical lead for Hardware Security: owns the methodology, performs technical quality review of evaluations and reports, and plans the technical approach across engagements. Acts as the senior technical contact for clients on scope and findings. Technical depth stays at senior level or above.",
+      "thresholds": {
+        "domain_skills_at": {"3": 18, "4": 9},
+        "min_categories": 5,
+        "foundation_avg": 2.0
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 4},
+        {"skill": "FOUND-QA", "minimum_level": 3},
+        {"skill": "FOUND-PM", "minimum_level": 3},
+        {"skill": "FOUND-COMM", "minimum_level": 3},
+        {"skill": "FOUND-STANDARDS", "minimum_level": 4}
+      ]
+    },
+    "principal": {
+      "title": "Principal Hardware Security Evaluator",
+      "description": "Technical authority in hardware security. Defines lab direction for hardware evaluation services, publishes research, and is a recognized expert in hardware attack and defense. The deepest technical tier in the domain; it extends Lead rather than branching from it.",
+      "thresholds": {
+        "domain_skills_at": {"4": 18, "5": 7},
+        "min_categories": 6,
+        "foundation_avg": 2.5
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 4},
+        {"skill": "FOUND-QA", "minimum_level": 3},
+        {"skill": "FOUND-PM", "minimum_level": 3},
+        {"skill": "FOUND-COMM", "minimum_level": 3},
+        {"skill": "FOUND-STANDARDS", "minimum_level": 4}
+      ]
+    }
+  }
+}

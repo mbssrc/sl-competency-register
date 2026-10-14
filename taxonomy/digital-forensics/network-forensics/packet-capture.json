@@ -1,0 +1,111 @@
+{
+  "id": "DFIR-NET-CAPTURE",
+  "name": "Forensic Packet Capture",
+  "domain": "digital-forensics",
+  "category": "Network Forensics",
+  "status": "active",
+  "description": "Ability to capture, store, and manage network traffic for forensic purposes. Covers full packet capture (PCAP) deployment, capture point selection, storage architecture, legal and privacy considerations for network interception, and ensuring captured data meets evidentiary standards.",
+
+  "requires": [
+    "FOUND-EVIDENCE"
+  ],
+  "recommended": [
+    "FOUND-ETHICS",
+    "FOUND-DOC"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to forensic packet capture"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the purpose and legal considerations of forensic network capture",
+      "evidence": [
+        "Can explain the difference between forensic packet capture and network monitoring",
+        "Understands legal and privacy constraints on network interception",
+        "Can describe common capture formats (pcap, pcapng) and their properties"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Deploys capture tools and records traffic under supervision with appropriate documentation",
+      "evidence": [
+        "Configured and ran tcpdump or Wireshark captures under guidance",
+        "Selected appropriate capture points (TAP, SPAN port, inline) with supervisor approval",
+        "Applied capture filters to scope collection appropriately",
+        "Documented capture parameters, duration, and hash verification of PCAP files"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently plans and executes forensic network capture with proper legal authorization and evidence handling",
+      "evidence": [
+        "Independently deployed forensic capture in 3+ investigations with proper authorization",
+        "Correctly sized capture infrastructure for throughput and storage requirements",
+        "Maintained chain of custody for captured network evidence",
+        "Produced capture documentation meeting lab and legal standards"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Designs capture architectures for complex environments; handles high-throughput and encrypted traffic challenges",
+      "evidence": [
+        "Designed and deployed capture solutions for high-bandwidth (10+ Gbps) environments",
+        "Handled TLS interception requirements with appropriate legal and technical controls",
+        "Deployed distributed capture across segmented networks for coordinated collection",
+        "Reviews capture plans and mentors junior staff on forensic network collection"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines forensic capture methodology; evaluates capture technologies; provides expert guidance on network evidence admissibility",
+      "evidence": [
+        "Authored or maintains the lab's network forensic capture methodology",
+        "Evaluated and validated capture technologies for forensic integrity and completeness",
+        "Advised legal teams on network evidence admissibility and capture procedures",
+        "Trains teams on forensic capture architecture and deployment"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Plan and deploy a forensic capture for a simulated investigation scenario, including capture point selection, filter configuration, and evidence documentation"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Audit capture documentation and PCAP integrity records from recent network forensics engagements"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0656", "K0657", "K1193", "S0221", "K0796"],
+      "work_roles": ["PD-WRL-002 Digital Forensics", "IN-WRL-002 Digital Evidence Analysis", "PD-WRL-003 Incident Response"]
+    },
+    "sfia": {
+      "skill": "DGFS"
+    },
+    "giac": ["GNFA"]
+  },
+
+  "tags": [
+    "pcap",
+    "packet-capture",
+    "network-tap",
+    "evidence-collection",
+    "wireshark",
+    "tcpdump",
+    "chain-of-custody",
+    "forensics",
+    "tls",
+    "evidence-integrity",
+    "traffic-analysis"
+  ]
+}

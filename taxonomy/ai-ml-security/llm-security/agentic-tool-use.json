@@ -1,0 +1,104 @@
+{
+  "id": "AIML-LLM-AGENT",
+  "name": "Agentic AI & Tool-Use Security",
+  "domain": "ai-ml-security",
+  "category": "LLM & Generative AI",
+  "status": "active",
+  "description": "Security assessment of LLM agents that call tools, functions, and external services. Covers tool and function-calling interfaces, Model Context Protocol (MCP) servers and plugin trust boundaries, excessive agency (OWASP LLM06), confused-deputy and privilege escalation through agent actions, and sandboxing and approval controls for agent execution. Prompt injection as the entry vector is covered by AIML-LLM-PROMPTINJ.",
+  "requires": [
+    "AIML-LLM-PROMPTINJ"
+  ],
+  "recommended": [
+    "SWSEC-WEB-AUTHZ",
+    "SWSEC-PLATFORM-SANDBOX"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to agentic AI or tool-use security"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands how LLM agents act on behalf of users and where trust boundaries lie",
+      "evidence": [
+        "Can explain tool/function calling and how agents chain model output into actions",
+        "Aware of excessive agency (LLM06) and the confused-deputy problem in agent designs",
+        "Familiar with MCP and plugin architectures and their trust assumptions"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Can assess basic agent and tool integrations under guidance",
+      "evidence": [
+        "Inventories an agent's tools, their parameters, and the credentials each tool uses",
+        "Demonstrates an injected instruction triggering an unintended tool call in a lab agent",
+        "Reviews MCP server or plugin manifests for over-broad permissions with supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses agentic systems for privilege and action-safety flaws",
+      "evidence": [
+        "Models the agent's authority against the invoking user's authority and identifies confused-deputy paths",
+        "Tests tool argument validation, human-in-the-loop approval gates, and action rate limits",
+        "Evaluates sandboxing of code-execution and file-system tools for escape and data access",
+        "Produces findings showing end-to-end impact chains with least-privilege remediations"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Assesses multi-agent and MCP ecosystems; develops agent security methodology; mentors others",
+      "evidence": [
+        "Assesses multi-agent systems for cross-agent injection, delegation abuse, and shared-memory poisoning",
+        "Evaluates MCP server supply chain risks such as tool poisoning and malicious tool descriptions",
+        "Designs reference architectures for scoped credentials and action authorisation in agents",
+        "Reviews and calibrates agent security assessments across the team"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines the lab's agentic AI assessment practice; publishes research",
+      "evidence": [
+        "Established the lab's methodology for agent and tool-use security assessment",
+        "Published research on agent hijacking, tool-use abuse, or agent isolation",
+        "Trains teams on agentic AI security assessment",
+        "Contributes to external standards or guidance on secure AI agent design"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Against a lab agent with MCP tools for e-mail, files, and code execution, demonstrate a confused-deputy action and evaluate the effectiveness of its approval and sandbox controls"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given an agent architecture diagram and tool manifest, identify excessive agency and privilege boundaries and propose a least-privilege redesign"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1320", "K1345", "S0953"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-008 Technology Research and Development"]
+    },
+    "mitre_atlas": ["AML.T0051", "AML.T0053"],
+    "owasp_llm_top10": ["LLM06:2025"],
+    "owasp_agentic_top10": {
+      "note": "OWASP Top 10 for Agentic Applications (2026) is the dedicated reference for this skill; specific ASI identifiers not yet assigned"
+    },
+    "cwe": ["CWE-441", "CWE-250"]
+  },
+  "tags": [
+    "llm",
+    "agentic-ai",
+    "tool-use",
+    "mcp",
+    "privilege-escalation",
+    "atlas",
+    "escape",
+    "supply-chain"
+  ]
+}

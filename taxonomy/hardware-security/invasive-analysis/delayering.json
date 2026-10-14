@@ -1,0 +1,106 @@
+{
+  "id": "HWSEC-INV-DELAYER",
+  "name": "Delayering & Imaging",
+  "domain": "hardware-security",
+  "category": "Invasive Analysis",
+  "status": "active",
+  "description": "Controlled removal of IC metal and dielectric layers to expose underlying circuit structures, followed by high-resolution imaging for layout reconstruction. Covers chemical-mechanical polishing (CMP), wet and dry etching of metal/dielectric layers, optical microscopy, scanning electron microscopy (SEM), and image stitching for full-die imaging. Essential for circuit extraction, Trojan detection, and counterfeit analysis.",
+  "requires": [
+    "HWSEC-INV-DECAP"
+  ],
+  "recommended": [
+    "HWSEC-INV-PROBE",
+    "FOUND-EVIDENCE"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to IC delayering or imaging"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands IC fabrication layer stack and delayering objectives",
+      "evidence": [
+        "Can describe a typical IC metal layer stack (substrate, poly, metal 1-N, passivation)",
+        "Understands the purpose of delayering for circuit extraction and Trojan detection",
+        "Aware of optical and electron microscopy modalities used in IC imaging"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs delayering and imaging on sample ICs under supervision",
+      "evidence": [
+        "Removes passivation and top metal layers using appropriate wet or dry etch chemistry",
+        "Operates optical microscope to capture layer images at appropriate magnification",
+        "Performs basic SEM imaging of delayered IC surfaces with guidance",
+        "Documents layer-by-layer imaging with proper indexing and metadata"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently delayers ICs and produces full-die image sets for analysis",
+      "evidence": [
+        "Controls etch depth to remove individual metal layers without damaging underlying structures",
+        "Produces full-die stitched images at each metal layer with alignment markers",
+        "Identifies standard cell structures, memory arrays, and custom logic in layer images",
+        "Completed delayering and imaging for 3+ different IC fabrication processes independently"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles advanced process nodes; performs circuit extraction; develops imaging procedures",
+      "evidence": [
+        "Delayers advanced process nodes (sub-28nm) with copper interconnect and low-k dielectrics",
+        "Performs circuit extraction from layer images to reconstruct gate-level netlists",
+        "Develops etch recipes and process parameters for new fabrication technologies",
+        "Mentors team on delayering technique, etch endpoint detection, and imaging quality"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on IC delayering and imaging; defines methodology; specifies equipment",
+      "evidence": [
+        "Defines the lab's delayering methodology for multiple fabrication process families",
+        "Evaluates and specifies SEM, FIB-SEM, and optical imaging equipment for the lab",
+        "Published research on IC reverse engineering or hardware Trojan detection methodologies",
+        "Provides expert consultation on design-for-trust and anti-reverse-engineering techniques"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Delayer a prepared IC sample through multiple metal layers, produce stitched images at each layer, and identify key circuit structures"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review delayering image sets for layer completeness, image quality, alignment accuracy, and documentation"
+    }
+  ],
+  "equipment": [
+    "Chemical-mechanical polishing (CMP) system",
+    "Reactive ion etching (RIE) system",
+    "Scanning electron microscope (SEM)",
+    "Automated optical inspection / stitching microscope"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0840", "K0851", "K1164", "K0883"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development"]
+    },
+    "common_criteria": [
+      "AVA_VAN.5"
+    ]
+  },
+  "tags": [
+    "delayering",
+    "imaging",
+    "sem",
+    "circuit-extraction",
+    "invasive",
+    "reverse-engineering"
+  ]
+}

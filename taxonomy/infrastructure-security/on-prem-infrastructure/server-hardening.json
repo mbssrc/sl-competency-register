@@ -1,0 +1,105 @@
+{
+  "id": "INFRA-ONPREM-HARDEN",
+  "name": "Server Hardening Assessment",
+  "domain": "infrastructure-security",
+  "category": "On-Premises Infrastructure",
+  "status": "active",
+  "description": "Assessment of server hardening programs and cross-platform compliance strategies. Covers hardening baseline governance, benchmark selection and customization, multi-OS compliance assessment methodology, hardening exception management, and drift detection across Windows, Linux, and macOS environments. For OS-specific hardening depth, see INFRA-ONPREM-LINHARDEN, INFRA-ONPREM-WINHARDEN, and INFRA-ONPREM-MACHARDEN.",
+  "requires": [],
+  "recommended": [
+    "FOUND-STANDARDS",
+    "FOUND-TOOLS",
+    "INFRA-ONPREM-LINHARDEN",
+    "INFRA-ONPREM-WINHARDEN",
+    "INFRA-ONPREM-MACHARDEN",
+    "FOUND-RISK"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to server hardening assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands server hardening principles and common security baselines",
+      "evidence": [
+        "Can explain OS hardening concepts for Windows and Linux",
+        "Familiar with CIS benchmark structure and applicability",
+        "Understands the principle of least functionality and attack surface reduction"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Runs hardening assessment tools and reviews configurations under supervision",
+      "evidence": [
+        "Runs CIS-CAT, Lynis, or equivalent hardening assessment tools under guidance",
+        "Compares system configurations against CIS benchmarks using checklists",
+        "Documents hardening assessment findings with supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses server hardening and provides contextualized remediation guidance",
+      "evidence": [
+        "Independently assesses Windows and Linux servers against hardening baselines",
+        "Contextualizes findings based on server role and risk exposure",
+        "Evaluates patch management posture and local privilege escalation risks",
+        "Produces compliant hardening assessment reports with prioritized remediation"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Develops custom hardening baselines; handles complex environments; mentors others",
+      "evidence": [
+        "Develops organization-specific hardening baselines tailored to server roles",
+        "Assesses complex environments with mixed OS versions and legacy systems",
+        "Reviews hardening assessment work of junior analysts",
+        "Automates hardening compliance checks and reporting"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines lab hardening methodology; contributes to industry hardening standards",
+      "evidence": [
+        "Designed or maintains the lab's server hardening assessment framework",
+        "Contributes to CIS benchmark development or equivalent industry standards",
+        "Trains teams on advanced server hardening assessment",
+        "Recognized as authority on server hardening and baseline security"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess a set of Windows and Linux servers with varying hardening levels and produce a prioritized findings report"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review hardening assessment findings from recent on-premises engagements"
+    }
+  ],
+  "framework_mappings": {
+    "cis": [
+      "CIS Microsoft Windows Server Benchmark",
+      "CIS Ubuntu Linux Benchmark",
+      "CIS Red Hat Enterprise Linux Benchmark"
+    ],
+    "nice": {
+      "tks": ["K0837", "S0643", "K1122", "K1138", "S0667"],
+      "work_roles": ["IO-WRL-006 Systems Security Analysis", "OG-WRL-012 Security Control Assessment"]
+    }
+  },
+  "tags": [
+    "hardening",
+    "cis-benchmark",
+    "windows",
+    "linux",
+    "on-premises",
+    "baseline",
+    "macos",
+    "privilege-escalation"
+  ]
+}

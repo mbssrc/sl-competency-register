@@ -1,0 +1,111 @@
+{% extends "core/base.html" %}
+{% load taxonomy_filters %}
+
+{% block title %}{{ domain.name }} - Skills - {{ product_name }}{% endblock %}
+
+{% block page_crumbs %}
+<a href="{% url 'taxonomy:domain-list' %}" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Skills</a>
+  <svg class="w-4 h-4 mx-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+  <span class="text-gray-900 dark:text-white font-medium">{{ domain.name }}</span>
+{% endblock %}
+
+{% block page_title %}{{ domain.name }}{% endblock %}
+{% block page_description %}{{ domain.description }}{% endblock %}
+
+{% block content %}
+<div class="flex flex-col lg:flex-row gap-8">
+  <!-- Main content -->
+  <div class="flex-1 min-w-0">
+    <!-- Domain header -->
+    <div class="mb-8">
+{% if request.user.is_manager %}
+      <button onclick="loadModal('{% url 'taxonomy:domain-edit' domain.id %}')"
+              class="mt-4 inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-500/15 border border-indigo-200 dark:border-indigo-800 rounded-md hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+        Edit
+      </button>
+      {% endif %}
+
+      {% if domain.note %}
+      <div class="mt-3 text-sm text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-md px-4 py-3">
+        {{ domain.note }}
+      </div>
+      {% endif %}
+      <div class="mt-3 text-sm text-gray-500 dark:text-gray-500">
+        {{ skill_count }} skill{{ skill_count|pluralize }} across {{ grouped_skills|length }} categor{{ grouped_skills|length|pluralize:"y,ies" }}
+      </div>
+    </div>
+
+    <!-- Skills grouped by category -->
+    {% for category_id, skills in grouped_skills.items %}
+    <div class="mb-8">
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
+        {% if category_names %}
+          {% with cat_name=category_names|default_if_none:"" %}
+            {% for cid, cname in category_names.items %}
+              {% if cid == category_id %}
+                {{ cname }}
+              {% endif %}
+            {% endfor %}
+          {% endwith %}
+          {% if category_id not in category_names %}
+            {{ category_id }}
+          {% endif %}
+        {% else %}
+          {{ category_id }}
+        {% endif %}
+        <span class="ml-2 text-xs font-normal text-gray-500 dark:text-gray-500">{{ skills|length }} skill{{ skills|length|pluralize }}</span>
+      </h3>
+
+      <div class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg overflow-hidden">
+        <table class="w-full text-sm table-fixed">
+          <colgroup>
+            <col style="width: 15%">
+            <col style="width: 20%">
+            <col style="width: 55%">
+            <col style="width: 10%">
+          </colgroup>
+          <thead>
+            <tr class="border-b border-gray-200 dark:border-white/10">
+              <th class="text-left px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">ID</th>
+              <th class="text-left px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Name</th>
+              <th class="text-left px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Description</th>
+              <th class="text-left px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for skill in skills %}
+            <tr class="border-b border-gray-100 dark:border-white/5 last:border-b-0 {% if forloop.counter|divisibleby:2 %}bg-gray-50/50 dark:bg-white/[0.03]{% endif %}">
+              <td class="px-4 py-2.5 font-mono text-xs text-gray-600 dark:text-gray-400 max-w-0 truncate">
+                <a href="{% url 'taxonomy:skill-detail' skill.id %}" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">{{ skill.id }}</a>
+              </td>
+              <td class="px-4 py-2.5 text-gray-900 dark:text-gray-200 max-w-0 truncate">
+                <a href="{% url 'taxonomy:skill-detail' skill.id %}" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">{{ skill.name }}</a>
+              </td>
+              <td class="px-4 py-2.5 text-gray-500 dark:text-gray-500 text-xs max-w-0 truncate">
+                {{ skill.description|first_sentence|truncatechars:100 }}
+              </td>
+              <td class="px-4 py-2.5">
+                {% if skill.status == "active" %}
+                <span class="inline-flex items-center rounded-full bg-green-50 dark:bg-green-900/30 px-2 py-0.5 text-xs font-medium text-green-700 dark:text-green-400">Active</span>
+                {% elif skill.status == "deprecated" %}
+                <span class="inline-flex items-center rounded-full bg-amber-50 dark:bg-amber-900/30 px-2 py-0.5 text-xs font-medium text-amber-700 dark:text-amber-400">Deprecated</span>
+                {% else %}
+                <span class="inline-flex items-center rounded-full bg-gray-50 dark:bg-white/5 px-2 py-0.5 text-xs font-medium text-gray-700 dark:text-gray-400">{{ skill.status }}</span>
+                {% endif %}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    {% empty %}
+    <div class="text-center py-12 text-gray-500 dark:text-gray-400">
+      No skills found in this domain.
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
+{% endblock %}

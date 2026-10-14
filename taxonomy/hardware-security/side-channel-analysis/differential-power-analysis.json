@@ -1,0 +1,117 @@
+{
+  "id": "HWSEC-SCA-DPA",
+  "name": "Differential Power Analysis",
+  "domain": "hardware-security",
+  "category": "Side-Channel Analysis",
+  "status": "active",
+  "description": "Statistical analysis of multiple power consumption traces to extract secret keys from cryptographic implementations. Covers DPA, CPA (Correlation Power Analysis), and higher-order attacks. Includes trace acquisition campaign design, trace alignment and preprocessing, leakage model selection, statistical distinguisher application, and key rank estimation.",
+  "requires": [
+    "HWSEC-SCA-SPA"
+  ],
+  "recommended": [
+    "HWSEC-CRYPTO-ACCEL",
+    "FOUND-STANDARDS",
+    "CRYPTO-SYM-BLOCKCIPHER",
+    "HWSEC-SCA-TVLA"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to statistical power analysis techniques"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the statistical foundations of DPA/CPA and the divide-and-conquer approach",
+      "evidence": [
+        "Can explain the difference-of-means DPA attack and CPA with Pearson correlation",
+        "Understands the divide-and-conquer principle applied to key byte recovery",
+        "Aware of the role of trace count, noise, and alignment in attack success"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Executes DPA/CPA attacks on training targets using existing tooling under supervision",
+      "evidence": [
+        "Captures a trace set of sufficient quality for CPA on a ChipWhisperer training target",
+        "Runs CPA attack using provided scripts and correctly interprets correlation peaks",
+        "Applies basic trace alignment (sum-of-absolute-differences, static alignment) to acquired traces",
+        "Recovers AES-128 key bytes on an unprotected implementation under guidance"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently plans and executes DPA/CPA campaigns against real targets",
+      "evidence": [
+        "Designs trace acquisition campaigns (trigger setup, trace count estimation, sampling parameters)",
+        "Applies appropriate leakage models (HW, HD, identity) and selects optimal attack points",
+        "Recovers full AES keys from unprotected and lightly protected implementations independently",
+        "Evaluates attack results using key rank estimation and success metrics",
+        "Produced DPA/CPA reports on 3+ real engagements meeting lab standards"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Executes higher-order attacks; defeats countermeasures; develops analysis tooling",
+      "evidence": [
+        "Performs second-order and higher-order DPA to defeat masking countermeasures",
+        "Applies advanced preprocessing (PCA, LDA, integration) to improve leakage extraction",
+        "Develops custom CPA/DPA analysis pipelines and attack scripts for the lab",
+        "Assesses the effectiveness of side-channel countermeasures quantitatively (TVLA, SNR analysis)",
+        "Mentors junior analysts on statistical analysis and attack optimization"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on statistical power analysis; publishes novel attacks; defines methodology",
+      "evidence": [
+        "Published research on novel DPA/CPA techniques at conferences (CHES, COSADE, CARDIS)",
+        "Develops the lab's DPA methodology aligned with Common Criteria and EMVCo evaluation standards",
+        "Applies machine-learning-based side-channel attacks to production targets",
+        "Provides expert consultation on DPA resistance to silicon designers and certification bodies"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Plan and execute a complete CPA campaign against a prepared target: design acquisition parameters, capture traces, run the attack, and report recovered key material with confidence metrics"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review DPA/CPA analysis reports from recent engagements for statistical rigor and methodology compliance"
+    }
+  ],
+  "equipment": [
+    "ChipWhisperer-Pro or equivalent high-resolution acquisition platform",
+    "Low-noise amplifier (LNA) for power measurement chain",
+    "EM probe station with near-field probes (for EM-assisted DPA)"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1362", "K0018", "K1339", "S0563", "S0898"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development", "PD-WRL-007 Vulnerability Analysis"]
+    },
+    "common_criteria": [
+      "AVA_VAN.4",
+      "AVA_VAN.5"
+    ],
+    "jil_attack_methods": [
+      "5.5 Side-channel attacks"
+    ],
+    "fips_140_3": [
+      "AS08"
+    ]
+  },
+  "tags": [
+    "dpa",
+    "cpa",
+    "power-analysis",
+    "statistical",
+    "side-channel",
+    "cryptographic",
+    "non-invasive"
+  ]
+}

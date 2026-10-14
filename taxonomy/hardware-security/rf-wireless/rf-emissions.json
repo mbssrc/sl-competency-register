@@ -1,0 +1,109 @@
+{
+  "id": "HWSEC-RF-EMC",
+  "name": "RF Emission & Susceptibility Analysis",
+  "domain": "hardware-security",
+  "category": "RF & Wireless (On-Device)",
+  "status": "active",
+  "description": "Device-level characterization of unintentional RF emissions from hardware and evaluation of device susceptibility to external RF interference. Covers conducted and radiated emission measurement, RF emission profiling of cryptographic operations, and assessment of device resilience to intentional electromagnetic interference. TEMPEST-standard compromising emanation analysis belongs to WSEC-SPEC-TEMPEST.",
+  "requires": [],
+  "recommended": [
+    "HWSEC-SCA-EMA",
+    "HWSEC-PCB-RE",
+    "HWSEC-FI-EMFI",
+    "WSEC-SPEC-ANALYSIS",
+    "WSEC-SPEC-TEMPEST",
+    "FOUND-TOOLS"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to RF emission or susceptibility analysis"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands compromising emanations and RF susceptibility concepts",
+      "evidence": [
+        "Can explain the concept of compromising emanations and TEMPEST at a high level",
+        "Understands the difference between near-field EM (SCA) and far-field RF emission analysis",
+        "Aware of conducted vs. radiated emission measurement approaches"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs basic RF emission measurements and profiling under supervision",
+      "evidence": [
+        "Configures RF measurement chain (antenna, LNA, spectrum analyzer) for emission measurement",
+        "Captures RF emission spectra from a target device during security-relevant operations",
+        "Identifies data-correlated emission peaks in frequency-domain measurements with guidance",
+        "Operates in an RF shielded chamber following documented measurement procedures"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently performs RF emission analysis and susceptibility testing on real targets",
+      "evidence": [
+        "Identifies and characterizes compromising emanations from production devices",
+        "Correlates far-field RF emissions with data-dependent device operations",
+        "Performs conducted susceptibility testing to assess device resilience to RF interference",
+        "Completed RF emission/susceptibility assessments on 3+ targets with documented findings"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Performs advanced emanation exploitation; develops measurement methodology; mentors team",
+      "evidence": [
+        "Exploits compromising emanations at distance to extract useful intelligence from target devices",
+        "Develops custom RF emission measurement and analysis workflows",
+        "Assesses shielding effectiveness and EMC countermeasure implementations",
+        "Mentors team on RF measurement technique, antenna selection, and analysis methods"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on RF emission security; defines methodology; specifies measurement equipment",
+      "evidence": [
+        "Defines the lab's RF emission and susceptibility analysis methodology",
+        "Specifies RF measurement equipment and shielded chamber requirements",
+        "Published research on compromising emanation exploitation or countermeasures",
+        "Provides expert consultation on emanation security to product designers"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Perform RF emission analysis on a prepared target device: measure emission spectrum, identify data-correlated emissions, and assess information leakage risk"
+    },
+    {
+      "type": "direct_observation",
+      "description": "Observe measurement setup, antenna positioning, and signal analysis technique during a live RF emission assessment"
+    }
+  ],
+  "equipment": [
+    "RF shielded anechoic chamber or GTEM cell",
+    "Calibrated measurement antenna set (biconical, log-periodic, horn)",
+    "EMI receiver / spectrum analyzer with pre-compliance measurement capability"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1362", "K0714", "K0925", "K1248"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development", "PD-WRL-007 Vulnerability Analysis"]
+    },
+    "common_criteria": [
+      "AVA_VAN.4",
+      "AVA_VAN.5"
+    ]
+  },
+  "tags": [
+    "rf-emission",
+    "tempest",
+    "emanation",
+    "susceptibility",
+    "emc",
+    "non-invasive",
+    "cryptographic"
+  ]
+}

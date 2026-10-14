@@ -1,0 +1,113 @@
+{
+  "id": "ADVSIM-RED-DEBRIEF",
+  "name": "Debrief & Purple Teaming",
+  "domain": "adversarial-simulation",
+  "category": "Red Teaming",
+  "status": "active",
+  "description": "Ability to conduct post-operation debriefs, replay attack paths with defenders, and facilitate purple team exercises. Covers translating red team findings into actionable defensive improvements, collaborative attack replay, detection gap analysis, and building constructive relationships with blue teams.",
+
+  "requires": [
+    "FOUND-COMM",
+    "FOUND-REPORT",
+    "FOUND-ETHICS"
+  ],
+  "recommended": [
+    "ADVSIM-RED-PLANNING",
+    "ADVSIM-RED-EXECUTION",
+    "FOUND-RISK"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to red team debriefs or purple teaming"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the purpose of debriefs and the concept of purple teaming",
+      "evidence": [
+        "Completed training on purple team methodology",
+        "Can explain why debrief and attack replay add value beyond a written report",
+        "Understands the collaborative (not adversarial) nature of purple teaming"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Participates in debriefs and purple team sessions under senior guidance",
+      "evidence": [
+        "Presented specific attack steps during a debrief with supervision",
+        "Participated in purple team sessions replaying techniques in a lab environment",
+        "Contributed to detection gap documentation under guidance"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently conducts debriefs and facilitates purple team sessions",
+      "evidence": [
+        "Led 3+ post-engagement debriefs with client defensive teams",
+        "Facilitated purple team replay sessions resulting in new detection rules",
+        "Produced detection gap analysis reports with actionable recommendations",
+        "Maintained professional, collaborative rapport with blue teams"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Designs purple team programmes; handles complex multi-stakeholder debriefs",
+      "evidence": [
+        "Designed structured purple team exercise programmes for clients",
+        "Conducted separate debriefs tailored to both executive and technical audiences within the same engagement",
+        "Developed detection engineering recommendations tied to specific MITRE ATT&CK techniques",
+        "Mentors team on effective debrief facilitation and stakeholder management"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines lab debrief and purple team methodology; recognised industry contributor",
+      "evidence": [
+        "Authored the lab's purple teaming methodology and debrief standards",
+        "Developed frameworks for measuring defensive improvement over time",
+        "Delivers training on purple teaming and debrief techniques",
+        "Presents on purple team methodology at industry conferences"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "direct_observation",
+      "description": "Observe facilitation of a debrief or purple team session, assessing communication clarity, technical accuracy, and collaborative tone"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review detection gap analysis reports and purple team exercise outputs from recent engagements"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["S0731", "S0966", "K1054", "S0923"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "PD-WRL-001 Defensive Cybersecurity"]
+    },
+    "mitre_attack": {
+      "tactics": ["TA0005"]
+    },
+    "cbest": {
+      "phase": "Closure - Debrief"
+    },
+    "tiber": {
+      "phase": "Closure - Replay & Purple Teaming"
+    }
+  },
+
+  "tags": [
+    "debrief",
+    "purple-team",
+    "detection-engineering",
+    "blue-team-collaboration",
+    "attack-replay",
+    "mitre-attack"
+  ]
+}

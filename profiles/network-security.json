@@ -1,0 +1,79 @@
+{
+  "id": "NETSEC",
+  "name": "Network Penetration Tester",
+  "domain": "NETSEC",
+  "description": "Network security evaluation track covering network reconnaissance and enumeration, protocol and service exploitation, post-exploitation and pivoting, firewall and segmentation assessment, and network architecture review.",
+  "maturity_levels": {
+    "junior": {
+      "title": "Junior Network Penetration Tester",
+      "description": "Assists with network assessments under supervision within the agreed rules of engagement. Performs reconnaissance, scanning and enumeration on approved targets; active testing, findings and report sections are reviewed by an authorized assessor.",
+      "thresholds": {
+        "domain_skills_at": {"1": 6, "2": 3},
+        "min_categories": 1,
+        "foundation_avg": 0.5
+      },
+      "pinned": [
+        {"skill": "FOUND-ETHICS", "minimum_level": 2}
+      ]
+    },
+    "practitioner": {
+      "title": "Network Penetration Tester",
+      "description": "Independently conducts network security evaluations strictly within the rules of engagement and is authorized to sign off routine assessments. Delivers reports with verified findings, evidence and remediation advice, and escalates out-of-scope discoveries.",
+      "thresholds": {
+        "domain_skills_at": {"2": 8, "3": 4},
+        "min_categories": 2,
+        "foundation_avg": 1.0
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 3},
+        {"skill": "FOUND-ETHICS", "minimum_level": 3}
+      ]
+    },
+    "senior": {
+      "title": "Senior Network Penetration Tester",
+      "description": "Handles complex evaluations, for example segmented multi-site networks needing pivoting, firewall rule analysis and architecture review. Reviews assessment reports for QA, mentors junior analysts and judges the risk of active testing on live networks.",
+      "thresholds": {
+        "domain_skills_at": {"3": 10, "4": 4},
+        "min_categories": 3,
+        "foundation_avg": 1.5
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 4},
+        {"skill": "FOUND-QA", "minimum_level": 3},
+        {"skill": "FOUND-ETHICS", "minimum_level": 3}
+      ]
+    },
+    "lead": {
+      "title": "Lead Network Penetration Tester",
+      "description": "Technical lead for Network Security: owns the methodology, performs technical quality review of evaluations and reports, and plans the technical approach across engagements. Acts as the senior technical contact for clients on scope and findings. Technical depth stays at senior level or above.",
+      "thresholds": {
+        "domain_skills_at": {"3": 11, "4": 6},
+        "min_categories": 4,
+        "foundation_avg": 2.0
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 4},
+        {"skill": "FOUND-QA", "minimum_level": 3},
+        {"skill": "FOUND-PM", "minimum_level": 3},
+        {"skill": "FOUND-COMM", "minimum_level": 3},
+        {"skill": "FOUND-ETHICS", "minimum_level": 3}
+      ]
+    },
+    "principal": {
+      "title": "Principal Network Penetration Tester",
+      "description": "Technical authority in network security. Defines lab direction for network evaluation services, publishes research, and is a recognized expert in network defense and assessment. The deepest technical tier in the domain; it extends Lead rather than branching from it.",
+      "thresholds": {
+        "domain_skills_at": {"4": 11, "5": 4},
+        "min_categories": 5,
+        "foundation_avg": 2.5
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 4},
+        {"skill": "FOUND-QA", "minimum_level": 3},
+        {"skill": "FOUND-PM", "minimum_level": 3},
+        {"skill": "FOUND-COMM", "minimum_level": 3},
+        {"skill": "FOUND-ETHICS", "minimum_level": 3}
+      ]
+    }
+  }
+}

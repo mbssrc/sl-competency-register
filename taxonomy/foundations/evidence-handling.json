@@ -1,0 +1,94 @@
+{
+  "id": "FOUND-EVIDENCE",
+  "name": "Evidence Handling",
+  "domain": "foundations",
+  "category": "Foundations",
+  "status": "active",
+  "description": "Ability to properly collect, preserve, document, and store evidence from security engagements and investigations. Covers chain of custody, integrity verification (hashing), secure storage, and evidence lifecycle management aligned with ISO/IEC 27037 (identification, collection, acquisition and preservation of digital evidence), ISO/IEC 17025:2017 clause 7.4 (handling of test items), and ACPO/NPCC good practice principles.",
+
+  "requires": [],
+  "recommended": [
+    "FOUND-DOC",
+    "FOUND-ETHICS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to evidence handling procedures"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands why evidence integrity matters and basic chain of custody concepts",
+      "evidence": [
+        "Can explain chain of custody and why it matters",
+        "Understands the concept of evidence integrity and hashing"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Follows evidence handling procedures under supervision",
+      "evidence": [
+        "Correctly documents evidence collection steps",
+        "Computes and records integrity hashes under guidance",
+        "Follows lab evidence storage procedures"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently handles evidence with full procedural compliance",
+      "evidence": [
+        "Maintains chain of custody across engagements without errors",
+        "Evidence packages pass QA review",
+        "Handles sensitive and legally relevant evidence appropriately"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex evidence scenarios; reviews evidence packages; improves procedures",
+      "evidence": [
+        "Manages evidence across multi-party and cross-jurisdictional engagements",
+        "Reviews evidence handling of junior staff",
+        "Contributes to evidence handling procedure updates"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines evidence handling methodology; supports legal proceedings",
+      "evidence": [
+        "Designed or maintains the lab's evidence handling framework",
+        "Provides expert testimony or declarations on evidence integrity",
+        "Trains teams on evidence handling procedures"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "direct_observation",
+      "description": "Observe evidence collection and documentation during a live or simulated engagement"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Audit evidence packages from recent engagements for procedural compliance"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1115", "K1153", "S0589", "S0605", "K0800"],
+      "work_roles": ["IN-WRL-002 Digital Evidence Analysis", "PD-WRL-002 Digital Forensics"]
+    }
+  },
+
+  "tags": [
+    "cross-cutting",
+    "forensics",
+    "chain-of-custody",
+    "evidence-integrity",
+    "iso-17025"
+  ]
+}

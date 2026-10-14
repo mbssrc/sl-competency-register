@@ -1,0 +1,121 @@
+{
+  "id": "ADVSIM-RED-EXECUTION",
+  "name": "Objective-Driven Execution",
+  "domain": "adversarial-simulation",
+  "category": "Red Teaming",
+  "status": "active",
+  "description": "Ability to execute red team operations end-to-end, from initial access through to objective completion. Covers attack path selection, lateral movement, privilege escalation, persistence, and objective actions (data exfiltration, business process compromise) while maintaining operational coherence and staying within rules of engagement.",
+
+  "requires": [
+    "FOUND-ETHICS",
+    "ADVSIM-RED-PLANNING"
+  ],
+  "recommended": [
+    "ADVSIM-RED-C2",
+    "ADVSIM-RED-EVASION",
+    "FOUND-EVIDENCE",
+    "NETSEC-EXPLOIT-SVCEXPLOIT",
+    "SWSEC-OS-WINPRIV",
+    "SWSEC-OS-LINPRIV",
+    "INFRA-ONPREM-AD",
+    "NETSEC-POST-CREDHARVEST"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to red team operational execution"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the phases of a red team kill chain and key operational concepts",
+      "evidence": [
+        "Completed red team operations training covering the full kill chain",
+        "Can describe initial access, lateral movement, privilege escalation, and objective actions",
+        "Understands the difference between vulnerability exploitation and objective-driven operations"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Executes assigned tasks within a red team campaign under direct guidance",
+      "evidence": [
+        "Performed specific attack phases (e.g., lateral movement, data staging) as directed by team lead",
+        "Completed red team lab exercises covering full kill chains",
+        "Maintained operational logs and evidence collection under supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently executes red team operations from initial access to objective completion",
+      "evidence": [
+        "Executed 3+ red team campaigns achieving defined objectives independently",
+        "Demonstrated ability to pivot and adapt attack paths when blocked",
+        "Maintained clean operational logs and evidence trail throughout campaigns",
+        "Operated within rules of engagement without violations"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Leads complex operations against hardened targets; adapts in real-time to active defence",
+      "evidence": [
+        "Led operations against targets with active threat hunting and incident response",
+        "Achieved objectives in environments with segmented networks and advanced controls",
+        "Coordinated multi-operator campaigns with clear task delegation",
+        "Mentors operators on operational decision-making and adaptability"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Executes the most complex campaigns; develops operational methodology; recognised authority",
+      "evidence": [
+        "Led CBEST, TIBER-EU, or equivalent regulatory red team campaigns to completion",
+        "Developed novel attack paths or operational techniques adopted by the lab",
+        "Defines lab operational playbooks and execution standards",
+        "Trains and certifies operators on red team execution"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Full red team exercise in lab environment: given objectives and rules of engagement, execute a campaign from initial access through objective completion"
+    },
+    {
+      "type": "direct_observation",
+      "description": "Shadow the operator during a live engagement, assessing decision-making, adaptability, and adherence to rules of engagement"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["S0516", "S0446", "K0956", "K1085", "K0844"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis"]
+    },
+    "mitre_attack": {
+      "tactics": ["TA0001", "TA0003", "TA0004", "TA0008", "TA0009", "TA0010"]
+    },
+    "cbest": {
+      "phase": "Penetration Testing - Execution"
+    },
+    "tiber": {
+      "phase": "Red Team Test - Execution"
+    }
+  },
+
+  "tags": [
+    "operations",
+    "kill-chain",
+    "lateral-movement",
+    "objective-actions",
+    "attack-path",
+    "exfiltration",
+    "persistence",
+    "privilege-escalation",
+    "post-exploitation",
+    "mitre-attack"
+  ]
+}

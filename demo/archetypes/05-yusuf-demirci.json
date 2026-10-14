@@ -1,0 +1,60 @@
+{
+  "key": "PERS-005",
+  "bands": {
+    "strong": [
+      "HWSEC-EMBED",
+      "HWSEC-PCB"
+    ],
+    "weak": [
+      "HWSEC-INV",
+      "HWSEC-SPREP"
+    ]
+  },
+  "signature": {
+    "HWSEC-EMBED-FW": 2,
+    "HWSEC-PCB-RE": 2
+  },
+  "never": [],
+  "foundations": [
+    1,
+    2
+  ],
+  "projects": [
+    "PRJ-SAT-PCB"
+  ],
+  "stale_skills": [],
+  "self_assessment": {
+    "mode": "all",
+    "bias": 1,
+    "jitter": 1
+  },
+  "development_plan": [
+    {
+      "skill": "HWSEC-EMBED-FW",
+      "target_level": 3,
+      "target_date": "2027-04-30",
+      "actions": [
+        "Extract firmware independently on three training targets",
+        "Pass the firmware extraction proficiency assessment"
+      ]
+    },
+    {
+      "skill": "HWSEC-PCB-RE",
+      "target_level": 3,
+      "target_date": "2027-04-30",
+      "actions": [
+        "Reconstruct a schematic for one multi-layer board unaided",
+        "Produce a board analysis report meeting lab standards"
+      ]
+    }
+  ],
+  "name": "Yusuf Demirci",
+  "role": "Junior Hardware Security Evaluator",
+  "start_date": "2025-04-22",
+  "domains": [
+    "HWSEC"
+  ],
+  "target_maturity": {
+    "HWSEC": "junior"
+  }
+}

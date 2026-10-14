@@ -1,0 +1,99 @@
+{
+  "id": "FOUND-ETHICS",
+  "name": "Ethics & Legal",
+  "domain": "foundations",
+  "category": "Foundations",
+  "status": "active",
+  "description": "Understanding of ethical boundaries, legal frameworks, and professional responsibilities in security testing and research. Covers rules of engagement, responsible disclosure, data protection obligations, NDA compliance, impartiality and confidentiality obligations (ISO/IEC 17025:2017 clauses 4.1 and 4.2), and the legal boundaries of security testing across jurisdictions.",
+
+  "requires": [],
+  "recommended": [
+    "FOUND-STANDARDS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to security ethics or legal frameworks"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands basic ethical principles and legal constraints on security testing",
+      "evidence": [
+        "Completed ethics and legal awareness training",
+        "Can explain why rules of engagement and scope limitations exist",
+        "Understands NDA obligations",
+        "Can state the lab's impartiality and confidentiality obligations under ISO/IEC 17025:2017 clauses 4.1 and 4.2",
+        "Understands that testing requires written authorisation from the system owner, and that third-party or hosted systems in scope need authorisation of their own"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Operates within ethical and legal boundaries under supervision",
+      "evidence": [
+        "Adheres to rules of engagement on all engagements",
+        "Escalates potential scope or ethical issues appropriately",
+        "Handles client data according to lab policies",
+        "Declares potential conflicts of interest before accepting an engagement assignment",
+        "Applies data-protection handling to personal data encountered during testing, minimising what is collected and retained"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently manages ethical and legal aspects of engagements",
+      "evidence": [
+        "Confirms the authorisation basis for every target in scope before testing begins, including third-party and hosted systems, and withholds testing where it is absent",
+        "Identifies where an engagement is constrained by radio transmission licensing or safety-of-life considerations and confirms the applicable limits before testing",
+        "Identifies and escalates legal grey areas proactively",
+        "Handles responsible disclosure situations appropriately"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Advises on complex ethical situations; reviews rules of engagement; handles disclosure",
+      "evidence": [
+        "Drafts or reviews rules of engagement for complex engagements",
+        "Advises team on ethical and legal edge cases",
+        "Reviews engagements for impartiality and conflict-of-interest risk and records the mitigation",
+        "Manages responsible disclosure processes"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines ethical framework; liaises with legal counsel; trains teams",
+      "evidence": [
+        "Established or maintains the lab's ethical guidelines and legal framework",
+        "Liaises with legal counsel on complex situations",
+        "Delivers ethics and legal training to the team"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "problem_solving",
+      "description": "Scenario-based assessment: respond to ethical dilemmas (scope creep, accidental data exposure, responsible disclosure decision)"
+    },
+    {
+      "type": "direct_observation",
+      "description": "Observe adherence to rules of engagement and ethical practices during engagements"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0676", "K0678", "K0882", "K0963"],
+      "work_roles": ["OG-WRL-006 Cybersecurity Legal Advice", "OG-WRL-008 Privacy Compliance"]
+    }
+  },
+
+  "tags": [
+    "cross-cutting",
+    "ethics",
+    "legal",
+    "responsible-disclosure"
+  ]
+}

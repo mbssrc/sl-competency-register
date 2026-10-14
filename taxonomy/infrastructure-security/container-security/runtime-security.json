@@ -1,0 +1,105 @@
+{
+  "id": "INFRA-CONTAINER-RUNTIME",
+  "name": "Container Runtime Security Assessment",
+  "domain": "infrastructure-security",
+  "category": "Container Security",
+  "status": "active",
+  "description": "Assessment of container runtime security controls and monitoring. Covers runtime threat detection, syscall filtering (seccomp), mandatory access control (AppArmor/SELinux), runtime anomaly detection tools (Falco, Sysdig), and evaluation of runtime defense effectiveness.",
+  "requires": [
+    "INFRA-CONTAINER-DOCKER"
+  ],
+  "recommended": [
+    "INFRA-CONTAINER-K8S"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to container runtime security assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands container runtime security concepts and monitoring approaches",
+      "evidence": [
+        "Can explain seccomp profiles, AppArmor/SELinux, and their role in container security",
+        "Understands runtime threat detection concepts and common evasion patterns",
+        "Familiar with runtime security tools (Falco, Sysdig, Tetragon)"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Evaluates runtime security configurations under supervision",
+      "evidence": [
+        "Reviews seccomp and AppArmor profiles against lab baselines under guidance",
+        "Deploys and configures runtime monitoring tools in test environments",
+        "Documents runtime security findings with supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses runtime security posture and detection capabilities",
+      "evidence": [
+        "Independently evaluates seccomp profiles and MAC policies for completeness",
+        "Tests runtime detection tool efficacy against known attack techniques",
+        "Identifies gaps in runtime monitoring coverage",
+        "Produces compliant runtime security assessment reports"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Develops runtime detection rules and evasion techniques; mentors others",
+      "evidence": [
+        "Develops custom runtime detection rules for advanced attack scenarios",
+        "Demonstrates evasion of runtime monitoring through fileless and kernel-level techniques",
+        "Reviews runtime security assessment work of junior analysts",
+        "Contributes to lab runtime security methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines lab runtime security methodology; publishes research on runtime attacks and defenses",
+      "evidence": [
+        "Designed or maintains the lab's container runtime security assessment framework",
+        "Published research on runtime evasion techniques or novel detection methods",
+        "Trains teams on advanced runtime security assessment",
+        "Recognized as authority on container runtime security"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Execute known container attack techniques against a monitored environment and evaluate detection coverage"
+    },
+    {
+      "type": "direct_observation",
+      "description": "Observe runtime security assessment during a live engagement, evaluating methodology and thoroughness"
+    }
+  ],
+  "framework_mappings": {
+    "csa_ccm": [
+      "TVM-01",
+      "TVM-02",
+      "IVS-01"
+    ],
+    "nice": {
+      "tks": ["K1373", "K1298", "K0732", "S0572", "S0846"],
+      "work_roles": ["PD-WRL-001 Defensive Cybersecurity", "PD-WRL-007 Vulnerability Analysis"]
+    }
+  },
+  "tags": [
+    "containers",
+    "runtime",
+    "seccomp",
+    "falco",
+    "detection",
+    "monitoring",
+    "apparmor",
+    "selinux",
+    "evasion",
+    "kernel",
+    "linux"
+  ]
+}

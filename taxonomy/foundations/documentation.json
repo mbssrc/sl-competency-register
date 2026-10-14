@@ -1,0 +1,90 @@
+{
+  "id": "FOUND-DOC",
+  "name": "Documentation",
+  "domain": "foundations",
+  "category": "Foundations",
+  "status": "active",
+  "description": "Ability to create and maintain technical documentation including procedures, methodologies, work instructions, and knowledge base articles. Distinct from report writing (FOUND-REPORT) which focuses on engagement deliverables — this covers internal lab documentation that ensures repeatability and knowledge transfer.",
+
+  "requires": [],
+  "recommended": [
+    "FOUND-QA"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to technical documentation practices"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the importance of documented procedures and knowledge management",
+      "evidence": [
+        "Can find and follow existing lab procedures",
+        "Understands why procedures must be documented"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Contributes to documentation under guidance; follows documentation standards",
+      "evidence": [
+        "Has updated or contributed to existing procedure documents",
+        "Follows the lab's documentation format and style",
+        "Contributions reviewed by senior staff"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Authors complete procedures and knowledge base articles independently",
+      "evidence": [
+        "Authored 3+ procedure documents or work instructions",
+        "Documents are clear, complete, and usable by others",
+        "Maintains documentation as procedures evolve"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Maintains documentation systems; reviews others' contributions; ensures consistency",
+      "evidence": [
+        "Reviews and maintains a section of the lab's documentation",
+        "Ensures consistency across procedures and work instructions",
+        "Mentors junior staff on documentation practices"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Designs documentation framework; manages knowledge base architecture",
+      "evidence": [
+        "Designed the lab's documentation structure and standards",
+        "Manages the overall knowledge base architecture",
+        "Trains teams on documentation practices and standards"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "work_product_review",
+      "description": "Review 3 procedure documents or knowledge base articles authored by the individual"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["S0391", "S0744", "S0407", "S0408"],
+      "work_roles": ["IO-WRL-003 Knowledge Management"]
+    },
+    "sfia": {
+      "skill": "INCA"
+    }
+  },
+
+  "tags": [
+    "cross-cutting",
+    "knowledge-management",
+    "procedures"
+  ]
+}

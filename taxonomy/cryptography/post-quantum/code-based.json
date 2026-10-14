@@ -1,0 +1,127 @@
+{
+  "id": "CRYPTO-PQ-CODE",
+  "name": "Code-Based Cryptography Assessment",
+  "domain": "cryptography",
+  "category": "Post-Quantum Cryptography",
+  "status": "active",
+  "description": "Assessment of code-based post-quantum cryptographic schemes, whose security rests on the hardness of decoding random linear codes (the syndrome decoding problem). Covers HQC, selected by NIST in March 2025 as a backup KEM alongside ML-KEM with its standard still in preparation; Classic McEliece, not selected in the NIST round 4 outcome but pursued through ISO/IEC standardisation and favoured for conservative long-term confidentiality; and BIKE. Covers parameter set review, the operational consequences of very large public keys, implementation correctness, constant-time decoding, and the decoding-failure behaviour of quasi-cyclic schemes that enables reaction attacks such as GJS when keys are reused. Because no FIPS standard for a code-based scheme is published, assessments must be explicit about which specification version is in scope.",
+
+  "requires": [
+    "CRYPTO-ASYM-RSA",
+    "CRYPTO-ASYM-ECC"
+  ],
+  "recommended": [
+    "FOUND-STANDARDS",
+    "CRYPTO-PQ-AGILITY",
+    "CRYPTO-ASYM-KEYEXCHANGE",
+    "CRYPTO-IMPL-CONSTTIME"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to code-based cryptography assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the role of code-based schemes in post-quantum cryptography and how they differ from lattice-based schemes",
+      "evidence": [
+        "Can explain the syndrome decoding problem at a conceptual level and why it is believed quantum-hard",
+        "Can name the main code-based candidates (HQC, Classic McEliece, BIKE) and their standardisation status",
+        "Understands the key size and ciphertext size trade-off against lattice-based KEMs",
+        "Can explain why a second KEM family is wanted alongside ML-KEM"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Identifies code-based deployments and reviews parameter selection under supervision",
+      "evidence": [
+        "Identifies code-based KEM usage in a protocol or product and records the specification version in scope",
+        "Reviews parameter set selection against stated security levels under guidance",
+        "Uses reference implementations and known-answer test vectors to validate correct operation",
+        "Documents the operational impact of public key size on handshakes, certificates and storage",
+        "Documents post-quantum findings following lab templates"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses code-based cryptography deployments for correctness and security",
+      "evidence": [
+        "Evaluates an HQC or Classic McEliece implementation against its submission specification and test vectors",
+        "Assesses parameter selection relative to target security level and deployment constraints, including whether key transmission is feasible on the transport in use",
+        "Identifies deviations from specification in key generation, encapsulation or decapsulation that could weaken security",
+        "Assesses whether the deployment reuses a static key pair and, for quasi-cyclic schemes with non-zero decoding failure rate, whether that exposes it to reaction attacks",
+        "Verifies that decapsulation failure is handled per specification and does not leak through error paths or timing",
+        "Produces findings that state the specification version relied upon and the current standardisation status"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex code-based deployment assessments; evaluates implementation side-channel resistance",
+      "evidence": [
+        "Evaluates code-based implementations for timing and power side-channels, particularly in syndrome computation and decoding",
+        "Assesses constant-time properties of the decoder and of secret-dependent memory access patterns",
+        "Assesses hybrid constructions combining a code-based KEM with a classical or lattice-based KEM, including combiner correctness",
+        "Advises on migration where public key size breaks protocol or hardware assumptions",
+        "Mentors junior staff on code-based cryptography assessment"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines code-based assessment methodology; recognised authority on code-based post-quantum schemes",
+      "evidence": [
+        "Authored or maintains the lab's code-based cryptography assessment methodology",
+        "Published research on code-based scheme implementations, decoders or vulnerabilities",
+        "Provides expert guidance on code-based scheme selection and parameter choice for long-term confidentiality",
+        "Contributes to code-based standardisation efforts or tracks and interprets them for the lab",
+        "Trains teams on code-based cryptography internals and assessment approaches"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess a protocol deployment using a code-based KEM: evaluate parameter selection, verify operation against test vectors, and judge the handling of decapsulation failure"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given a code-based KEM implementation and its specification, identify deviations from the specification and determine whether the decoder is constant-time with respect to the private key"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1378", "K1364", "K1359", "S0969", "K1362"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development", "PD-WRL-007 Vulnerability Analysis"]
+    },
+    "fips": {
+      "standards": [],
+      "status": "No FIPS standard for a code-based scheme is published. HQC was selected on 11 March 2025 as a backup KEM alongside ML-KEM; its draft standard was still unpublished as of October 2026. Classic McEliece and BIKE were not selected in the round 4 outcome."
+    },
+    "iso": ["ISO/IEC standardisation of Classic McEliece in progress"]
+  },
+
+  "tags": [
+    "post-quantum",
+    "code-based",
+    "hqc",
+    "classic-mceliece",
+    "bike",
+    "syndrome-decoding",
+    "goppa-codes",
+    "qc-mdpc",
+    "decoding-failure",
+    "reaction-attack",
+    "pqc",
+    "nist",
+    "quantum-resistant",
+    "constant-time",
+    "cryptographic",
+    "side-channel",
+    "timing-attack"
+  ]
+}

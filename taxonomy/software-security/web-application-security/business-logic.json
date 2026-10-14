@@ -1,0 +1,104 @@
+{
+  "id": "SWSEC-WEB-LOGIC",
+  "name": "Business Logic Testing",
+  "domain": "software-security",
+  "category": "Web Application Security",
+  "status": "active",
+  "description": "Testing of web application business logic for flaws that automated scanners cannot detect. Covers workflow and state abuse, multi-step process integrity, race conditions, pricing and quantity manipulation, limit and function-use circumvention, and abuse of intended features, following OWASP WSTG Business Logic Testing (WSTG-BUSL). Access control bypass as such belongs to SWSEC-WEB-AUTHZ.",
+
+  "requires": [
+    "SWSEC-WEB-AUTHZ"
+  ],
+  "recommended": [
+    "SWSEC-WEB-API",
+    "SWSEC-REVIEW-AUTH",
+    "FOUND-REPORT"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to business logic testing"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands what business logic flaws are and why they need manual testing",
+      "evidence": [
+        "Can explain business logic flaws and give examples (negative quantities, skipped workflow steps)",
+        "Understands race conditions and time-of-check/time-of-use issues in web applications",
+        "Familiar with the WSTG-BUSL test cases"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Tests business logic under supervision",
+      "evidence": [
+        "Mapped an application's workflows and documented expected business rules before testing",
+        "Tested parameter tampering of prices, quantities and discounts in lab applications",
+        "Attempted out-of-order and replayed requests in multi-step processes",
+        "Findings reviewed by authorized tester before inclusion in reports"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently identifies and demonstrates business logic flaws",
+      "evidence": [
+        "Independently identified business logic flaws on 5+ engagements",
+        "Demonstrates race conditions using parallel or single-packet request techniques",
+        "Articulates business impact of logic flaws in reports in terms the client can act on",
+        "Passed proficiency assessment on business logic testing"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Tests complex transactional systems; chains logic flaws",
+      "evidence": [
+        "Tests payment, booking, loyalty or financial transaction flows end to end",
+        "Chains multiple low-severity logic flaws into high-impact exploitation paths",
+        "Derives test cases from requirements and threat models with the client",
+        "Mentors junior testers on business logic analysis"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Authority on business logic security; develops methodology",
+      "evidence": [
+        "Developed the lab's business logic testing methodology and test-case catalogue",
+        "Published research on novel logic or race-condition attack techniques",
+        "Advises on secure workflow design for high-value transactional systems",
+        "Trains teams on advanced business logic testing"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Identify and exploit seeded logic flaws in a prepared e-commerce application, including price manipulation, workflow bypass and a race condition"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given a multi-step business process specification, derive abuse cases and a test plan mapped to WSTG-BUSL"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0686", "K1079", "S0656"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-005 Software Security Assessment"]
+    },
+    "owasp": ["OWASP WSTG-BUSL", "A06:2025 Insecure Design"],
+    "cwe": ["CWE-840", "CWE-841", "CWE-362"]
+  },
+
+  "tags": [
+    "business-logic",
+    "race-condition",
+    "web",
+    "owasp-top-10",
+    "replay-attack"
+  ]
+}

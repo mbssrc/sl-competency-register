@@ -1,0 +1,103 @@
+{
+  "id": "INTEL-OSINT-PERSON",
+  "name": "Person & Organization Research",
+  "domain": "intelligence",
+  "category": "Open-Source Intelligence (OSINT)",
+  "status": "active",
+  "description": "Researching individuals and organizations using open sources to support security engagements. Covers identity verification, corporate structure analysis, employee enumeration, executive profiling, public records research, and building relationship graphs for social engineering pretexts or threat assessments.",
+  "requires": [
+    "FOUND-ETHICS",
+    "FOUND-EVIDENCE"
+  ],
+  "recommended": [
+    "FOUND-DOC",
+    "INTEL-OSINT-SOCIAL"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to person or organization research techniques"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the types of publicly available information about people and organizations and the ethical boundaries of research",
+      "evidence": [
+        "Can describe common public data sources (corporate registries, LinkedIn, SEC filings, court records)",
+        "Understands privacy and legal constraints on person research",
+        "Aware of the difference between public information and improperly obtained data"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs basic person and organization research under supervision using standard sources",
+      "evidence": [
+        "Enumerates employees from LinkedIn, corporate websites, and job postings under guidance",
+        "Researches organizational structure using public filings and registries",
+        "Documents findings in structured formats reviewed by authorized personnel",
+        "Identifies key personnel and their publicly visible roles and contact details"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently conducts thorough person and organization research across multiple source types",
+      "evidence": [
+        "Builds comprehensive organizational profiles across 3+ engagements",
+        "Constructs relationship graphs showing corporate ownership, subsidiaries, and key personnel",
+        "Cross-references multiple data sources to verify identity and affiliation claims",
+        "Produces research dossiers that meet engagement quality standards"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex multi-jurisdictional research; builds advanced relationship maps; mentors others",
+      "evidence": [
+        "Conducts research across foreign-language sources and international registries",
+        "Identifies hidden beneficial ownership through corporate layer analysis",
+        "Develops custom data collection and correlation workflows",
+        "Reviews and mentors junior analysts on research tradecraft and ethical boundaries"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines person/organization research methodology; recognized as authority on OSINT tradecraft",
+      "evidence": [
+        "Designed or maintains the lab's person/organization research methodology",
+        "Develops novel research techniques combining non-obvious public data sources",
+        "Provides expert guidance on complex or sensitive research scenarios",
+        "Trains teams and publishes on OSINT research tradecraft"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Given a target organization, produce an employee enumeration and organizational structure map using only open sources"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review person/organization research dossiers from engagements for accuracy, source quality, and ethical compliance"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["S0695", "S0751", "K1087"],
+      "work_roles": ["PD-WRL-006 Threat Analysis", "PD-WRL-007 Vulnerability Analysis"]
+    },
+    "mitre_attack": {
+      "techniques": [
+        "T1591",
+        "T1589"
+      ]
+    }
+  },
+  "tags": [
+    "osint",
+    "reconnaissance",
+    "person-research",
+    "social-engineering",
+    "corporate-intelligence"
+  ]
+}

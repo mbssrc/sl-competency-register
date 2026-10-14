@@ -1,0 +1,61 @@
+<div class="bg-white dark:bg-gray-800 rounded-xl shadow-2xl border border-gray-200 dark:border-white/10 p-6 max-h-[85vh] overflow-y-auto">
+  <div class="flex items-center justify-between mb-6">
+    <h3 class="text-lg font-bold text-gray-900 dark:text-white">Edit Service: {{ service.name }}</h3>
+    <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+
+  <div class="mb-4">
+    <span class="font-mono text-xs bg-gray-100 dark:bg-white/5 text-gray-500 dark:text-gray-400 px-2 py-0.5 rounded">{{ service.id }}</span>
+  </div>
+
+  <form method="post" action="{% url 'taxonomy:service-edit' service.id %}" class="space-y-5">
+  {% include "core/partials/form_errors.html" %}
+    {% csrf_token %}
+
+    <div>
+      <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name</label>
+      <input type="text" id="name" name="name" value="{{ service.name }}" required
+             class="w-full rounded-md border border-gray-300 dark:border-white/10 bg-white dark:bg-white/5 text-gray-900 dark:text-gray-100 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+    </div>
+
+    <div>
+      <label for="description" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Description</label>
+      <textarea id="description" name="description" rows="3" required
+                class="w-full rounded-md border border-gray-300 dark:border-white/10 bg-white dark:bg-white/5 text-gray-900 dark:text-gray-100 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">{{ service.description }}</textarea>
+    </div>
+
+    <div>
+      <label for="scope_reference" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Scope Reference <span class="font-normal text-gray-500">(optional)</span></label>
+      <input type="text" id="scope_reference" name="scope_reference" value="{{ service.scope_reference }}"
+             placeholder="e.g. ISO 17025 Clause 7.2"
+             class="w-full rounded-md border border-gray-300 dark:border-white/10 bg-white dark:bg-white/5 text-gray-900 dark:text-gray-100 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+    </div>
+
+    <div>
+      <label for="standards" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Standards <span class="font-normal text-gray-500">(one per line)</span></label>
+      <textarea id="standards" name="standards" rows="4"
+                placeholder="ISO/IEC 17025:2017&#10;ISO/IEC 27001"
+                class="w-full rounded-md border border-gray-300 dark:border-white/10 bg-white dark:bg-white/5 text-gray-900 dark:text-gray-100 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">{{ standards_str }}</textarea>
+    </div>
+
+    <div>
+      <label for="competencies" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Required Competencies <span class="font-normal text-gray-500">(SKILL-ID:min_level, one per line)</span></label>
+      <textarea id="competencies" name="competencies" rows="8"
+                placeholder="FOUND-LAB-001:3&#10;HWSEC-FA-001:3&#10;HWSEC-PCB-001:2"
+                class="w-full rounded-md border border-gray-300 dark:border-white/10 bg-white dark:bg-white/5 text-gray-900 dark:text-gray-100 px-3 py-2 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">{{ comps_str }}</textarea>
+    </div>
+
+    <div class="flex items-center justify-end gap-3 pt-4 border-t border-gray-200 dark:border-white/10">
+      <button type="button" onclick="closeModal()"
+              class="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-md hover:bg-gray-50 dark:hover:bg-white/10 transition-colors">
+        Cancel
+      </button>
+      <button type="submit"
+              class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        Save Changes
+      </button>
+    </div>
+  </form>
+</div>

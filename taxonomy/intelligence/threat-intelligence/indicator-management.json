@@ -1,0 +1,103 @@
+{
+  "id": "INTEL-TI-IOC",
+  "name": "Indicator Management & Enrichment",
+  "domain": "intelligence",
+  "category": "Threat Intelligence",
+  "status": "active",
+  "description": "Collecting, validating, enriching, and managing indicators of compromise (IOCs) and other technical intelligence. Covers indicator lifecycle management, enrichment using threat intelligence platforms and open-source tools, confidence scoring, false positive assessment, and maintaining indicator quality for consumption by defensive tools.",
+  "requires": [],
+  "recommended": [
+    "INTEL-TI-TTP",
+    "INTEL-OSINT-INFRA",
+    "FOUND-TOOLS"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to indicator management or IOC handling"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands what indicators of compromise are and their role in threat detection",
+      "evidence": [
+        "Can describe common IOC types (IP, domain, hash, URL, email, certificate)",
+        "Understands the concept of indicator lifecycle and decay",
+        "Aware of the pyramid of pain and the relative difficulty of adversary evasion across indicator types"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Extracts and enriches indicators using standard tools under supervision",
+      "evidence": [
+        "Extracts IOCs from reports, malware samples, and engagement artifacts under guidance",
+        "Enriches indicators using VirusTotal, Shodan, passive DNS, and similar services",
+        "Follows lab procedures for indicator documentation and tagging",
+        "Indicator quality reviewed by authorized analyst"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently manages indicator pipelines and produces enriched, scored indicator sets",
+      "evidence": [
+        "Manages end-to-end indicator lifecycle across 3+ engagements",
+        "Assigns confidence scores based on source reliability and corroboration",
+        "Assesses indicators for false positive risk before dissemination",
+        "Produces indicator packages suitable for defensive tool ingestion that pass QA review"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Develops indicator management automation; handles complex enrichment; mentors analysts",
+      "evidence": [
+        "Develops automated indicator ingestion, enrichment, and scoring pipelines",
+        "Performs complex indicator pivoting to discover related infrastructure and campaigns",
+        "Maintains and curates threat intelligence platform indicator databases",
+        "Mentors junior analysts on indicator management tradecraft and quality standards"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines indicator management methodology; architects intelligence platform; trains teams",
+      "evidence": [
+        "Designed or maintains the lab's indicator management methodology and platform architecture",
+        "Develops novel enrichment techniques and scoring models",
+        "Publishes research on indicator quality, lifecycle management, or enrichment methods",
+        "Trains teams on indicator management and defines quality standards"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Given a raw threat report, extract all indicators, enrich them using available tools, assign confidence scores, and produce a consumable indicator package"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Audit indicator databases or packages for scoring accuracy, enrichment completeness, and false positive rates"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1009", "S0910", "S0600", "K0860"],
+      "work_roles": ["PD-WRL-006 Threat Analysis", "PD-WRL-001 Defensive Cybersecurity"]
+    },
+    "mitre_attack": {
+      "techniques": [
+        "T1595",
+        "T1590"
+      ]
+    }
+  },
+  "tags": [
+    "threat-intelligence",
+    "ioc",
+    "indicators",
+    "enrichment",
+    "threat-feeds",
+    "dns",
+    "malware"
+  ]
+}

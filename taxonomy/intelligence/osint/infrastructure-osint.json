@@ -1,0 +1,107 @@
+{
+  "id": "INTEL-OSINT-INFRA",
+  "name": "Infrastructure OSINT",
+  "domain": "intelligence",
+  "category": "Open-Source Intelligence (OSINT)",
+  "status": "active",
+  "description": "Gathering and analyzing publicly available information about network infrastructure. Covers DNS enumeration, WHOIS analysis, IP/ASN mapping, certificate transparency log mining, passive DNS, subdomain discovery, and technology fingerprinting to build a comprehensive picture of a target's internet-facing footprint.",
+  "requires": [
+    "FOUND-ETHICS",
+    "FOUND-EVIDENCE"
+  ],
+  "recommended": [
+    "FOUND-DOC",
+    "NETSEC-RECON-PASSIVERECON",
+    "NETSEC-RECON-FINGERPRINTING",
+    "FOUND-TOOLS"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to infrastructure reconnaissance or OSINT techniques"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands core concepts of DNS, WHOIS, and IP address space; aware of passive vs. active reconnaissance distinctions",
+      "evidence": [
+        "Can explain the difference between passive and active reconnaissance",
+        "Understands DNS record types and their intelligence value",
+        "Familiar with WHOIS data and its limitations"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs basic infrastructure OSINT using standard tools under supervision",
+      "evidence": [
+        "Uses tools such as amass, subfinder, or dnsx for subdomain enumeration under guidance",
+        "Queries certificate transparency logs (crt.sh, Censys) to identify related domains",
+        "Performs WHOIS lookups and documents ownership relationships",
+        "Results reviewed by authorized personnel for completeness"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently conducts infrastructure OSINT and produces structured reconnaissance reports",
+      "evidence": [
+        "Builds comprehensive infrastructure maps for target organizations across 3+ engagements",
+        "Correlates data from multiple sources (passive DNS, BGP, certificate logs, Shodan/Censys)",
+        "Identifies shadow IT, cloud assets, and third-party infrastructure connections",
+        "Produces structured reconnaissance reports that pass QA review"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex infrastructure mapping; develops automation; mentors junior analysts",
+      "evidence": [
+        "Maps complex multi-cloud and CDN-obscured infrastructure",
+        "Develops custom automation pipelines for continuous infrastructure monitoring",
+        "Identifies non-obvious infrastructure relationships through ASN pivoting and historical data",
+        "Reviews and mentors junior staff on infrastructure OSINT methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines infrastructure OSINT methodology; develops novel techniques; trains teams",
+      "evidence": [
+        "Designed or maintains the lab's infrastructure OSINT methodology and toolchain",
+        "Develops novel discovery techniques or contributes to open-source OSINT tools",
+        "Publishes research on infrastructure reconnaissance methods",
+        "Trains teams on infrastructure OSINT and defines engagement standards"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Given a target organization name, produce a comprehensive infrastructure map within a defined timeframe using only passive techniques"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review infrastructure reconnaissance reports from recent engagements for completeness and accuracy"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["S0695", "S0751", "K0938", "K0470"],
+      "work_roles": ["PD-WRL-006 Threat Analysis", "PD-WRL-007 Vulnerability Analysis"]
+    },
+    "mitre_attack": {
+      "techniques": [
+        "T1596",
+        "T1593",
+        "T1590"
+      ]
+    }
+  },
+  "tags": [
+    "osint",
+    "reconnaissance",
+    "dns",
+    "infrastructure",
+    "passive-recon",
+    "pki"
+  ]
+}

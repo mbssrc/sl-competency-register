@@ -1,0 +1,105 @@
+{
+  "id": "ICSIOT-IOT-CONFORM",
+  "name": "Consumer IoT Conformity Testing",
+  "domain": "ics-iot-security",
+  "category": "IoT Security",
+  "status": "active",
+  "description": "Covers conformity testing of consumer IoT and connected radio products against European baseline requirements: ETSI EN 303 645 provisions assessed with the ETSI TS 103 701 test methodology, EN 18031-1/-2/-3 under the Radio Equipment Directive delegated act (Article 3(3)(d), (e) and (f)), and the essential cybersecurity requirements of the EU Cyber Resilience Act. Includes implementation conformance statements, test case execution and verdicts, and test reports suitable for conformity assessment. The underlying technical device testing belongs to ICSIOT-IOT-DEVICE.",
+  "requires": [
+    "ICSIOT-IOT-DEVICE",
+    "FOUND-STANDARDS"
+  ],
+  "recommended": [
+    "ICSIOT-IOT-CLOUD",
+    "FOUND-REPORT"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to consumer IoT conformity testing"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the European consumer IoT security baseline and conformity regimes",
+      "evidence": [
+        "Can describe the 13 ETSI EN 303 645 provision categories and the role of TS 103 701",
+        "Can explain the scope of the RED delegated act and the three parts of EN 18031",
+        "Knows the CRA's product classes, essential requirements and conformity assessment routes at a high level"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Executes conformity test cases under supervision",
+      "evidence": [
+        "Reviews a manufacturer's implementation conformance statement (ICS) and IXIT information for completeness",
+        "Executes assigned TS 103 701 or EN 18031 test cases and records verdicts with evidence",
+        "Identifies when a provision is not applicable and records the justification",
+        "Drafts sections of a conformity test report for review"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently performs conformity assessments and issues test reports",
+      "evidence": [
+        "Plans and executes a full EN 303 645 / TS 103 701 assessment of a consumer IoT product",
+        "Applies EN 18031-1/-2/-3 decision trees to determine requirement applicability and verdicts",
+        "Maps product evidence to CRA Annex I essential requirements and identifies gaps",
+        "Produces test reports with traceable verdicts that a notified body or market surveillance authority can rely on"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Leads complex conformity projects; calibrates verdicts; mentors others",
+      "evidence": [
+        "Leads assessments of product families and ecosystems (device, app, cloud) under multiple regimes at once",
+        "Establishes lab interpretation decisions for ambiguous provisions and decision-tree branches",
+        "Reviews colleagues' verdicts and test reports for consistency and sufficiency of evidence",
+        "Mentors testers on conformity testing and evidence standards"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines the lab's consumer IoT conformity practice; contributes to standards",
+      "evidence": [
+        "Established the lab's conformity testing procedures and their inclusion in the ISO/IEC 17025 accreditation scope",
+        "Contributes to ETSI, CEN/CENELEC or CRA harmonised standard development or scheme rules",
+        "Recognised authority consulted on interpretation of consumer IoT requirements",
+        "Trains testers and manufacturers on conformity testing"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess a consumer IoT device and its companion app against a defined subset of ETSI TS 103 701 and EN 18031-1 test cases, recording verdicts and evidence for each"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review a conformity test report for correct applicability decisions, traceable verdicts and evidence, and alignment with the referenced standard's reporting requirements"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0711", "K1165", "S0598"],
+      "work_roles": ["DD-WRL-007 Systems Testing and Evaluation", "OG-WRL-012 Security Control Assessment"]
+    },
+    "etsi_en_303_645": true,
+    "etsi": {
+      "specs": ["EN 303 645", "TS 103 701"]
+    },
+    "owasp_iot_top10": ["I1", "I4", "I6", "I9"]
+  },
+  "tags": [
+    "iot",
+    "etsi",
+    "compliance",
+    "regulatory",
+    "evaluation",
+    "smart-devices",
+    "reporting",
+    "conformance-testing"
+  ]
+}

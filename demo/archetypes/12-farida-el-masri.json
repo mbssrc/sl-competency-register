@@ -1,0 +1,47 @@
+{
+  "key": "PERS-012",
+  "bands": {
+    "strong": [
+      "WSEC-SDR",
+      "WSEC-SAT"
+    ],
+    "weak": [
+      "WSEC-SPEC"
+    ]
+  },
+  "signature": {
+    "WSEC-SDR-FUNDM": 5,
+    "WSEC-SDR-CAPTURE": 5,
+    "WSEC-SDR-DEMOD": 4,
+    "WSEC-SDR-DSP": 4,
+    "WSEC-SAT-COMM": 4,
+    "WSEC-SAT-GNSS": 3,
+    "WSEC-SAT-JAM": 3,
+    "WSEC-PROTO-REVENG": 4
+  },
+  "never": [],
+  "foundations": [
+    2,
+    3
+  ],
+  "projects": [
+    "PRJ-SAT-BACKEND",
+    "PRJ-HUMANOID-WIFI"
+  ],
+  "stale_skills": [],
+  "self_assessment": {
+    "mode": "all",
+    "bias": 0,
+    "jitter": 1
+  },
+  "development_plan": [],
+  "name": "Farida El-Masri",
+  "role": "Lead Wireless and Signal Security Evaluator",
+  "start_date": "2019-05-20",
+  "domains": [
+    "WSEC"
+  ],
+  "target_maturity": {
+    "WSEC": "lead"
+  }
+}

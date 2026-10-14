@@ -1,0 +1,112 @@
+{
+  "id": "CRYPTO-PROTO-E2EE",
+  "name": "End-to-End Encryption & Secure Messaging Assessment",
+  "domain": "cryptography",
+  "category": "Cryptographic Protocols",
+  "status": "active",
+  "description": "Covers evaluation of deployed end-to-end encrypted messaging and group protocols such as the Signal protocol (PQXDH, which replaced X3DH in 2023, and the Double Ratchet) and MLS (RFC 9420), including key verification and device management, forward secrecy and post-compromise security properties, metadata exposure, backup and multi-device key handling, and implementation conformance against the specification. Protocol design analysis and formal verification belong to CRYPTO-PROTO-ANALYSIS.",
+
+  "requires": [
+    "CRYPTO-ASYM-KEYEXCHANGE",
+    "CRYPTO-SYM-AEAD"
+  ],
+  "recommended": [
+    "CRYPTO-PROTO-ANALYSIS",
+    "CRYPTO-ASYM-SIGNATURES",
+    "SWSEC-MOB-ANDROID"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to end-to-end encrypted messaging assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands end-to-end encryption goals and the main building blocks of secure messengers",
+      "evidence": [
+        "Can explain the difference between transport encryption and end-to-end encryption and who the trusted parties are in each",
+        "Can describe at a conceptual level how prekeys, PQXDH (formerly X3DH) and the Double Ratchet provide asynchronous key agreement and per-message keys",
+        "Aware of what metadata a messaging service typically still sees (contact graph, timing, message size, IP addresses)"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Assesses a messaging deployment under supervision",
+      "evidence": [
+        "Inventories the key types, key lifetimes and storage locations of a messaging client with guidance",
+        "Verifies key verification features (safety numbers, key transparency, change notifications) and records how key changes are surfaced to users",
+        "Captures client-server traffic and identifies which content and metadata fields are protected",
+        "Documents observations in the lab's reporting template"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses deployed end-to-end encrypted messaging systems",
+      "evidence": [
+        "Evaluates forward secrecy and post-compromise security in practice, including ratchet behaviour, key deletion and out-of-order or lost message handling",
+        "Assesses device linking, multi-device key distribution and backup mechanisms for key exposure or silent addition of devices",
+        "Tests an implementation against the specification, including malformed, replayed and out-of-order messages and handling of identity key changes",
+        "Produces findings that separate protocol design weaknesses from implementation and user-interface defects"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Assesses group messaging and complex multi-device deployments; reviews assessments; mentors team",
+      "evidence": [
+        "Assesses group protocols (MLS and sender-key based designs) for membership change handling, epoch and commit processing, and removal of compromised members",
+        "Evaluates the trust model of the delivery service, authentication service and key directory, including malicious server scenarios",
+        "Technically reviews messaging assessment reports and conformance test results",
+        "Mentors analysts on messenger assessment and implementation conformance testing"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognised authority on end-to-end encryption; defines methodology; publishes research",
+      "evidence": [
+        "Defines the lab's methodology for assessing end-to-end encrypted messaging, including metadata and key-management criteria",
+        "Publishes research on attacks against messaging protocols or their implementations",
+        "Contributes to messaging standards and interoperability work (e.g. IETF MLS working group)",
+        "Advises vendors and regulators on end-to-end encryption design and verifiable security claims"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess a lab messenger build with seeded defects (accepted replayed ciphertexts, skipped identity key change warning, retained message keys) and identify each defect through traffic capture, client inspection and conformance testing"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review an assessment report on a group messaging deployment for correct statement of forward secrecy and post-compromise security guarantees, completeness of metadata analysis and separation of design and implementation findings"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1359", "K0942", "S0969", "S0971"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-001 Cybersecurity Architecture"]
+    },
+    "ietf": {
+      "rfcs": ["RFC 9420"]
+    }
+  },
+
+  "tags": [
+    "e2ee",
+    "secure-messaging",
+    "signal-protocol",
+    "double-ratchet",
+    "mls",
+    "forward-secrecy",
+    "cryptographic",
+    "authentication",
+    "encryption",
+    "key-management",
+    "replay-attack"
+  ]
+}

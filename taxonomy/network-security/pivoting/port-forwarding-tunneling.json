@@ -1,0 +1,112 @@
+{
+  "id": "NETSEC-PIVOT-PORTFWD",
+  "name": "Port Forwarding & SSH Tunneling",
+  "domain": "network-security",
+  "category": "Pivoting",
+  "status": "active",
+  "description": "Ability to forward ports and create SSH tunnels to access services on internal networks through compromised hosts. Covers local and remote port forwarding, dynamic SOCKS proxying via SSH, and use of tools like Chisel, plink, and socat for non-SSH environments.",
+
+  "requires": [
+    "NETSEC-EXPLOIT-SVCEXPLOIT"
+  ],
+  "recommended": [
+    "NETSEC-POST-PRIVESC",
+    "NETSEC-RECON-NETMAPPING",
+    "FOUND-DOC",
+    "FOUND-TOOLS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to port forwarding or tunneling techniques"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the concepts of port forwarding and tunneling for network pivoting",
+      "evidence": [
+        "Can explain local vs. remote port forwarding and dynamic SOCKS proxying",
+        "Understands why pivoting is needed to reach segmented networks",
+        "Knows the basic SSH flags for tunneling (-L, -R, -D)"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Sets up basic port forwards and SSH tunnels under supervision",
+      "evidence": [
+        "Creates SSH local and remote port forwards to access internal services",
+        "Sets up dynamic SOCKS proxies via SSH for proxychains use",
+        "Uses Chisel or socat for port forwarding when SSH is unavailable",
+        "Documents tunnel configurations and access paths under review"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently establishes reliable tunnels to reach segmented networks during engagements",
+      "evidence": [
+        "Plans and deploys tunneling infrastructure for multi-hop network access",
+        "Selects the appropriate tunneling tool based on environment constraints",
+        "Maintains stable tunnels throughout engagements with reconnection handling",
+        "Documents all active tunnels and their purpose for engagement tracking"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Creates complex tunneling architectures; handles constrained environments; mentors others",
+      "evidence": [
+        "Builds multi-hop tunnel chains through multiple pivot hosts",
+        "Tunnels through restrictive firewalls using allowed protocols (HTTP, DNS)",
+        "Optimizes tunnel performance for large data transfers or interactive sessions",
+        "Mentors junior staff on tunneling techniques and troubleshooting"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines tunneling methodology; develops custom tunneling tools; trains teams",
+      "evidence": [
+        "Authored the lab's pivoting and tunneling standard methodology",
+        "Develops custom tunneling tools for specialized environments",
+        "Published research on tunneling techniques or network evasion",
+        "Trains teams on advanced tunneling strategy and architecture"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "From an initial foothold, establish tunnels to access services on two non-adjacent network segments in a lab environment"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given a restrictive firewall configuration, identify and implement a viable tunneling approach to reach an internal target"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0861", "K1023", "K0956"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis"]
+    },
+    "mitre_attack": {
+      "techniques": ["T1572"]
+    },
+    "crest": {
+      "areas": ["pivoting"]
+    }
+  },
+
+  "tags": [
+    "tunneling",
+    "port-forwarding",
+    "ssh",
+    "chisel",
+    "socks-proxy",
+    "pivoting",
+    "proxy",
+    "lateral-movement"
+  ]
+}

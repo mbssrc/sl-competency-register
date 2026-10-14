@@ -1,0 +1,109 @@
+{
+  "id": "AIML-ADV-POISON",
+  "name": "Data & Model Poisoning Assessment",
+  "domain": "ai-ml-security",
+  "category": "Adversarial ML",
+  "status": "active",
+  "description": "Assessment of training pipeline integrity against data poisoning, label manipulation, and model backdoor attacks. Covers evaluating data provenance, detecting poisoned training sets, and assessing the effectiveness of data validation controls.",
+  "requires": [
+    "FOUND-ETHICS"
+  ],
+  "recommended": [
+    "AIML-ADV-ROBUST",
+    "AIML-OPS-SUPPLY",
+    "FOUND-TOOLS",
+    "SWSEC-SUPPLY-PIPELINE"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to data or model poisoning concepts"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands how training data manipulation can compromise model behavior",
+      "evidence": [
+        "Can explain data poisoning and backdoor attack concepts",
+        "Aware of the distinction between poisoning for degradation vs. targeted backdoor insertion",
+        "Familiar with real-world poisoning incidents and their impact"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Can execute known poisoning techniques in controlled settings under guidance",
+      "evidence": [
+        "Demonstrates label-flipping and clean-label poisoning in lab environments",
+        "Evaluates basic data provenance and integrity controls",
+        "Documents training pipeline vulnerabilities with supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses training pipelines for poisoning vulnerabilities",
+      "evidence": [
+        "Evaluates data collection, labeling, and curation processes for manipulation risk",
+        "Tests model behavior under simulated poisoning conditions",
+        "Assesses effectiveness of data validation and anomaly detection controls",
+        "Produces actionable reports on training pipeline integrity"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Assesses complex training pipelines; designs poisoning detection strategies; mentors others",
+      "evidence": [
+        "Evaluates multi-source data pipelines with federated or crowd-sourced training data",
+        "Designs detection strategies for subtle backdoor triggers",
+        "Reviews and improves training integrity assessments across the team",
+        "Develops methodology for ongoing training data monitoring"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines training integrity assessment practice; publishes research",
+      "evidence": [
+        "Established the lab's training pipeline security assessment methodology",
+        "Published research on poisoning attacks, defenses, or detection techniques",
+        "Trains teams on training data integrity assessment",
+        "Contributes to external standards or industry guidance on ML data governance"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Given a training pipeline, identify injection points and demonstrate a targeted poisoning attack in a sandboxed environment"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review training pipeline assessment reports for coverage of data provenance, integrity controls, and detection gaps"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1324", "K1342", "K1318", "K1320"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development", "PD-WRL-007 Vulnerability Analysis"]
+    },
+    "mitre_atlas": [
+      "AML.T0020",
+      "AML.T0018"
+    ],
+    "owasp_ml_top10": [
+      "ML02:2023",
+      "ML10:2023"
+    ],
+    "owasp_llm_top10": [
+      "LLM04:2025"
+    ]
+  },
+  "tags": [
+    "adversarial-ml",
+    "data-poisoning",
+    "backdoor",
+    "training-pipeline",
+    "atlas",
+    "supply-chain"
+  ]
+}

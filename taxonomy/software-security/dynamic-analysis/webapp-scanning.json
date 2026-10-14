@@ -1,0 +1,109 @@
+{
+  "id": "SWSEC-DAST-WEBAPP",
+  "name": "Web Application Dynamic Scanning",
+  "domain": "software-security",
+  "category": "Dynamic Analysis",
+  "status": "active",
+  "description": "Dynamic scanning and testing of running web applications using proxy-based and automated scanning tools. Covers Burp Suite Professional operation, OWASP ZAP, authenticated scanning, scan policy tuning, manual request manipulation, and integration of automated and manual testing workflows.",
+
+  "requires": [
+    "FOUND-ETHICS"
+  ],
+  "recommended": [
+    "SWSEC-WEB-SQLI",
+    "SWSEC-WEB-XSS",
+    "FOUND-REPORT",
+    "FOUND-TOOLS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to web application dynamic scanning"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands web proxy tools and dynamic scanning concepts",
+      "evidence": [
+        "Can explain how web proxies intercept and modify HTTP traffic",
+        "Familiar with Burp Suite and OWASP ZAP interfaces",
+        "Understands the difference between passive and active scanning"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Operates scanning tools under supervision for basic web testing",
+      "evidence": [
+        "Configured Burp Suite proxy and intercepted HTTP/HTTPS traffic",
+        "Performed authenticated crawling and scanning of lab applications",
+        "Used Repeater and Intruder for manual request manipulation",
+        "Scan results reviewed by authorized tester"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently conducts web application dynamic testing using proxy tools",
+      "evidence": [
+        "Independently tested 5+ web applications using Burp Suite Professional",
+        "Configures scan policies and authentication for complex applications",
+        "Combines automated scanning with manual testing for comprehensive coverage",
+        "Passed proficiency assessment on web dynamic scanning"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Develops custom extensions; handles complex scanning scenarios",
+      "evidence": [
+        "Develops custom Burp extensions (BApps) for engagement-specific needs",
+        "Handles scanning of WebSocket, SSE, and non-standard web technologies",
+        "Configures and tunes scans for large-scale applications with session management",
+        "Mentors junior testers on Burp Suite and scanning methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Authority on web dynamic testing tooling; develops methodology",
+      "evidence": [
+        "Published Burp extensions or web testing tools used by the community",
+        "Developed the lab's web application dynamic testing methodology",
+        "Evaluates and selects scanning tools for the lab",
+        "Trains teams on advanced web dynamic testing"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Perform a comprehensive dynamic test of a prepared web application using Burp Suite, combining automated and manual techniques"
+    },
+    {
+      "type": "direct_observation",
+      "description": "Observe proxy configuration, scan tuning, and manual testing workflow"
+    }
+  ],
+
+  "framework_mappings": {
+    "owasp": ["OWASP Web Security Testing Guide"],
+    "crest_cct_app": ["B1", "H9", "H15"],
+    "nice": {
+      "tks": ["K1079", "K0956", "S0543", "S0723", "S0656"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-005 Software Security Assessment"]
+    }
+  },
+
+  "tags": [
+    "dast",
+    "burp-suite",
+    "web-scanning",
+    "proxy",
+    "owasp-top-10",
+    "web",
+    "authentication",
+    "scanning",
+    "dynamic-analysis"
+  ]
+}

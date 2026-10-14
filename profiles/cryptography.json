@@ -1,0 +1,77 @@
+{
+  "id": "CRYPTO",
+  "name": "Cryptography Specialist",
+  "domain": "CRYPTO",
+  "description": "Cryptography evaluation track covering cryptanalysis, protocol verification, key management assessment, post-quantum readiness, and cryptographic implementation review.",
+  "maturity_levels": {
+    "junior": {
+      "title": "Junior Cryptography Specialist",
+      "description": "Assists with cryptographic assessments under supervision. Performs standard compliance checks, parameter and configuration reviews and basic protocol analysis against named standards; all results are reviewed by an authorized evaluator.",
+      "thresholds": {
+        "domain_skills_at": {"1": 6, "2": 3},
+        "min_categories": 1,
+        "foundation_avg": 0.5
+      },
+      "pinned": []
+    },
+    "practitioner": {
+      "title": "Cryptography Specialist",
+      "description": "Independently evaluates cryptographic implementations, protocol designs and key management practices against the applicable standards, and is authorized to sign off routine evaluations. Reports cite the standard and version used, and state assumptions and limits of the evaluation.",
+      "thresholds": {
+        "domain_skills_at": {"2": 8, "3": 4},
+        "min_categories": 2,
+        "foundation_avg": 1.0
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 3},
+        {"skill": "FOUND-STANDARDS", "minimum_level": 3}
+      ]
+    },
+    "senior": {
+      "title": "Senior Cryptography Specialist",
+      "description": "Handles complex evaluations such as novel protocol designs, custom primitives or post-quantum migration reviews, and judges where standards leave room for interpretation. Performs QA review of evaluation reports and mentors junior evaluators.",
+      "thresholds": {
+        "domain_skills_at": {"3": 10, "4": 4},
+        "min_categories": 4,
+        "foundation_avg": 1.5
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 4},
+        {"skill": "FOUND-QA", "minimum_level": 3},
+        {"skill": "FOUND-STANDARDS", "minimum_level": 3}
+      ]
+    },
+    "lead": {
+      "title": "Lead Cryptography Specialist",
+      "description": "Technical lead for Cryptography: owns the methodology, performs technical quality review of evaluations and reports, and plans the technical approach across engagements. Acts as the senior technical contact for clients on scope and findings. Technical depth stays at senior level or above.",
+      "thresholds": {
+        "domain_skills_at": {"3": 11, "4": 6},
+        "min_categories": 5,
+        "foundation_avg": 2.0
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 4},
+        {"skill": "FOUND-QA", "minimum_level": 3},
+        {"skill": "FOUND-PM", "minimum_level": 3},
+        {"skill": "FOUND-COMM", "minimum_level": 3},
+        {"skill": "FOUND-STANDARDS", "minimum_level": 4}
+      ]
+    },
+    "principal": {
+      "title": "Principal Cryptography Specialist",
+      "description": "Technical authority in cryptography. Publishes cryptanalysis research, contributes to standards development, and is a recognized expert in applied and theoretical cryptography. The deepest technical tier in the domain; it extends Lead rather than branching from it.",
+      "thresholds": {
+        "domain_skills_at": {"4": 11, "5": 4},
+        "min_categories": 5,
+        "foundation_avg": 2.5
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 4},
+        {"skill": "FOUND-QA", "minimum_level": 3},
+        {"skill": "FOUND-PM", "minimum_level": 3},
+        {"skill": "FOUND-COMM", "minimum_level": 3},
+        {"skill": "FOUND-STANDARDS", "minimum_level": 4}
+      ]
+    }
+  }
+}

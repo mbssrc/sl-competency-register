@@ -1,0 +1,26 @@
+{
+  "id": "SVC-IR-RETAINER",
+  "name": "Incident Response Retainer",
+  "description": "Pre-arranged incident response capability providing rapid triage, containment, eradication, and recovery services during security incidents, supported by forensic analysis and coordinated stakeholder communication.",
+  "scope_reference": "Incident response and digital forensics retainer service",
+  "required_competencies": [
+    { "skill": "DFIR-DISK-IMAGING", "minimum_level": 3 },
+    { "skill": "DFIR-DISK-FILESYS", "minimum_level": 3 },
+    { "skill": "DFIR-DISK-TIMELINE", "minimum_level": 3 },
+    { "skill": "DFIR-DISK-ARTIFACTS", "minimum_level": 2 },
+    { "skill": "DFIR-MEM-ACQUISITION", "minimum_level": 3 },
+    { "skill": "DFIR-MEM-PROCESS", "minimum_level": 3 },
+    { "skill": "DFIR-MEM-MALDET", "minimum_level": 2 },
+    { "skill": "DFIR-NET-CAPTURE", "minimum_level": 2 },
+    { "skill": "DFIR-NET-PROTO", "minimum_level": 2 },
+    { "skill": "DFIR-CLOUD-LOGS", "minimum_level": 2 },
+    { "skill": "FOUND-EVIDENCE", "minimum_level": 3 },
+    { "skill": "FOUND-REPORT", "minimum_level": 3 },
+    { "skill": "FOUND-COMM", "minimum_level": 3 },
+    { "skill": "FOUND-PM", "minimum_level": 3 }
+  ],
+  "standards": [
+    "NIST SP 800-61 Rev. 3 (Incident Response Recommendations and Considerations for Cybersecurity Risk Management)",
+    "ISO/IEC 27035 (Information security incident management)"
+  ]
+}

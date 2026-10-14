@@ -1,0 +1,111 @@
+{
+  "id": "ADVSIM-RED-EVASION",
+  "name": "Detection Evasion",
+  "domain": "adversarial-simulation",
+  "category": "Red Teaming",
+  "status": "active",
+  "description": "Ability to evade defensive controls during red team operations including EDR, AV, network monitoring, SIEM, and SOC analysts. Covers payload obfuscation, in-memory execution, living-off-the-land techniques, log evasion, traffic blending, and anti-forensics within rules of engagement. Operational application across an engagement; Windows security-subsystem internals belong to SWSEC-OS-WINEVADE.",
+
+  "requires": [
+    "FOUND-ETHICS",
+    "ADVSIM-RED-C2"
+  ],
+  "recommended": [
+    "ADVSIM-RED-PLANNING",
+    "FOUND-TOOLS",
+    "SWSEC-OS-WINEVADE",
+    "INFRA-ONPREM-EDR"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to detection evasion concepts"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands common detection mechanisms and the concept of evasion",
+      "evidence": [
+        "Completed training on defensive detection technologies (AV, EDR, SIEM)",
+        "Can explain the detection pipeline from telemetry to alert",
+        "Understands why evasion is necessary for realistic adversarial simulation"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Applies basic evasion techniques under supervision",
+      "evidence": [
+        "Used living-off-the-land binaries (LOLBins) in lab exercises",
+        "Applied basic payload obfuscation techniques with guidance",
+        "Understands signature-based vs behavioural detection and their implications"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently evades standard defensive controls during engagements",
+      "evidence": [
+        "Successfully operated undetected against EDR solutions in 3+ engagements",
+        "Performs pre-engagement payload testing against target's defensive stack",
+        "Adapts techniques in response to detection during live operations",
+        "Documents evasion techniques used for debrief and reporting"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Evades mature SOC teams and advanced defensive stacks; develops custom evasion tooling",
+      "evidence": [
+        "Evaded detection by active SOC with advanced EDR during multi-week operations",
+        "Developed custom loaders, packers, or obfuscation tooling for the lab",
+        "Analysed specific EDR internals to identify blind spots",
+        "Mentors team on evasion methodology and operational tradecraft"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Researches novel evasion techniques; defines lab evasion methodology; presents at conferences",
+      "evidence": [
+        "Published research on novel evasion techniques or defensive bypass methods",
+        "Discovered new EDR blind spots or bypass techniques",
+        "Defines the lab's evasion tooling standards and testing methodology",
+        "Trains teams and presents at industry conferences on evasion tradecraft"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Execute a simulated attack chain against a defended lab environment with EDR and monitoring; assessed on stealth and objective completion"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given a specific defensive stack description, propose an evasion strategy and justify technique selection"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1000", "K1001", "S0752", "K1314"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis"]
+    },
+    "mitre_attack": {
+      "tactics": ["TA0005"],
+      "techniques": ["T1027", "T1055", "T1070", "T1218", "T1562"]
+    }
+  },
+
+  "tags": [
+    "evasion",
+    "edr-bypass",
+    "obfuscation",
+    "lolbins",
+    "tradecraft",
+    "stealth",
+    "forensics",
+    "post-exploitation",
+    "malware"
+  ]
+}

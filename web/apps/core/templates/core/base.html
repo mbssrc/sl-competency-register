@@ -1,0 +1,247 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ product_name }}{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'output.css' %}">
+  <script>
+    /* Theme: read cookie immediately, before paint */
+    (function() {
+      var isLight = document.cookie.indexOf('theme=light') !== -1;
+      if (isLight) document.documentElement.classList.remove('dark');
+      window.toggleTheme = function() {
+        var isDark = document.documentElement.classList.toggle('dark');
+        document.cookie = 'theme=' + (isDark ? 'dark' : 'light') + ';path=/;max-age=31536000';
+        /* Update button icons */
+        document.querySelectorAll('[data-theme-sun]').forEach(function(el) { el.style.display = isDark ? '' : 'none'; });
+        document.querySelectorAll('[data-theme-moon]').forEach(function(el) { el.style.display = isDark ? 'none' : ''; });
+      };
+    })();
+  </script>
+  <script src="{% static 'combobox.js' %}" defer></script>
+  {% block head_scripts %}{% endblock %}
+  <script src="{% static 'alpine.min.js' %}" defer></script>
+  <script src="{% static 'htmx.min.js' %}"></script>
+</head>
+<body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 min-h-screen"
+      hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+
+  <div class="flex min-h-screen">
+    {% block sidebar %}
+    <aside class="w-64 flex-shrink-0 bg-white dark:bg-white/5 dark:backdrop-blur-xl border-r border-gray-200 dark:border-white/10 flex flex-col">
+      <div class="p-6 border-b border-gray-200 dark:border-white/10">
+        <div class="min-w-0">
+          <div class="text-xs text-gray-600 dark:text-gray-400">{{ product_owner }}</div>
+          <div class="text-base font-bold tracking-tight text-gray-900 dark:text-white leading-tight">{{ product_title }}</div>
+        </div>
+      </div>
+
+      <nav class="flex-1 px-4 py-4 space-y-1">
+        {% comment %}
+        The first group had no title while every other group did. No divider
+        above it: it is the first thing in the nav.
+        {% endcomment %}
+        <div class="pb-1">
+          <span class="px-3 text-xs font-semibold uppercase tracking-wider text-gray-600 dark:text-gray-400">Overview</span>
+        </div>
+        <a href="{% url 'dashboard' %}"
+           class="flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors {% if request.path == '/' %}bg-indigo-50 dark:bg-indigo-500/15 text-indigo-700 dark:text-indigo-300{% else %}text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/10{% endif %}">
+          <svg class="w-5 h-5 mr-3 {% if request.path == '/' %}text-indigo-500 dark:text-indigo-400{% else %}text-gray-500 dark:text-gray-400{% endif %}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1"/></svg>
+          Dashboard
+        </a>
+        <a href="{% url 'personnel:project-list' %}"
+           class="flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors {% if '/projects/' in request.path %}bg-indigo-50 dark:bg-indigo-500/15 text-indigo-700 dark:text-indigo-300{% else %}text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/10{% endif %}">
+          <svg class="w-5 h-5 mr-3 {% if '/projects/' in request.path %}text-indigo-500 dark:text-indigo-400{% else %}text-gray-500 dark:text-gray-400{% endif %}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+          Projects
+        </a>
+        {% if request.user.is_manager %}
+        <a href="{% url 'personnel:person-list' %}"
+           class="flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors {% if request.path|slice:':11' == '/personnel/' and '/gaps/' not in request.path and '/readiness/' not in request.path and '/projects/' not in request.path %}bg-indigo-50 dark:bg-indigo-500/15 text-indigo-700 dark:text-indigo-300{% else %}text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/10{% endif %}">
+          <svg class="w-5 h-5 mr-3 {% if request.path|slice:':11' == '/personnel/' and '/gaps/' not in request.path and '/readiness/' not in request.path and '/projects/' not in request.path %}text-indigo-500 dark:text-indigo-400{% else %}text-gray-500 dark:text-gray-400{% endif %}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          Personnel
+        </a>
+        {% elif request.user.person_id %}
+        {% url 'personnel:person-detail' request.user.person_id as my_record_url %}
+        <a href="{{ my_record_url }}"
+           class="flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors {% if request.path == my_record_url %}bg-indigo-50 dark:bg-indigo-500/15 text-indigo-700 dark:text-indigo-300{% else %}text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/10{% endif %}">
+          <svg class="w-5 h-5 mr-3 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          My Skills
+        </a>
+        {% endif %}
+
+        <div class="mt-4 pt-4 border-t border-gray-200 dark:border-white/10">
+          <span class="px-3 text-xs font-semibold uppercase tracking-wider text-gray-600 dark:text-gray-400">Taxonomy</span>
+        </div>
+        <a href="{% url 'taxonomy:domain-list' %}"
+           class="flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors {% if request.path|slice:':10' == '/taxonomy/' and '/profiles/' not in request.path and '/services/' not in request.path %}bg-indigo-50 dark:bg-indigo-500/15 text-indigo-700 dark:text-indigo-300{% else %}text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/10{% endif %}">
+          <svg class="w-5 h-5 mr-3 {% if request.path|slice:':10' == '/taxonomy/' and '/profiles/' not in request.path and '/services/' not in request.path %}text-indigo-500 dark:text-indigo-400{% else %}text-gray-500 dark:text-gray-400{% endif %}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+          Skills
+        </a>
+        <a href="{% url 'taxonomy:profile-list' %}"
+           class="flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors {% if request.path|slice:':19' == '/taxonomy/profiles/' %}bg-indigo-50 dark:bg-indigo-500/15 text-indigo-700 dark:text-indigo-300{% else %}text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/10{% endif %}">
+          <svg class="w-5 h-5 mr-3 {% if request.path|slice:':19' == '/taxonomy/profiles/' %}text-indigo-500 dark:text-indigo-400{% else %}text-gray-500 dark:text-gray-400{% endif %}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0"/></svg>
+          Profiles
+        </a>
+        <a href="{% url 'taxonomy:service-list' %}"
+           class="flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors {% if request.path|slice:':19' == '/taxonomy/services/' %}bg-indigo-50 dark:bg-indigo-500/15 text-indigo-700 dark:text-indigo-300{% else %}text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/10{% endif %}">
+          <svg class="w-5 h-5 mr-3 {% if request.path|slice:':19' == '/taxonomy/services/' %}text-indigo-500 dark:text-indigo-400{% else %}text-gray-500 dark:text-gray-400{% endif %}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>
+          Services
+        </a>
+
+        {% if request.user.is_manager %}
+        <div class="mt-4 pt-4 border-t border-gray-200 dark:border-white/10">
+          <span class="px-3 text-xs font-semibold uppercase tracking-wider text-gray-600 dark:text-gray-400">Reports</span>
+        </div>
+        <a href="{% url 'personnel:gap-analysis' %}"
+           class="flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors {% if '/gaps/' in request.path %}bg-indigo-50 dark:bg-indigo-500/15 text-indigo-700 dark:text-indigo-300{% else %}text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/10{% endif %}">
+          <svg class="w-5 h-5 mr-3 {% if '/gaps/' in request.path %}text-indigo-500 dark:text-indigo-400{% else %}text-gray-500 dark:text-gray-400{% endif %}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          Gap Analysis
+        </a>
+        <a href="{% url 'personnel:service-readiness' %}"
+           class="flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors {% if '/readiness/' in request.path %}bg-indigo-50 dark:bg-indigo-500/15 text-indigo-700 dark:text-indigo-300{% else %}text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/10{% endif %}">
+          <svg class="w-5 h-5 mr-3 {% if '/readiness/' in request.path %}text-indigo-500 dark:text-indigo-400{% else %}text-gray-500 dark:text-gray-400{% endif %}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          Service Readiness
+        </a>
+        <a href="{% url 'export-page' %}"
+           class="flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors {% if '/export/' in request.path %}bg-indigo-50 dark:bg-indigo-500/15 text-indigo-700 dark:text-indigo-300{% else %}text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/10{% endif %}">
+          <svg class="w-5 h-5 mr-3 {% if '/export/' in request.path %}text-indigo-500 dark:text-indigo-400{% else %}text-gray-500 dark:text-gray-400{% endif %}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          Export
+        </a>
+        {% endif %}
+        {% if request.user.is_admin %}
+        <div class="mt-4 pt-4 border-t border-gray-200 dark:border-white/10">
+          <span class="px-3 text-xs font-semibold uppercase tracking-wider text-gray-600 dark:text-gray-400">Admin</span>
+          <a href="{% url 'admin-tools' %}"
+             class="flex items-center px-3 py-2 mt-1 text-sm font-medium rounded-md transition-colors {% if '/admin-tools/' in request.path %}bg-indigo-50 dark:bg-indigo-500/15 text-indigo-700 dark:text-indigo-300{% else %}text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/10{% endif %}">
+            <svg class="w-5 h-5 mr-3 {% if '/admin-tools/' in request.path %}text-indigo-500 dark:text-indigo-400{% else %}text-gray-500 dark:text-gray-400{% endif %}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            Admin Tools
+          </a>
+          <a href="{% url 'user-list' %}"
+             class="flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors {% if '/users/' in request.path %}bg-indigo-50 dark:bg-indigo-500/15 text-indigo-700 dark:text-indigo-300{% else %}text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/10{% endif %}">
+            <svg class="w-5 h-5 mr-3 {% if '/users/' in request.path %}text-indigo-500 dark:text-indigo-400{% else %}text-gray-500 dark:text-gray-400{% endif %}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            Users
+          </a>
+        </div>
+        {% endif %}
+      </nav>
+
+      <div class="p-4 border-t border-gray-200 dark:border-white/10">
+        <div class="flex items-center justify-between">
+          {% if user.is_authenticated %}
+          <span class="text-sm text-gray-600 dark:text-gray-400 truncate">{{ user.username }}</span>
+          <div class="flex items-center space-x-2">
+            <button onclick="toggleTheme()"
+                    class="p-1.5 rounded-md text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/10 transition-colors"
+                    title="Toggle theme">
+              <svg data-theme-sun class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+              <svg data-theme-moon style="display:none" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+            </button>
+            <form method="post" action="{% url 'logout' %}">
+              {% csrf_token %}
+              <button type="submit"
+                      class="p-1.5 rounded-md text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/10 transition-colors"
+                      title="Sign out">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+              </button>
+            </form>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </aside>
+    {% endblock %}
+
+    <main class="flex-1 overflow-auto dark:bg-gray-900">
+      <div class="p-8">
+        {% comment %}
+        Every content page's header. Pages fill the blocks; the layout lives
+        here so a page cannot quietly ship without its breadcrumb trail.
+        Pages with their own full-page layout (login, the error pages)
+        override `masthead` as empty, the way they already do `sidebar`.
+        {% endcomment %}
+        {% block masthead %}
+        <header class="mb-8">
+          <nav aria-label="Breadcrumb" class="flex items-center text-sm mb-4 text-gray-600 dark:text-gray-400">
+            {% block page_crumbs %}{% endblock %}
+          </nav>
+          <div class="flex items-start justify-between gap-6">
+            <div class="min-w-0">
+              <h1 data-page-title class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">{% block page_title %}{% endblock %}</h1>
+              <p class="mt-2 max-w-prose text-gray-600 dark:text-gray-400">{% block page_description %}{% endblock %}</p>
+            </div>
+            <div class="flex-shrink-0 flex items-center gap-2">{% block page_actions %}{% endblock %}</div>
+          </div>
+          {# Closes the header: a short accent segment, then the page rule. #}
+          <div data-masthead-rule aria-hidden="true" class="mt-6 flex">
+            <span class="h-px w-10 bg-indigo-600 dark:bg-indigo-400"></span>
+            <span class="h-px flex-1 bg-gray-300 dark:bg-gray-700"></span>
+          </div>
+        </header>
+        {% endblock %}
+
+        {% block content %}{% endblock %}
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal overlay -->
+  <div id="modal-overlay" class="fixed inset-0 z-50 hidden">
+    <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeModal()"></div>
+    <div class="relative z-10 flex items-center justify-center min-h-screen p-4 pointer-events-none">
+      <div id="modal-body" class="pointer-events-auto max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* Set initial icon visibility based on current theme */
+    (function() {
+      var isDark = document.documentElement.classList.contains('dark');
+      document.querySelectorAll('[data-theme-sun]').forEach(function(el) { el.style.display = isDark ? '' : 'none'; });
+      document.querySelectorAll('[data-theme-moon]').forEach(function(el) { el.style.display = isDark ? 'none' : ''; });
+    })();
+
+    /* Modal helpers */
+    function openModal() { document.getElementById('modal-overlay').classList.remove('hidden'); }
+    function closeModal() {
+      document.getElementById('modal-overlay').classList.add('hidden');
+      document.getElementById('modal-body').innerHTML = '';
+    }
+    function loadModal(url) {
+      openModal();
+      fetch(url, {
+        headers: {'X-Requested-With': 'XMLHttpRequest', 'HX-Request': 'true'},
+        credentials: 'same-origin'
+      })
+      .then(function(r) {
+        if (!r.ok) { throw new Error(r.status === 403 ? 'You do not have permission to do that.' : 'Request failed (' + r.status + ').'); }
+        return r.text();
+      })
+      .then(function(html) { document.getElementById('modal-body').innerHTML = html; })
+      .catch(function(err) {
+        document.getElementById('modal-body').innerHTML =
+          '<div class="rounded-md bg-white dark:bg-gray-900 p-6 text-sm text-red-700 dark:text-red-400">' +
+          err.message + '</div>';
+      });
+    }
+    /* Close modal on Escape */
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    /* Prefill empty date inputs with today */
+    var d = new Date(); var today = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+    function prefillDates(root) {
+      (root || document).querySelectorAll('input[type="date"]').forEach(function(el) {
+        if (!el.value) el.value = today;
+      });
+    }
+    prefillDates();
+    new MutationObserver(function(mutations) {
+      mutations.forEach(function(m) { m.addedNodes.forEach(function(n) { if (n.querySelectorAll) prefillDates(n); }); });
+    }).observe(document.body, {childList: true, subtree: true});
+  </script>
+</body>
+</html>

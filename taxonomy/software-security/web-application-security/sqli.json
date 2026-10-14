@@ -1,0 +1,105 @@
+{
+  "id": "SWSEC-WEB-SQLI",
+  "name": "SQL Injection Testing",
+  "domain": "software-security",
+  "category": "Web Application Security",
+  "status": "active",
+  "description": "Identification and exploitation of SQL injection vulnerabilities across all variants (in-band, blind, out-of-band). Covers detection via manual testing and automated tools, database-specific exploitation techniques, WAF bypass, and second-order injection.",
+
+  "requires": [
+    "FOUND-ETHICS"
+  ],
+  "recommended": [
+    "FOUND-REPORT",
+    "SWSEC-DAST-WEBAPP",
+    "SWSEC-REVIEW-MANUAL",
+    "FOUND-TOOLS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to SQL injection testing"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands SQL injection concepts and basic attack vectors",
+      "evidence": [
+        "Can explain the difference between in-band, blind, and out-of-band SQLi",
+        "Completed introductory training (e.g., OWASP WebGoat SQLi modules)",
+        "Can describe parameterised queries and why they prevent SQLi"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Detects and exploits basic SQLi under supervision using standard tooling",
+      "evidence": [
+        "Identified SQLi in lab environments using manual techniques and sqlmap",
+        "Performed supervised SQLi testing on at least 2 engagements",
+        "Work reviewed and findings confirmed by authorized tester"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently identifies and exploits SQLi across common database platforms",
+      "evidence": [
+        "Demonstrated SQLi exploitation across MySQL, PostgreSQL, and MSSQL",
+        "Independently identified SQLi on 5+ engagements with accurate risk ratings",
+        "Can perform blind SQLi extraction and document impact clearly",
+        "Passed proficiency assessment covering multiple SQLi variants"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Exploits complex SQLi scenarios; bypasses WAFs; mentors junior testers",
+      "evidence": [
+        "Demonstrated WAF bypass techniques for SQLi payloads",
+        "Identified second-order and stored procedure injection vulnerabilities",
+        "Develops custom tamper scripts for sqlmap or equivalent tooling",
+        "Reviews and mentors junior testers on SQLi findings"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on SQLi; discovers novel techniques; trains teams",
+      "evidence": [
+        "Published research or CVEs related to SQL injection",
+        "Developed lab methodology and training materials for SQLi testing",
+        "Handles novel database platforms and edge-case injection vectors",
+        "Trains teams on advanced SQLi techniques"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Detect and exploit SQLi in a prepared lab application with multiple injection points across different database backends"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review of SQLi findings from 3 recent engagement reports for accuracy and completeness"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0705", "K1079", "S0565", "S0656"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-005 Software Security Assessment"]
+    },
+    "owasp": ["A05:2025 Injection"],
+    "cwe": ["CWE-89"],
+    "crest_cct_app": ["H17"],
+    "mitre_attack": {"techniques": ["T1190"]}
+  },
+
+  "tags": [
+    "injection",
+    "owasp-top-10",
+    "database",
+    "web"
+  ]
+}

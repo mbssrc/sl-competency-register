@@ -1,0 +1,110 @@
+{
+  "id": "SWSEC-APP-THICK",
+  "name": "Thick-Client Application Assessment",
+  "domain": "software-security",
+  "category": "Desktop & Specialized Applications",
+  "status": "active",
+  "description": "Security assessment of desktop and client-server (thick-client) applications. Covers architecture and trust-boundary analysis, local data storage and secrets, inter-process communication, client-side enforcement of server-side controls, update and installer mechanisms, DLL/library loading, and interception of proprietary or non-HTTP client traffic. Testing of the backing web APIs belongs to SWSEC-WEB-API; deep binary analysis belongs to Reverse Engineering.",
+
+  "requires": [
+    "FOUND-ETHICS"
+  ],
+  "recommended": [
+    "SWSEC-RE-DECOMPILE",
+    "SWSEC-DAST-INSTRUMENT",
+    "SWSEC-WEB-API",
+    "FOUND-TOOLS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to thick-client application assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands thick-client architectures and their typical weaknesses",
+      "evidence": [
+        "Can explain two-tier and three-tier client-server architectures and where trust boundaries lie",
+        "Understands why client-side validation and licensing checks cannot enforce server-side security",
+        "Can name common thick-client weakness classes (hardcoded secrets, insecure storage, DLL hijacking, insecure updates)"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs basic thick-client testing under supervision",
+      "evidence": [
+        "Reviewed local files, registry and configuration stores for credentials and sensitive data",
+        "Intercepted client traffic with a proxy (including proxy-unaware clients) in a lab setup",
+        "Monitored process, file and IPC activity with Process Monitor or equivalent tooling",
+        "Work reviewed by authorized tester"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses thick-client applications against a documented methodology",
+      "evidence": [
+        "Independently assessed 5+ thick-client applications and reported findings with reproducible steps",
+        "Tests update and installer mechanisms for integrity and privilege issues",
+        "Identifies and demonstrates bypass of client-side authorization and business rules against the server",
+        "Tests named pipes, local sockets, COM and other IPC endpoints for unauthorized access",
+        "Passed proficiency assessment on thick-client testing"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Assesses complex and proprietary clients; adapts tooling to non-standard protocols",
+      "evidence": [
+        "Intercepts and manipulates proprietary binary protocols using custom proxy or hooking tooling",
+        "Combines decompilation and runtime instrumentation to defeat client-side protections (.NET, Java, native)",
+        "Scopes and leads thick-client engagements including test environment and data requirements",
+        "Reviews thick-client reports and mentors junior testers"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Authority on thick-client security; defines lab methodology",
+      "evidence": [
+        "Developed the lab's thick-client testing methodology and reporting templates",
+        "Published research or CVEs on desktop application vulnerabilities",
+        "Advises clients on secure thick-client architecture and update design",
+        "Trains teams on advanced thick-client assessment techniques"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess a prepared vulnerable thick-client application with a server backend, identifying insecure storage, IPC, update and client-side enforcement flaws, and report them"
+    },
+    {
+      "type": "direct_observation",
+      "description": "Observe setup of traffic interception for a proxy-unaware client and the dynamic analysis workflow"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0688", "K0842", "S0656", "S0857"],
+      "work_roles": ["DD-WRL-005 Software Security Assessment", "PD-WRL-007 Vulnerability Analysis"]
+    },
+    "cwe": ["CWE-602", "CWE-312", "CWE-494", "CWE-427"],
+    "mitre_attack": {
+      "techniques": ["T1574"]
+    }
+  },
+
+  "tags": [
+    "thick-client",
+    "desktop",
+    "windows",
+    "reverse-engineering",
+    "dynamic-analysis",
+    "proxy",
+    "binary-analysis"
+  ]
+}

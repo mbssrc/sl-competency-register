@@ -1,0 +1,101 @@
+{
+  "id": "SWSEC-SAST-TOOLING",
+  "name": "SAST Tool Configuration & Operation",
+  "domain": "software-security",
+  "category": "Static Analysis",
+  "status": "active",
+  "description": "Configuration, operation, and management of static application security testing (SAST) tools. Covers tool selection for target languages, rule configuration, scan profile tuning, CI/CD integration, and result export for downstream triage.",
+
+  "requires": [],
+  "recommended": [
+    "SWSEC-REVIEW-MANUAL",
+    "FOUND-DOC",
+    "FOUND-TOOLS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to SAST tools"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the purpose and capabilities of SAST tools",
+      "evidence": [
+        "Can explain how SAST tools analyze source code or bytecode",
+        "Familiar with major SAST tools (Semgrep, CodeQL, SonarQube, Checkmarx)",
+        "Understands the difference between SAST and manual code review"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Runs SAST scans under supervision with default configurations",
+      "evidence": [
+        "Executed SAST scans using at least 2 tools on lab projects",
+        "Configured basic scan profiles for target languages",
+        "Exported and organized scan results for triage review",
+        "Work reviewed by authorized analyst"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently configures and operates SAST tools for engagements",
+      "evidence": [
+        "Independently configured and ran SAST scans on 5+ engagements",
+        "Tunes scan profiles to reduce noise for specific technology stacks",
+        "Integrates SAST tools into CI/CD pipelines",
+        "Passed proficiency assessment on SAST tool operation"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Optimizes SAST deployments; compares tool effectiveness; develops custom configurations",
+      "evidence": [
+        "Benchmarks SAST tools against known vulnerability sets for detection rates",
+        "Develops custom scan profiles for organization-specific technology stacks",
+        "Integrates multiple SAST tools and correlates results",
+        "Mentors junior analysts on SAST tool selection and configuration"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Authority on SAST tooling; evaluates and selects tools for the lab",
+      "evidence": [
+        "Led SAST tool evaluation and selection for the lab",
+        "Developed lab methodology for SAST tool deployment and operation",
+        "Contributes to SAST tool vendor improvement through bug reports or feature requests",
+        "Trains teams on SAST tool administration and optimization"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Configure and run SAST scans on a prepared project, tuning rules to minimize false positives"
+    },
+    {
+      "type": "direct_observation",
+      "description": "Observe tool configuration, scan execution, and result export workflow"
+    }
+  ],
+
+  "framework_mappings": {
+    "owasp": ["OWASP DevSecOps Guideline"],
+    "nice": {
+      "tks": ["K1099", "K1381", "S0883", "S0382"],
+      "work_roles": ["DD-WRL-005 Software Security Assessment", "DD-WRL-003 Secure Software Development"]
+    }
+  },
+
+  "tags": [
+    "sast",
+    "automation",
+    "ci-cd",
+    "tooling",
+    "static-analysis"
+  ]
+}

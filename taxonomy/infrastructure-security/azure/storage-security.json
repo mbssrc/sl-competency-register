@@ -1,0 +1,103 @@
+{
+  "id": "INFRA-AZURE-STORAGE",
+  "name": "Azure Storage Security Assessment",
+  "domain": "infrastructure-security",
+  "category": "Azure Security",
+  "status": "active",
+  "description": "Security assessment of Azure Storage Account configurations. Covers blob containers, file shares, queues, tables, access keys, shared access signatures (SAS), storage firewalls, encryption, and data exposure risks in Azure storage services.",
+  "requires": [
+    "INFRA-AZURE-ENTRAID"
+  ],
+  "recommended": [
+    "FOUND-EVIDENCE"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to Azure Storage security assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands Azure Storage services and their access control mechanisms",
+      "evidence": [
+        "Can explain storage account types, blob containers, and access tiers",
+        "Understands access keys, SAS tokens, and Entra ID-based access",
+        "Familiar with common Azure Storage data exposure patterns"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Enumerates and reviews Azure Storage configurations under supervision",
+      "evidence": [
+        "Uses tools to scan for publicly accessible storage containers",
+        "Reviews storage account network rules and access configurations under guidance",
+        "Documents Azure Storage security findings with supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses Azure Storage security posture across subscriptions",
+      "evidence": [
+        "Independently identifies misconfigured storage account access policies and SAS tokens",
+        "Evaluates storage firewall rules and private endpoint configurations",
+        "Assesses encryption-at-rest and in-transit configurations",
+        "Produces compliant Azure Storage assessment reports"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex storage security scenarios including cross-tenant access and data flow analysis",
+      "evidence": [
+        "Identifies data exposure through SAS token abuse and cross-subscription access",
+        "Develops automated Azure Storage audit tooling",
+        "Reviews storage assessment work of junior analysts",
+        "Assesses storage-backed application architectures for data leakage"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines lab Azure Storage assessment methodology; discovers novel storage attack vectors",
+      "evidence": [
+        "Designed or maintains the lab's Azure Storage security assessment methodology",
+        "Published research on Azure Storage bypass techniques or data exfiltration",
+        "Trains teams on advanced Azure Storage security assessment"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess a multi-subscription Azure environment with intentional storage misconfigurations and identify all data exposure risks"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review Azure Storage security findings from recent cloud assessment engagements"
+    }
+  ],
+  "framework_mappings": {
+    "cis": [
+      "CIS Microsoft Azure Foundations Benchmark v5.0.0 - Section 9 Storage Services"
+    ],
+    "csa_ccm": [
+      "DSP-04",
+      "DSP-05",
+      "CEK-03"
+    ],
+    "nice": {
+      "tks": ["K0863", "K1369", "K0931", "K0685", "K1150"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "IO-WRL-006 Systems Security Analysis"]
+    }
+  },
+  "tags": [
+    "azure",
+    "storage",
+    "blob",
+    "data-exposure",
+    "cloud-security",
+    "encryption",
+    "exfiltration"
+  ]
+}

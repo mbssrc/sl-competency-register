@@ -1,0 +1,110 @@
+{
+  "id": "DFIR-IR-CONTAIN",
+  "name": "Containment, Eradication & Recovery",
+  "domain": "digital-forensics",
+  "category": "Incident Response",
+  "status": "active",
+  "description": "Ability to plan and execute containment, eradication, and recovery during security incidents. Covers containment strategy selection (network isolation, account disablement, segmentation, sinkholing) and its timing relative to adversary awareness, credential and identity resets including krbtgt rotation and cloud token revocation, removal of persistence, eradication verification, recovery validation and monitored return to service, and avoiding evidence destruction during response actions. Identity platform specifics are covered by INFRA-ONPREM-AD and INFRA-AZURE-ENTRAID.",
+
+  "requires": [
+    "DFIR-IR-COORD"
+  ],
+  "recommended": [
+    "INFRA-ONPREM-AD",
+    "INFRA-AZURE-ENTRAID",
+    "DFIR-IR-LIVE",
+    "INFRA-ONPREM-EDR",
+    "INFRA-ONPREM-BACKUP"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to incident containment, eradication, or recovery"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands containment, eradication, and recovery concepts and their risks",
+      "evidence": [
+        "Can explain short-term versus long-term containment and the risk of tipping off an adversary",
+        "Understands why response actions can destroy volatile evidence and how to avoid it",
+        "Can describe why credential resets must be coordinated across all compromised identities"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Executes containment and eradication actions under supervision",
+      "evidence": [
+        "Isolated hosts via EDR or network controls following an approved plan under guidance",
+        "Disabled accounts and revoked sessions as directed, recording each action and timestamp",
+        "Confirmed evidence collection was completed before executing destructive actions"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently plans and executes containment, eradication, and recovery",
+      "evidence": [
+        "Planned and executed containment for 5+ incidents, choosing strategy and timing based on scope",
+        "Executed enterprise credential resets including double krbtgt rotation and cloud refresh-token revocation",
+        "Verified eradication by sweeping for known persistence and indicators before recovery",
+        "Defined recovery validation criteria and monitoring for return to service"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex eradication against persistent adversaries and mentors responders",
+      "evidence": [
+        "Coordinated simultaneous eviction across on-premises and cloud identity planes",
+        "Rebuilt compromised identity infrastructure (domain controllers, federation servers, IdP trust)",
+        "Identified and closed re-entry vectors after failed initial eradication attempts",
+        "Reviews containment and recovery plans prepared by other responders"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines the lab's containment and recovery methodology",
+      "evidence": [
+        "Authored or maintains the lab's containment, eradication, and recovery playbooks",
+        "Designed decision frameworks balancing business impact, evidence preservation, and adversary awareness",
+        "Advises organisations on resilience and recovery architecture after major compromises",
+        "Published or presented on adversary eviction and recovery practice"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "In a lab domain with an active simulated adversary holding persistence and credentials, plan and execute a coordinated eviction, then demonstrate that eradication holds and recovery criteria are met"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given an incident scenario with incomplete scoping, decide containment strategy and timing, justify the evidence-preservation steps required first, and list the identity resets needed"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0724", "K0726", "K0701", "S0806"],
+      "work_roles": ["PD-WRL-003 Incident Response"]
+    },
+    "nist_sp": ["800-61r3"],
+    "giac": ["GCIH"]
+  },
+
+  "tags": [
+    "incident-response",
+    "containment",
+    "eradication",
+    "recovery",
+    "credential-reset",
+    "adversary-eviction",
+    "persistence",
+    "segmentation",
+    "kerberos",
+    "active-directory"
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "id": "HWSEC-FI-LFI",
+  "name": "Laser Fault Injection",
+  "domain": "hardware-security",
+  "category": "Fault Injection",
+  "status": "active",
+  "description": "Use of focused laser beams to inject faults into integrated circuits with high spatial and temporal precision. Covers laser station operation, backside and frontside injection through thinned substrates, single-bit and multi-bit fault induction, laser scanning for fault mapping, and exploitation of laser-induced faults for key extraction and security bypass. Provides the highest spatial and temporal precision among fault injection techniques used in security evaluation.",
+  "requires": [
+    "HWSEC-FI-VG",
+    "HWSEC-INV-DECAP"
+  ],
+  "recommended": [
+    "HWSEC-FI-EMFI",
+    "HWSEC-INV-DELAYER",
+    "HWSEC-SPREP-ACTIVE"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to laser fault injection"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands laser fault injection principles and its role in security evaluation",
+      "evidence": [
+        "Can explain how laser irradiation generates electron-hole pairs in silicon and how this induces transient currents that cause faults",
+        "Understands frontside vs. backside injection and why substrate thinning is necessary",
+        "Aware of laser FI station components (laser source, optics, positioning, triggering)",
+        "Understands laser safety classifications and lab safety requirements"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Operates laser fault injection station on prepared samples under supervision",
+      "evidence": [
+        "Safely operates the laser FI station following all lab safety protocols (laser safety interlocks, PPE)",
+        "Aligns a prepared (decapped, thinned) sample on the laser station stage",
+        "Performs laser scanning to identify fault-susceptible regions on a training target",
+        "Induces targeted faults at specific timing windows using external trigger synchronization"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently performs laser FI campaigns with precise spatial and temporal targeting",
+      "evidence": [
+        "Prepares samples for laser FI including backside thinning coordination with sample prep team",
+        "Performs laser fault mapping to identify individual register bits and SRAM cells",
+        "Exploits laser-induced single-bit faults for DFA key extraction on AES/RSA implementations",
+        "Bypasses security checks by targeting specific control-flow logic with laser FI",
+        "Completed laser FI assessments on 3+ distinct target ICs"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Performs advanced laser FI on hardened targets; develops attack strategies; mentors team",
+      "evidence": [
+        "Defeats laser fault injection sensors and countermeasures (light sensors, mesh shields)",
+        "Performs multi-spot and multi-pulse laser FI attacks on complex targets",
+        "Correlates laser FI results with IC layout analysis for targeted attacks on specific modules",
+        "Develops automated laser scanning and fault characterization workflows",
+        "Mentors team on sample preparation, laser station operation, and fault exploitation"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on laser FI; publishes research; defines evaluation methodology",
+      "evidence": [
+        "Published research on novel laser FI techniques at CHES, FDTC, or equivalent conferences",
+        "Defines the lab's laser FI methodology aligned with Common Criteria and EMVCo evaluation standards",
+        "Specifies and commissions laser FI station configurations for the lab",
+        "Provides expert consultation on laser FI resistance to smart card and secure IC designers"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Perform laser FI on a prepared target IC: map fault-susceptible regions, achieve single-bit fault precision, and demonstrate key extraction via DFA or security bypass"
+    },
+    {
+      "type": "direct_observation",
+      "description": "Observe laser safety compliance, sample alignment technique, scanning methodology, and fault characterization during a live laser FI session"
+    }
+  ],
+  "equipment": [
+    "Laser fault injection station (e.g., Riscure Laser Station, Hamamatsu PHEMOS)",
+    "IR laser source (1064nm) for backside injection",
+    "Visible laser source (532nm) for frontside injection",
+    "Silicon substrate thinning/polishing system"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0714", "K0055", "S0898", "K1248"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development", "PD-WRL-007 Vulnerability Analysis"]
+    },
+    "common_criteria": [
+      "AVA_VAN.5"
+    ],
+    "jil_attack_methods": [
+      "5.2 Overcoming sensors and filters",
+      "5.3 Perturbation attacks",
+      "5.4 Retrieving keys with FA"
+    ]
+  },
+  "tags": [
+    "laser",
+    "fault-injection",
+    "semi-invasive",
+    "dfa",
+    "precision",
+    "backside",
+    "smart-card",
+    "cryptographic"
+  ]
+}

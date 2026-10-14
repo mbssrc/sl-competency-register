@@ -1,0 +1,17 @@
+{% extends "core/base.html" %}
+
+{% block title %}Bad Request - Personnel - {{ product_name }}{% endblock %}
+
+{% block sidebar %}{% endblock %}
+{% block masthead %}{% endblock %}
+
+{% block content %}
+<div class="min-h-screen flex items-center justify-center -m-8">
+  <div class="text-center">
+    <h1 class="text-6xl font-bold text-gray-300 dark:text-gray-600">400</h1>
+    <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">Bad Request</p>
+    <p class="mt-2 text-sm text-gray-500 dark:text-gray-500">The server could not process your request.</p>
+    <a href="/" class="mt-6 inline-block px-4 py-2 rounded-md bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium transition-colors">Return Home</a>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,105 @@
+{
+  "id": "SWSEC-RE-ANTIRE",
+  "name": "Anti-Reverse-Engineering Bypass",
+  "domain": "software-security",
+  "category": "Reverse Engineering",
+  "status": "active",
+  "description": "Identification and bypass of anti-reverse-engineering protections in software. Covers packing, obfuscation (control flow flattening, opaque predicates, string encryption), anti-debugging, anti-tampering, VM-based protection, and commercial protectors (Themida, VMProtect, Arxan).",
+
+  "requires": [
+    "SWSEC-RE-DISASM",
+    "SWSEC-RE-DECOMPILE"
+  ],
+  "recommended": [
+    "SWSEC-DAST-INSTRUMENT"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to anti-RE protections"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the purpose and types of anti-RE protections",
+      "evidence": [
+        "Can explain packing, obfuscation, and anti-debugging concepts",
+        "Familiar with common packers (UPX) and commercial protectors",
+        "Understands why software vendors use anti-RE protections"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Identifies and bypasses basic protections under supervision",
+      "evidence": [
+        "Unpacked UPX and simple custom packers",
+        "Identified and bypassed basic anti-debugging checks (IsDebuggerPresent, ptrace)",
+        "Decrypted simple string encryption using debugger or scripts",
+        "Work reviewed by authorized analyst"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently bypasses common anti-RE protections to enable analysis",
+      "evidence": [
+        "Independently bypassed anti-RE protections on 5+ engagements",
+        "Handles multi-layer packing and custom unpacking stubs",
+        "Bypasses anti-debugging, anti-VM, and integrity checking mechanisms",
+        "Uses Frida and debugger scripts to automate bypass techniques",
+        "Passed proficiency assessment on anti-RE bypass"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles commercial protectors and VM-based obfuscation",
+      "evidence": [
+        "Bypasses commercial protectors (Themida, VMProtect, Arxan) for analysis",
+        "Devirtualizes VM-protected code to recover original logic",
+        "Develops automated deobfuscation tools and scripts",
+        "Mentors others on anti-RE bypass methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Authority on anti-RE bypass; develops novel deobfuscation techniques",
+      "evidence": [
+        "Published research on obfuscation analysis or deobfuscation techniques",
+        "Developed lab methodology and tooling for anti-RE bypass",
+        "Breaks novel protection schemes and VM-based obfuscators",
+        "Trains teams on advanced anti-RE bypass techniques"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Unpack and deobfuscate a protected binary to recover its original functionality"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given a binary with unknown anti-RE protections, identify the protection scheme and develop a bypass strategy"
+    }
+  ],
+
+  "framework_mappings": {
+    "mitre_attack": {"techniques": ["T1027", "T1497"]},
+    "nice": {
+      "tks": ["K1016", "K0842", "S0738", "K0855"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development", "PD-WRL-002 Digital Forensics"]
+    }
+  },
+
+  "tags": [
+    "reverse-engineering",
+    "obfuscation",
+    "packing",
+    "anti-debug",
+    "deobfuscation",
+    "debugging",
+    "binary-analysis"
+  ]
+}

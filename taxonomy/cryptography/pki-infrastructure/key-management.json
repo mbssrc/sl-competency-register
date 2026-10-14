@@ -1,0 +1,116 @@
+{
+  "id": "CRYPTO-PKI-KEYMANAGEMENT",
+  "name": "Cryptographic Key Management Assessment",
+  "domain": "cryptography",
+  "category": "PKI & Infrastructure",
+  "status": "active",
+  "description": "Assessment of cryptographic key lifecycle management including key generation, storage, distribution, rotation, revocation, and destruction. Covers HSM integration, key wrapping, key derivation functions (HKDF, KDF1/2), secrets management systems, and compliance with NIST SP 800-57 key management guidance. Focuses on key lifecycle and policy; protection of keys in hardware storage against physical and logical extraction belongs to HWSEC-CRYPTO-KEY.",
+
+  "requires": [
+    "CRYPTO-SYM-BLOCKCIPHER",
+    "CRYPTO-ASYM-RSA"
+  ],
+  "recommended": [
+    "FOUND-STANDARDS",
+    "FOUND-RISK",
+    "CRYPTO-PKI-CERTS",
+    "HWSEC-CRYPTO-HSM",
+    "HWSEC-CRYPTO-KEY"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to key management assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands key lifecycle phases and why key management matters",
+      "evidence": [
+        "Can describe the key lifecycle: generation, distribution, storage, rotation, revocation, destruction",
+        "Understands why hardcoded keys and insecure key storage are dangerous",
+        "Can explain the purpose of HSMs and key management systems"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Identifies key management practices and basic weaknesses under supervision",
+      "evidence": [
+        "Detects hardcoded cryptographic keys in source code and configuration files",
+        "Reviews key storage mechanisms (file system, environment variables, vaults) under guidance",
+        "Identifies missing key rotation policies",
+        "Documents key management findings following lab templates"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses key management practices across systems",
+      "evidence": [
+        "Evaluates key generation quality (entropy sources, RNG seeding)",
+        "Assesses key storage solutions (HashiCorp Vault, AWS KMS, Azure Key Vault) for configuration security",
+        "Reviews key derivation function usage (HKDF, PBKDF2) for correctness",
+        "Produces findings referencing NIST SP 800-57 or PCI DSS key management requirements"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex key management assessments; evaluates key management architecture",
+      "evidence": [
+        "Assesses HSM integration and key ceremony procedures",
+        "Evaluates key wrapping and key escrow implementations",
+        "Reviews key management across distributed systems and microservice architectures",
+        "Mentors junior staff on key management assessment methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines key management assessment methodology; recognised authority on key lifecycle security",
+      "evidence": [
+        "Authored or maintains the lab's key management assessment methodology",
+        "Published research on key management vulnerabilities or best practices",
+        "Provides expert guidance on key management architecture design",
+        "Trains teams on key lifecycle management, HSM integration, and compliance requirements"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Audit key management practices across an application stack: evaluate generation, storage, rotation, and destruction processes"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given an application with multiple key management weaknesses, design a remediation plan including migration to a secrets management system"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0698", "K1363", "K0932", "K0874", "K0876"],
+      "work_roles": ["DD-WRL-001 Cybersecurity Architecture", "OG-WRL-001 Communications Security (COMSEC) Management", "PD-WRL-007 Vulnerability Analysis"]
+    },
+    "nist_sp": ["800-57", "800-133", "800-108", "800-56C", "800-38F"]
+  },
+
+  "tags": [
+    "key-management",
+    "key-lifecycle",
+    "hsm",
+    "key-rotation",
+    "key-derivation",
+    "hkdf",
+    "vault",
+    "kms",
+    "secrets-management",
+    "aws",
+    "cryptographic",
+    "entropy",
+    "rng",
+    "azure",
+    "pki"
+  ]
+}

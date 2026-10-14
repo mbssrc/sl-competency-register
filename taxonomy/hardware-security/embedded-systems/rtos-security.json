@@ -1,0 +1,112 @@
+{
+  "id": "HWSEC-EMBED-RTOS",
+  "name": "Embedded OS & RTOS Security",
+  "domain": "hardware-security",
+  "category": "Embedded Systems Security",
+  "status": "active",
+  "description": "Security assessment of embedded operating systems and real-time operating systems (RTOS) running on hardware targets. Covers privilege separation, memory protection unit (MPU/MMU) configuration, inter-process communication, task isolation, secure storage, and OS-level attack surfaces specific to embedded platforms (FreeRTOS, Zephyr, VxWorks, QNX, embedded Linux).",
+  "requires": [
+    "HWSEC-EMBED-FW"
+  ],
+  "recommended": [
+    "HWSEC-EMBED-DBG",
+    "HWSEC-EMBED-BOOT",
+    "FOUND-TOOLS"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to embedded OS or RTOS security assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands embedded OS architectures and their security models",
+      "evidence": [
+        "Can describe differences between bare-metal, RTOS, and embedded Linux environments",
+        "Understands MPU/MMU role in memory protection for embedded systems",
+        "Aware of common embedded OS attack surfaces (IPC, shared memory, privilege boundaries)"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Assesses embedded OS configurations and identifies basic weaknesses under supervision",
+      "evidence": [
+        "Analyzes embedded Linux build configurations for security settings (SELinux, seccomp, kernel hardening)",
+        "Identifies task privilege levels and MPU configuration in RTOS firmware",
+        "Tests for common misconfigurations (world-readable credentials, unprotected IPC) with guidance",
+        "Documents findings following lab reporting templates"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses embedded OS security across diverse platforms",
+      "evidence": [
+        "Performs comprehensive security review of RTOS task isolation and privilege separation",
+        "Identifies and exploits embedded OS vulnerabilities (privilege escalation, memory corruption)",
+        "Assesses secure storage implementations and TEE integration on embedded platforms",
+        "Completed embedded OS assessments on 3+ different RTOS/embedded Linux platforms"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex embedded OS targets; develops assessment tooling; mentors team",
+      "evidence": [
+        "Assesses proprietary or undocumented RTOS implementations through reverse engineering",
+        "Develops custom fuzzing harnesses for embedded OS components",
+        "Exploits complex vulnerability chains across privilege boundaries in embedded systems",
+        "Mentors team on embedded OS assessment techniques and platform-specific nuances"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on embedded OS security; publishes research; defines methodology",
+      "evidence": [
+        "Published vulnerability research or CVEs against embedded OS platforms",
+        "Defines the lab's embedded OS assessment methodology and training program",
+        "Provides expert consultation to vendors on embedded OS hardening",
+        "Develops novel exploitation techniques for embedded OS security boundaries"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess the security configuration and attack surface of a target device running an RTOS or embedded Linux, producing a prioritized findings report"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Present an unfamiliar embedded OS target and assess the analyst's approach to identifying the OS, mapping the attack surface, and identifying vulnerabilities"
+    }
+  ],
+  "equipment": [],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0948", "K0923", "K0752", "S0504"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-005 Software Security Assessment"]
+    },
+    "common_criteria": [
+      "AVA_VAN.3",
+      "ADV_ARC"
+    ],
+    "fips_140_3": [
+      "AS06.01"
+    ]
+  },
+  "tags": [
+    "rtos",
+    "embedded-linux",
+    "privilege-separation",
+    "memory-protection",
+    "embedded",
+    "non-invasive",
+    "firmware",
+    "kernel",
+    "linux",
+    "privilege-escalation",
+    "reverse-engineering",
+    "fuzzing"
+  ]
+}

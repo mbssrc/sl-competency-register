@@ -1,0 +1,45 @@
+{
+  "key": "PERS-008",
+  "bands": {
+    "strong": [
+      "SWSEC-MOB",
+      "SWSEC-RE"
+    ],
+    "weak": [
+      "SWSEC-FUZZ",
+      "SWSEC-OS",
+      "SWSEC-SUPPLY"
+    ]
+  },
+  "signature": {
+    "SWSEC-MOB-ANDROID": 4,
+    "SWSEC-MOB-TIC": 4,
+    "SWSEC-MOB-RESILIENCE": 4,
+    "SWSEC-MOB-IOS": 3,
+    "SWSEC-RE-DECOMPILE": 4
+  },
+  "never": [],
+  "foundations": [
+    2,
+    3
+  ],
+  "projects": [
+    "PRJ-SAT-APP-MSG"
+  ],
+  "stale_skills": [],
+  "self_assessment": {
+    "mode": "all",
+    "bias": 1,
+    "jitter": 1
+  },
+  "development_plan": [],
+  "name": "Dmitri Volkov",
+  "role": "Senior Mobile Security Evaluator",
+  "start_date": "2021-01-11",
+  "domains": [
+    "SWSEC"
+  ],
+  "target_maturity": {
+    "SWSEC": "senior"
+  }
+}

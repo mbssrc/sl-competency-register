@@ -1,0 +1,107 @@
+{
+  "id": "SWSEC-APP-CONTRACT",
+  "name": "Smart Contract Security Review",
+  "domain": "software-security",
+  "category": "Desktop & Specialized Applications",
+  "status": "active",
+  "description": "Security review of smart contracts, primarily Solidity on the Ethereum Virtual Machine (EVM). Covers common weakness classes (reentrancy, access control, oracle and price manipulation, arithmetic, unchecked external calls), upgradeability patterns, static analysis and fuzzing tooling (e.g. Slither, Echidna, Foundry), and reporting against the SWC Registry and OWASP Smart Contract Top 10. General language-agnostic code review belongs to SWSEC-REVIEW-MANUAL.",
+
+  "requires": [
+    "SWSEC-REVIEW-MANUAL"
+  ],
+  "recommended": [
+    "CRYPTO-ASYM-SIGNATURES",
+    "SWSEC-SAST-TOOLING",
+    "FOUND-REPORT"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to smart contract security review"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the EVM execution model and common smart contract weaknesses",
+      "evidence": [
+        "Can explain accounts, transactions, gas, storage and external calls in the EVM",
+        "Can describe reentrancy, access control and oracle manipulation flaws with examples",
+        "Familiar with the SWC Registry and OWASP Smart Contract Top 10"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Reviews simple contracts under supervision",
+      "evidence": [
+        "Reviewed Solidity contracts against a weakness checklist and documented findings",
+        "Ran Slither on a codebase and triaged its results",
+        "Wrote proof-of-concept tests for findings on a local or forked chain",
+        "Work reviewed by authorized reviewer"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently reviews production smart contract systems",
+      "evidence": [
+        "Independently reviewed 5+ contract systems and produced severity-rated reports with remediation",
+        "Identifies cross-contract and economic attack paths (flash loans, price manipulation)",
+        "Reviews proxy and upgradeability patterns for storage collisions and initialization flaws",
+        "Writes property-based or invariant fuzz tests with Echidna or Foundry",
+        "Passed proficiency assessment on smart contract review"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Leads complex reviews; reasons about protocol-level and economic design",
+      "evidence": [
+        "Leads reviews of multi-contract DeFi or bridge protocols, including scoping and threat modelling",
+        "Reviews signature schemes (EIP-712, permit) and cross-chain message validation",
+        "Develops custom static analysis detectors or invariant suites",
+        "Reviews reports and mentors junior reviewers"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Authority on smart contract security; defines methodology",
+      "evidence": [
+        "Developed the lab's smart contract review methodology and reporting standard",
+        "Published research or disclosed significant vulnerabilities in deployed contracts",
+        "Reviews formal verification results or EVM bytecode-level behaviour",
+        "Trains teams on smart contract security review"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "work_product_review",
+      "description": "Review a submitted smart contract audit report for accuracy of findings, severity rating, proof-of-concept quality and remediation guidance"
+    },
+    {
+      "type": "controlled_exercise",
+      "description": "Review a prepared set of vulnerable Solidity contracts with seeded flaws and demonstrate exploitation on a local test chain"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1319", "K0688", "S0972"],
+      "work_roles": ["DD-WRL-005 Software Security Assessment", "DD-WRL-003 Secure Software Development"]
+    },
+    "owasp": ["OWASP Smart Contract Top 10"],
+    "swc": ["SWC-101", "SWC-105", "SWC-107", "SWC-115"],
+    "cwe": ["CWE-284", "CWE-841", "CWE-190"]
+  },
+
+  "tags": [
+    "smart-contract",
+    "blockchain",
+    "solidity",
+    "code-review",
+    "static-analysis",
+    "fuzzing"
+  ]
+}

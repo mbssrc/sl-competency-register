@@ -1,0 +1,63 @@
+{% extends "core/base.html" %}
+
+{% block title %}{% if editing %}Edit {{ edit_person.name }}{% else %}Add Person{% endif %} - {{ product_name }}{% endblock %}
+
+{% block page_crumbs %}
+{% url 'personnel:person-list' as person_list_url %}
+  {% include "core/partials/crumb.html" with label="Personnel" url=person_list_url first=True %}
+  {% if editing %}{% include "core/partials/crumb.html" with label=edit_person.name current=True %}
+  {% else %}{% include "core/partials/crumb.html" with label="Add Person" current=True %}{% endif %}
+{% endblock %}
+
+{% block page_title %}{% if editing %}Edit {{ edit_person.name }}{% else %}Add Person{% endif %}{% endblock %}
+{% block page_description %}{% if editing %}Update this record and the domains this person is assigned to.{% else %}Create a personnel record and assign its specialization domains.{% endif %}{% endblock %}
+
+{% block content %}
+<div class="max-w-lg">
+{% if errors %}
+  <div class="mb-6 p-3 rounded-md bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800/50">
+    <ul class="text-sm text-red-700 dark:text-red-400 space-y-1">
+      {% for error in errors %}
+      <li>{{ error }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  <div class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg p-6">
+    <form method="post" class="space-y-5">
+      {% csrf_token %}
+
+      {% if editing %}
+      <input type="hidden" name="id" value="{{ edit_person.id }}">
+      {% endif %}
+
+      <div>
+        <label for="id_name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Full Name</label>
+        <input type="text" name="name" id="id_name" required
+               value="{% if form_data %}{{ form_data.name }}{% elif editing %}{{ edit_person.name }}{% endif %}"
+               class="w-full px-3 py-2 rounded-md border border-gray-300 dark:border-white/10 bg-white dark:bg-white/5 text-gray-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+               placeholder="e.g. Jane Smith">
+      </div>
+
+      <div>
+        <label for="id_start_date" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Start Date</label>
+        <input type="date" name="start_date" id="id_start_date" required
+               value="{% if form_data %}{{ form_data.start_date }}{% elif editing %}{{ edit_person.start_date|date:'Y-m-d' }}{% endif %}"
+               class="w-full px-3 py-2 rounded-md border border-gray-300 dark:border-white/10 bg-white dark:bg-white/5 text-gray-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+      </div>
+
+      <div class="flex items-center justify-end gap-3 pt-4 border-t border-gray-200 dark:border-white/10">
+        <a href="{% if editing %}{% url 'personnel:person-detail' edit_person.id %}{% else %}{% url 'personnel:person-list' %}{% endif %}"
+           class="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-md hover:bg-gray-50 dark:hover:bg-white/10 transition-colors">
+          Cancel
+        </a>
+        <button type="submit"
+                class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          {% if editing %}Save Changes{% else %}Create Person{% endif %}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

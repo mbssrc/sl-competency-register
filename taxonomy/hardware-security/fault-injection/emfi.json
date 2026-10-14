@@ -1,0 +1,111 @@
+{
+  "id": "HWSEC-FI-EMFI",
+  "name": "Electromagnetic Fault Injection",
+  "domain": "hardware-security",
+  "category": "Fault Injection",
+  "status": "active",
+  "description": "Injection of localized electromagnetic pulses to induce faults in integrated circuits without direct electrical contact. Covers EM pulse generator operation, injection probe positioning, spatial and temporal fault characterization, and exploitation of EM-induced faults. EMFI provides spatial selectivity and can target specific circuit blocks either through the package (non-invasive) or on a decapsulated die for higher resolution (semi-invasive).",
+  "requires": [
+    "HWSEC-FI-VG",
+    "HWSEC-PCB-RE"
+  ],
+  "recommended": [
+    "HWSEC-SCA-EMA",
+    "HWSEC-INV-DECAP"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to electromagnetic fault injection"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands EMFI principles, equipment, and how it differs from other fault injection methods",
+      "evidence": [
+        "Can explain how EM pulses induce current in IC substrate and cause faults",
+        "Understands the spatial selectivity advantage of EMFI over voltage/clock glitching",
+        "Aware of safety considerations when operating high-voltage EM pulse generators"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Operates EMFI equipment on training targets under supervision",
+      "evidence": [
+        "Safely operates an EM pulse generator (e.g., Riscure EM-FI) following lab safety procedures",
+        "Positions EMFI probe over target IC and injects EM pulses with guided timing",
+        "Performs spatial scanning to map fault-susceptible regions on a training target",
+        "Records and categorizes observed fault effects (resets, corruptions, instruction skips)"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently performs EMFI campaigns on real targets and exploits induced faults",
+      "evidence": [
+        "Identifies optimal EMFI probe positions and pulse parameters for unfamiliar targets",
+        "Performs systematic spatial and temporal fault characterization on production devices",
+        "Exploits EMFI-induced faults to bypass security mechanisms (secure boot, readout protection)",
+        "Completed EMFI assessments on 3+ distinct target platforms with documented exploitation"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Attacks hardened targets with EMFI; develops custom injection setups; mentors team",
+      "evidence": [
+        "Defeats EMFI countermeasures (sensors, shielding, redundancy) on hardened targets",
+        "Targets specific circuit blocks (crypto core, boot ROM, SRAM) using precise EMFI positioning",
+        "Develops automated EMFI scanning and characterization workflows",
+        "Mentors team on EMFI safety, probe selection, and fault exploitation strategies"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on EMFI; publishes research; designs custom EMFI equipment",
+      "evidence": [
+        "Published research on novel EMFI techniques or fault model characterization",
+        "Designs or specifies custom EMFI probes and pulse generators for the lab",
+        "Defines the lab's EMFI methodology aligned with evaluation standards",
+        "Provides expert consultation on EMFI resistance to IC designers and certification bodies"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Perform EMFI characterization on a prepared target: map fault-susceptible regions, optimize injection parameters, and demonstrate exploitation of induced faults"
+    },
+    {
+      "type": "direct_observation",
+      "description": "Observe safety procedures, probe positioning technique, and fault characterization methodology during a live EMFI session"
+    }
+  ],
+  "equipment": [
+    "EM fault injection platform (e.g., Riscure EM-FI Transient Probe)",
+    "EMFI injection probe set (various coil geometries)",
+    "XY/XYZ motorized positioning stage",
+    "High-voltage pulse generator"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0714", "K0055", "S0898", "K1248"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development", "PD-WRL-007 Vulnerability Analysis"]
+    },
+    "common_criteria": [
+      "AVA_VAN.4",
+      "AVA_VAN.5"
+    ],
+    "jil_attack_methods": [
+      "5.3 Perturbation attacks"
+    ]
+  },
+  "tags": [
+    "emfi",
+    "electromagnetic",
+    "fault-injection",
+    "semi-invasive",
+    "spatial",
+    "secure-boot"
+  ]
+}

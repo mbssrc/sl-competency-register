@@ -1,0 +1,127 @@
+{
+  "id": "WSEC-PROTO-SUBGHZ",
+  "name": "Sub-GHz Protocol Analysis",
+  "domain": "wireless-signal-security",
+  "category": "Protocol Analysis",
+  "status": "active",
+  "description": "Ability to analyze the security of sub-GHz wireless protocols including LoRa/LoRaWAN, Zigbee, Z-Wave, ISM-band remotes, and proprietary IoT protocols operating below 1 GHz. Covers signal capture and decoding, protocol security assessment, key management evaluation, replay attack testing, and analysis of device join/pairing procedures.",
+  "requires": [
+    "WSEC-SDR-FUNDM",
+    "WSEC-SDR-DEMOD"
+  ],
+  "recommended": [
+    "WSEC-PROTO-REVENG",
+    "FOUND-DOC"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to sub-GHz wireless protocol security analysis"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands common sub-GHz wireless protocols and their security properties",
+      "evidence": [
+        "Can describe LoRa, Zigbee, and Z-Wave protocol architectures and their frequency bands",
+        "Understands ISM band regulations and common sub-GHz modulation schemes (OOK, FSK, CSS)",
+        "Completed training on sub-GHz wireless security and IoT protocol assessment"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Captures and decodes sub-GHz signals using standard tools under supervision",
+      "evidence": [
+        "Captured and decoded OOK/FSK signals from ISM-band devices using RTL-SDR or HackRF under guidance",
+        "Used Zigbee sniffers (KillerBee, Wireshark/zbdump) to capture and decode Zigbee traffic under supervision",
+        "Performed replay attacks against simple sub-GHz remote controls in controlled lab exercises"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses sub-GHz protocol security across different protocol families",
+      "evidence": [
+        "Independently assessed sub-GHz protocol security for 3+ different protocol types or device classes",
+        "Evaluated LoRaWAN join procedure security and session key management",
+        "Tested Zigbee network key provisioning and encryption implementation correctness",
+        "Produced reports documenting protocol weaknesses, replay attack susceptibility, and remediation guidance"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Analyzes complex sub-GHz protocols; develops custom decoders; assesses key management at scale",
+      "evidence": [
+        "Reverse-engineered proprietary sub-GHz IoT protocols and identified security flaws",
+        "Assessed LoRaWAN network server key management and ABP vs OTAA security implications at scale",
+        "Developed custom decoders and analysis tools for recurring sub-GHz protocol types",
+        "Mentors junior analysts on sub-GHz protocol assessment and tool development"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on sub-GHz protocol security; publishes research; defines lab methodology",
+      "evidence": [
+        "Published research on sub-GHz protocol security vulnerabilities",
+        "Authored the lab's sub-GHz protocol assessment methodology",
+        "Discovered novel vulnerabilities in LoRa, Zigbee, Z-Wave, or proprietary sub-GHz protocols",
+        "Trains teams on sub-GHz protocol analysis and develops lab assessment infrastructure"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess the security of a sub-GHz IoT deployment: capture traffic, analyze protocol security, test for replay and key management weaknesses, and document findings"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review sub-GHz protocol assessment reports for protocol decoding accuracy and security analysis depth"
+    }
+  ],
+  "equipment": [
+    "HackRF One wideband SDR",
+    "Yard Stick One sub-GHz transceiver",
+    "Atmel RZUSBstick or ApiMote for Zigbee sniffing"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0925", "K0375", "K0812", "S0758"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-008 Technology Research and Development"]
+    },
+    "sfia": {
+      "skill": "PENT",
+      "levels": [
+        3,
+        4,
+        5
+      ]
+    },
+    "mitre_attack": {
+      "techniques": [
+        "T1040",
+        "T1005"
+      ]
+    },
+    "certifications": [
+      "GIAC GAWN"
+    ]
+  },
+  "tags": [
+    "sub-ghz",
+    "lora",
+    "lorawan",
+    "zigbee",
+    "z-wave",
+    "iot",
+    "ism-band",
+    "encryption",
+    "key-management",
+    "protocol-analysis",
+    "reverse-engineering",
+    "wireshark",
+    "authentication",
+    "replay-attack"
+  ]
+}

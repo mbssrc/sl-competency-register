@@ -1,0 +1,920 @@
+<!doctype html>
+<html lang="en" data-theme="slate">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Competence, Measured</title>
+<meta name="description" content="Personnel competency management in the security laboratory. A briefing.">
+<style>
+/* ===================================================================
+   THEME — edit these to re-colour the whole deck. Nothing else needs
+   touching. Each theme needs: two grounds, two inks, one accent, one
+   caution. Keep accent/caution at 4.5:1 against --bg and --bg-2.
+   =================================================================== */
+[data-theme="slate"]{
+  --bg:#16232A;        /* dark ground   */
+  --bg-2:#1E2E36;      /* dark panel    */
+  --paper:#F2F0EA;     /* light ground  */
+  --paper-2:#E6E3DA;   /* light ground, second tone */
+  --card:#FBFAF6;      /* card fill on light */
+  --ink:#16232A;       /* text on light */
+  --ink-2:#55646B;     /* secondary on light */
+  --ink-d:#F2F0EA;     /* text on dark  */
+  --ink-d2:#A7BAC0;    /* secondary on dark */
+  --line:#D3D0C6;      /* rule on light */
+  --line-d:#35454D;    /* rule on dark  */
+  --accent:#6B4A8C;    /* authorization */
+  --accent-d:#B9A0DA;  /* same, on dark */
+  --accent-soft:#EEE8F4;
+  --accent-soft-2:#E0D4F0;
+  --caution:#7A5C1C;
+  --caution-d:#D4B263;
+  --caution-soft:#F2EBD8;
+}
+[data-theme="graphite"]{
+  --bg:#1A1C1E; --bg-2:#25282B; --paper:#F0F0EE; --paper-2:#E3E3DF; --card:#FAFAF8;
+  --ink:#1A1C1E; --ink-2:#5A5F63; --ink-d:#F0F0EE; --ink-d2:#ADB3B7;
+  --line:#D2D2CC; --line-d:#3A3E42;
+  --accent:#1F5F7A; --accent-d:#7EC1DE; --accent-soft:#E4EFF4; --accent-soft-2:#CBE4EE;
+  --caution:#8A5A1E; --caution-d:#E0A95C; --caution-soft:#F6ECDC;
+}
+[data-theme="oxide"]{
+  --bg:#1E1A1C; --bg-2:#2A2426; --paper:#F4F1EC; --paper-2:#E8E2DA; --card:#FCFAF7;
+  --ink:#1E1A1C; --ink-2:#615859; --ink-d:#F4F1EC; --ink-d2:#BCAFAF;
+  --line:#D8D0C6; --line-d:#3E3638;
+  --accent:#7A3340; --accent-d:#E09AA6; --accent-soft:#F6E7E9; --accent-soft-2:#EDD0D5;
+  --caution:#6B5A1C; --caution-d:#CFB85E; --caution-soft:#F1EDD9;
+}
+/* =================================================================== */
+
+:root{
+  --serif:"Source Serif 4","Source Serif Pro","Iowan Old Style","TeX Gyre Pagella",Palatino,"Book Antiqua",Georgia,serif;
+  --sans:"IBM Plex Sans",Inter,"Helvetica Neue","Liberation Sans",Arial,system-ui,sans-serif;
+  --nav:280px;
+  --pad:clamp(24px,4vw,88px);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  margin:0; font-family:var(--sans); background:var(--paper); color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{margin:0; font-weight:400; line-height:1.12}
+p{margin:0}
+ul{margin:0}
+:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:2px}
+
+/* ---------------- navigation ---------------- */
+.nav{
+  position:fixed; inset:0 auto 0 0; width:var(--nav); z-index:30;
+  background:var(--bg); color:var(--ink-d); overflow-y:auto;
+  padding:32px 20px 32px 28px; border-right:1px solid var(--line-d);
+}
+.nav-mast{font-size:.82rem; line-height:1.45; color:var(--ink-d2); margin-bottom:26px}
+.nav-mast b{display:block; color:var(--ink-d); font-size:.95rem; font-weight:600; margin-bottom:4px}
+.nav-act{
+  font-size:.68rem; font-weight:600; letter-spacing:.09em; text-transform:uppercase;
+  color:var(--accent-d); margin:20px 0 8px; opacity:.85;
+}
+.nav-act:first-of-type{margin-top:0}
+.nav a{
+  display:grid; grid-template-columns:26px 1fr; align-items:start; gap:2px;
+  padding:6px 0 6px 10px; font-size:.84rem; line-height:1.32; text-decoration:none;
+  color:var(--ink-d2); border-left:2px solid transparent;
+  transition:color .15s, border-color .15s;
+}
+.nav a span.n{font-variant-numeric:tabular-nums; font-size:.74rem; opacity:.6; padding-top:.12em}
+.nav a:hover{color:var(--ink-d)}
+.nav a.on{color:var(--ink-d); border-left-color:var(--accent-d); font-weight:500}
+.nav a.on span.n{opacity:1; color:var(--accent-d)}
+
+/* ---------------- hud ---------------- */
+.hud{
+  position:fixed; right:18px; bottom:18px; z-index:40; display:flex; gap:8px; align-items:center;
+}
+.hud button, .hud select{
+  font:inherit; font-size:.74rem; font-family:var(--sans);
+  background:var(--card); color:var(--ink); border:1px solid var(--line);
+  border-radius:4px; padding:7px 10px; cursor:pointer;
+}
+.hud button:hover, .hud select:hover{border-color:var(--accent)}
+.bar{position:fixed; left:var(--nav); right:0; top:0; height:3px; background:transparent; z-index:40}
+.bar i{display:block; height:100%; width:0; background:var(--accent); transition:width .18s ease}
+
+/* ---------------- slides ---------------- */
+.deck{margin-left:var(--nav); scroll-snap-type:y mandatory; overflow-y:auto; height:100vh}
+.slide{
+  min-height:100vh; scroll-snap-align:start; scroll-snap-stop:always;
+  display:grid; align-content:center; padding:var(--pad);
+  background:var(--paper); color:var(--ink);
+  border-bottom:1px solid var(--line);
+}
+.slide.tone{background:var(--paper-2)}
+.slide.dark{background:var(--bg); color:var(--ink-d); border-bottom-color:var(--line-d)}
+.slide.fill{background:var(--accent); color:var(--ink-d); border-bottom-color:transparent}
+.wrap{width:100%; max-width:1400px; margin:0 auto; display:flex; flex-direction:column; gap:clamp(16px,2.2vh,32px)}
+
+.slide h2{font-family:var(--serif); font-size:clamp(1.7rem,3.3vw,3rem); letter-spacing:-.01em; max-width:26ch; text-wrap:balance}
+.slide.dark h2{color:var(--ink-d)}
+.eyebrow{font-size:.78rem; font-weight:600; letter-spacing:.06em; color:var(--accent)}
+.slide.dark .eyebrow, .slide.fill .eyebrow{color:var(--accent-d)}
+.slide.fill .eyebrow{color:var(--accent-soft-2)}
+.note{font-size:clamp(.95rem,1.25vw,1.22rem); line-height:1.5; max-width:72ch; text-wrap:pretty}
+.sub{font-size:clamp(.9rem,1.1vw,1.1rem); line-height:1.5; color:var(--ink-2); max-width:70ch; text-wrap:pretty}
+.slide.dark .sub{color:var(--ink-d2)}
+.foot{
+  display:flex; justify-content:space-between; font-size:.74rem; color:var(--ink-2);
+  border-top:1px solid var(--line); padding-top:12px; margin-top:4px;
+}
+.slide.dark .foot{color:var(--ink-d2); border-top-color:var(--line-d)}
+
+/* entrance: one staggered reveal per slide, on first view */
+/* Only hide content once JS has confirmed it can reveal it again: without
+   the .js class every slide renders plainly, so a script failure or a
+   viewer with JS off still gets the whole deck. */
+.js .anim{opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s cubic-bezier(.2,.7,.3,1)}
+.js .slide.seen .anim{opacity:1; transform:none}
+.js .slide.seen .anim:nth-child(2){transition-delay:.06s}
+.js .slide.seen .anim:nth-child(3){transition-delay:.12s}
+.js .slide.seen .anim:nth-child(4){transition-delay:.18s}
+.js .slide.seen .anim:nth-child(5){transition-delay:.24s}
+@media (prefers-reduced-motion:reduce){
+  .js .anim{opacity:1; transform:none; transition:none}
+}
+
+/* ---------------- components ---------------- */
+.cards{display:flex; gap:clamp(14px,1.6vw,30px); align-items:stretch; flex-wrap:wrap}
+.cards>*{flex:1 1 220px}
+.card{
+  background:var(--card); border:1px solid var(--line); border-radius:12px;
+  padding:clamp(18px,1.9vw,34px); display:flex; flex-direction:column; gap:12px;
+}
+.slide.dark .card{background:var(--bg-2); border-color:transparent}
+.card.key{border:2px solid var(--accent); background:var(--card)}
+.slide.dark .card.key{border-color:var(--accent-d); background:var(--bg-2)}
+.card.soft{background:var(--accent-soft); border-color:var(--accent-soft-2)}
+.card.ghost{background:transparent; border:2px dashed var(--line)}
+.card h3{font-size:clamp(1rem,1.45vw,1.42rem); font-weight:600; text-wrap:balance}
+.card p{font-size:clamp(.85rem,1.05vw,1.05rem); line-height:1.45; color:var(--ink-2); text-wrap:pretty}
+.slide.dark .card p{color:var(--ink-d2)}
+.card .big{font-family:var(--serif); font-size:clamp(1.7rem,2.6vw,2.7rem); line-height:1; color:var(--accent)}
+.slide.dark .card .big{color:var(--accent-d)}
+.card .th{font-size:clamp(.8rem,.95vw,.95rem); line-height:1.35; font-weight:600; color:var(--accent)}
+.slide.dark .card .th{color:var(--accent-d)}
+.card .q{font-family:var(--serif); font-size:clamp(1.2rem,1.9vw,1.9rem); line-height:1.1; color:var(--accent)}
+.slide.dark .card .q{color:var(--accent-d)}
+
+.grid{display:grid; gap:clamp(12px,1.3vw,22px)}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.g6{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+
+/* chain of steps with arrows */
+.chain{display:flex; align-items:stretch; gap:clamp(10px,1.1vw,18px); flex-wrap:wrap}
+.chain>.card{flex:1 1 200px}
+.chain>.arrow{
+  flex:0 0 auto; align-self:center; width:40px; height:2px; background:var(--accent); position:relative;
+}
+.slide.dark .chain>.arrow{background:var(--accent-d)}
+.chain>.arrow::after{
+  content:""; position:absolute; right:-1px; top:-4px;
+  border:5px solid transparent; border-left-color:var(--accent); border-right:0;
+}
+.slide.dark .chain>.arrow::after{border-left-color:var(--accent-d)}
+/* five cards plus four arrows need a narrower basis than the three-card
+   chains, or the last card wraps and its arrow points at nothing */
+.chain.tight{gap:clamp(6px,.8vw,12px)}
+.chain.tight>.card{flex:1 1 150px; padding:clamp(14px,1.3vw,22px); gap:9px}
+.chain.tight>.arrow{width:26px}
+.chain.tight .card h3{font-size:clamp(.92rem,1.2vw,1.18rem)}
+.chain.tight .card p{font-size:clamp(.78rem,.95vw,.95rem)}
+.chain.tight .card .th{font-size:clamp(.76rem,.88vw,.9rem)}
+@media (max-width:760px){ .chain>.arrow{display:none} }
+
+/* the 0-5 ladder */
+.bands{display:grid; grid-template-columns:1fr 1fr; gap:clamp(10px,1.1vw,18px); font-size:.8rem}
+.bands>div{padding-bottom:9px; border-bottom:1px solid var(--line-d); color:var(--ink-d2)}
+.bands>div b{color:var(--ink-d)}
+.bands>div.auth{border-bottom-color:var(--accent-d); border-left:3px solid var(--accent-d); padding-left:12px}
+.bands>div.auth, .bands>div.auth b{color:var(--accent-d)}
+.scale{display:grid; grid-template-columns:repeat(6,1fr); gap:clamp(8px,1.1vw,18px)}
+.step{background:var(--bg-2); border-radius:10px; padding:clamp(12px,1.2vw,20px); display:flex; flex-direction:column; gap:7px}
+.step.gate{border-left:4px solid var(--accent-d)}
+.step .lv{font-family:var(--serif); font-size:clamp(1.4rem,2.3vw,2.4rem); line-height:1; color:var(--ink-d2); font-weight:300}
+.step.az .lv{color:var(--accent-d)}
+.step .nm{font-size:clamp(.82rem,1vw,1rem); font-weight:600; color:var(--ink-d); min-height:2.4em}
+.step .dy{font-size:clamp(.72rem,.85vw,.86rem); font-style:italic; color:var(--ink-d2)}
+.step .is{font-size:clamp(.72rem,.85vw,.86rem); color:var(--ink-d2)}
+@media (max-width:860px){
+  .bands{grid-template-columns:1fr} .bands>div.auth{border-left:0; padding-left:0}
+  .scale{grid-template-columns:1fr}
+  .step{flex-direction:row; align-items:baseline; gap:14px; flex-wrap:wrap}
+  .step .lv{min-width:1.4em}
+  .step .nm{min-height:0}
+}
+
+/* record rows */
+.rec{background:var(--card); border:2px solid var(--accent); border-radius:12px; overflow:hidden}
+.rec>h3{background:var(--bg); color:var(--ink-d); font-size:.82rem; font-weight:600; padding:13px 24px}
+.rec>div{padding:2px 24px 14px}
+.rec .row{display:flex; gap:16px; border-bottom:1px solid var(--line); padding:10px 0; font-size:clamp(.8rem,.98vw,.98rem)}
+.rec .row:last-child{border-bottom:0}
+.rec .row b{flex:0 0 36%; font-weight:400; color:var(--ink-2)}
+.rec .row span{flex:1}
+.rec .row span.hi{color:var(--accent); font-weight:600}
+
+/* readiness / list rows */
+.rows{background:var(--card); border:2px solid var(--accent); border-radius:12px; overflow:hidden}
+.rows>h3{background:var(--accent); color:var(--ink-d); font-size:.82rem; font-weight:600; padding:13px 24px}
+.rows>div{padding:2px 24px 14px}
+.rows .row{display:flex; gap:18px; align-items:baseline; border-bottom:1px solid var(--line); padding:12px 0; font-size:clamp(.85rem,1.05vw,1.08rem)}
+.rows .row:last-child{border-bottom:0}
+.rows .row .nm{flex:1}
+.rows .row .lv{flex:0 0 110px; color:var(--ink-2)}
+.rows .row .st{flex:0 0 220px; font-weight:600; color:var(--accent)}
+.rows .row .st.warn{color:var(--caution)}
+@media (max-width:620px){ .rows .row{flex-wrap:wrap; gap:6px} .rows .row .lv,.rows .row .st{flex:0 0 auto} }
+
+/* table */
+.tbl{width:100%; border-collapse:collapse; font-size:clamp(.8rem,1.05vw,1.08rem)}
+.tbl th{background:var(--bg); color:var(--ink-d); text-align:left; font-weight:600; padding:12px 16px; font-size:.8rem}
+.tbl td{padding:12px 16px; border-bottom:1px solid var(--line); background:var(--card)}
+.tbl tr.miss td{background:var(--caution-soft)}
+.tbl .ok{color:var(--accent); font-weight:600; white-space:nowrap}
+.tbl .no{color:var(--caution); font-weight:600; white-space:nowrap}
+
+/* profile matrix */
+.mtx{display:grid; grid-template-columns:minmax(150px,1.5fr) repeat(5,1fr); gap:7px; font-size:clamp(.72rem,.92vw,.95rem)}
+.mtx .hd{color:var(--ink-2); text-align:center; padding-bottom:4px; font-size:.76rem}
+.mtx .hd.l{text-align:left; font-weight:600}
+.mtx .dom{font-weight:600; align-self:center; padding:8px 0}
+.mtx .cell{background:var(--paper-2); border-radius:6px; min-height:34px}
+.slide.tone .mtx .cell{background:#0000000f}
+.mtx .cell.past{background:var(--accent-soft-2)}
+.mtx .cell.at{
+  background:var(--accent); color:var(--ink-d); display:grid; place-content:center;
+  font-weight:600; padding:8px 4px; text-align:center; font-size:.8rem;
+}
+@media (max-width:760px){
+  .mtx{grid-template-columns:1fr; gap:4px}
+  .mtx .hd{display:none}
+  .mtx .cell:not(.at){display:none}
+  .mtx .cell.at{justify-content:start; text-align:left; padding:8px 12px}
+}
+
+/* bands */
+.band{border-left:4px solid var(--accent); background:var(--card); padding:clamp(16px,1.7vw,28px); display:flex; flex-direction:column; gap:10px}
+.slide.dark .band{background:var(--bg-2)}
+.band h3{font-size:clamp(.95rem,1.3vw,1.3rem); font-weight:600; color:var(--accent); text-wrap:balance}
+.slide.dark .band h3{color:var(--accent-d)}
+.band p{font-size:clamp(.88rem,1.1vw,1.1rem); line-height:1.5; text-wrap:pretty}
+.band.warn{border-left-color:var(--caution)}
+.band.warn h3{color:var(--caution)}
+.slide.dark .band.warn h3{color:var(--caution-d)}
+.rule{border-top:3px solid var(--accent); padding-top:clamp(14px,1.6vw,26px)}
+.slide.dark .rule{border-top-color:var(--accent-d)}
+.rule p{font-family:var(--serif); font-size:clamp(1.1rem,1.8vw,1.75rem); line-height:1.32; max-width:46ch; text-wrap:balance}
+
+/* statement slide */
+.statement{font-family:var(--serif); font-size:clamp(1.6rem,3.6vw,3.3rem); line-height:1.16; max-width:20ch; text-wrap:balance}
+.statement.wide{max-width:32ch}
+.statement3 .statement{font-size:clamp(1.4rem,2.3vw,2.2rem); max-width:16ch; min-height:3.48em}
+.hr{width:120px; height:3px; background:var(--accent-soft-2); border:0}
+
+/* cover */
+.tiles{display:flex; gap:clamp(14px,2vw,34px); flex-wrap:wrap}
+.tiles>div{flex:1 1 130px; border-top:1px solid var(--line-d); padding-top:16px}
+.tiles .v{font-family:var(--serif); font-size:clamp(1.6rem,3vw,2.8rem); line-height:1; color:var(--ink-d)}
+.tiles .k{font-size:.78rem; color:var(--ink-d2); margin-top:5px}
+
+/* in / out lists */
+.lists li{font-size:clamp(.85rem,1.05vw,1.08rem); line-height:1.5; margin-bottom:7px}
+.lists{padding-left:22px}
+
+/* notes */
+.notes{
+  display:none; margin-top:10px; border-top:1px dashed var(--line); padding-top:12px;
+  font-size:.82rem; line-height:1.55; color:var(--ink-2); max-width:86ch;
+}
+.slide.dark .notes{border-top-color:var(--line-d); color:var(--ink-d2)}
+body.shownotes .notes{display:block}
+
+/* Everything above scales with viewport WIDTH. On a short screen (a 1280x800
+   laptop, a 16:10 projector) that leaves slides taller than the viewport, so
+   the scale steps down with HEIGHT too. */
+@media (max-height:880px){
+  :root{--pad:clamp(20px,3vw,60px)}
+  .wrap{gap:clamp(12px,1.8vh,24px)}
+  .slide h2{font-size:clamp(1.5rem,2.7vw,2.3rem)}
+  .card{padding:clamp(14px,1.5vw,26px)}
+  .band{padding:clamp(13px,1.4vw,22px)}
+  .rule{padding-top:clamp(10px,1.2vw,18px)}
+}
+@media (max-height:780px){
+  :root{--pad:clamp(16px,2.4vw,44px)}
+  .wrap{gap:clamp(10px,1.4vh,18px)}
+  .slide h2{font-size:clamp(1.35rem,2.3vw,1.95rem)}
+  .card{padding:clamp(12px,1.3vw,20px); gap:8px}
+  .card h3{font-size:clamp(.92rem,1.2vw,1.15rem)}
+  .card p{font-size:clamp(.8rem,.95vw,.95rem)}
+  .note{font-size:clamp(.85rem,1.05vw,1.02rem)}
+  .band{padding:clamp(11px,1.2vw,18px)}
+  .band p{font-size:clamp(.82rem,1vw,1rem)}
+  .mtx .cell{min-height:28px}
+  .tbl th,.tbl td{padding:8px 14px}
+  .rows .row{padding:8px 0}
+  .rec .row{padding:7px 0}
+  .lists li{margin-bottom:4px}
+  .tiles>div{padding-top:12px}
+}
+
+/* Print / PDF export: one 16:9 slide per page (13.333in x 7.5in, the
+   widescreen slide size). The narrow-screen rules further down must be
+   re-overridden here: the print layout viewport is narrow enough to match
+   them, which would otherwise stack the ladder and the profile matrix. */
+@media print{
+  @page{size:13.333in 7.5in; margin:0}
+  html,body{background:#fff}
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+  .nav,.hud,.bar{display:none !important}
+  .deck{margin-left:0 !important; height:auto; overflow:visible; scroll-snap-type:none}
+  .slide{
+    width:13.333in; height:7.5in; min-height:0; overflow:hidden;
+    padding:.40in .52in; border-bottom:0;
+    break-after:page; page-break-after:always;
+  }
+  .slide:last-child{break-after:auto; page-break-after:auto}
+  .js .anim{opacity:1 !important; transform:none !important; transition:none !important}
+  .notes{display:none !important}
+  .wrap{max-width:none; gap:.13in}
+
+  /* force the wide layout back on */
+  .bands{grid-template-columns:1fr 1fr !important}
+  .bands>div.auth{border-left:3px solid var(--accent-d) !important; padding-left:12px !important}
+  .scale{grid-template-columns:repeat(6,1fr) !important}
+  .step{flex-direction:column !important; align-items:stretch !important; gap:6px}
+  .step .nm{min-height:2.4em !important}
+  .mtx{grid-template-columns:minmax(130px,1.4fr) repeat(5,1fr) !important}
+  .mtx .hd{display:block !important}
+  .mtx .cell{display:block !important; min-height:26px}
+  .mtx .cell.at{display:grid !important; justify-content:center; text-align:center}
+  .chain>.arrow{display:block !important}
+  .rows .row{flex-wrap:nowrap !important}
+  .cards>*{flex:1 1 0}
+
+  /* explicit print type scale, so nothing depends on a vw/vh clamp */
+  .slide h2{font-size:30pt}
+  .slide #s1 h1{font-size:46pt}
+  .note{font-size:11pt}
+  .sub{font-size:10.5pt}
+  .eyebrow{font-size:8.5pt}
+  .card h3,.band h3{font-size:12pt}
+  .card p,.band p,.lists li{font-size:9.5pt}
+  .card .big{font-size:20pt}
+  .card .q{font-size:16pt}
+  .card .th{font-size:9pt}
+  .step .lv{font-size:19pt}
+  .step .nm{font-size:10pt}
+  .step .dy,.step .is{font-size:8.5pt}
+  .bands{font-size:8.5pt}
+  .statement{font-size:24pt}
+  .statement3 .statement{font-size:17pt}
+  .rule p{font-size:15pt}
+  .tbl{font-size:9.5pt}
+  .tbl th{font-size:8.5pt}
+  .rec .row,.rows .row{font-size:9.5pt}
+  .mtx{font-size:8.5pt}
+  .foot{font-size:8pt}
+  .tiles .v{font-size:22pt}
+  .tiles .k{font-size:8.5pt}
+}
+
+@media (max-width:900px){
+  :root{--nav:0px}
+  .nav{
+    position:static; width:auto; inset:auto; height:auto;
+    border-right:0; border-bottom:1px solid var(--line-d); padding:18px 16px;
+  }
+  .nav .navlist{display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:0 14px}
+  /* headers span every column, or their items flow into the next one
+     and the reading order scrambles */
+  .nav .nav-act{grid-column:1 / -1; margin:16px 0 6px}
+  .nav .nav-act:first-of-type{margin-top:4px}
+  .deck{margin-left:0; height:auto; scroll-snap-type:none; overflow:visible}
+  .slide{min-height:auto; padding:40px 16px 48px}
+  .bar{left:0}
+  .hud{right:10px; bottom:10px}
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.className+=' js';</script>
+<div class="bar"><i id="bar"></i></div>
+
+<nav class="nav" aria-label="Contents">
+  <p class="nav-mast"><b>Competence, Measured</b>Personnel competency management in the security laboratory. A briefing.</p>
+  <div class="navlist" id="navlist"></div>
+</nav>
+
+<div class="hud">
+  <select id="theme" aria-label="Colour theme">
+    <option value="slate">Slate</option>
+    <option value="graphite">Graphite</option>
+    <option value="oxide">Oxide</option>
+  </select>
+  <button id="notes" type="button">Notes</button>
+</div>
+
+<main class="deck" id="deck">
+
+<section class="slide dark" id="s1" data-act="Overview" data-title="Cover">
+<div class="wrap">
+  <p class="eyebrow anim">Personnel competency management in the security laboratory</p>
+  <div class="anim">
+    <h1 style="font-family:var(--serif);font-size:clamp(2.4rem,6vw,5rem);letter-spacing:-.025em;line-height:1.02">Competence,<br>Measured</h1>
+  </div>
+  <p class="note anim" style="color:var(--ink-d2);max-width:40ch;font-size:clamp(1rem,1.6vw,1.5rem);text-wrap:balance">How the laboratory decides who can be put on which work, and what that confidence actually rests on.</p>
+  <div class="tiles anim">
+    <div><p class="v">278</p><p class="k">assessable skills</p></div>
+    <div><p class="v">12</p><p class="k">technical domains</p></div>
+    <div><p class="v">11</p><p class="k">career ladders</p></div>
+    <div><p class="v">17</p><p class="k">lab services</p></div>
+    <div><p class="v">140</p><p class="k">standards cited</p></div>
+  </div>
+  <div class="foot anim"><span>A briefing</span></div>
+  <p class="notes">Every figure in the case study is illustrative; no personnel data appears anywhere. Five parts: what the system is, what we want it to achieve, the methodology and the reasoning behind it, a worked example, and what it deliberately does not do.</p>
+</div>
+</section>
+
+<section class="slide" id="s2" data-act="Overview" data-title="What the system is">
+<div class="wrap">
+  <h2 class="anim">What the system is</h2>
+  <div class="chain anim">
+    <div class="card"><p class="eyebrow">1</p><h3>The taxonomy</h3><p>278 named activities the laboratory can be asked to perform, each with written criteria at six levels of proficiency.</p></div>
+    <div class="arrow"></div>
+    <div class="card"><p class="eyebrow">2</p><h3>The record</h3><p>One dated, attributable assessment per person per activity, holding the evidence it rests on and the authorization it carries.</p></div>
+    <div class="arrow"></div>
+    <div class="card key"><p class="eyebrow">3</p><h3>The decisions</h3><p>Who can staff a job, what each person needs next, and which services rest on a single qualified person.</p></div>
+  </div>
+  <p class="note anim">The first two stages are discipline. The third is the one the laboratory actually opens every week.</p>
+  <div class="foot anim"><span>Overview</span><span>2</span></div>
+  <p class="notes">The taxonomy is reference data, versioned in the repository as JSON. We are not an accredited laboratory; we align the method with ISO/IEC 17025 because it is the established approach. The record is runtime data about people. The decisions are the reports: gap analysis, service readiness, project staffing.</p>
+</div>
+</section>
+
+<section class="slide fill statement3" id="s3" data-act="Overview" data-title="Three questions">
+<div class="wrap">
+  <p class="eyebrow anim">Three questions, answered from one record</p>
+  <div class="grid anim" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(24px,2.6vw,44px)">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <p class="statement">Who can we put on this work?</p>
+      <hr class="hr">
+      <p class="note" style="color:var(--accent-soft-2)">Asked every time an engagement lands, and again whenever somebody is unavailable. It has to be answerable before the work is promised, not after.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <p class="statement">What makes us confident they can?</p>
+      <hr class="hr">
+      <p class="note" style="color:var(--accent-soft-2)">Asked by clients, by partners who rely on our results, and by us. A job title is not an answer; a dated assessment against written criteria is.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <p class="statement">Where does this person go next?</p>
+      <hr class="hr">
+      <p class="note" style="color:var(--accent-soft-2)">Asked at every review, and by the person themselves. The answer should be a named set of skills and a date, not an adjective.</p>
+    </div>
+  </div>
+  <p class="notes" style="color:var(--accent-soft-2)">The laboratory is not accredited and this is not a compliance exercise. We align our competence method with ISO/IEC 17025 because it is the established answer to the second question, and holding ourselves to it makes the other two answerable too. The third is the one people in the lab care about most, and the one a job title answers worst.</p>
+</div>
+</section>
+
+<section class="slide" id="s4" data-act="What we want to achieve" data-title="What we want it to achieve">
+<div class="wrap">
+  <h2 class="anim">What we want it to achieve</h2>
+  <div class="cards anim">
+    <div class="card key"><h3>Staff projects</h3><p>Every service we sell lists the skills it needs at the levels it needs them. Matching that against assessed people tells us who can take a job, and where only one person could.</p></div>
+    <div class="card"><h3>Stand behind results</h3><p>A dated, attributable assessment for each activity, with the evidence it rests on. Our method follows ISO/IEC 17025, the standard for competence in testing laboratories.</p></div>
+    <div class="card"><h3>Give people direction</h3><p>A distance to the next tier computed in named skills, so development is planned against evidence rather than negotiated in adjectives.</p></div>
+  </div>
+  <p class="note anim">Staffing is first deliberately. It is the use that pays for the effort of keeping the records honest, and the one that would collapse first if they went stale.</p>
+  <div class="foot anim"><span>What we want to achieve</span><span>4</span></div>
+  <p class="notes">We are not an accredited laboratory. We align with ISO/IEC 17025 because it is the established approach for this kind of work, not because an external body requires it. That distinction matters: alignment is a choice we can defend on its merits.</p>
+</div>
+</section>
+
+<section class="slide tone" id="s5" data-act="What we want to achieve" data-title="Activities, not job titles">
+<div class="wrap">
+  <h2 class="anim">Competence attaches to activities, not job titles</h2>
+  <div class="grid anim" style="grid-template-columns:minmax(260px,2fr) minmax(320px,3fr);gap:clamp(18px,2.4vw,46px)">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <p class="eyebrow" style="color:var(--ink-2)">A job title says</p>
+      <div class="card ghost"><p style="font-family:var(--serif);font-size:clamp(1.3rem,2.2vw,2.1rem);color:var(--ink-2)">Senior Analyst</p><p>An average of many different competences. It cannot tell you which work this person can take.</p></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <p class="eyebrow">One record says</p>
+      <div class="rec">
+        <h3>Illustrative competence record</h3>
+        <div>
+          <div class="row"><b>Skill</b><span>Differential power analysis</span></div>
+          <div class="row"><b>Level</b><span class="hi">3, independent practice</span></div>
+          <div class="row"><b>Assessed</b><span>4 March 2026, by a named evaluator</span></div>
+          <div class="row"><b>Evidence</b><span>Three engagements, reports reviewed</span></div>
+          <div class="row"><b>Authorization</b><span class="hi">Granted, unsupervised work</span></div>
+          <div class="row"><b>Last practiced</b><span>11 September 2026</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="note anim">There are 278 such activities. A person holds a separate dated record for each one they have been assessed on, and that is what the staffing and development reports read.</p>
+  <div class="foot anim"><span>What we want to achieve</span><span>5</span></div>
+  <p class="notes">The date fields are the ones people forget. Competence is a claim about a point in time. Last practiced is captured separately from assessed, because a level 4 last exercised three years ago is a different fact from one exercised last month.</p>
+</div>
+</section>
+
+<section class="slide" id="s6" data-act="What we want to achieve" data-title="How a job gets staffed">
+<div class="wrap">
+  <h2 class="anim">How a job gets staffed</h2>
+  <div class="chain anim">
+    <div class="card"><h3>1. The service</h3><p>Each of the 17 services lists the competencies it needs and the minimum level for each. Hardware Security Evaluation names 20; a red team engagement names 38.</p></div>
+    <div class="arrow"></div>
+    <div class="card"><h3>2. The project</h3><p>A project opens as a copy of that template, then is tailored to the real engagement: requirements added, dropped, or set to a different level.</p></div>
+    <div class="arrow"></div>
+    <div class="card"><h3>3. The match</h3><p>Every requirement is checked against each person's assessed levels across all domains. Self-assessments are never counted here.</p></div>
+  </div>
+  <div class="rows anim">
+    <h3>Service readiness, Hardware Security Evaluation</h3>
+    <div>
+      <div class="row"><span class="nm">Firmware extraction</span><span class="lv">level 3</span><span class="st">4 people qualify</span></div>
+      <div class="row"><span class="nm">Laser fault injection</span><span class="lv">level 2</span><span class="st warn">1 person qualifies</span></div>
+      <div class="row"><span class="nm">Active sample preparation</span><span class="lv">level 2</span><span class="st warn">nobody qualifies</span></div>
+    </div>
+  </div>
+  <p class="note anim">The uncomfortable lines are the valuable ones. A requirement only one person meets is a sales risk, a holiday problem and a succession problem at once, and it is visible here before it becomes an emergency.</p>
+  <div class="foot anim"><span>What we want to achieve</span><span>6</span></div>
+  <p class="notes">Illustrative counts. The match reads skills across every domain, not just the one the service sits in, so a hardware job needing cryptography depth finds it. When a project closes, the work done on it can feed back as evidence towards assessments.</p>
+</div>
+</section>
+
+<section class="slide dark" id="s7" data-act="Methodology" data-title="The 0-5 ladder">
+<div class="wrap">
+  <h2 class="anim">One ladder, two established scales</h2>
+  <div class="anim" style="display:flex;flex-direction:column;gap:12px">
+    <div class="bands">
+      <div><b>Levels 0 to 2, learning.</b> Output is reviewed before it leaves the laboratory.</div>
+      <div class="auth"><b>Levels 3 to 5, authorized.</b> Work carries the laboratory's name.</div>
+    </div>
+    <div class="scale">
+      <div class="step"><p class="lv">0</p><p class="nm">None</p><p class="dy">No stage</p><p class="is">Not applicable</p></div>
+      <div class="step"><p class="lv">1</p><p class="nm">Awareness</p><p class="dy">Novice</p><p class="is">Under training</p></div>
+      <div class="step"><p class="lv">2</p><p class="nm">Guided practice</p><p class="dy">Advanced beginner</p><p class="is">Supervised</p></div>
+      <div class="step az gate"><p class="lv">3</p><p class="nm">Independent practice</p><p class="dy">Competent</p><p class="is">Authorized</p></div>
+      <div class="step az"><p class="lv">4</p><p class="nm">Advanced, mentor</p><p class="dy">Proficient</p><p class="is">Authorized, complex</p></div>
+      <div class="step az"><p class="lv">5</p><p class="nm">Expert, authority</p><p class="dy">Expert</p><p class="is">Technical authority</p></div>
+    </div>
+  </div>
+  <p class="note anim">The italic words are stages from the Dreyfus model, which describes how skill actually develops. The lines under them are authorization states from ISO 17025, which describe what the laboratory may permit. Stacking the two is the design decision.</p>
+  <div class="foot anim"><span>Methodology</span><span>7</span></div>
+  <p class="notes">Dreyfus and Dreyfus, 1980, UC Berkeley. Five stages of directed skill acquisition; the stages differ in kind, not degree. A novice follows rules, an expert reads situations and is often poor at explaining what they just did. Every one of the 278 skills is scored on this same ladder.</p>
+</div>
+</section>
+
+<section class="slide" id="s8" data-act="Methodology" data-title="The authorization step">
+<div class="wrap">
+  <h2 class="anim">Everything turns on the step from 2 to 3</h2>
+  <div class="cards anim">
+    <div class="card"><h3 style="color:var(--ink-2)">At level 2, supervised</h3><p>Everything the person produces is reviewed by an authorized colleague before it reaches a client. Their name does not carry the result.</p></div>
+    <div class="card key"><h3 style="color:var(--accent)">At level 3, authorized</h3><p style="color:var(--ink)">They plan, perform and sign off routine work alone. Nothing stands between their judgement and the client.</p></div>
+  </div>
+  <div class="anim" style="display:flex;flex-direction:column;gap:12px">
+    <p class="eyebrow">What has to happen in between, in this order</p>
+    <div class="chain">
+      <div class="card soft"><p style="font-size:clamp(.88rem,1.1vw,1.1rem);line-height:1.4;color:var(--ink)">Supervised work on real engagements</p></div>
+      <div class="arrow"></div>
+      <div class="card soft"><p style="font-size:clamp(.88rem,1.1vw,1.1rem);line-height:1.4;color:var(--ink)">A passed proficiency assessment</p></div>
+      <div class="arrow"></div>
+      <div class="card soft"><p style="font-size:clamp(.88rem,1.1vw,1.1rem);line-height:1.4;color:var(--ink)">An explicit management authorization</p></div>
+    </div>
+  </div>
+  <p class="note anim">Training alone never closes this gap. Expect most of the laboratory's development effort, and most of its frustration, to sit at exactly this boundary.</p>
+  <div class="foot anim"><span>Methodology</span><span>8</span></div>
+  <p class="notes">ISO/IEC 17025 Clause 6.2.5(e) is where the third step comes from, and we follow it although we are not accredited. Authorization is a deliberate act, not an automatic consequence of crossing a threshold. The software computes; it never promotes.</p>
+</div>
+</section>
+
+<section class="slide tone" id="s9" data-act="Methodology" data-title="Criteria written in advance">
+<div class="wrap">
+  <h2 class="anim">The criteria are written before the assessment</h2>
+  <div class="grid anim" style="grid-template-columns:minmax(300px,3fr) minmax(260px,2fr);gap:clamp(18px,2.4vw,46px)">
+    <div class="rec" style="border-color:var(--line);border-width:1px">
+      <h3>Differential power analysis, criteria at level 3</h3>
+      <div><ul class="lists" style="padding:12px 0 6px 22px">
+        <li>Designs trace acquisition campaigns (trigger setup, trace count estimation, sampling parameters)</li>
+        <li>Applies appropriate leakage models (HW, HD, identity) and selects optimal attack points</li>
+        <li>Recovers full AES keys from unprotected and lightly protected implementations independently</li>
+        <li>Evaluates attack results using key rank estimation and success metrics</li>
+        <li>Produced DPA/CPA reports on 3+ real engagements meeting lab standards</li>
+      </ul></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <p class="eyebrow">Four ways to establish a level</p>
+      <div class="grid" style="grid-template-columns:repeat(2,1fr);gap:12px">
+        <div class="card" style="padding:16px"><p style="font-size:.82rem;font-weight:600;color:var(--ink)">Controlled exercise</p><p class="big">252</p><p style="font-size:.78rem">skills</p></div>
+        <div class="card" style="padding:16px"><p style="font-size:.82rem;font-weight:600;color:var(--ink)">Work-product review</p><p class="big">179</p><p style="font-size:.78rem">skills</p></div>
+        <div class="card" style="padding:16px"><p style="font-size:.82rem;font-weight:600;color:var(--ink)">Problem solving</p><p class="big">85</p><p style="font-size:.78rem">skills</p></div>
+        <div class="card" style="padding:16px"><p style="font-size:.82rem;font-weight:600;color:var(--ink)">Direct observation</p><p class="big">46</p><p style="font-size:.78rem">skills</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="band anim"><h3>Self-assessment is heard, not counted</h3><p>People rate themselves against these same written criteria. Those ratings sit beside the official level with the difference marked, and are excluded from every calculation until a manager ratifies one.</p></div>
+  <p class="note anim">The assessor checks against a standard that already exists, so their judgement is bounded by a document they did not write that day.</p>
+  <div class="foot anim"><span>Methodology</span><span>9</span></div>
+  <p class="notes">A person may state their own view of their competence but not ratify it, because ratifying is what makes the number binding. What matters about the criteria is their shape: specific, observable, countable, fixed in advance. The criteria live in the taxonomy as a controlled document, so changing them is itself logged.</p>
+</div>
+</section>
+
+<section class="slide dark" id="s10" data-act="Methodology" data-title="The standards we track">
+<div class="wrap">
+  <h2 class="anim">The standards we track</h2>
+  <p class="sub anim" style="max-width:76ch">Every one of the 278 skills carries a mapping to the NICE Framework, and most carry several more. These are twelve of the frameworks our skills map to, with the number of skills citing each.</p>
+  <div class="grid g6 anim">
+    <div class="card" style="padding:16px"><p class="big">278</p><p style="font-size:.8rem">NICE Framework</p></div>
+    <div class="card" style="padding:16px"><p class="big">117</p><p style="font-size:.8rem">MITRE ATT&amp;CK</p></div>
+    <div class="card" style="padding:16px"><p class="big">44</p><p style="font-size:.8rem">SFIA</p></div>
+    <div class="card" style="padding:16px"><p class="big">41</p><p style="font-size:.8rem">CWE</p></div>
+    <div class="card" style="padding:16px"><p class="big">36</p><p style="font-size:.8rem">Common Criteria</p></div>
+    <div class="card" style="padding:16px"><p class="big">28</p><p style="font-size:.8rem">GIAC</p></div>
+    <div class="card" style="padding:16px"><p class="big">24</p><p style="font-size:.8rem">CREST</p></div>
+    <div class="card" style="padding:16px"><p class="big">25</p><p style="font-size:.8rem">CIS Benchmarks</p></div>
+    <div class="card" style="padding:16px"><p class="big">23</p><p style="font-size:.8rem">OWASP</p></div>
+    <div class="card" style="padding:16px"><p class="big">21</p><p style="font-size:.8rem">CSA CCM</p></div>
+    <div class="card" style="padding:16px"><p class="big">16</p><p style="font-size:.8rem">JIL attack potential</p></div>
+    <div class="card" style="padding:16px"><p class="big">15</p><p style="font-size:.8rem">FIPS 140-3</p></div>
+  </div>
+  <div class="rule anim"><p style="font-family:var(--sans);font-size:clamp(.88rem,1.1vw,1.1rem);line-height:1.5;max-width:92ch"><b>140 standards cited in all</b>, across ten groups: Common Criteria and FIPS 140-3, the NIST SP 800 series and the post-quantum FIPS 203 to 205, IEC 62443, ISO/SAE 21434 and UNECE R155, ETSI EN 303 645, and the OWASP Top 10s for ML, LLM and agentic systems. The citation counts are generated from the records, and the generator fails if any standard is cited by nothing, so an unused standard cannot sit in the list unnoticed.</p></div>
+  <div class="foot anim"><span>Methodology</span><span>10</span></div>
+  <p class="notes">NICE and SFIA are the translation layer: they let us write a job advertisement, answer a tender, or show a partner that our vocabulary connects to a recognised one. No skills framework &mdash; NICE, SFIA or ECSF &mdash; covers hardware security, which is why that part of the taxonomy was synthesized from CHES and COSADE literature, Common Criteria methodology, FIPS 140-3 and EMVCo.</p>
+</div>
+</section>
+
+<section class="slide" id="s11" data-act="Methodology" data-title="Profiles set direction">
+<div class="wrap">
+  <h2 class="anim">A profile sets direction. It does not describe a person</h2>
+  <div class="grid g2 anim">
+    <div class="band"><h3>What a profile is</h3><p>A ladder for one domain, with five tiers and the thresholds for each. Eleven exist. It answers one question: inside this domain, what comes next?</p></div>
+    <div class="band"><h3>Why one is never enough</h3><p>People accumulate skills across domains. Reading a single profile alone makes somebody look narrower than they are, and hides the cross-domain depth real engagements need.</p></div>
+  </div>
+  <div class="mtx anim">
+    <p class="hd l">One person, five domains</p>
+    <p class="hd">Junior</p><p class="hd">Practitioner</p><p class="hd">Senior</p><p class="hd">Lead</p><p class="hd">Principal</p>
+    <p class="dom">Hardware Security</p>
+    <div class="cell past"></div><div class="cell past"></div><div class="cell at">Senior</div><div class="cell"></div><div class="cell"></div>
+    <p class="dom">Cryptography</p>
+    <div class="cell past"></div><div class="cell at">Practitioner</div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+    <p class="dom">Software Security</p>
+    <div class="cell past"></div><div class="cell at">Practitioner</div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+    <p class="dom">Network Security</p>
+    <div class="cell at">Junior</div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+    <p class="dom">Digital Forensics</p>
+    <div class="cell at">Junior</div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+  </div>
+  <p class="note anim">The person above is a senior hardware evaluator. They are also a working cryptographer and a competent software reviewer, and the staffing reports read all five rows. Only development conversations narrow to one.</p>
+  <div class="foot anim"><span>Methodology</span><span>11</span></div>
+  <p class="notes">Illustrative. The rule: use a profile to answer "what should this person work on next", and the whole set of rows to answer "what can this person be put on". Confusing the two is the most common way to misread somebody. Foundations sits underneath all eleven and is not shown, because everybody is measured on it regardless of specialism.</p>
+</div>
+</section>
+
+<section class="slide dark" id="s12" data-act="Methodology" data-title="A tier asks four questions">
+<div class="wrap">
+  <h2 class="anim">A tier asks four questions</h2>
+  <div class="cards anim">
+    <div class="card"><p class="q">Deep enough?</p><p>Enough skills in this domain, held at a high enough level.</p></div>
+    <div class="card"><p class="q">Broad enough?</p><p>Spread across enough areas of the domain, not all in one corner.</p></div>
+    <div class="card"><p class="q">Basics solid?</p><p>Report writing, evidence handling, ethics and the rest of the foundations.</p></div>
+    <div class="card"><p class="q">Must-haves?</p><p>The few named skills that tier requires, with no substitutions.</p></div>
+  </div>
+  <div class="rule anim"><p>Four yes, and that is your tier. One no, and the report names which one.</p></div>
+  <p class="note anim" style="color:var(--ink-d2)">Nothing is scored or weighted, so being exceptional at one thing cannot buy out a gap somewhere else. That matters when the gap is report writing, because the report is what the client actually receives.</p>
+  <div class="foot anim"><span>Methodology</span><span>12</span></div>
+  <p class="notes">The exact arithmetic, if asked: depth is checked at two levels at once, for example sixteen skills at level 3 and seven at level 4. Breadth counts categories where a skill is held at level 2 or above. The foundations check is an average across all eleven foundation skills, unassessed ones counting as zero.</p>
+</div>
+</section>
+
+<section class="slide" id="s13" data-act="Methodology" data-title="Five tiers, one direction">
+<div class="wrap">
+  <h2 class="anim">Five tiers, one direction</h2>
+  <div class="chain tight anim">
+    <div class="card"><h3>Junior</h3><p>Assists. Work is checked before it leaves the lab.</p><p class="th">9 at level 1<br>5 at level 2</p></div>
+    <div class="arrow"></div>
+    <div class="card"><h3>Practitioner</h3><p>Plans and signs off routine work alone.</p><p class="th">13 at level 2<br>7 at level 3</p></div>
+    <div class="arrow"></div>
+    <div class="card"><h3>Senior</h3><p>Takes complex work and reviews other people's reports.</p><p class="th">16 at level 3<br>7 at level 4</p></div>
+    <div class="arrow"></div>
+    <div class="card key"><h3>Lead</h3><p>Owns the methodology and plans the technical approach across engagements.</p><p class="th">18 at level 3<br>9 at level 4</p></div>
+    <div class="arrow"></div>
+    <div class="card key"><h3>Principal</h3><p>Technical authority. Defines direction and publishes.</p><p class="th">18 at level 4<br>7 at level 5</p></div>
+  </div>
+  <div class="band anim"><h3>Lead and Principal are both technical tiers</h3><p>Each requires technical project management and client communication at level 3, because running an evaluation and briefing a client are part of the technical work. Principal extends Lead rather than branching from it: the same requirements, with more depth behind them.</p></div>
+  <p class="note anim">The figures are hardware security. Counts scale with domain size, so a 14-skill domain asks for 7 where a 49-skill one asks for 23, but the shape never changes: Principal repeats Lead's count and Senior's count, each one level higher. Advancing is mostly the same skills deepening, not more skills.</p>
+  <div class="foot anim"><span>Methodology</span><span>13</span></div>
+  <p class="notes">Every tier is reached by assessed capability rather than by appointment. Every Principal threshold already implies the matching Lead threshold, so nobody reaches the fifth tier without having passed through the fourth.</p>
+</div>
+</section>
+
+<section class="slide tone" id="s14" data-act="Case study" data-title="A worked example">
+<div class="wrap">
+  <div class="anim" style="display:flex;flex-direction:column;gap:10px">
+    <h2>A worked example</h2>
+    <p class="sub">An illustrative evaluator is considered for Senior Hardware Security Evaluator. They are strong, and they do not get it.</p>
+  </div>
+  <table class="tbl anim">
+    <thead><tr><th style="width:46%">Gate</th><th style="width:16%">Required</th><th style="width:16%">Held</th><th style="width:22%">Result</th></tr></thead>
+    <tbody>
+      <tr><td>Hardware skills at level 3 or above</td><td>16</td><td>17</td><td class="ok">Met</td></tr>
+      <tr class="miss"><td>Hardware skills at level 4 or above</td><td>7</td><td>5</td><td class="no">Short by 2</td></tr>
+      <tr><td>Categories held at level 2 or above</td><td>4</td><td>5</td><td class="ok">Met</td></tr>
+      <tr><td>Foundations average</td><td>1.50</td><td>1.64</td><td class="ok">Met</td></tr>
+      <tr><td>Report writing, pinned</td><td>4</td><td>4</td><td class="ok">Met</td></tr>
+      <tr><td>Quality assurance, pinned</td><td>3</td><td>3</td><td class="ok">Met</td></tr>
+      <tr><td>Standards knowledge, pinned</td><td>3</td><td>4</td><td class="ok">Met</td></tr>
+    </tbody>
+  </table>
+  <p class="note anim">Six gates of seven are met. The person remains a Hardware Security Evaluator, and the system states exactly why: two more hardware skills need to reach level 4.</p>
+  <div class="foot anim"><span>Case study</span><span>14</span></div>
+  <p class="notes">No real personnel data appears here. One failing gate is enough, and that is the point of the design rather than a flaw in it. Somebody who is a clear 17 against a required 16 on depth still does not advance, because the second depth count is what distinguishes a broad practitioner from a senior one.</p>
+</div>
+</section>
+
+<section class="slide" id="s15" data-act="Case study" data-title="What the gap becomes">
+<div class="wrap">
+  <h2 class="anim">What the gap becomes</h2>
+  <div class="chain anim">
+    <div class="card"><h3>Gap computed</h3><p>Two hardware skills must reach level 4. The system names which are closest.</p></div>
+    <div class="arrow"></div>
+    <div class="card key"><h3>Plan agreed</h3><p>Current level, target level, a target date and the actions.</p></div>
+    <div class="arrow"></div>
+    <div class="card"><h3>Evidence produced</h3><p>Engagements chosen to generate what the written criteria ask for.</p></div>
+    <div class="arrow"></div>
+    <div class="card"><h3>Re-assessed</h3><p>Against the same criteria, by a named assessor, on a new date.</p></div>
+  </div>
+  <div class="band anim"><h3>A loop, not a yearly event</h3><p>When a project closes, the work done on it feeds back as evidence towards assessments. That is what keeps the records current instead of letting them rot between review cycles.</p></div>
+  <p class="note anim">Because the actions trace back to written criteria, "get better at side-channel analysis" becomes "second-chair two acquisition campaigns before the end of Q3".</p>
+  <div class="foot anim"><span>Case study</span><span>15</span></div>
+  <p class="notes">Without this loop a competency system is accurate on the day it is populated and wrong six months later. The development plan records current level, target level, target date and agreed actions.</p>
+</div>
+</section>
+
+<section class="slide dark" id="s16" data-act="Limitations" data-title="What it does not measure">
+<div class="wrap">
+  <h2 class="anim">What the system does not measure</h2>
+  <div class="grid g2 anim">
+    <div class="band"><h3>What it does measure</h3><ul class="lists">
+      <li>Assessed capability, per named activity</li>
+      <li>Breadth and depth within one domain</li>
+      <li>Whether authorization was granted, by whom, and on what date</li>
+    </ul></div>
+    <div class="band warn"><h3>What it does not</h3><ul class="lists" style="color:var(--ink-d2)">
+      <li>How good the work actually is</li>
+      <li>How fast somebody is</li>
+      <li>Judgement when an engagement goes wrong at eleven at night</li>
+      <li>Whether a client asks for them again</li>
+      <li>Whether colleagues want to work with them</li>
+    </ul></div>
+  </div>
+  <p class="note anim">A person can hold a Principal-level profile and still be difficult to staff. The ladder is a floor on capability, not a judgement of contribution, and it should never be the only input to a performance conversation.</p>
+  <div class="foot anim"><span>Limitations and exclusions</span><span>16</span></div>
+  <p class="notes">Be direct about this, because the temptation to use the ladder as a complete picture of a person is strong and the consequences are unfair. Those judgements remain a manager's job, informed by this record but not replaced by it.</p>
+</div>
+</section>
+
+<section class="slide" id="s17" data-act="Limitations" data-title="Known compromises">
+<div class="wrap">
+  <h2 class="anim">Known compromises, stated plainly</h2>
+  <div class="grid anim" style="grid-template-columns:repeat(auto-fit,minmax(420px,1fr))">
+    <div class="band warn"><h3>Thresholds are one template, not per-domain evidence</h3><p>One proportional template scaled to each domain's size, with an identical foundations bar in all eleven. Not calibrated per domain, and not validated against outcomes.</p></div>
+    <div class="band warn"><h3>Levels are ordinal, and we average them</h3><p>Level 4 is not twice level 2. The foundations average works as a gate and would be indefensible as a score.</p></div>
+    <div class="band warn"><h3>Decay is recorded but not applied</h3><p>Nothing reduces a level gone three years unpracticed. Only a person reading the dates will notice.</p></div>
+    <div class="band warn"><h3>Breadth against depth is not codified</h3><p>Tiers are computed per domain, so somebody senior in two domains has no aggregate. That judgement is made, and nothing records or constrains it.</p></div>
+  </div>
+  <p class="note anim">A system that is not honest about its limits invites use it cannot support.</p>
+  <div class="foot anim"><span>Limitations and exclusions</span><span>17</span></div>
+  <p class="notes">The last card is the live question: codifying it would mean defining an exchange rate between domains, which the deck elsewhere says does not exist, so it stays a conversation. The thresholds were also scaled across domains of different sizes. Automatic demotion for decay was rejected as something that should need a human. Two more if there is time: a level is only as good as its assessor, with no second assessor and no calibration between them; and the foundations average counts unassessed skills as zero, so new joiners look worse than they are.</p>
+</div>
+</section>
+
+<section class="slide tone" id="s18" data-act="Limitations" data-title="Four things not to do">
+<div class="wrap">
+  <h2 class="anim">Four things not to do with it</h2>
+  <div class="cards anim">
+    <div class="card"><h3>Map levels to pay bands</h3><p>The scale will not bear that weight, least of all between two different domains.</p></div>
+    <div class="card"><h3>Compare across domains</h3><p>A level 3 in cryptography and a level 3 in OSINT are not the same amount of work. There is no exchange rate.</p></div>
+    <div class="card"><h3>Read a self-rating as performance</h3><p>It is a person describing their own competence against written criteria, which is a different thing.</p></div>
+    <div class="card"><h3>Quote a stale level</h3><p>Check the assessed date and the last-practiced date before using any profile in a decision.</p></div>
+  </div>
+  <div class="rule anim"><p style="max-width:56ch">Used for what it measures, this is the most defensible record of capability the laboratory has. Used for anything else, it will mislead.</p></div>
+  <div class="foot anim"><span>Limitations and exclusions</span><span>18</span></div>
+  <p class="notes">Close here. Offer the companion reading document, which carries the full standards list, the glossary and the complete threshold tables for all eleven ladders. Invite HR to bring back cases where they wanted a number the system would not give them.</p>
+</div>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var deck = document.getElementById('deck');
+  var slides = Array.prototype.slice.call(deck.querySelectorAll('.slide'));
+  var links = {};
+
+  // ---- build the sidebar, grouped by act ----
+  var list = document.getElementById('navlist'), act = null;
+  slides.forEach(function(s, i){
+    if(s.dataset.act !== act){
+      act = s.dataset.act;
+      var h = document.createElement('p');
+      h.className = 'nav-act'; h.textContent = act;
+      list.appendChild(h);
+    }
+    var a = document.createElement('a');
+    a.href = '#' + s.id;
+    var n = document.createElement('span'); n.className = 'n'; n.textContent = (i + 1);
+    var t = document.createElement('span'); t.textContent = s.dataset.title;
+    a.appendChild(n); a.appendChild(t);
+    a.addEventListener('click', function(e){ e.preventDefault(); go(i); });
+    list.appendChild(a);
+    links[s.id] = a;
+  });
+
+  // ---- which slide is showing ----
+  var current = 0, bar = document.getElementById('bar');
+  function mark(i){
+    if(i < 0 || i >= slides.length) return;
+    current = i;
+    slides.forEach(function(s){
+      var a = links[s.id];
+      if(a) a.classList.toggle('on', s === slides[i]);
+    });
+    bar.style.width = ((i + 1) / slides.length * 100) + '%';
+  }
+  function go(i){
+    if(i < 0 || i >= slides.length) return;
+    slides[i].scrollIntoView({behavior: motion() ? 'smooth' : 'auto', block: 'start'});
+    mark(i);
+  }
+  function motion(){
+    return !(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  }
+
+  // One pass, viewport-relative: works whether the deck scrolls internally
+  // (desktop) or the window scrolls (narrow screens).
+  function update(){
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    var best = 0, bestTop = -Infinity;
+    for(var i = 0; i < slides.length; i++){
+      var r = slides[i].getBoundingClientRect();
+      if(r.top < vh * 0.9 && r.bottom > 0) slides[i].classList.add('seen');
+      if(r.top <= vh * 0.4 && r.top > bestTop){ bestTop = r.top; best = i; }
+    }
+    mark(best);
+  }
+  var pending = false;
+  function onScroll(){
+    if(pending) return;
+    pending = true;
+    window.requestAnimationFrame(function(){ update(); pending = false; });
+  }
+  deck.addEventListener('scroll', onScroll, {passive: true});
+  window.addEventListener('scroll', onScroll, {passive: true});
+  window.addEventListener('resize', onScroll, {passive: true});
+  update();
+  window.addEventListener('load', update);
+  setTimeout(update, 300);
+
+  // ---- keyboard ----
+  document.addEventListener('keydown', function(e){
+    if(e.target.matches('select, input, textarea')) return;
+    var k = e.key;
+    if(k === 'ArrowDown' || k === 'ArrowRight' || k === 'PageDown' || k === ' '){ e.preventDefault(); go(current + 1); }
+    else if(k === 'ArrowUp' || k === 'ArrowLeft' || k === 'PageUp'){ e.preventDefault(); go(current - 1); }
+    else if(k === 'Home'){ e.preventDefault(); go(0); }
+    else if(k === 'End'){ e.preventDefault(); go(slides.length - 1); }
+    else if(k === 'n' || k === 'N'){ document.body.classList.toggle('shownotes'); }
+  });
+
+  // ---- theme ----
+  var sel = document.getElementById('theme');
+  try{
+    var saved = localStorage.getItem('deck-theme');
+    if(saved){ document.documentElement.setAttribute('data-theme', saved); sel.value = saved; }
+  }catch(err){}
+  sel.addEventListener('change', function(){
+    document.documentElement.setAttribute('data-theme', sel.value);
+    try{ localStorage.setItem('deck-theme', sel.value); }catch(err){}
+  });
+
+  // ---- speaker notes ----
+  document.getElementById('notes').addEventListener('click', function(){
+    document.body.classList.toggle('shownotes');
+  });
+})();
+</script>
+</body>
+</html>

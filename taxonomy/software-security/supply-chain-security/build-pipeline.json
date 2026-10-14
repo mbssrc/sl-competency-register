@@ -1,0 +1,105 @@
+{
+  "id": "SWSEC-SUPPLY-PIPELINE",
+  "name": "Build Pipeline & CI/CD Security",
+  "domain": "software-security",
+  "category": "Supply Chain Security",
+  "status": "active",
+  "description": "Security assessment of software build pipelines and CI/CD systems. Covers pipeline configuration review, secret management, build reproducibility, artifact integrity (signing, provenance), runner security, and supply chain attack vector identification in build systems.",
+
+  "requires": [],
+  "recommended": [
+    "SWSEC-SUPPLY-DEP",
+    "FOUND-RISK",
+    "FOUND-REPORT",
+    "FOUND-TOOLS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to build pipeline security assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands CI/CD pipeline architecture and common security risks",
+      "evidence": [
+        "Can explain CI/CD pipeline stages and common platforms (GitHub Actions, GitLab CI, Jenkins)",
+        "Understands risks of secret exposure, poisoned pipelines, and compromised runners",
+        "Familiar with SLSA framework concepts"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Reviews pipeline configurations for basic security issues under supervision",
+      "evidence": [
+        "Reviewed CI/CD configuration files for secret exposure and excessive permissions",
+        "Identified insecure use of third-party actions or pipeline plugins",
+        "Assessed runner isolation and network configuration",
+        "Work reviewed by authorized analyst"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses build pipeline security for engagements",
+      "evidence": [
+        "Independently assessed build pipeline security on 5+ engagements",
+        "Identifies poisoned pipeline execution (PPE) attack vectors",
+        "Reviews artifact signing and provenance (Sigstore, in-toto) implementations",
+        "Produces actionable findings mapped to SLSA v1.0 Build track levels",
+        "Passed proficiency assessment on pipeline security"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex pipeline architectures; demonstrates attack chains",
+      "evidence": [
+        "Demonstrates end-to-end supply chain attacks through pipeline compromise",
+        "Assesses multi-stage pipelines with complex dependency chains",
+        "Reviews custom build systems and hermetic build configurations",
+        "Mentors others on pipeline security assessment methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Authority on build pipeline security; develops methodology and tooling",
+      "evidence": [
+        "Published research on CI/CD or build pipeline security",
+        "Developed the lab's pipeline security assessment methodology",
+        "Contributes to SLSA or supply chain security standards",
+        "Trains teams on build pipeline security assessment"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess a CI/CD pipeline configuration for security weaknesses and demonstrate an attack path"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review of pipeline security assessment findings from recent engagements"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1370", "K1371", "K1372", "K0847", "S0974"],
+      "work_roles": ["DD-WRL-003 Secure Software Development", "OG-WRL-017 Cybersecurity Supply Chain Risk Management"]
+    },
+    "owasp": ["OWASP Top 10 CI/CD Security Risks"],
+    "mitre_attack": {"techniques": ["T1195.002", "T1072"]},
+    "cwe": ["CWE-829"]
+  },
+
+  "tags": [
+    "supply-chain",
+    "ci-cd",
+    "build-security",
+    "slsa",
+    "pipeline"
+  ]
+}

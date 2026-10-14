@@ -1,0 +1,39 @@
+{
+  "key": "PERS-019",
+  "bands": {
+    "strong": [
+      "NETSEC-RECON",
+      "NETSEC-ENUM"
+    ],
+    "weak": [
+      "NETSEC-POST",
+      "NETSEC-PIVOT"
+    ]
+  },
+  "signature": {
+    "NETSEC-RECON-PORTSCANNING": 3,
+    "NETSEC-RECON-NETMAPPING": 3,
+    "NETSEC-ENUM-DNS": 3,
+    "NETSEC-ENUM-SMB": 3
+  },
+  "never": [],
+  "foundations": [
+    1,
+    2
+  ],
+  "projects": [],
+  "stale_skills": [],
+  "self_assessment": {
+    "mode": "none"
+  },
+  "development_plan": [],
+  "name": "Sandra Villalobos",
+  "role": "Network Security Evaluator",
+  "start_date": "2023-09-11",
+  "domains": [
+    "NETSEC"
+  ],
+  "target_maturity": {
+    "NETSEC": "practitioner"
+  }
+}

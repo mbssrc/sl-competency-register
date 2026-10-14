@@ -1,0 +1,109 @@
+{
+  "id": "INFRA-ONPREM-EDR",
+  "name": "Endpoint Detection & Response Evaluation",
+  "domain": "infrastructure-security",
+  "category": "On-Premises Infrastructure",
+  "status": "active",
+  "description": "Evaluation and assessment of endpoint detection and response solutions. Covers EDR detection coverage mapping against MITRE ATT&CK, telemetry completeness and fidelity assessment, bypass resilience testing, alert quality and false positive analysis, sensor deployment and configuration review, response capability validation, and comparative product evaluation for security product selection.",
+
+  "requires": [],
+  "recommended": [
+    "SWSEC-OS-WINEVADE",
+    "ADVSIM-RED-EVASION",
+    "INFRA-ONPREM-LOGGING",
+    "FOUND-TOOLS",
+    "FOUND-RISK"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to EDR evaluation"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands EDR architecture, detection mechanisms, and evaluation concepts",
+      "evidence": [
+        "Can explain EDR agent architecture, telemetry sources, and detection pipeline",
+        "Understands the difference between signature, heuristic, and behavioral detection",
+        "Familiar with MITRE ATT&CK Evaluations methodology and results interpretation",
+        "Completed introductory training on endpoint security products"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Tests EDR detection capabilities and reviews configurations under supervision",
+      "evidence": [
+        "Executed standardized test cases (Atomic Red Team, MITRE ATT&CK tests) against EDR under guidance",
+        "Reviewed EDR agent deployment, exclusion policies, and configuration settings",
+        "Assessed basic telemetry completeness for common attack techniques",
+        "Documents detection gaps and alert quality with supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently evaluates EDR detection coverage and bypass resilience",
+      "evidence": [
+        "Independently evaluated EDR products against ATT&CK technique matrix",
+        "Assesses detection fidelity, alert quality, and false positive rates",
+        "Tests bypass resilience using varied payload delivery and execution methods",
+        "Produces structured EDR evaluation reports with coverage gap analysis"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Conducts comprehensive EDR evaluations; develops testing frameworks",
+      "evidence": [
+        "Develops comprehensive EDR evaluation frameworks covering detection, prevention, and response",
+        "Evaluates EDR kernel-mode components and telemetry collection mechanisms",
+        "Performs comparative evaluations of multiple EDR products with standardized methodology",
+        "Mentors team on EDR evaluation methodology and detection engineering"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Authority on EDR evaluation; shapes product selection and detection strategy",
+      "evidence": [
+        "Designed or maintains the lab's EDR evaluation methodology",
+        "Published research on EDR detection capabilities or bypass techniques",
+        "Advises organizations on EDR product selection and deployment architecture",
+        "Trains teams and presents at conferences on endpoint security evaluation"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Evaluate an EDR product's detection coverage against a defined set of ATT&CK techniques, documenting detection, prevention, and telemetry gaps"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review EDR evaluation reports including detection coverage matrix and bypass resilience findings"
+    }
+  ],
+
+  "framework_mappings": {
+    "mitre_attack": {"techniques": ["T1562", "T1036", "T1059"]},
+    "nice": {
+      "tks": ["K0732", "K1131", "K1279", "S0572", "S0519"],
+      "work_roles": ["PD-WRL-001 Defensive Cybersecurity", "DD-WRL-007 Systems Testing and Evaluation"]
+    }
+  },
+
+  "tags": [
+    "edr",
+    "endpoint-security",
+    "detection",
+    "mitre-attack",
+    "security-products",
+    "evaluation",
+    "bypass-testing",
+    "on-premises",
+    "kernel",
+    "incident-response"
+  ]
+}

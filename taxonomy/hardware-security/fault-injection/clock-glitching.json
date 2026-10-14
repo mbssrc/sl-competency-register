@@ -1,0 +1,109 @@
+{
+  "id": "HWSEC-FI-CG",
+  "name": "Clock Glitching",
+  "domain": "hardware-security",
+  "category": "Fault Injection",
+  "status": "active",
+  "description": "Injection of clock signal perturbations to induce setup-time violations and computational faults. Covers clock frequency manipulation, insertion of extra clock edges, clock signal replacement, glitch timing characterization, and exploitation of clock-induced faults for security bypass and cryptographic key extraction.",
+  "requires": [
+    "HWSEC-PCB-RE"
+  ],
+  "recommended": [
+    "HWSEC-FI-VG",
+    "HWSEC-EMBED-FW",
+    "FOUND-TOOLS"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to clock fault injection techniques"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands clock glitching principles and setup-time violations",
+      "evidence": [
+        "Can explain how clock glitches cause setup-time violations in synchronous logic",
+        "Understands the difference between clock glitching and voltage glitching fault models",
+        "Aware that clock glitching requires access to or manipulation of the target's clock signal (external clock, crystal replacement, or clock line injection)"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs clock glitching on training targets with existing setups under supervision",
+      "evidence": [
+        "Configures ChipWhisperer clock glitch module for a documented training target",
+        "Inserts clock glitches at target operations and observes fault effects",
+        "Systematically sweeps glitch timing parameters and records results",
+        "Demonstrates instruction skip or data corruption via clock glitch on a training platform"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently performs clock glitching on real targets including clock signal access",
+      "evidence": [
+        "Identifies and accesses clock signals on target PCBs (crystal replacement, clock injection points)",
+        "Optimizes clock glitch parameters for new targets without documentation",
+        "Exploits clock-induced faults to bypass security checks or corrupt cryptographic computations",
+        "Completed clock glitching assessments on 3+ different target platforms independently"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Attacks targets with internal oscillators; develops custom clock manipulation hardware",
+      "evidence": [
+        "Performs clock glitching on targets with internal oscillators via PLL manipulation or EM injection",
+        "Develops custom clock glitch insertion hardware for specialized targets",
+        "Combines clock glitching with other fault injection and side-channel techniques",
+        "Mentors team on clock signal identification, manipulation, and fault exploitation"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on clock fault injection; publishes research; defines methodology",
+      "evidence": [
+        "Published research on novel clock glitching techniques or countermeasure evaluations",
+        "Defines the lab's clock fault injection methodology",
+        "Specifies, designs, and qualifies clock manipulation hardware adopted as lab reference equipment",
+        "Provides expert consultation on clock glitch resistance to hardware designers"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Access the clock signal on a prepared target, perform clock glitching, and demonstrate exploitation of induced faults"
+    },
+    {
+      "type": "direct_observation",
+      "description": "Observe clock signal identification, glitch insertion technique, and parameter optimization during a live session"
+    }
+  ],
+  "equipment": [
+    "ChipWhisperer-Husky or ChipWhisperer-Pro with clock glitch module",
+    "FPGA-based precision clock generator"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0714", "K0055", "S0898", "K1248"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development", "PD-WRL-007 Vulnerability Analysis"]
+    },
+    "common_criteria": [
+      "AVA_VAN.4",
+      "AVA_VAN.5"
+    ],
+    "jil_attack_methods": [
+      "5.3 Perturbation attacks"
+    ]
+  },
+  "tags": [
+    "clock-glitch",
+    "fault-injection",
+    "setup-time-violation",
+    "non-invasive",
+    "cryptographic",
+    "side-channel"
+  ]
+}

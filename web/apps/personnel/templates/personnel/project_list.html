@@ -1,0 +1,74 @@
+{% extends "core/base.html" %}
+
+{% block title %}Projects - {{ product_name }}{% endblock %}
+
+{% block page_crumbs %}
+  {% include "core/partials/crumb.html" with label="Overview" first=True %}
+  {% include "core/partials/crumb.html" with label="Projects" current=True %}
+{% endblock %}
+
+{% block page_title %}Projects{% endblock %}
+{% block page_description %}Plan and staff security engagements.{% endblock %}
+
+{% block page_actions %}
+{% if request.user.is_manager %}
+  <button onclick="loadModal('{% url 'personnel:project-create' %}')"
+          class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 rounded-md transition-colors">
+    Create Project
+  </button>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+<!-- Status filter -->
+<div class="mt-6 flex gap-2">
+  {% for value, label in status_choices %}
+  <a href="?status={{ value }}"
+     class="px-3 py-1.5 text-sm rounded-md transition-colors {% if filter_status == value %}bg-indigo-100 dark:bg-indigo-500/15 text-indigo-700 dark:text-indigo-300 font-medium{% else %}text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/10{% endif %}">
+    {{ label }}
+  </a>
+  {% endfor %}
+  <a href="{% url 'personnel:project-list' %}"
+     class="px-3 py-1.5 text-sm rounded-md transition-colors {% if not filter_status %}bg-indigo-100 dark:bg-indigo-500/15 text-indigo-700 dark:text-indigo-300 font-medium{% else %}text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/10{% endif %}">
+    All
+  </a>
+</div>
+
+<div class="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+  {% for item in projects %}
+  <a href="{% url 'personnel:project-detail' item.project.id %}"
+     class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg p-5 hover:border-indigo-400 dark:hover:border-indigo-500 transition-all group">
+    <div class="flex items-center justify-between mb-3">
+      <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium
+        {% if item.project.status == 'active' %}bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300
+        {% elif item.project.status == 'planning' %}bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300
+        {% elif item.project.status == 'completed' %}bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300
+        {% else %}bg-gray-100 dark:bg-white/5 text-gray-500 dark:text-gray-400{% endif %}">
+        {{ item.project.get_status_display }}
+      </span>
+      {% if item.coverage_pct == 100 %}
+      <span class="text-emerald-500 dark:text-emerald-400">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+      </span>
+      {% endif %}
+    </div>
+    <h3 class="text-sm font-semibold text-gray-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">{{ item.project.name }}</h3>
+    {% if item.project.description %}
+    <p class="mt-1 text-xs text-gray-500 dark:text-gray-400 line-clamp-2">{{ item.project.description }}</p>
+    {% endif %}
+    <div class="mt-3 flex items-center gap-4 text-xs text-gray-500 dark:text-gray-400">
+      <span>{{ item.comp_count }} skills</span>
+      {% if item.comp_count > 0 %}
+      <span class="{% if item.coverage_pct == 100 %}text-emerald-600 dark:text-emerald-400{% elif item.coverage_pct > 0 %}text-amber-600 dark:text-amber-400{% else %}text-red-600 dark:text-red-400{% endif %}">
+        {{ item.coverage_pct }}% covered
+      </span>
+      {% endif %}
+    </div>
+  </a>
+  {% empty %}
+  <div class="col-span-full bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg p-8 text-center text-gray-500 dark:text-gray-400">
+    No projects yet.{% if request.user.is_manager %} <button onclick="loadModal('{% url 'personnel:project-create' %}')" class="text-indigo-600 dark:text-indigo-400 hover:underline">Create the first project</button>.{% endif %}
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,110 @@
+{
+  "id": "HWSEC-SPREP-OPTICAL",
+  "name": "Preparation for Optical Analysis",
+  "domain": "hardware-security",
+  "category": "Sample Preparation",
+  "status": "active",
+  "description": "Preparation of IC samples specifically for optical microscopy and imaging. Covers achieving mirror-finish polish on target layers, contrast enhancement techniques (decorative etching, staining, interference-layer methods), correct sample mounting for microscope stages, illumination mode preparation (brightfield, darkfield, DIC/Nomarski, polarized light), and progressive delayering with inter-layer documentation for reverse engineering. Goal: high-quality optical micrographs for layer extraction, defect analysis, or documentation.",
+  "requires": [
+    "HWSEC-SPREP-MECH"
+  ],
+  "recommended": [
+    "HWSEC-SPREP-CHEM",
+    "HWSEC-INV-DELAYER",
+    "FOUND-DOC",
+    "FOUND-TOOLS"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to optical sample preparation"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the relationship between preparation quality and optical imaging results",
+      "evidence": [
+        "Can explain how surface finish affects image quality under different illumination modes",
+        "Understands the purpose of contrast enhancement techniques for semiconductor imaging",
+        "Aware of the optical microscope capabilities and limitations for IC analysis"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Prepares standard samples to optical-grade finish under supervision",
+      "evidence": [
+        "Achieves scratch-free mirror polish on single-layer planar samples",
+        "Performs basic Dash or Secco etch for junction delineation under guidance",
+        "Mounts samples correctly for compound microscope with appropriate coverslipping or stub",
+        "Captures usable micrographs under brightfield illumination"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently prepares samples for high-quality optical analysis across illumination modes",
+      "evidence": [
+        "Selects and applies appropriate contrast enhancement (stain, etch, interference) for target layer and feature type",
+        "Performs progressive delayering with optical documentation at each layer for reverse engineering",
+        "Achieves consistent preparation quality across multiple samples in a batch",
+        "Produces optical micrographs with sufficient quality for gate-level netlist extraction or reporting"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles advanced process nodes and develops preparation-imaging workflows",
+      "evidence": [
+        "Prepares advanced-node samples whose feature pitch falls below the optical diffraction limit, delivering them for SEM-based imaging rather than optical readout",
+        "Develops end-to-end delayer-image-stitch workflows for full-die optical reverse engineering",
+        "Optimizes contrast enhancement recipes for specific foundry processes and technology nodes",
+        "Mentors team on preparation quality targets and imaging workflow optimization"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines optical preparation methodology; integrates with automated imaging systems",
+      "evidence": [
+        "Defines lab SOPs for optical preparation and acceptance criteria for image quality",
+        "Specifies and integrates automated stitching microscope systems for large-area imaging",
+        "Develops preparation techniques for emerging node technologies and novel IC structures",
+        "Trains teams and conducts proficiency assessments for optical preparation operators"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Prepare a decapped IC sample and produce optical micrographs of at least 3 metal layers with documented contrast enhancement at each level"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review a set of layer micrographs for image quality, focus, contrast, and completeness of layer documentation"
+    }
+  ],
+  "equipment": [
+    "Compound optical microscope with DIC/Nomarski, darkfield, and polarized light capability",
+    "Automated optical inspection / stitching microscope (e.g., Zeiss Axio Imager with motorized stage)",
+    "Semi-automatic polishing system for controlled material removal",
+    "Stereo microscope for preparation monitoring"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1284", "K0840"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development"]
+    },
+    "common_criteria": [
+      "AVA_VAN.4",
+      "AVA_VAN.5"
+    ]
+  },
+  "tags": [
+    "sample-preparation",
+    "optical-microscopy",
+    "contrast-enhancement",
+    "delayering",
+    "reverse-engineering",
+    "imaging",
+    "invasive"
+  ]
+}

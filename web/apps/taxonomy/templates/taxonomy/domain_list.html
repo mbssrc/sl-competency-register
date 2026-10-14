@@ -1,0 +1,113 @@
+{% extends "core/base.html" %}
+
+{% block title %}Skills - {{ product_name }}{% endblock %}
+
+{% block page_crumbs %}
+  {% include "core/partials/crumb.html" with label="Taxonomy" first=True %}
+  {% include "core/partials/crumb.html" with label="Skills" current=True %}
+{% endblock %}
+
+{% block page_title %}Skills{% endblock %}
+{% block page_description %}Security lab competency domains. {% if request.user.is_manager %}Drag to reorder.{% endif %}{% endblock %}
+
+{% block content %}
+<div id="domain-grid" class="mt-8 grid grid-cols-1 gap-3 lg:w-2/3">
+  {% for item in domain_data %}
+  <div class="domain-card" data-domain-id="{{ item.domain.id }}"
+       {% if request.user.is_manager %}draggable="true"{% endif %}>
+    <a href="{% url 'taxonomy:domain-detail' item.domain.id %}"
+       class="block bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg p-5 hover:border-indigo-400 dark:hover:border-indigo-500 transition-all group">
+      <div class="flex items-center gap-2 mb-2">
+        {% if request.user.is_manager %}
+        <svg class="w-4 h-4 text-gray-300 dark:text-gray-600 flex-shrink-0 cursor-grab" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"/></svg>
+        {% endif %}
+        <h3 class="text-base font-semibold text-gray-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+          {{ item.domain.name }}
+        </h3>
+        <div class="ml-auto flex items-center gap-3 text-xs flex-shrink-0">
+          <span class="inline-flex items-center rounded-full bg-indigo-50 dark:bg-indigo-500/15 px-2.5 py-0.5 font-medium text-indigo-700 dark:text-indigo-300">
+            {{ item.skill_count }} skill{{ item.skill_count|pluralize }}
+          </span>
+          {% if item.category_count %}
+          <span class="text-gray-500 dark:text-gray-500">
+            {{ item.category_count }} categor{{ item.category_count|pluralize:"y,ies" }}
+          </span>
+          {% endif %}
+        </div>
+      </div>
+      <p class="text-sm text-gray-600 dark:text-gray-400">
+        {{ item.domain.description }}
+      </p>
+    </a>
+  </div>
+  {% empty %}
+  <div class="col-span-full text-center py-12 text-gray-500 dark:text-gray-400">
+    No domains loaded. Run <code class="text-sm bg-gray-100 dark:bg-white/5 px-1 rounded">seed_taxonomy</code> to populate.
+  </div>
+  {% endfor %}
+</div>
+
+{% if request.user.is_manager %}
+<script>
+(function() {
+  var grid = document.getElementById('domain-grid');
+  var dragged = null;
+
+  grid.addEventListener('dragstart', function(e) {
+    var card = e.target.closest('.domain-card');
+    if (!card) return;
+    dragged = card;
+    card.style.opacity = '0.4';
+    e.dataTransfer.effectAllowed = 'move';
+  });
+
+  grid.addEventListener('dragend', function(e) {
+    if (dragged) dragged.style.opacity = '';
+    dragged = null;
+    // Remove all drag-over indicators
+    grid.querySelectorAll('.domain-card').forEach(function(c) { c.classList.remove('ring-2', 'ring-indigo-500'); });
+  });
+
+  grid.addEventListener('dragover', function(e) {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+    var card = e.target.closest('.domain-card');
+    if (card && card !== dragged) {
+      grid.querySelectorAll('.domain-card').forEach(function(c) { c.classList.remove('ring-2', 'ring-indigo-500'); });
+      card.classList.add('ring-2', 'ring-indigo-500');
+    }
+  });
+
+  grid.addEventListener('drop', function(e) {
+    e.preventDefault();
+    var target = e.target.closest('.domain-card');
+    if (!target || !dragged || target === dragged) return;
+
+    // Reorder in DOM
+    var cards = Array.from(grid.querySelectorAll('.domain-card'));
+    var dragIdx = cards.indexOf(dragged);
+    var dropIdx = cards.indexOf(target);
+    if (dragIdx < dropIdx) {
+      target.parentNode.insertBefore(dragged, target.nextSibling);
+    } else {
+      target.parentNode.insertBefore(dragged, target);
+    }
+
+    // Save new order
+    var newOrder = Array.from(grid.querySelectorAll('.domain-card')).map(function(c) { return c.dataset.domainId; });
+    fetch('{% url "taxonomy:domain-reorder" %}', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]') ?
+          document.querySelector('[name=csrfmiddlewaretoken]').value :
+          document.cookie.match(/csrftoken=([^;]+)/)[1]
+      },
+      credentials: 'same-origin',
+      body: JSON.stringify(newOrder)
+    });
+  });
+})();
+</script>
+{% endif %}
+{% endblock %}

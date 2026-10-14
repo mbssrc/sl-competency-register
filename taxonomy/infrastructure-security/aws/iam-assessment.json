@@ -1,0 +1,102 @@
+{
+  "id": "INFRA-AWS-IAM",
+  "name": "AWS IAM Security Assessment",
+  "domain": "infrastructure-security",
+  "category": "AWS Security",
+  "status": "active",
+  "description": "Assessment of AWS Identity and Access Management configurations. Covers IAM policies, roles, users, groups, permission boundaries, service control policies (SCPs) and resource control policies (RCPs), IAM Identity Center (formerly AWS SSO) permission sets, and privilege escalation paths within AWS environments.",
+  "requires": [],
+  "recommended": [
+    "FOUND-REPORT",
+    "FOUND-STANDARDS",
+    "FOUND-RISK"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to AWS IAM security assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands AWS IAM concepts including users, roles, policies, and the shared responsibility model",
+      "evidence": [
+        "Can explain IAM principals, policies, and trust relationships",
+        "Understands the difference between identity-based and resource-based policies",
+        "Completed AWS IAM security fundamentals training"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Reviews IAM configurations under supervision using established checklists and tools",
+      "evidence": [
+        "Runs IAM enumeration tools (e.g., Prowler, ScoutSuite) under guidance",
+        "Identifies overly permissive policies using lab review checklists",
+        "Documents IAM findings with supervision; work reviewed by authorized personnel"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses IAM posture and identifies privilege escalation paths",
+      "evidence": [
+        "Independently enumerates and reviews IAM configurations across multi-account environments",
+        "Identifies privilege escalation paths through role chaining and policy misconfigurations",
+        "Produces compliant IAM assessment reports without supervision",
+        "Passed IAM security proficiency assessment"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex multi-account IAM assessments; discovers novel escalation techniques; mentors others",
+      "evidence": [
+        "Assesses complex AWS Organizations with nested SCPs and permission boundaries",
+        "Develops custom tooling for IAM policy analysis and escalation detection",
+        "Reviews IAM assessment work of junior analysts",
+        "Contributes to lab IAM assessment methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines lab IAM assessment methodology; publishes research on AWS IAM attack techniques",
+      "evidence": [
+        "Designed or maintains the lab's AWS IAM assessment framework",
+        "Published research on novel IAM privilege escalation techniques or policy bypass",
+        "Trains teams on advanced AWS IAM security assessment",
+        "Recognized as internal or external authority on AWS IAM security"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess a deliberately misconfigured AWS IAM environment and identify all privilege escalation paths"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review IAM assessment findings from recent engagements for completeness and accuracy"
+    }
+  ],
+  "framework_mappings": {
+    "cis": [
+      "CIS AWS Foundations Benchmark v5.0.0 - Section 1 Identity and Access Management"
+    ],
+    "csa_ccm": [
+      "IAM-01",
+      "IAM-02",
+      "IAM-04"
+    ],
+    "nice": {
+      "tks": ["K0742", "K1368", "K0746", "K0863", "S0844"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "IO-WRL-006 Systems Security Analysis"]
+    }
+  },
+  "tags": [
+    "aws",
+    "iam",
+    "privilege-escalation",
+    "cloud-security",
+    "identity"
+  ]
+}

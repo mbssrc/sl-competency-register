@@ -1,0 +1,113 @@
+{
+  "id": "INFRA-ONPREM-LOGGING",
+  "name": "OS Logging & Monitoring Assessment",
+  "domain": "infrastructure-security",
+  "category": "On-Premises Infrastructure",
+  "status": "active",
+  "description": "Assessment of operating system logging, auditing, and monitoring configurations. Covers Windows Event Log architecture and audit policy (Security, Sysmon, PowerShell logging), Linux audit framework (auditd, journald, syslog), macOS Unified Logging, ETW provider configuration, log forwarding and SIEM integration, detection coverage gap analysis, and log integrity and retention evaluation.",
+
+  "requires": [],
+  "recommended": [
+    "INFRA-ONPREM-HARDEN",
+    "INFRA-ONPREM-EDR",
+    "FOUND-STANDARDS",
+    "FOUND-RISK"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to OS logging and monitoring assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands OS logging architectures and security monitoring concepts",
+      "evidence": [
+        "Can explain Windows Event Log, Linux syslog/journald, and macOS Unified Logging architecture",
+        "Understands the purpose of Sysmon, auditd, and PowerShell script block logging",
+        "Familiar with SIEM concepts and log forwarding mechanisms",
+        "Completed introductory training on security logging and monitoring"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Reviews logging configurations and identifies gaps under supervision",
+      "evidence": [
+        "Reviewed Windows audit policy and Sysmon configuration against best practices",
+        "Assessed auditd rules and journald configuration on Linux systems",
+        "Identified missing log sources and forwarding gaps using checklists",
+        "Documents logging assessment findings with supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses logging configurations and detection coverage",
+      "evidence": [
+        "Independently assesses OS logging across Windows, Linux, and macOS",
+        "Maps logging coverage against ATT&CK techniques to identify detection gaps",
+        "Evaluates log forwarding reliability, retention policies, and integrity controls",
+        "Produces logging assessment reports with actionable improvement recommendations"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Designs comprehensive logging architectures; develops detection strategies",
+      "evidence": [
+        "Develops comprehensive logging policies covering all OS platforms",
+        "Evaluates ETW provider configuration and advanced Windows telemetry sources",
+        "Assesses log pipeline reliability under adversarial conditions (log evasion, tampering)",
+        "Mentors team on logging assessment and detection engineering methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines lab logging assessment methodology; shapes monitoring strategy",
+      "evidence": [
+        "Designed or maintains the lab's OS logging assessment framework",
+        "Published guidance on OS logging best practices and detection coverage",
+        "Advises organizations on enterprise logging architecture and monitoring strategy",
+        "Trains teams on advanced logging assessment across all OS platforms"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess the logging and monitoring configuration of a mixed OS environment, mapping coverage gaps against ATT&CK techniques"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review OS logging assessment findings and detection coverage analysis from recent engagements"
+    }
+  ],
+
+  "framework_mappings": {
+    "cis": [
+      "CIS Controls v8.1 - Control 8 (Audit Log Management)"
+    ],
+    "mitre_attack": {"techniques": ["T1070", "T1562.002"]},
+    "nice": {
+      "tks": ["K0897", "K0971", "K1269", "S0641", "S0866"],
+      "work_roles": ["PD-WRL-001 Defensive Cybersecurity", "IO-WRL-005 Systems Administration"]
+    }
+  },
+
+  "tags": [
+    "logging",
+    "monitoring",
+    "siem",
+    "sysmon",
+    "auditd",
+    "event-log",
+    "detection",
+    "windows",
+    "linux",
+    "macos",
+    "on-premises",
+    "evasion"
+  ]
+}

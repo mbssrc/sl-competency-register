@@ -1,0 +1,103 @@
+{
+  "id": "WSEC-SDR-DEMOD",
+  "name": "Signal Demodulation & Decoding",
+  "domain": "wireless-signal-security",
+  "category": "SDR & Signal Analysis",
+  "status": "active",
+  "description": "Ability to demodulate and decode captured RF signals to extract data content. Covers identification of modulation schemes (AM, FM, PSK, FSK, QAM, OFDM), construction of demodulation chains, symbol timing recovery, error correction handling, and extraction of protocol-layer data from baseband signals.",
+  "requires": [
+    "WSEC-SDR-FUNDM"
+  ],
+  "recommended": [
+    "WSEC-SDR-DSP"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to signal demodulation techniques"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands common modulation schemes and the concept of demodulation",
+      "evidence": [
+        "Can identify AM, FM, and common digital modulation types from descriptions",
+        "Understands the relationship between modulation, bandwidth, and data rate",
+        "Completed training on modulation fundamentals"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Demodulates known signal types using existing tools and flowgraphs under supervision",
+      "evidence": [
+        "Demodulated FM broadcast and narrowband FM signals using GNU Radio under guidance",
+        "Applied existing demodulation flowgraphs to decode standard protocols (e.g., ADS-B, POCSAG)",
+        "Identified modulation type from waterfall and constellation diagram inspection with assistance"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently identifies modulation schemes and builds demodulation chains for standard signal types",
+      "evidence": [
+        "Independently identified and demodulated 5+ different modulation schemes from captured signals",
+        "Built custom GNU Radio demodulation flowgraphs for non-trivial signal types",
+        "Correctly recovered symbol timing and applied appropriate error correction",
+        "Documented demodulation parameters and signal characteristics for lab records"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Demodulates complex and non-standard signals; develops reusable demodulation tools",
+      "evidence": [
+        "Demodulated spread-spectrum, frequency-hopping, or multi-carrier signals",
+        "Developed reusable demodulation modules for recurring lab signal types",
+        "Recovered data from signals with poor SNR or interference",
+        "Mentors junior analysts on modulation identification and demodulation chain construction"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Demodulates novel or proprietary modulation schemes; advances lab demodulation capabilities",
+      "evidence": [
+        "Reverse-engineered proprietary modulation schemes from unknown signal captures",
+        "Published research on novel demodulation techniques or signal analysis methods",
+        "Designed the lab's demodulation reference library and methodology",
+        "Trains teams on advanced demodulation and signal decoding"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Given blind signal captures with unknown modulation, identify the modulation scheme and extract the data payload"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review documented demodulation workflows and extracted data from recent engagements"
+    }
+  ],
+  "equipment": [
+    "Ettus USRP B200/B210 SDR platform",
+    "HackRF One wideband SDR"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0812", "K0925", "K0851"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development"]
+    },
+    "certifications": [
+      "GIAC GAWN"
+    ]
+  },
+  "tags": [
+    "demodulation",
+    "modulation-analysis",
+    "signal-decoding",
+    "gnu-radio",
+    "baseband",
+    "reverse-engineering",
+    "protocol-analysis"
+  ]
+}

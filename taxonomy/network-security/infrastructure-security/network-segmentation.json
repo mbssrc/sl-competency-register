@@ -1,0 +1,110 @@
+{
+  "id": "NETSEC-INFRA-SEGMENTATION",
+  "name": "Network Segmentation Assessment",
+  "domain": "network-security",
+  "category": "Network Infrastructure",
+  "status": "active",
+  "description": "Ability to assess the design and effectiveness of network segmentation controls. Covers VLAN segmentation verification, firewall zone analysis, micro-segmentation review, trust boundary identification, and practical testing of segmentation effectiveness through controlled pivot attempts.",
+
+  "requires": [
+    "NETSEC-RECON-NETMAPPING",
+    "NETSEC-INFRA-FIREWALL"
+  ],
+  "recommended": [
+    "NETSEC-PIVOT-PORTFWD",
+    "NETSEC-EXPLOIT-PROTOCOL",
+    "FOUND-RISK"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to network segmentation assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands network segmentation principles and their role in defense-in-depth",
+      "evidence": [
+        "Can explain VLANs, firewall zones, DMZs, and trust boundaries",
+        "Understands why segmentation is critical for limiting breach impact",
+        "Knows common segmentation architectures (flat, tiered, micro-segmented)"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs basic segmentation verification under supervision",
+      "evidence": [
+        "Tests inter-VLAN connectivity to verify segmentation controls under guidance",
+        "Reviews firewall rules governing zone-to-zone traffic",
+        "Identifies obvious segmentation gaps (open management ports, flat subnets)",
+        "Documents segmentation findings under review"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses network segmentation and identifies bypass opportunities",
+      "evidence": [
+        "Maps all network segments and trust boundaries in the target environment",
+        "Tests segmentation effectiveness through practical connectivity and pivot testing",
+        "Identifies segmentation weaknesses that allow lateral movement between zones",
+        "Produces segmentation assessment reports with risk-rated findings"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Assesses complex segmentation architectures; designs segmentation tests; mentors others",
+      "evidence": [
+        "Assesses micro-segmentation and zero-trust architectures",
+        "Designs comprehensive segmentation testing plans for large environments",
+        "Identifies non-obvious trust path violations through protocol and service analysis",
+        "Mentors junior staff on segmentation assessment methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines segmentation assessment methodology; advises on architecture; trains teams",
+      "evidence": [
+        "Authored the lab's network segmentation assessment methodology",
+        "Advises clients on segmentation architecture design and improvement",
+        "Published research on segmentation bypass techniques or assessment methods",
+        "Trains teams on segmentation assessment strategy and architecture analysis"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess segmentation in a multi-zone lab environment and identify all inter-zone access paths not sanctioned by the security policy"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review segmentation assessment reports from recent engagements for completeness and accuracy of trust boundary analysis"
+    }
+  ],
+
+  "framework_mappings": {
+    "mitre_attack": {
+      "techniques": ["T1599"]
+    },
+    "nice": {
+      "tks": ["S0683", "S0920", "K0915", "S0950", "K0717"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-001 Cybersecurity Architecture"]
+    },
+    "crest": {
+      "areas": ["infrastructure-assessment", "network-architecture"]
+    }
+  },
+
+  "tags": [
+    "segmentation",
+    "vlans",
+    "trust-boundaries",
+    "network-architecture",
+    "infrastructure",
+    "lateral-movement"
+  ]
+}

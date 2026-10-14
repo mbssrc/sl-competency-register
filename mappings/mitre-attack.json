@@ -1,0 +1,550 @@
+{
+  "T0830": [
+    "ICSIOT-ICS-PROTO"
+  ],
+  "T0837": [
+    "ICSIOT-OT-SIS"
+  ],
+  "T0840": [
+    "ICSIOT-ICS-NETWORK"
+  ],
+  "T0842": [
+    "ICSIOT-ICS-NETWORK",
+    "ICSIOT-ICS-PROTO"
+  ],
+  "T0843": [
+    "ICSIOT-ICS-CTRL"
+  ],
+  "T0845": [
+    "ICSIOT-ICS-CTRL"
+  ],
+  "T0846": [
+    "ICSIOT-ICS-NETWORK"
+  ],
+  "T0869": [
+    "ICSIOT-ICS-PROTO"
+  ],
+  "T0880": [
+    "ICSIOT-OT-SIS"
+  ],
+  "T0883": [
+    "ICSIOT-ICS-NETWORK"
+  ],
+  "T0886": [
+    "ICSIOT-ICS-NETWORK"
+  ],
+  "T0889": [
+    "ICSIOT-ICS-CTRL"
+  ],
+  "T1003": [
+    "NETSEC-POST-CREDHARVEST"
+  ],
+  "T1003.001": [
+    "NETSEC-POST-CREDHARVEST"
+  ],
+  "T1003.003": [
+    "NETSEC-POST-CREDHARVEST"
+  ],
+  "T1003.006": [
+    "NETSEC-POST-CREDHARVEST"
+  ],
+  "T1005": [
+    "WSEC-PROTO-BLE",
+    "WSEC-PROTO-SUBGHZ"
+  ],
+  "T1014": [
+    "SWSEC-FUZZ-HV",
+    "SWSEC-OS-DRIVER",
+    "SWSEC-OS-KERNEL"
+  ],
+  "T1016": [
+    "NETSEC-RECON-NETMAPPING"
+  ],
+  "T1018": [
+    "NETSEC-RECON-NETMAPPING",
+    "WSEC-WIFI-RECON"
+  ],
+  "T1021.002": [
+    "NETSEC-ENUM-SMB"
+  ],
+  "T1027": [
+    "ADVSIM-RED-EVASION",
+    "SWSEC-OS-WINEVADE",
+    "SWSEC-RE-ANTIRE",
+    "SWSEC-RE-DISASM"
+  ],
+  "T1036": [
+    "INFRA-ONPREM-EDR",
+    "SWSEC-OS-WINEVADE"
+  ],
+  "T1040": [
+    "SWSEC-RE-PROTOCOL",
+    "WSEC-CELL-GSM",
+    "WSEC-CELL-LTE5G",
+    "WSEC-CELL-SS7",
+    "WSEC-PROTO-BLE",
+    "WSEC-PROTO-CUSTOM",
+    "WSEC-PROTO-REVENG",
+    "WSEC-PROTO-SUBGHZ",
+    "WSEC-SAT-COMM",
+    "WSEC-SPEC-TEMPEST",
+    "WSEC-SPEC-TSCM",
+    "WSEC-WIFI-ENT",
+    "WSEC-WIFI-RECON",
+    "WSEC-WIFI-WPA"
+  ],
+  "T1041": [
+    "NETSEC-POST-EXFIL"
+  ],
+  "T1046": [
+    "NETSEC-RECON-PORTSCANNING",
+    "NETSEC-RECON-FINGERPRINTING"
+  ],
+  "T1048": [
+    "NETSEC-POST-EXFIL"
+  ],
+  "T1053": [
+    "INTEL-TI-TTP",
+    "NETSEC-POST-PERSISTENCE"
+  ],
+  "T1053.003": [
+    "DFIR-DISK-LINART",
+    "SWSEC-OS-LINPRIV"
+  ],
+  "T1055": [
+    "ADVSIM-RED-EVASION",
+    "SWSEC-OS-WINEVADE"
+  ],
+  "T1059": [
+    "INFRA-ONPREM-EDR",
+    "INTEL-TI-TTP",
+    "SWSEC-WEB-INJECT"
+  ],
+  "T1068": [
+    "INFRA-CONTAINER-ESCAPE",
+    "NETSEC-POST-ESCAPE",
+    "NETSEC-POST-PRIVESC",
+    "SWSEC-FUZZ-HV",
+    "SWSEC-FUZZ-KERN",
+    "SWSEC-OS-DRIVER",
+    "SWSEC-OS-KERNEL",
+    "SWSEC-OS-LINPRIV",
+    "SWSEC-OS-MACINT",
+    "SWSEC-OS-MACPRIV",
+    "SWSEC-OS-WINPRIV",
+    "SWSEC-PLATFORM-TEE"
+  ],
+  "T1069": [
+    "NETSEC-ENUM-SMB"
+  ],
+  "T1069.002": [
+    "NETSEC-ENUM-LDAP"
+  ],
+  "T1070": [
+    "ADVSIM-RED-EVASION",
+    "INFRA-ONPREM-LOGGING"
+  ],
+  "T1070.002": [
+    "DFIR-DISK-LINART"
+  ],
+  "T1070.003": [
+    "DFIR-DISK-LINART"
+  ],
+  "T1071": [
+    "ADVSIM-RED-C2"
+  ],
+  "T1072": [
+    "SWSEC-SUPPLY-PIPELINE"
+  ],
+  "T1078": [
+    "INTEL-TI-TTP",
+    "SWSEC-WEB-AUTHZ"
+  ],
+  "T1078.004": [
+    "INFRA-ONPREM-HYBRID"
+  ],
+  "T1087": [
+    "NETSEC-ENUM-SMB"
+  ],
+  "T1087.002": [
+    "NETSEC-ENUM-LDAP"
+  ],
+  "T1090": [
+    "ADVSIM-RED-C2",
+    "NETSEC-PIVOT-PROXYCHAINS"
+  ],
+  "T1090.003": [
+    "NETSEC-PIVOT-VPN"
+  ],
+  "T1098.002": [
+    "INFRA-IDENTITY-M365"
+  ],
+  "T1110": [
+    "NETSEC-EXPLOIT-AUTHN",
+    "WSEC-WIFI-ENT",
+    "WSEC-WIFI-WPA"
+  ],
+  "T1114.002": [
+    "INFRA-IDENTITY-M365"
+  ],
+  "T1123": [
+    "WSEC-SPEC-TSCM"
+  ],
+  "T1125": [
+    "WSEC-SPEC-TSCM"
+  ],
+  "T1134": [
+    "NETSEC-POST-PRIVESC",
+    "SWSEC-OS-WINPRIV"
+  ],
+  "T1135": [
+    "NETSEC-ENUM-SMB"
+  ],
+  "T1136": [
+    "NETSEC-POST-PERSISTENCE"
+  ],
+  "T1189": [
+    "SWSEC-OS-BROWSER",
+    "SWSEC-WEB-HTTPCONF",
+    "SWSEC-WEB-XSS"
+  ],
+  "T1190": [
+    "SWSEC-DAST-WEBFUZZ",
+    "SWSEC-FUZZ-FW",
+    "SWSEC-FUZZ-PROTO",
+    "SWSEC-WEB-DESER",
+    "SWSEC-WEB-INJECT",
+    "SWSEC-WEB-SQLI"
+  ],
+  "T1195.001": [
+    "SWSEC-SUPPLY-DEP",
+    "SWSEC-SUPPLY-OS",
+    "SWSEC-SUPPLY-SBOM"
+  ],
+  "T1195.002": [
+    "SWSEC-SUPPLY-PIPELINE",
+    "SWSEC-SUPPLY-OS"
+  ],
+  "T1200": [
+    "ADVSIM-PHYS-COVERT",
+    "WSEC-WIFI-CLIENT"
+  ],
+  "T1203": [
+    "SWSEC-FUZZ-FW",
+    "SWSEC-FUZZ-CORE",
+    "SWSEC-FUZZ-PROTO",
+    "SWSEC-OS-BINEXPLOIT",
+    "SWSEC-OS-BROWSER"
+  ],
+  "T1210": [
+    "NETSEC-EXPLOIT-SVCEXPLOIT"
+  ],
+  "T1218": [
+    "ADVSIM-RED-EVASION",
+    "SWSEC-OS-WINEVADE"
+  ],
+  "T1404": [
+    "SWSEC-MOB-ANDROID",
+    "SWSEC-MOB-IOS"
+  ],
+  "T1406": [
+    "SWSEC-MOB-IOS"
+  ],
+  "T1407": [
+    "SWSEC-MOB-ANDROID"
+  ],
+  "T1409": [
+    "SWSEC-MOB-ANDROID",
+    "SWSEC-MOB-IOS"
+  ],
+  "T1417": [
+    "SWSEC-MOB-ANDROID"
+  ],
+  "T1482": [
+    "NETSEC-ENUM-LDAP"
+  ],
+  "T1484.002": [
+    "INFRA-ONPREM-HYBRID"
+  ],
+  "T1486": [
+    "INTEL-OSINT-CRYPTO"
+  ],
+  "T1495": [
+    "SWSEC-PLATFORM-UEFI"
+  ],
+  "T1497": [
+    "SWSEC-RE-ANTIRE"
+  ],
+  "T1505.003": [
+    "NETSEC-POST-PERSISTENCE"
+  ],
+  "T1542.001": [
+    "SWSEC-PLATFORM-UEFI"
+  ],
+  "T1542.003": [
+    "SWSEC-PLATFORM-UEFI"
+  ],
+  "T1543": [
+    "NETSEC-POST-PERSISTENCE"
+  ],
+  "T1543.001": [
+    "NETSEC-POST-MACOS"
+  ],
+  "T1543.002": [
+    "DFIR-DISK-LINART"
+  ],
+  "T1543.004": [
+    "NETSEC-POST-MACOS",
+    "SWSEC-OS-MACPRIV"
+  ],
+  "T1547": [
+    "NETSEC-POST-PERSISTENCE"
+  ],
+  "T1547.006": [
+    "SWSEC-OS-DRIVER"
+  ],
+  "T1548": [
+    "NETSEC-POST-PRIVESC",
+    "SWSEC-PLATFORM-LSM",
+    "SWSEC-PLATFORM-SANDBOX"
+  ],
+  "T1548.001": [
+    "SWSEC-OS-LINPRIV"
+  ],
+  "T1548.002": [
+    "SWSEC-OS-WINPRIV"
+  ],
+  "T1548.003": [
+    "SWSEC-OS-LINPRIV"
+  ],
+  "T1548.004": [
+    "SWSEC-OS-MACPRIV"
+  ],
+  "T1548.006": [
+    "SWSEC-OS-MACPRIV"
+  ],
+  "T1550": [
+    "NETSEC-EXPLOIT-AUTHN"
+  ],
+  "T1550.001": [
+    "INFRA-IDENTITY-FEDERATION",
+    "INFRA-IDENTITY-M365"
+  ],
+  "T1552": [
+    "NETSEC-POST-CREDHARVEST",
+    "WSEC-CELL-SIM"
+  ],
+  "T1553": [
+    "SWSEC-PLATFORM-TEE"
+  ],
+  "T1553.002": [
+    "SWSEC-SUPPLY-OS"
+  ],
+  "T1555.001": [
+    "NETSEC-POST-MACOS"
+  ],
+  "T1556.007": [
+    "INFRA-IDENTITY-FEDERATION",
+    "INFRA-ONPREM-HYBRID"
+  ],
+  "T1557": [
+    "NETSEC-EXPLOIT-MITM",
+    "WSEC-CELL-GSM",
+    "WSEC-CELL-LTE5G",
+    "WSEC-CELL-SS7",
+    "WSEC-PROTO-BLE",
+    "WSEC-WIFI-CLIENT",
+    "WSEC-WIFI-ENT",
+    "WSEC-WIFI-WPA"
+  ],
+  "T1557.001": [
+    "NETSEC-EXPLOIT-AUTHN",
+    "NETSEC-EXPLOIT-MITM"
+  ],
+  "T1557.002": [
+    "NETSEC-EXPLOIT-MITM"
+  ],
+  "T1558": [
+    "NETSEC-EXPLOIT-AUTHN"
+  ],
+  "T1559": [
+    "SWSEC-OS-MACINT",
+    "SWSEC-PLATFORM-SANDBOX"
+  ],
+  "T1562": [
+    "ADVSIM-RED-EVASION",
+    "INFRA-ONPREM-EDR"
+  ],
+  "T1562.001": [
+    "SWSEC-OS-WINEVADE",
+    "SWSEC-PLATFORM-LSM"
+  ],
+  "T1562.002": [
+    "INFRA-ONPREM-LOGGING"
+  ],
+  "T1562.004": [
+    "NETSEC-INFRA-FIREWALL"
+  ],
+  "T1565": [
+    "WSEC-SAT-JAM"
+  ],
+  "T1565.002": [
+    "WSEC-SAT-GNSS"
+  ],
+  "T1566.001": [
+    "ADVSIM-SE-PHISHING"
+  ],
+  "T1566.002": [
+    "ADVSIM-SE-PHISHING"
+  ],
+  "T1566.003": [
+    "ADVSIM-SE-PHISHING"
+  ],
+  "T1566.004": [
+    "ADVSIM-SE-VISHING"
+  ],
+  "T1567": [
+    "NETSEC-POST-EXFIL"
+  ],
+  "T1572": [
+    "ADVSIM-RED-C2",
+    "NETSEC-PIVOT-PORTFWD",
+    "NETSEC-PIVOT-VPN"
+  ],
+  "T1573": [
+    "ADVSIM-RED-C2"
+  ],
+  "T1574": [
+    "SWSEC-APP-THICK"
+  ],
+  "T1574.001": [
+    "SWSEC-OS-WINPRIV"
+  ],
+  "T1574.004": [
+    "NETSEC-POST-MACOS",
+    "SWSEC-OS-MACINT"
+  ],
+  "T1574.009": [
+    "SWSEC-OS-WINPRIV"
+  ],
+  "T1583": [
+    "ADVSIM-RED-C2",
+    "INTEL-TI-ADVERSARY"
+  ],
+  "T1585.001": [
+    "ADVSIM-SE-PRETEXT"
+  ],
+  "T1587": [
+    "INTEL-TI-ADVERSARY"
+  ],
+  "T1588": [
+    "INTEL-TI-ADVERSARY"
+  ],
+  "T1589": [
+    "ADVSIM-SE-OSINT",
+    "INTEL-OSINT-PERSON"
+  ],
+  "T1589.001": [
+    "INTEL-OSINT-BREACH"
+  ],
+  "T1589.002": [
+    "INTEL-OSINT-BREACH"
+  ],
+  "T1590": [
+    "ADVSIM-SE-OSINT",
+    "INTEL-OSINT-INFRA",
+    "INTEL-TI-IOC",
+    "NETSEC-RECON-PASSIVERECON"
+  ],
+  "T1590.002": [
+    "NETSEC-ENUM-DNS"
+  ],
+  "T1591": [
+    "ADVSIM-SE-OSINT",
+    "INTEL-OSINT-PERSON"
+  ],
+  "T1591.001": [
+    "INTEL-OSINT-GEO"
+  ],
+  "T1591.002": [
+    "INTEL-OSINT-GEO"
+  ],
+  "T1592.002": [
+    "NETSEC-RECON-FINGERPRINTING"
+  ],
+  "T1593": [
+    "ADVSIM-SE-OSINT",
+    "INTEL-OSINT-INFRA",
+    "NETSEC-RECON-PASSIVERECON"
+  ],
+  "T1593.001": [
+    "INTEL-OSINT-SOCIAL"
+  ],
+  "T1595": [
+    "INTEL-TI-IOC"
+  ],
+  "T1595.002": [
+    "WSEC-WIFI-RECON"
+  ],
+  "T1596": [
+    "INTEL-OSINT-INFRA"
+  ],
+  "T1596.001": [
+    "NETSEC-RECON-PASSIVERECON"
+  ],
+  "T1597": [
+    "INTEL-OSINT-DARKWEB"
+  ],
+  "T1597.002": [
+    "INTEL-OSINT-DARKWEB"
+  ],
+  "T1598": [
+    "ADVSIM-SE-PHISHING",
+    "ADVSIM-SE-PRETEXT"
+  ],
+  "T1598.004": [
+    "ADVSIM-SE-VISHING"
+  ],
+  "T1599": [
+    "NETSEC-EXPLOIT-PROTOCOL",
+    "NETSEC-INFRA-SEGMENTATION",
+    "NETSEC-INFRA-ROUTERSWITCH"
+  ],
+  "T1602": [
+    "NETSEC-INFRA-ROUTERSWITCH"
+  ],
+  "T1602.001": [
+    "NETSEC-ENUM-SNMP"
+  ],
+  "T1606.002": [
+    "INFRA-IDENTITY-FEDERATION",
+    "INFRA-ONPREM-HYBRID"
+  ],
+  "T1611": [
+    "INFRA-CONTAINER-ESCAPE",
+    "NETSEC-POST-ESCAPE",
+    "SWSEC-PLATFORM-LSM",
+    "SWSEC-PLATFORM-SANDBOX"
+  ],
+  "T1647": [
+    "SWSEC-OS-MACPRIV"
+  ],
+  "T1656": [
+    "ADVSIM-SE-PRETEXT"
+  ],
+  "T1657": [
+    "INTEL-OSINT-CRYPTO"
+  ],
+  "T1692.001": [
+    "ICSIOT-ICS-PROTO"
+  ],
+  "T1693.001": [
+    "ICSIOT-ICS-CTRL"
+  ],
+  "T1693.002": [
+    "ICSIOT-ICS-CTRL"
+  ],
+  "T1694.001": [
+    "ICSIOT-ICS-CTRL"
+  ]
+}

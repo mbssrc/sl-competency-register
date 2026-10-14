@@ -1,0 +1,112 @@
+{
+  "id": "AIML-ADV-PRIVACY",
+  "name": "Model Privacy & Extraction Attacks",
+  "domain": "ai-ml-security",
+  "category": "Adversarial ML",
+  "status": "active",
+  "description": "Assessment of ML model confidentiality against extraction, inversion, and membership inference attacks. Covers evaluating whether models leak training data, can be replicated through API access, or reveal information about their training set membership.",
+  "requires": [
+    "FOUND-ETHICS"
+  ],
+  "recommended": [
+    "AIML-ADV-ROBUST",
+    "FOUND-RISK",
+    "FOUND-TOOLS",
+    "SWSEC-WEB-API"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to model privacy attack concepts"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands how ML models can leak information about their training data or be stolen",
+      "evidence": [
+        "Can explain model extraction, model inversion, and membership inference at a conceptual level",
+        "Aware of why model confidentiality matters for intellectual property and data privacy",
+        "Familiar with the ATLAS techniques for ML model access and exfiltration"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Can execute known privacy attacks against models under guidance",
+      "evidence": [
+        "Performs model extraction attacks via query access in controlled settings",
+        "Runs membership inference tools against target models",
+        "Documents model privacy findings with supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses model confidentiality and quantifies privacy risks",
+      "evidence": [
+        "Evaluates API-accessible models for extraction feasibility and query budget requirements",
+        "Assesses membership inference risk given model type and deployment context",
+        "Tests effectiveness of differential privacy, output perturbation, and rate limiting defenses",
+        "Produces model privacy assessment reports with quantified risk and practical mitigations"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Assesses complex model deployments; develops privacy evaluation methodology; mentors others",
+      "evidence": [
+        "Evaluates privacy risks across multi-model systems and ensemble deployments",
+        "Designs privacy assessment strategies for novel model architectures",
+        "Reviews and calibrates model privacy assessments across the team",
+        "Develops internal tooling for automated privacy evaluation"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines model privacy assessment practice; publishes research",
+      "evidence": [
+        "Established the lab's model privacy and extraction assessment methodology",
+        "Published research on model privacy attacks, defenses, or quantification",
+        "Trains teams on model privacy assessment",
+        "Contributes to external standards on ML privacy and data protection"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Given API access to a target model, attempt extraction and membership inference, then assess deployed defenses"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review model privacy assessment reports for attack depth, defense evaluation, and actionable recommendations"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1320", "K1318", "S0955", "K1084"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development", "PD-WRL-007 Vulnerability Analysis"]
+    },
+    "mitre_atlas": [
+      "AML.T0024",
+      "AML.T0025"
+    ],
+    "owasp_ml_top10": [
+      "ML03:2023",
+      "ML04:2023",
+      "ML05:2023"
+    ],
+    "owasp_llm_top10": [
+      "LLM02:2025"
+    ]
+  },
+  "tags": [
+    "adversarial-ml",
+    "model-extraction",
+    "model-inversion",
+    "membership-inference",
+    "privacy",
+    "atlas",
+    "api",
+    "exfiltration"
+  ]
+}

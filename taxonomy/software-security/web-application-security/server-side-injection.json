@@ -1,0 +1,125 @@
+{
+  "id": "SWSEC-WEB-INJECT",
+  "name": "Server-Side Injection Testing",
+  "domain": "software-security",
+  "category": "Web Application Security",
+  "status": "active",
+  "description": "Identification and exploitation of server-side injection vulnerabilities beyond SQL injection. Covers server-side request forgery (SSRF), XML external entity injection (XXE), server-side template injection (SSTI), OS command injection, LDAP injection, XPath injection, and expression language injection. Each class requires understanding the underlying technology context to identify, confirm, and demonstrate impact.",
+  "requires": [
+    "FOUND-ETHICS"
+  ],
+  "recommended": [
+    "SWSEC-WEB-SQLI",
+    "SWSEC-DAST-WEBAPP",
+    "SWSEC-REVIEW-MANUAL",
+    "FOUND-TOOLS"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to server-side injection testing beyond SQLi"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the major server-side injection classes and how they differ from SQL injection",
+      "evidence": [
+        "Can explain SSRF, XXE, SSTI, and OS command injection at a conceptual level",
+        "Understands why each injection class requires different detection and exploitation approaches",
+        "Aware of the relevant CWEs and OWASP categories for each class"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Can detect and confirm server-side injection vulnerabilities in lab environments under supervision",
+      "evidence": [
+        "Identifies SSRF via out-of-band callbacks in controlled exercises",
+        "Detects and exploits basic XXE for file disclosure in lab environments",
+        "Tests for OS command injection using time-based and out-of-band techniques",
+        "Findings reviewed and confirmed by authorized tester"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently identifies and exploits server-side injection across multiple classes",
+      "evidence": [
+        "Identifies SSRF in real engagements including blind variants with out-of-band confirmation",
+        "Exploits XXE across XML parsers with varying configurations",
+        "Detects and exploits SSTI across common template engines",
+        "Tests for OS command injection including filter bypass and chained execution",
+        "Produces clear findings with demonstrated impact for each injection class"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Exploits complex injection scenarios; chains injection classes; mentors others",
+      "evidence": [
+        "Chains SSRF into internal service exploitation and cloud metadata access",
+        "Exploits XXE for out-of-band data exfiltration and SSRF via DTD",
+        "Identifies SSTI in non-obvious contexts and achieves code execution",
+        "Discovers injection in non-standard parameters (headers, file uploads, serialized data)",
+        "Mentors junior testers on injection methodology across all classes"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on server-side injection; discovers novel vectors; develops methodology",
+      "evidence": [
+        "Published research or CVEs related to server-side injection vulnerabilities",
+        "Developed the lab's server-side injection testing methodology",
+        "Discovers novel injection vectors in modern frameworks and cloud-native applications",
+        "Trains teams on advanced injection techniques"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Identify and exploit SSRF, XXE, SSTI, and command injection in a prepared application with varying contexts and defenses"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review server-side injection findings from recent engagements for accuracy, impact demonstration, and completeness across injection classes"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0688", "K1079", "S0565", "S0656"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-005 Software Security Assessment"]
+    },
+    "owasp": [
+      "A05:2025 Injection",
+      "A01:2025 Broken Access Control"
+    ],
+    "cwe": [
+      "CWE-918",
+      "CWE-611",
+      "CWE-1336",
+      "CWE-94",
+      "CWE-78",
+      "CWE-90",
+      "CWE-643"
+    ],
+    "crest_cct_app": [
+      "H20",
+      "H21",
+      "H24",
+      "H25",
+      "H28"
+    ],
+    "mitre_attack": {"techniques": ["T1190", "T1059"]}
+  },
+  "tags": [
+    "injection",
+    "ssrf",
+    "xxe",
+    "ssti",
+    "command-injection",
+    "owasp-top-10",
+    "web",
+    "exfiltration",
+    "ldap"
+  ]
+}

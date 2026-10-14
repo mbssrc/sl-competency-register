@@ -1,0 +1,118 @@
+{
+  "id": "HWSEC-CRYPTO-RNG",
+  "name": "Random Number Generator Evaluation",
+  "domain": "hardware-security",
+  "category": "Cryptographic Implementation Assessment",
+  "status": "active",
+  "description": "Assessment of hardware true random number generators and physical entropy sources in embedded and secure devices. Covers noise source design and physics characterization, entropy source health testing in hardware, conditioning circuit review, statistical testing of raw TRNG output (NIST SP 800-90B, BSI AIS 20/31), and assessment of TRNG resilience to environmental manipulation (temperature, voltage, EM interference). Software DRBG and SP 800-90A/C assessment belongs to CRYPTO-IMPL-ENTROPY.",
+  "requires": [
+    "FOUND-STANDARDS"
+  ],
+  "recommended": [
+    "HWSEC-EMBED-FW",
+    "HWSEC-SCA-SPA",
+    "CRYPTO-HASH-ASSESSMENT",
+    "FOUND-TOOLS",
+    "CRYPTO-IMPL-ENTROPY"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to hardware RNG evaluation"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands hardware RNG architectures and evaluation standards",
+      "evidence": [
+        "Can explain TRNG vs. DRBG/PRNG and common hardware entropy sources (ring oscillator, metastable, thermal noise)",
+        "Understands the purpose of health tests, conditioning, and output statistical testing",
+        "Aware of relevant standards (BSI AIS 20/31, NIST SP 800-90B, BSI technical guidelines)"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Collects RNG output and runs statistical tests under supervision",
+      "evidence": [
+        "Extracts raw RNG output from a target device via debug interface or firmware",
+        "Runs NIST SP 800-90B entropy assessment tools or AIS 20/31 statistical test procedures on collected RNG data with guidance",
+        "Interprets statistical test results (entropy estimates, bias, correlation) with support",
+        "Documents RNG output collection methodology and test results"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently evaluates hardware RNG implementations against relevant standards",
+      "evidence": [
+        "Characterizes entropy source behavior under normal operating conditions",
+        "Evaluates health test implementation and coverage in firmware/hardware",
+        "Performs AIS 20/31 or SP 800-90B evaluation and interprets results independently",
+        "Assesses RNG conditioning function and seeding mechanism adequacy",
+        "Completed RNG evaluations on 3+ distinct hardware RNG implementations"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Tests RNG under adversarial conditions; assesses resilience to manipulation; mentors team",
+      "evidence": [
+        "Assesses RNG behavior under environmental stress (temperature extremes, voltage variation, EM interference)",
+        "Identifies weaknesses in entropy source design through physical characterization",
+        "Evaluates stochastic models of hardware entropy sources for theoretical entropy estimation",
+        "Mentors team on RNG evaluation methodology and standard interpretation"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on hardware RNG evaluation; contributes to standards; defines methodology",
+      "evidence": [
+        "Defines the lab's RNG evaluation methodology aligned with AIS 20/31 and SP 800-90B",
+        "Published research on RNG evaluation techniques or entropy source analysis",
+        "Contributes to RNG evaluation standards or certification body guidance",
+        "Provides expert consultation on hardware RNG design to semiconductor vendors"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Evaluate a hardware RNG: extract raw output, run statistical tests, assess health testing, and produce an evaluation report against a specified standard"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review RNG evaluation reports for statistical rigor, standard compliance, and completeness of entropy source assessment"
+    }
+  ],
+  "equipment": [
+    "Environmental chamber for temperature-controlled RNG testing"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1380", "K1379", "K1339", "K0942"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development", "PD-WRL-007 Vulnerability Analysis"]
+    },
+    "common_criteria": [
+      "AVA_VAN.4",
+      "FCS_RNG.1"
+    ],
+    "fips_140_3": [
+      "AS09.27",
+      "TE09.22",
+      "TE09.23"
+    ],
+    "jil_attack_methods": [
+      "5.7 Attacks on RNG"
+    ]
+  },
+  "tags": [
+    "rng",
+    "trng",
+    "entropy",
+    "ais-31",
+    "sp800-90b",
+    "cryptographic",
+    "non-invasive",
+    "embedded"
+  ]
+}

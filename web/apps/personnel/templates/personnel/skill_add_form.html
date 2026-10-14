@@ -1,0 +1,18 @@
+{% extends "core/base.html" %}
+
+{% block title %}Add Skill — {{ person.name }} - {{ product_name }}{% endblock %}
+
+{% block page_crumbs %}
+{% url 'personnel:person-list' as person_list_url %}
+  {% include "core/partials/crumb.html" with label="Personnel" url=person_list_url first=True %}
+  {% include "core/partials/crumb.html" with label="Add Skill" current=True %}
+{% endblock %}
+
+{% block page_title %}Add Skill{% endblock %}
+{% block page_description %}Record an assessed competency against the taxonomy.{% endblock %}
+
+{% block content %}
+<div class="max-w-lg">
+  {% include "personnel/partials/skill_add_form.html" %}
+</div>
+{% endblock %}

@@ -1,0 +1,140 @@
+{
+  "id": "INFRA-ONPREM-HYBRID",
+  "name": "Hybrid Cloud Integration Security Assessment",
+  "domain": "infrastructure-security",
+  "category": "On-Premises Infrastructure",
+  "status": "active",
+  "description": "Security assessment of the integration points that join on-premises infrastructure to cloud tenants, and of the blast radius that crosses them in both directions. Covers directory synchronisation and hybrid authentication (Entra Connect Sync and Cloud Sync, password hash synchronisation, pass-through authentication, AD FS federation, Seamless SSO and its AZUREADSSOACC Kerberos key, cloud Kerberos trust), hybrid device join and Primary Refresh Token handling, and the treatment of the synchronisation server and its service accounts as tier-0 assets. Covers cloud-to-on-premises control planes such as Azure Arc, AWS Systems Manager hybrid activations and GCP Connect gateway, and the hybrid network and name resolution path (site-to-site VPN, ExpressRoute, Direct Connect, conditional DNS forwarding). On-premises Active Directory itself belongs to INFRA-ONPREM-AD, cloud tenant configuration to INFRA-AZURE-ENTRAID, federation protocol internals to INFRA-IDENTITY-FEDERATION, and segmentation design to NETSEC-INFRA-SEGMENTATION.",
+
+  "requires": [],
+  "recommended": [
+    "INFRA-ONPREM-AD",
+    "INFRA-AZURE-ENTRAID",
+    "INFRA-IDENTITY-FEDERATION",
+    "NETSEC-INFRA-SEGMENTATION",
+    "FOUND-RISK",
+    "FOUND-REPORT"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to hybrid cloud integration security assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands how on-premises directories and cloud tenants are joined and why the join is security-relevant",
+      "evidence": [
+        "Can explain the difference between password hash synchronisation, pass-through authentication and federation",
+        "Understands that the directory synchronisation server holds credentials or rights equivalent to a domain controller",
+        "Can describe what hybrid device join and a Primary Refresh Token are for",
+        "Understands that cloud management agents create an inbound control path to on-premises hosts"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Inventories hybrid integration points and reviews their configuration under supervision",
+      "evidence": [
+        "Inventories synchronisation servers, federation servers, connectors and cloud management agents under guidance",
+        "Identifies which authentication method a tenant uses and which object scopes are synchronised",
+        "Reviews the tiering, patch level and administrative access of the synchronisation and federation servers using lab checklists",
+        "Documents the hybrid network and DNS path between environments",
+        "Records findings following lab templates"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses hybrid integration security and the privilege paths that cross the boundary",
+      "evidence": [
+        "Assesses whether the synchronisation server is administered as a tier-0 asset and who can reach it",
+        "Evaluates the synchronisation service account's directory rights and whether they permit replication of credential material",
+        "Assesses federation trust configuration, token-signing certificate protection and the exposure of a Golden SAML style forgery",
+        "Identifies on-premises accounts that synchronise into privileged cloud roles, and cloud identities that can reach on-premises hosts through management agents",
+        "Reviews Seamless SSO and cloud Kerberos trust configuration, including rotation of the associated Kerberos key",
+        "Assesses the hybrid network path for unnecessary reachability and overly broad conditional forwarding",
+        "Produces findings that state the direction of each privilege path and its consequence in both environments"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Assesses complex multi-directory and multi-cloud hybrid estates; mentors others",
+      "evidence": [
+        "Assesses hybrid estates spanning multiple forests, tenants or cloud providers, including overlapping synchronisation scopes",
+        "Demonstrates end-to-end attack paths that pivot from on-premises compromise into cloud tenant control, and the reverse, under controlled conditions",
+        "Evaluates conditional access, authentication strength and device state enforcement for hybrid-joined devices, including fallback behaviour when a sync or federation component is unavailable",
+        "Develops tooling or checklists for hybrid privilege path discovery",
+        "Advises on staged migration away from fragile integration patterns",
+        "Reviews hybrid assessment work of junior analysts"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines the lab's hybrid integration assessment methodology; recognised authority",
+      "evidence": [
+        "Authored or maintains the lab's hybrid cloud integration assessment methodology",
+        "Published research on hybrid identity attack techniques or integration weaknesses",
+        "Advises organisations on hybrid identity architecture, tiering and trust direction strategy",
+        "Trains teams on hybrid privilege path analysis across on-premises and cloud boundaries"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "In a lab estate with a synchronised directory and a cloud tenant, enumerate every privilege path crossing the boundary in each direction and demonstrate one pivot from on-premises to tenant control"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given a hybrid architecture diagram, the chosen authentication method and the synchronisation scope, identify which on-premises compromises would result in cloud tenant compromise and which would not"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review a hybrid integration assessment report for completeness of the integration inventory and correctness of the stated direction and impact of each privilege path"
+    }
+  ],
+
+  "framework_mappings": {
+    "cis": [
+      "CIS Microsoft Windows Server Benchmark - Domain Controller recommendations",
+      "CIS Microsoft Azure Foundations Benchmark - Identity and Access Management"
+    ],
+    "csa_ccm": [
+      "IAM-01",
+      "IAM-04",
+      "IVS-03"
+    ],
+    "nice": {
+      "tks": ["K0742", "K0686", "K0685", "S0587", "S0925"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "IO-WRL-006 Systems Security Analysis"]
+    },
+    "mitre_attack": {
+      "techniques": ["T1556.007", "T1606.002", "T1484.002", "T1078.004"]
+    }
+  },
+
+  "tags": [
+    "hybrid-cloud",
+    "hybrid-identity",
+    "entra-connect",
+    "password-hash-sync",
+    "pass-through-authentication",
+    "adfs",
+    "golden-saml",
+    "seamless-sso",
+    "primary-refresh-token",
+    "azure-arc",
+    "tier-0",
+    "on-premises",
+    "identity",
+    "authentication",
+    "kerberos",
+    "active-directory",
+    "iam",
+    "azure",
+    "vpn"
+  ]
+}

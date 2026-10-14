@@ -1,0 +1,116 @@
+{
+  "id": "DFIR-CLOUD-LOGS",
+  "name": "Cloud Log Acquisition & Analysis",
+  "domain": "digital-forensics",
+  "category": "Cloud Forensics",
+  "status": "active",
+  "description": "Ability to acquire and analyse cloud platform logs for forensic investigations. Covers AWS CloudTrail, Azure Activity/Entra ID logs, GCP Audit Logs, Microsoft 365 Unified Audit Log, and cloud-native logging infrastructure. Includes understanding log retention, API-based collection, and translating cloud events into investigative narratives.",
+
+  "requires": [
+    "FOUND-EVIDENCE"
+  ],
+  "recommended": [
+    "FOUND-DOC",
+    "DFIR-DISK-TIMELINE",
+    "INFRA-AWS-IAM"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to cloud log forensics"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands what cloud platform logs exist and their forensic significance",
+      "evidence": [
+        "Can describe the major cloud log types (CloudTrail, Azure Activity, GCP Audit)",
+        "Understands cloud shared responsibility model implications for forensic evidence availability",
+        "Can explain why cloud log retention policies affect investigation capability"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Collects and searches cloud logs using platform tools and APIs under supervision",
+      "evidence": [
+        "Queried AWS CloudTrail logs via console and CLI to identify IAM actions under guidance",
+        "Collected Microsoft 365 Unified Audit Logs for email and SharePoint investigations",
+        "Searched Azure Activity Logs and Entra ID sign-in logs for suspicious authentication events",
+        "Documented cloud log acquisition scope, timestamps, and hash verification"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently acquires and analyses cloud logs to reconstruct attacker activity and produces investigation reports",
+      "evidence": [
+        "Independently investigated cloud security incidents using logs in 5+ engagements",
+        "Reconstructed attacker activity timelines from CloudTrail or equivalent logs",
+        "Identified credential compromise, privilege escalation, and data access events from cloud logs",
+        "Produced cloud forensic reports that met lab and legal standards"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles multi-cloud investigations; develops log correlation queries; addresses log gaps and anti-forensic log manipulation",
+      "evidence": [
+        "Investigated incidents spanning multiple cloud providers and SaaS platforms",
+        "Identified evidence of log tampering or anti-forensic techniques (CloudTrail disabling, log deletion)",
+        "Developed automated log collection and correlation scripts for cloud forensic triage",
+        "Mentors junior analysts on cloud log analysis and investigation methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines cloud forensics methodology; researches new cloud log artifacts; advises on cloud logging architecture for forensic readiness",
+      "evidence": [
+        "Authored or maintains the lab's cloud forensic log analysis methodology",
+        "Advises organisations on cloud logging architecture to ensure forensic readiness",
+        "Published research on cloud forensic artifacts or investigation techniques",
+        "Trains teams on cloud forensics across AWS, Azure, and GCP platforms"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Given a simulated cloud compromise scenario with provided log exports, reconstruct the attacker timeline, identify compromised resources, and produce an investigation report"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review cloud forensic investigation reports from recent engagements for log coverage completeness and analytical accuracy"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0863", "K0897", "K0971", "S0866", "S0641"],
+      "work_roles": ["PD-WRL-002 Digital Forensics", "PD-WRL-003 Incident Response"]
+    },
+    "sfia": {
+      "skill": "DGFS"
+    },
+    "giac": ["GCFR"]
+  },
+
+  "tags": [
+    "cloud",
+    "cloudtrail",
+    "azure-logs",
+    "gcp-audit",
+    "m365",
+    "log-analysis",
+    "saas",
+    "api",
+    "authentication",
+    "aws",
+    "forensics",
+    "iam",
+    "privilege-escalation",
+    "azure",
+    "gcp"
+  ]
+}

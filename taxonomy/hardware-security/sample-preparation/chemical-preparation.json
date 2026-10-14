@@ -1,0 +1,113 @@
+{
+  "id": "HWSEC-SPREP-CHEM",
+  "name": "Chemical Preparation & Safety",
+  "domain": "hardware-security",
+  "category": "Sample Preparation",
+  "status": "active",
+  "description": "Chemical techniques for IC sample preparation and the associated safety protocols. Covers selective wet etching (passivation removal, metal layer etching, silicon etching), staining and decorative etching for contrast enhancement, solvent cleaning, and chemical decapsulation support. Includes comprehensive chemical safety: acid and solvent handling (fuming HNO3, H2SO4, HF, organic solvents), PPE requirements, fume hood operation, spill response, chemical waste management, and COSHH/SDS compliance. Critical for ISO 17025 lab safety requirements.",
+  "requires": [],
+  "recommended": [
+    "HWSEC-INV-DECAP",
+    "HWSEC-SPREP-MECH",
+    "FOUND-EVIDENCE",
+    "FOUND-TOOLS"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to chemical sample preparation or lab chemical safety"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands chemical hazards, safety protocols, and basic etching concepts",
+      "evidence": [
+        "Completed lab chemical safety induction (COSHH awareness, SDS reading, PPE selection)",
+        "Can identify common chemicals used in IC preparation and their hazards (HNO3, H2SO4, HF, acetone, IPA)",
+        "Understands the purpose of selective etching in the sample preparation workflow"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Handles chemicals safely and performs standard etching procedures under supervision",
+      "evidence": [
+        "Correctly uses PPE (acid-resistant gloves, face shield, apron) and operates fume hood per lab protocols",
+        "Performs passivation removal (HF dip or plasma) on decapped die under guidance",
+        "Performs solvent cleaning sequences (acetone, IPA, DI water) without introducing contamination",
+        "Knows spill response procedures and location of emergency equipment (eyewash, safety shower, neutralization kits)"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently selects and performs chemical preparation for specified analysis goals",
+      "evidence": [
+        "Selects appropriate etchant, concentration, temperature, and duration for target layer removal",
+        "Performs selective metal etching (aluminum, copper, tungsten) without attacking underlying layers",
+        "Applies decorative/staining etches (Dash etch, Wright etch, Secco etch) for silicon defect and doping contrast",
+        "Maintains chemical inventory, tracks expiration, and manages waste disposal per regulations"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Develops etch recipes for new process nodes and materials; leads chemical safety",
+      "evidence": [
+        "Develops selective etch recipes for advanced process nodes (FinFET, GAA) and novel interconnect materials",
+        "Performs multi-step etch sequences for controlled layer-by-layer exposure on complex stacks",
+        "Conducts chemical risk assessments for new procedures and writes COSHH assessments",
+        "Mentors team on chemical handling, safety, and etch technique optimization"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines lab chemical safety framework and etch methodology; trains teams",
+      "evidence": [
+        "Defines the lab's chemical safety management system and procedure approval workflow",
+        "Specifies chemical storage, ventilation, and waste management infrastructure",
+        "Develops etch methodology documentation and process qualification procedures",
+        "Conducts chemical safety audits and operator proficiency assessments"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "direct_observation",
+      "description": "Observe chemical handling, PPE usage, fume hood operation, and etch process execution during a live preparation session"
+    },
+    {
+      "type": "controlled_exercise",
+      "description": "Perform selective etching on a test sample to expose a target layer, demonstrating etchant selection, process control, and safety compliance"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given an unknown layer stack, determine the etch sequence needed to expose a specified target layer for analysis"
+    }
+  ],
+  "equipment": [
+    "Chemical fume hood with acid-rated exhaust and scrubber",
+    "Acid-resistant wet bench with temperature-controlled baths",
+    "Plasma asher/etcher for dry passivation removal",
+    "Chemical waste collection and neutralization system",
+    "Emergency safety equipment (eyewash station, safety shower, spill kits)"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1284", "K0840"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development"]
+    },
+    "common_criteria": [
+      "AVA_VAN.4",
+      "AVA_VAN.5"
+    ]
+  },
+  "tags": [
+    "sample-preparation",
+    "chemical",
+    "etching",
+    "safety",
+    "coshh",
+    "invasive",
+    "risk-assessment"
+  ]
+}

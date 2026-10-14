@@ -1,0 +1,116 @@
+{
+  "id": "CRYPTO-PQ-LATTICE",
+  "name": "Lattice-Based Cryptography Assessment",
+  "domain": "cryptography",
+  "category": "Post-Quantum Cryptography",
+  "status": "active",
+  "description": "Assessment of lattice-based post-quantum cryptographic schemes including ML-KEM (CRYSTALS-Kyber), ML-DSA (CRYSTALS-Dilithium), and FN-DSA (Falcon; draft FIPS 206, not yet final). Covers parameter selection review, implementation correctness, side-channel resistance, and compliance with NIST FIPS 203/204 standards.",
+
+  "requires": [
+    "CRYPTO-ASYM-RSA",
+    "CRYPTO-ASYM-ECC"
+  ],
+  "recommended": [
+    "FOUND-STANDARDS",
+    "CRYPTO-ASYM-KEYEXCHANGE"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to lattice-based cryptography assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the quantum threat to classical cryptography and why lattice-based schemes are needed",
+      "evidence": [
+        "Can explain why RSA and ECC are vulnerable to quantum computers (Shor's algorithm)",
+        "Understands the Learning With Errors (LWE) problem at a conceptual level",
+        "Can name NIST-standardised lattice-based schemes (ML-KEM, ML-DSA) and their purposes"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Identifies lattice-based scheme deployments and reviews parameter selections under supervision",
+      "evidence": [
+        "Identifies ML-KEM and ML-DSA usage in TLS 1.3 hybrid key exchange and signing contexts",
+        "Reviews parameter level selection (ML-KEM-512/768/1024) against security requirements under guidance",
+        "Uses reference implementations and test vectors to validate correct operation",
+        "Documents post-quantum findings following lab templates"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses lattice-based cryptography deployments for correctness and security",
+      "evidence": [
+        "Evaluates ML-KEM/ML-DSA implementations against FIPS 203/204 requirements",
+        "Assesses parameter selection relative to target security levels and deployment requirements (e.g., CNSA 2.0 requires ML-KEM-1024 and ML-DSA-87, so ML-KEM-512/768 do not meet it)",
+        "Identifies implementation deviations from specification that may introduce weaknesses",
+        "Produces findings with references to NIST FIPS 203, FIPS 204, and migration guidance"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex lattice-based deployment assessments; evaluates side-channel resistance",
+      "evidence": [
+        "Evaluates lattice-based implementations for timing and power analysis side-channels",
+        "Assesses hybrid classical/post-quantum key exchange configurations (e.g., X25519+ML-KEM)",
+        "Reviews decapsulation failure handling for correctness and side-channel safety",
+        "Mentors junior staff on lattice-based cryptography assessment"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines lattice-based assessment methodology; recognised authority on post-quantum lattice schemes",
+      "evidence": [
+        "Authored or maintains the lab's lattice-based cryptography assessment methodology",
+        "Published research on lattice-based scheme implementations or vulnerabilities",
+        "Provides expert guidance on ML-KEM/ML-DSA deployment strategies and parameter selection",
+        "Trains teams on lattice-based cryptography internals and assessment approaches"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess a TLS 1.3 deployment using hybrid ML-KEM key exchange: evaluate parameter selection, implementation correctness, and fallback behaviour"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given an ML-KEM implementation, verify compliance with FIPS 203 and identify any deviations that could weaken security"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1378", "K1364", "K1359", "S0969", "K1362"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development", "PD-WRL-007 Vulnerability Analysis"]
+    },
+    "fips": {
+      "standards": ["FIPS 203", "FIPS 204"]
+    },
+    "cnsa": ["CNSA 2.0"]
+  },
+
+  "tags": [
+    "post-quantum",
+    "lattice",
+    "ml-kem",
+    "ml-dsa",
+    "kyber",
+    "dilithium",
+    "pqc",
+    "nist",
+    "quantum-resistant",
+    "cryptographic",
+    "side-channel",
+    "constant-time",
+    "tls",
+    "transport-security",
+    "timing-attack"
+  ]
+}

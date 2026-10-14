@@ -1,0 +1,146 @@
+<div class="bg-white dark:bg-gray-800 rounded-xl shadow-2xl border border-gray-200 dark:border-white/10 p-6 max-h-[85vh] overflow-y-auto">
+  <div class="flex items-center justify-between mb-6">
+    <h3 class="text-lg font-bold text-gray-900 dark:text-white">Edit Skill: {{ skill.name }}</h3>
+    <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+
+  <div class="mb-4">
+    <span class="font-mono text-xs bg-gray-100 dark:bg-white/5 text-gray-500 dark:text-gray-400 px-2 py-0.5 rounded">{{ skill.id }}</span>
+    <span class="ml-2 text-xs text-gray-500 dark:text-gray-400">{{ skill.domain.name }}</span>
+  </div>
+
+  <form method="post" action="{% url 'taxonomy:skill-edit' skill.id %}" class="space-y-5">
+  {% include "core/partials/form_errors.html" %}
+    {% csrf_token %}
+
+    {# --- Basic fields --- #}
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div>
+        <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name</label>
+        <input type="text" id="name" name="name" value="{{ skill.name }}"
+               class="w-full rounded-md border border-gray-300 dark:border-white/10 bg-white dark:bg-white/5 text-gray-900 dark:text-gray-100 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+      </div>
+      <div>
+        <label for="category" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Category</label>
+        <input type="text" id="category" name="category" value="{{ skill.category }}"
+               class="w-full rounded-md border border-gray-300 dark:border-white/10 bg-white dark:bg-white/5 text-gray-900 dark:text-gray-100 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+      </div>
+    </div>
+
+    <div>
+      <label for="description" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Description</label>
+      <textarea id="description" name="description" rows="3"
+                class="w-full rounded-md border border-gray-300 dark:border-white/10 bg-white dark:bg-white/5 text-gray-900 dark:text-gray-100 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">{{ skill.description }}</textarea>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div>
+        <label for="status" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Status</label>
+        <select id="status" name="status"
+                class="w-full rounded-md border border-gray-300 dark:border-white/10 bg-white dark:bg-white/5 text-gray-900 dark:text-gray-100 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+          <option value="active" {% if skill.status == "active" %}selected{% endif %}>Active</option>
+          <option value="deprecated" {% if skill.status == "deprecated" %}selected{% endif %}>Deprecated</option>
+        </select>
+      </div>
+      <div>
+        <label for="tags" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Tags <span class="font-normal text-gray-500">(comma-separated)</span></label>
+        <input type="text" id="tags" name="tags" value="{{ tags_str }}"
+               class="w-full rounded-md border border-gray-300 dark:border-white/10 bg-white dark:bg-white/5 text-gray-900 dark:text-gray-100 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+      </div>
+    </div>
+
+    {# --- Proficiency Levels --- #}
+    <div>
+      <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Proficiency Levels</label>
+      <div class="space-y-3 border border-gray-200 dark:border-white/10 rounded-md p-3">
+        {% for level in proficiency_levels %}
+        <div class="grid grid-cols-[3rem_1fr_2fr] gap-2 items-start">
+          <span class="inline-flex items-center justify-center w-7 h-7 rounded-full text-xs font-bold bg-gray-100 dark:bg-white/5 text-gray-600 dark:text-gray-400 mt-0.5">{{ level.num }}</span>
+          <input type="text" name="prof_{{ level.num }}_label" value="{{ level.label }}" placeholder="Label"
+                 class="rounded-md border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 text-gray-900 dark:text-gray-100 px-2 py-1.5 text-sm focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-transparent">
+          <input type="text" name="prof_{{ level.num }}_description" value="{{ level.description }}" placeholder="Description"
+                 class="rounded-md border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 text-gray-900 dark:text-gray-100 px-2 py-1.5 text-sm focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-transparent">
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    {# --- Assessment Methods --- #}
+    <div>
+      <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Assessment Methods</label>
+      <div class="space-y-3">
+        {% for method in assessment_methods %}
+        <div class="border border-gray-200 dark:border-white/10 rounded-lg p-3 relative">
+          <button type="button" onclick="this.parentElement.remove()"
+                  class="absolute top-2 right-2 text-gray-300 dark:text-gray-600 hover:text-red-500 dark:hover:text-red-400 transition-colors" title="Remove method">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+          <div class="mb-2">
+            <label class="block text-xs text-gray-500 dark:text-gray-400 mb-1">Type</label>
+            <select name="method_{{ forloop.counter0 }}_type"
+                    class="w-full sm:w-48 rounded-md border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 text-gray-900 dark:text-gray-100 px-2 py-1.5 text-sm focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-transparent">
+              {% for mt in method_types %}
+              <option value="{{ mt }}" {% if method.type == mt %}selected{% endif %}>{{ mt }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs text-gray-500 dark:text-gray-400 mb-1">Description</label>
+            <input type="text" name="method_{{ forloop.counter0 }}_desc" value="{{ method.description }}"
+                   class="w-full rounded-md border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 text-gray-900 dark:text-gray-100 px-2 py-1.5 text-sm focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-transparent">
+          </div>
+        </div>
+        {% endfor %}
+
+        {# Add new method #}
+        <div class="border border-dashed border-gray-300 dark:border-white/15 rounded-lg p-3">
+          <p class="text-xs font-medium text-gray-500 dark:text-gray-400 mb-2">Add new assessment method</p>
+          <div class="mb-2">
+            <label class="block text-xs text-gray-500 dark:text-gray-400 mb-1">Type</label>
+            <select name="method_{{ assessment_methods|length }}_type"
+                    class="w-full sm:w-48 rounded-md border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 text-gray-900 dark:text-gray-100 px-2 py-1.5 text-sm focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-transparent">
+              <option value="">Select a type...</option>
+              {% for mt in method_types %}
+              <option value="{{ mt }}">{{ mt }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs text-gray-500 dark:text-gray-400 mb-1">Description</label>
+            <input type="text" name="method_{{ assessment_methods|length }}_desc" value=""
+                   placeholder="Describe how this assessment is conducted"
+                   class="w-full rounded-md border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 text-gray-900 dark:text-gray-100 px-2 py-1.5 text-sm focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-transparent">
+          </div>
+        </div>
+        <input type="hidden" name="method_count" value="{{ assessment_methods|length|add:1 }}">
+      </div>
+    </div>
+
+    {# --- Equipment --- #}
+    <div>
+      <label for="equipment" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Equipment <span class="font-normal text-gray-500">(one per line)</span></label>
+      <textarea id="equipment" name="equipment" rows="3"
+                class="w-full rounded-md border border-gray-300 dark:border-white/10 bg-white dark:bg-white/5 text-gray-900 dark:text-gray-100 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">{{ equipment_str }}</textarea>
+    </div>
+
+    {# --- Framework Mappings --- #}
+    <div>
+      <label for="framework_mappings" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Framework Mappings <span class="font-normal text-gray-500">(JSON object, e.g. {"cwe": ["CWE-79"], "nice": {"tks": ["K0018"]}})</span></label>
+      <textarea id="framework_mappings" name="framework_mappings" rows="10" spellcheck="false"
+                class="w-full rounded-md border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 text-gray-900 dark:text-gray-100 px-3 py-2 font-mono text-xs focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-transparent">{{ framework_mappings_json }}</textarea>
+    </div>
+
+    <div class="flex items-center justify-end gap-3 pt-4 border-t border-gray-200 dark:border-white/10">
+      <button type="button" onclick="closeModal()"
+              class="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-md hover:bg-gray-50 dark:hover:bg-white/10 transition-colors">
+        Cancel
+      </button>
+      <button type="submit"
+              class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        Save Changes
+      </button>
+    </div>
+  </form>
+</div>

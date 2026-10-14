@@ -1,0 +1,62 @@
+{
+  "key": "PERS-013",
+  "bands": {
+    "strong": [
+      "WSEC-WIFI",
+      "WSEC-PROTO"
+    ],
+    "weak": [
+      "WSEC-SPEC",
+      "WSEC-CELL"
+    ]
+  },
+  "signature": {
+    "WSEC-WIFI-RECON": 3,
+    "WSEC-WIFI-WPA": 3,
+    "WSEC-WIFI-CLIENT": 3,
+    "WSEC-WIFI-ENT": 3,
+    "WSEC-PROTO-BLE": 3,
+    "WSEC-PROTO-CUSTOM": 3,
+    "WSEC-PROTO-SUBGHZ": 3,
+    "FOUND-RISK": 3
+  },
+  "never": [],
+  "foundations": [
+    1,
+    2
+  ],
+  "projects": [
+    "PRJ-SAT-BACKEND",
+    "PRJ-HUMANOID-WIFI"
+  ],
+  "stale_skills": [],
+  "self_assessment": {
+    "mode": "all",
+    "bias": 1,
+    "jitter": 1,
+    "extra": {
+      "WSEC-CELL-SIM": 3,
+      "WSEC-CELL-GSM": 2
+    }
+  },
+  "development_plan": [
+    {
+      "skill": "FOUND-QA",
+      "target_level": 3,
+      "target_date": "2027-06-30",
+      "actions": [
+        "Complete internal ISO/IEC 17025 QA reviewer training",
+        "Co-review two wireless assessment reports"
+      ]
+    }
+  ],
+  "name": "Kwame Mensah",
+  "role": "Wireless Security Evaluator",
+  "start_date": "2022-06-13",
+  "domains": [
+    "WSEC"
+  ],
+  "target_maturity": {
+    "WSEC": "practitioner"
+  }
+}

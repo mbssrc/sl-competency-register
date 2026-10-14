@@ -1,0 +1,63 @@
+{
+  "id": "SWSEC",
+  "name": "Software & Application Security",
+  "description": "Skills related to the security assessment of software, applications, and operating systems. Covers web application testing, mobile application testing, operating system security, source code review, static and dynamic analysis, software supply chain security, and reverse engineering.",
+
+  "categories": [
+    {
+      "id": "SWSEC-WEB",
+      "name": "Web Application Security",
+      "description": "Security testing of web applications. Covers OWASP Top 10 vulnerabilities, authentication/authorization flaws, injection attacks, client-side attacks, API security, business logic, and web application architecture analysis. Browser exploitation belongs to OS Internals & Exploitation."
+    },
+    {
+      "id": "SWSEC-MOB",
+      "name": "Mobile Security",
+      "description": "Security testing of mobile applications (iOS, Android). Covers binary analysis, data storage security, transport security, inter-process communication, and platform-specific vulnerabilities."
+    },
+    {
+      "id": "SWSEC-APP",
+      "name": "Desktop & Specialized Applications",
+      "description": "Security assessment of application types outside web and mobile. Covers thick-client and client-server desktop applications and smart contract code review."
+    },
+    {
+      "id": "SWSEC-OS",
+      "name": "OS Internals & Exploitation",
+      "description": "Operating system internals and exploitation. Covers privilege escalation internals (Windows, Linux, macOS), kernel and driver exploitation, binary exploitation, defense-evasion internals, and browser exploitation. Operational privilege escalation during engagements belongs to NETSEC-POST-PRIVESC."
+    },
+    {
+      "id": "SWSEC-PLATFORM",
+      "name": "Platform Security",
+      "description": "Security assessment of platform protection mechanisms below and around the operating system. Covers UEFI and Secure Boot, trusted execution environments, Linux security modules, and OS sandboxing and isolation."
+    },
+    {
+      "id": "SWSEC-REVIEW",
+      "name": "Secure Code Review",
+      "description": "Manual review of source code for security vulnerabilities. Covers language-specific vulnerability patterns, taint analysis, authentication and authorization logic review, and cryptographic misuse."
+    },
+    {
+      "id": "SWSEC-SAST",
+      "name": "Static Analysis",
+      "description": "Automated and semi-automated static analysis of source code and binaries. Covers tool configuration, result triage, false positive management, and integration into development workflows."
+    },
+    {
+      "id": "SWSEC-DAST",
+      "name": "Dynamic Analysis",
+      "description": "Dynamic testing of running applications. Covers automated web scanning, web and API fuzzing, runtime instrumentation, debugging, and behavioral analysis. Coverage-guided and low-level fuzzing belongs to Fuzzing & Vulnerability Research."
+    },
+    {
+      "id": "SWSEC-FUZZ",
+      "name": "Fuzzing & Vulnerability Research",
+      "description": "Automated vulnerability discovery and research-grade fuzzing. Covers coverage-guided fuzzing, kernel, hypervisor and driver fuzzing, firmware and embedded fuzzing, and protocol fuzzing."
+    },
+    {
+      "id": "SWSEC-SUPPLY",
+      "name": "Supply Chain Security",
+      "description": "Assessment of software supply chain risks. Covers dependency analysis, SBOM generation and review, build pipeline security, package repository security, and third-party component evaluation. Includes operating-system distribution and package-ecosystem supply chain."
+    },
+    {
+      "id": "SWSEC-RE",
+      "name": "Reverse Engineering",
+      "description": "Binary reverse engineering and analysis. Covers disassembly, decompilation, protocol reverse engineering, malware analysis (from a software perspective), and anti-reverse-engineering bypass."
+    }
+  ]
+}

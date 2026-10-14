@@ -1,0 +1,110 @@
+{
+  "id": "ADVSIM-SE-MEASURE",
+  "name": "Human Security Measurement",
+  "domain": "adversarial-simulation",
+  "category": "Social Engineering",
+  "status": "active",
+  "description": "Ability to design, execute, and report on programmes that measure an organisation's human security posture. Covers defining metrics for social engineering resilience, baseline and trend measurement, statistical analysis of campaign results, benchmarking, and translating findings into actionable security culture recommendations.",
+
+  "requires": [
+    "FOUND-REPORT",
+    "FOUND-RISK"
+  ],
+  "recommended": [
+    "ADVSIM-SE-PHISHING",
+    "ADVSIM-SE-VISHING",
+    "FOUND-COMM"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to human security measurement"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the concept of measuring human security posture and common metrics",
+      "evidence": [
+        "Completed training on social engineering metrics and measurement approaches",
+        "Can describe common metrics (click rate, report rate, credential submission rate)",
+        "Understands the difference between awareness testing and adversarial simulation metrics"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Collects and reports social engineering metrics under supervision",
+      "evidence": [
+        "Collected campaign metrics using lab tooling (e.g., GoPhish dashboards)",
+        "Produced basic statistical summaries of campaign results with senior review",
+        "Contributed to measurement reports under guidance"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently designs measurement programmes and produces analytical reports",
+      "evidence": [
+        "Designed measurement programmes for 3+ clients including metric selection and baselines",
+        "Produced reports with statistical analysis, trend identification, and benchmarking",
+        "Reported human-security metrics in aggregate, withholding individual results from line management unless the engagement terms explicitly required otherwise",
+        "Delivered actionable recommendations based on measurement findings",
+        "Tracked and reported on improvement over multiple campaign iterations"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Designs advanced measurement frameworks; advises on security culture programmes",
+      "evidence": [
+        "Developed multi-vector measurement programmes (phishing, vishing, physical) with combined scoring",
+        "Created department-level and role-based risk analysis from campaign data",
+        "Advised clients on security culture improvement programmes based on measurement data",
+        "Mentors team on measurement methodology and statistical analysis"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines lab measurement methodology; publishes research on human security metrics",
+      "evidence": [
+        "Authored the lab's human security measurement framework and reporting standards",
+        "Developed proprietary metrics or scoring models for human security posture",
+        "Published research on social engineering metrics or security culture measurement",
+        "Trains teams and presents at conferences on measuring human risk"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "work_product_review",
+      "description": "Review measurement reports from recent engagements, assessing metric selection, statistical rigour, and actionability of recommendations"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given raw campaign data from multiple social engineering exercises, produce an analysis with trends, risk areas, and recommendations"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0638", "S0646", "K1268", "S0591"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "OG-WRL-014 Systems Security Management"]
+    },
+    "mitre_attack": {
+      "tactics": ["TA0001", "TA0043"]
+    },
+    "cbest": {
+      "phase": "Closure - Remediation"
+    }
+  },
+
+  "tags": [
+    "measurement",
+    "metrics",
+    "security-culture",
+    "analytics",
+    "human-risk",
+    "social-engineering"
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "id": "WSEC-WIFI-WPA",
+  "name": "WPA/WPA2/WPA3 Attack Techniques",
+  "domain": "wireless-signal-security",
+  "category": "WiFi Security",
+  "status": "active",
+  "description": "Ability to assess the security of WPA-family protected wireless networks. Covers four-way handshake capture and offline cracking, PMKID attacks, WPA3-SAE dragonfly handshake vulnerabilities (Dragonblood) and WPA3 transition-mode downgrade, Protected Management Frames (802.11w) enforcement, key reinstallation attacks (KRACK), fragmentation and aggregation attacks (FragAttacks), dictionary and rule-based password attacks, and assessment of pre-shared key strength. Includes understanding of countermeasures and remediation guidance.",
+  "requires": [
+    "WSEC-WIFI-RECON"
+  ],
+  "recommended": [
+    "FOUND-REPORT",
+    "FOUND-ETHICS",
+    "NETSEC-EXPLOIT-AUTHN"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to WPA attack techniques"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands WPA authentication mechanisms and known vulnerability classes",
+      "evidence": [
+        "Can explain the WPA2 four-way handshake and its role in key derivation",
+        "Understands the difference between PSK, SAE, and Enterprise authentication",
+        "Completed training on WPA security and common attack vectors"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Executes WPA attacks against lab targets using standard tools under supervision",
+      "evidence": [
+        "Captured WPA2 four-way handshakes and performed offline dictionary attacks under guidance",
+        "Executed PMKID-based attacks using hcxdumptool and hashcat under supervision",
+        "Configured and operated hash cracking rigs for WPA PSK recovery"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses WPA security and selects appropriate attack strategies",
+      "evidence": [
+        "Independently assessed WPA2/WPA3 security for 3+ engagements",
+        "Selected and executed appropriate attack strategies based on target configuration",
+        "Developed engagement-specific wordlists and rule sets for targeted password attacks",
+        "Produced clear reports documenting attack methodology, results, and remediation recommendations"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Executes advanced WPA attacks; assesses WPA3-SAE implementations; develops attack tooling",
+      "evidence": [
+        "Assessed WPA3-SAE implementations for Dragonblood and related vulnerabilities",
+        "Performed key reinstallation (KRACK) and fragmentation/aggregation (FragAttacks) testing against client and AP implementations",
+        "Developed optimized cracking pipelines and custom wordlist generation tools",
+        "Reviews attack methodology and mentors junior staff on WPA assessment techniques"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on WPA security; discovers implementation flaws; advances lab methodology",
+      "evidence": [
+        "Discovered novel implementation vulnerabilities in WPA2 or WPA3 deployments",
+        "Published research on WPA security assessment or attack techniques",
+        "Authored the lab's WPA assessment methodology and cracking infrastructure standards",
+        "Trains teams on WPA security assessment and provides vendor remediation guidance"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess a lab WPA2/WPA3 deployment: capture handshakes, select attack strategy, recover PSK, and document findings with remediation advice"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review reports from recent WiFi security assessments for attack methodology completeness and remediation quality"
+    }
+  ],
+  "equipment": [
+    "Alfa AWUS036ACH or equivalent monitor-mode-capable WiFi adapter",
+    "GPU-equipped password cracking workstation"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0998", "K0375", "K0830", "S0758"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis"]
+    },
+    "sfia": {
+      "skill": "PENT",
+      "levels": [
+        3,
+        4,
+        5
+      ]
+    },
+    "mitre_attack": {
+      "techniques": [
+        "T1110",
+        "T1557",
+        "T1040"
+      ]
+    },
+    "certifications": [
+      "GIAC GAWN",
+      "Offensive Security OSWP",
+      "CompTIA PenTest+",
+      "CEH"
+    ]
+  },
+  "tags": [
+    "wifi",
+    "wpa2",
+    "wpa3",
+    "password-cracking",
+    "handshake-capture",
+    "pmkid",
+    "authentication",
+    "cryptographic",
+    "encryption"
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "key": "PERS-017",
+  "bands": {
+    "strong": [
+      "AIML-LLM",
+      "AIML-OPS",
+      "SWSEC-WEB"
+    ],
+    "weak": [
+      "AIML-ADV",
+      "SWSEC-OS",
+      "SWSEC-FUZZ",
+      "SWSEC-PLATFORM",
+      "SWSEC-SUPPLY",
+      "SWSEC-MOB"
+    ]
+  },
+  "signature": {
+    "AIML-LLM-PROMPTINJ": 3,
+    "AIML-LLM-RAG": 3,
+    "AIML-LLM-AGENT": 3,
+    "AIML-LLM-REDTEAM": 3,
+    "AIML-OPS-THREATMODEL": 3,
+    "AIML-OPS-EVAL": 3,
+    "AIML-ADV-PRIVACY": 2,
+    "AIML-ADV-ROBUST": 2,
+    "SWSEC-WEB-AUTHZ": 3,
+    "SWSEC-WEB-API": 3
+  },
+  "never": [],
+  "foundations": [
+    1,
+    2
+  ],
+  "projects": [],
+  "stale_skills": [],
+  "self_assessment": {
+    "mode": "all",
+    "bias": -1,
+    "jitter": 1
+  },
+  "development_plan": [
+    {
+      "skill": "AIML-ADV-PRIVACY",
+      "target_level": 4,
+      "target_date": "2027-06-30",
+      "actions": [
+        "Complete membership-inference and extraction training",
+        "Build the lab's model privacy assessment methodology",
+        "Lead the privacy workstream on the MedGrant AI engagement"
+      ]
+    },
+    {
+      "skill": "AIML-LLM-AGENT",
+      "target_level": 4,
+      "target_date": "2027-03-31",
+      "actions": [
+        "Develop the lab's agent tool-access test methodology",
+        "Present agent security findings at an internal review"
+      ]
+    }
+  ],
+  "name": "Beatriz Carvalho",
+  "role": "AI/ML Security Evaluator",
+  "start_date": "2024-01-08",
+  "domains": [
+    "AIML",
+    "SWSEC"
+  ],
+  "target_maturity": {
+    "AIML": "practitioner",
+    "SWSEC": "practitioner"
+  }
+}

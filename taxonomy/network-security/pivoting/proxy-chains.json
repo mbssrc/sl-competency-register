@@ -1,0 +1,107 @@
+{
+  "id": "NETSEC-PIVOT-PROXYCHAINS",
+  "name": "Proxy Chains & SOCKS Routing",
+  "domain": "network-security",
+  "category": "Pivoting",
+  "status": "active",
+  "description": "Ability to route tools and traffic through proxy chains for multi-hop network access. Covers proxychains configuration, SOCKS4/5 proxy setup, tool-specific proxy settings, and the operational management of proxy infrastructure during engagements.",
+
+  "requires": [
+    "NETSEC-PIVOT-PORTFWD"
+  ],
+  "recommended": [
+    "NETSEC-RECON-NETMAPPING",
+    "FOUND-TOOLS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to proxy chains or SOCKS routing"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the concept of proxy chains and why they are used for pivoting",
+      "evidence": [
+        "Can explain SOCKS proxy protocols and their role in routing tool traffic through pivot hosts",
+        "Understands how proxychains routes tool traffic through intermediary hosts",
+        "Knows why multi-hop proxy chains are necessary in segmented networks"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Configures and uses basic proxy chains under supervision",
+      "evidence": [
+        "Configures proxychains.conf for single-hop SOCKS proxying",
+        "Routes Nmap, NetExec, or similar tools through proxychains",
+        "Understands which tools work reliably through proxychains and which do not",
+        "Documents proxy configurations and routing paths under review"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently manages proxy infrastructure for multi-segment access during engagements",
+      "evidence": [
+        "Configures multi-hop proxy chains through several pivot points",
+        "Handles tool compatibility issues and selects alternatives when proxychains fails",
+        "Maintains proxy infrastructure stability throughout an engagement",
+        "Routes both scanning and exploitation tools through proxy chains reliably"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Manages complex proxy architectures; optimizes performance; mentors others",
+      "evidence": [
+        "Designs proxy architectures for large engagements with many network segments",
+        "Configures transparent proxying and traffic routing for tools that lack proxy support",
+        "Troubleshoots complex proxy chain failures across multiple hops",
+        "Mentors junior staff on proxy chain setup and management"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines proxy methodology; develops routing solutions; trains teams",
+      "evidence": [
+        "Authored the lab's proxy chain and routing methodology",
+        "Develops custom proxy routing solutions for specialized engagement scenarios",
+        "Deep understanding of SOCKS protocol internals and limitations",
+        "Trains teams on advanced proxy architecture and traffic management"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Configure a multi-hop proxy chain and successfully run scanning and exploitation tools against a target three network hops away"
+    },
+    {
+      "type": "direct_observation",
+      "description": "Observe proxy chain setup and management during a live or simulated engagement"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1023", "K0956", "K1105"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis"]
+    },
+    "mitre_attack": {
+      "techniques": ["T1090"]
+    },
+    "crest": {
+      "areas": ["pivoting"]
+    }
+  },
+
+  "tags": [
+    "proxychains",
+    "socks",
+    "proxy",
+    "pivoting",
+    "traffic-routing"
+  ]
+}

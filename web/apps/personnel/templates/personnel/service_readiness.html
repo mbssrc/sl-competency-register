@@ -1,0 +1,122 @@
+{% extends "core/base.html" %}
+
+{% block title %}Service Readiness - Reports - {{ product_name }}{% endblock %}
+
+{% block page_crumbs %}
+  {% include "core/partials/crumb.html" with label="Reports" first=True %}
+  {% include "core/partials/crumb.html" with label="Service Readiness" current=True %}
+{% endblock %}
+
+{% block page_title %}Service Readiness{% endblock %}
+{% block page_description %}Qualified personnel for each service's required competencies.{% endblock %}
+
+
+
+{% block content %}
+<!-- Summary: the total reads as one line above the split beneath it. -->
+<div class="mb-4 flex items-baseline justify-between gap-4 bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg px-5 py-4">
+  <div class="text-sm text-gray-500 dark:text-gray-400">Total Services</div>
+  <div class="text-2xl font-bold text-gray-900 dark:text-white">{{ total_services }}</div>
+</div>
+
+<div class="mb-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+  <div class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg p-4">
+    <div class="text-sm text-emerald-600 dark:text-emerald-400">Fully Staffable</div>
+    <div class="text-2xl font-bold text-emerald-700 dark:text-emerald-400 mt-1">{{ fully_staffable }}</div>
+  </div>
+  <div class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg p-4">
+    <div class="text-sm text-red-600 dark:text-red-400">With Staffing Gaps</div>
+    <div class="text-2xl font-bold text-red-700 dark:text-red-400 mt-1">{{ with_gaps }}</div>
+  </div>
+</div>
+
+<!-- Service readiness cards -->
+{% for service in services %}
+<div class="mb-6">
+  <div class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg overflow-hidden">
+    <!-- Service header -->
+    <div class="px-5 py-4 border-b border-gray-200 dark:border-white/10 flex items-center justify-between">
+      <div>
+        <h3 class="text-base font-semibold text-gray-900 dark:text-white">
+          <a href="{% url 'taxonomy:service-detail' service.service_id %}" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">{{ service.service_name }}</a>
+        </h3>
+        <span class="font-mono text-xs text-gray-500 dark:text-gray-500">{{ service.service_id }}</span>
+      </div>
+      <div>
+        {% if service.fully_staffable %}
+        <span class="inline-flex items-center gap-1 rounded-full bg-emerald-50 dark:bg-emerald-900/30 px-3 py-1 text-xs font-medium text-emerald-700 dark:text-emerald-400">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          Fully Staffable
+        </span>
+        {% else %}
+        <span class="inline-flex items-center gap-1 rounded-full bg-rose-50 dark:bg-rose-900/30 px-3 py-1 text-xs font-medium text-rose-700 dark:text-rose-400">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4.5c-.77-.833-2.694-.833-3.464 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
+          Staffing Gaps
+        </span>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Competencies table -->
+    <table class="w-full text-sm table-fixed">
+      <colgroup>
+        <col style="width: 40%">
+        <col style="width: 12%">
+        <col style="width: 12%">
+        <col style="width: 36%">
+      </colgroup>
+      <thead>
+        <tr class="border-b border-gray-200 dark:border-white/10">
+          <th class="text-left px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Skill</th>
+          <th class="text-center px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Min Level</th>
+          <th class="text-center px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Qualified</th>
+          <th class="text-left px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Qualified Personnel</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for comp in service.competencies %}
+        <tr class="border-b border-gray-100 dark:border-white/5 last:border-b-0 {% if comp.qualified_count == 0 %}bg-rose-50/50 dark:bg-rose-900/10{% endif %}">
+          <td class="px-4 py-2.5">
+            <a href="{% url 'taxonomy:skill-detail' comp.skill_id %}" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+              <span class="font-mono text-xs text-gray-500 dark:text-gray-500">{{ comp.skill_id }}</span>
+              <span class="ml-1 text-gray-900 dark:text-gray-200">{{ comp.skill_name }}</span>
+            </a>
+          </td>
+          <td class="px-4 py-2.5 text-center">
+            <span class="inline-flex items-center justify-center w-6 h-6 rounded-full text-xs font-bold
+              {% if comp.minimum_level == 1 %}bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300
+              {% elif comp.minimum_level == 2 %}bg-cyan-100 dark:bg-cyan-900/40 text-cyan-700 dark:text-cyan-300
+              {% elif comp.minimum_level == 3 %}bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300
+              {% elif comp.minimum_level == 4 %}bg-violet-100 dark:bg-violet-900/40 text-violet-700 dark:text-violet-300
+              {% elif comp.minimum_level == 5 %}bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300
+              {% else %}bg-gray-100 dark:bg-white/5 text-gray-500 dark:text-gray-400
+              {% endif %}">
+              {{ comp.minimum_level }}
+            </span>
+          </td>
+          <td class="px-4 py-2.5 text-center">
+            {% if comp.qualified_count == 0 %}
+            <span class="inline-flex items-center rounded-full bg-rose-100 dark:bg-rose-900/40 px-2 py-0.5 text-xs font-bold text-rose-700 dark:text-rose-400">NONE</span>
+            {% else %}
+            <span class="text-sm font-medium text-gray-900 dark:text-gray-200">{{ comp.qualified_count }}</span>
+            {% endif %}
+          </td>
+          <td class="px-4 py-2.5 text-gray-600 dark:text-gray-400 text-sm">
+            {% if comp.qualified_people %}
+            {{ comp.qualified_people|join:", " }}
+            {% else %}
+            <span class="text-rose-600 dark:text-rose-400 font-medium">No qualified personnel</span>
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% empty %}
+<div class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg p-8 text-center text-gray-500 dark:text-gray-400">
+  No services defined in taxonomy.
+</div>
+{% endfor %}
+{% endblock %}

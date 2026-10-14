@@ -1,0 +1,101 @@
+{
+  "id": "AIML-LLM-PROMPTINJ",
+  "name": "Prompt Injection & LLM Input Manipulation",
+  "domain": "ai-ml-security",
+  "category": "LLM & Generative AI",
+  "status": "active",
+  "description": "Assessment of LLM-integrated applications against manipulation of model inputs and unsafe handling of model outputs. Covers direct and indirect prompt injection, system-prompt extraction, improper output handling that turns model output into downstream injection (OWASP LLM01, LLM05, LLM07), and the design and evaluation of guardrails and input/output filters. Jailbreak and harm-elicitation campaigns belong to AIML-LLM-REDTEAM; tool-use and agent privilege issues belong to AIML-LLM-AGENT.",
+  "requires": [
+    "FOUND-ETHICS"
+  ],
+  "recommended": [
+    "SWSEC-WEB-INJECT",
+    "FOUND-TOOLS"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to prompt injection or LLM input manipulation"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands why LLMs cannot reliably separate instructions from data",
+      "evidence": [
+        "Can explain direct versus indirect prompt injection and why it differs from classic injection flaws",
+        "Aware of system-prompt leakage and improper output handling risks (OWASP LLM01, LLM05, LLM07)",
+        "Familiar with common guardrail approaches such as input classifiers, output filters, and instruction hierarchy"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Can execute known prompt injection techniques under guidance",
+      "evidence": [
+        "Demonstrates direct prompt injection and system-prompt extraction against a lab application",
+        "Plants indirect injection payloads in documents, web pages, or e-mails consumed by the application",
+        "Identifies model output rendered unsafely downstream (HTML, Markdown, SQL, shell) with supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses LLM applications for input manipulation and output handling flaws",
+      "evidence": [
+        "Maps every untrusted input channel into the prompt context, including retrieved and third-party content",
+        "Demonstrates impact chains from injection to data exfiltration, for example via Markdown image or link rendering",
+        "Measures guardrail and filter bypass rates using obfuscation, encoding, and multi-turn techniques",
+        "Produces findings with reproducible payloads, success rates, and layered mitigations"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Assesses complex LLM applications; develops injection test methodology; mentors others",
+      "evidence": [
+        "Develops novel indirect injection vectors for new input modalities such as images, audio, and files",
+        "Builds automated injection test suites integrated into application CI pipelines",
+        "Evaluates architectural defences such as privilege separation, dual-LLM patterns, and output sanitisation",
+        "Reviews and calibrates prompt injection assessments across the team"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines the lab's prompt injection assessment practice; publishes research",
+      "evidence": [
+        "Established the lab's methodology for prompt injection and output handling assessment",
+        "Published research on prompt injection attacks, defences, or guardrail evaluation",
+        "Trains teams on LLM input manipulation assessment",
+        "Contributes to external guidance such as the OWASP Top 10 for LLM Applications"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Against a lab LLM application with document ingestion, achieve system-prompt extraction and an indirect injection that exfiltrates data through rendered output"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review a prompt injection assessment report for input-channel coverage, reproducible payloads, measured bypass rates, and layered mitigations"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1320", "S0953"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-008 Technology Research and Development"]
+    },
+    "mitre_atlas": ["AML.T0051", "AML.T0056", "AML.T0057"],
+    "owasp_llm_top10": ["LLM01:2025", "LLM05:2025", "LLM07:2025"],
+    "cwe": ["CWE-1427", "CWE-1426"]
+  },
+  "tags": [
+    "llm",
+    "prompt-injection",
+    "generative-ai",
+    "guardrails",
+    "atlas",
+    "exfiltration",
+    "obfuscation",
+    "evasion"
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "id": "CRYPTO-PQ-HASHSIG",
+  "name": "Hash-Based Signature Assessment",
+  "domain": "cryptography",
+  "category": "Post-Quantum Cryptography",
+  "status": "active",
+  "description": "Assessment of hash-based digital signature schemes including SLH-DSA (SPHINCS+), XMSS, and LMS. Covers stateful vs stateless scheme trade-offs, state management for stateful schemes, parameter selection, and compliance with NIST FIPS 205 and SP 800-208.",
+
+  "requires": [
+    "CRYPTO-HASH-ASSESSMENT",
+    "CRYPTO-ASYM-SIGNATURES"
+  ],
+  "recommended": [
+    "FOUND-STANDARDS",
+    "CRYPTO-PQ-LATTICE"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to hash-based signature assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands hash-based signature fundamentals and the stateful vs stateless distinction",
+      "evidence": [
+        "Can explain how hash-based signatures derive their security from hash function properties",
+        "Understands the critical difference between stateful (XMSS, LMS) and stateless (SLH-DSA) schemes",
+        "Can describe why state management failure in XMSS/LMS leads to catastrophic key reuse"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Identifies hash-based signature deployments and reviews configurations under supervision",
+      "evidence": [
+        "Identifies SLH-DSA, XMSS, and LMS usage in firmware signing and certificate contexts",
+        "Reviews parameter selections (tree height, hash function) under guidance",
+        "Validates signature verification against test vectors",
+        "Documents hash-based signature findings following lab templates"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses hash-based signature implementations for correctness and safety",
+      "evidence": [
+        "Evaluates SLH-DSA implementations against FIPS 205 requirements",
+        "Assesses XMSS/LMS state management for one-time signature index tracking correctness",
+        "Identifies parameter selection issues affecting signature size, generation time, or security level",
+        "Produces findings referencing FIPS 205, SP 800-208, or relevant RFCs"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex hash-based signature deployments; evaluates state management risks",
+      "evidence": [
+        "Evaluates stateful scheme state persistence and backup mechanisms for fault tolerance, including the SP 800-208 requirement that key generation and signing occur in hardware cryptographic modules that do not export private keys",
+        "Assesses hash-based signatures in firmware update and code signing pipelines",
+        "Reviews SLH-DSA parameter trade-offs (speed vs size) for deployment context",
+        "Mentors junior staff on hash-based signature assessment methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines hash-based signature assessment methodology; recognised authority on post-quantum signatures",
+      "evidence": [
+        "Authored or maintains the lab's hash-based signature assessment methodology",
+        "Published research on hash-based signature implementations or state management risks",
+        "Provides expert guidance on hash-based signature deployment strategies",
+        "Trains teams on hash-based signature internals and assessment approaches"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess a firmware signing system using XMSS: evaluate state management, key generation, and signature verification processes"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given an LMS deployment, identify state management weaknesses and propose safeguards against one-time signature index reuse"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1378", "K1364", "S0622", "S0969"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development", "PD-WRL-007 Vulnerability Analysis"]
+    },
+    "fips": {
+      "standards": ["FIPS 205"]
+    },
+    "nist_sp": ["800-208"],
+    "ietf": {
+      "rfcs": ["RFC 8554", "RFC 8391"]
+    }
+  },
+
+  "tags": [
+    "post-quantum",
+    "hash-based-signatures",
+    "slh-dsa",
+    "sphincs",
+    "xmss",
+    "lms",
+    "stateful-signatures",
+    "pqc",
+    "firmware-signing",
+    "code-signing",
+    "cryptographic",
+    "firmware",
+    "hsm",
+    "key-management"
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "id": "SWSEC-SAST-TRIAGE",
+  "name": "SAST Result Triage & Analysis",
+  "domain": "software-security",
+  "category": "Static Analysis",
+  "status": "active",
+  "description": "Triage, validation, and analysis of static analysis findings. Covers false positive identification, true positive confirmation via code review, severity assessment, de-duplication, and production of actionable findings reports from SAST output.",
+
+  "requires": [
+    "SWSEC-SAST-TOOLING"
+  ],
+  "recommended": [
+    "SWSEC-REVIEW-MANUAL",
+    "FOUND-REPORT",
+    "FOUND-RISK"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to SAST result triage"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands SAST output and the need for triage",
+      "evidence": [
+        "Can explain why SAST tools produce false positives and false negatives",
+        "Understands finding severity levels and confidence ratings",
+        "Familiar with the triage workflow concept"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Triages basic SAST findings under supervision",
+      "evidence": [
+        "Triaged SAST findings on at least 2 engagements under supervision",
+        "Correctly classified findings as true positive, false positive, or requires-review",
+        "Traced flagged code paths to validate data flow findings",
+        "Triage decisions reviewed by authorized analyst"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently triages SAST results and produces actionable reports",
+      "evidence": [
+        "Independently triaged SAST output on 5+ engagements",
+        "Consistently achieves high accuracy in true/false positive classification",
+        "Produces clear findings reports with code references and remediation guidance",
+        "Passed proficiency assessment on SAST triage"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles high-volume triage; identifies tool blind spots; improves triage efficiency",
+      "evidence": [
+        "Develops triage playbooks for common finding categories",
+        "Identifies systematic false negative patterns in SAST tools",
+        "Correlates SAST findings with DAST and manual review results",
+        "Mentors junior analysts on efficient triage methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Authority on SAST triage methodology; develops lab standards",
+      "evidence": [
+        "Developed the lab's SAST triage methodology and quality metrics",
+        "Defines triage accuracy benchmarks and quality assurance processes",
+        "Published research on SAST tool effectiveness or triage optimization",
+        "Trains teams on SAST triage and analysis"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Triage a set of 50+ SAST findings with known ground truth and measure classification accuracy"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review of triage accuracy and report quality from 3 recent engagements"
+    }
+  ],
+
+  "framework_mappings": {
+    "owasp": ["OWASP Code Review Guide"],
+    "nice": {
+      "tks": ["S0883", "S0623", "S0614", "K0688"],
+      "work_roles": ["DD-WRL-005 Software Security Assessment"]
+    }
+  },
+
+  "tags": [
+    "sast",
+    "triage",
+    "false-positives",
+    "reporting",
+    "code-review",
+    "static-analysis"
+  ]
+}

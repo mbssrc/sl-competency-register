@@ -1,0 +1,104 @@
+{
+  "id": "INFRA-CONTAINER-DOCKER",
+  "name": "Docker Security Assessment",
+  "domain": "infrastructure-security",
+  "category": "Container Security",
+  "status": "active",
+  "description": "Security assessment of Docker container configurations and deployments. Covers Docker daemon configuration, container isolation, privilege escalation, namespace and cgroup security, volume mounts, networking, and container escape techniques.",
+  "requires": [],
+  "recommended": [
+    "FOUND-TOOLS",
+    "INFRA-CONTAINER-RUNTIME",
+    "INFRA-CONTAINER-ESCAPE",
+    "FOUND-RISK"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to Docker security assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands Docker architecture, container isolation mechanisms, and common security concerns",
+      "evidence": [
+        "Can explain Docker images, containers, namespaces, and cgroups",
+        "Understands the Docker daemon attack surface and privilege model",
+        "Familiar with common container misconfiguration patterns"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Reviews Docker configurations under supervision using established tools and checklists",
+      "evidence": [
+        "Runs Docker security scanning tools (e.g., Docker Bench, Trivy) under guidance",
+        "Identifies privileged containers and dangerous capability grants using checklists",
+        "Documents Docker security findings with supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses Docker security posture and identifies container escape paths",
+      "evidence": [
+        "Independently reviews Docker daemon configuration and container runtime settings",
+        "Identifies container escape vectors through misconfigurations (privileged mode, host mounts, capabilities)",
+        "Evaluates Docker networking configurations for isolation weaknesses",
+        "Produces compliant Docker security assessment reports"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex Docker security scenarios; develops container escape exploits; mentors others",
+      "evidence": [
+        "Develops and executes container escape exploits for various misconfiguration scenarios",
+        "Assesses custom Docker runtimes and OCI-compliant alternatives",
+        "Reviews Docker assessment work of junior analysts",
+        "Contributes to lab container security assessment methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines lab Docker assessment methodology; publishes container security research",
+      "evidence": [
+        "Designed or maintains the lab's Docker security assessment framework",
+        "Published research on novel container escape techniques or kernel exploitation",
+        "Trains teams on advanced Docker security assessment",
+        "Recognized as authority on container runtime security"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess a deliberately misconfigured Docker environment and demonstrate container escape from multiple starting positions"
+    },
+    {
+      "type": "direct_observation",
+      "description": "Observe Docker security review during a live engagement, evaluating methodology and thoroughness"
+    }
+  ],
+  "framework_mappings": {
+    "cis": [
+      "CIS Docker Benchmark"
+    ],
+    "nice": {
+      "tks": ["K1373", "K0923", "K0837", "S0643", "K0752"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "IO-WRL-005 Systems Administration"]
+    }
+  },
+  "tags": [
+    "containers",
+    "docker",
+    "container-escape",
+    "runtime-security",
+    "isolation",
+    "cgroups",
+    "namespaces",
+    "kernel",
+    "privilege-escalation",
+    "scanning",
+    "linux"
+  ]
+}

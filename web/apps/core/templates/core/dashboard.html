@@ -1,0 +1,123 @@
+{% extends "core/base.html" %}
+
+{% block title %}Dashboard - {{ product_name }}{% endblock %}
+
+{% block page_crumbs %}
+  {% include "core/partials/crumb.html" with label="Overview" first=True %}
+  {% include "core/partials/crumb.html" with label="Dashboard" current=True %}
+{% endblock %}
+
+{% block page_title %}Dashboard{% endblock %}
+{% block page_description %}Security Lab Competency Management — overview.{% endblock %}
+
+{% block content %}
+<!-- Top row: key metrics -->
+<div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+  {% if is_manager %}
+  <a href="{% url 'personnel:person-list' %}"
+     class="block bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg p-5 hover:border-indigo-400 dark:hover:border-indigo-500 transition-all">
+    <div class="text-3xl font-bold text-gray-900 dark:text-white">{{ person_count }}</div>
+    <div class="mt-1 text-sm font-medium text-gray-700 dark:text-gray-300">Personnel</div>
+    <div class="mt-1 text-xs text-gray-500 dark:text-gray-500">{{ assessment_count }} skill assessments</div>
+  </a>
+  {% endif %}
+  {% if not is_manager %}
+    {% if my_person %}
+    <a href="{% url 'personnel:person-detail' my_person.id %}"
+       class="block bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg p-5 hover:border-indigo-400 dark:hover:border-indigo-500 transition-all">
+      <div class="text-3xl font-bold text-gray-900 dark:text-white">{{ my_skill_count }}</div>
+      <div class="mt-1 text-sm font-medium text-gray-700 dark:text-gray-300">Your Skills</div>
+      <div class="mt-1 text-xs text-gray-500 dark:text-gray-500">{{ my_person.name }}</div>
+    </a>
+    {% else %}
+    <div class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg p-5">
+      <div class="text-sm font-medium text-gray-700 dark:text-gray-300">No personnel record</div>
+      <div class="mt-1 text-xs text-gray-500 dark:text-gray-500">
+        Your account is not linked to a personnel record. Ask an administrator to
+        link it from the Users page.
+      </div>
+    </div>
+    {% endif %}
+  {% endif %}
+
+  <a href="{% url 'personnel:project-list' %}"
+     class="block bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg p-5 hover:border-indigo-400 dark:hover:border-indigo-500 transition-all">
+    <div class="text-3xl font-bold text-gray-900 dark:text-white">{{ open_count }}</div>
+    <div class="mt-1 text-sm font-medium text-gray-700 dark:text-gray-300">Open Projects</div>
+    <div class="mt-1 text-xs text-gray-500 dark:text-gray-500">{{ done_count }} completed</div>
+  </a>
+
+  {% if is_manager %}
+  <a href="{% url 'personnel:gap-analysis' %}"
+     class="block bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg p-5 hover:border-indigo-400 dark:hover:border-indigo-500 transition-all">
+    <div class="text-3xl font-bold {% if projects_with_gaps > 0 %}text-amber-600 dark:text-amber-400{% else %}text-emerald-600 dark:text-emerald-400{% endif %}">{{ projects_with_gaps }}</div>
+    <div class="mt-1 text-sm font-medium text-gray-700 dark:text-gray-300">Staffing Gaps</div>
+    <div class="mt-1 text-xs text-gray-500 dark:text-gray-500">Projects needing personnel</div>
+  </a>
+  {% endif %}
+
+  <a href="{% url 'taxonomy:domain-list' %}"
+     class="block bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg p-5 hover:border-indigo-400 dark:hover:border-indigo-500 transition-all">
+    <div class="text-3xl font-bold text-gray-900 dark:text-white">{{ skill_active }}</div>
+    <div class="mt-1 text-sm font-medium text-gray-700 dark:text-gray-300">Skills</div>
+    <div class="mt-1 text-xs text-gray-500 dark:text-gray-500">{{ domain_count }} domains · {{ service_count }} services</div>
+  </a>
+</div>
+
+<!-- Recent projects. The dashboard reports scale; it names no personnel,
+     because it is the one page that gets read over a shoulder. -->
+{% if is_manager %}
+<div class="mt-8">
+
+  <!-- Projects -->
+  <div>
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Recent Projects</h3>
+      <a href="{% url 'personnel:project-list' %}" class="text-xs text-indigo-600 dark:text-indigo-400 hover:underline">View all</a>
+    </div>
+    <div class="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg overflow-hidden">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="border-b border-gray-200 dark:border-white/10">
+            <th class="text-left px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Project</th>
+            <th class="text-center px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Status</th>
+            <th class="text-center px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Skills</th>
+            <th class="text-center px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Coverage</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in project_data %}
+          <tr class="border-b border-gray-100 dark:border-white/5 last:border-b-0 hover:bg-gray-50 dark:hover:bg-white/10 transition-colors">
+            <td class="px-4 py-2.5">
+              <a href="{% url 'personnel:project-detail' item.project.id %}" class="text-gray-900 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium transition-colors">{{ item.project.name }}</a>
+            </td>
+            <td class="px-4 py-2.5 text-center">
+              <span class="inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium
+                {% if item.project.status == 'active' %}bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300
+                {% elif item.project.status == 'planning' %}bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300
+                {% else %}bg-gray-100 dark:bg-white/5 text-gray-500 dark:text-gray-400{% endif %}">
+                {{ item.project.get_status_display }}
+              </span>
+            </td>
+            <td class="px-4 py-2.5 text-center text-gray-600 dark:text-gray-400">{{ item.comp_count }}</td>
+            <td class="px-4 py-2.5 text-center">
+              <span class="text-sm font-medium {% if item.coverage_pct == 100 %}text-emerald-600 dark:text-emerald-400{% elif item.coverage_pct > 0 %}text-amber-600 dark:text-amber-400{% else %}text-red-600 dark:text-red-400{% endif %}">
+                {{ item.coverage_pct }}%
+              </span>
+            </td>
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="4" class="text-center py-8 text-gray-500 dark:text-gray-400">
+              No active or planning projects.
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+{% endif %}
+{% endblock %}

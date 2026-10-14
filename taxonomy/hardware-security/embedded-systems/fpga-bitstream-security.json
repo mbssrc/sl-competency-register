@@ -1,0 +1,110 @@
+{
+  "id": "HWSEC-EMBED-FPGA",
+  "name": "FPGA & Bitstream Security Assessment",
+  "domain": "hardware-security",
+  "category": "Embedded Systems Security",
+  "status": "active",
+  "description": "Covers security assessment of FPGA-based designs and their configuration. Includes review of bitstream encryption and authentication configuration, evaluation of key storage options (battery-backed RAM, eFuse, PUF-derived keys), exposure of configuration and readback interfaces (JTAG, SelectMAP, SPI configuration flash), and evaluation of vendor security features such as tamper monitors and anti-readback controls. Side-channel extraction of bitstream keys belongs to HWSEC-SCA-DPA.",
+  "requires": [
+    "HWSEC-EMBED-FW"
+  ],
+  "recommended": [
+    "HWSEC-SCA-DPA",
+    "CRYPTO-SYM-AEAD",
+    "HWSEC-EMBED-DBG",
+    "HWSEC-CRYPTO-KEY"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to FPGA or bitstream security"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands FPGA configuration and the threats to bitstream confidentiality and integrity",
+      "evidence": [
+        "Can explain how an FPGA is configured from external flash and what a bitstream contains",
+        "Understands the difference between bitstream encryption and bitstream authentication",
+        "Aware of key storage options and known classes of bitstream attacks (cloning, readback, key extraction, tampering)"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Reviews FPGA security configuration under supervision",
+      "evidence": [
+        "Extracts the bitstream from configuration flash and identifies whether it is encrypted or authenticated",
+        "Reviews vendor security settings (readback disable, JTAG lock, key source) against a checklist with guidance",
+        "Identifies configuration and debug interfaces on a target board",
+        "Documents findings in the lab's reporting template"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses FPGA design security and configuration",
+      "evidence": [
+        "Evaluates the bitstream protection configuration against vendor guidance and the product's security claims",
+        "Assesses key storage choice and provisioning process for exposure and lifecycle risks",
+        "Tests configuration, readback and debug interface exposure and determines what an attacker can obtain",
+        "Produces findings that distinguish configuration weaknesses from inherent device limitations"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Evaluates advanced FPGA security architectures; reviews assessments; mentors team",
+      "evidence": [
+        "Assesses SoC FPGA secure boot chains combining processor and fabric configuration",
+        "Evaluates the susceptibility of bitstream decryption to side-channel and fault attacks and scopes follow-up testing",
+        "Technically reviews FPGA security assessment reports",
+        "Mentors analysts on FPGA architectures and vendor security features"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognised authority on FPGA security; defines methodology; advises vendors",
+      "evidence": [
+        "Defines the lab's FPGA and bitstream security assessment methodology",
+        "Publishes research on FPGA bitstream security or reverse engineering",
+        "Advises FPGA vendors and integrators on secure configuration architecture",
+        "Evaluates new device families and their security features for lab readiness"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Given an FPGA-based target board, determine the bitstream protection configuration, assess configuration and readback interface exposure, and report weaknesses with recommended configuration changes"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review an FPGA security assessment report for correct interpretation of vendor security features, coverage of key storage and interface exposure, and justified findings"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0948", "K1164", "K1362", "K0018", "S0531"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-008 Technology Research and Development"]
+    },
+    "common_criteria": ["AVA_VAN.4", "AVA_VAN.5"]
+  },
+  "equipment": [
+    "FPGA vendor JTAG programming cable",
+    "SPI flash programmer and test clips for configuration memory"
+  ],
+  "tags": [
+    "fpga",
+    "bitstream",
+    "embedded",
+    "key-management",
+    "encryption",
+    "non-invasive",
+    "authentication",
+    "jtag",
+    "reverse-engineering",
+    "secure-boot",
+    "side-channel",
+    "fault-injection"
+  ]
+}

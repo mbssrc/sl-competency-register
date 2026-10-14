@@ -1,0 +1,38 @@
+{
+  "id": "WSEC",
+  "name": "Wireless & Signal Security",
+  "description": "Skills related to off-device wireless and signal security assessment. Covers software-defined radio, wireless protocol analysis, cellular/telecom security, satellite communications, and spectrum/TEMPEST analysis. Distinct from HWSEC-RF which covers on-device RF hardware analysis.",
+
+  "categories": [
+    {
+      "id": "WSEC-SDR",
+      "name": "SDR & Signal Analysis",
+      "description": "Software-defined radio operation, signal capture, demodulation, protocol decoding, and signal processing. Foundational skills for all wireless security work."
+    },
+    {
+      "id": "WSEC-WIFI",
+      "name": "WiFi Security",
+      "description": "802.11 protocol security assessment. Covers WPA/WPA2/WPA3 attacks, rogue AP detection, WiFi network reconnaissance, client attacks, and enterprise wireless security."
+    },
+    {
+      "id": "WSEC-CELL",
+      "name": "Cellular & Telecom Security",
+      "description": "GSM, LTE, and 5G security assessment. Covers base station analysis, SIM security, SS7/Diameter protocol analysis, IMSI catching, and telecom infrastructure security."
+    },
+    {
+      "id": "WSEC-SAT",
+      "name": "Satellite & Navigation Security",
+      "description": "Satellite communication security and GNSS/GPS security. Covers satellite signal analysis, spoofing, jamming detection, and space-ground link security."
+    },
+    {
+      "id": "WSEC-PROTO",
+      "name": "Protocol Analysis",
+      "description": "Wireless protocol reverse engineering and analysis. Covers proprietary protocol decoding, sub-GHz protocols (LoRa, Zigbee, Z-Wave), Bluetooth/BLE protocol analysis, and custom modulation schemes."
+    },
+    {
+      "id": "WSEC-SPEC",
+      "name": "Spectrum Analysis & TEMPEST",
+      "description": "RF spectrum analysis, emissions security (TEMPEST), electromagnetic emanation analysis, and shielding effectiveness evaluation."
+    }
+  ]
+}

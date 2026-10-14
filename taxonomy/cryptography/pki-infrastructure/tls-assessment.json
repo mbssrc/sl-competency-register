@@ -1,0 +1,127 @@
+{
+  "id": "CRYPTO-PKI-TLS",
+  "name": "TLS/SSL Assessment",
+  "domain": "cryptography",
+  "category": "PKI & Infrastructure",
+  "status": "active",
+  "description": "Assessment of TLS/SSL protocol configurations and implementations. Covers protocol version evaluation, cipher suite selection, handshake analysis, known protocol attacks (BEAST, POODLE, DROWN, ROBOT), client authentication, and TLS 1.3 deployment review.",
+
+  "requires": [
+    "CRYPTO-PKI-CERTS",
+    "CRYPTO-ASYM-KEYEXCHANGE",
+    "CRYPTO-SYM-AEAD"
+  ],
+  "recommended": [
+    "FOUND-TOOLS",
+    "SWSEC-WEB-AUTHZ",
+    "NETSEC-EXPLOIT-MITM",
+    "CRYPTO-PROTO-ANALYSIS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to TLS/SSL assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands TLS fundamentals and why protocol version and cipher suite matter",
+      "evidence": [
+        "Can explain the TLS handshake at a high level",
+        "Understands why SSLv3 and TLS 1.0/1.1 are deprecated",
+        "Can describe the improvements in TLS 1.3 over TLS 1.2",
+        "Knows historical TLS attacks (BEAST, POODLE) and their mitigations"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Runs TLS scanning tools and identifies basic misconfigurations under supervision",
+      "evidence": [
+        "Uses testssl.sh, sslyze, or Nmap to scan TLS configurations",
+        "Identifies deprecated protocol versions and weak cipher suites under guidance",
+        "Interprets tool output to determine certificate chain and protocol support",
+        "Documents TLS findings following lab templates"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses TLS deployments and identifies protocol-level vulnerabilities",
+      "evidence": [
+        "Evaluates cipher suite ordering and identifies insecure preferences",
+        "Tests for known TLS attacks (ROBOT, Raccoon, Lucky13, DROWN, Heartbleed, CRIME)",
+        "Assesses TLS 1.3 deployments for correct configuration and 0-RTT risks",
+        "Produces compliant findings referencing NIST SP 800-52 Rev. 2, RFC 8446, or Mozilla TLS guidance"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex TLS assessment scenarios; analyses custom TLS implementations",
+      "evidence": [
+        "Analyses TLS implementations in non-standard contexts (IoT, embedded, custom protocols)",
+        "Evaluates mutual TLS (mTLS) deployments for client certificate validation correctness",
+        "Performs TLS traffic analysis and handshake debugging using Wireshark",
+        "Reviews and mentors junior staff on TLS assessment methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines TLS assessment methodology; recognised authority on transport layer security",
+      "evidence": [
+        "Authored or maintains the lab's TLS assessment methodology and cipher suite recommendations",
+        "Published research on TLS vulnerabilities or novel downgrade attacks",
+        "Provides expert guidance on TLS deployment strategies and protocol migration",
+        "Trains teams on TLS internals, state machine, and assessment approaches"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Perform a comprehensive TLS assessment of a multi-service environment: evaluate protocol versions, cipher suites, certificates, and known vulnerabilities"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review TLS assessment findings from a recent engagement for completeness, accuracy, and appropriate severity ratings"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["S0969", "S0596", "S0971", "K0674", "K0942"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-001 Cybersecurity Architecture"]
+    },
+    "nist_sp": ["800-52r2"],
+    "ietf": {
+      "rfcs": ["RFC 8446", "RFC 8996"]
+    }
+  },
+
+  "tags": [
+    "tls",
+    "tls-1.3",
+    "ssl",
+    "transport-security",
+    "cipher-suites",
+    "protocol-assessment",
+    "testssl",
+    "handshake",
+    "poodle",
+    "beast",
+    "heartbleed",
+    "drown",
+    "robot",
+    "0-rtt",
+    "authentication",
+    "embedded",
+    "iot",
+    "traffic-analysis",
+    "wireshark",
+    "protocol-analysis",
+    "pki",
+    "replay-attack"
+  ]
+}

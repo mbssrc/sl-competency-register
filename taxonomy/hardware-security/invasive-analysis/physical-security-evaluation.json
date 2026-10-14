@@ -1,0 +1,109 @@
+{
+  "id": "HWSEC-INV-TAMPER",
+  "name": "Physical Security Mechanism Evaluation",
+  "domain": "hardware-security",
+  "category": "Invasive Analysis",
+  "status": "active",
+  "description": "Covers evaluation of tamper evidence, tamper detection and tamper response mechanisms (coatings, seals, enclosures, meshes, environmental sensors, zeroization circuits) against the physical security levels of FIPS 140-3 / ISO/IEC 19790 and the corresponding test requirements of ISO/IEC 24759. Includes test planning per security level, environmental failure protection and testing (EFP/EFT), verification of zeroization effectiveness, and documentation of conformance and non-conformance findings for validation reports. Logical HSM interface assessment belongs to HWSEC-CRYPTO-HSM.",
+  "requires": [
+    "HWSEC-INV-DECAP"
+  ],
+  "recommended": [
+    "HWSEC-SPREP-CHEM",
+    "FOUND-STANDARDS",
+    "HWSEC-CRYPTO-HSM",
+    "HWSEC-INV-PROBE",
+    "FOUND-REPORT"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to physical security mechanism evaluation"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands physical security mechanism types and the security level structure of FIPS 140-3 / ISO/IEC 19790",
+      "evidence": [
+        "Can explain the difference between tamper evidence, tamper detection and tamper response",
+        "Can describe the physical security requirements that distinguish security levels 1 to 4 for single-chip, multi-chip embedded and multi-chip standalone embodiments",
+        "Aware of the role of ISO/IEC 24759 test requirements and vendor evidence in a physical security assessment"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Executes physical security test cases from a prepared test plan under supervision",
+      "evidence": [
+        "Inspects enclosures, seals and coatings for tamper evidence against the applicable test requirements with guidance",
+        "Records test observations, photographs and sample identification in the lab's test record format",
+        "Performs prescribed attempts to access internal components and documents whether tamper evidence is left",
+        "Follows chain-of-custody and sample handling procedures for modules under test"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently plans and performs physical security conformance testing for a target security level",
+      "evidence": [
+        "Derives a physical security test plan from the module's embodiment, claimed security level and security policy",
+        "Evaluates tamper detection and response coverage (meshes, switches, sensors) and verifies zeroization of critical security parameters on trigger",
+        "Plans and executes EFP/EFT testing for temperature and voltage excursions and interprets the results against requirements",
+        "Writes conformance findings that cite the specific ISO/IEC 24759 test requirements and the supporting evidence"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Evaluates advanced or novel tamper protection designs; reviews physical security assessments; mentors team",
+      "evidence": [
+        "Assesses whether bypass of a tamper mesh or sensor is feasible with attack potential appropriate to the claimed level",
+        "Evaluates hardness and opacity claims of potting and coatings and selects suitable invasive test methods",
+        "Technically reviews physical security test reports for completeness, traceability and correct interpretation of requirements",
+        "Mentors evaluators on test planning and on resolving ambiguous physical security requirements"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognised authority on physical security evaluation; defines lab methodology; engages with validation bodies",
+      "evidence": [
+        "Defines the lab's physical security evaluation methodology and its mapping to ISO/IEC 24759 test requirements",
+        "Resolves interpretation questions with validation authorities and documents the lab's position",
+        "Contributes to standards development or published guidance on physical security requirements",
+        "Specifies the lab's tamper testing equipment and validates new test methods before use"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Given a multi-chip embedded module with a claimed physical security level and its security policy, prepare a test plan, execute the physical security test cases including a tamper response and zeroization check, and record conformance results"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review a physical security test report from a recent validation for correct mapping to ISO/IEC 24759 test requirements, quality of evidence and justified pass/fail verdicts"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1351", "K1248", "K0840", "S0531", "S0898"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development", "DD-WRL-007 Systems Testing and Evaluation"]
+    },
+    "common_criteria": ["AVA_VAN.5", "FPT_PHP"],
+    "fips_140_3": ["AS07"],
+    "iso_iec": ["ISO/IEC 19790", "ISO/IEC 24759"],
+    "jil_attack_methods": ["5.1 Physical attacks"]
+  },
+  "equipment": [
+    "Environmental chamber for temperature excursion (EFP/EFT) testing",
+    "Programmable power supply for voltage excursion testing",
+    "Inspection microscope and X-ray imaging system for enclosure and potting analysis"
+  ],
+  "tags": [
+    "tamper-protection",
+    "physical-security",
+    "fips-140-3",
+    "zeroization",
+    "invasive",
+    "conformance-testing"
+  ]
+}

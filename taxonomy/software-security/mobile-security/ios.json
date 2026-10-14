@@ -1,0 +1,111 @@
+{
+  "id": "SWSEC-MOB-IOS",
+  "name": "iOS Application Security Testing",
+  "domain": "software-security",
+  "category": "Mobile Security",
+  "status": "active",
+  "description": "Security assessment of iOS applications. Covers IPA analysis, entitlements review, Keychain storage, App Transport Security, URL scheme handling, jailbreak detection bypass, and runtime manipulation using Frida and Objection.",
+
+  "requires": [
+    "FOUND-ETHICS"
+  ],
+  "recommended": [
+    "SWSEC-RE-DECOMPILE",
+    "SWSEC-DAST-INSTRUMENT",
+    "DFIR-MOB-APPDATA",
+    "FOUND-TOOLS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to iOS security testing"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands iOS application architecture and security model",
+      "evidence": [
+        "Can explain iOS sandboxing, entitlements, and the app lifecycle",
+        "Understands Keychain, Data Protection API, and App Transport Security",
+        "Familiar with OWASP Mobile Top 10 as applied to iOS"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs basic iOS app analysis under supervision",
+      "evidence": [
+        "Decrypted and extracted IPA files for analysis",
+        "Reviewed Info.plist, entitlements, and URL schemes",
+        "Tested data storage (Keychain, NSUserDefaults, filesystem) for sensitive data leaks",
+        "Work reviewed by authorized tester"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently tests iOS apps against OWASP MASTG methodology",
+      "evidence": [
+        "Independently tested 5+ iOS applications",
+        "Bypasses certificate pinning using Objection or SSL Kill Switch",
+        "Tests URL scheme handlers and universal links for vulnerabilities",
+        "Evaluates Keychain access controls and data protection classes",
+        "Passed proficiency assessment on iOS security testing"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Tests complex iOS apps; bypasses advanced protections; writes Frida scripts",
+      "evidence": [
+        "Bypasses jailbreak detection and anti-tampering mechanisms",
+        "Writes custom Frida scripts for Objective-C and Swift runtime hooking",
+        "Analyzes IPC mechanisms (XPC, Mach ports) for security flaws",
+        "Mentors junior testers on iOS testing methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Authority on iOS security; discovers platform-level vulnerabilities",
+      "evidence": [
+        "Published research or CVEs related to iOS application or platform security",
+        "Developed the lab's iOS testing methodology and tooling",
+        "Reverse engineers stripped and obfuscated Swift/ObjC binaries",
+        "Trains teams on advanced iOS exploitation techniques"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Complete a security assessment of a prepared iOS application covering OWASP MASTG test cases"
+    },
+    {
+      "type": "direct_observation",
+      "description": "Observe setup of jailbroken test device and dynamic analysis workflow"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0688", "K0842", "S0656", "S0857"],
+      "work_roles": ["DD-WRL-005 Software Security Assessment", "PD-WRL-007 Vulnerability Analysis"]
+    },
+    "owasp": ["OWASP MASTG", "OWASP MASVS"],
+    "cwe": ["CWE-312", "CWE-319", "CWE-939", "CWE-200", "CWE-693"],
+    "mitre_attack": {"techniques": ["T1406", "T1409", "T1404"]}
+  },
+
+  "tags": [
+    "mobile",
+    "ios",
+    "owasp-mobile",
+    "frida",
+    "dynamic-analysis",
+    "reverse-engineering",
+    "transport-security",
+    "apple",
+    "pki"
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "id": "CRYPTO-PROTO-ANALYSIS",
+  "name": "Cryptographic Protocol Analysis",
+  "domain": "cryptography",
+  "category": "Cryptographic Protocols",
+  "status": "active",
+  "description": "Covers analysis of cryptographic protocol designs and specifications for their intended security properties (authentication, key secrecy, forward secrecy, replay and downgrade resistance). Includes established protocols such as SSH, IPsec/IKE and secure messaging protocols, custom and proprietary protocols, and the use of formal verification tools such as Tamarin and ProVerif to model and verify protocol properties. TLS assessment specifically belongs to CRYPTO-PKI-TLS. Assessment of deployed end-to-end encrypted messaging systems belongs to CRYPTO-PROTO-E2EE.",
+
+  "requires": [
+    "CRYPTO-ASYM-KEYEXCHANGE"
+  ],
+  "recommended": [
+    "CRYPTO-PKI-TLS",
+    "FOUND-THREATMODEL",
+    "CRYPTO-ASYM-SIGNATURES",
+    "CRYPTO-SYM-AEAD",
+    "CRYPTO-PROTO-E2EE"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to cryptographic protocol analysis"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands protocol security goals and common protocol failure classes",
+      "evidence": [
+        "Can explain authentication, key secrecy, forward secrecy and key compromise impersonation as protocol properties",
+        "Aware of classic protocol attacks (replay, reflection, man-in-the-middle, downgrade, unknown key share)",
+        "Understands the Dolev-Yao attacker model at a conceptual level"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Analyses documented protocols under supervision",
+      "evidence": [
+        "Draws message sequence diagrams for an established protocol from its specification",
+        "Identifies the claimed security properties and the assumptions they rely on with guidance",
+        "Reviews protocol configuration (algorithms, versions, authentication modes) for SSH or IPsec deployments",
+        "Documents analysis in the lab's reporting template"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently analyses established and custom protocols",
+      "evidence": [
+        "Evaluates custom or proprietary protocols against their claimed security properties and identifies design flaws",
+        "Builds and runs a formal model of a protocol in Tamarin or ProVerif and interprets the results",
+        "Assesses downgrade, negotiation and state machine weaknesses in protocol implementations",
+        "Produces findings that clearly separate design flaws, specification ambiguities and implementation defects"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Analyses complex protocols; reviews analyses; mentors team",
+      "evidence": [
+        "Models complex protocols (group messaging, multi-stage key exchange) and their compromise scenarios",
+        "Assesses the gap between formal models and real implementations and the resulting residual risk",
+        "Technically reviews protocol analysis reports and formal models",
+        "Mentors analysts on protocol analysis and formal verification"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognised authority on cryptographic protocols; defines methodology; publishes research",
+      "evidence": [
+        "Defines the lab's protocol analysis methodology including when formal verification is required",
+        "Publishes research on protocol attacks or verification",
+        "Contributes to protocol standardisation (e.g. IETF working groups)",
+        "Advises vendors on secure protocol design"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "problem_solving",
+      "description": "Given the specification of a custom key-exchange protocol with a seeded design flaw, identify the flaw, demonstrate it with a Tamarin or ProVerif model, and propose a corrected design"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review a protocol analysis report for correct statement of security properties and attacker model, soundness of the analysis and clear separation of design and implementation findings"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1359", "K0942", "S0969", "S0971"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-001 Cybersecurity Architecture"]
+    },
+    "ietf": {
+      "rfcs": ["RFC 4253", "RFC 7296", "RFC 9420"]
+    }
+  },
+
+  "tags": [
+    "protocol-analysis",
+    "formal-verification",
+    "key-exchange",
+    "ssh",
+    "ipsec",
+    "cryptographic",
+    "authentication",
+    "replay-attack",
+    "vpn"
+  ]
+}

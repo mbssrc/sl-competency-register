@@ -1,0 +1,103 @@
+{
+  "id": "INFRA-AZURE-FUNC",
+  "name": "Azure Functions and Serverless Security Assessment",
+  "domain": "infrastructure-security",
+  "category": "Azure Security",
+  "status": "active",
+  "description": "Security assessment of Azure serverless architectures. Covers Azure Functions configurations, managed identities, bindings and triggers, API Management integration, Logic Apps, and serverless-specific attack surfaces including injection, misconfigured triggers, and over-privileged functions.",
+  "requires": [
+    "INFRA-AZURE-ENTRAID"
+  ],
+  "recommended": [
+    "INFRA-AZURE-NETWORK"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to Azure serverless security assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands Azure Functions architecture and serverless security concerns",
+      "evidence": [
+        "Can explain Azure Functions execution model, triggers, bindings, and managed identities",
+        "Understands common serverless security risks in the Azure context",
+        "Familiar with Azure API Management authorization mechanisms"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Reviews Azure Functions configurations and permissions under supervision",
+      "evidence": [
+        "Enumerates Azure Functions and their managed identity permissions with guidance",
+        "Identifies overly permissive function configurations using lab checklists",
+        "Reviews API Management policies for authentication gaps under supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses Azure serverless architecture security",
+      "evidence": [
+        "Independently reviews Azure Functions for injection vulnerabilities and insecure configurations",
+        "Assesses trigger and binding trust boundaries for abuse potential",
+        "Evaluates serverless data flows including Key Vault integration",
+        "Produces compliant Azure serverless assessment reports"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex serverless architectures; develops assessment tooling; mentors others",
+      "evidence": [
+        "Assesses complex multi-service workflows (Logic Apps, Durable Functions, Event Grid)",
+        "Develops automated tooling for Azure serverless configuration review",
+        "Reviews serverless assessment work of junior analysts",
+        "Identifies novel attack chains across Azure serverless service boundaries"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines lab Azure serverless assessment methodology; publishes serverless security research",
+      "evidence": [
+        "Designed or maintains the lab's Azure serverless security assessment methodology",
+        "Published research on novel Azure serverless attack techniques",
+        "Trains teams on advanced Azure serverless security assessment",
+        "Recognized as authority on Azure serverless security"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess an Azure serverless application with intentional misconfigurations across Functions, API Management, and triggers"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given an Azure serverless architecture diagram and role assignments, identify all privilege escalation and data exfiltration paths"
+    }
+  ],
+  "framework_mappings": {
+    "csa_ccm": [
+      "AIS-01",
+      "AIS-02"
+    ],
+    "nice": {
+      "tks": ["K0863", "K0898", "K1079", "K1366", "S0656"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-005 Software Security Assessment"]
+    }
+  },
+  "tags": [
+    "azure",
+    "functions",
+    "serverless",
+    "logic-apps",
+    "cloud-security",
+    "api",
+    "authentication",
+    "exfiltration",
+    "privilege-escalation",
+    "iam"
+  ]
+}

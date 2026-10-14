@@ -1,0 +1,51 @@
+{
+  "key": "PERS-018",
+  "bands": {
+    "strong": [
+      "INFRA-CONTAINER",
+      "INFRA-AWS",
+      "NETSEC-RECON"
+    ],
+    "weak": [
+      "INFRA-AZURE",
+      "INFRA-GCP",
+      "NETSEC-POST",
+      "NETSEC-PIVOT"
+    ]
+  },
+  "signature": {
+    "INFRA-CONTAINER-K8S": 4,
+    "INFRA-CONTAINER-DOCKER": 4,
+    "INFRA-CONTAINER-ESCAPE": 3,
+    "INFRA-AWS-IAM": 4,
+    "ICSIOT-IOT-DEVICE": 3,
+    "ICSIOT-IOT-CLOUD": 3
+  },
+  "never": [],
+  "foundations": [
+    2,
+    3
+  ],
+  "projects": [
+    "PRJ-HUMANOID-WIFI",
+    "PRJ-SAT-BACKEND"
+  ],
+  "stale_skills": [],
+  "self_assessment": {
+    "mode": "all",
+    "bias": 0,
+    "jitter": 1
+  },
+  "development_plan": [],
+  "name": "Oskar Nowak",
+  "role": "Senior Infrastructure and Network Evaluator",
+  "start_date": "2020-04-06",
+  "domains": [
+    "INFRA",
+    "NETSEC"
+  ],
+  "target_maturity": {
+    "INFRA": "senior",
+    "NETSEC": "practitioner"
+  }
+}

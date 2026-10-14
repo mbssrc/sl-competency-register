@@ -1,0 +1,112 @@
+{
+  "id": "NETSEC-INFRA-FIREWALL",
+  "name": "Firewall Assessment",
+  "domain": "network-security",
+  "category": "Network Infrastructure",
+  "status": "active",
+  "description": "Ability to assess the configuration and effectiveness of network firewalls. Covers firewall rule analysis, ACL review, firewall evasion techniques, egress filtering assessment, stateful inspection testing, and evaluation of next-generation firewall features.",
+
+  "requires": [
+    "NETSEC-RECON-PORTSCANNING",
+    "NETSEC-RECON-NETMAPPING"
+  ],
+  "recommended": [
+    "FOUND-RISK",
+    "FOUND-REPORT",
+    "FOUND-STANDARDS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to firewall assessment techniques"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands firewall types, basic rule syntax, and the role of firewalls in network security architecture",
+      "evidence": [
+        "Can explain packet filtering, stateful inspection, and application-layer firewalls",
+        "Understands basic firewall rule concepts (allow/deny, source/destination, ports)",
+        "Knows common firewall platforms (iptables, pfSense, Palo Alto, Cisco ASA)"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs basic firewall assessment tasks under supervision",
+      "evidence": [
+        "Reviews firewall rule sets to identify overly permissive rules under guidance",
+        "Uses Nmap firewall evasion techniques (fragmentation, decoy scans) in the lab",
+        "Tests egress filtering by probing outbound connectivity on various ports",
+        "Documents firewall findings in a structured format under review"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses firewall configurations and identifies security weaknesses",
+      "evidence": [
+        "Performs comprehensive firewall rule analysis identifying risks and redundancies",
+        "Tests firewall effectiveness through practical evasion and bypass attempts",
+        "Assesses egress filtering and identifies data exfiltration opportunities",
+        "Produces actionable firewall assessment reports with prioritized recommendations"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Assesses complex firewall architectures; develops assessment automation; mentors others",
+      "evidence": [
+        "Assesses multi-vendor firewall environments with complex rule sets",
+        "Develops automated firewall rule analysis tools and scripts",
+        "Identifies subtle rule ordering and implicit allow issues in large rule sets",
+        "Mentors junior staff on firewall assessment methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines firewall assessment methodology; deep platform expertise; trains teams",
+      "evidence": [
+        "Authored the lab's firewall assessment standard methodology",
+        "Deep expertise across multiple firewall platforms and NGFW features",
+        "Published research on firewall evasion or assessment techniques",
+        "Trains teams on firewall assessment and secure configuration review"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess a lab firewall configuration and produce a report identifying all security weaknesses, misconfigurations, and evasion opportunities"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review firewall assessment reports from recent engagements for thoroughness and quality of recommendations"
+    }
+  ],
+
+  "framework_mappings": {
+    "mitre_attack": {
+      "techniques": ["T1562.004"]
+    },
+    "nice": {
+      "tks": ["K0878", "S0950", "K0792", "S0618"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "PD-WRL-004 Infrastructure Support"]
+    },
+    "crest": {
+      "areas": ["infrastructure-assessment"]
+    }
+  },
+
+  "tags": [
+    "firewall",
+    "acl",
+    "egress-filtering",
+    "infrastructure",
+    "network-security",
+    "evasion",
+    "exfiltration",
+    "segmentation"
+  ]
+}

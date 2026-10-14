@@ -1,0 +1,111 @@
+{
+  "id": "HWSEC-SPREP-SEM",
+  "name": "Preparation for SEM/FIB Imaging",
+  "domain": "hardware-security",
+  "category": "Sample Preparation",
+  "status": "active",
+  "description": "Preparation of IC samples for scanning electron microscopy (SEM) and focused ion beam (FIB) passive imaging. Covers SEM stub mounting, conductive coating/sputtering for non-conductive samples, charge mitigation techniques, surface cleaning for electron imaging (plasma cleaning, UV-ozone), correct sample orientation and height adjustment for column geometry, and backscatter vs. secondary electron imaging preparation. Also covers FIB cross-section site preparation and TEM lamella lift-out preparation. Goal: clean, conductive, correctly mounted samples for high-resolution electron imaging.",
+  "requires": [
+    "HWSEC-SPREP-MECH"
+  ],
+  "recommended": [
+    "HWSEC-SPREP-CHEM",
+    "HWSEC-INV-DECAP",
+    "HWSEC-INV-FIB",
+    "FOUND-TOOLS"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to SEM/FIB sample preparation"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands SEM sample requirements and basic preparation steps",
+      "evidence": [
+        "Can explain why SEM requires conductive samples and vacuum compatibility",
+        "Understands the difference between SE and BSE imaging and their preparation implications",
+        "Aware of common SEM preparation artifacts (charging, contamination, curtaining)"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Mounts and coats standard samples for SEM under supervision",
+      "evidence": [
+        "Mounts samples on SEM stubs with conductive adhesive (silver paste, carbon tape) with correct orientation",
+        "Operates sputter coater to deposit thin conductive layer (Au, Pt, C) on non-conductive samples",
+        "Performs plasma cleaning to remove hydrocarbon contamination before loading",
+        "Produces basic SEM images of prepared samples"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently prepares samples for SEM/FIB across imaging modes and applications",
+      "evidence": [
+        "Selects appropriate coating material and thickness for imaging mode (SE vs BSE vs EBSD)",
+        "Prepares plan-view and cross-section samples for SEM with correct exposure of target features",
+        "Identifies and mitigates preparation-induced artifacts (redeposition, amorphization, curtaining)",
+        "Prepares site-specific FIB cross-section targets with fiducial markers for navigation"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles advanced preparation for specialized SEM/FIB applications",
+      "evidence": [
+        "Prepares TEM lamella via FIB lift-out with controlled thickness and minimal damage",
+        "Develops preparation workflows for in-situ SEM/FIB experiments (heating, electrical biasing)",
+        "Optimizes preparation for advanced SEM techniques (EBIC, EBSD, voltage contrast)",
+        "Mentors team on artifact prevention and application-specific preparation optimization"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines SEM/FIB preparation methodology and specifies equipment for the lab",
+      "evidence": [
+        "Defines lab SOPs for SEM/FIB sample preparation across all imaging applications",
+        "Specifies sputter coating, plasma cleaning, and sample handling infrastructure",
+        "Develops preparation techniques for novel sample types (flexible electronics, MEMS, photonic ICs)",
+        "Trains teams and conducts proficiency assessments for SEM/FIB preparation"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Prepare and mount samples for SEM imaging in both plan-view and cross-section, demonstrating correct coating, mounting, and artifact-free results"
+    },
+    {
+      "type": "direct_observation",
+      "description": "Observe sputter coating operation, plasma cleaning procedure, and sample loading into SEM chamber"
+    }
+  ],
+  "equipment": [
+    "Sputter coater (Au/Pt/C targets) for conductive coating",
+    "Plasma cleaner (Ar/O2) for hydrocarbon removal",
+    "SEM stub mounting station with conductive adhesives",
+    "Ultrasonic cleaner for sample cleaning",
+    "Ion mill / ion polisher for high-quality cross-section preparation (e.g., Leica EM TIC 3X)"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1284", "K0840"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development"]
+    },
+    "common_criteria": [
+      "AVA_VAN.4",
+      "AVA_VAN.5"
+    ]
+  },
+  "tags": [
+    "sample-preparation",
+    "sem",
+    "fib",
+    "electron-microscopy",
+    "sputter-coating",
+    "imaging",
+    "invasive"
+  ]
+}

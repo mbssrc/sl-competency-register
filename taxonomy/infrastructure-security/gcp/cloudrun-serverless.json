@@ -1,0 +1,127 @@
+{
+  "id": "INFRA-GCP-FUNCTIONS",
+  "name": "GCP Cloud Run and Serverless Security Assessment",
+  "domain": "infrastructure-security",
+  "category": "GCP Security",
+  "status": "active",
+  "description": "Security assessment of Google Cloud Platform serverless architectures. Covers Cloud Run services, jobs and Cloud Run functions (formerly Cloud Functions), App Engine workloads, and the event plumbing around them (Eventarc, Pub/Sub triggers, Cloud Scheduler, Workflows). Covers runtime service account selection and iam.serviceAccounts.actAs privilege escalation, unauthenticated invocation through run.invoker granted to allUsers, ingress and authentication settings, Identity-Aware Proxy and Cloud Armor placement, VPC connector and Direct VPC egress configuration, secret handling via Secret Manager versus environment variables, metadata server token exposure, and deployment integrity through Artifact Registry and Binary Authorization.",
+
+  "requires": [
+    "INFRA-GCP-IAM"
+  ],
+  "recommended": [
+    "INFRA-GCP-VPC",
+    "INFRA-CONTAINER-IMAGE",
+    "FOUND-REPORT",
+    "FOUND-RISK"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to GCP serverless security assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands GCP serverless execution models and their security concerns",
+      "evidence": [
+        "Can explain the Cloud Run request-driven execution model, revisions and traffic splitting",
+        "Understands the difference between a service's runtime service account and the deployer's identity",
+        "Knows that run.invoker granted to allUsers makes a service publicly reachable",
+        "Familiar with common serverless security risks and how they apply on GCP"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Reviews Cloud Run and function configurations and permissions under supervision",
+      "evidence": [
+        "Enumerates Cloud Run services, jobs and functions with their runtime service accounts under guidance",
+        "Identifies publicly invocable services and overly permissive runtime identities using lab checklists",
+        "Reviews ingress settings, VPC connectors and secret handling under supervision",
+        "Documents serverless findings following lab templates"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses GCP serverless architecture security and identifies exploitation paths",
+      "evidence": [
+        "Independently reviews Cloud Run and Cloud Run functions for insecure configurations and injection flaws reachable through their triggers",
+        "Traces privilege escalation from a deployment permission to a higher-privileged runtime service account via iam.serviceAccounts.actAs",
+        "Assesses event source trust boundaries (Eventarc, Pub/Sub, Cloud Scheduler) for trigger spoofing and unauthorised invocation",
+        "Evaluates whether a compromised container can harvest tokens from the metadata server and what those tokens reach",
+        "Assesses secret exposure through environment variables, build logs and revision history",
+        "Produces compliant serverless assessment reports"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex serverless architectures; develops assessment tooling; mentors others",
+      "evidence": [
+        "Assesses complex multi-service serverless workflows spanning Workflows, Eventarc and Pub/Sub",
+        "Evaluates deployment integrity controls including Binary Authorization attestations and Cloud Build provenance",
+        "Develops automated tooling for GCP serverless configuration and IAM review",
+        "Identifies novel attack chains crossing serverless, IAM and networking boundaries",
+        "Reviews serverless assessment work of junior analysts"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines lab GCP serverless assessment methodology; recognised authority on serverless security",
+      "evidence": [
+        "Designed or maintains the lab's GCP serverless security assessment methodology",
+        "Published research on novel serverless attack techniques or control bypasses on GCP",
+        "Advises organisations on secure serverless architecture and deployment integrity strategy",
+        "Trains teams on advanced GCP serverless security assessment"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess a GCP serverless application with intentional misconfigurations across Cloud Run, Eventarc triggers and runtime service accounts"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given a set of Cloud Run services and their IAM bindings, identify all privilege escalation and data exfiltration paths, including those via actAs and the metadata server"
+    }
+  ],
+
+  "framework_mappings": {
+    "cis": [
+      "CIS Google Cloud Platform Foundation Benchmark v4.0.0 - Section 4 Virtual Machines and Section 1 Identity and Access Management"
+    ],
+    "csa_ccm": [
+      "AIS-01",
+      "AIS-02"
+    ],
+    "nice": {
+      "tks": ["K0863", "K0898", "K1079", "K1366", "S0656"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-005 Software Security Assessment"]
+    }
+  },
+
+  "tags": [
+    "gcp",
+    "cloud-run",
+    "cloud-functions",
+    "serverless",
+    "eventarc",
+    "pubsub",
+    "service-accounts",
+    "actas",
+    "metadata-server",
+    "binary-authorization",
+    "cloud-security",
+    "attestation",
+    "authentication",
+    "containers",
+    "exfiltration",
+    "iam",
+    "privilege-escalation",
+    "spoofing"
+  ]
+}

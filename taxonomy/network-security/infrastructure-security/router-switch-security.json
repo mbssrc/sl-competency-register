@@ -1,0 +1,112 @@
+{
+  "id": "NETSEC-INFRA-ROUTERSWITCH",
+  "name": "Router & Switch Security Assessment",
+  "domain": "network-security",
+  "category": "Network Infrastructure",
+  "status": "active",
+  "description": "Ability to assess the security of routers and switches in network infrastructure. Covers device configuration review, management plane security (SSH, SNMP, console access), routing protocol security, switch port security, VLAN configuration, and identification of common misconfigurations.",
+
+  "requires": [
+    "NETSEC-RECON-FINGERPRINTING",
+    "NETSEC-ENUM-SNMP"
+  ],
+  "recommended": [
+    "FOUND-RISK",
+    "FOUND-REPORT",
+    "FOUND-STANDARDS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to router and switch security assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands basic router and switch functionality and common security concerns",
+      "evidence": [
+        "Can explain routing and switching fundamentals (ARP, VLANs, OSPF, BGP)",
+        "Understands common management access methods and their security implications",
+        "Knows major router/switch platforms (Cisco IOS, Juniper, Arista)"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs basic network device security assessment under supervision",
+      "evidence": [
+        "Reviews device configurations against security baselines under guidance",
+        "Checks management plane security (SSH version, SNMP community strings, AAA)",
+        "Identifies basic misconfigurations (default credentials, unencrypted management)",
+        "Documents device assessment findings under review"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses network device security and identifies operational risks",
+      "evidence": [
+        "Performs comprehensive configuration review across device types and vendors",
+        "Assesses routing protocol security (authentication, filtering, route injection risks)",
+        "Evaluates switch security features (port security, DHCP snooping, DAI, 802.1X)",
+        "Produces actionable reports with risk-rated findings and remediation guidance"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Assesses complex multi-vendor environments; develops assessment automation; mentors others",
+      "evidence": [
+        "Assesses large-scale multi-vendor network infrastructures",
+        "Develops automated configuration audit tools and compliance checks",
+        "Identifies advanced attack vectors through routing and switching misconfigurations",
+        "Mentors junior staff on network device assessment methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines device assessment methodology; deep platform expertise; trains teams",
+      "evidence": [
+        "Authored the lab's router and switch assessment methodology",
+        "Deep expertise across multiple network platforms and operating systems",
+        "Published research on network device vulnerabilities or configuration security",
+        "Trains teams on network device security assessment and hardening"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess a multi-device lab network and produce a comprehensive security report covering all router and switch configurations"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review network device assessment reports from recent engagements for completeness and accuracy"
+    }
+  ],
+
+  "framework_mappings": {
+    "mitre_attack": {
+      "techniques": ["T1602", "T1599"]
+    },
+    "nice": {
+      "tks": ["K1049", "K0936", "K0792", "S0694", "S0584"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "IO-WRL-004 Network Operations"]
+    },
+    "crest": {
+      "areas": ["infrastructure-assessment"]
+    }
+  },
+
+  "tags": [
+    "routers",
+    "switches",
+    "cisco",
+    "infrastructure",
+    "configuration-review",
+    "network-devices",
+    "ssh",
+    "cisco-ios"
+  ]
+}

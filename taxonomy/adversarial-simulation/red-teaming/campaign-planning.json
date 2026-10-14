@@ -1,0 +1,115 @@
+{
+  "id": "ADVSIM-RED-PLANNING",
+  "name": "Campaign Planning & Scoping",
+  "domain": "adversarial-simulation",
+  "category": "Red Teaming",
+  "status": "active",
+  "description": "Ability to plan and scope red team campaigns including threat modelling, objective definition, rules of engagement negotiation, and campaign architecture. Covers translating client objectives into adversarial scenarios, selecting appropriate TTPs based on threat intelligence, and structuring multi-phase operations.",
+
+  "requires": [
+    "FOUND-ETHICS",
+    "FOUND-PM"
+  ],
+  "recommended": [
+    "FOUND-RISK",
+    "FOUND-COMM",
+    "FOUND-REPORT",
+    "INTEL-TI-TTP",
+    "INTEL-TI-ADVERSARY"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to red team campaign planning"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the purpose of red team engagements and key planning artefacts",
+      "evidence": [
+        "Completed red team methodology awareness training",
+        "Can describe the difference between penetration testing and red teaming",
+        "Understands the purpose of rules of engagement and threat models"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Contributes to campaign planning under supervision of an experienced operator",
+      "evidence": [
+        "Assisted in developing campaign plans for 2+ engagements",
+        "Drafted rules of engagement documents reviewed by senior staff",
+        "Contributed to threat model selection and TTP mapping under guidance"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Plans and scopes red team campaigns independently for standard corporate environments",
+      "evidence": [
+        "Independently planned and scoped 3+ red team campaigns",
+        "Produced rules of engagement accepted by clients without major revision",
+        "Accurately estimated campaign duration, resource needs, and risk within 20%",
+        "Mapped campaign objectives to appropriate MITRE ATT&CK techniques"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Plans complex, multi-phase campaigns against mature defenders; mentors junior planners",
+      "evidence": [
+        "Planned campaigns against organisations with active SOC and EDR coverage",
+        "Designed multi-phase campaigns spanning weeks with adaptive planning",
+        "Reviews and improves campaign plans produced by junior staff",
+        "Contributed to lab campaign planning methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines red team methodology at organisational level; plans CBEST/TIBER-EU/DORA TLPT-grade campaigns",
+      "evidence": [
+        "Authored or maintained the lab's red team planning methodology",
+        "Produced red team test plans for CBEST, TIBER-EU / DORA TLPT, or equivalent regulatory engagements, working with the entity's control team on scenarios, leg-ups, and risk management",
+        "Trains teams on campaign planning and threat modelling",
+        "Recognised as authority on adversarial simulation planning"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "work_product_review",
+      "description": "Review of 3 recent campaign plans including rules of engagement, threat models, and TTP selections"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Scenario: scope a red team engagement from a client brief, producing a campaign plan with threat model, phases, and rules of engagement"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1054", "K0955", "S0588", "K1030"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "PD-WRL-006 Threat Analysis"]
+    },
+    "mitre_attack": {
+      "tactics": ["TA0042"]
+    },
+    "cbest": {
+      "phase": "Penetration Testing - Planning"
+    },
+    "tiber": {
+      "phase": "Red Team Test - Planning"
+    }
+  },
+
+  "tags": [
+    "planning",
+    "scoping",
+    "rules-of-engagement",
+    "threat-modelling",
+    "campaign-architecture",
+    "threat-intelligence",
+    "mitre-attack"
+  ]
+}

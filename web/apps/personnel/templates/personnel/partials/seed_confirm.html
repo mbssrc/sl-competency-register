@@ -1,0 +1,54 @@
+<div class="bg-white dark:bg-gray-800 rounded-xl shadow-2xl border border-gray-200 dark:border-white/10 p-6 max-w-md">
+  <div class="flex items-center justify-between mb-6">
+    <h3 class="text-lg font-bold text-gray-900 dark:text-white">Seed from Self-Assessment</h3>
+    <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+
+  <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+    Copy <strong>{{ person.name }}</strong>'s self-assessed skill levels into their managed skill record.
+    Existing formal assessments will <strong>not</strong> be modified.
+  </p>
+
+  {% if seedable_count == 0 %}
+  <div class="p-3 rounded-md bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 mb-4">
+    <p class="text-sm text-gray-500 dark:text-gray-400">Nothing to seed. All self-assessed skills already have a managed record.</p>
+  </div>
+  <div class="flex justify-end">
+    <button onclick="closeModal()" class="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-md hover:bg-gray-50 dark:hover:bg-white/10 transition-colors">
+      Close
+    </button>
+  </div>
+  {% else %}
+  <div class="p-3 rounded-md bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800/50 mb-4">
+    <div class="flex items-start gap-2">
+      <svg class="w-5 h-5 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4.5c-.77-.833-2.694-.833-3.464 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
+      <div class="text-sm text-amber-700 dark:text-amber-400">
+        <p class="font-medium">This will create {{ seedable_count }} skill record{{ seedable_count|pluralize }} from self-assessment.</p>
+        {% if skipped_count %}
+        <p class="mt-1">{{ skipped_count }} skill{{ skipped_count|pluralize }} with existing assessments will not be modified.</p>
+        {% endif %}
+        <p class="mt-1">Seeded skills are marked as unverified until formally assessed.</p>
+      </div>
+    </div>
+  </div>
+
+  <form method="post" action="{% url 'personnel:seed-self-assessment' person.id %}" x-data="{ confirmed: false }">
+    {% csrf_token %}
+    <div class="flex justify-end gap-3">
+      <button onclick="closeModal()" type="button" class="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-md hover:bg-gray-50 dark:hover:bg-white/10 transition-colors">
+        Cancel
+      </button>
+      <button x-show="!confirmed" @click.prevent="confirmed = true" type="button"
+              class="px-4 py-2 text-sm font-medium text-white bg-amber-600 hover:bg-amber-700 rounded-md transition-colors">
+        Seed {{ seedable_count }} skill{{ seedable_count|pluralize }}
+      </button>
+      <button x-show="confirmed" x-cloak type="submit"
+              class="px-4 py-2 text-sm font-medium text-white bg-red-600 hover:bg-red-700 rounded-md transition-colors">
+        Confirm — this cannot be undone
+      </button>
+    </div>
+  </form>
+  {% endif %}
+</div>

@@ -1,0 +1,79 @@
+{
+  "id": "WSEC",
+  "name": "Wireless Security Specialist",
+  "domain": "WSEC",
+  "description": "Wireless and signal security track covering RF analysis, protocol assessment, wireless network testing, signal intelligence, spectrum monitoring, and jamming resilience evaluation.",
+  "maturity_levels": {
+    "junior": {
+      "title": "Junior Wireless Security Specialist",
+      "description": "Assists with wireless assessments under supervision. Performs spectrum monitoring and signal capture within licensing and regulatory limits; transmit activity only under direct supervision. Captures and findings are reviewed by an authorized evaluator.",
+      "thresholds": {
+        "domain_skills_at": {"1": 6, "2": 3},
+        "min_categories": 1,
+        "foundation_avg": 0.5
+      },
+      "pinned": [
+        {"skill": "FOUND-ETHICS", "minimum_level": 2}
+      ]
+    },
+    "practitioner": {
+      "title": "Wireless Security Specialist",
+      "description": "Independently performs and signs off routine wireless evaluations, analyzes protocol vulnerabilities and operates calibrated RF test equipment within regulatory limits. Reports document equipment, settings and test conditions.",
+      "thresholds": {
+        "domain_skills_at": {"2": 9, "3": 5},
+        "min_categories": 2,
+        "foundation_avg": 1.0
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 3},
+        {"skill": "FOUND-ETHICS", "minimum_level": 3}
+      ]
+    },
+    "senior": {
+      "title": "Senior Wireless Security Specialist",
+      "description": "Handles complex assessments across multiple protocols and frequency bands, for example custom proprietary radio links or cellular and satellite systems, and develops and validates test procedures. Performs QA review of reports and mentors junior specialists.",
+      "thresholds": {
+        "domain_skills_at": {"3": 11, "4": 5},
+        "min_categories": 3,
+        "foundation_avg": 1.5
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 4},
+        {"skill": "FOUND-QA", "minimum_level": 3},
+        {"skill": "FOUND-ETHICS", "minimum_level": 3}
+      ]
+    },
+    "lead": {
+      "title": "Lead Wireless Security Specialist",
+      "description": "Technical lead for Wireless & Signal Security: owns the methodology, performs technical quality review of evaluations and reports, and plans the technical approach across engagements. Acts as the senior technical contact for clients on scope and findings. Technical depth stays at senior level or above.",
+      "thresholds": {
+        "domain_skills_at": {"3": 12, "4": 6},
+        "min_categories": 4,
+        "foundation_avg": 2.0
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 4},
+        {"skill": "FOUND-QA", "minimum_level": 3},
+        {"skill": "FOUND-PM", "minimum_level": 3},
+        {"skill": "FOUND-COMM", "minimum_level": 3},
+        {"skill": "FOUND-ETHICS", "minimum_level": 3}
+      ]
+    },
+    "principal": {
+      "title": "Principal Wireless Security Specialist",
+      "description": "Technical authority in wireless and signal security. Drives innovation in RF testing, publishes research, and is a recognized expert in wireless attack and defense. The deepest technical tier in the domain; it extends Lead rather than branching from it.",
+      "thresholds": {
+        "domain_skills_at": {"4": 12, "5": 5},
+        "min_categories": 5,
+        "foundation_avg": 2.5
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 4},
+        {"skill": "FOUND-QA", "minimum_level": 3},
+        {"skill": "FOUND-PM", "minimum_level": 3},
+        {"skill": "FOUND-COMM", "minimum_level": 3},
+        {"skill": "FOUND-ETHICS", "minimum_level": 3}
+      ]
+    }
+  }
+}

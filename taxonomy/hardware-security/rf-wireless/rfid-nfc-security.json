@@ -1,0 +1,117 @@
+{
+  "id": "HWSEC-RF-NFC",
+  "name": "RFID/NFC Security Assessment",
+  "domain": "hardware-security",
+  "category": "RF & Wireless (On-Device)",
+  "status": "active",
+  "description": "Security evaluation of RFID and NFC hardware implementations at the chip and protocol level. Covers contactless smart card security (MIFARE, DESFire, EMV contactless), RFID tag cloning, relay attack assessment, side-channel analysis of contactless interfaces, and evaluation of mutual authentication and session key establishment in NFC-based systems.",
+  "requires": [],
+  "recommended": [
+    "HWSEC-SCA-SPA",
+    "HWSEC-CRYPTO-KEY",
+    "HWSEC-EMBED-FW",
+    "FOUND-TOOLS"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to RFID/NFC security assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands RFID/NFC technology types and common security issues",
+      "evidence": [
+        "Can explain LF (125kHz), HF (13.56MHz), and UHF RFID technology differences",
+        "Understands NFC communication modes (reader, card emulation, peer-to-peer)",
+        "Aware of historical RFID/NFC attacks (MIFARE Classic key recovery, relay attacks)"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs basic RFID/NFC analysis using standard tools under supervision",
+      "evidence": [
+        "Uses Proxmark3 to read, analyze, and clone LF and HF RFID tags",
+        "Captures and decodes NFC communication between card and reader",
+        "Performs known-key attacks on MIFARE Classic cards using documented procedures",
+        "Identifies RFID/NFC chip type and supported protocols from tag interrogation"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses RFID/NFC security including authentication and crypto implementations",
+      "evidence": [
+        "Performs full security assessment of contactless smart card implementations independently",
+        "Assesses mutual authentication protocols and identifies weaknesses",
+        "Evaluates relay attack susceptibility with distance and timing measurements",
+        "Completed RFID/NFC security assessments on 3+ distinct systems with documented findings"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Assesses hardened contactless implementations; combines with side-channel; mentors team",
+      "evidence": [
+        "Performs power/EM side-channel analysis on contactless smart card crypto operations",
+        "Assesses proprietary contactless protocols through traffic analysis and reverse engineering",
+        "Develops custom NFC fuzzing and testing tools for the lab",
+        "Mentors team on RFID/NFC assessment methodology and tool usage"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on RFID/NFC security; publishes research; defines evaluation methodology",
+      "evidence": [
+        "Published research on RFID/NFC vulnerabilities or attack techniques",
+        "Defines the lab's contactless security evaluation methodology",
+        "Provides expert consultation on contactless security to product designers and certification bodies",
+        "Develops novel RFID/NFC attack or assessment techniques"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Perform a full security assessment of a contactless system: identify the chip and protocol, assess authentication, test for cloning and relay susceptibility"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review RFID/NFC assessment reports for protocol analysis completeness and finding quality"
+    }
+  ],
+  "equipment": [
+    "Proxmark3 RDV4 with extended antenna set",
+    "Chameleon Ultra (or Mini/Tiny) for card emulation",
+    "HF/LF RFID near-field antenna set"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0375", "K0925", "K0942", "S0504"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-008 Technology Research and Development"]
+    },
+    "jil_attack_methods": [
+      "5.5 Side-channel attacks",
+      "5.8 Software attacks"
+    ],
+    "common_criteria": [
+      "AVA_VAN.3",
+      "AVA_VAN.4"
+    ]
+  },
+  "tags": [
+    "rfid",
+    "nfc",
+    "contactless",
+    "smart-card",
+    "cloning",
+    "relay-attack",
+    "non-invasive",
+    "authentication",
+    "protocol-analysis",
+    "reverse-engineering",
+    "side-channel",
+    "traffic-analysis",
+    "fuzzing"
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "id": "SWSEC-REVIEW-MANUAL",
+  "name": "Manual Secure Code Review",
+  "domain": "software-security",
+  "category": "Secure Code Review",
+  "status": "active",
+  "description": "Manual review of source code for security vulnerabilities across common languages (Java, C/C++, Python, JavaScript, C#, Go). Covers taint analysis, input validation, injection sinks, memory safety, and language-specific vulnerability patterns.",
+
+  "requires": [],
+  "recommended": [
+    "FOUND-REPORT",
+    "SWSEC-SAST-TOOLING",
+    "FOUND-TOOLS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to secure code review"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands common vulnerability patterns in source code",
+      "evidence": [
+        "Can explain common vulnerability classes (injection, buffer overflow, deserialization)",
+        "Familiar with OWASP Code Review Guide concepts",
+        "Understands source-sink analysis at a conceptual level"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Reviews code for basic vulnerability patterns under supervision",
+      "evidence": [
+        "Identified injection and input validation flaws in guided code review exercises",
+        "Reviewed code in at least 2 languages under supervision",
+        "Used IDE navigation and search to trace data flow",
+        "Findings reviewed and validated by authorized reviewer"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently reviews codebases and identifies security vulnerabilities",
+      "evidence": [
+        "Independently completed 5+ secure code review engagements",
+        "Reviews code in at least 3 languages for OWASP Top 10 vulnerabilities",
+        "Performs source-to-sink taint tracing for injection vulnerabilities",
+        "Produces clear findings reports with code references and remediation",
+        "Passed proficiency assessment on manual code review"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Reviews complex codebases; identifies subtle logic and design flaws",
+      "evidence": [
+        "Identifies race conditions, TOCTOU, and concurrency vulnerabilities",
+        "Reviews framework-specific patterns and custom security implementations",
+        "Identifies design-level vulnerabilities beyond implementation bugs",
+        "Mentors junior reviewers on code review methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Authority on secure code review; develops methodology and training",
+      "evidence": [
+        "Published research on code vulnerability patterns or novel code flaws",
+        "Developed the lab's code review methodology and checklists",
+        "Reviews code in 5+ languages with deep knowledge of language-specific flaws",
+        "Trains teams on secure code review techniques"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Review a prepared codebase with seeded vulnerabilities and produce a findings report within a time limit"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review of findings quality and completeness from 3 recent code review engagements"
+    }
+  ],
+
+  "framework_mappings": {
+    "owasp": ["OWASP Code Review Guide"],
+    "nice": {
+      "tks": ["K1319", "K0688", "S0972", "S0623", "K0814"],
+      "work_roles": ["DD-WRL-005 Software Security Assessment", "DD-WRL-003 Secure Software Development"]
+    },
+    "crest_cct_app": ["N1"]
+  },
+
+  "tags": [
+    "code-review",
+    "source-code",
+    "manual-analysis",
+    "taint-analysis"
+  ]
+}

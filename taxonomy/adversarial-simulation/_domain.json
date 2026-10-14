@@ -1,0 +1,23 @@
+{
+  "id": "ADVSIM",
+  "name": "Adversarial Simulation",
+  "description": "Skills related to simulating real-world adversaries through red teaming, social engineering, and physical security testing. Focused on the methodology and execution of adversarial scenarios, not the underlying technical exploitation skills (which live in their respective domains like NETSEC, SWSEC).",
+
+  "categories": [
+    {
+      "id": "ADVSIM-RED",
+      "name": "Red Teaming",
+      "description": "Planning and executing full-scope adversarial simulations with defined objectives, threat models, and rules of engagement. Covers campaign planning, C2 infrastructure, evasion, and objective-driven operations."
+    },
+    {
+      "id": "ADVSIM-SE",
+      "name": "Social Engineering",
+      "description": "Human-factor attacks including phishing, vishing, pretexting, and in-person social engineering. Covers pretext development, delivery mechanisms, and measuring human security posture."
+    },
+    {
+      "id": "ADVSIM-PHYS",
+      "name": "Physical Security",
+      "description": "Physical penetration testing and security assessment. Covers lock picking, access control bypass, tailgating, surveillance, covert entry, and physical security control evaluation."
+    }
+  ]
+}

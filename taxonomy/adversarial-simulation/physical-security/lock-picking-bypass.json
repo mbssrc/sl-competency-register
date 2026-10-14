@@ -1,0 +1,113 @@
+{
+  "id": "ADVSIM-PHYS-LOCKPICK",
+  "name": "Lock Picking & Bypass",
+  "domain": "adversarial-simulation",
+  "category": "Physical Security",
+  "status": "active",
+  "description": "Ability to defeat mechanical and electromechanical lock systems through picking, bypassing, and manipulation techniques. Covers pin tumbler, wafer, disc detainer, and tubular locks, as well as bypass tools, shims, and impressioning. Applied in the context of authorised physical penetration testing.",
+
+  "requires": [
+    "FOUND-ETHICS"
+  ],
+  "recommended": [
+    "ADVSIM-PHYS-ACCESS",
+    "FOUND-EVIDENCE"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to lock picking or bypass techniques"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands lock mechanisms and the principles of lock picking",
+      "evidence": [
+        "Completed lock mechanism fundamentals training",
+        "Can identify common lock types (pin tumbler, wafer, disc detainer, tubular)",
+        "Understands the legal framework around lock picking tools and their possession"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Picks basic locks in lab settings under supervision",
+      "evidence": [
+        "Successfully picks training pin tumbler locks (up to 5-pin) in lab conditions",
+        "Can use basic bypass tools (shims, jigglers) under guidance",
+        "Practises on lab lock collection with feedback from experienced picker"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently defeats common commercial locks encountered on engagements",
+      "evidence": [
+        "Picked commercial-grade locks on 3+ physical penetration tests",
+        "Can defeat common office/commercial pin tumbler locks within reasonable time constraints",
+        "Selects appropriate tools and techniques based on lock type observed on-site",
+        "Documents lock bypass evidence (photos, video) for engagement reports"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Defeats high-security locks; proficient across multiple lock families; trains others",
+      "evidence": [
+        "Picks pin tumbler locks with security pins and restricted or paracentric keyways",
+        "Proficient with disc detainer, tubular, and dimple lock picking",
+        "Can perform impressioning on suitable lock types",
+        "Relates findings to the hardware's claimed resistance rating (e.g., EN 1303 cylinder grades, EN 1627 resistance classes, UL 437)",
+        "Trains and mentors team on lock picking techniques using lab lock collection"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defeats the most complex locks; researches vulnerabilities in lock designs; develops lab capabilities",
+      "evidence": [
+        "Defeats high-security and restricted lock systems (e.g., Abloy, Medeco, Mul-T-Lock)",
+        "Identified or published vulnerabilities in commercial lock products",
+        "Maintains and curates the lab's lock collection and training programme",
+        "Recognised as the lab's authority on mechanical lock security"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Pick a set of progressively difficult locks from the lab collection within time constraints, demonstrating technique selection and skill"
+    },
+    {
+      "type": "direct_observation",
+      "description": "Observe lock picking and bypass during a physical penetration test, assessing technique, speed, and evidence documentation"
+    }
+  ],
+
+  "equipment": [
+    "Lock pick training set and practice locks",
+    "Progressive difficulty lock collection (pin tumbler through high-security)"
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1248"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis"]
+    },
+    "mitre_attack": {
+      "tactics": ["TA0001"]
+    },
+    "cbest": {
+      "phase": "Penetration Testing - Physical"
+    }
+  },
+
+  "tags": [
+    "lock-picking",
+    "physical-bypass",
+    "mechanical-locks",
+    "covert-entry",
+    "hands-on",
+    "physical-security"
+  ]
+}

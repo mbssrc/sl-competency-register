@@ -1,0 +1,107 @@
+{
+  "id": "CRYPTO-SYM-AEAD",
+  "name": "Authenticated Encryption Assessment",
+  "domain": "cryptography",
+  "category": "Symmetric Cryptography",
+  "status": "active",
+  "description": "Assessment of authenticated encryption with associated data (AEAD) constructions including AES-GCM, ChaCha20-Poly1305, AES-CCM, and AES-SIV. Covers correctness of authentication tag verification, associated data handling, nonce management for AEAD schemes, identification of insecure composition patterns such as MAC-then-encrypt, and evaluation of encrypt-then-MAC implementations.",
+
+  "requires": [
+    "CRYPTO-SYM-BLOCKCIPHER"
+  ],
+  "recommended": [
+    "CRYPTO-HASH-MAC"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to authenticated encryption concepts"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the need for authenticated encryption and the risks of encryption without authentication",
+      "evidence": [
+        "Can explain why encryption alone does not provide integrity",
+        "Understands the difference between encrypt-then-MAC, MAC-then-encrypt, and AEAD constructions",
+        "Can name common AEAD schemes (AES-GCM, ChaCha20-Poly1305)"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Identifies AEAD usage and basic misconfigurations under supervision",
+      "evidence": [
+        "Detects absence of authentication in symmetric encryption deployments",
+        "Identifies AES-GCM nonce reuse risks under guidance",
+        "Reviews code for correct authentication tag verification practices",
+        "Documents AEAD-related findings following lab templates"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses AEAD implementations for correctness and security",
+      "evidence": [
+        "Evaluates AES-GCM deployments for nonce uniqueness, tag length, and AAD handling",
+        "Identifies missing or incorrectly verified authentication tags in application code",
+        "Assesses whether encrypt-then-MAC compositions are correctly implemented",
+        "Produces actionable findings with references to NIST SP 800-38D/38C or relevant RFCs (RFC 5116, RFC 8439, RFC 8452)"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Assesses complex AEAD deployments; identifies subtle composition flaws",
+      "evidence": [
+        "Demonstrates GCM nonce-reuse key recovery attacks in lab environments",
+        "Evaluates custom AEAD compositions in proprietary protocols",
+        "Assesses nonce-misuse-resistant schemes (AES-SIV, AES-GCM-SIV) and their trade-offs",
+        "Mentors junior staff on AEAD assessment methodology"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines AEAD assessment methodology; publishes research on authenticated encryption",
+      "evidence": [
+        "Authored or maintains the lab's AEAD assessment methodology",
+        "Published research on AEAD implementation vulnerabilities or novel attacks",
+        "Provides expert guidance on AEAD scheme selection for protocol design",
+        "Trains teams on authenticated encryption internals and failure modes"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess an application using AES-GCM: verify nonce management, tag verification, and AAD handling; demonstrate impact of any identified weaknesses"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given a protocol using MAC-then-encrypt, identify the composition weakness and propose a migration path to a proper AEAD construction"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1358", "K0875", "S0969", "S0971"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-005 Software Security Assessment"]
+    },
+    "nist_sp": ["800-38D", "800-38C"],
+    "ietf": {
+      "rfcs": ["RFC 5116", "RFC 8439", "RFC 8452"]
+    }
+  },
+
+  "tags": [
+    "aead",
+    "aes-gcm",
+    "chacha20-poly1305",
+    "authenticated-encryption",
+    "nonce-reuse",
+    "symmetric",
+    "encryption",
+    "authentication"
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "id": "INFRA-IAC-CFN",
+  "name": "CloudFormation Security Review",
+  "domain": "infrastructure-security",
+  "category": "Infrastructure as Code Security",
+  "status": "active",
+  "description": "Security review of AWS CloudFormation templates and stacks. Covers YAML/JSON template review for misconfigurations, stack policies, drift detection, nested stack security, custom resource risks, and evaluation of CloudFormation-provisioned infrastructure against security baselines.",
+  "requires": [],
+  "recommended": [
+    "INFRA-AWS-IAM",
+    "FOUND-TOOLS",
+    "FOUND-RISK"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to CloudFormation security review"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands CloudFormation concepts, template syntax, and common security concerns",
+      "evidence": [
+        "Can explain CloudFormation stacks, templates, parameters, and outputs",
+        "Understands common CloudFormation misconfigurations and their security impact",
+        "Familiar with stack policies and drift detection concepts"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Reviews CloudFormation templates under supervision using static analysis tools",
+      "evidence": [
+        "Runs CloudFormation scanning tools (e.g., cfn-lint, cfn-nag, Checkov) under guidance",
+        "Identifies common resource misconfigurations using lab checklists",
+        "Documents CloudFormation security findings with supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently reviews CloudFormation templates for security issues",
+      "evidence": [
+        "Independently reviews templates for IAM, networking, and encryption misconfigurations",
+        "Evaluates custom resource Lambda functions for injection and privilege risks",
+        "Assesses parameter handling for sensitive data exposure",
+        "Produces compliant CloudFormation security review reports"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex nested stack reviews; develops custom rules; mentors others",
+      "evidence": [
+        "Reviews complex nested and cross-stack reference architectures",
+        "Develops custom cfn-nag rules and Checkov policies",
+        "Reviews CloudFormation security work of junior analysts",
+        "Evaluates CloudFormation deployment pipeline security controls"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines lab CloudFormation review methodology; publishes IaC security research",
+      "evidence": [
+        "Designed or maintains the lab's CloudFormation security review framework",
+        "Published research on CloudFormation security risks or template injection techniques",
+        "Trains teams on advanced CloudFormation security review",
+        "Recognized as authority on CloudFormation security"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Review a set of CloudFormation templates with intentional misconfigurations and identify all security issues"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review CloudFormation security findings from recent IaC assessment engagements"
+    }
+  ],
+  "framework_mappings": {
+    "cis": [
+      "CIS AWS Foundations Benchmark v5.0.0 - Sections 1-5 as template review baseline"
+    ],
+    "nice": {
+      "tks": ["K1369", "K0863", "K1122", "S0532", "S0972"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-001 Cybersecurity Architecture"]
+    }
+  },
+  "tags": [
+    "iac",
+    "cloudformation",
+    "aws",
+    "static-analysis",
+    "misconfiguration",
+    "encryption",
+    "iam",
+    "scanning"
+  ]
+}

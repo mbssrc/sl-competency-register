@@ -1,0 +1,96 @@
+{
+  "id": "FOUND-REPORT",
+  "name": "Report Writing",
+  "domain": "foundations",
+  "category": "Foundations",
+  "status": "active",
+  "description": "Ability to produce clear, accurate, and structured technical reports documenting security findings, evidence, risk ratings, and remediation guidance. Covers engagement reports, evaluation reports, and forensic reports, including the reporting requirements of ISO/IEC 17025:2017 clause 7.8 (e.g. clearly identified opinions and interpretations).",
+
+  "requires": [],
+  "recommended": [
+    "FOUND-RISK",
+    "FOUND-DOC"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to technical report writing"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the purpose and structure of security reports",
+      "evidence": [
+        "Has read and reviewed example security reports",
+        "Can identify the key sections of a findings report"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Can draft report sections under supervision; work reviewed before delivery",
+      "evidence": [
+        "Has drafted findings write-ups reviewed by senior staff",
+        "Can document a vulnerability with description, impact, evidence, and remediation",
+        "Follows report templates correctly"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Produces complete, client-ready reports independently",
+      "evidence": [
+        "Authored 5+ complete engagement reports",
+        "Reports pass QA review with minimal corrections",
+        "Appropriate risk ratings and remediation guidance"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Produces complex reports; reviews others' work; improves templates",
+      "evidence": [
+        "Handles multi-domain and complex engagement reports",
+        "Performs QA review on junior staff reports",
+        "Contributes to or maintains report templates and style guides"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines reporting methodology; trains teams; handles sensitive deliverables",
+      "evidence": [
+        "Designed the lab's report framework and standards",
+        "Delivers training on report writing",
+        "Handles board-level and regulatory deliverables"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "work_product_review",
+      "description": "Review of 3 recent engagement reports authored by the individual"
+    },
+    {
+      "type": "controlled_exercise",
+      "description": "Draft a findings report from a provided set of raw engagement notes"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["S0459", "S0579", "S0744", "S0387"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "IN-WRL-002 Digital Evidence Analysis"]
+    },
+    "sfia": {
+      "skill": "INCA",
+      "levels": [2, 3, 4, 5]
+    }
+  },
+
+  "tags": [
+    "cross-cutting",
+    "documentation",
+    "client-facing"
+  ]
+}

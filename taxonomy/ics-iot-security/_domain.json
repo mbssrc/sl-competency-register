@@ -1,0 +1,28 @@
+{
+  "id": "ICSIOT",
+  "name": "ICS & IoT Security",
+  "description": "Security assessment of industrial control systems, operational technology, and Internet of Things devices. Covers controller, protocol and OT network security, IoT device, backend and conformity testing, medical device security, automotive and vehicle security, and OT risk and safety analysis. Aligned with MITRE ATT&CK for ICS, IEC 62443, OWASP IoT Top 10, ETSI EN 303 645, and the technical assessment activities of ISO/SAE 21434.",
+
+  "categories": [
+    {
+      "id": "ICSIOT-ICS",
+      "name": "Industrial Control Systems",
+      "description": "Security assessment of ICS/SCADA networks, components and protocols. Covers OT network architecture and segmentation (Purdue model, zones and conduits), safe passive and active discovery, PLC, RTU, and DCS controller security, and deep protocol-level analysis of industrial communication protocols."
+    },
+    {
+      "id": "ICSIOT-IOT",
+      "name": "IoT Security",
+      "description": "Security assessment of IoT devices and their supporting ecosystems. Covers firmware analysis, device hardening, cloud backend, provisioning and OTA update security, communication protocol assessment, consumer IoT conformity testing (ETSI EN 303 645, EN 18031, Cyber Resilience Act), and medical device security."
+    },
+    {
+      "id": "ICSIOT-OT",
+      "name": "OT Risk & Safety",
+      "description": "Risk assessment and safety analysis for operational technology environments. Covers IEC 62443 zone and conduit analysis, IEC 62443 system and component assessment against security levels, safety instrumented system security, and cyber-physical consequence modeling."
+    },
+    {
+      "id": "ICSIOT-AUTO",
+      "name": "Automotive & Vehicle Security",
+      "description": "Security assessment of road vehicles and their ecosystem. Covers in-vehicle networks (CAN, CAN FD, CAN XL, LIN, FlexRay, automotive Ethernet), ECU diagnostics and firmware, and connected-vehicle interfaces: telematics, keyless entry, V2X and EV charging. Provides the technical assessment that supports ISO/SAE 21434 and UN Regulations No. 155 and 156; the process and governance activities those documents require — TARA, cybersecurity goals and the cybersecurity case, CSMS audit and software update management (SUMS) — are not covered by these skills."
+    }
+  ]
+}

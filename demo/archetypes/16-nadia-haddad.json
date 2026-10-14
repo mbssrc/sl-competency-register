@@ -1,0 +1,57 @@
+{
+  "key": "PERS-016",
+  "bands": {
+    "strong": [
+      "CRYPTO-PKI",
+      "CRYPTO-HASH"
+    ],
+    "weak": [
+      "CRYPTO-PQ"
+    ]
+  },
+  "signature": {
+    "CRYPTO-PKI-TLS": 3,
+    "CRYPTO-PKI-CERTS": 3,
+    "CRYPTO-PKI-KEYMANAGEMENT": 3,
+    "CRYPTO-HASH-ASSESSMENT": 3,
+    "CRYPTO-HASH-MAC": 3,
+    "CRYPTO-SYM-BLOCKCIPHER": 3,
+    "CRYPTO-IMPL-CONSTTIME": 3
+  },
+  "never": [],
+  "foundations": [
+    1,
+    2
+  ],
+  "projects": [
+    "PRJ-SAT-CP-BLACK"
+  ],
+  "stale_skills": [],
+  "self_assessment": {
+    "mode": "all",
+    "bias": 0,
+    "jitter": 1,
+    "extra": {
+      "CRYPTO-PQ-AGILITY": 3
+    }
+  },
+  "development_plan": [
+    {
+      "skill": "FOUND-QA",
+      "target_level": 3,
+      "target_date": "2027-12-31",
+      "actions": [
+        "Complete internal ISO/IEC 17025 QA reviewer training"
+      ]
+    }
+  ],
+  "name": "Nadia Haddad",
+  "role": "Cryptographic Analyst",
+  "start_date": "2023-03-06",
+  "domains": [
+    "CRYPTO"
+  ],
+  "target_maturity": {
+    "CRYPTO": "practitioner"
+  }
+}

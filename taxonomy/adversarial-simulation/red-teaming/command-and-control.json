@@ -1,0 +1,110 @@
+{
+  "id": "ADVSIM-RED-C2",
+  "name": "Command and Control Infrastructure",
+  "domain": "adversarial-simulation",
+  "category": "Red Teaming",
+  "status": "active",
+  "description": "Ability to design, deploy, and operate command and control (C2) infrastructure for red team operations. Covers C2 framework selection and configuration, redirector architecture, malleable profiles, operational security of infrastructure, and resilient multi-channel communications.",
+
+  "requires": [
+    "FOUND-ETHICS"
+  ],
+  "recommended": [
+    "FOUND-TOOLS",
+    "ADVSIM-RED-PLANNING",
+    "ADVSIM-RED-EVASION",
+    "NETSEC-PIVOT-PORTFWD",
+    "NETSEC-PIVOT-VPN"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to C2 infrastructure"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the role of C2 in red team operations and can name common frameworks",
+      "evidence": [
+        "Completed C2 fundamentals training",
+        "Can explain the purpose of redirectors, beacons, and listeners",
+        "Understands why C2 infrastructure operational security matters"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Deploys and operates basic C2 infrastructure under supervision",
+      "evidence": [
+        "Deployed a C2 framework (e.g., Cobalt Strike, Sliver, Mythic) in lab environment",
+        "Configured basic listeners and generated payloads under guidance",
+        "Set up a single-tier HTTP/HTTPS redirector using Apache or Nginx with supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently deploys resilient C2 infrastructure for standard engagements",
+      "evidence": [
+        "Built and operated C2 infrastructure for 3+ live engagements",
+        "Configured malleable profiles or traffic shaping to blend with target environment",
+        "Deployed multi-tier redirector architecture with proper OPSEC",
+        "Managed C2 infrastructure lifecycle including teardown and evidence preservation"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Designs advanced C2 architectures for evasive operations against mature defenders",
+      "evidence": [
+        "Designed C2 infrastructure that evaded network monitoring in defended environments",
+        "Implemented CDN-fronted, cloud-native or SaaS-API C2 channels, treating classic domain fronting as historical since major CDNs disabled it",
+        "Built automated infrastructure-as-code deployment for C2 setups",
+        "Mentors team on C2 infrastructure design and operational security"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Develops novel C2 techniques; contributes to C2 frameworks; defines lab standards",
+      "evidence": [
+        "Developed custom C2 implants or communication protocols",
+        "Contributed to open-source or commercial C2 frameworks",
+        "Published research on C2 techniques or infrastructure design",
+        "Defines and maintains the lab's C2 infrastructure standards and playbooks"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Deploy a full C2 infrastructure with redirectors, malleable profile, and HTTPS listener in a lab environment within a time constraint"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review infrastructure diagrams and configurations from recent engagements for OPSEC and resilience"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1054", "K0884", "K1019", "S0516"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis"]
+    },
+    "mitre_attack": {
+      "tactics": ["TA0011", "TA0042"],
+      "techniques": ["T1071", "T1090", "T1572", "T1573", "T1583"]
+    }
+  },
+
+  "tags": [
+    "c2",
+    "infrastructure",
+    "cobalt-strike",
+    "malleable-profiles",
+    "opsec",
+    "redirectors",
+    "evasion",
+    "malware"
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "id": "FOUND-RISK",
+  "name": "Risk Assessment",
+  "domain": "foundations",
+  "category": "Foundations",
+  "status": "active",
+  "description": "Ability to evaluate and communicate security risk through structured scoring methodologies. Covers likelihood and impact assessment, risk rating frameworks (CVSS v3.1/v4.0, OWASP Risk Rating, custom), the distinction between technical severity scores and contextual risk, and contextual risk analysis for different audiences.",
+
+  "requires": [],
+  "recommended": [
+    "FOUND-COMM",
+    "FOUND-STANDARDS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to risk assessment concepts"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands basic risk concepts: likelihood, impact, severity",
+      "evidence": [
+        "Can explain the difference between likelihood and impact",
+        "Can describe the basic structure of at least one risk scoring framework (e.g., CVSS base metrics)"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Can assign risk ratings under supervision using established methodology",
+      "evidence": [
+        "Correctly applies CVSS or lab risk methodology to findings",
+        "Risk ratings reviewed and approved by senior staff",
+        "Understands contextual factors affecting risk"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assigns accurate, contextual risk ratings",
+      "evidence": [
+        "Consistent, well-justified risk ratings across engagements",
+        "Can explain ratings to technical and non-technical audiences",
+        "Handles edge cases (chained vulnerabilities, compensating controls)"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex risk scenarios; reviews risk assessments; adapts methodology",
+      "evidence": [
+        "Assesses risk in complex, multi-system environments",
+        "Reviews and calibrates risk ratings across the team",
+        "Adapts risk methodology for specific client contexts or standards"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines risk methodology; contributes to industry standards",
+      "evidence": [
+        "Designed or significantly evolved the lab's risk assessment framework",
+        "Trains teams on risk assessment methodology",
+        "Contributes to external standards or industry guidance on risk"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "work_product_review",
+      "description": "Review risk ratings across 3 recent engagement reports for accuracy and consistency"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Scenario-based assessment: assign and justify risk ratings for complex multi-vulnerability findings"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0835", "K1076", "K1078", "K0675"],
+      "work_roles": ["OG-WRL-012 Security Control Assessment", "PD-WRL-007 Vulnerability Analysis"]
+    }
+  },
+
+  "tags": [
+    "cross-cutting",
+    "risk",
+    "methodology",
+    "risk-assessment"
+  ]
+}

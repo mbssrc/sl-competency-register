@@ -1,0 +1,37 @@
+{
+  "key": "PERS-011",
+  "bands": {
+    "strong": [
+      "SWSEC-WEB"
+    ],
+    "weak": [
+      "SWSEC-OS",
+      "SWSEC-FUZZ",
+      "SWSEC-PLATFORM",
+      "SWSEC-SUPPLY"
+    ]
+  },
+  "signature": {},
+  "never": [],
+  "foundations": [
+    1,
+    2
+  ],
+  "projects": [],
+  "stale_skills": [],
+  "self_assessment": {
+    "mode": "only",
+    "bias": 1,
+    "jitter": 1
+  },
+  "development_plan": [],
+  "name": "Lucia Rossi",
+  "role": "Junior Application Security Evaluator",
+  "start_date": "2026-08-17",
+  "domains": [
+    "SWSEC"
+  ],
+  "target_maturity": {
+    "SWSEC": "junior"
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "id": "DFIR-MOB-ACQUISITION",
+  "name": "Mobile Device Acquisition",
+  "domain": "digital-forensics",
+  "category": "Mobile Forensics",
+  "status": "active",
+  "description": "Ability to perform forensic acquisition of mobile devices (iOS and Android). Covers logical acquisition, full filesystem extraction (including exploit-based methods such as checkm8 on A5–A11 iOS devices), physical acquisition, chip-off techniques, and JTAG/ISP extraction methods, and the limits that file-based encryption places on physical and chip-off methods. Includes handling device lock bypass, Faraday isolation, and maintaining chain of custody for mobile evidence.",
+
+  "requires": [
+    "FOUND-EVIDENCE"
+  ],
+  "recommended": [
+    "FOUND-DOC",
+    "FOUND-TOOLS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to mobile device forensic acquisition"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands mobile acquisition types and the challenges unique to mobile forensics",
+      "evidence": [
+        "Can describe the difference between logical, filesystem, and physical mobile acquisition",
+        "Understands why mobile devices require Faraday isolation during seizure",
+        "Can explain the challenges of device lock bypass and encryption on modern devices (e.g. BFU vs. AFU state, file-based encryption)"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs logical and filesystem acquisitions of standard mobile devices under supervision",
+      "evidence": [
+        "Performed logical (backup-based) and full filesystem acquisitions of iOS devices using tools such as Cellebrite UFED, GrayKey, or Magnet AXIOM under guidance",
+        "Performed logical and filesystem acquisitions of Android devices under guidance",
+        "Properly isolated devices in Faraday bags and documented device state at seizure",
+        "Recorded device identifiers (IMEI, serial number) and acquisition hashes with supervisor review"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently acquires mobile devices using appropriate methods based on device type, OS version, and lock state",
+      "evidence": [
+        "Independently acquired 10+ mobile devices across iOS and Android platforms",
+        "Selected appropriate acquisition method based on device model, OS version, and lock status",
+        "Handled locked and encrypted devices using approved bypass techniques",
+        "Acquisition documentation consistently passes QA review"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles advanced acquisition including chip-off, JTAG/ISP, and damaged devices; mentors junior examiners",
+      "evidence": [
+        "Performed chip-off extraction from devices where software-based acquisition was not possible, accounting for storage encryption limits on modern devices",
+        "Executed JTAG or ISP acquisition methods for supported devices",
+        "Handled acquisition of damaged, water-damaged, or partially functional devices",
+        "Reviews acquisition procedures and mentors junior staff on mobile evidence collection"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines mobile acquisition methodology; validates tools against new device models; provides expert testimony on mobile evidence integrity",
+      "evidence": [
+        "Authored or maintains the lab's mobile forensic acquisition methodology",
+        "Validated acquisition tools and techniques for new device models and OS versions",
+        "Provided expert testimony on mobile evidence acquisition integrity",
+        "Trains teams on mobile acquisition techniques and tool evaluation"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Acquire data from iOS and Android test devices using appropriate methods, document the process, and verify acquisition integrity"
+    },
+    {
+      "type": "direct_observation",
+      "description": "Observe mobile device seizure and acquisition during a live or simulated investigation"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1152", "K1155", "S0607", "S0653", "S0589"],
+      "work_roles": ["IN-WRL-002 Digital Evidence Analysis", "IN-WRL-001 Cybercrime Investigation", "PD-WRL-002 Digital Forensics"]
+    },
+    "sfia": {
+      "skill": "DGFS"
+    },
+    "giac": ["GASF"]
+  },
+
+  "tags": [
+    "mobile",
+    "ios",
+    "android",
+    "logical-acquisition",
+    "physical-acquisition",
+    "chip-off",
+    "jtag",
+    "faraday",
+    "chain-of-custody",
+    "encryption",
+    "forensics"
+  ]
+}

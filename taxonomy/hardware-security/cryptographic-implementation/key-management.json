@@ -1,0 +1,118 @@
+{
+  "id": "HWSEC-CRYPTO-KEY",
+  "name": "Hardware Key Management Assessment",
+  "domain": "hardware-security",
+  "category": "Cryptographic Implementation Assessment",
+  "status": "active",
+  "description": "Assessment of cryptographic key lifecycle management in hardware. Covers key generation, provisioning, storage (OTP, eFuse, secure NVM, PUF-derived), key wrapping and derivation, key isolation between security domains, zeroization, and key agreement protocol implementation. Evaluates whether keys are protected against extraction via both software and physical attack vectors. Focuses on hardware key storage and protection; key lifecycle policy and NIST SP 800-57 compliance belong to CRYPTO-PKI-KEYMANAGEMENT.",
+  "requires": [
+    "HWSEC-EMBED-FW"
+  ],
+  "recommended": [
+    "HWSEC-CRYPTO-RNG",
+    "HWSEC-CRYPTO-HSM",
+    "HWSEC-SCA-DPA",
+    "FOUND-STANDARDS",
+    "CRYPTO-PKI-KEYMANAGEMENT",
+    "FOUND-TOOLS"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to hardware key management assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands hardware key storage mechanisms and key lifecycle concepts",
+      "evidence": [
+        "Can explain common hardware key storage methods (OTP, eFuse, secure NVM, PUF)",
+        "Understands key lifecycle phases (generation, provisioning, operational use, zeroization)",
+        "Aware of key isolation concepts (TrustZone, secure enclaves, key ladders)"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Analyzes key management implementations in firmware under supervision",
+      "evidence": [
+        "Identifies key storage locations and access patterns in firmware through reverse engineering",
+        "Maps key derivation chains and identifies the root key source",
+        "Assesses key access controls by analyzing privilege levels and API boundaries with guidance",
+        "Documents key management architecture and identified weaknesses"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses hardware key management across the full lifecycle",
+      "evidence": [
+        "Evaluates key provisioning security (factory provisioning, personalization)",
+        "Assesses key isolation between secure and non-secure domains (TrustZone, HSM boundaries)",
+        "Identifies key extraction vulnerabilities through firmware analysis and hardware testing",
+        "Evaluates zeroization completeness and tamper response mechanisms",
+        "Completed key management assessments on 3+ distinct hardware platforms"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Assesses complex key hierarchies; combines software and hardware analysis; mentors team",
+      "evidence": [
+        "Assesses multi-tier key hierarchies (key ladders, key wrapping chains) for design weaknesses",
+        "Combines firmware reverse engineering with side-channel or fault injection to extract keys",
+        "Evaluates PUF-based key generation and reconstruction mechanisms",
+        "Mentors team on key management assessment methodology and standard interpretation"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on hardware key management; defines methodology; advises designers",
+      "evidence": [
+        "Defines the lab's key management assessment methodology aligned with FIPS 140-3 and Common Criteria",
+        "Published research on hardware key extraction or key management vulnerabilities",
+        "Provides expert consultation on hardware key management architecture to product designers",
+        "Contributes to key management standards or certification guidance"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess the key management implementation of a target device: map the key hierarchy, evaluate storage and isolation, and identify extraction vectors"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review key management assessment reports for completeness of lifecycle coverage and quality of vulnerability analysis"
+    }
+  ],
+  "equipment": [],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1363", "K0698", "K0932", "K0948"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-004 Secure Systems Development"]
+    },
+    "common_criteria": [
+      "AVA_VAN.4",
+      "AVA_VAN.5",
+      "FCS_CKM"
+    ],
+    "fips_140_3": [
+      "AS09"
+    ]
+  },
+  "tags": [
+    "key-management",
+    "key-storage",
+    "puf",
+    "efuse",
+    "zeroization",
+    "cryptographic",
+    "multi-vector",
+    "firmware",
+    "hsm",
+    "reverse-engineering",
+    "side-channel",
+    "non-invasive",
+    "fault-injection"
+  ]
+}

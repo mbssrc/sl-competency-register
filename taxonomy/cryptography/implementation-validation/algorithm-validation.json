@@ -1,0 +1,109 @@
+{
+  "id": "CRYPTO-IMPL-ACVP",
+  "name": "Algorithm Validation Testing (ACVP/CAVP)",
+  "domain": "cryptography",
+  "category": "Implementation & Validation",
+  "status": "active",
+  "description": "Covers algorithm validation testing under the NIST Cryptographic Algorithm Validation Program (CAVP) using the Automated Cryptographic Validation Protocol (ACVP). Includes test vector types and procedures, determining algorithm, mode and parameter coverage from the module's capabilities, operating ACVP test sessions, and interpreting results and certificate scope for CMVP module submissions.",
+
+  "requires": [
+    "CRYPTO-SYM-BLOCKCIPHER",
+    "CRYPTO-HASH-ASSESSMENT"
+  ],
+  "recommended": [
+    "CRYPTO-ASYM-SIGNATURES",
+    "FOUND-STANDARDS",
+    "CRYPTO-IMPL-ENTROPY",
+    "FOUND-REPORT"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to cryptographic algorithm validation"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the role of CAVP and ACVP in the FIPS 140-3 validation process",
+      "evidence": [
+        "Can explain the relationship between CAVP algorithm certificates and CMVP module validation",
+        "Can describe the main ACVP test types (algorithm functional tests, known-answer, Monte Carlo, multi-block message tests)",
+        "Aware of the approved security functions list in NIST SP 800-140C"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Executes algorithm validation test sessions under supervision",
+      "evidence": [
+        "Prepares capability registrations for common algorithms from vendor-provided information with guidance",
+        "Runs ACVP test sessions against the demo server and submits responses",
+        "Records failures and test session evidence in the lab's records",
+        "Communicates basic test harness requirements to vendors"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently plans and performs algorithm validation for a module",
+      "evidence": [
+        "Derives the complete algorithm, mode and parameter coverage from the module's design and security policy",
+        "Identifies dependencies between algorithms (e.g. DRBG, KDF and key agreement prerequisites) and plans test order",
+        "Diagnoses test failures and distinguishes harness errors from implementation defects",
+        "Verifies that CAVP certificate scope matches the operational environment and functions claimed in the CMVP submission"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Handles complex validations; reviews algorithm testing; mentors team",
+      "evidence": [
+        "Plans validation for large or multi-environment modules with many algorithm and platform combinations",
+        "Resolves coverage questions for less common algorithms and parameter sets with reference to the relevant standards",
+        "Technically reviews algorithm validation records and certificate scope before submission",
+        "Mentors evaluators on ACVP and CAVP procedures"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognised authority on algorithm validation; defines lab methodology; engages with NIST programmes",
+      "evidence": [
+        "Defines the lab's algorithm validation procedures and quality checks",
+        "Engages with CAVP/CMVP on interpretation questions and documents the lab's position",
+        "Contributes to ACVP specifications, test tooling or published guidance",
+        "Trains staff and vendors on algorithm validation requirements"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Given a module's security policy and algorithm list, prepare ACVP capability registrations, run the test sessions against the demo server, and report coverage and outcomes"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Diagnose a set of failed ACVP test results from a vendor implementation and determine whether each failure stems from the harness, the registration or the implementation"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0697", "K0875", "K0711", "K1341"],
+      "work_roles": ["DD-WRL-007 Systems Testing and Evaluation", "PD-WRL-007 Vulnerability Analysis"]
+    },
+    "fips": {
+      "standards": ["FIPS 140-3", "FIPS 197", "FIPS 180-4", "FIPS 186-5"]
+    },
+    "nist_sp": ["800-140", "800-140C"]
+  },
+
+  "tags": [
+    "cavp",
+    "acvp",
+    "algorithm-validation",
+    "fips-140-3",
+    "cryptographic",
+    "conformance-testing"
+  ]
+}

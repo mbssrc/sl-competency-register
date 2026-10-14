@@ -1,0 +1,19 @@
+{
+  "name": "web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "build:css": "tailwindcss -i static/src/input.css -o static/dist/output.css --minify",
+    "build:assets": "cp static/src/background.png static/dist/background.png",
+    "build": "npm run build:css && npm run build:assets",
+    "watch:css": "tailwindcss -i static/src/input.css -o static/dist/output.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  }
+}

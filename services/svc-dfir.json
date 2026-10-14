@@ -1,0 +1,29 @@
+{
+  "id": "SVC-DFIR",
+  "name": "Forensic Investigation",
+  "description": "Digital forensic investigation encompassing disk imaging and analysis, memory acquisition and examination, network traffic reconstruction, and evidence handling in accordance with legal and accreditation requirements.",
+  "scope_reference": "Digital forensic investigation of computing devices and network artifacts",
+  "required_competencies": [
+    { "skill": "DFIR-DISK-IMAGING", "minimum_level": 3 },
+    { "skill": "DFIR-DISK-FILESYS", "minimum_level": 3 },
+    { "skill": "DFIR-DISK-TIMELINE", "minimum_level": 3 },
+    { "skill": "DFIR-DISK-ARTIFACTS", "minimum_level": 3 },
+    { "skill": "DFIR-MEM-ACQUISITION", "minimum_level": 3 },
+    { "skill": "DFIR-MEM-PROCESS", "minimum_level": 3 },
+    { "skill": "DFIR-MEM-MALDET", "minimum_level": 2 },
+    { "skill": "DFIR-MEM-ROOTKIT", "minimum_level": 2 },
+    { "skill": "DFIR-NET-CAPTURE", "minimum_level": 3 },
+    { "skill": "DFIR-NET-PROTO", "minimum_level": 3 },
+    { "skill": "DFIR-NET-FLOW", "minimum_level": 2 },
+    { "skill": "DFIR-NET-COVERT", "minimum_level": 2 },
+    { "skill": "FOUND-EVIDENCE", "minimum_level": 3 },
+    { "skill": "FOUND-REPORT", "minimum_level": 3 },
+    { "skill": "FOUND-ETHICS", "minimum_level": 3 }
+  ],
+  "standards": [
+    "ILAC-G19 (Modules in a Forensic Science Process)",
+    "ISO/IEC 17025:2017 (General Requirements for the Competence of Testing and Calibration Laboratories)",
+    "ISO/IEC 27037 (Identification, collection, acquisition and preservation of digital evidence)",
+    "ISO/IEC 27042 (Analysis and interpretation of digital evidence)"
+  ]
+}

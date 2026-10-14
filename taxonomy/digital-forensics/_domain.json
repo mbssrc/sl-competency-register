@@ -1,0 +1,43 @@
+{
+  "id": "DFIR",
+  "name": "Digital Forensics",
+  "description": "Skills related to the forensic acquisition, analysis, and reporting of digital evidence. Covers multiple evidence sources (disk, memory, network, mobile, cloud) and malware analysis. Aligned with ILAC-G19 forensic science guidance.",
+
+  "categories": [
+    {
+      "id": "DFIR-DISK",
+      "name": "Disk Forensics",
+      "description": "Forensic acquisition and analysis of storage media. Covers disk imaging, filesystem analysis, file recovery, timeline analysis, and artifact extraction from Windows, Linux, and macOS systems."
+    },
+    {
+      "id": "DFIR-MEM",
+      "name": "Memory Forensics",
+      "description": "Acquisition and analysis of volatile memory. Covers memory imaging, process analysis, network connection reconstruction, malware detection in memory, and rootkit identification."
+    },
+    {
+      "id": "DFIR-NET",
+      "name": "Network Forensics",
+      "description": "Capture and analysis of network traffic for forensic purposes. Covers packet capture, flow analysis, protocol reconstruction, network artifact extraction, and covert channel detection."
+    },
+    {
+      "id": "DFIR-MOB",
+      "name": "Mobile Forensics",
+      "description": "Forensic acquisition and analysis of mobile devices (iOS, Android). Covers logical and physical acquisition, app data extraction, communication analysis, and location data analysis."
+    },
+    {
+      "id": "DFIR-CLOUD",
+      "name": "Cloud Forensics",
+      "description": "Forensic investigation in cloud environments. Covers log acquisition, API-based evidence collection, cloud-specific artifact analysis, and multi-tenant investigation challenges."
+    },
+    {
+      "id": "DFIR-MAL",
+      "name": "Malware Analysis",
+      "description": "Analysis of malicious software. Covers static analysis, dynamic analysis (sandboxing), behavioral analysis, code-level reverse engineering, and C2 infrastructure analysis."
+    },
+    {
+      "id": "DFIR-IR",
+      "name": "Incident Response",
+      "description": "Handling and technical response to security incidents. Covers incident coordination and notification, live response and triage collection, scoping, and containment, eradication, and recovery while preserving evidence."
+    }
+  ]
+}

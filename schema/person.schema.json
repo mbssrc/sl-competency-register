@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "person.schema.json",
+  "title": "Personnel Record",
+  "description": "Source of truth for an individual's competency state, assessments, and development plan",
+  "type": "object",
+  "required": ["id", "name", "profiles", "start_date", "skills"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^PERS-[0-9]+$",
+      "description": "Unique personnel identifier (e.g., PERS-001)"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "profiles": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "description": "Assigned role profile IDs (person can have multiple)"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the person joined the lab (YYYY-MM-DD)"
+    },
+    "skills": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/skill_assessment" }
+    },
+    "development_plan": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/development_target" }
+    }
+  },
+  "$defs": {
+    "skill_assessment": {
+      "type": "object",
+      "required": ["skill", "level", "assessed_date", "assessed_by"],
+      "additionalProperties": false,
+      "properties": {
+        "skill": {
+          "type": "string",
+          "pattern": "^[A-Z][A-Z0-9-]+$",
+          "description": "Skill ID reference"
+        },
+        "level": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5
+        },
+        "assessed_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "assessed_by": {
+          "type": "string",
+          "description": "Personnel ID of the assessor"
+        },
+        "last_practiced": {
+          "type": "string",
+          "format": "date",
+          "description": "Date the skill was last used in practice"
+        },
+        "evidence_notes": {
+          "type": "string",
+          "description": "Brief summary of evidence reviewed"
+        },
+        "authorization": {
+          "oneOf": [
+            { "type": "null" },
+            { "$ref": "#/$defs/authorization_record" }
+          ],
+          "description": "Formal authorization record (for level 3+)"
+        }
+      }
+    },
+    "authorization_record": {
+      "type": "object",
+      "required": ["authorized", "date", "authorizer", "scope"],
+      "additionalProperties": false,
+      "properties": {
+        "authorized": {
+          "type": "boolean"
+        },
+        "date": {
+          "type": "string",
+          "format": "date"
+        },
+        "authorizer": {
+          "type": "string",
+          "description": "Personnel ID of the person who authorized"
+        },
+        "scope": {
+          "type": "string",
+          "description": "What the person is authorized to do independently"
+        }
+      }
+    },
+    "development_target": {
+      "type": "object",
+      "required": ["skill", "current_level", "target_level", "target_date"],
+      "additionalProperties": false,
+      "properties": {
+        "skill": {
+          "type": "string",
+          "pattern": "^[A-Z][A-Z0-9-]+$"
+        },
+        "current_level": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5
+        },
+        "target_level": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "target_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}

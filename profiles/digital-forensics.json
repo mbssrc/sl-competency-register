@@ -1,0 +1,83 @@
+{
+  "id": "DFIR",
+  "name": "Digital Forensics Analyst",
+  "domain": "DFIR",
+  "description": "Digital forensics and incident response track covering disk forensics, memory forensics, malware analysis, mobile forensics, network forensics, and incident response procedures.",
+  "maturity_levels": {
+    "junior": {
+      "title": "Junior Digital Forensics Analyst",
+      "description": "Assists with evidence acquisition and handling under supervision, following the documented chain-of-custody procedure. Performs basic analysis with validated standard tools; findings and working notes are reviewed by an authorized examiner before release.",
+      "thresholds": {
+        "domain_skills_at": {"1": 7, "2": 4},
+        "min_categories": 1,
+        "foundation_avg": 0.5
+      },
+      "pinned": [
+        {"skill": "FOUND-EVIDENCE", "minimum_level": 2}
+      ]
+    },
+    "practitioner": {
+      "title": "Digital Forensics Analyst",
+      "description": "Independently conducts forensic examinations with validated methods and is authorized to sign off routine casework. Maintains an unbroken chain of custody and produces reports that are reproducible and admissible in court.",
+      "thresholds": {
+        "domain_skills_at": {"2": 10, "3": 6},
+        "min_categories": 2,
+        "foundation_avg": 1.0
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 3},
+        {"skill": "FOUND-EVIDENCE", "minimum_level": 3},
+        {"skill": "FOUND-ETHICS", "minimum_level": 3}
+      ]
+    },
+    "senior": {
+      "title": "Senior Digital Forensics Analyst",
+      "description": "Handles complex cases such as multi-platform investigations, anti-forensic techniques or malware requiring reverse engineering. Performs QA review of examiners' reports and mentors junior analysts. Presents findings as expert testimony and defends the methods used.",
+      "thresholds": {
+        "domain_skills_at": {"3": 13, "4": 6},
+        "min_categories": 4,
+        "foundation_avg": 1.5
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 4},
+        {"skill": "FOUND-QA", "minimum_level": 3},
+        {"skill": "FOUND-EVIDENCE", "minimum_level": 4},
+        {"skill": "FOUND-ETHICS", "minimum_level": 3}
+      ]
+    },
+    "lead": {
+      "title": "Lead Digital Forensics Analyst",
+      "description": "Technical lead for Digital Forensics: owns the methodology, performs technical quality review of evaluations and reports, and plans the technical approach across engagements. Acts as the senior technical contact for clients on scope and findings. Technical depth stays at senior level or above.",
+      "thresholds": {
+        "domain_skills_at": {"3": 14, "4": 7},
+        "min_categories": 5,
+        "foundation_avg": 2.0
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 4},
+        {"skill": "FOUND-QA", "minimum_level": 3},
+        {"skill": "FOUND-PM", "minimum_level": 3},
+        {"skill": "FOUND-COMM", "minimum_level": 3},
+        {"skill": "FOUND-EVIDENCE", "minimum_level": 4},
+        {"skill": "FOUND-ETHICS", "minimum_level": 3}
+      ]
+    },
+    "principal": {
+      "title": "Principal Digital Forensics Analyst",
+      "description": "Technical authority in digital forensics. Defines lab methodology for forensic services, develops novel analysis techniques, and is a recognized expert witness and researcher. The deepest technical tier in the domain; it extends Lead rather than branching from it.",
+      "thresholds": {
+        "domain_skills_at": {"4": 14, "5": 6},
+        "min_categories": 5,
+        "foundation_avg": 2.5
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 4},
+        {"skill": "FOUND-QA", "minimum_level": 3},
+        {"skill": "FOUND-PM", "minimum_level": 3},
+        {"skill": "FOUND-COMM", "minimum_level": 3},
+        {"skill": "FOUND-EVIDENCE", "minimum_level": 4},
+        {"skill": "FOUND-ETHICS", "minimum_level": 3}
+      ]
+    }
+  }
+}

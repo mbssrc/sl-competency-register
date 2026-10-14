@@ -1,0 +1,112 @@
+{
+  "id": "INFRA-ONPREM-LINHARDEN",
+  "name": "Linux Hardening Assessment",
+  "domain": "infrastructure-security",
+  "category": "On-Premises Infrastructure",
+  "status": "active",
+  "description": "Focused assessment of Linux and Unix-like system hardening configurations. Covers systemd service hardening, PAM configuration review, sysctl security tuning, mandatory access controls (SELinux and AppArmor policy assessment), SSH hardening, audit framework configuration (auditd, auditctl, aureport), file integrity monitoring, partition and mount security, and CIS Distribution-specific Benchmark compliance.",
+
+  "requires": [],
+  "recommended": [
+    "INFRA-ONPREM-HARDEN",
+    "INFRA-ONPREM-LOGGING",
+    "FOUND-STANDARDS",
+    "SWSEC-OS-LINPRIV",
+    "FOUND-RISK"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to Linux hardening assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands Linux hardening principles and common security baselines",
+      "evidence": [
+        "Can explain Linux DAC, file permissions, and the principle of least privilege",
+        "Familiar with CIS Distribution Benchmarks (Ubuntu, RHEL, SUSE) structure",
+        "Understands systemd service sandboxing options and SELinux/AppArmor concepts",
+        "Completed introductory training on Linux security hardening"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Runs Linux hardening assessment tools and reviews configurations under supervision",
+      "evidence": [
+        "Runs Lynis, OpenSCAP, or CIS-CAT against Linux systems under guidance",
+        "Reviews SSH configuration, PAM modules, and sysctl parameters using checklists",
+        "Assesses file permissions on sensitive files and SUID/SGID binaries",
+        "Documents findings with supervision and produces basic hardening reports"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses Linux hardening and provides contextualized remediation",
+      "evidence": [
+        "Independently assesses Linux servers against CIS benchmarks for 2+ distributions",
+        "Evaluates SELinux or AppArmor policy effectiveness in context of server role",
+        "Assesses auditd configuration completeness and systemd service hardening",
+        "Produces compliant hardening assessment reports with risk-prioritized remediation"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Develops custom Linux hardening baselines; handles complex environments",
+      "evidence": [
+        "Develops organization-specific Linux hardening baselines for different server roles",
+        "Assesses complex environments with mixed distributions and legacy systems",
+        "Automates compliance checking with OpenSCAP profiles or custom tooling",
+        "Reviews hardening assessment work of junior analysts"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines lab Linux hardening methodology; contributes to industry standards",
+      "evidence": [
+        "Designed or maintains the lab's Linux hardening assessment framework",
+        "Contributes to CIS Benchmark development for Linux distributions",
+        "Trains teams on advanced Linux hardening assessment across multiple distributions",
+        "Recognized as authority on Linux security baseline configuration"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess a set of Linux servers (Ubuntu and RHEL) with varying hardening levels and produce a prioritized findings report with distribution-specific remediation"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review Linux hardening assessment findings and remediation guidance from recent engagements"
+    }
+  ],
+
+  "framework_mappings": {
+    "cis": [
+      "CIS Ubuntu Linux Benchmark",
+      "CIS Red Hat Enterprise Linux Benchmark",
+      "CIS SUSE Linux Enterprise Benchmark"
+    ],
+    "nice": {
+      "tks": ["K0837", "S0643", "K0744", "K0716", "K0770"],
+      "work_roles": ["IO-WRL-005 Systems Administration", "IO-WRL-006 Systems Security Analysis"]
+    }
+  },
+
+  "tags": [
+    "linux",
+    "hardening",
+    "cis-benchmark",
+    "selinux",
+    "apparmor",
+    "auditd",
+    "systemd",
+    "on-premises",
+    "ssh"
+  ]
+}

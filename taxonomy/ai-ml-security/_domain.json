@@ -1,0 +1,23 @@
+{
+  "id": "AIML",
+  "name": "AI & ML Security",
+  "description": "Security assessment of artificial intelligence and machine learning systems. Covers adversarial robustness, training pipeline integrity, model confidentiality, LLM and generative AI red teaming, prompt injection, agentic and retrieval-augmented systems, ML infrastructure security, AI threat modelling, and security evaluation methodology. Aligned with the MITRE ATLAS framework.",
+
+  "categories": [
+    {
+      "id": "AIML-ADV",
+      "name": "Adversarial ML",
+      "description": "Assessment of ML model robustness, training data integrity, and model confidentiality. Covers evasion attacks, data and model poisoning, and privacy attacks such as extraction and inversion."
+    },
+    {
+      "id": "AIML-LLM",
+      "name": "LLM & Generative AI",
+      "description": "Security assessment of large language models and generative AI systems. Covers red-team campaign methodology, prompt injection, output integrity, guardrail evaluation, agentic AI and tool-use risks, and retrieval-augmented generation (RAG) pipelines."
+    },
+    {
+      "id": "AIML-OPS",
+      "name": "ML Operations Security",
+      "description": "Security of the ML development and deployment lifecycle. Covers model supply chain, dependency integrity, serving infrastructure, pipeline access control, AI system threat modelling, and security evaluation methodology."
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "key": "PERS-001",
+  "bands": {
+    "strong": [
+      "HWSEC-SCA",
+      "HWSEC-FI"
+    ],
+    "weak": [
+      "HWSEC-RF"
+    ]
+  },
+  "signature": {
+    "HWSEC-SCA-DPA": 5,
+    "HWSEC-SCA-SPA": 5,
+    "HWSEC-FI-VG": 4,
+    "HWSEC-INV-DECAP": 3,
+    "HWSEC-INV-DELAYER": 3,
+    "HWSEC-INV-PROBE": 3,
+    "HWSEC-INV-FIB": 3,
+    "HWSEC-INV-TAMPER": 3,
+    "HWSEC-SPREP-MECH": 3,
+    "HWSEC-SPREP-CHEM": 3,
+    "HWSEC-SPREP-OPTICAL": 3,
+    "HWSEC-SPREP-SEM": 3,
+    "HWSEC-SPREP-ACTIVE": 3
+  },
+  "never": [
+    "HWSEC-EMBED-FPGA"
+  ],
+  "foundations": [
+    2,
+    3
+  ],
+  "projects": [
+    "PRJ-SAT-PCB",
+    "PRJ-SAT-DSP",
+    "PRJ-SAT-CP-BLACK"
+  ],
+  "stale_skills": [],
+  "self_assessment": {
+    "mode": "all",
+    "bias": 0,
+    "jitter": 1
+  },
+  "development_plan": [],
+  "name": "Amara Okonkwo",
+  "role": "Lead Hardware Security Evaluator",
+  "start_date": "2019-03-04",
+  "domains": [
+    "HWSEC"
+  ],
+  "target_maturity": {
+    "HWSEC": "lead"
+  }
+}

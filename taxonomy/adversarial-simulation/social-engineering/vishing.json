@@ -1,0 +1,106 @@
+{
+  "id": "ADVSIM-SE-VISHING",
+  "name": "Voice Social Engineering (Vishing)",
+  "domain": "adversarial-simulation",
+  "category": "Social Engineering",
+  "status": "active",
+  "description": "Ability to conduct voice-based social engineering attacks (vishing) as part of adversarial simulations. Covers telephone pretexting, voice manipulation, call scripting, real-time rapport building, and escalation handling. Requires strong improvisational skills and the ability to maintain composure under pressure.",
+
+  "requires": [
+    "FOUND-ETHICS",
+    "ADVSIM-SE-PRETEXT"
+  ],
+  "recommended": [
+    "ADVSIM-SE-OSINT",
+    "FOUND-COMM"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to voice-based social engineering"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands vishing techniques and the psychology of telephone-based manipulation",
+      "evidence": [
+        "Completed vishing awareness training including recorded call examples",
+        "Can describe common vishing pretexts and influence techniques",
+        "Understands the legal and ethical boundaries of telephone social engineering"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs scripted vishing calls under direct supervision with coaching",
+      "evidence": [
+        "Completed 3+ practice vishing calls against lab staff, maintaining pretext for at least 2 minutes per call",
+        "Followed prepared call scripts with supervisor listening and coaching",
+        "Debriefed calls with supervisor to identify areas for improvement"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently conducts vishing campaigns with custom scripts and adaptive techniques",
+      "evidence": [
+        "Executed vishing campaigns on 3+ engagements, achieving defined objectives",
+        "Developed custom call scripts tailored to target organisation and pretext",
+        "Handled unexpected responses and objections without breaking pretext",
+        "Recorded and documented calls for reporting (within legal requirements)",
+        "Applied the agreed retention and destruction policy to call recordings, and reported outcomes without attributing failures to named individuals"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Executes complex vishing against trained targets; develops vishing methodology",
+      "evidence": [
+        "Successfully vished targets with security awareness training (e.g., helpdesk, finance)",
+        "Developed multi-stage vishing scenarios combining calls with other SE vectors",
+        "Coaches and provides real-time guidance to junior vishers during live calls",
+        "Contributed to lab vishing scripts, training materials, and call evaluation criteria"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines vishing programme methodology; trains teams; recognised specialist",
+      "evidence": [
+        "Authored the lab's vishing methodology, scripts library, and training programme",
+        "Trains new operators on vishing techniques including live coaching sessions",
+        "Develops vishing metrics and maturity assessment frameworks for clients",
+        "Recognised internally as the go-to authority on voice social engineering"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Conduct a vishing call against a role-playing lab colleague with a defined pretext and objective, assessed on rapport building, adaptability, and pretext maintenance"
+    },
+    {
+      "type": "direct_observation",
+      "description": "Listen to recorded or live vishing calls from engagements, assessing technique, composure, and ethical conduct"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["S0591", "K1087", "S0386"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis"]
+    },
+    "mitre_attack": {
+      "tactics": ["TA0001", "TA0043"],
+      "techniques": ["T1566.004", "T1598.004"]
+    }
+  },
+
+  "tags": [
+    "vishing",
+    "voice",
+    "telephone",
+    "pretexting",
+    "social-engineering"
+  ]
+}

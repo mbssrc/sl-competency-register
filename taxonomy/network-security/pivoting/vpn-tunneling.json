@@ -1,0 +1,110 @@
+{
+  "id": "NETSEC-PIVOT-VPN",
+  "name": "VPN & Encrypted Tunnel Pivoting",
+  "domain": "network-security",
+  "category": "Pivoting",
+  "status": "active",
+  "description": "Ability to create VPN and encrypted tunnels through compromised hosts for full network-layer pivoting. Covers deployment of VPN servers on pivot hosts, use of tools like Ligolo-ng, WireGuard, and OpenVPN for layer-3 tunneling, and routing configuration for transparent network access to segmented environments.",
+
+  "requires": [
+    "NETSEC-PIVOT-PORTFWD"
+  ],
+  "recommended": [
+    "NETSEC-RECON-NETMAPPING",
+    "NETSEC-INFRA-SEGMENTATION",
+    "FOUND-TOOLS"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to VPN-based pivoting techniques"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the difference between port-level and network-level tunneling and when VPN pivoting is advantageous",
+      "evidence": [
+        "Can explain the advantages of layer-3 tunneling over port forwarding",
+        "Understands basic VPN concepts (tun/tap interfaces, routing)",
+        "Knows tools like Ligolo-ng, WireGuard, and their role in pivoting"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Deploys basic VPN tunnels through pivot hosts under supervision",
+      "evidence": [
+        "Sets up Ligolo-ng or similar tools to create a tunnel through a pivot host",
+        "Configures local routing to direct traffic through the VPN tunnel",
+        "Accesses services on the remote network through the established tunnel",
+        "Documents VPN tunnel configurations and routing under review"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently deploys and manages VPN tunnels for full network access during engagements",
+      "evidence": [
+        "Deploys VPN tunnels appropriate to the target environment and detection risk",
+        "Configures routing for multiple subnets through VPN pivot points",
+        "Maintains stable VPN tunnels with recovery procedures for engagement continuity",
+        "Runs any tool natively over the VPN tunnel without compatibility issues"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Manages complex VPN architectures across multiple segments; mentors others",
+      "evidence": [
+        "Deploys multi-hop VPN chains for deep network penetration",
+        "Configures encrypted tunnels through restrictive egress filtering",
+        "Manages VPN infrastructure for team-wide access on large engagements",
+        "Mentors junior staff on VPN pivoting techniques and troubleshooting"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines VPN pivoting methodology; develops custom tunnel solutions; trains teams",
+      "evidence": [
+        "Authored the lab's VPN pivoting and tunnel management methodology",
+        "Develops custom tunneling solutions for specialized or constrained environments",
+        "Published research on network-layer pivoting techniques",
+        "Trains teams on VPN pivoting strategy and infrastructure management"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Deploy a VPN tunnel through a pivot host and demonstrate full network access to a segmented lab environment, running multiple tools transparently"
+    },
+    {
+      "type": "problem_solving",
+      "description": "Given a pivot host with limited outbound access, establish a VPN tunnel to provide team-wide access to the internal network"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0781", "K1023", "K0956"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis"]
+    },
+    "mitre_attack": {
+      "techniques": ["T1572", "T1090.003"]
+    },
+    "crest": {
+      "areas": ["pivoting"]
+    }
+  },
+
+  "tags": [
+    "vpn",
+    "ligolo",
+    "wireguard",
+    "layer3-tunnel",
+    "pivoting",
+    "routing",
+    "lateral-movement"
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "id": "FOUND-TOOLS",
+  "name": "Tool Proficiency (General)",
+  "domain": "foundations",
+  "category": "Foundations",
+  "status": "active",
+  "description": "General proficiency with the tools and infrastructure common to security lab work. Covers Linux command line, scripting (Python, Bash), version control (git), virtualization and lab environments, and the ability to learn and evaluate new tools effectively.",
+
+  "requires": [],
+  "recommended": [],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to security lab tooling or Linux environments"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Basic familiarity with Linux CLI and lab environment concepts",
+      "evidence": [
+        "Can navigate a Linux filesystem and use basic commands",
+        "Understands the purpose of virtual machines and lab isolation",
+        "Familiar with version control concepts"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Uses standard lab tools and environments with guidance",
+      "evidence": [
+        "Can set up and use lab VMs for testing",
+        "Writes basic scripts (Bash or Python) to automate tasks",
+        "Uses git for version control at a basic level",
+        "Can install and configure common security tools"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently manages tools, environments, and automation for engagements",
+      "evidence": [
+        "Builds and maintains lab environments for specific engagements",
+        "Writes functional automation scripts without guidance",
+        "Evaluates and adopts new tools independently",
+        "Comfortable with networking, containers, and infrastructure tooling"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Develops custom tooling; maintains lab infrastructure; mentors on tool usage",
+      "evidence": [
+        "Develops and maintains custom tools used by the team",
+        "Manages shared lab infrastructure and environments",
+        "Mentors junior staff on tooling and environment setup"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Architects lab infrastructure; develops frameworks; trains teams",
+      "evidence": [
+        "Designed or architects the lab's technical infrastructure",
+        "Develops tool frameworks used across the team",
+        "Trains teams on tooling best practices and infrastructure"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Set up a lab environment for a specified engagement type from scratch"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review scripts and automation created by the individual"
+    }
+  ],
+
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0805", "S0424", "S0650", "K0806", "K1157"],
+      "work_roles": ["IO-WRL-005 Systems Administration"]
+    }
+  },
+
+  "tags": [
+    "cross-cutting",
+    "linux",
+    "scripting",
+    "infrastructure",
+    "automation",
+    "containers",
+    "python"
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "id": "HWSEC-EMBED-DBG",
+  "name": "Debug Interface Exploitation",
+  "domain": "hardware-security",
+  "category": "Embedded Systems Security",
+  "status": "active",
+  "description": "Identification, access, and exploitation of hardware debug interfaces including JTAG, SWD, UART, and vendor-specific debug ports. Covers physical identification of test points, protocol enumeration, authentication bypass, and leveraging debug access for memory extraction, code execution, and device compromise.",
+  "requires": [
+    "HWSEC-PCB-RE"
+  ],
+  "recommended": [
+    "HWSEC-EMBED-FW",
+    "FOUND-EVIDENCE",
+    "HWSEC-PCB-BUS",
+    "FOUND-TOOLS"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to hardware debug interfaces"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands common debug protocols and their security implications",
+      "evidence": [
+        "Can explain JTAG, SWD, and UART protocols at a conceptual level",
+        "Understands why debug interfaces are a security risk in production devices",
+        "Familiar with common debug adapter hardware (J-Link, ST-Link, Bus Pirate)"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Connects to and interacts with identified debug interfaces under supervision",
+      "evidence": [
+        "Successfully connects to a UART console and interacts with a bootloader",
+        "Uses OpenOCD to connect to a JTAG/SWD target with known pinout",
+        "Dumps memory contents via debug interface with documented procedures",
+        "Identifies debug headers and test points on a PCB with guidance"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently identifies and exploits debug interfaces on unfamiliar targets",
+      "evidence": [
+        "Identifies JTAG/SWD pinouts on unpopulated headers using JTAGulator or manual probing",
+        "Bypasses basic debug authentication (e.g., JTAG lock bits via voltage glitch)",
+        "Extracts full memory contents and achieves code execution via debug interfaces",
+        "Completes debug interface assessments on 3+ distinct hardware platforms independently"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Exploits protected debug interfaces; develops custom debug tooling; mentors team",
+      "evidence": [
+        "Bypasses vendor-specific debug authentication mechanisms",
+        "Develops custom OpenOCD configurations and debug scripts for novel targets",
+        "Exploits vendor-specific boot ROM download/recovery modes (e.g., MediaTek BROM, Qualcomm EDL)",
+        "Mentors junior analysts on debug interface identification and exploitation",
+        "Contributes to lab methodology for debug interface assessment"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on debug interface security; publishes novel bypass techniques",
+      "evidence": [
+        "Discovered and published novel debug authentication bypass techniques",
+        "Develops lab training program for debug interface exploitation",
+        "Provides expert consultation on debug interface hardening to silicon vendors",
+        "Authored CVEs or research papers on debug interface vulnerabilities"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Identify and exploit debug interfaces on a prepared target with no prior documentation"
+    },
+    {
+      "type": "direct_observation",
+      "description": "Observe the analyst's physical probing technique, signal identification, and tool usage during a live assessment"
+    }
+  ],
+  "equipment": [
+    "JTAGulator",
+    "J-Link debug probe",
+    "Bus Pirate or equivalent multi-protocol interface"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0855", "K0948", "S0899", "K0840"],
+      "work_roles": ["PD-WRL-007 Vulnerability Analysis", "DD-WRL-008 Technology Research and Development"]
+    },
+    "common_criteria": [
+      "AVA_VAN.3",
+      "AVA_VAN.4"
+    ],
+    "fips_140_3": [
+      "AS07"
+    ],
+    "jil_attack_methods": [
+      "5.6 Exploitation of test features"
+    ]
+  },
+  "tags": [
+    "jtag",
+    "swd",
+    "uart",
+    "debug-interface",
+    "embedded",
+    "non-invasive",
+    "authentication",
+    "fault-injection"
+  ]
+}

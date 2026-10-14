@@ -1,0 +1,158 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "skill.schema.json",
+  "title": "Skill",
+  "description": "A single competency in the security lab skill taxonomy",
+  "type": "object",
+  "required": ["id", "name", "domain", "category", "status", "description", "proficiency"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9-]+$",
+      "description": "Unique skill identifier (e.g., SWSEC-WEB-SQLI)"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "domain": {
+      "type": "string",
+      "enum": [
+        "foundations",
+        "adversarial-simulation",
+        "intelligence",
+        "network-security",
+        "hardware-security",
+        "wireless-signal-security",
+        "software-security",
+        "infrastructure-security",
+        "digital-forensics",
+        "cryptography",
+        "ai-ml-security",
+        "ics-iot-security"
+      ]
+    },
+    "category": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Category within the domain (matches subdirectory name)"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "deprecated"]
+    },
+    "superseded_by": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9-]+$",
+      "description": "Skill ID that replaces this one (when status is deprecated)"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "requires": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Z][A-Z0-9-]+$"
+      },
+      "uniqueItems": true,
+      "description": "Hard prerequisites — skill IDs that must be mastered first"
+    },
+    "recommended": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Z][A-Z0-9-]+$"
+      },
+      "uniqueItems": true,
+      "description": "Soft suggestions — beneficial but not blocking"
+    },
+    "proficiency": {
+      "type": "object",
+      "required": ["0", "1", "2", "3", "4", "5"],
+      "additionalProperties": false,
+      "properties": {
+        "0": { "$ref": "#/$defs/proficiency_level" },
+        "1": { "$ref": "#/$defs/proficiency_level" },
+        "2": { "$ref": "#/$defs/proficiency_level" },
+        "3": { "$ref": "#/$defs/proficiency_level" },
+        "4": { "$ref": "#/$defs/proficiency_level" },
+        "5": { "$ref": "#/$defs/proficiency_level" }
+      }
+    },
+    "assessment_methods": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type", "description"],
+        "additionalProperties": false,
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "direct_observation",
+              "work_product_review",
+              "controlled_exercise",
+              "problem_solving"
+            ]
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "framework_mappings": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Optional mappings to external frameworks (NICE, SFIA, CREST, MITRE, OWASP, certifications)"
+    },
+    "equipment": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "description": "Specialized lab equipment required (e.g., decapping station, FIB system). Not for general instruments or software tools."
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    }
+  },
+  "$defs": {
+    "proficiency_level": {
+      "type": "object",
+      "required": ["label", "description"],
+      "additionalProperties": false,
+      "properties": {
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "authorization": {
+          "type": "boolean",
+          "description": "Whether this level requires formal authorization (ISO 17025)"
+        }
+      }
+    }
+  }
+}

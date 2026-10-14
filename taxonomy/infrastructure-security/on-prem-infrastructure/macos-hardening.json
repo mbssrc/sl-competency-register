@@ -1,0 +1,112 @@
+{
+  "id": "INFRA-ONPREM-MACHARDEN",
+  "name": "macOS Hardening Assessment",
+  "domain": "infrastructure-security",
+  "category": "On-Premises Infrastructure",
+  "status": "active",
+  "description": "Assessment of macOS endpoint hardening configurations. Covers Gatekeeper and XProtect configuration, System Integrity Protection (SIP) verification, TCC framework and privacy controls, FileVault encryption assessment, MDM security profile review, Endpoint Security framework configuration, macOS firewall and network controls, and CIS Apple macOS Benchmark compliance.",
+
+  "requires": [],
+  "recommended": [
+    "INFRA-ONPREM-HARDEN",
+    "INFRA-ONPREM-LOGGING",
+    "SWSEC-OS-MACPRIV",
+    "INFRA-ONPREM-EDR",
+    "FOUND-RISK"
+  ],
+
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to macOS hardening assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands macOS security architecture and hardening concepts",
+      "evidence": [
+        "Can explain Gatekeeper, SIP, TCC, and FileVault at a conceptual level",
+        "Familiar with CIS Apple macOS Benchmark structure and applicability",
+        "Understands MDM-managed vs standalone macOS security configurations",
+        "Completed introductory training on macOS security hardening"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Runs macOS hardening assessment tools and reviews configurations under supervision",
+      "evidence": [
+        "Runs macOS Security Compliance Project (mSCP) or CIS-CAT under guidance",
+        "Reviews system preferences, configuration profiles, and security settings using checklists",
+        "Assesses FileVault configuration and recovery key management",
+        "Documents findings with supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently assesses macOS hardening and provides contextualized remediation",
+      "evidence": [
+        "Independently assesses macOS endpoints against CIS benchmarks",
+        "Evaluates TCC database integrity and privacy preference policy controls",
+        "Assesses MDM-deployed configuration profiles for security effectiveness",
+        "Produces compliant hardening assessment reports with macOS-specific remediation"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Develops custom macOS hardening baselines; handles managed fleet environments",
+      "evidence": [
+        "Develops organization-specific macOS hardening baselines using mSCP",
+        "Assesses complex managed environments with Jamf, Kandji, or similar MDM",
+        "Evaluates Endpoint Security framework configuration and third-party security tools",
+        "Reviews hardening assessment work of junior analysts"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines lab macOS hardening methodology; contributes to industry standards",
+      "evidence": [
+        "Designed or maintains the lab's macOS hardening assessment framework",
+        "Contributes to CIS Apple macOS Benchmark or mSCP development",
+        "Trains teams on advanced macOS hardening assessment",
+        "Recognized as authority on macOS endpoint security configuration"
+      ],
+      "authorization": true
+    }
+  },
+
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Assess a set of macOS endpoints with varying hardening levels including MDM-managed and standalone configurations"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review macOS hardening assessment findings and remediation guidance from recent engagements"
+    }
+  ],
+
+  "framework_mappings": {
+    "cis": [
+      "CIS Apple macOS Benchmark"
+    ],
+    "nice": {
+      "tks": ["K0837", "S0643", "K0744", "K0716", "K0931"],
+      "work_roles": ["IO-WRL-005 Systems Administration", "IO-WRL-006 Systems Security Analysis"]
+    }
+  },
+
+  "tags": [
+    "macos",
+    "hardening",
+    "cis-benchmark",
+    "gatekeeper",
+    "sip",
+    "tcc",
+    "filevault",
+    "mdm",
+    "apple",
+    "encryption",
+    "key-management"
+  ]
+}

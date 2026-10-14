@@ -1,0 +1,128 @@
+{
+  "id": "WSEC-SPEC-TEMPEST",
+  "name": "TEMPEST Emanation Analysis",
+  "domain": "wireless-signal-security",
+  "category": "Spectrum Analysis & TEMPEST",
+  "status": "active",
+  "description": "Ability to analyze compromising electromagnetic emanations (TEMPEST) from electronic equipment. Covers measurement of unintentional electromagnetic emissions, correlation of emanations with processed data, reconstruction of information from emanation captures, and assessment against TEMPEST standards (NATO SDIP-27 equipment Levels A/B/C, SDIP-28 facility zoning, or national equivalents). Includes both radiated and conducted emanation analysis. Device-level emission and susceptibility characterization during hardware evaluation belongs to HWSEC-RF-EMC.",
+  "requires": [
+    "WSEC-SPEC-ANALYSIS",
+    "WSEC-SDR-DSP",
+    "FOUND-EVIDENCE"
+  ],
+  "recommended": [
+    "WSEC-SDR-CAPTURE",
+    "FOUND-STANDARDS",
+    "HWSEC-SCA-EMA",
+    "HWSEC-RF-EMC"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to TEMPEST or emanation security analysis"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands TEMPEST concepts, emanation security threats, and zone classification",
+      "evidence": [
+        "Can describe how electronic equipment produces compromising emanations",
+        "Understands SDIP-27 equipment levels (A/B/C), SDIP-28 facility zones (0-3), and how levels map to zones",
+        "Completed training on emanation security fundamentals and TEMPEST threat model"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Performs emanation measurements and basic analysis under supervision",
+      "evidence": [
+        "Set up near-field and far-field emanation measurement configurations under guidance",
+        "Captured electromagnetic emanations from target equipment using spectrum analyzer and probes under supervision",
+        "Identified data-correlated emission patterns in simple scenarios with assistance"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently performs TEMPEST measurements and emanation security assessments",
+      "evidence": [
+        "Independently conducted emanation measurements for 3+ equipment types or installations",
+        "Correlated emanation signatures with data processing activity on target equipment",
+        "Applied TEMPEST measurement standards to determine equipment level compliance (SDIP-27) and facility zoning (SDIP-28)",
+        "Produced emanation assessment reports with calibrated measurements and compliance determination"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Reconstructs information from emanations; assesses complex installations; develops analysis techniques",
+      "evidence": [
+        "Reconstructed partial or complete data content from electromagnetic emanation captures",
+        "Assessed TEMPEST compliance of complex multi-equipment installations",
+        "Developed custom emanation analysis tools or signal processing pipelines for data extraction",
+        "Mentors junior analysts on TEMPEST measurement methodology and equipment operation"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on TEMPEST and emanation security; develops measurement methodology",
+      "evidence": [
+        "Published research on compromising emanation analysis or TEMPEST assessment techniques",
+        "Authored the lab's TEMPEST measurement methodology aligned with SDIP-27 standards",
+        "Developed novel emanation exploitation or detection techniques",
+        "Trains teams on TEMPEST assessment and advises on emanation security architecture"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Measure compromising emanations from a target device processing known data, demonstrate data correlation, and determine SDIP-27 level compliance"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review TEMPEST assessment reports for measurement rigor, standard compliance, and level/zone determination accuracy"
+    }
+  ],
+  "equipment": [
+    "Keysight N9040B or equivalent real-time spectrum analyzer",
+    "Near-field electromagnetic probe set (H-field and E-field)",
+    "TEMPEST measurement antenna set (calibrated)",
+    "RF shielded enclosure for reference measurements",
+    "Current probe for conducted emanation measurement"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1362", "K1248", "K1284", "K0937"],
+      "work_roles": ["DD-WRL-007 Systems Testing and Evaluation", "OG-WRL-001 Communications Security (COMSEC) Management"]
+    },
+    "sfia": {
+      "skill": "SCAD",
+      "levels": [
+        4,
+        5
+      ]
+    },
+    "mitre_attack": {
+      "techniques": [
+        "T1040"
+      ]
+    },
+    "nato": {
+      "standards": [
+        "SDIP-27",
+        "SDIP-28",
+        "SDIP-29"
+      ]
+    }
+  },
+  "tags": [
+    "tempest",
+    "emanation-security",
+    "emsec",
+    "sdip-27",
+    "sdip-28",
+    "compromising-emanations",
+    "classified",
+    "side-channel"
+  ]
+}

@@ -1,0 +1,9 @@
+{% comment %}
+One step in a page's breadcrumb trail. Pass `first=True` for the leading step
+(no separator before it) and `current=True` for the page itself. Give `url` to
+make a step a link.
+{% endcomment %}
+{% if not first %}<svg aria-hidden="true" class="w-4 h-4 mx-2 flex-shrink-0 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>{% endif %}
+{% if current %}<span aria-current="page" class="text-gray-900 dark:text-white font-medium">{{ label }}</span>
+{% elif url %}<a href="{{ url }}" class="text-gray-600 dark:text-gray-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors">{{ label }}</a>
+{% else %}<span class="text-gray-600 dark:text-gray-400">{{ label }}</span>{% endif %}

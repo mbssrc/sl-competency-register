@@ -1,0 +1,84 @@
+{
+  "id": "INTEL",
+  "name": "Intelligence Analyst",
+  "domain": "INTEL",
+  "description": "Threat intelligence track covering OSINT, threat landscape analysis, indicator management, and strategic intelligence production.",
+  "maturity_levels": {
+    "junior": {
+      "title": "Junior Intelligence Analyst",
+      "description": "Collects and processes open-source information under supervision within legal and ethical limits, recording sources and collection dates. Maintains indicator data; products and indicator entries are reviewed by an authorized analyst before release.",
+      "thresholds": {
+        "domain_skills_at": {"1": 4, "2": 2},
+        "min_categories": 1,
+        "foundation_avg": 0.5
+      },
+      "pinned": [
+        {"skill": "FOUND-ETHICS", "minimum_level": 2},
+        {"skill": "FOUND-EVIDENCE", "minimum_level": 2}
+      ]
+    },
+    "practitioner": {
+      "title": "Intelligence Analyst",
+      "description": "Independently produces finished intelligence products and is authorized to release them. Correlates multi-source data, records source reliability and handling of collected material, states confidence levels, and briefs stakeholders on threat developments.",
+      "thresholds": {
+        "domain_skills_at": {"2": 6, "3": 3},
+        "min_categories": 2,
+        "foundation_avg": 1.0
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 3},
+        {"skill": "FOUND-ETHICS", "minimum_level": 3},
+        {"skill": "FOUND-EVIDENCE", "minimum_level": 3}
+      ]
+    },
+    "senior": {
+      "title": "Senior Intelligence Analyst",
+      "description": "Leads complex investigations, for example attribution of a multi-stage campaign from fragmentary sources, and applies structured analytic methods to test assessments. Performs QA review of analysts' products and mentors junior analysts on tradecraft.",
+      "thresholds": {
+        "domain_skills_at": {"3": 7, "4": 3},
+        "min_categories": 2,
+        "foundation_avg": 1.5
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 4},
+        {"skill": "FOUND-QA", "minimum_level": 3},
+        {"skill": "FOUND-ETHICS", "minimum_level": 3},
+        {"skill": "FOUND-EVIDENCE", "minimum_level": 3}
+      ]
+    },
+    "lead": {
+      "title": "Lead Intelligence Analyst",
+      "description": "Technical lead for Intelligence: owns the methodology, performs technical quality review of evaluations and reports, and plans the technical approach across engagements. Acts as the senior technical contact for clients on scope and findings. Technical depth stays at senior level or above.",
+      "thresholds": {
+        "domain_skills_at": {"3": 8, "4": 4},
+        "min_categories": 2,
+        "foundation_avg": 2.0
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 4},
+        {"skill": "FOUND-QA", "minimum_level": 3},
+        {"skill": "FOUND-PM", "minimum_level": 3},
+        {"skill": "FOUND-COMM", "minimum_level": 3},
+        {"skill": "FOUND-ETHICS", "minimum_level": 3},
+        {"skill": "FOUND-EVIDENCE", "minimum_level": 3}
+      ]
+    },
+    "principal": {
+      "title": "Principal Intelligence Analyst",
+      "description": "Technical authority in threat intelligence. Shapes organizational threat model, publishes strategic assessments, and is recognized across the intelligence community. The deepest technical tier in the domain; it extends Lead rather than branching from it.",
+      "thresholds": {
+        "domain_skills_at": {"4": 8, "5": 3},
+        "min_categories": 2,
+        "foundation_avg": 2.5
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 4},
+        {"skill": "FOUND-QA", "minimum_level": 3},
+        {"skill": "FOUND-PM", "minimum_level": 3},
+        {"skill": "FOUND-COMM", "minimum_level": 3},
+        {"skill": "FOUND-ETHICS", "minimum_level": 3},
+        {"skill": "FOUND-EVIDENCE", "minimum_level": 3}
+      ]
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "INFRA",
+  "name": "Infrastructure Security",
+  "description": "Skills related to the security assessment of cloud, on-premises, and hybrid infrastructure. Covers cloud-native security (AWS, Azure, GCP), container and orchestration security, infrastructure-as-code review, and on-premises infrastructure assessment.",
+
+  "categories": [
+    {
+      "id": "INFRA-AWS",
+      "name": "AWS Security",
+      "description": "Amazon Web Services security assessment. Covers IAM, S3, VPC, Lambda, CloudTrail, and AWS-specific attack patterns and misconfigurations."
+    },
+    {
+      "id": "INFRA-AZURE",
+      "name": "Azure Security",
+      "description": "Microsoft Azure security assessment. Covers Microsoft Entra ID (formerly Azure AD), storage accounts, networking, Azure Functions, and Azure-specific attack patterns and misconfigurations."
+    },
+    {
+      "id": "INFRA-GCP",
+      "name": "GCP Security",
+      "description": "Google Cloud Platform security assessment. Covers IAM, GCS, VPC, Cloud Run functions (formerly Cloud Functions), and GCP-specific attack patterns and misconfigurations."
+    },
+    {
+      "id": "INFRA-CONTAINER",
+      "name": "Container Security",
+      "description": "Container and orchestration security. Covers Docker security, Kubernetes security, container escape techniques, image scanning, and runtime security."
+    },
+    {
+      "id": "INFRA-IAC",
+      "name": "Infrastructure as Code Security",
+      "description": "Security review of infrastructure-as-code. Covers Terraform, CloudFormation, Ansible, and other IaC tools. Includes misconfiguration detection and policy-as-code evaluation."
+    },
+    {
+      "id": "INFRA-ONPREM",
+      "name": "On-Premises Infrastructure",
+      "description": "On-premises infrastructure security assessment. Covers Active Directory, virtualization platforms, server hardening, backup systems, and hybrid cloud integration points."
+    },
+    {
+      "id": "INFRA-IDENTITY",
+      "name": "Identity & SaaS Security",
+      "description": "Security assessment of cross-platform identity and SaaS services. Covers identity federation and single sign-on (SAML, OIDC/OAuth 2.0), identity providers, Microsoft 365 and other SaaS tenant configuration, and SaaS security posture management."
+    }
+  ]
+}

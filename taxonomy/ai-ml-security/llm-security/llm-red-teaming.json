@@ -1,0 +1,112 @@
+{
+  "id": "AIML-LLM-REDTEAM",
+  "name": "LLM & Generative AI Red Teaming",
+  "domain": "ai-ml-security",
+  "category": "LLM & Generative AI",
+  "status": "active",
+  "description": "Red-team campaign methodology for large language models and generative AI systems. Covers building harm and abuse taxonomies, planning and executing jailbreak campaigns, evaluating model safety and misuse resistance across harm categories, and reporting red-team outcomes with severity and reproducibility information. Prompt injection and output handling belong to AIML-LLM-PROMPTINJ, agentic tool-use risks to AIML-LLM-AGENT, and retrieval pipelines to AIML-LLM-RAG.",
+  "requires": [
+    "FOUND-ETHICS"
+  ],
+  "recommended": [
+    "FOUND-THREATMODEL",
+    "SWSEC-WEB-API",
+    "FOUND-TOOLS",
+    "ADVSIM-RED-PLANNING"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to LLM or generative AI security assessment"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands the attack surface of LLM-based systems and generative AI applications",
+      "evidence": [
+        "Can explain prompt injection (direct and indirect) and why it differs from traditional injection attacks",
+        "Aware of LLM-specific risks: hallucination, data leakage, jailbreaking, excessive agency",
+        "Familiar with the OWASP Top 10 for LLM Applications (2025) and ATLAS LLM techniques"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Can execute known LLM attack techniques and evaluate guardrails under guidance",
+      "evidence": [
+        "Executes known jailbreak techniques from a curated library against target models",
+        "Tests input/output guardrails for bypass conditions",
+        "Documents LLM security findings with supervision"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently red-teams LLM-integrated applications and produces actionable findings",
+      "evidence": [
+        "Plans and runs structured jailbreak and abuse-elicitation campaigns against a defined harm taxonomy",
+        "Evaluates model safety behaviour per harm category using documented severity and success criteria",
+        "Tests guardrail and content filtering effectiveness across attack categories",
+        "Produces assessment reports covering the full LLM threat surface with practical mitigations"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Red-teams complex multi-model and agentic systems; develops assessment methodology; mentors others",
+      "evidence": [
+        "Plans multi-phase red-team campaigns combining automated attack generation with human red-teamers",
+        "Develops novel jailbreaking strategies for new model versions and modalities",
+        "Reviews and improves LLM assessments across the team",
+        "Designs red-team evaluation frameworks for generative AI products"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Defines the lab's LLM red-teaming practice; publishes research; shapes industry guidance",
+      "evidence": [
+        "Established the lab's LLM and generative AI assessment methodology",
+        "Published research on LLM vulnerabilities, attacks, or defenses",
+        "Trains teams on LLM red-teaming",
+        "Contributes to external standards for AI safety and security evaluation"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Plan and run a scoped red-team campaign against an LLM-integrated application: define the harm taxonomy and test plan, execute it within the rules of engagement, and evaluate guardrail and abuse-handling effectiveness"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review LLM assessment reports for attack breadth, guardrail evaluation depth, and actionable mitigations"
+    }
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K1320", "K1345", "S0953", "S0957", "K1333"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development", "PD-WRL-007 Vulnerability Analysis"]
+    },
+    "mitre_atlas": [
+      "AML.T0051",
+      "AML.T0054",
+      "AML.T0056",
+      "AML.T0057",
+      "AML.T0053"
+    ],
+    "owasp_llm_top10": [
+      "LLM01:2025",
+      "LLM02:2025",
+      "LLM05:2025",
+      "LLM06:2025",
+      "LLM07:2025",
+      "LLM08:2025"
+    ]
+  },
+  "tags": [
+    "llm",
+    "generative-ai",
+    "red-teaming",
+    "safety-evaluation",
+    "atlas"
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "id": "AIML",
+  "name": "AI & ML Security Specialist",
+  "domain": "AIML",
+  "description": "AI and machine learning security track covering adversarial ML, LLM red teaming, model privacy, and ML infrastructure security.",
+  "maturity_levels": {
+    "junior": {
+      "title": "Junior AI/ML Security Specialist",
+      "description": "Runs established adversarial ML and LLM testing tools against agreed targets under supervision. Records test configurations and results; findings and report sections are reviewed by an authorized specialist before release.",
+      "thresholds": {
+        "domain_skills_at": {"1": 3, "2": 2},
+        "min_categories": 1,
+        "foundation_avg": 0.5
+      },
+      "pinned": [
+        {"skill": "FOUND-ETHICS", "minimum_level": 2}
+      ]
+    },
+    "practitioner": {
+      "title": "AI/ML Security Specialist",
+      "description": "Independently performs and signs off adversarial ML assessments, LLM red-team tests and model privacy evaluations on defined scope. Delivers reproducible reports stating model version, test configuration, success criteria and limits of the findings.",
+      "thresholds": {
+        "domain_skills_at": {"2": 4, "3": 2},
+        "min_categories": 2,
+        "foundation_avg": 1.0
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 3},
+        {"skill": "FOUND-ETHICS", "minimum_level": 3}
+      ]
+    },
+    "senior": {
+      "title": "Senior AI/ML Security Specialist",
+      "description": "Handles complex or novel assessments, for example multi-model pipelines or agentic LLM systems with tool access, and adapts test methods with documented justification. Performs QA review of specialists' reports and mentors junior staff.",
+      "thresholds": {
+        "domain_skills_at": {"3": 5, "4": 2},
+        "min_categories": 2,
+        "foundation_avg": 1.5
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 4},
+        {"skill": "FOUND-QA", "minimum_level": 3},
+        {"skill": "FOUND-ETHICS", "minimum_level": 3}
+      ]
+    },
+    "lead": {
+      "title": "Lead AI/ML Security Specialist",
+      "description": "Technical lead for AI & ML Security: owns the methodology, performs technical quality review of evaluations and reports, and plans the technical approach across engagements. Acts as the senior technical contact for clients on scope and findings. Technical depth stays at senior level or above.",
+      "thresholds": {
+        "domain_skills_at": {"3": 5, "4": 3},
+        "min_categories": 2,
+        "foundation_avg": 2.0
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 4},
+        {"skill": "FOUND-QA", "minimum_level": 3},
+        {"skill": "FOUND-PM", "minimum_level": 3},
+        {"skill": "FOUND-COMM", "minimum_level": 3},
+        {"skill": "FOUND-ETHICS", "minimum_level": 3}
+      ]
+    },
+    "principal": {
+      "title": "Principal AI/ML Security Specialist",
+      "description": "Technical authority in AI/ML security. Publishes research, shapes industry guidance, defines the lab's AI security practice. The deepest technical tier in the domain; it extends Lead rather than branching from it.",
+      "thresholds": {
+        "domain_skills_at": {"4": 5, "5": 2},
+        "min_categories": 3,
+        "foundation_avg": 2.5
+      },
+      "pinned": [
+        {"skill": "FOUND-REPORT", "minimum_level": 4},
+        {"skill": "FOUND-QA", "minimum_level": 3},
+        {"skill": "FOUND-PM", "minimum_level": 3},
+        {"skill": "FOUND-COMM", "minimum_level": 3},
+        {"skill": "FOUND-ETHICS", "minimum_level": 3}
+      ]
+    }
+  }
+}

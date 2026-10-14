@@ -1,0 +1,104 @@
+{
+  "id": "HWSEC-PCB-RE",
+  "name": "PCB Reverse Engineering & Schematic Reconstruction",
+  "domain": "hardware-security",
+  "category": "PCB Reverse Engineering",
+  "status": "active",
+  "description": "Systematic analysis of printed circuit boards to identify components, trace connectivity, and reconstruct schematics. Covers component identification (IC marking decoding, package identification), net tracing on multi-layer PCBs, X-ray imaging for hidden traces and BGA connections, test point identification, and schematic capture for attack surface mapping.",
+  "requires": [],
+  "recommended": [
+    "FOUND-DOC",
+    "FOUND-EVIDENCE",
+    "FOUND-TOOLS"
+  ],
+  "proficiency": {
+    "0": {
+      "label": "None",
+      "description": "No exposure to PCB reverse engineering"
+    },
+    "1": {
+      "label": "Awareness",
+      "description": "Understands PCB construction, component types, and the purpose of board-level reverse engineering",
+      "evidence": [
+        "Can identify common PCB component types (MCU, flash, PMIC, passives, connectors)",
+        "Understands multi-layer PCB construction (layer stackup, vias, ground planes)",
+        "Aware of common IC marking conventions and how to look up datasheets"
+      ]
+    },
+    "2": {
+      "label": "Guided Practice",
+      "description": "Identifies components and traces basic signal paths on PCBs under supervision",
+      "evidence": [
+        "Decodes IC markings and locates relevant datasheets and pinout information",
+        "Uses multimeter continuity testing to trace signal paths between components",
+        "Identifies power rails, clock signals, and common buses (SPI, I2C, UART) on a PCB with guidance",
+        "Documents identified components and connections following lab templates"
+      ]
+    },
+    "3": {
+      "label": "Independent Practice",
+      "description": "Independently reverse engineers PCBs and produces actionable schematics",
+      "evidence": [
+        "Reconstructs partial or full schematics from multi-layer PCBs using X-ray and visual inspection",
+        "Identifies debug headers, test points, and unpopulated pads with security relevance",
+        "Maps complete communication bus topology and identifies interception points",
+        "Produced PCB RE reports with schematics on 3+ engagements meeting lab standards"
+      ],
+      "authorization": true
+    },
+    "4": {
+      "label": "Advanced / Mentor",
+      "description": "Reverse engineers complex boards; develops RE methodology; mentors team",
+      "evidence": [
+        "Reverse engineers high-density boards (10+ layer, fine-pitch BGA) using X-ray tomography",
+        "Identifies and analyzes custom ASICs and undocumented components through pin analysis",
+        "Develops standardized PCB RE workflows and documentation templates for the lab",
+        "Mentors junior analysts on component identification and efficient RE techniques"
+      ],
+      "authorization": true
+    },
+    "5": {
+      "label": "Expert / Authority",
+      "description": "Recognized authority on PCB RE; defines methodology; specifies lab equipment",
+      "evidence": [
+        "Defines the lab's PCB RE methodology and quality standards",
+        "Evaluates and specifies X-ray and inspection equipment for PCB analysis",
+        "Reverse engineers boards with intentional anti-RE measures (buried vias, potting, scraped markings)",
+        "Trains teams on PCB RE techniques and mentors across multiple engagement types"
+      ],
+      "authorization": true
+    }
+  },
+  "assessment_methods": [
+    {
+      "type": "controlled_exercise",
+      "description": "Reverse engineer a prepared target PCB: identify all major components, reconstruct key signal paths, and produce a partial schematic with identified attack surfaces"
+    },
+    {
+      "type": "work_product_review",
+      "description": "Review PCB RE documentation and schematics from recent engagements for accuracy and completeness"
+    }
+  ],
+  "equipment": [
+    "X-ray inspection system (2D or CT) for PCB layer analysis",
+    "PCB cross-section polishing and microscopy system"
+  ],
+  "framework_mappings": {
+    "nice": {
+      "tks": ["K0840", "K0851", "K0883", "K0786", "K1119"],
+      "work_roles": ["DD-WRL-008 Technology Research and Development", "PD-WRL-007 Vulnerability Analysis"]
+    },
+    "common_criteria": [
+      "AVA_VAN.3",
+      "ADV_TDS"
+    ]
+  },
+  "tags": [
+    "pcb",
+    "reverse-engineering",
+    "schematic",
+    "component-identification",
+    "x-ray",
+    "non-invasive"
+  ]
+}

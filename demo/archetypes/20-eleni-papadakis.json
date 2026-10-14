@@ -1,0 +1,36 @@
+{
+  "key": "PERS-020",
+  "bands": {
+    "strong": [],
+    "weak": []
+  },
+  "signature": {
+    "FOUND-QA": 5,
+    "FOUND-STANDARDS": 5,
+    "FOUND-REPORT": 5,
+    "FOUND-DOC": 5,
+    "FOUND-ETHICS": 4,
+    "FOUND-EVIDENCE": 4,
+    "FOUND-RISK": 4,
+    "FOUND-PM": 4,
+    "FOUND-COMM": 4,
+    "FOUND-THREATMODEL": 3,
+    "FOUND-TOOLS": 3
+  },
+  "never": [],
+  "foundations": [
+    3,
+    3
+  ],
+  "projects": [],
+  "stale_skills": [],
+  "self_assessment": {
+    "mode": "none"
+  },
+  "development_plan": [],
+  "name": "Eleni Papadakis",
+  "role": "Laboratory Quality and Standards Specialist",
+  "start_date": "2018-01-15",
+  "domains": [],
+  "target_maturity": {}
+}
